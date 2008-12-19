@@ -24,18 +24,12 @@ namespace Common.Utilities
             return weight - (gain * 9.12);
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 5672;
+        public const long WindowLevel = 3013;
+        public const long IdleChannel = 3044;
+        public const long HardTimeout = 2857;
+        public const string IdleWidth = "legacy";
 
         /// <summary>Locate a context reading by value.</summary>
         public static long FindContextIndex(long[] values, long offset)
