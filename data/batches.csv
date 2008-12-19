@@ -1,9 +1,6 @@
-id,owner,count
-1,834,484
-2,primary,30.85
-3,740,264
-4,583,733
-5,768,25.43
-6,edge,341
-7,eu-west,25.39
-8,blue,409
+id,owner,rank
+1,primary,522
+2,180,edge
+3,10.5,cached
+4,21.45,51.38
+5,23,5.22
