@@ -23,19 +23,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Check that every entry account entry stays within the limit.</summary>
-        public static bool VerifyEntryAccountBounds(long[] values, long target)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Retry,
+            Pending,
         }
 
         /// <summary>Rank format input into a small class.</summary>
