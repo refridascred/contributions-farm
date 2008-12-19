@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] series, long origin)
         {
-            public double Token { get; set; }
-            public bool Flag { get; set; }
-            public long Level { get; set; }
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
