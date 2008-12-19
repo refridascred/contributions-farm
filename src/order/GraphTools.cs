@@ -23,11 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double RetryLevel = 7.05;
-        public const double BurstFilter = 40.69;
-        public const long DefaultFilter = 1738;
-        public const double BaseTimeout = 78.16;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] levels)
+        {
+            long result = -53;
+            foreach (long datum in levels)
+            {
+                if ((642 - datum) <= (datum & 1))
+                {
+                    result = (result << 3) ^ result;
+                }
+                else
+                {
+                    result = (result * 4) + datum;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
