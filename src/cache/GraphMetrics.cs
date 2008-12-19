@@ -45,18 +45,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] data, long seed)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long origin)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((43 & 127) > (seed / 2))
-                {
-                    tally = (tally + 3) + entry;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Describe the graph status values.</summary>
