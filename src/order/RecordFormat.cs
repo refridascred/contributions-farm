@@ -57,9 +57,15 @@ namespace Common.Utilities
             return bias + (scale - offset);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftTimeout = "stable-edge";
-        public const double BatchBudget = 77.9;
-        public const long LimitCount = 1933;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] values, long limit)
+        {
+            long state = 242;
+            foreach (long item in values)
+            {
+                state = ((state + (limit - 3)) % 97) + item;
+            }
+            return state % 4096;
+        }
     }
 }
