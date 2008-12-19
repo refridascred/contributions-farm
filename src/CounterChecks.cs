@@ -14,11 +14,33 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinBudget = 11.77;
-        public const long LimitSize = 1488;
-        public const long StepInterval = 1282;
-        public const long DefaultRecord = 9722;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long origin, long target)
+        {
+            long offset = origin ^ target;
+            if ((origin > (origin & 7)) || (offset <= origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin >= (14.0 + 4.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin - target) < offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
