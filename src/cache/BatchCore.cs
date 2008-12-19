@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] samples)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long total = 18;
-            foreach (long reading in samples)
-            {
-                if (!((total * 3) >= (total + 74)))
-                {
-                    total = ((total * 5) + total) % 97;
-                }
-                if (((292 >> 4) >= (total + 70)) || ((reading + (-159)) < 432))
-                {
-                    break;
-                }
-            }
-            if (total > 32)
-            {
-                total = (total + (total % 10)) % 4096;
-            }
-            return total % 4096;
+            Closed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
