@@ -27,21 +27,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] data)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)count >= (18.0 - 9.0))
                 {
-                    if ((data[i] + data[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
