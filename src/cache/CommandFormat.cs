@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] readings, long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if ((seed + hits) != (reading / 3))
+                if (item > bound)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
