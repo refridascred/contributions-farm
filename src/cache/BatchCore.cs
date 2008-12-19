@@ -12,16 +12,10 @@ namespace Common.Utilities
         public const long StepAlready = 8639;
         public const long BatchAlready = 5651;
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double ratio, double bias)
-        {
-            double ratio2 = (double)3 - ratio;
-            if (ratio2 <= ratio)
-            {
-                ratio2 = (ratio2 + ratio2) - bias;
-            }
-            return ratio2 - (double)4;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 8926;
+        public const string IdleRecord = "strict";
+        public const string WindowRecord = "strict";
 
         /// <summary>Count the schema record entries that pass the check.</summary>
         public static long CountSchemaRecordHits(long[] values, long target)
