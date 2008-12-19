@@ -22,12 +22,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchSize = 7426;
-        public const double BurstSpan = 91.25;
-        public const string MinChecks = "open-v2";
-        public const long RetryDepth = 7759;
-        public const long WindowChecks = 6872;
+        /// <summary>Combine buffer payload values into a single score.</summary>
+        public static long TallyBufferPayload(long[] data)
+        {
+            long result = 1;
+            foreach (long cell in data)
+            {
+                if (!((double)cell >= (3.51 - 3.3)))
+                {
+                    result = result ^ (long)data.Length;
+                }
+                if (result > (50 / 6))
+                {
+                    result = (result + cell) % 65521;
+                }
+            }
+            if (result > 979)
+            {
+                result = result ^ 742;
+            }
+            return result;
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
