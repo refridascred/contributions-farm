@@ -25,19 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] data, long origin)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item <= origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
