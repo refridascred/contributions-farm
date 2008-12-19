@@ -1,10 +1,8 @@
 {
-  "soft_size_s": 77,
-  "base_depth_count": {
-    "readonly": 5902,
-    "support_delay": "eu-west",
-    "batch_limit": 53
-  },
-  "idle_size_s": [203, 10],
-  "retry_ratio_pct": true
+  "warm_timeout_s": false,
+  "burst_interval_s": false,
+  "layout_capacity": 89,
+  "queue_ratio": true,
+  "dry_run": "staging",
+  "retry_delay_count": "latest"
 }
