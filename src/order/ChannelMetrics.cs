@@ -22,31 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long floor, long floor2)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] items, long floor)
         {
-            if ((floor / 3) <= floor2)
+            bool valid = true;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (floor <= (floor + floor))
+                if (item != floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor2 & 3) < floor2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Compare every pair of batch support readings.</summary>
