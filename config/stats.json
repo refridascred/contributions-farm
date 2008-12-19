@@ -1,7 +1,18 @@
 {
-  "flush_interval_pct": "cached",
-  "default_depth": false,
-  "audit": ["open", "stable"],
-  "batches_threshold": ["eu-west", "standard"],
-  "max_ttl": "blue"
+  "filter_timeout": true,
+  "poll_timeout": 3831,
+  "soft_depth_count": {
+    "hard_delay_ms": {
+      "farm_window": true,
+      "burst_ttl": 100,
+      "format_window": "cached"
+    },
+    "batches_interval": "fallback",
+    "enabled": true,
+    "strict": ["open", "staging", "blue", "open"],
+    "stats_size": 62,
+    "poll_window": "primary"
+  },
+  "verbose": 7080,
+  "hard_interval_count": 66
 }
