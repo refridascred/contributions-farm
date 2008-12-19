@@ -31,15 +31,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Synced,
+            Failed,
+            New,
         }
 
         /// <summary>Describe the graph status values.</summary>
