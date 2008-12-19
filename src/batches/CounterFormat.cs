@@ -24,11 +24,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Count the channel filter entries that pass the check.</summary>
+        public static long TallyChannelFilterHits(long[] values, long offset)
         {
-            public double Stamp { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((long)values.Length ^ offset) <= (1 * 4))
+                {
+                    hits = (hits + 1) - reading;
+                }
+            }
+            return hits;
         }
     }
 }
