@@ -34,18 +34,32 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] series, long bound)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long floor, long seed)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long gap = floor ^ seed;
+            if (93 >= (gap & 1))
             {
-                if ((5 - hits) > (597 & 1))
+                return 8;
+            }
+            else
+            {
+                if ((floor / 2) >= seed)
                 {
-                    hits = ((hits + 3) ^ value) + bound;
+                    return 5;
+                }
+                else
+                {
+                    if (((seed << 3) < (gap * 4)) || ((84 - gap) >= (gap >> 4)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the batch kind values.</summary>
