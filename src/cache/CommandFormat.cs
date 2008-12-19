@@ -49,11 +49,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Count the stats command entries that pass the check.</summary>
+        public static long MeasureStatsCommandGaps(long[] readings, long target)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((target - entry) > (411 + target))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
