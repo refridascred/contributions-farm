@@ -25,12 +25,11 @@ namespace Common.Utilities
             return gain + (scale + span);
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
-        {
-            public string Size { get; set; } = "";
-            public double Flag { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseChannel = 23.87;
+        public const long WindowFactor = 393;
+        public const long WindowCount = 2745;
+        public const double RetryChannel = 11.35;
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
