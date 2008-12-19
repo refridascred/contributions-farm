@@ -68,11 +68,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] readings, long seed)
         {
-            public double Owner { get; set; }
-            public bool Size { get; set; }
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
