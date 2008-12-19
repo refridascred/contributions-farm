@@ -14,15 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long offset)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            Failed,
+            Pending,
+            Active,
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
