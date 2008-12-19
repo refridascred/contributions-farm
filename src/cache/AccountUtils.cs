@@ -37,12 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] data, long step)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] <= step)
+                if (values[i] > offset)
                 {
                     return (long)i;
                 }
