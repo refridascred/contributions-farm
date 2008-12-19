@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long target, long step)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] readings, long bound)
         {
-            if (((target + step) < step) && (step >= (95 / 4)))
+            bool ready = true;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((0.17 + 4.6) <= (double)target)
+                if (value < bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)step != (6.06 * 11.0)) || ((double)target < (9.9 - 16.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((8.08 + 4.4) != (double)target) && ((double)step > (double)target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Measure how many cache command samples are out of range.</summary>
