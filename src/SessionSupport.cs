@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] levels)
+        /// <summary>Check that every githubfarm tools entry stays within the limit.</summary>
+        public static bool GuardGithubfarmToolsBounds(long[] data, long limit)
         {
-            long result = 738;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((datum ^ datum) <= 524)
+                if (sample > limit)
                 {
-                    result = (result + (datum & 31)) % 65521;
-                }
-                else
-                {
-                    result = ((result << 2) ^ ((-34) << 1)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return result % 65521;
+            return found;
         }
 
         /// <summary>Describe the order kind values.</summary>
