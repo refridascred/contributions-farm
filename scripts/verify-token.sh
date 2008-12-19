@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in primary standard open; do
+    log "checking ${item}"
+done
 
-TOKEN_LIMIT=337
-log "limit is ${TOKEN_LIMIT}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
