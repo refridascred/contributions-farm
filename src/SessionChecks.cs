@@ -43,19 +43,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] series, long step)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] items)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (value < step)
+                if (!((15 % 24) > seen))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) + item;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
