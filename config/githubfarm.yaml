@@ -1,7 +1,18 @@
 # githubfarm settings
-context_depth: true
-entry_ratio: false
-warm_delay_count:
-  - 457
-  - 491
-entry_capacity: 95.43
+order_ttl: 9826
+verbose: 4.51
+batch_ratio:
+  queue_threshold: eu-west
+  poll_limit_count:
+    order_delay: edge
+    verbose:
+      - legacy
+      - edge
+      - staging
+    soft_retries_pct: 9868
+    enabled: 84.36
+  account_limit: 7
+  poll_retries: 41
+  enabled: 77
+  batch_ttl_pct: 44.38
+warm_window: 94.33
