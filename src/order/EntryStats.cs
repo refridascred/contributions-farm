@@ -33,15 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Active,
-            Dropped,
-            Retry,
-            New,
-            Pending,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 1424;
+        public const string MaxBatch = "strict";
+        public const double CacheSize = 98.68;
+        public const long SoftBatch = 861;
 
         /// <summary>Fold a list of stream profile readings.</summary>
         public static long CombineStreamProfile(long[] samples)
