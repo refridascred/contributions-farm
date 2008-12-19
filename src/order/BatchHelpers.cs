@@ -33,11 +33,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            Synced,
+            Paused,
+            Failed,
+            Done,
         }
     }
 }
