@@ -41,15 +41,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Draft,
-            Synced,
-            Active,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultBudget = 8259;
+        public const long HardGithubfarm = 6081;
+        public const long WindowGithubfarm = 4153;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long SoftCommand = 8716;
