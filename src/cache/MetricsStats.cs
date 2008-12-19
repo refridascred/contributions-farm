@@ -24,15 +24,25 @@ namespace Common.Utilities
         public const string HardCounter = "staging-v2";
         public const string BaseCounter = "latest";
 
-        /// <summary>Blend two session schema measurements.</summary>
-        public static double AdjustSessionSchema(double gain, double floor)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long offset, long limit)
         {
-            double load = floor;
-            if (load <= load)
+            long cur = offset + limit;
+            if (offset > (limit % 3))
             {
-                load = load + gain;
+                return 3;
             }
-            return load + (double)400;
+            else
+            {
+                if (((cur ^ cur) <= (limit - offset)) || ((4.6 / 8.0) == (double)cur))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Grade a buffer metric value against two limits.</summary>
