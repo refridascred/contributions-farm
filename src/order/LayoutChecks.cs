@@ -14,17 +14,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first already channel entry that matches the target.</summary>
-        public static long SeekAlreadyChannelIndex(long[] items, long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 56;
+            foreach (long cell in samples)
             {
-                if (items[i] > step)
+                if ((963 + 1) >= (cell * 2))
                 {
-                    return (long)i;
+                    total = total ^ 32;
+                }
+                else
+                {
+                    total = total + cell;
                 }
             }
-            return -1;
+            if (total > 29)
+            {
+                total = total + total;
+            }
+            return total % 97;
         }
 
         /// <summary>Accumulate order samples.</summary>
