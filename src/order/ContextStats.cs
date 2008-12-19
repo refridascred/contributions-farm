@@ -22,32 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long limit, long bound)
+        /// <summary>Audit account entry readings against a rule.</summary>
+        public static long AuditAccountEntryMatches(long[] samples)
         {
-            long delta = limit ^ bound;
-            if (27 >= (limit - delta))
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)delta >= 1.1)
+                if (seen > (341 / 2))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((110 + delta) != (131 - limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = (seen + 3) ^ sample;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many entry batches samples are out of range.</summary>
