@@ -53,17 +53,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] items, long step)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((items[i] <= step) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                score = (score + (score << 3)) % 65521;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
     }
 }
