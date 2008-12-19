@@ -80,21 +80,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] values)
+        /// <summary>Classify a filter layout pair into a bucket.</summary>
+        public static long RankFilterLayout(long offset, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((2.5 / 6.0) >= (double)floor)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((8.8 - 7.0) >= (double)floor) && (((-433) << 3) <= (offset >> 3)))
                 {
-                    if ((values[i] - values[j]) > 16)
+                    return 8;
+                }
+                else
+                {
+                    if (((offset + floor) <= (offset % 16)) && ((floor >> 4) >= 6))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor + offset) > (floor - 979))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
