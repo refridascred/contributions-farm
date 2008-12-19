@@ -49,18 +49,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] data)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] series)
         {
-            long total = 949;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((6.0 / 8.0) <= (double)total)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = ((total ^ 48) % 1000) ^ sample;
+                    if ((series[i] ^ series[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total;
+            return matches;
         }
     }
 }
