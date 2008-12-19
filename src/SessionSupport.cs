@@ -23,12 +23,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            New,
-            Locked,
-            Active,
+            Idle,
+            Retry,
+            Failed,
         }
 
         /// <summary>Rank cache account input into a small class.</summary>
