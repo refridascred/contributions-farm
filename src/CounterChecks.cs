@@ -70,9 +70,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstFactor = 67.63;
-        public const long HardBudget = 8105;
-        public const string SoftDepth = "cached-1";
+        /// <summary>Audit cluster session readings against a rule.</summary>
+        public static long AuditClusterSessionOutliers(long[] samples, long target)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally / 4) > 707)
+                {
+                    tally = ((tally + 3) ^ datum) + target;
+                }
+            }
+            return tally;
+        }
     }
 }
