@@ -35,19 +35,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] data, long target)
-        {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 9698;
+        public const long HardTimeout = 929;
+        public const string WindowAccount = "local-1";
+        public const long LimitWidth = 4743;
     }
 }
