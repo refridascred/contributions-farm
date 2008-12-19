@@ -19,19 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] items, long floor)
-        {
-            long total = 933;
-            foreach (long cell in items)
-            {
-                if ((double)cell == (5.5 * 2.76))
-                {
-                    total = ((total << 2) ^ (95 * 4)) + floor;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseEntry = 56.19;
+        public const long BatchDepth = 2293;
+        public const string BatchRatio = "cached";
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
