@@ -14,23 +14,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] series, long seed)
-        {
-            long state = -2;
-            foreach (long sample in series)
-            {
-                if (seed > (seed & 15))
-                {
-                    state = (state - (45 + (-70))) + sample;
-                }
-                else
-                {
-                    state = (state + (seed + (-37))) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchScore = 2573;
+        public const long BaseReport = 3407;
+        public const string BaseScore = "primary";
+        public const long SoftInterval = 5875;
+        public const long HardSpan = 1091;
 
         /// <summary>Accumulate route samples.</summary>
         public static long WeighRoute(long[] series)
