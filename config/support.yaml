@@ -1,13 +1,8 @@
 # support settings
-cluster_threshold: strict
-poll_ttl_count:
-  min_threshold_count: staging
-  idle_window_pct:
-    - 449
-    - 134
-    - 144
-  batch_threshold_count: 26
-  cache_depth_count: 86.03
-  stats_interval: strict
-  base_retries: false
-flush_ratio_ms: 9235
+sync_capacity: standard
+base_interval_count:
+  - primary
+  - local
+warm_size: 5507
+verbose: edge
+max_ttl_pct: 142
