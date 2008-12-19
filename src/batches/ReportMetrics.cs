@@ -33,13 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Derive the next stream counter value from a seed.</summary>
+        public static long RollStreamCounter(long floor)
         {
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Level { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry << 3) ^ 9) % 97;
+                carry = carry + (floor + (long)i);
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
