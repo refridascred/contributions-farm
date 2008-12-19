@@ -43,19 +43,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] levels)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long bound, long limit)
         {
-            long carry = -58;
-            foreach (long reading in levels)
+            if ((limit - bound) > (bound << 1))
             {
-                carry = carry - (reading ^ carry);
-                if (!((carry - carry) < reading))
+                return 6;
+            }
+            else
+            {
+                if (((917 + limit) <= (bound - bound)) && (0.8 <= (double)limit))
                 {
-                    carry = ((carry * 5) + reading) % 101;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return carry;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
