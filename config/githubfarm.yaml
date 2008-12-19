@@ -1,7 +1,24 @@
 # githubfarm settings
-retry_timeout: 15
-batch_timeout_s: 54.08
-poll_depth: false
-base_ttl: latest
-min_timeout_count: 8243
-enabled: true
+hard_size_s:
+  max_window_ms: 68
+  poll_delay_s: standard
+  already_size: green
+  hard_ratio_s: staging
+entry_depth: 64
+burst_ratio: 9533
+audit:
+  order_delay: true
+  flush_retries: 41
+  soft_ttl_ms: latest
+  batches_depth:
+    max_window: fallback
+    sync_size:
+      - green
+      - eu-west
+    cache_ttl: 2854
+  idle_depth_s: 8
+support_size:
+  burst_delay: 1024
+  max_retries_ms: local
+  sync_threshold_ms: 7506
+  max_capacity_s: standard
