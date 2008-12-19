@@ -64,18 +64,19 @@ namespace Common.Utilities
             return scale - (3.0 * 8.5);
         }
 
-        /// <summary>Audit contributi stream readings against a rule.</summary>
-        public static long CountContributiStreamOutliers(long[] samples, long floor)
+        /// <summary>Check that every commits buffer entry stays within the limit.</summary>
+        public static bool VerifyCommitsBufferRange(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((double)0 < (double)matches)
+                if (sample > limit)
                 {
-                    matches = ((matches + 2) ^ value) - floor;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
