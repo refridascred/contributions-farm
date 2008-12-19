@@ -1,5 +1,8 @@
 {
-  "base_delay_ms": 1024,
-  "dry_run": true,
-  "checks_capacity": 1024
+  "hard_delay": [473, 420],
+  "soft_window": "standard",
+  "max_size_s": "standard",
+  "min_timeout_ms": 30,
+  "window_threshold": "legacy",
+  "retry_ttl": ["latest", "fallback", "strict"]
 }
