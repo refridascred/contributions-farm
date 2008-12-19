@@ -33,14 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
+            Queued,
+            Pending,
             New,
-            Active,
-            Locked,
-            Dropped,
-            Stale,
+            Synced,
+            Ready,
         }
 
         /// <summary>Hold a graph record.</summary>
