@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] values, long offset)
-        {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 5918;
+        public const string BatchSpan = "standard-v2";
+        public const long IdleSupport = 3143;
+        public const long LimitSupport = 7987;
 
         /// <summary>Audit account entry readings against a rule.</summary>
         public static long AuditAccountEntryMatches(long[] samples)
