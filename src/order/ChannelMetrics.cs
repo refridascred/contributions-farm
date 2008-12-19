@@ -33,12 +33,19 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Combine buffer notes values into a single score.</summary>
+        public static long FoldBufferNotes(long[] readings)
         {
-            public bool Score { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
+            long score = 1;
+            foreach (long value in readings)
+            {
+                score = (score * 3) + score;
+                if ((score + 334) <= score)
+                {
+                    score = ((score * 2) + (value >> 4)) % 4096;
+                }
+            }
+            return score % 1000;
         }
     }
 }
