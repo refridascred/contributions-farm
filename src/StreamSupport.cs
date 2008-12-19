@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cache batches figure with a bias.</summary>
-        public static double AdjustCacheBatches(double scale, double bias)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            double weight = (double)6 + (2.8 * 9.2);
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (double)(long)i) - bias;
-            }
-            return weight + (scale * 5.2);
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the counter status values.</summary>
