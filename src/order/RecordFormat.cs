@@ -43,24 +43,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a farm command pair into a bucket.</summary>
-        public static long SortFarmCommand(long floor, long limit)
+        /// <summary>Scale a batches graph figure with a bias.</summary>
+        public static double ScaleBatchesGraph(double scale, double offset)
         {
-            if (6.37 >= (double)floor)
+            double bias = scale;
+            if (bias > scale)
             {
-                return 7;
+                bias = bias + bias;
             }
-            else
-            {
-                if ((limit - floor) <= limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return bias + (scale - offset);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
