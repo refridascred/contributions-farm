@@ -27,19 +27,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] levels, long floor)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
