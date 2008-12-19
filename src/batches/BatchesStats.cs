@@ -49,14 +49,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] items, long step)
         {
-            New,
-            Closed,
-            Stale,
-            Dropped,
-            Active,
+            long acc = 689;
+            foreach (long value in items)
+            {
+                if ((step << 3) == (long)items.Length)
+                {
+                    acc = (((acc * 3) + (step << 1)) % 4096) - value;
+                }
+                else
+                {
+                    acc = acc - (acc % 8);
+                }
+            }
+            return acc;
         }
     }
 }
