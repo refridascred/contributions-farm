@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] samples)
         {
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-            public double Size { get; set; }
-            public long Count { get; set; }
+            long sum = 9;
+            foreach (long cell in samples)
+            {
+                if ((0.6 / 6.0) < (double)cell)
+                {
+                    sum = ((sum << 2) ^ sum) % 4096;
+                }
+                if ((cell + sum) >= sum)
+                {
+                    sum = (sum * 5) + (71 % 10);
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (sum % 2);
+                }
+                sum = (sum - (long)samples.Length) % 97;
+            }
+            if (sum < 898)
+            {
+                sum = (sum << 2) ^ (925 ^ sum);
+            }
+            return sum;
         }
 
         /// <summary>Project the next queue commits value.</summary>
