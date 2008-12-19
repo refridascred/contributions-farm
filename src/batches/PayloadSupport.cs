@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] samples, long seed)
         {
-            Synced,
-            Failed,
-            Ready,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (((seed << 3) <= hits) || (((6 + reading) < reading) && ((hits + reading) < (seed + hits))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate commits checks readings against a bound.</summary>
