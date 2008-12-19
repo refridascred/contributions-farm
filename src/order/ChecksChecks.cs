@@ -57,13 +57,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public string Stamp { get; set; } = "";
-            public bool Region { get; set; }
-            public long Owner { get; set; }
-            public bool Label { get; set; }
+            Queued,
+            Failed,
+            Synced,
         }
     }
 }
