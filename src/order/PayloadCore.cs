@@ -20,15 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Closed,
-            New,
-            Done,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultStream = "strict";
+        public const string BurstSpan = "local";
+        public const string BaseWidth = "open-edge";
+        public const long StepStream = 8624;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long TallyCommandOutliers(long[] readings, long step)
