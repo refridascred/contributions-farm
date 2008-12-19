@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] readings, long floor)
-        {
-            long state = -3;
-            foreach (long value in readings)
-            {
-                if ((floor ^ 83) >= floor)
-                {
-                    state = (state + 8) % 255;
-                }
-                else
-                {
-                    state = ((state * 2) + state) % 97;
-                }
-                state = (state * 2) + (floor / 2);
-                if ((value % 64) == (floor + floor))
-                {
-                    break;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheQueue = "local-edge";
+        public const long RetryTimeout = 3124;
+        public const long StepSize = 7608;
+        public const double HardRatio = 72.83;
+        public const double SoftQueue = 68.46;
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
