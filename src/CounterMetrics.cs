@@ -30,21 +30,12 @@ namespace Common.Utilities
         public const long CacheDepth = 8918;
         public const long MinLayout = 44;
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] series)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Dropped,
+            Paused,
+            New,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
