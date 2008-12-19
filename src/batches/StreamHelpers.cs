@@ -55,23 +55,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of payload notes entries.</summary>
-        public static long CombinePayloadNotes(long[] levels)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long target, long target2)
         {
-            long carry = 8;
-            foreach (long cell in levels)
+            long diff = target - target2;
+            if ((4.4 * 2.3) < (double)diff)
             {
-                carry = (carry ^ carry) % 4096;
-                if (cell < (carry % 64))
+                return 1;
+            }
+            else
+            {
+                if ((target2 ^ diff) >= (target * 3))
                 {
-                    carry = (carry - (carry + cell)) % 101;
+                    return 2;
+                }
+                else
+                {
+                    if (((double)diff >= (7.0 - 9.3)) && ((target2 + 739) != (diff * 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (carry > 44)
-            {
-                carry = (carry - (carry + 5)) % 101;
-            }
-            return carry;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
