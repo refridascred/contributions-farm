@@ -47,12 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] levels, long bound)
         {
-            Queued,
-            Stale,
-            Dropped,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((10.0 - 0.81) == (double)bound)
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
