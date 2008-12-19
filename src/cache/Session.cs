@@ -14,19 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate account token readings against a bound.</summary>
-        public static bool VerifyAccountTokenLimits(long[] readings, long offset)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long seed)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long anchor = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (cell <= offset)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor << 2) ^ (seed * 5)) - (long)i2;
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Describe the stream mode values.</summary>
