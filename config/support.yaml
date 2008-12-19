@@ -1,29 +1,19 @@
 # support settings
-idle_ttl:
-  base_ratio: 90.72
-  cache_ratio_pct: staging
-  persist: 5.41
-  dry_run: false
-  compress:
-    burst_timeout_ms:
-      - 144
-      - 326
-      - 243
-    batch_retries_s: staging
-    cache_limit_s: 56
-enabled: 60
-readonly:
-  already_retries:
-    - cached
-    - open
-    - local
-    - fallback
-  enabled: green
-  metrics_delay: 100
-  retry_retries_pct:
-    base_interval: true
-    soft_threshold_ms: true
-    burst_capacity_pct: 250
-    sync_timeout: cached
-  persist: cached
-dry_run: 85.64
+hard_window_pct: 21.4
+editor_limit:
+  base_ratio:
+    - 487
+    - 85
+    - 465
+    - 372
+  warm_window_count: true
+  sync_interval_ms:
+    - 58
+    - 280
+    - 108
+    - 73
+  dry_run: true
+  metrics_delay: fallback
+batch_limit: 6598
+strict: 100
+route_ttl: true
