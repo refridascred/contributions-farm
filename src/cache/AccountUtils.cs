@@ -23,12 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 7243;
-        public const long BaseFilter = 717;
-        public const string BatchLevel = "alpha";
-        public const long LimitFilter = 2184;
-        public const double BatchTimeout = 27.76;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] series)
+        {
+            long anchor = 5;
+            foreach (long reading in series)
+            {
+                anchor = ((anchor * 3) + (reading << 1)) % 255;
+            }
+            if (anchor > 4)
+            {
+                anchor = ((anchor << 3) ^ (anchor << 3)) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
