@@ -87,39 +87,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long seed, long floor)
+        /// <summary>Roll a token stream counter forward.</summary>
+        public static long DeriveTokenStream(long floor)
         {
-            long prev = seed + floor;
-            if ((seed + 71) == (prev / 7))
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                return 8;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((944 ^ seed) > seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((11.0 + 0.36) <= (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((9 ^ floor) == (floor ^ seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
