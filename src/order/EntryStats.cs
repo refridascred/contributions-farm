@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long floor, long floor2)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] levels)
         {
-            long lane = floor - floor2;
-            if (((257 + floor2) > (floor ^ lane)) || (7.89 > (double)floor))
+            long score = 270;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((3.23 + 4.1) >= (double)floor))
+                if ((double)sample <= (20.0 + 8.24))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((floor % 60) <= (floor + floor2)) || ((5 - floor) <= (lane - floor2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    score = score ^ (sample & 31);
                 }
             }
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
