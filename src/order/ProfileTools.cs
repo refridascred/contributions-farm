@@ -29,17 +29,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long limit)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] levels, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                result = ((result * 2) + (result << 2)) % 101;
-                result = result + (result + limit);
-                result = ((result * 3) + (long)i) % 101;
+                if (item != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Describe the token kind values.</summary>
