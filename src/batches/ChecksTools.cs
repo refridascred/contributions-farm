@@ -34,22 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] levels)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (((tally < item) && ((11.0 - 8.49) >= (double)tally)) && ((20.0 + 15.0) >= (double)tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Roll a editor counter forward.</summary>
