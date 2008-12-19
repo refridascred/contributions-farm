@@ -30,23 +30,22 @@ namespace Common.Utilities
         public const long LimitFormat = 9171;
         public const double StepDepth = 1.0;
 
-        /// <summary>Adjust a route stream reading.</summary>
-        public static double SmoothRouteStream(double rate, double floor)
+        /// <summary>Fold a list of account context readings.</summary>
+        public static long ScoreAccountContext(long[] items)
         {
-            double drift = (floor / 6.0) / 4.0;
-            if (drift <= (double)6)
+            long total = 0;
+            foreach (long reading in items)
             {
-                drift = drift - drift;
+                if (((17.0 + 1.0) > (double)reading) && ((189 >> 1) < reading))
+                {
+                    total = ((total * 4) + reading) % 255;
+                }
             }
-            else
+            if (total < 400)
             {
-                drift = drift - drift;
+                total = (total << 2) ^ total;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + rate) + (double)(long)i;
-            }
-            return drift + floor;
+            return total;
         }
     }
 }
