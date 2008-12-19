@@ -37,15 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double ratio, double bias)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] data, long seed)
         {
-            double bias2 = 5.69 - (double)88;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = (((bias2 + (6.5 / 4.0)) + (double)(long)i) - ratio) - bias;
+                if ((data[i] >= seed) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias2 - (bias2 / 8.0);
+            return -1;
         }
     }
 }
