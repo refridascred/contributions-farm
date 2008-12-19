@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] data)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] readings, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((576 >= (value + (long)readings.Length)) && ((floor - value) <= (floor + value)))
                 {
-                    if ((data[i] - data[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a tools entry.</summary>
