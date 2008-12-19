@@ -60,12 +60,19 @@ namespace Common.Utilities
             return load - (span - 1.21);
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Combine buffer stats values into a single score.</summary>
+        public static long TotalBufferStats(long[] items, long bound)
         {
-            public long Rank { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            long carry = 89;
+            foreach (long entry in items)
+            {
+                carry = ((carry - carry) + entry) - bound;
+            }
+            if (carry > 0)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
     }
 }
