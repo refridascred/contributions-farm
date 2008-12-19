@@ -26,38 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long origin, long limit)
+        /// <summary>Derive the next batch contributi value from a seed.</summary>
+        public static long SeriesBatchContributi(long step)
         {
-            if ((origin % 12) >= (origin + limit))
+            long result = step;
+            for (int i = 0; i < 17; i++)
             {
-                return 6;
+                result = ((result * 4) + ((long)i / 8)) % 65521;
+                result = ((result * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((limit ^ origin) <= origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit <= 9.24)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((1.6 / 8.0) <= (double)limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
