@@ -20,13 +20,13 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public bool Owner { get; set; }
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
