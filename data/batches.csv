@@ -1,6 +1,8 @@
-id,active,rank,weight
-1,965,402,906
-2,67,369,896
-3,500,924,260
-4,49.69,blue,702
-5,868,424,45.71
+id,weight,label
+1,eu-west,59
+2,latest,76
+3,46.09,73.06
+4,eu-west,279
+5,63.26,staging
+6,legacy,15
+7,open,28.93
