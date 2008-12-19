@@ -1,6 +1,12 @@
 {
-  "cache_retries": 88,
-  "batch_interval": true,
-  "poll_ratio": 35.46,
-  "record_size": 83.33
+  "max_ratio_count": "staging",
+  "burst_capacity": ["staging", "eu-west", "eu-west", "blue"],
+  "hard_interval": {
+    "base_window_s": "primary",
+    "cache_window": "standard",
+    "cache_ttl": 7594,
+    "batch_retries_ms": 6413,
+    "githubfarm_retries": [339, 14, 109]
+  },
+  "cache_size_s": "local"
 }
