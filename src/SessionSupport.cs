@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Measure how many token command samples are out of range.</summary>
+        public static long TallyTokenCommandHits(long[] levels)
         {
-            Paused,
-            Idle,
-            Pending,
-            Dropped,
-            Synced,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)hits == (5.7 / 3.0))
+                {
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
