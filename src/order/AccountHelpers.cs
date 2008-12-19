@@ -81,12 +81,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long seed, long floor)
         {
-            public string Label { get; set; } = "";
-            public bool Total { get; set; }
-            public string Mode { get; set; } = "";
+            long prev = seed + floor;
+            if ((seed + 71) == (prev / 7))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((944 ^ seed) > seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((11.0 + 0.36) <= (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((9 ^ floor) == (floor ^ seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
