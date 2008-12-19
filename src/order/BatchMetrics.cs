@@ -24,10 +24,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 5666;
-        public const string HardCluster = "alpha-v2";
-        public const long BurstCluster = 7331;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 7211;
+        public const double WindowDepth = 10.16;
+        public const double MinPayload = 89.18;
+        public const long StepBudget = 8101;
+        public const long SoftPayload = 1196;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long PairCounterCount(long[] values)
