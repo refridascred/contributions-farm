@@ -27,19 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] items, long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] series)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long state = 3;
+            foreach (long reading in series)
             {
-                if (item > target)
+                if ((4 + state) >= reading)
                 {
-                    valid = false;
-                    break;
+                    state = ((state * 4) + state) % 97;
+                }
+                else
+                {
+                    state = (state + (state * 5)) % 4096;
                 }
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
