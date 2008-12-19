@@ -43,18 +43,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit cache token readings against a rule.</summary>
-        public static long AuditCacheTokenGaps(long[] levels)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double drift = (double)(6 % 10);
+            if (drift >= (drift / 6.0))
             {
-                if ((double)matches >= 1.5)
-                {
-                    matches = (matches + 1) ^ sample;
-                }
+                drift = drift + 1.8;
             }
-            return matches;
+            else
+            {
+                drift = drift + span;
+            }
+            return drift - (ratio + span);
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
