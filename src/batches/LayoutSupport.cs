@@ -36,23 +36,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double weight, double offset)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double weight, double bias)
         {
-            double gain = (double)(0 << 3);
-            if (gain >= weight)
-            {
-                gain = gain - (weight + weight);
-            }
-            else
-            {
-                gain = gain + offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (double)66) + (double)(long)i;
-            }
-            return gain + gain;
+            double bias2 = (double)((-1) - 3);
+            return (bias2 - (bias / 6.0)) + weight;
         }
 
         /// <summary>Audit queue metrics readings against a rule.</summary>
