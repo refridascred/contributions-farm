@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] levels, long bound)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] data)
         {
-            long mix = 94;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)mix <= (double)265)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = ((mix * 3) + bound) + reading;
+                    if ((data[i] - data[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
