@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long origin)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] samples, long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((3.6 - 0.9) > (double)origin))
+                if (samples[i] > limit)
                 {
-                    break;
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Roll a contributi support counter forward.</summary>
