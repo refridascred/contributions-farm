@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] series, long origin)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Region { get; set; }
+            public double Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
