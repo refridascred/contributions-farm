@@ -1,13 +1,21 @@
 # githubfarm settings
-audit: 74
-cache_ttl_pct: cached
-default_retries_s: false
-retry_ttl: staging
-enabled: 40.62
-idle_limit_s:
-  burst_window: 100
-  hard_limit_pct: true
-  idle_threshold_count: 98
-  base_retries_ms: primary
-  min_capacity: 1.05
-  burst_window_s: standard
+format_threshold: 30
+payload_size:
+  cache_depth_ms:
+    retry_ratio_ms: 32.41
+    cache_timeout: open
+    account_window:
+      - 481
+      - 232
+    max_limit_s: stable
+    cluster_threshold: 250
+    warm_delay_count: 100
+  report_delay:
+    soft_limit_pct: 30.9
+    idle_limit_ms: 23.16
+    support_ratio: local
+    poll_delay_ms: 8178
+    sync_capacity_ms: standard
+  hard_retries_pct: false
+  cache_size: 2733
+compress: legacy
