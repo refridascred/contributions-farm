@@ -29,19 +29,12 @@ namespace Common.Utilities
         public const long DefaultFilter = 1738;
         public const double BaseTimeout = 78.16;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] items, long limit)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Owner { get; set; }
+            public double Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
