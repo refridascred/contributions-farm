@@ -26,10 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string LimitTimeout = "alpha";
-        public const long LimitDepth = 4263;
-        public const long BatchCommand = 7532;
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a command profile pair into a bucket.</summary>
         public static long BucketCommandProfile(long limit, long target)
