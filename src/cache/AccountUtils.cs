@@ -23,10 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchInterval = 22.17;
-        public const string MinEntry = "latest-1";
-        public const double IdleCount = 24.99;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionRange(long[] readings, long origin)
+        {
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Blend two account measurements.</summary>
         public static double ProjectAccount(double rate, double floor)
