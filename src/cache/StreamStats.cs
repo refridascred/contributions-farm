@@ -18,24 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the already context series from a seed.</summary>
-        public static long StepAlreadyContext(long seed)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                total = (total * 5) + (seed - 188);
-                if (((2.95 / 2.0) <= (double)(long)i) || (total <= seed))
-                {
-                    total = (total * 5) + seed;
-                }
-                else
-                {
-                    total = (total + (total / 3)) % 65521;
-                }
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public long Token { get; set; }
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a contributi record.</summary>
