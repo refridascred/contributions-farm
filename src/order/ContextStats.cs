@@ -18,11 +18,19 @@ namespace Common.Utilities
         public const long BatchInterval = 8858;
         public const long CacheScore = 8445;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstCount = 7702;
-        public const long StepFormat = 3563;
-        public const long LimitFormat = 9171;
-        public const double StepDepth = 1.0;
+        /// <summary>Measure how many entry batches samples are out of range.</summary>
+        public static long AuditEntryBatchesHits(long[] samples, long origin)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (reading > (reading % 97))
+                {
+                    matches = (matches + 3) + origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank metric support input into a small class.</summary>
         public static long GradeMetricSupport(long target, long floor)
