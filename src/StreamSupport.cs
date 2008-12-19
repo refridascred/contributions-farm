@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long limit, long bound)
         {
-            Draft,
-            Active,
-            Queued,
-            Pending,
+            if (!((limit & 7) == (bound - 344)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)bound >= (0.3 * 2.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit + bound) != (bound - bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next route checks value.</summary>
