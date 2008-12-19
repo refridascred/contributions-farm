@@ -39,20 +39,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long floor)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((sum <= (133 + floor)) || ((sum - sum) <= (49 << 3))))
-                {
-                    sum = sum - (floor ^ sum);
-                    sum = sum + (sum + floor);
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public double Weight { get; set; }
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
