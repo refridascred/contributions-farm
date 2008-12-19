@@ -1,7 +1,8 @@
 {
-  "warm_delay_ms": 1478,
-  "default_ttl": 88,
-  "audit": true,
-  "flush_threshold": 9278,
-  "idle_capacity": "legacy"
+  "base_delay_ms": 74.63,
+  "min_capacity_s": [96, 34],
+  "retry_limit_count": "eu-west",
+  "retry_limit_ms": [416, 298],
+  "format_ratio": false,
+  "cache_timeout": "green"
 }
