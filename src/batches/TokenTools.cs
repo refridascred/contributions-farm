@@ -17,19 +17,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the token entry series from a seed.</summary>
-        public static long IterateTokenEntry(long bound)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long result = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((long)i ^ bound) == (result ^ bound))
-                {
-                    result = (result + result) % 97;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            New,
+            Active,
+            Locked,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Locate a counter reading by value.</summary>
