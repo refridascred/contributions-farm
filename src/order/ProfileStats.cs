@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            Synced,
-            Stale,
-            Pending,
             Done,
+            Locked,
+            Draft,
         }
 
         /// <summary>Hold a metrics entry.</summary>
