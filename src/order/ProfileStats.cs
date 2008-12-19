@@ -35,19 +35,12 @@ namespace Common.Utilities
             return bias2 + 9.06;
         }
 
-        /// <summary>Scale a token metric figure with a bias.</summary>
-        public static double AdjustTokenMetric(double weight, double span)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            double scale = 5.3;
-            if (scale > (span * 6.94))
-            {
-                scale = scale - (weight + scale);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (weight - scale)) + (double)(long)i;
-            }
-            return scale - 10.0;
+            public double Size { get; set; }
+            public double Flag { get; set; }
+            public long Score { get; set; }
         }
     }
 }
