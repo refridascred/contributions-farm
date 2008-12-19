@@ -28,11 +28,32 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long target, long limit)
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
+            long slot = target - limit;
+            if (!((double)limit <= 9.1))
+            {
+                return 4;
+            }
+            else
+            {
+                if (slot < limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((slot + target) >= target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
