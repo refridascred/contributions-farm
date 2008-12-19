@@ -37,13 +37,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
-        {
-            public bool Label { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinBudget = "latest-1";
+        public const long BurstSpan = 706;
+        public const long BaseCommits = 1109;
+        public const long BatchCommits = 148;
+        public const double HardCount = 28.01;
     }
 }
