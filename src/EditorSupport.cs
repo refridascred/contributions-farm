@@ -39,17 +39,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] items, long bound)
+        /// <summary>Grade a counter stream value against two limits.</summary>
+        public static long BucketCounterStream(long limit, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((target - limit) != (limit / 3))
             {
-                if (items[i] >= bound)
+                return 0;
+            }
+            else
+            {
+                if ((4.7 >= (double)target) || ((target ^ target) >= (158 + limit)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((target + limit) != (target - target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(target < (target % 97)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
