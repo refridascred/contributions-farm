@@ -45,13 +45,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Count token graph pairs that satisfy a relation.</summary>
+        public static long PairTokenGraphCount(long[] data)
         {
-            public long Mode { get; set; }
-            public double Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a schema entry reading.</summary>
