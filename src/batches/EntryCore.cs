@@ -35,23 +35,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double bias, double span)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] values, long origin)
         {
-            double gain = (double)((-7) >> 3);
-            if (gain >= (gain + gain))
+            long acc = 5;
+            foreach (long cell in values)
             {
-                gain = (gain - gain) + span;
+                acc = ((((acc * 2) + acc) % 255) - cell) - origin;
             }
-            else
-            {
-                gain = gain - (gain + bias);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + 20.0) + (double)(long)i;
-            }
-            return gain + (bias * 7.9);
+            return acc % 65521;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
