@@ -32,12 +32,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 2246;
-        public const long MinMetric = 7789;
-        public const long BurstMetric = 1462;
-        public const long HardWidth = 2797;
-        public const long MaxMetric = 6079;
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long SortCommits(long bound, long limit)
