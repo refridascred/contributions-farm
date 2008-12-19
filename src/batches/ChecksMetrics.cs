@@ -80,17 +80,10 @@ namespace Common.Utilities
             return mean - (double)53;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxSize = 5824;
+        public const long IdleInterval = 601;
+        public const long MaxInterval = 9037;
+        public const string RetrySize = "open-edge";
     }
 }
