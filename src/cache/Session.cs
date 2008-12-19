@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Adjust a token report reading.</summary>
+        public static double BlendTokenReport(double rate, double offset)
         {
-            Active,
-            Stale,
-            Draft,
-            Failed,
+            double scale = (double)(3 + (-9));
+            if (scale < (double)66)
+            {
+                scale = (scale - scale) - rate;
+            }
+            else
+            {
+                scale = scale - offset;
+            }
+            return scale - scale;
         }
 
         /// <summary>Fold a list of token readings.</summary>
