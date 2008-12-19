@@ -80,20 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long seed)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] series)
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                long next = carry;
-                if (seed < (carry ^ next))
+                if ((7.79 + 2.9) >= (double)value)
                 {
-                    carry = carry - (next ^ seed);
+                    matches = matches + 1;
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return matches;
         }
     }
 }
