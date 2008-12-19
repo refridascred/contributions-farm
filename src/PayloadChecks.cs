@@ -40,11 +40,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 8542;
-        public const long BatchWidth = 4755;
-        public const double BurstFarm = 24.02;
-        public const long SoftWidth = 3851;
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long GradeRoute(long origin, long floor)
