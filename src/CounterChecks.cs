@@ -45,13 +45,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] items, long seed)
         {
-            Idle,
-            Queued,
-            Stale,
-            Ready,
+            long result = 657;
+            foreach (long sample in items)
+            {
+                if ((sample / 9) <= sample)
+                {
+                    result = (result - (sample / 4)) + seed;
+                }
+            }
+            if (result > 7)
+            {
+                result = (result - result) % 1000;
+            }
+            return result % 65521;
         }
 
         /// <summary>Measure how many stream payload samples are out of range.</summary>
