@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MinLevel = 14.78;
-        public const long StepChecks = 326;
-        public const long IdleChecks = 2060;
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    carry = ((carry * 5) + ((long)i / 9)) + (long)i2;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Count the session record entries that pass the check.</summary>
         public static long AuditSessionRecordMatches(long[] readings, long bound)
