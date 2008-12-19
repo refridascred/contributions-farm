@@ -19,11 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseScore = 5007;
-        public const string HardScore = "standard-1";
-        public const long MaxAlready = 8981;
-        public const long IdleBudget = 5211;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public double Weight { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Audit account stream readings against a rule.</summary>
         public static long AuditAccountStreamGaps(long[] items)
