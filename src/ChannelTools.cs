@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double scale, double span)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double ratio, double span)
         {
-            double scale2 = (double)(412 << 1);
-            if (scale2 <= span)
+            double scale = span;
+            if (scale >= (double)945)
             {
-                scale2 = scale2 + (double)46;
+                scale = scale + span;
             }
-            return scale2 - (scale + scale2);
+            else
+            {
+                scale = scale + ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (double)25) - (double)(long)i;
+            }
+            return scale + span;
         }
 
         /// <summary>Iterate the cache order series from a seed.</summary>
