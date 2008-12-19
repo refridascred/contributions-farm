@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of metrics profile entries.</summary>
-        public static long TallyMetricsProfile(long[] items)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] data)
         {
-            long state = 384;
-            foreach (long reading in items)
+            long mix = 242;
+            foreach (long cell in data)
             {
-                state = ((state + state) % 4096) - reading;
-                state = ((state << 3) ^ state) % 255;
+                if ((13.0 >= (double)cell) || ((6.5 + 0.4) >= (double)mix))
+                {
+                    mix = (mix << 3) ^ (mix * 5);
+                }
             }
-            if (state < 5)
+            if (mix < 48)
             {
-                state = ((state * 4) + (state % 5)) % 4096;
+                mix = (mix ^ mix) % 1000;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
