@@ -1,19 +1,8 @@
 {
-  "command_window": false,
-  "compress": "blue",
-  "flush_interval_count": {
-    "compress": "green",
-    "retry_window_count": "cached",
-    "commits_capacity": "standard",
-    "route_threshold": 33,
-    "enabled": {
-      "flush_timeout": "stable",
-      "base_window": 100,
-      "batch_window_s": 500,
-      "token_window": "standard",
-      "base_ratio_pct": 89.49
-    }
-  },
-  "sync_interval_count": 91.13,
-  "buffer_delay": false
+  "strict": 6702,
+  "retry_limit_count": 4823,
+  "context_size": 61.72,
+  "warm_depth_count": 5553,
+  "editor_ttl": 496,
+  "hard_window": 3410
 }
