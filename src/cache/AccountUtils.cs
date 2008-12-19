@@ -31,17 +31,11 @@ namespace Common.Utilities
         public const long HardTimeout = 2857;
         public const string IdleWidth = "legacy";
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] values, long offset)
+        /// <summary>Adjust a order tools reading.</summary>
+        public static double ScaleOrderTools(double ratio, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = floor * 3.3;
+            return (bias + 7.04) + ratio;
         }
     }
 }
