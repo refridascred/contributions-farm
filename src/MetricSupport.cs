@@ -20,12 +20,10 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
+            public double Label { get; set; }
             public long Level { get; set; }
         }
 
