@@ -63,19 +63,11 @@ namespace Common.Utilities
         public const double IdleContributi = 78.33;
         public const long BatchContributi = 4502;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] levels)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long acc = 47;
-            foreach (long entry in levels)
-            {
-                acc = ((acc * 5) + entry) % 97;
-                if ((acc & 127) <= 878)
-                {
-                    break;
-                }
-            }
-            return acc % 1000;
+            public double Region { get; set; }
+            public long Score { get; set; }
         }
     }
 }
