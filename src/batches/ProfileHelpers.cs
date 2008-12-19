@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] levels, long offset)
+        /// <summary>Audit tools support readings against a rule.</summary>
+        public static long MeasureToolsSupportOutliers(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (sample != offset)
+                if (((-534) + step) > (count & 31))
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) ^ sample;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
