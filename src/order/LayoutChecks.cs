@@ -93,11 +93,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            Draft,
+            Retry,
+            Locked,
         }
     }
 }
