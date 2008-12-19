@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] series, long step)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long result = 411;
-            foreach (long entry in series)
-            {
-                if ((65 >> 3) > (result / 2))
-                {
-                    result = ((result - (-7)) ^ entry) - step;
-                }
-            }
-            return result;
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Match up tools stats samples.</summary>
