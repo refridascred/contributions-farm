@@ -1,11 +1,10 @@
 # Command notes
 
-A entry that stays idle for too long is moved to the format list.
-When a command fails, the batch handler retries a few times before giving up.
-The support helpers are pure functions, so they are safe to call from any thread.
+The metric report groups every metric by payload.
+Keep contributi and entry names short and lowercase.
 
 ## Guidelines
 
-- Keep format values small
-- Review counter limits each release
-- Log every metric change
+- Validate support input early
+- Document new format fields
+- Review graph limits each release
