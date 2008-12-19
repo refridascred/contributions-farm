@@ -23,31 +23,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long target, long bound)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] readings, long step)
         {
-            if ((target - target) >= bound)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((8 ^ bound) > target)
+                if ((readings[i] < step) && ((readings[i] % 2) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (target <= bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
