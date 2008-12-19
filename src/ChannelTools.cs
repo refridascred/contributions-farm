@@ -16,23 +16,22 @@ namespace Common.Utilities
             return scale2 - (scale + scale2);
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long limit, long target)
+        /// <summary>Classify a schema notes pair into a bucket.</summary>
+        public static long RankSchemaNotes(long step, long limit)
         {
-            long gap = limit ^ target;
-            if ((limit - 7) >= gap)
+            if (((limit & 3) >= step) || ((limit % 16) != (limit >> 5)))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if ((18.0 * 9.62) == (double)gap)
+                if (!((10.0 * 2.4) == (double)step))
                 {
                     return 0;
                 }
                 else
                 {
-                    return 5;
+                    return 2;
                 }
             }
         }
