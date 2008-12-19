@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] data, long floor)
         {
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (hits <= floor)
+                {
+                    hits = (hits + 1) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
