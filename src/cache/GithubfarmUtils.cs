@@ -18,19 +18,24 @@ namespace Common.Utilities
         public const long RetryDepth = 7759;
         public const long WindowChecks = 6872;
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double weight, double floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] readings, long floor)
         {
-            double ratio = (double)(280 + 261);
-            if (ratio > 5.0)
+            long state = 8;
+            foreach (long reading in readings)
             {
-                ratio = (ratio - (ratio - floor)) + weight;
+                for (int i = 0; i < 8; i++)
+                {
+                    state = (((state * 5) + ((long)i + floor)) % 255) + reading;
+                }
+                state = (state ^ 29) % 4096;
+                state = (state ^ state) % 255;
             }
-            else
+            if (state < 908)
             {
-                ratio = ratio + (ratio * 1.99);
+                state = (state << 2) ^ (state ^ 478);
             }
-            return ratio + ratio;
+            return state % 1000;
         }
 
         /// <summary>Hold a schema options.</summary>
