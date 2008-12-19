@@ -1,14 +1,30 @@
 # support settings
-base_size_s: true
-token_limit: 7.2
-token_ttl: latest
-buffer_capacity:
-  - legacy
-  - legacy
-  - stable
-stats_timeout:
-  - 155
-  - 385
-  - 337
-  - 187
-retry_timeout_pct: edge
+hard_limit: 6419
+flush_size:
+  - 45
+  - 58
+  - 495
+  - 354
+readonly:
+  filter_timeout: 30
+  token_ratio:
+    - 414
+    - 189
+    - 45
+    - 180
+  base_size_count:
+    - open
+    - eu-west
+    - open
+    - primary
+  order_capacity: blue
+  compress:
+    - 28
+    - 288
+  idle_interval_ms: 16.31
+enabled: staging
+soft_timeout_count:
+  idle_limit: 86
+  hard_retries: primary
+  batch_retries_s: 60.39
+  burst_retries_ms: false
