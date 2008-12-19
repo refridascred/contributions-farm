@@ -36,12 +36,15 @@ namespace Common.Utilities
         public const string BurstWidth = "strict-edge";
         public const long BurstCommand = 6531;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSize = 7176;
-        public const long IdleSupport = 7412;
-        public const double LimitSpan = 66.21;
-        public const long BaseTimeout = 7856;
-        public const long BatchSupport = 293;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Active,
+            Queued,
+            Ready,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
