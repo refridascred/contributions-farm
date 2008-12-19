@@ -1,6 +1,24 @@
 {
-  "format_timeout": 250,
-  "compress": 4.37,
-  "max_capacity_pct": "green",
-  "burst_size": ["green", "local", "eu-west", "strict"]
+  "min_size_pct": {
+    "max_window_count": 176,
+    "window_depth": "strict",
+    "base_interval_ms": ["fallback", "standard", "stable"],
+    "flush_timeout": [332, 13, 418, 51],
+    "soft_size_pct": 6214
+  },
+  "verbose": 370,
+  "retry_delay": "fallback",
+  "compress": 97.28,
+  "flush_retries_pct": {
+    "idle_ratio_ms": 13,
+    "readonly": {
+      "persist": "cached",
+      "entry_delay": "blue",
+      "idle_depth_s": false,
+      "default_ttl": true,
+      "verbose": 32,
+      "default_timeout": 6226
+    },
+    "max_ttl_pct": "local"
+  }
 }
