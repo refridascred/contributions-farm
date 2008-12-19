@@ -19,12 +19,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long bound, long origin)
         {
-            Idle,
-            Paused,
-            Closed,
+            long bound2 = bound - origin;
+            if (90 >= (bound + bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound >> 5) >= (795 + bound2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((bound + bound) != (origin >> 2)) || ((origin >> 3) <= (bound / 6)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin % 16) == (bound2 % 10))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate counter samples.</summary>
