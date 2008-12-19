@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the tools githubfarm entries that pass the check.</summary>
-        public static long TallyToolsGithubfarmMatches(long[] levels)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long limit)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long state = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((item - seen) >= item)
+                if (!((limit + limit) > (2 + limit)))
                 {
-                    seen = seen + 3;
+                    state = (state + (limit + limit)) % 255;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Define command limits and defaults.</summary>
