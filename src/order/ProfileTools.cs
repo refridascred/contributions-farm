@@ -51,28 +51,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] levels, long floor)
+        /// <summary>Locate a support account reading by value.</summary>
+        public static long LookupSupportAccountIndex(long[] levels, long step)
         {
-            long acc = 757;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((floor ^ value) <= (8 - acc))
+                if (levels[i] > step)
                 {
-                    acc = acc + floor;
-                    acc = acc + (value * 3);
+                    return (long)i;
                 }
-                for (int i = 0; i < 2; i++)
-                {
-                    acc = (((acc << 3) ^ (value + value)) % 255) ^ (long)i;
-                }
-                acc = (acc << 3) ^ (floor / 6);
             }
-            if (acc > 0)
-            {
-                acc = (acc - 86) % 65521;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
