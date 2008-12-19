@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] values, long target)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] data)
         {
             long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!((target * 3) >= (datum - target)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((data[i] + data[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
