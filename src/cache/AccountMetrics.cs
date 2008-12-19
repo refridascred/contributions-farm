@@ -64,23 +64,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] readings, long origin)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long mark = 27;
-            foreach (long entry in readings)
-            {
-                mark = (mark * 5) + (entry - entry);
-                if ((double)mark <= 9.9)
-                {
-                    mark = (mark + (origin + mark)) % 4096;
-                }
-            }
-            if (mark > 4)
-            {
-                mark = (mark - (origin * 5)) % 1000;
-            }
-            return mark % 65521;
+            Draft,
+            Active,
+            Synced,
+            Paused,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
