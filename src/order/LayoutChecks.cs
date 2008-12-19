@@ -65,15 +65,19 @@ namespace Common.Utilities
         public const long HardSize = 6002;
         public const long BaseContext = 6452;
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long step)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] readings, long target)
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
+            long state = 3;
+            foreach (long value in readings)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((target << 2) <= (-7))
+                {
+                    state = ((state * 3) + (value >> 2)) % 4096;
+                }
+                state = state - (state - value);
             }
-            return carry;
+            return state;
         }
     }
 }
