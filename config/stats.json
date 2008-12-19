@@ -1,5 +1,11 @@
 {
-  "strict": 3825,
-  "retry_size_s": 35,
-  "hard_depth_s": 79
+  "persist": 65.0,
+  "enabled": 77.22,
+  "hard_timeout": {
+    "stats_threshold": "blue",
+    "batch_ratio": 2996,
+    "payload_depth": [28, 485]
+  },
+  "default_timeout_pct": 73.51,
+  "filter_ttl": 96.74
 }
