@@ -1,10 +1,13 @@
 # support settings
-compress: stable
-warm_ratio_ms:
-  - 204
-  - 96
-  - 35
-  - 386
-cache_timeout_s: green
-cache_threshold_pct: 26
-idle_ratio_ms: blue
+cluster_threshold: strict
+poll_ttl_count:
+  min_threshold_count: staging
+  idle_window_pct:
+    - 449
+    - 134
+    - 144
+  batch_threshold_count: 26
+  cache_depth_count: 86.03
+  stats_interval: strict
+  base_retries: false
+flush_ratio_ms: 9235
