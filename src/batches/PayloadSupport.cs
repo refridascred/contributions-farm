@@ -27,15 +27,24 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of report channel readings.</summary>
-        public static long DigestReportChannel(long[] levels, long origin)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long origin, long bound)
         {
-            long result = 7;
-            foreach (long value in levels)
+            if ((50 - origin) == (27 - origin))
             {
-                result = (result ^ (value + origin)) % 101;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((origin - origin) < origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
