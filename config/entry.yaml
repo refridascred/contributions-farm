@@ -1,4 +1,15 @@
 # entry settings
-support_delay: false
-sync_limit_count: true
-tools_retries: strict
+compress:
+  - 173
+  - 153
+audit: 29.83
+command_timeout: 98
+max_ratio_count:
+  - 462
+  - 441
+  - 29
+min_depth_s:
+  - 272
+  - 427
+  - 305
+  - 123
