@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next buffer checks value from a seed.</summary>
-        public static long IterateBufferChecks(long offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] samples, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (((long)i / 8) != (total << 1))
+                if ((bound - count) != (cell ^ 3))
                 {
-                    total = (total * 3) + ((long)i - offset);
+                    count = count + 1;
                 }
-                total = ((total << 2) ^ total) % 1000;
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Digest a series of checks window entries.</summary>
