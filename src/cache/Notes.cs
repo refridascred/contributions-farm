@@ -30,12 +30,14 @@ namespace Common.Utilities
         public const string BurstCount = "latest-v2";
         public const double BatchOrder = 92.07;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxSize = 2167;
-        public const double WindowProfile = 82.53;
-        public const long StepProfile = 4962;
-        public const long CacheProfile = 7736;
-        public const double MaxProfile = 95.63;
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
+        {
+            public double Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long MeasureGithubfarmGaps(long[] series, long bound)
