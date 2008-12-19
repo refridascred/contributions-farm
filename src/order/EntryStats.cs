@@ -33,24 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long floor, long origin)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            if ((floor + 92) <= (-648))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor < (5.4 + 1.78))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Active,
+            Dropped,
+            Retry,
+            New,
+            Pending,
         }
 
         /// <summary>Fold a list of stream profile readings.</summary>
