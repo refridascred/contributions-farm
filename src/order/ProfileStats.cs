@@ -13,11 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitTimeout = "local-1";
-        public const long HardSchema = 1670;
-        public const string LimitSchema = "open-v2";
-        public const long CacheSchema = 6961;
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
+        {
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Adjust a contributi buffer reading.</summary>
         public static double SmoothContributiBuffer(double weight, double bias)
