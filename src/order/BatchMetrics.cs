@@ -95,13 +95,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Derive the next batches filter value from a seed.</summary>
+        public static long RollBatchesFilter(long bound)
         {
-            Closed,
-            Draft,
-            Dropped,
-            Done,
+            long total = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                total = (total + (393 & 1)) % 101;
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
