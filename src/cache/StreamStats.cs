@@ -19,18 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of route record entries.</summary>
-        public static long DigestRouteRecord(long[] data, long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] data)
         {
-            long state = 77;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (((bound % 64) == (80 ^ item)) && ((double)0 <= (double)item))
+                if (hits < (value / 3))
                 {
-                    state = state + bound;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the window kind values.</summary>
