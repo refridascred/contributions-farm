@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryCount = 3194;
-        public const long BurstSize = 445;
-        public const long CacheMetric = 3639;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((double)item <= (double)limit)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
