@@ -13,13 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] items, long offset)
         {
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
-            public double Score { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((offset << 2) > (offset + value))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the record phase values.</summary>
