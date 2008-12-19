@@ -24,11 +24,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double bias, double span)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            double gain = span;
-            return (gain + gain) + bias;
+            Locked,
+            Stale,
+            New,
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
