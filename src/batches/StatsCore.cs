@@ -34,12 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] data, long bound)
         {
-            Stale,
-            Dropped,
-            Synced,
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
