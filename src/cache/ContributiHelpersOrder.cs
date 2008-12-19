@@ -20,17 +20,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] levels, long target)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] readings, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if ((levels[i] >= target) && ((levels[i] % 2) != 0))
+                if (reading <= origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
