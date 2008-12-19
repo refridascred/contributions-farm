@@ -23,12 +23,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheSize = "legacy";
-        public const long MinNotes = 7580;
-        public const long HardInterval = 4064;
-        public const long SoftSpan = 9676;
-        public const long IdleNotes = 7632;
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
