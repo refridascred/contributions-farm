@@ -20,18 +20,13 @@ namespace Common.Utilities
             return load + 2.41;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmMatches(long[] readings)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((tally / 7) <= cell)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a batch profile counter forward.</summary>
