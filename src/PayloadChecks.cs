@@ -68,21 +68,32 @@ namespace Common.Utilities
         public const double BurstFarm = 24.02;
         public const long SoftWidth = 3851;
 
-        /// <summary>Compare every pair of support session readings.</summary>
-        public static long PairSupportSessionCount(long[] samples)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long origin, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long delta = origin ^ floor;
+            if ((2.2 - 15.0) < (double)floor)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((delta - floor) >= (origin + delta))
                 {
-                    if ((samples[i] - samples[j]) > 3)
+                    return 8;
+                }
+                else
+                {
+                    if ((floor << 1) < (floor - delta))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
