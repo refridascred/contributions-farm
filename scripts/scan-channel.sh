@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west cached; do
+for item in blue stable; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-CHANNEL_LIMIT=495
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-primary}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
