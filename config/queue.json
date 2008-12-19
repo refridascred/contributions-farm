@@ -1,6 +1,7 @@
 {
-  "persist": 80.04,
-  "max_depth": false,
-  "buffer_interval": 315,
-  "default_ratio_count": 91
+  "warm_delay_ms": 1478,
+  "default_ttl": 88,
+  "audit": true,
+  "flush_threshold": 9278,
+  "idle_capacity": "legacy"
 }
