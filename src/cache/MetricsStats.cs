@@ -44,25 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long step, long bound)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long prev = step - bound;
-            if ((double)bound <= (double)83)
-            {
-                return 4;
-            }
-            else
-            {
-                if (prev <= (prev >> 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Roll a cache counter forward.</summary>
