@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long bound)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] series, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Accumulate schema samples.</summary>
