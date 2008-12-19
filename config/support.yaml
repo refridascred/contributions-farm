@@ -1,30 +1,23 @@
 # support settings
-hard_limit: 6419
-flush_size:
-  - 45
-  - 58
-  - 495
-  - 354
-readonly:
-  filter_timeout: 30
-  token_ratio:
-    - 414
-    - 189
-    - 45
-    - 180
-  base_size_count:
-    - open
-    - eu-west
-    - open
-    - primary
-  order_capacity: blue
+cache_depth_pct: 30
+hard_timeout_ms:
   compress:
-    - 28
-    - 288
-  idle_interval_ms: 16.31
-enabled: staging
-soft_timeout_count:
-  idle_limit: 86
-  hard_retries: primary
-  batch_retries_s: 60.39
-  burst_retries_ms: false
+    - strict
+    - legacy
+    - cached
+  batch_interval_pct: open
+  persist:
+    burst_capacity: strict
+    burst_timeout_pct: true
+    persist: blue
+    soft_threshold_count: stable
+    flush_depth_count: 60
+    burst_retries_pct: 100
+  batch_capacity:
+    - cached
+    - edge
+    - fallback
+strict: 30
+batch_timeout:
+  - 367
+  - 392
