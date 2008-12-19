@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitDepth = "latest-1";
-        public const string MaxBudget = "staging";
-        public const long CacheAlready = 6618;
-        public const string IdleAlready = "staging-1";
-        public const string BaseRatio = "local";
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < bound) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up window samples.</summary>
         public static long PairWindowCount(long[] series)
