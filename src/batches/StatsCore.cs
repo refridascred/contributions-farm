@@ -27,11 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Measure how many report batches samples are out of range.</summary>
+        public static long AuditReportBatchesMatches(long[] values)
         {
-            public long Owner { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((hits + reading) < ((long)values.Length - 461))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every batch context entry stays within the limit.</summary>
