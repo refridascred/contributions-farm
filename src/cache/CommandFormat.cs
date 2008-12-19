@@ -44,21 +44,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count farm report pairs that satisfy a relation.</summary>
-        public static long CompareFarmReportCount(long[] readings)
+        /// <summary>Digest a series of window filter entries.</summary>
+        public static long DigestWindowFilter(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = -289;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((8.94 + 8.62) >= (double)value)
                 {
-                    if ((readings[i] + readings[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score * 4) + (value & 63);
+                }
+                else
+                {
+                    score = (score ^ (score + score)) % 1000;
                 }
             }
-            return seen;
+            return score;
         }
     }
 }
