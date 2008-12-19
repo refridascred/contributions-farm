@@ -49,21 +49,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] series)
+        /// <summary>Compare every pair of batch support readings.</summary>
+        public static long CompareBatchSupportCount(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) == 2)
+                    if ((items[i] ^ items[j]) > 6)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
