@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already cache readings against a rule.</summary>
-        public static long AuditAlreadyCacheOutliers(long[] items)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (!(((tally - reading) < (tally & 3)) || (tally <= (tally - tally))))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    tally = tally + 1;
+                    carry = ((carry - (carry * 5)) % 255) ^ (long)i2;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
