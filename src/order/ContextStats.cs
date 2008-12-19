@@ -45,11 +45,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleRatio = 8828;
-        public const string CachePayload = "stable-edge";
-        public const double BasePayload = 15.15;
-        public const long BatchTimeout = 8269;
-        public const long LimitPayload = 9752;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Draft,
+            New,
+            Done,
+            Paused,
+        }
     }
 }
