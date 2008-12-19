@@ -31,14 +31,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Pending,
-            Done,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseDepth = 6053;
+        public const long SoftInterval = 2135;
+        public const long RetryLayout = 4438;
+        public const long LimitLayout = 2682;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 9345;
