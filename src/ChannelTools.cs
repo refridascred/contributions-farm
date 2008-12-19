@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] series)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesBounds(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (((matches % 97) < 18) && ((matches + matches) != (cell >> 3)))
+                if (reading > offset)
                 {
-                    matches = matches + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
