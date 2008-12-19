@@ -15,11 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryInterval = 1441;
-        public const long BatchRatio = 2373;
-        public const string StepScore = "legacy-v2";
-        public const long MaxCount = 4365;
+        /// <summary>Iterate the window record series from a seed.</summary>
+        public static long RollWindowRecord(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark * 5) + target) % 255;
+                mark = (mark ^ (target - (long)i)) % 255;
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long CombineCache(long[] data)
