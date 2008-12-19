@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate record account samples.</summary>
-        public static long FoldRecordAccount(long[] series, long target)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long acc = 781;
-            foreach (long datum in series)
-            {
-                acc = (((acc - 0) % 97) ^ datum) - target;
-            }
-            return acc;
+            Closed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a entry snapshot.</summary>
