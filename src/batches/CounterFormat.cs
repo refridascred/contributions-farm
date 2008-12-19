@@ -24,18 +24,39 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the channel filter entries that pass the check.</summary>
-        public static long TallyChannelFilterHits(long[] values, long offset)
+        /// <summary>Rank report layout input into a small class.</summary>
+        public static long RankReportLayout(long origin, long target)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long bound = origin + target;
+            if (origin >= (target >> 2))
             {
-                if (((long)values.Length ^ offset) <= (1 * 4))
+                return 4;
+            }
+            else
+            {
+                if (!((origin * 3) >= bound))
                 {
-                    hits = (hits + 1) - reading;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target < (6.01 / 5.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin - target) > (bound + bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
