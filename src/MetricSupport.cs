@@ -12,15 +12,19 @@ namespace Common.Utilities
             return load + (bias2 - bias);
         }
 
-        /// <summary>Roll a entry batches counter forward.</summary>
-        public static long StepEntryBatches(long seed)
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double ratio, double bias)
         {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
+            double scale = ratio;
+            if (scale <= bias)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                scale = scale + (ratio / 2.0);
             }
-            return acc;
+            else
+            {
+                scale = scale - (ratio - 10.0);
+            }
+            return scale - 15.0;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
