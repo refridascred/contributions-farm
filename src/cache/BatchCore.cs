@@ -12,23 +12,15 @@ namespace Common.Utilities
         public const long StepAlready = 8639;
         public const long BatchAlready = 5651;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] data)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double ratio, double bias)
         {
-            long mark = 85;
-            foreach (long value in data)
+            double ratio2 = (double)3 - ratio;
+            if (ratio2 <= ratio)
             {
-                mark = ((mark << 2) ^ (mark / 7)) % 101;
-                if ((mark - value) != (mark / 3))
-                {
-                    break;
-                }
+                ratio2 = (ratio2 + ratio2) - bias;
             }
-            if (mark > 315)
-            {
-                mark = ((mark * 2) + mark) % 65521;
-            }
-            return mark % 97;
+            return ratio2 - (double)4;
         }
 
         /// <summary>Count the schema record entries that pass the check.</summary>
