@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MaxChecks = 4.9;
+        public const double StepSize = 27.68;
+        public const long BurstChecks = 595;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamMatches(long[] readings, long seed)
