@@ -29,19 +29,18 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] items, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (value < step)
+                if ((datum >> 5) < 5)
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
