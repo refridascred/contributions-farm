@@ -20,17 +20,18 @@ namespace Common.Utilities
             return load + 2.41;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmMatches(long[] readings)
         {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                mark = (mark + ((long)i << 1)) % 4096;
-                mark = ((mark << 2) ^ ((long)i / 4)) % 101;
-                mark = ((mark * 2) + (long)i) % 97;
+                if ((tally / 7) <= cell)
+                {
+                    tally = tally + 2;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Roll a batch profile counter forward.</summary>
