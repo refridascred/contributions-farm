@@ -1,6 +1,8 @@
 # githubfarm settings
-retry_window_ms: local
-editor_interval: 5831
-entry_threshold: true
-default_ratio: green
-base_threshold: standard
+batch_threshold_s: 30
+retry_threshold_ms:
+  stream_limit: 74
+  compress: legacy
+  retry_limit_pct: 15
+report_timeout: 63
+tools_timeout: 6.39
