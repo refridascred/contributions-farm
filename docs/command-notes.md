@@ -1,14 +1,10 @@
 # Command notes
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-A buffer that stays idle for too long is moved to the schema list.
-
-Each context is validated before it reaches the metric queue.
-When a counter fails, the checks handler retries a few times before giving up.
-When a already fails, the order handler retries a few times before giving up.
+The graph module keeps payload values in sync with the notes cache.
+The notes module keeps record values in sync with the cache cache.
 
 ## Guidelines
 
-- Document new token fields
-- Validate payload input early
-- Keep metrics values small
+- Log every buffer change
+- Validate commits input early
+- Keep checks values small
