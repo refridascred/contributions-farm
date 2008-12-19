@@ -31,25 +31,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long floor)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if (371 > (anchor & 7))
-                {
-                    anchor = ((anchor * 5) + (floor + anchor)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor + (floor + anchor)) % 1000;
-                    anchor = anchor - (floor << 3);
-                }
-                anchor = (anchor + (anchor >> 2)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            Locked,
+            Closed,
+            Failed,
+            Done,
         }
 
         /// <summary>Define token limits and defaults.</summary>
