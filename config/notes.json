@@ -1,5 +1,5 @@
 {
-  "verbose": "edge",
-  "cache_capacity": "latest",
-  "cache_size_ms": [35, 365, 98, 324]
+  "idle_timeout": true,
+  "audit": 100,
+  "min_ttl_count": 5560
 }
