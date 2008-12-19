@@ -1,7 +1,5 @@
 {
-  "max_delay_count": 100,
-  "session_ratio": 31,
-  "sync_retries": "staging",
-  "retry_window_ms": ["primary", "cached", "blue", "green"],
-  "sync_interval_s": [395, 12]
+  "enabled": 250,
+  "min_depth_ms": ["primary", "cached", "legacy", "standard"],
+  "idle_interval_pct": 2857
 }
