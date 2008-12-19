@@ -69,25 +69,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long offset, long step)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long cur = offset + step;
-            if ((cur / 6) >= (270 - offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step - step) < cur)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Count { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
