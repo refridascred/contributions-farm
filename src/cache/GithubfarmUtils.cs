@@ -26,12 +26,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
+            public double Level { get; set; }
+            public double Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate command metrics readings against a bound.</summary>
