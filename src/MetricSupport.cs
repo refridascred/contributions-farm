@@ -35,13 +35,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long limit)
         {
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public bool Size { get; set; }
-            public bool Ratio { get; set; }
+            long result = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
