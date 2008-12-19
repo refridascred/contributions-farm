@@ -34,14 +34,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Validate githubfarm farm readings against a bound.</summary>
+        public static bool CheckGithubfarmFarmBounds(long[] samples, long origin)
         {
-            Done,
-            Dropped,
-            Retry,
-            Failed,
-            New,
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
