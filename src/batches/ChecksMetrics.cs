@@ -72,25 +72,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long limit, long origin)
+        /// <summary>Count already stream pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyStreamCount(long[] readings)
         {
-            long bound = limit - origin;
-            if ((double)bound < (9.8 / 3.0))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin < bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    if ((readings[i] + readings[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
