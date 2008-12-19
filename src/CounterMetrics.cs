@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] readings, long offset)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)offset < (double)seen)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 1) + datum;
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
