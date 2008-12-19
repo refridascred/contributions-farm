@@ -1,10 +1,14 @@
 # support settings
-burst_threshold_s: 20.12
-idle_window:
-  - 145
-  - 302
-  - 364
-  - 253
-audit:
-  - 285
-  - 98
+record_timeout:
+  - green
+  - green
+  - green
+  - fallback
+sync_delay_s:
+  - eu-west
+  - stable
+  - primary
+  - green
+strict: 78
+dry_run: 3.88
+idle_retries_count: false
