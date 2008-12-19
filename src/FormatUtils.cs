@@ -36,11 +36,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] series)
         {
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (value >= (hits << 1))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
