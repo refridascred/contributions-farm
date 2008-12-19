@@ -19,16 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a metrics queue counter forward.</summary>
-        public static long SeriesMetricsQueue(long offset)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long bound, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
+            if ((bound & 127) < 8)
             {
-                score = ((score << 3) ^ score) % 1000;
-                score = ((score * 3) + (long)i) % 65521;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((double)offset <= 20.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (bound < offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)bound < 4.46))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
