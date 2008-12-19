@@ -1,8 +1,7 @@
-id,region,weight,score
-1,632,open,primary
-2,legacy,fallback,418
-3,edge,964,341
-4,54.37,24.46,307
-5,27.01,local,55.42
-6,strict,761,620
-7,233,latest,2.88
+id,owner,token,level
+1,primary,859,stable
+2,53,20.87,813
+3,primary,edge,46
+4,284,104,940
+5,503,35.9,68
+6,15,134,90.09
