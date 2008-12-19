@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Stale,
-            Idle,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MinLevel = 14.78;
+        public const long StepChecks = 326;
+        public const long IdleChecks = 2060;
 
         /// <summary>Count the session record entries that pass the check.</summary>
         public static long AuditSessionRecordMatches(long[] readings, long bound)
