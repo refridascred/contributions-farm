@@ -20,13 +20,12 @@ namespace Common.Utilities
             return weight + (19.0 / 9.0);
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public bool Token { get; set; }
-            public long Mode { get; set; }
+            public string Score { get; set; } = "";
+            public double Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
