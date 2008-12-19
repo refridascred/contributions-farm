@@ -44,21 +44,22 @@ namespace Common.Utilities
         public const long IdleSchema = 9169;
         public const long BaseDepth = 487;
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] series)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((tally < item) && ((11.0 - 8.49) >= (double)tally)) && ((20.0 + 15.0) >= (double)tally))
                 {
-                    if ((series[i] ^ series[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a command snapshot.</summary>
