@@ -36,15 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a batches graph figure with a bias.</summary>
-        public static double ScaleBatchesGraph(double scale, double offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] samples)
         {
-            double bias = scale;
-            if (bias > scale)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                bias = bias + bias;
+                if ((datum / 4) < (tally ^ datum))
+                {
+                    tally = tally + 3;
+                }
             }
-            return bias + (scale - offset);
+            return tally;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
