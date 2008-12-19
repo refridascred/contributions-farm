@@ -75,24 +75,19 @@ namespace Common.Utilities
         public const long MinWidth = 1159;
         public const string WindowSupport = "latest-edge";
 
-        /// <summary>Grade a editor filter value against two limits.</summary>
-        public static long RankEditorFilter(long target, long seed)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] values, long floor)
         {
-            if ((double)seed <= (9.4 * 8.65))
+            bool flag = true;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((88 >= (seed << 2)) || ((seed + seed) < (1 / 8)))
+                if (sample < floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
