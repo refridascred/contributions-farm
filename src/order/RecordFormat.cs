@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Queued,
-            Active,
-            Retry,
-            Pending,
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the support phase values.</summary>
