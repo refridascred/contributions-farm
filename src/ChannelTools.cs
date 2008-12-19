@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a tools payload counter forward.</summary>
-        public static long DeriveToolsPayload(long floor)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long origin, long origin2)
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
+            long bound = origin - origin2;
+            if (((623 % 100) > (origin - origin)) && ((64 + bound) > origin2))
             {
-                carry = (carry << 2) ^ (floor >> 3);
-                carry = (carry + (floor << 1)) % 255;
-                carry = ((carry * 2) + (long)i) % 4093;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if ((origin * 3) < (bound / 9))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(7 <= (bound - origin2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
