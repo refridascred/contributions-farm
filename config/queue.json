@@ -1,12 +1,12 @@
 {
-  "command_limit": [233, 83, 89, 405],
-  "verbose": 30,
-  "layout_delay": ["legacy", "blue"],
-  "min_ttl_count": {
-    "schema_ratio": 42.15,
-    "burst_retries_pct": 20,
-    "hard_size": false
-  },
-  "command_ratio": 47.68,
-  "flush_threshold_s": "fallback"
+  "poll_interval": [42, 384],
+  "cache_ttl": 44.77,
+  "cache_size": 8393,
+  "warm_limit_pct": 41.25,
+  "hard_interval_pct": {
+    "order_interval": 61.71,
+    "retry_timeout": true,
+    "max_depth": true,
+    "batch_size_ms": "primary"
+  }
 }
