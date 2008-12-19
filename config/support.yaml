@@ -1,6 +1,10 @@
 # support settings
-min_retries: 4941
-token_limit: 39.04
-farm_retries: stable
-max_threshold_ms: 4896
-soft_size: strict
+compress: stable
+warm_ratio_ms:
+  - 204
+  - 96
+  - 35
+  - 386
+cache_timeout_s: green
+cache_threshold_pct: 26
+idle_ratio_ms: blue
