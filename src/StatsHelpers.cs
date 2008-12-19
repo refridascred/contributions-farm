@@ -49,11 +49,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinRatio = 43.61;
-        public const long HardCount = 170;
-        public const double StepChannel = 89.84;
-        public const long BurstFactor = 3634;
+        /// <summary>Locate a entry graph reading by value.</summary>
+        public static long FindEntryGraphIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
