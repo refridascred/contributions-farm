@@ -20,10 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleTimeout = 9628;
-        public const long StepFormat = 5981;
-        public const long HardFormat = 2245;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 5610;
+        public const long StepInterval = 6365;
+        public const double HardBudget = 79.46;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double LimitProfile = 27.59;
