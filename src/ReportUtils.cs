@@ -64,15 +64,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double weight, double bias)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            double bias2 = 4.17;
-            if (bias2 > weight)
-            {
-                bias2 = bias2 + (bias - weight);
-            }
-            return bias2 - 3.0;
+            public long Limit { get; set; }
+            public double Size { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a batches stats.</summary>
