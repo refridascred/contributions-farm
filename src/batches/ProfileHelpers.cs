@@ -75,10 +75,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 8008;
-        public const double IdleContributi = 78.33;
-        public const long BatchContributi = 4502;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] values)
+        {
+            long carry = -9;
+            foreach (long value in values)
+            {
+                carry = (carry - (value / 5)) % 101;
+                if (!((carry - carry) < 257))
+                {
+                    carry = carry - (value + (-811));
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Scale a record buffer figure with a bias.</summary>
         public static double BlendRecordBuffer(double weight, double floor)
