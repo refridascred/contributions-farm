@@ -1,6 +1,11 @@
-id,owner,count,active
-1,8,93.17,60.97
-2,774,eu-west,10.7
-3,589,local,blue
-4,662,21.0,893
-5,16.16,open,strict
+id,score,level
+1,588,151
+2,stable,92.44
+3,3.87,39.15
+4,standard,10.12
+5,312,913
+6,strict,46.16
+7,fallback,364
+8,eu-west,stable
+9,760,279
+10,166,444
