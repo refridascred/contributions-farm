@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long offset, long floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] samples, long offset)
         {
-            if ((floor + offset) >= 97)
+            long state = -998;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor + offset) >= (176 - offset)) || ((floor >> 1) > floor))
+                if (((datum & 1) != (datum % 2)) && ((717 >> 2) < (offset ^ datum)))
                 {
-                    return 6;
+                    state = ((state * 5) + (datum + offset)) % 101;
                 }
                 else
                 {
-                    return 0;
+                    state = (state - offset) % 65521;
+                }
+                if ((datum + state) >= (datum * 3))
+                {
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Accumulate batches samples.</summary>
