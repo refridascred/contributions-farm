@@ -39,13 +39,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Dropped,
-            Paused,
-            Idle,
-            Done,
+            public string Stamp { get; set; } = "";
+            public bool Region { get; set; }
+            public long Owner { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
