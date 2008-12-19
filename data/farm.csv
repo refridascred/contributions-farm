@@ -1,6 +1,6 @@
-id,region,ratio
-1,268,20.83
-2,48.13,101
-3,standard,900
-4,778,883
-5,1.82,eu-west
+id,label,token,state,weight
+1,5.45,standard,323,219
+2,stable,73.22,6.33,646
+3,293,89.23,77.74,644
+4,744,418,strict,latest
+5,47.4,open,429,358
