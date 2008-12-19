@@ -43,14 +43,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Audit route checks readings against a rule.</summary>
+        public static long TallyRouteChecksOutliers(long[] data, long limit)
         {
-            Retry,
-            Active,
-            Done,
-            Paused,
-            Closed,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((hits - entry) < (hits - (-4)))
+                {
+                    hits = (hits + 2) + limit;
+                }
+            }
+            return hits;
         }
     }
 }
