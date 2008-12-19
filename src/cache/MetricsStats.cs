@@ -24,19 +24,15 @@ namespace Common.Utilities
         public const string HardCounter = "staging-v2";
         public const string BaseCounter = "latest";
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] data, long bound)
+        /// <summary>Blend two session schema measurements.</summary>
+        public static double AdjustSessionSchema(double gain, double floor)
         {
-            bool found = true;
-            foreach (long sample in data)
+            double load = floor;
+            if (load <= load)
             {
-                if (sample > bound)
-                {
-                    found = false;
-                    break;
-                }
+                load = load + gain;
             }
-            return found;
+            return load + (double)400;
         }
 
         /// <summary>Grade a buffer metric value against two limits.</summary>
