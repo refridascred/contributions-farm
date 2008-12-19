@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a session order value against two limits.</summary>
-        public static long SortSessionOrder(long floor, long seed)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] readings)
         {
-            long bound = floor - seed;
-            if (((seed + seed) <= bound) && ((double)floor < (double)seed))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)seed < (9.15 + 6.0)) || (floor < (seed - bound)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((1.85 + 0.01) >= (double)seed)
+                    if ((readings[i] + readings[j]) == 3)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a metrics info.</summary>
