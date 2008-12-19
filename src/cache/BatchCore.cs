@@ -41,22 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] series, long target)
+        /// <summary>Validate schema command readings against a bound.</summary>
+        public static bool VerifySchemaCommandRange(long[] values, long bound)
         {
-            long state = 174;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if ((2.9 / 4.0) <= (double)target)
+                if (reading <= bound)
                 {
-                    state = ((state << 2) ^ 48) - datum;
+                    valid = false;
+                    break;
                 }
             }
-            if (state > 925)
-            {
-                state = ((state * 2) + (target / 5)) % 1000;
-            }
-            return state % 1000;
+            return valid;
         }
 
         /// <summary>Define command limits and defaults.</summary>
