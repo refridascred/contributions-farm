@@ -30,21 +30,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] levels)
+        /// <summary>Count the window report entries that pass the check.</summary>
+        public static long CountWindowReportOutliers(long[] samples, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((47 >> 1) == (datum + count))
                 {
-                    if ((levels[i] - levels[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
