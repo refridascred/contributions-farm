@@ -77,17 +77,20 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] samples, long bound)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((samples[i] < bound) && ((samples[i] % 2) == 0))
+                acc = ((acc << 3) ^ acc) % 97;
+                if ((20.0 + 17.0) < (double)acc)
                 {
-                    return (long)i;
+                    acc = acc - acc;
                 }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
     }
 }
