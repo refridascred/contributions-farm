@@ -53,16 +53,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long target)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = (carry << 2) ^ (carry + carry);
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            New,
+            Closed,
+            Stale,
+            Dropped,
+            Active,
         }
     }
 }
