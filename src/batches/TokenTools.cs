@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long limit)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] samples)
         {
-            long result = limit;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the already phase values.</summary>
