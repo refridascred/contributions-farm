@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long step, long target)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long step2 = step + target;
-            if (((step2 << 1) < (target & 63)) && ((step2 * 3) == (step / 7)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target >> 3) > step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            New,
+            Ready,
+            Queued,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
