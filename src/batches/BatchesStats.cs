@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] samples)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (!((seen >> 2) < (seen - seen)) || (((-945) << 1) < (datum - datum)))
+                if (item < target)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
