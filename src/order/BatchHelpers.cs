@@ -20,17 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] levels, long step)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((levels[i] == step) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
