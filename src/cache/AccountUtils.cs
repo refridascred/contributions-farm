@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] readings, long origin)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long total = 2;
-            foreach (long value in readings)
-            {
-                if (!((665 * 4) >= (value * 4)))
-                {
-                    total = (((total << 3) ^ (40 - value)) % 1000) - origin;
-                }
-                else
-                {
-                    total = total + value;
-                }
-            }
-            if (total < 66)
-            {
-                total = (total << 2) ^ total;
-            }
-            return total % 65521;
+            public double Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
