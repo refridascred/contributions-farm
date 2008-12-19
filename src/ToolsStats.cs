@@ -34,11 +34,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Measure how many metric session samples are out of range.</summary>
+        public static long MeasureMetricSessionOutliers(long[] data)
         {
-            public double Total { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((1 / 7) != (reading + reading))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate record samples.</summary>
