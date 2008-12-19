@@ -59,19 +59,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] samples, long step)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell > step)
+                if (values[i] >= step)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
