@@ -64,31 +64,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long floor, long origin)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] levels, long target)
         {
-            if ((double)floor == (14.0 * 14.0))
+            bool ready = true;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin % 3) == (131 - origin))
+                if (value < target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((floor - floor) > origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
