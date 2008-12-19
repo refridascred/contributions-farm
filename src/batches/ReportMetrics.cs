@@ -19,14 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] values, long target)
         {
-            Closed,
-            Stale,
-            Failed,
-            Dropped,
-            Queued,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (!!((target * 3) >= (datum - target)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a cluster entry.</summary>
