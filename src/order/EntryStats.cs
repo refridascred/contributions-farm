@@ -22,15 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long offset)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of stream profile readings.</summary>
