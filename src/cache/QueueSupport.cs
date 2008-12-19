@@ -20,17 +20,11 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] series, long bound)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double bias, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = offset * 0.18;
+            return (weight + (offset + offset)) + bias;
         }
 
         /// <summary>Project the next buffer value.</summary>
