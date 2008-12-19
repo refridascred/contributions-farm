@@ -34,23 +34,11 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long limit)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long mark = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((limit ^ mark) < (limit ^ limit))
-                {
-                    break;
-                }
-                else
-                {
-                    mark = (mark ^ ((long)i - mark)) % 4096;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public long Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the batches level values.</summary>
