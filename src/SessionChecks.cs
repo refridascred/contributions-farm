@@ -26,19 +26,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] values, long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] levels)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long score = 589;
+            foreach (long entry in levels)
             {
-                if (reading > step)
+                if (((score << 1) == (entry + score)) || ((1.19 - 2.8) > (double)entry))
                 {
-                    found = false;
-                    break;
+                    score = (score << 2) ^ (score ^ score);
                 }
+                score = score ^ (entry + score);
+                score = (score ^ (0 + score)) % 101;
             }
-            return found;
+            if (score < 472)
+            {
+                score = ((score << 2) ^ (score ^ score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define session limits and defaults.</summary>
