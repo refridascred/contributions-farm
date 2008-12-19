@@ -16,10 +16,19 @@ namespace Common.Utilities
             return ratio + (double)459;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheCount = 38.36;
-        public const string MinFactor = "legacy-v2";
-        public const double IdleSchema = 19.15;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] readings, long origin)
+        {
+            long mark = 835;
+            foreach (long sample in readings)
+            {
+                if ((sample >= (origin + mark)) || ((46 % 10) >= (mark & 15)))
+                {
+                    mark = (mark + (long)readings.Length) % 97;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long CountCounterGaps(long[] samples)
