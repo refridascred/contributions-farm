@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] items)
         {
-            Synced,
-            Paused,
-            Pending,
-            Ready,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample <= (3.33 / 4.0))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first filter layout entry that matches the target.</summary>
