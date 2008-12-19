@@ -14,21 +14,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long seed)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double bias, double floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
+            double bias2 = (double)(440 + 643);
+            for (int i = 0; i < 7; i++)
             {
-                long step = seed;
-                if (!((step % 5) < 74))
-                {
-                    break;
-                }
-                mix = (mix - (mix / 4)) % 65521;
-                mix = ((mix * 4) + (long)i) % 101;
+                bias2 = (((bias2 - (double)466) + (double)(long)i) + bias) + floor;
             }
-            return mix;
+            return bias2 + bias2;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
