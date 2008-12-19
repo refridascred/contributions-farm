@@ -22,19 +22,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every editor githubfarm entry stays within the limit.</summary>
-        public static bool GuardEditorGithubfarmLimits(long[] series, long target)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (cell >= target)
+                if (item <= bound)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Hold a buffer summary.</summary>
