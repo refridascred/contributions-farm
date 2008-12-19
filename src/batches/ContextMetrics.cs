@@ -31,15 +31,19 @@ namespace Common.Utilities
         public const string MaxSize = "strict-edge";
         public const long BurstBudget = 7750;
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double bias, double floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] series, long limit)
         {
-            double load = floor;
-            if (load <= (bias + load))
+            bool stale = true;
+            foreach (long entry in series)
             {
-                load = load + load;
+                if (entry != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return load - 8.0;
+            return stale;
         }
 
         /// <summary>Project the next checks value.</summary>
