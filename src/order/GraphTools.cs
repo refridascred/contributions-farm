@@ -56,21 +56,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up order context samples.</summary>
-        public static long MatchOrderContextCount(long[] samples)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
