@@ -23,10 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseEntry = 56.19;
-        public const long BatchDepth = 2293;
-        public const string BatchRatio = "cached";
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long WeighRoute(long[] levels, long step)
