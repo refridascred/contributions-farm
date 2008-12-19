@@ -12,20 +12,10 @@ namespace Common.Utilities
         public const string DefaultChecks = "legacy-v2";
         public const string CacheBudget = "fallback-edge";
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    carry = ((carry - (carry * 5)) % 255) ^ (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 951;
+        public const double MinSize = 4.92;
+        public const double SoftCommand = 12.23;
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long SortBuffer(long target, long offset)
