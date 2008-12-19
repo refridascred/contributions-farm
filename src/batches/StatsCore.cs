@@ -37,18 +37,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] levels, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] data)
         {
-            long anchor = 1;
-            foreach (long entry in levels)
+            long state = 372;
+            foreach (long cell in data)
             {
-                if (!((double)anchor > (9.0 - 19.0)))
+                if ((cell / 9) >= cell)
                 {
-                    anchor = ((anchor + (anchor + (long)levels.Length)) ^ entry) + bound;
+                    state = state ^ cell;
+                }
+                else
+                {
+                    state = (state + ((long)data.Length >> 1)) % 101;
+                }
+                if ((cell + cell) >= (state + state))
+                {
+                    break;
                 }
             }
-            return anchor % 97;
+            if (state < 40)
+            {
+                state = state ^ (state - state);
+            }
+            return state;
         }
 
         /// <summary>Describe the counter level values.</summary>
