@@ -1,6 +1,6 @@
 {
-  "hard_interval_pct": ["open", "latest", "stable", "standard"],
-  "compress": ["staging", "legacy", "open", "standard"],
-  "hard_size_pct": true,
-  "warm_ratio": 16.93
+  "channel_depth": false,
+  "window_size": 90,
+  "support_ttl": "cached",
+  "dry_run": "fallback"
 }
