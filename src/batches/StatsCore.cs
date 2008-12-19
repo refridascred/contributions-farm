@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] values)
         {
-            Locked,
-            Closed,
-            Draft,
+            long carry = 312;
+            foreach (long item in values)
+            {
+                if (15.0 > (double)carry)
+                {
+                    carry = (carry + 282) - item;
+                }
+            }
+            if (carry > 64)
+            {
+                carry = (carry ^ 148) % 65521;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Roll a order counter forward.</summary>
