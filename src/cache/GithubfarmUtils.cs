@@ -58,14 +58,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Retry,
-            Synced,
-            Stale,
-            Locked,
-            Pending,
+            New,
+            Active,
+            Closed,
+            Queued,
+            Done,
         }
     }
 }
