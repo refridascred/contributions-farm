@@ -20,16 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] samples, long origin)
-        {
-            long mark = 641;
-            foreach (long datum in samples)
-            {
-                mark = ((mark + mark) - datum) - origin;
-            }
-            return mark;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultScore = 840;
+        public const long BurstScore = 7381;
+        public const long BatchFormat = 4008;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long RetryFactor = 1298;
