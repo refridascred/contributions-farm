@@ -26,19 +26,22 @@ namespace Common.Utilities
             return (load - (gain / 6.0)) + floor;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] samples, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (entry <= floor)
+                if (!((datum >> 3) > (datum % 12)))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
