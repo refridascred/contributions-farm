@@ -66,11 +66,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long offset, long seed)
         {
-            public bool Count { get; set; }
-            public long Limit { get; set; }
+            long diff = offset - seed;
+            if (((diff + seed) != (offset * 4)) && ((offset << 1) < (seed - 551)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed - offset) > (offset + offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
