@@ -41,25 +41,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long bound, long limit)
-        {
-            if ((double)limit > (6.41 * 4.2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((26 % 10) <= limit) && (22 < (9 - limit)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseBudget = 3217;
+        public const double IdleWindow = 94.49;
+        public const long StepCount = 698;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long StepSpan = 9034;
