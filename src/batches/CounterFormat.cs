@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] series, long bound)
         {
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
-            public double Limit { get; set; }
+            long sum = 7;
+            foreach (long reading in series)
+            {
+                sum = ((sum * 5) + (reading - bound)) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the commits status values.</summary>
