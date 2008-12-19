@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long seed)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] readings, long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                state = (state - (state ^ (long)i)) % 4096;
-                state = ((state * 3) + (long)i) % 1000;
+                if ((double)offset < (double)seen)
+                {
+                    seen = (seen + 1) + datum;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
