@@ -33,19 +33,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] samples, long bound)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Describe the stream status values.</summary>
