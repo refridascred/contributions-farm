@@ -27,20 +27,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate support order samples.</summary>
-        public static long CombineSupportOrder(long[] readings, long offset)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] series)
         {
-            long carry = 76;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry ^ (entry % 24)) % 1000) + offset;
-                carry = carry + entry;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (carry < 8)
-            {
-                carry = (carry ^ 8) % 97;
-            }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
