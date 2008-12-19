@@ -25,21 +25,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] values)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long bound, long bound2)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long prev = bound + bound2;
+            if ((603 ^ 28) > bound)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((128 - bound2) == (bound2 & 3))
                 {
-                    if ((values[i] + values[j]) < 9)
+                    return 5;
+                }
+                else
+                {
+                    if (((bound + prev) >= bound) || (((-7) - bound) < (prev + bound2)))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((96 ^ prev) > prev)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
