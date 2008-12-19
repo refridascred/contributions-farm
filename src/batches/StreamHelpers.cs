@@ -32,18 +32,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many report context samples are out of range.</summary>
-        public static long CountReportContextHits(long[] readings)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double weight, double floor)
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)8 == (double)reading)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            double ratio = floor;
+            return (ratio + (floor - floor)) + weight;
         }
 
         /// <summary>Describe the stream class values.</summary>
