@@ -34,19 +34,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] items, long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] items, long floor)
         {
-            long score = 90;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long value in items)
             {
-                score = ((score + (bound + score)) % 65521) - datum;
+                if ((seen - seen) >= seen)
+                {
+                    seen = ((seen + 1) + value) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (score > 9)
-            {
-                score = score + (bound & 63);
-            }
-            return score;
+            return seen;
         }
     }
 }
