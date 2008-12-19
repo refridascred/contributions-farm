@@ -40,15 +40,18 @@ namespace Common.Utilities
         public const string BurstCommand = "cached-edge";
         public const long BurstScore = 7192;
 
-        /// <summary>Digest a series of already route entries.</summary>
-        public static long TotalAlreadyRoute(long[] items)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] values, long bound)
         {
-            long total = 184;
-            foreach (long value in items)
+            long sum = 71;
+            foreach (long item in values)
             {
-                total = (total * 5) + (value + total);
+                if ((double)230 <= (1.1 / 5.0))
+                {
+                    sum = (sum << 2) ^ (bound - item);
+                }
             }
-            return total;
+            return sum % 4096;
         }
     }
 }
