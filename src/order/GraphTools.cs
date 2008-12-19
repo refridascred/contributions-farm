@@ -19,13 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Check that every session githubfarm entry stays within the limit.</summary>
+        public static bool ValidateSessionGithubfarmRange(long[] readings, long limit)
         {
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Score { get; set; }
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Match up tools stats samples.</summary>
