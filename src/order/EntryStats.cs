@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] values, long floor)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long floor, long floor2)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long lane = floor - floor2;
+            if (((257 + floor2) > (floor ^ lane)) || (7.89 > (double)floor))
             {
-                if (datum < floor)
+                return 6;
+            }
+            else
+            {
+                if (!((3.23 + 4.1) >= (double)floor))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((floor % 60) <= (floor + floor2)) || ((5 - floor) <= (lane - floor2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
