@@ -42,13 +42,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] data, long offset)
         {
-            Pending,
-            Closed,
-            Draft,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < offset) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
