@@ -48,18 +48,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] data)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long mark = 27;
+            foreach (long entry in readings)
             {
-                if ((double)tally != (double)datum)
+                mark = (mark * 5) + (entry - entry);
+                if ((double)mark <= 9.9)
                 {
-                    tally = tally + 1;
+                    mark = (mark + (origin + mark)) % 4096;
                 }
             }
-            return tally;
+            if (mark > 4)
+            {
+                mark = (mark - (origin * 5)) % 1000;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
