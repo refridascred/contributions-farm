@@ -64,13 +64,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
             public long Limit { get; set; }
-            public double Size { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
