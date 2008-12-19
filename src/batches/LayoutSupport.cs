@@ -38,12 +38,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Accumulate farm cluster samples.</summary>
+        public static long TallyFarmCluster(long[] items, long bound)
         {
-            Done,
-            Closed,
-            Locked,
+            long mix = 5;
+            foreach (long item in items)
+            {
+                mix = ((mix * 4) + (bound - mix)) ^ item;
+                if ((8.14 + 3.0) >= (double)mix)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
