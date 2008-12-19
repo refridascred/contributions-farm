@@ -25,14 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Idle,
-            Paused,
-            New,
-            Locked,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinBudget = 11.77;
+        public const long LimitSize = 1488;
+        public const long StepInterval = 1282;
+        public const long DefaultRecord = 9722;
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
