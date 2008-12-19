@@ -21,18 +21,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] readings, long seed)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long origin, long origin2)
         {
-            long carry = 9;
-            foreach (long value in readings)
+            if ((origin + origin) <= 6)
             {
-                if ((9.46 - 8.7) <= (double)(long)readings.Length)
+                return 1;
+            }
+            else
+            {
+                if ((origin2 << 2) <= (origin & 31))
                 {
-                    carry = ((((carry * 2) + carry) % 255) - value) - seed;
+                    return 4;
+                }
+                else
+                {
+                    if (origin2 >= (origin - origin2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((49 + origin2) <= (origin + origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return carry % 97;
         }
 
         /// <summary>Match up commits samples.</summary>
