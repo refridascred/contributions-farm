@@ -41,18 +41,19 @@ namespace Common.Utilities
             return scale - (scale * 4.13);
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] series)
+        /// <summary>Validate route githubfarm readings against a bound.</summary>
+        public static bool CheckRouteGithubfarmLimits(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if (786 <= (hits / 7))
+                if (item != offset)
                 {
-                    hits = (hits + 1) + entry;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
