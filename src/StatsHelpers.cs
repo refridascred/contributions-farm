@@ -19,13 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Queued,
-            Synced,
-            Failed,
-            Ready,
+            public double Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Fold a list of editor readings.</summary>
