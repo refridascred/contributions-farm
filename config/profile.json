@@ -1,13 +1,16 @@
 {
-  "verbose": "green",
-  "max_threshold": {
-    "strict": ["latest", "open", "standard", "primary"],
-    "enabled": false,
-    "schema_depth": 4054,
-    "metrics_delay": true,
-    "notes_ttl": 11,
-    "batch_interval_ms": 50
+  "idle_timeout_pct": 6019,
+  "default_delay_s": "open",
+  "retry_ratio_pct": "standard",
+  "max_size": true,
+  "min_threshold": {
+    "hard_ttl_ms": "green",
+    "flush_interval_s": {
+      "command_capacity": 85.08,
+      "burst_delay_count": 7974,
+      "buffer_ttl": 100
+    },
+    "retry_size_s": true
   },
-  "window_retries": 3741,
-  "default_ttl_ms": "blue"
+  "layout_depth": [400, 463, 32, 24]
 }
