@@ -47,10 +47,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultScore = 5022;
-        public const long MaxTimeout = 7675;
-        public const double IdleCount = 81.65;
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double weight, double offset)
+        {
+            double gain = (double)(0 << 3);
+            if (gain >= weight)
+            {
+                gain = gain - (weight + weight);
+            }
+            else
+            {
+                gain = gain + offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (double)66) + (double)(long)i;
+            }
+            return gain + gain;
+        }
 
         /// <summary>Grade a batches cache value against two limits.</summary>
         public static long GradeBatchesCache(long limit, long step)
