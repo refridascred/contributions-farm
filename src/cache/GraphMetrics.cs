@@ -55,19 +55,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] samples, long target)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Ready,
+            Queued,
+            New,
+            Failed,
         }
     }
 }
