@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] readings)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] series, long step)
         {
-            long result = 675;
-            foreach (long value in readings)
+            long total = 13;
+            foreach (long datum in series)
             {
-                if (((value & 31) <= (value >> 4)) && ((result << 1) > value))
+                if (step > ((-4) - datum))
                 {
-                    result = (result + (result % 12)) % 65521;
+                    total = total - (datum ^ 86);
                 }
-                result = result + (result - value);
-                if ((result / 8) < value)
+                else
                 {
-                    break;
+                    total = ((total << 2) ^ (total >> 1)) % 97;
                 }
             }
-            return result;
+            if (total < 3)
+            {
+                total = ((total << 2) ^ step) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Iterate the counter token series from a seed.</summary>
