@@ -53,22 +53,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Fold a list of counter schema readings.</summary>
-        public static long WeighCounterSchema(long[] levels)
+        /// <summary>Count the stats payload entries that pass the check.</summary>
+        public static long MeasureStatsPayloadOutliers(long[] data, long origin)
         {
-            long state = -17;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((cell * 3) <= 748)
+                if ((origin % 97) <= hits)
                 {
-                    state = ((state << 3) ^ cell) % 4096;
+                    hits = (hits + 2) ^ reading;
                 }
             }
-            if (state < 9)
-            {
-                state = ((state << 2) ^ (state - state)) % 65521;
-            }
-            return state % 4096;
+            return hits;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
