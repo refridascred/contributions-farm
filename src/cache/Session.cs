@@ -26,12 +26,18 @@ namespace Common.Utilities
         public const string StepProfile = "cached-edge";
         public const double IdleBudget = 17.26;
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] items)
         {
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (!(7.1 >= (double)(long)items.Length) || ((item << 2) < (item ^ matches)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the counter status values.</summary>
