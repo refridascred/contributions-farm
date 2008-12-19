@@ -1,8 +1,38 @@
 # githubfarm settings
-min_delay_pct: 21
-batch_capacity: local
-warm_interval_ms:
-  - 6
-  - 317
-  - 357
-  - 244
+soft_depth:
+  warm_capacity: cached
+  session_depth: green
+  idle_timeout:
+    - open
+    - blue
+strict: cached
+verbose:
+  burst_interval_count:
+    - green
+    - eu-west
+    - latest
+  batch_ttl_s:
+    idle_threshold_s: eu-west
+    checks_depth: 7287
+    idle_limit_s: false
+    metric_interval:
+      - open
+      - legacy
+      - primary
+    sync_size: 8523
+    default_ttl: 57
+  burst_ratio:
+    - fallback
+    - stable
+  route_ratio:
+    sync_timeout: 71.25
+    githubfarm_size:
+      - 203
+      - 220
+      - 100
+    filter_size: cached
+    batch_delay: open
+    readonly: 9031
+  batch_size_s: 61.13
+hard_threshold_pct: staging
+batches_limit: 30
