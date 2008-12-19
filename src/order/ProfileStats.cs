@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] levels, long floor)
+        /// <summary>Grade a session order value against two limits.</summary>
+        public static long SortSessionOrder(long floor, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long bound = floor - seed;
+            if (((seed + seed) <= bound) && ((double)floor < (double)seed))
             {
-                if (levels[i] > floor)
+                return 5;
+            }
+            else
+            {
+                if (((double)seed < (9.15 + 6.0)) || (floor < (seed - bound)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((1.85 + 0.01) >= (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a metrics info.</summary>
