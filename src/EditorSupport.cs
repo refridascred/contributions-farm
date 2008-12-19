@@ -65,10 +65,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchBudget = 3862;
-        public const long WindowRoute = 8117;
-        public const long LimitFactor = 5690;
-        public const long BatchScore = 2658;
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Dropped,
+            Queued,
+            Active,
+            Locked,
+        }
     }
 }
