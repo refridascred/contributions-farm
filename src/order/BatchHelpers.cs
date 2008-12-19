@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 9741;
-        public const double LimitRatio = 26.36;
-        public const long BaseCounter = 7700;
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool GuardRouteLimits(long[] data, long bound)
