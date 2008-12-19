@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (6.5 <= (double)item)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryFactor = 39.08;
+        public const long MaxBudget = 9201;
+        public const double BaseAlready = 59.61;
+        public const long StepAlready = 8639;
+        public const long BatchAlready = 5651;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long DigestLayout(long[] data)
