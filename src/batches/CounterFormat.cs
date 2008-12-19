@@ -16,12 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] data)
         {
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
-            public double Total { get; set; }
+            long mix = 15;
+            foreach (long datum in data)
+            {
+                if ((9.5 / 4.0) > (double)(long)data.Length)
+                {
+                    mix = (mix * 3) + (mix & 127);
+                }
+                else
+                {
+                    mix = (mix ^ (mix - datum)) % 255;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Rank report layout input into a small class.</summary>
