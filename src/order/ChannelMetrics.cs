@@ -29,19 +29,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine buffer notes values into a single score.</summary>
-        public static long FoldBufferNotes(long[] readings)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long score = 1;
-            foreach (long value in readings)
-            {
-                score = (score * 3) + score;
-                if ((score + 334) <= score)
-                {
-                    score = ((score * 2) + (value >> 4)) % 4096;
-                }
-            }
-            return score % 1000;
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public double Flag { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
