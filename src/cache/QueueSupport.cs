@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many channel commits samples are out of range.</summary>
-        public static long CountChannelCommitsMatches(long[] readings)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long target)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (((double)tally < (double)745) || (tally < (item << 3)))
+                if ((double)anchor > (double)target)
                 {
-                    tally = tally + 2;
+                    anchor = (anchor - target) % 255;
                 }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
