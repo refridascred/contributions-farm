@@ -29,19 +29,12 @@ namespace Common.Utilities
             return ((drift + drift) + ratio) + floor;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] items, long floor)
-        {
-            long anchor = 1;
-            foreach (long cell in items)
-            {
-                if ((4 - anchor) != (cell * 4))
-                {
-                    anchor = ((anchor * 3) + (floor + cell)) % 255;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 4870;
+        public const long IdleScore = 6514;
+        public const long HardSpan = 48;
+        public const long LimitAccount = 3260;
+        public const long IdleLevel = 6635;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string CacheSize = "open-edge";
