@@ -33,11 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] readings, long bound)
         {
-            public string Limit { get; set; } = "";
-            public double Token { get; set; }
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a already header.</summary>
