@@ -85,15 +85,21 @@ namespace Common.Utilities
             return weight - (weight - floor);
         }
 
-        /// <summary>Project the next batches context value.</summary>
-        public static double AdjustBatchesContext(double scale, double floor)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] values)
         {
-            double load = (floor + scale) + floor;
-            if (load >= load)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load - (load + scale);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return load + (double)704;
+            return matches;
         }
     }
 }
