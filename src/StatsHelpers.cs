@@ -41,15 +41,15 @@ namespace Common.Utilities
         public const double StepChannel = 89.84;
         public const long BurstFactor = 3634;
 
-        /// <summary>Digest a series of buffer order entries.</summary>
-        public static long TallyBufferOrder(long[] items)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double bias, double offset)
         {
-            long carry = 22;
-            foreach (long entry in items)
+            double drift = bias + (2.15 - bias);
+            for (int i = 0; i < 2; i++)
             {
-                carry = ((carry ^ 0) % 1000) + entry;
+                drift = ((drift - (bias * 7.17)) + (double)(long)i) - offset;
             }
-            return carry;
+            return drift + (8.4 * 16.0);
         }
     }
 }
