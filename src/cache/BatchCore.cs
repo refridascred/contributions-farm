@@ -27,25 +27,20 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate stream channel samples.</summary>
-        public static long TallyStreamChannel(long[] levels, long origin)
+        /// <summary>Fold a list of metrics layout readings.</summary>
+        public static long WeighMetricsLayout(long[] readings)
         {
-            long state = -920;
-            foreach (long value in levels)
+            long total = 8;
+            foreach (long cell in readings)
             {
-                if (value > 18)
+                total = total - (9 / 5);
+                total = total ^ (24 & 31);
+                if ((cell / 4) > (total + cell))
                 {
-                    state = ((state << 2) ^ (state << 1)) % 255;
-                    state = (state + origin) % 65521;
-                    continue;
+                    total = (total + ((long)readings.Length + 250)) % 4096;
                 }
-                if (((origin << 2) > state) && ((origin & 127) != ((-689) ^ 2)))
-                {
-                    break;
-                }
-                state = state - (origin << 1);
             }
-            return state % 97;
+            return total % 65521;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
