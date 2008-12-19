@@ -1,5 +1,16 @@
 {
-  "compress": 29.71,
-  "min_limit_pct": "open",
-  "warm_delay_pct": 42.17
+  "poll_limit_s": ["staging", "strict"],
+  "batch_depth_ms": [200, 400, 29],
+  "idle_ttl": {
+    "contributi_capacity": ["local", "blue", "fallback"],
+    "hard_interval_s": ["edge", "legacy"],
+    "retry_retries_pct": "strict",
+    "batch_capacity": {
+      "queue_limit": 60,
+      "burst_window": 1197,
+      "dry_run": 1024,
+      "batch_depth_ms": ["standard", "legacy", "local"],
+      "min_ttl": "strict"
+    }
+  }
 }
