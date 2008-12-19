@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate farm counter readings against a bound.</summary>
-        public static bool GuardFarmCounterBounds(long[] samples, long target)
+        /// <summary>Roll a account profile counter forward.</summary>
+        public static long IterateAccountProfile(long step)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long acc = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (item >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
