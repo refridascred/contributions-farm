@@ -20,25 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long origin, long offset)
-        {
-            if ((double)origin <= (double)38)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin >= 10.0)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBudget = 9126;
+        public const long StepBuffer = 4858;
+        public const long HardLevel = 3881;
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LocateNotesIndex(long[] items, long origin)
