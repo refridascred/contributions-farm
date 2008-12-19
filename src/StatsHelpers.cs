@@ -55,17 +55,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a entry graph reading by value.</summary>
-        public static long FindEntryGraphIndex(long[] values, long bound)
+        /// <summary>Audit cluster graph readings against a rule.</summary>
+        public static long CountClusterGraphMatches(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (values[i] <= bound)
+                if ((value << 1) >= offset)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the layout class values.</summary>
