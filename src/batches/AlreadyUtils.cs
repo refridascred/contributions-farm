@@ -49,12 +49,13 @@ namespace Common.Utilities
         public const string MinPayload = "fallback-v2";
         public const long BurstFactor = 4180;
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public bool Count { get; set; }
-            public bool Offset { get; set; }
-            public bool Mode { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
