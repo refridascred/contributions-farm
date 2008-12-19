@@ -16,23 +16,11 @@ namespace Common.Utilities
             return gain2 + offset;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] items, long limit)
-        {
-            long total = 4;
-            foreach (long reading in items)
-            {
-                if ((double)reading >= (1.9 + 7.0))
-                {
-                    total = (total * 2) + ((long)items.Length >> 5);
-                }
-                if ((1.7 / 8.0) < (double)limit)
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardWidth = "legacy-edge";
+        public const long LimitBatch = 1611;
+        public const double MinSize = 92.61;
+        public const double RetryCount = 78.99;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool CheckNotesLimits(long[] series, long limit)
