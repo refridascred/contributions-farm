@@ -23,21 +23,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Rank stats editor input into a small class.</summary>
+        public static long BucketStatsEditor(long step, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long offset = step ^ target;
+            if ((double)3 < (double)target)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((step + step) >= (offset + step))
                 {
-                    if ((data[i] + data[j]) != 16)
+                    return 1;
+                }
+                else
+                {
+                    if ((step + offset) < (target + target))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)offset < (19.0 + 6.4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many support editor samples are out of range.</summary>
