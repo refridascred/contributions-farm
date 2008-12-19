@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheTimeout = 2589;
-        public const double SoftStats = 60.05;
-        public const long DefaultRatio = 45;
-        public const long HardRatio = 7714;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long step, long limit)
+        {
+            long diff = step + limit;
+            if (!((diff / 5) >= step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)limit == (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit >= (8.84 * 6.39))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step - diff) < limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long CompareCacheCount(long[] values)
