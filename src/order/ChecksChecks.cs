@@ -19,21 +19,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] values)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((value < (tally + value)) && ((1 << 3) == (value % 60)))
                 {
-                    if ((values[i] ^ values[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the profile layout entries that pass the check.</summary>
