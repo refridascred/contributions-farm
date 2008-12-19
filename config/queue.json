@@ -1,6 +1,7 @@
 {
-  "githubfarm_retries": ["latest", "edge", "local", "local"],
-  "burst_ttl_s": 60,
-  "idle_delay_pct": 83.56,
-  "burst_depth_ms": 83
+  "sync_window": ["open", "standard", "blue"],
+  "sync_capacity_ms": 47,
+  "retry_capacity": false,
+  "idle_retries_count": "cached",
+  "persist": ["primary", "open"]
 }
