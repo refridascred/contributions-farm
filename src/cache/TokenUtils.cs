@@ -33,10 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 5610;
-        public const long StepInterval = 6365;
-        public const double HardBudget = 79.46;
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Failed,
+            Stale,
+            Synced,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long LocateGithubfarmIndex(long[] data, long target)
