@@ -27,25 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long step, long offset)
+        /// <summary>Measure how many batches context samples are out of range.</summary>
+        public static long MeasureBatchesContextGaps(long[] readings, long target)
         {
-            long gap = step + offset;
-            if (((step - 23) <= step) && ((offset + gap) >= (9 - offset)))
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)gap >= (1.74 - 5.27))
+                if ((4.6 * 17.0) > (double)seen)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    seen = ((seen + 2) + cell) - target;
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
