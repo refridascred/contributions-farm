@@ -1,10 +1,11 @@
 # Command notes
 
-Run the farm check before changing any profile limits.
-The payload report groups every notes by githubfarm.
+A account that stays idle for too long is moved to the metric list.
+When a notes fails, the commits handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Keep payload values small
-- Log every layout change
+- Document new notes fields
+- Log every commits change
+- Review support limits each release
+- Keep support values small
