@@ -29,22 +29,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit command editor readings against a rule.</summary>
-        public static long CountCommandEditorMatches(long[] series)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (((-7) - seen) >= sample)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
