@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepScore = 7940;
-        public const long WindowSize = 3035;
-        public const long BurstOrder = 8128;
-        public const string BurstCount = "latest-v2";
-        public const double BatchOrder = 92.07;
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double scale, double offset)
+        {
+            double scale2 = 6.7 * 6.0;
+            return ((scale2 + scale2) + scale) + offset;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long CountSchemaOutliers(long[] samples)
