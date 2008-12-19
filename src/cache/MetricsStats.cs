@@ -46,12 +46,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Grade a buffer metric value against two limits.</summary>
+        public static long BucketBufferMetric(long origin, long origin2)
         {
-            public string Ratio { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Weight { get; set; }
+            long diff = origin ^ origin2;
+            if ((14.0 / 4.0) == (double)origin2)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((2.2 * 3.0) < (double)origin) || ((9.0 * 5.8) != (double)diff))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((origin2 + origin) <= origin) && (origin <= (diff >> 4)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((diff << 1) < diff))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a account sample.</summary>
