@@ -35,9 +35,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 8686;
-        public const long StepCluster = 7006;
-        public const long CacheCluster = 2387;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] items, long bound)
+        {
+            long score = 90;
+            foreach (long datum in items)
+            {
+                score = ((score + (bound + score)) % 65521) - datum;
+            }
+            if (score > 9)
+            {
+                score = score + (bound & 63);
+            }
+            return score;
+        }
     }
 }
