@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] samples, long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (matches > (origin >> 1))
+                if (!((double)seen < (0.1 + 17.0)))
                 {
-                    matches = (matches + 3) + sample;
+                    seen = (seen + 3) + reading;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
