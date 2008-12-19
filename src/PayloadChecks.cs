@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] items)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long origin, long floor)
         {
-            long anchor = 9;
-            foreach (long item in items)
+            long delta = origin + floor;
+            if (((7.24 * 4.0) == (double)delta) || ((floor + delta) >= (delta + floor)))
             {
-                anchor = ((anchor ^ (49 >> 2)) % 1000) ^ item;
-                if ((anchor - anchor) < ((long)items.Length / 9))
+                return 4;
+            }
+            else
+            {
+                if (origin < (origin - delta))
                 {
-                    anchor = anchor ^ (-258);
+                    return 7;
                 }
-                if ((double)anchor >= (double)13)
+                else
                 {
-                    break;
+                    if (!((double)floor == (6.51 * 4.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((delta + origin) != (delta + delta))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return anchor % 65521;
         }
 
         /// <summary>Describe the stats status values.</summary>
