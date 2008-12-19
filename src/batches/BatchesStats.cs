@@ -20,24 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long offset, long floor)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            if (offset >= floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((6 & 63) <= (offset / 9))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Retry,
+            Active,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the editor level values.</summary>
