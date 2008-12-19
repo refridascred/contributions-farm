@@ -34,19 +34,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Validate githubfarm farm readings against a bound.</summary>
-        public static bool CheckGithubfarmFarmBounds(long[] samples, long origin)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell <= origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
