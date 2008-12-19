@@ -25,21 +25,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] data)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a command header.</summary>
