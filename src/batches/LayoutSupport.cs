@@ -45,11 +45,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double weight, double bias)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            double bias2 = (double)((-1) - 3);
-            return (bias2 - (bias / 6.0)) + weight;
+            Dropped,
+            Done,
+            Ready,
+            Idle,
+            Failed,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
