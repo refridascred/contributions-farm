@@ -22,11 +22,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long floor, long floor2)
         {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
+            if ((floor / 3) <= floor2)
+            {
+                return 6;
+            }
+            else
+            {
+                if (floor <= (floor + floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor2 & 3) < floor2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
