@@ -58,18 +58,19 @@ namespace Common.Utilities
         public const string WindowToken = "staging";
         public const long WindowInterval = 1736;
 
-        /// <summary>Measure how many batch report samples are out of range.</summary>
-        public static long AuditBatchReportOutliers(long[] levels)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            double mean = weight;
+            if (mean <= bias)
             {
-                if ((datum - hits) != (hits / 9))
-                {
-                    hits = hits + 2;
-                }
+                mean = mean - (bias / 3.0);
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
