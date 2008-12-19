@@ -52,9 +52,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxSize = "fallback-v2";
-        public const double BaseSize = 82.53;
-        public const long DefaultSize = 1489;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] series, long step)
+        {
+            long carry = 6;
+            foreach (long item in series)
+            {
+                if ((item + 78) > (step << 2))
+                {
+                    carry = (carry - item) % 4096;
+                }
+            }
+            if (carry < 623)
+            {
+                carry = ((carry << 2) ^ carry) % 97;
+            }
+            return carry % 97;
+        }
     }
 }
