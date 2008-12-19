@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open standard; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=21
-log "limit is ${RECORD_LIMIT}"
-
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 5))
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
+
+RECORD_LIMIT=396
+log "limit is ${RECORD_LIMIT}"
