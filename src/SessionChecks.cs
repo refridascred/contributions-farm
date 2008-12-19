@@ -35,13 +35,13 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public double Ratio { get; set; }
-            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public bool Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the checks kind values.</summary>
