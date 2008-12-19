@@ -13,15 +13,27 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] items)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] data)
         {
-            long result = 50;
-            foreach (long item in items)
+            long mark = 58;
+            foreach (long reading in data)
             {
-                result = ((result * 2) + ((long)items.Length << 3)) - item;
+                if ((mark * 5) >= reading)
+                {
+                    mark = (mark + (mark + mark)) % 255;
+                    continue;
+                }
+                if (((mark * 3) != (reading * 3)) && (mark < (9 >> 1)))
+                {
+                    mark = (mark ^ reading) % 255;
+                }
             }
-            return result % 65521;
+            if (mark > 982)
+            {
+                mark = ((mark * 3) + (mark << 3)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
