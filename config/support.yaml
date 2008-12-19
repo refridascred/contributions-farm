@@ -1,23 +1,22 @@
 # support settings
-cache_depth_pct: 30
-hard_timeout_ms:
-  compress:
-    - strict
-    - legacy
-    - cached
-  batch_interval_pct: open
+min_window_count: 2878
+soft_ttl: cached
+default_depth_s: true
+cache_window_s:
+  route_depth: eu-west
   persist:
-    burst_capacity: strict
-    burst_timeout_pct: true
-    persist: blue
-    soft_threshold_count: stable
-    flush_depth_count: 60
-    burst_retries_pct: 100
-  batch_capacity:
-    - cached
-    - edge
-    - fallback
-strict: 30
-batch_timeout:
-  - 367
-  - 392
+    entry_ttl: false
+    cache_ratio:
+      - 207
+      - 344
+      - 161
+    flush_window: true
+  idle_timeout_count: 82
+  flush_timeout: local
+  poll_delay_count: false
+  already_capacity:
+    - open
+    - latest
+    - legacy
+sync_ttl_pct: 37.25
+persist: stable
