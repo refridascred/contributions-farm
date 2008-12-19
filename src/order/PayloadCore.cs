@@ -30,10 +30,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheTimeout = "fallback-1";
-        public const long StepFactor = 4426;
-        public const double MaxBudget = 32.94;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (sample < hits)
+                {
+                    hits = (hits + 2) + step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
