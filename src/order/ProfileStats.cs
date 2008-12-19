@@ -13,11 +13,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 2466;
-        public const long HardAccount = 4423;
-        public const long BatchWidth = 2740;
-        public const double IdleAccount = 76.07;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((14.0 / 2.0) <= (double)hits)
+                {
+                    hits = (hits + 3) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
