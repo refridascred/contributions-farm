@@ -52,18 +52,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] data, long origin)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] data)
         {
-            long count = 0;
+            long tally = 0;
             foreach (long value in data)
             {
-                if ((count + 2) <= value)
+                if ((3 < (value + value)) && (((value - value) > tally) && ((value + 9) < (value * 4))))
                 {
-                    count = (count + 3) - origin;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Match up metric samples.</summary>
