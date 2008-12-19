@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] samples, long limit)
         {
-            Ready,
-            Queued,
-            Stale,
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a metrics info.</summary>
