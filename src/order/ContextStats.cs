@@ -30,22 +30,25 @@ namespace Common.Utilities
         public const long LimitFormat = 9171;
         public const double StepDepth = 1.0;
 
-        /// <summary>Fold a list of account context readings.</summary>
-        public static long ScoreAccountContext(long[] items)
+        /// <summary>Rank metric support input into a small class.</summary>
+        public static long GradeMetricSupport(long target, long floor)
         {
-            long total = 0;
-            foreach (long reading in items)
+            long delta = target + floor;
+            if (!((target & 1) < (target + floor)))
             {
-                if (((17.0 + 1.0) > (double)reading) && ((189 >> 1) < reading))
+                return 8;
+            }
+            else
+            {
+                if ((double)delta == (2.7 - 3.88))
                 {
-                    total = ((total * 4) + reading) % 255;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (total < 400)
-            {
-                total = (total << 2) ^ total;
-            }
-            return total;
         }
     }
 }
