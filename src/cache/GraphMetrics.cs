@@ -23,19 +23,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next tools record value from a seed.</summary>
-        public static long DeriveToolsRecord(long step)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double rate, double floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
+            double rate2 = (double)9;
+            for (int i = 0; i < 9; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    anchor = (anchor * 3) + (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                rate2 = (((rate2 + rate2) - (double)(long)i) - rate) + floor;
             }
-            return anchor;
+            return rate2 + rate2;
         }
 
         /// <summary>Describe the commits phase values.</summary>
