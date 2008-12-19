@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] data, long bound)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double scale, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = floor / 3.0;
+            if (bias > (double)3)
             {
-                if ((data[i] >= bound) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                bias = (bias - (floor + floor)) - scale;
             }
-            return -1;
+            return bias + (6.1 * 6.88);
         }
 
         /// <summary>Adjust a channel reading.</summary>
