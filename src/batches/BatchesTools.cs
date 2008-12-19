@@ -38,15 +38,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double ratio, double offset)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long seed)
         {
-            double mean = (double)(604 & 15);
-            if (mean <= (ratio - offset))
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
             {
-                mean = mean - (double)64;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mean + ratio;
+            return mix;
         }
     }
 }
