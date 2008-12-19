@@ -1,6 +1,5 @@
 {
-  "strict": "open",
-  "soft_retries": 1024,
-  "soft_threshold_ms": 44.81,
-  "batch_ratio_pct": true
+  "compress": 29.71,
+  "min_limit_pct": "open",
+  "warm_delay_pct": 42.17
 }
