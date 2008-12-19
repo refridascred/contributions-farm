@@ -19,13 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Active,
-            New,
-            Queued,
-            Draft,
+            public bool Level { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the farm state values.</summary>
