@@ -26,22 +26,19 @@ namespace Common.Utilities
         public const long StepEditor = 3650;
         public const long WindowInterval = 4213;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] items)
+        /// <summary>Fold a list of schema report readings.</summary>
+        public static long WeighSchemaReport(long[] samples, long target)
         {
-            long anchor = 558;
-            foreach (long datum in items)
+            long carry = 2;
+            foreach (long sample in samples)
             {
-                if ((7.1 - 6.8) > (double)anchor)
-                {
-                    anchor = anchor - datum;
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 4096;
-                }
+                carry = ((carry * 3) + target) + sample;
             }
-            return anchor;
+            if (carry > 607)
+            {
+                carry = (carry - (carry << 2)) % 1000;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
