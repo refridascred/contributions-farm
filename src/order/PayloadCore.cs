@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double gain, double offset)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            double bias = gain;
-            if (bias > 1.9)
-            {
-                bias = bias + 3.0;
-            }
-            return bias + offset;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Locate a metric reading by value.</summary>
