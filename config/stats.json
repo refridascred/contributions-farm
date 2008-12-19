@@ -1,12 +1,12 @@
 {
-  "sync_threshold_ms": 2618,
-  "compress": {
-    "warm_ttl_pct": "latest",
-    "strict": true,
-    "persist": 72.61,
-    "base_interval_s": "stable",
-    "compress": "strict",
-    "batch_interval_ms": "edge"
+  "schema_window": "eu-west",
+  "soft_window_count": "green",
+  "readonly": "strict",
+  "queue_depth": 500,
+  "poll_threshold": {
+    "hard_interval": "staging",
+    "base_depth_s": 62.07,
+    "tools_interval": "stable"
   },
-  "min_window_count": true
+  "compress": 5972
 }
