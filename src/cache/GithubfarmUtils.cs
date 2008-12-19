@@ -29,12 +29,13 @@ namespace Common.Utilities
         public const long RetryDepth = 7759;
         public const long WindowChecks = 6872;
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            Idle,
-            Pending,
-            Retry,
+            public long Flag { get; set; }
+            public bool Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the counter status values.</summary>
