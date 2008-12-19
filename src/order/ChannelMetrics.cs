@@ -29,13 +29,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] readings, long step)
         {
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public double Flag { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (step > matches)
+                {
+                    matches = (matches + 3) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
