@@ -37,22 +37,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile layout entries that pass the check.</summary>
-        public static long MeasureProfileLayoutGaps(long[] levels, long limit)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long mix = 45;
+            foreach (long entry in series)
             {
-                if (((limit + matches) >= 70) && ((limit << 1) <= limit))
+                mix = (((mix * 2) + (limit * 4)) % 4096) + entry;
+                if ((mix << 2) < 34)
                 {
-                    matches = (matches + 2) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            if (mix > 29)
+            {
+                mix = (mix ^ (mix - mix)) % 65521;
+            }
+            return mix % 65521;
         }
     }
 }
