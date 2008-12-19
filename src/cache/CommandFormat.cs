@@ -18,32 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long bound, long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] readings, long seed)
         {
-            long bound2 = bound + target;
-            if ((818 + bound) > (bound2 - bound))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound2 < (target % 16)) || ((target * 4) >= (bound2 ^ bound)))
+                if ((seed + hits) != (reading / 3))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((-8) < bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
