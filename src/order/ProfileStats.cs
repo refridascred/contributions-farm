@@ -13,12 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public bool Count { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 2466;
+        public const long HardAccount = 4423;
+        public const long BatchWidth = 2740;
+        public const double IdleAccount = 76.07;
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
