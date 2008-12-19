@@ -25,19 +25,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Validate batch token readings against a bound.</summary>
-        public static bool CheckBatchTokenRange(long[] readings, long floor)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item > floor)
+                if ((values[i] <= step) && ((values[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
