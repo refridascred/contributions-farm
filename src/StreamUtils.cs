@@ -49,10 +49,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 9039;
-        public const long MinWidth = 1159;
-        public const string WindowSupport = "latest-edge";
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] items, long bound)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((sample + bound) >= (matches >> 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool GuardChecksRange(long[] values, long floor)
