@@ -45,13 +45,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            Draft,
             New,
-            Done,
-            Paused,
+            Locked,
+            Failed,
+            Retry,
+            Active,
         }
     }
 }
