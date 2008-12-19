@@ -69,19 +69,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] samples, long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (item > limit)
+                if ((5.1 * 6.2) < (double)item)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) + step;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Fold a list of session checks readings.</summary>
