@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public double Flag { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public bool Score { get; set; }
+            Dropped,
+            Idle,
+            Ready,
+            New,
+            Synced,
         }
 
         /// <summary>Locate a filter reading by value.</summary>
