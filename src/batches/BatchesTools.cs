@@ -19,31 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long origin, long limit)
+        /// <summary>Roll a metrics queue counter forward.</summary>
+        public static long SeriesMetricsQueue(long offset)
         {
-            if ((double)origin < (double)82)
+            long score = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
+                score = ((score << 3) ^ score) % 1000;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((limit & 127) != (origin % 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin % 97) > limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
