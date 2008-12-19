@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const double IdleSupport = 56.39;
         public const string BurstFactor = "alpha-edge";
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long limit)
+        /// <summary>Look up the position of a contributi notes sample.</summary>
+        public static long FindContributiNotesIndex(long[] items, long target)
         {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
