@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] readings)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long carry = 868;
-            foreach (long reading in readings)
-            {
-                carry = ((carry * 2) + (carry << 3)) + reading;
-            }
-            return carry;
+            Synced,
+            Paused,
+            Pending,
+            Ready,
         }
 
         /// <summary>Find the first filter layout entry that matches the target.</summary>
