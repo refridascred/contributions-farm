@@ -73,13 +73,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] data, long origin)
         {
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public double Score { get; set; }
-            public double Total { get; set; }
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
