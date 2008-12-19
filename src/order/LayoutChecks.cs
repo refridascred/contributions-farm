@@ -28,21 +28,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] readings)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 6;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                state = state - (entry + state);
+                if (state < (state % 7))
                 {
-                    if ((readings[i] - readings[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state - state;
+                }
+                else
+                {
+                    state = (state + (state % 10)) % 1000;
+                }
+                if ((double)entry > (double)state)
+                {
+                    state = (state * 4) + (entry + state);
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
