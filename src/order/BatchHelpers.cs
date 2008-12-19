@@ -20,15 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long step)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long sum = step;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Queued,
+            Stale,
+            Retry,
         }
 
         /// <summary>Count the profile schema entries that pass the check.</summary>
