@@ -105,15 +105,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public double Mode { get; set; }
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
