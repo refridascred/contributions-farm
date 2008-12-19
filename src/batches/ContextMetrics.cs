@@ -26,14 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public double Region { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 5634;
+        public const string MaxSize = "strict-edge";
+        public const long BurstBudget = 7750;
 
         /// <summary>Project the next commits value.</summary>
         public static double AdjustCommits(double bias, double floor)
