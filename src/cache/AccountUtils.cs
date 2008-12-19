@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long origin, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] levels, long bound)
         {
-            long next = origin - seed;
-            if (origin <= (origin - next))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((next + next) < (seed ^ seed)) && ((seed + origin) >= seed))
+                if (sample < tally)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    tally = (tally + 2) + bound;
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
