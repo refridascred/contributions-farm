@@ -32,18 +32,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] readings, long step)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if ((97 / 5) == (item - item))
+                if (item > target)
                 {
-                    hits = (hits + 2) - step;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
