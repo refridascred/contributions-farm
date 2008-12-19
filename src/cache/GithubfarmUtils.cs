@@ -38,23 +38,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double weight, double span)
+        /// <summary>Validate command metrics readings against a bound.</summary>
+        public static bool VerifyCommandMetricsBounds(long[] items, long floor)
         {
-            double load = (double)((-60) + 42);
-            if (load > (weight - 4.6))
+            bool found = true;
+            foreach (long datum in items)
             {
-                load = load + weight;
+                if (datum < floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (span + 5.3);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (double)51) - (double)(long)i;
-            }
-            return load + 8.7;
+            return found;
         }
     }
 }
