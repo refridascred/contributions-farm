@@ -1,22 +1,8 @@
 # support settings
-min_window_count: 2878
-soft_ttl: cached
-default_depth_s: true
-cache_window_s:
-  route_depth: eu-west
-  persist:
-    entry_ttl: false
-    cache_ratio:
-      - 207
-      - 344
-      - 161
-    flush_window: true
-  idle_timeout_count: 82
-  flush_timeout: local
-  poll_delay_count: false
-  already_capacity:
-    - open
-    - latest
-    - legacy
-sync_ttl_pct: 37.25
-persist: stable
+cache_window: 25.84
+enabled: 66.74
+audit: 11.67
+compress:
+  - 431
+  - 82
+  - 470
