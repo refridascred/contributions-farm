@@ -56,15 +56,26 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Adjust a metrics checks reading.</summary>
-        public static double SmoothMetricsChecks(double scale, double floor)
+        /// <summary>Fold a list of order checks readings.</summary>
+        public static long CombineOrderChecks(long[] levels, long bound)
         {
-            double load = (double)(-841) / 8.0;
-            for (int i = 0; i < 8; i++)
+            long mix = 25;
+            foreach (long sample in levels)
             {
-                load = ((load - load) + (double)(long)i) + floor;
+                if ((bound >= (sample << 1)) || (bound < ((long)levels.Length ^ sample)))
+                {
+                    mix = (mix ^ (4 >> 4)) % 101;
+                }
+                else
+                {
+                    mix = (mix + (94 * 4)) % 4096;
+                }
+                if ((16 + bound) < (bound / 2))
+                {
+                    break;
+                }
             }
-            return load - scale;
+            return mix % 4096;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
