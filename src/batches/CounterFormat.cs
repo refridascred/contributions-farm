@@ -23,17 +23,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a batch profile counter forward.</summary>
-        public static long IterateBatchProfile(long limit)
+        /// <summary>Validate graph record readings against a bound.</summary>
+        public static bool ValidateGraphRecordBounds(long[] values, long floor)
         {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                state = (state << 3) ^ (701 ^ limit);
-                state = (state << 2) ^ (state + state);
-                state = ((state * 4) + (long)i) % 1000;
+                if (item != floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
     }
 }
