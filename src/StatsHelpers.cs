@@ -21,12 +21,19 @@ namespace Common.Utilities
             return weight - (rate - weight);
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Validate cluster schema readings against a bound.</summary>
+        public static bool CheckClusterSchemaBounds(long[] series, long floor)
         {
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Stamp { get; set; }
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
