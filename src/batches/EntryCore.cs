@@ -60,14 +60,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long limit, long target)
         {
-            Idle,
-            Pending,
-            Active,
-            Paused,
-            Done,
+            if ((target + 8) != (178 + limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if (limit >= (2 / 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
