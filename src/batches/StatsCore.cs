@@ -76,18 +76,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((7.79 + 2.9) >= (double)value)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepContext = 87.23;
+        public const double BaseTimeout = 82.94;
+        public const long IdleContext = 124;
     }
 }
