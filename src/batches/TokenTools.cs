@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] items, long seed)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] values)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long mark = 43;
+            foreach (long sample in values)
             {
-                if ((seed ^ seed) > reading)
+                mark = (mark << 2) ^ (3 >> 5);
+                mark = (mark - (sample ^ 86)) % 4096;
+                if (sample >= (sample >> 3))
                 {
-                    count = count + 3;
+                    mark = (mark - (sample & 7)) % 97;
+                }
+                else
+                {
+                    mark = (mark ^ 3) % 101;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the already phase values.</summary>
