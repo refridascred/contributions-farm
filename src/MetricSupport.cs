@@ -12,19 +12,17 @@ namespace Common.Utilities
             return load + (bias2 - bias);
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double ratio, double bias)
+        /// <summary>Find the first notes stream entry that matches the target.</summary>
+        public static long LocateNotesStreamIndex(long[] readings, long limit)
         {
-            double scale = ratio;
-            if (scale <= bias)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale + (ratio / 2.0);
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (ratio - 10.0);
-            }
-            return scale - 15.0;
+            return -1;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
