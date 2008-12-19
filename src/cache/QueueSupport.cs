@@ -41,21 +41,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] readings)
+        /// <summary>Validate checks profile readings against a bound.</summary>
+        public static bool GuardChecksProfileBounds(long[] levels, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value <= target)
                 {
-                    if ((readings[i] - readings[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
