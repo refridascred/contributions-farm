@@ -31,14 +31,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Locked,
-            Closed,
-            Failed,
-            Done,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryFactor = 1298;
+        public const string CacheRatio = "latest-1";
+        public const string DefaultTimeout = "staging-edge";
+        public const string HardDepth = "open";
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MaxSize = 5376;
