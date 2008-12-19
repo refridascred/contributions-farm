@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double gain, double floor)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            double weight = (double)(92 * 2);
-            if (weight >= (gain - weight))
-            {
-                weight = weight + (floor - 17.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + floor) - (double)(long)i;
-            }
-            return weight - gain;
+            Draft,
+            Active,
+            Queued,
+            Pending,
         }
 
         /// <summary>Project the next route checks value.</summary>
