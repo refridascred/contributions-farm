@@ -38,19 +38,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] values, long bound)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Accumulate record samples.</summary>
