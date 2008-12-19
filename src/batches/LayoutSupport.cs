@@ -22,15 +22,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] samples)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long anchor = 89;
-            foreach (long item in samples)
-            {
-                anchor = (((anchor << 2) ^ (0 / 7)) % 1000) + item;
-            }
-            return anchor;
+            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the token status values.</summary>
