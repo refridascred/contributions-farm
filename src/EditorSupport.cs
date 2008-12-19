@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] values, long seed)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long step, long floor)
         {
-            long sum = 276;
-            foreach (long cell in values)
+            long offset = step - floor;
+            if (((double)floor >= (double)step) && (step <= (step - offset)))
             {
-                if (sum >= (seed / 5))
+                return 7;
+            }
+            else
+            {
+                if (offset >= (step ^ step))
                 {
-                    sum = (sum - (seed + cell)) % 101;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset + offset) > (offset & 31))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return sum % 1000;
         }
 
         /// <summary>Hold a editor record.</summary>
