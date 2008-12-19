@@ -45,14 +45,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Match up stats already samples.</summary>
+        public static long PairStatsAlreadyCount(long[] data)
         {
-            Synced,
-            Active,
-            Draft,
-            Stale,
-            Queued,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
