@@ -37,22 +37,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] levels, long step)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long origin)
         {
-            long total = 77;
-            foreach (long datum in levels)
+            long sum = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((total + step) >= (datum - total))
-                {
-                    total = ((total << 2) ^ (datum + step)) % 255;
-                }
+                sum = (sum << 3) ^ (origin - sum);
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            if (total > 7)
-            {
-                total = (total ^ step) % 101;
-            }
-            return total;
+            return sum;
         }
 
         /// <summary>Describe the batch phase values.</summary>
