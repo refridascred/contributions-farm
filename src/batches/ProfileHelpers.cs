@@ -20,18 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] readings)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long origin, long offset)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            if ((double)origin <= (double)38)
             {
-                if (!(hits <= (cell ^ 9)) || ((cell & 63) >= (7 - hits)))
+                return 4;
+            }
+            else
+            {
+                if ((double)origin >= 10.0)
                 {
-                    hits = hits + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Locate a cache order reading by value.</summary>
