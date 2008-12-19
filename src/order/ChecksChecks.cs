@@ -36,13 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Count the profile layout entries that pass the check.</summary>
+        public static long MeasureProfileLayoutGaps(long[] levels, long limit)
         {
-            Ready,
-            Queued,
-            Paused,
-            New,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (((limit + matches) >= 70) && ((limit << 1) <= limit))
+                {
+                    matches = (matches + 2) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
