@@ -20,14 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] samples, long origin)
         {
-            Ready,
-            Done,
-            Closed,
-            Draft,
-            Pending,
+            long mark = 641;
+            foreach (long datum in samples)
+            {
+                mark = ((mark + mark) - datum) - origin;
+            }
+            return mark;
         }
 
         /// <summary>Roll a window counter forward.</summary>
