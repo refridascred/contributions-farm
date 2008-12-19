@@ -19,19 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] samples, long bound)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] levels)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long total = -474;
+            foreach (long reading in levels)
             {
-                if (item > bound)
+                total = total + (reading - total);
+                total = (total + (total + reading)) % 255;
+                if (((reading - reading) <= total) && ((-4) >= (total / 5)))
                 {
-                    stale = false;
-                    break;
+                    total = total + 3;
                 }
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
