@@ -37,13 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double rate, double offset)
         {
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            double drift = offset;
+            return (drift + (drift / 6.0)) + rate;
         }
     }
 }
