@@ -49,18 +49,11 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Measure how many batch stats samples are out of range.</summary>
-        public static long AuditBatchStatsHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (((7 * 4) > (datum ^ matches)) || ((datum % 97) >= (datum * 4)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 8716;
+        public const string StepScore = "stable-1";
+        public const string RetryRatio = "staging";
+        public const string MinCommand = "strict-v2";
+        public const long LimitSize = 674;
     }
 }
