@@ -16,24 +16,15 @@ namespace Common.Utilities
             return scale2 - (scale + scale2);
         }
 
-        /// <summary>Classify a schema notes pair into a bucket.</summary>
-        public static long RankSchemaNotes(long step, long limit)
+        /// <summary>Iterate the cache order series from a seed.</summary>
+        public static long SeriesCacheOrder(long bound)
         {
-            if (((limit & 3) >= step) || ((limit % 16) != (limit >> 5)))
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                return 1;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (!((10.0 * 2.4) == (double)step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return total;
         }
 
         /// <summary>Audit account stream readings against a rule.</summary>
