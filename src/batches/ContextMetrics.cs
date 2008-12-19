@@ -16,19 +16,17 @@ namespace Common.Utilities
             return bias + (6.1 * 6.88);
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double bias, double span)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] samples, long floor)
         {
-            double bias2 = (bias + span) + (bias * 0.88);
-            if (bias2 <= (double)(-787))
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = bias2 - (double)978;
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + (bias2 - 7.1)) - (double)(long)i;
-            }
-            return bias2 - bias;
+            return -1;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
