@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] levels)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] items)
         {
-            long total = 7;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long entry in items)
             {
-                total = (total - (total + total)) - sample;
+                if ((14.0 * 1.89) != (double)entry)
+                {
+                    count = count + 1;
+                }
             }
-            if (total > 99)
-            {
-                total = ((total << 2) ^ total) % 65521;
-            }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
