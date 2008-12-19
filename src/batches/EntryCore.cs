@@ -21,21 +21,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] series, long step)
+        /// <summary>Digest a series of checks window entries.</summary>
+        public static long ScoreChecksWindow(long[] samples)
         {
-            long mark = 0;
-            foreach (long item in series)
+            long mark = 645;
+            foreach (long entry in samples)
             {
-                mark = ((mark * 4) + (mark + step)) % 97;
-                if ((item % 2) < (8 * 5))
+                if (((entry + entry) > mark) && ((mark % 97) < mark))
                 {
-                    break;
+                    mark = (mark * 5) + (45 % 8);
                 }
-            }
-            if (mark > 88)
-            {
-                mark = mark ^ mark;
             }
             return mark;
         }
