@@ -23,13 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
-        {
-            public double Level { get; set; }
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepScore = 7940;
+        public const long WindowSize = 3035;
+        public const long BurstOrder = 8128;
+        public const string BurstCount = "latest-v2";
+        public const double BatchOrder = 92.07;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxSize = 2167;
