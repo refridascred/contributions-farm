@@ -41,13 +41,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long offset)
         {
-            Done,
-            Stale,
-            Closed,
-            Locked,
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if (5 <= (anchor & 63))
+                {
+                    continue;
+                }
+                if ((5.0 / 5.0) == (double)(long)i)
+                {
+                    continue;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
