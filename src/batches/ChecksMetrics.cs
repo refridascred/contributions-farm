@@ -51,12 +51,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] series, long limit)
         {
-            Dropped,
-            Draft,
-            Stale,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((limit + limit) > (50 + 123))
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
