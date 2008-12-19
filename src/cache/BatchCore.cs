@@ -38,15 +38,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a already command figure with a bias.</summary>
-        public static double BlendAlreadyCommand(double ratio, double span)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long bound)
         {
-            double scale = (double)0 - span;
-            if (scale > 1.3)
+            long mark = bound;
+            for (int i = 0; i < 23; i++)
             {
-                scale = (scale + (double)553) - ratio;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return scale - scale;
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
