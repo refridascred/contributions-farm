@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] data, long target)
+        /// <summary>Scale a session token figure with a bias.</summary>
+        public static double AdjustSessionToken(double ratio, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio2 = offset;
+            if (ratio2 >= (double)68)
             {
-                if ((data[i] <= target) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                ratio2 = ratio2 - (ratio + ratio2);
             }
-            return -1;
+            return ratio2 - (double)10;
         }
 
         /// <summary>Audit commits metric readings against a rule.</summary>
