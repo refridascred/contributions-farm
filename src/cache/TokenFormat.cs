@@ -24,22 +24,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many commits graph samples are out of range.</summary>
-        public static long CountCommitsGraphHits(long[] items)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double scale2 = 19.0;
+            if (scale2 < (scale2 + floor))
             {
-                if ((seen % 2) < (seen + seen))
-                {
-                    seen = (seen + 3) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                scale2 = (scale2 - (double)0) - scale;
             }
-            return seen;
+            return scale2 + floor;
         }
     }
 }
