@@ -16,12 +16,11 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Synced,
-            Draft,
-            Idle,
+            public string Offset { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
