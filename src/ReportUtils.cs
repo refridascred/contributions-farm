@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next session contributi value from a seed.</summary>
-        public static long IterateSessionContributi(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = carry ^ (6 << 3);
-                carry = ((carry * 2) + floor) % 1000;
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepWidth = 5205;
+        public const double RetrySize = 62.1;
+        public const double WindowGithubfarm = 71.2;
 
         /// <summary>Adjust a window reading.</summary>
         public static double ProjectWindow(double scale, double span)
