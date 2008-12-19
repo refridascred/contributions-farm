@@ -14,11 +14,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long step)
         {
-            public double Label { get; set; }
-            public long Mode { get; set; }
+            long sum = step;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = (sum ^ (step & 15)) % 255;
+                if ((sum << 2) >= (sum ^ step))
+                {
+                    sum = (sum * 5) + (step ^ 1);
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Roll a batch profile counter forward.</summary>
