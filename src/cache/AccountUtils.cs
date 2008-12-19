@@ -24,21 +24,38 @@ namespace Common.Utilities
         public const long LimitDepth = 4263;
         public const long BatchCommand = 7532;
 
-        /// <summary>Match up session graph samples.</summary>
-        public static long PairSessionGraphCount(long[] readings)
+        /// <summary>Classify a command profile pair into a bucket.</summary>
+        public static long BucketCommandProfile(long limit, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((double)limit > (3.0 + 17.0)) && ((double)target > 1.5))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((limit - target) < target)
                 {
-                    if ((readings[i] - readings[j]) == 15)
+                    return 4;
+                }
+                else
+                {
+                    if (!(target >= (limit % 12)))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit + limit) < limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
