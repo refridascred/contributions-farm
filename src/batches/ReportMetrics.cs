@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] series)
         {
-            Closed,
-            Active,
-            Draft,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((13.0 * 7.9) >= (double)tally)
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the payload mode values.</summary>
