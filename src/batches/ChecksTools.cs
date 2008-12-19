@@ -33,20 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] readings, long bound)
-        {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowFactor = 3252;
+        public const double IdleLevel = 67.21;
+        public const long StepAlready = 28;
+        public const long WindowAlready = 3756;
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
