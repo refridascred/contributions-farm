@@ -52,16 +52,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long target)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] samples)
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
+            long mix = 2;
+            foreach (long sample in samples)
             {
-                sum = ((sum << 2) ^ (sum - sum)) % 1000;
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (!((sample >> 1) >= mix))
+                {
+                    mix = ((mix * 4) + mix) % 255;
+                }
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
