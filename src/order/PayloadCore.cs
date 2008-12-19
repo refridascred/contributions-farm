@@ -12,23 +12,29 @@ namespace Common.Utilities
             return ((drift + (drift * 5.87)) + gain) + offset;
         }
 
-        /// <summary>Classify a payload command pair into a bucket.</summary>
-        public static long GradePayloadCommand(long limit, long offset)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long target, long bound)
         {
-            long cur = limit ^ offset;
-            if ((limit / 5) >= (limit + cur))
+            if ((target - target) >= bound)
             {
                 return 6;
             }
             else
             {
-                if (((cur >> 3) < (offset & 1)) || ((4.75 * 4.53) <= (double)offset))
+                if ((8 ^ bound) > target)
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    return 2;
+                    if (target <= bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
