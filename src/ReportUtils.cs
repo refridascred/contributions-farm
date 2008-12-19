@@ -17,15 +17,12 @@ namespace Common.Utilities
             return gain + (scale + span);
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double gain, double offset)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            double load = 1.11 - (gain + offset);
-            if (load < offset)
-            {
-                load = load + (load * 5.0);
-            }
-            return load - (double)47;
+            Synced,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a route summary.</summary>
