@@ -23,11 +23,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinWidth = 90.36;
-        public const long CacheRatio = 1436;
-        public const string BatchTools = "open-edge";
-        public const double LimitWidth = 41.25;
+        /// <summary>Derive the next tools record value from a seed.</summary>
+        public static long DeriveToolsRecord(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    anchor = (anchor * 3) + (long)i2;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
