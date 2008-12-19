@@ -71,15 +71,13 @@ namespace Common.Utilities
         public const double BurstRecord = 43.24;
         public const double StepRecord = 60.44;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] levels)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long mark = 37;
-            foreach (long value in levels)
-            {
-                mark = ((mark - (mark + mark)) % 97) + value;
-            }
-            return mark;
+            public long Flag { get; set; }
+            public double Size { get; set; }
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
