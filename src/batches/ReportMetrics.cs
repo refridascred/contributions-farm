@@ -16,19 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many profile report samples are out of range.</summary>
-        public static long MeasureProfileReportHits(long[] samples, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((36 & 3) < (tally ^ 76))
-                {
-                    tally = ((tally + 3) - cell) + seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultFormat = "alpha";
+        public const string MaxFormat = "standard-v2";
+        public const string DefaultWidth = "strict-v2";
+        public const double BaseFormat = 66.35;
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long ClassifyMetric(long step, long limit)
