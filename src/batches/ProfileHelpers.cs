@@ -40,17 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] items, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 50;
+            foreach (long sample in series)
             {
-                if (items[i] > origin)
+                acc = (acc << 2) ^ (479 + acc);
+                acc = (acc - acc) % 1000;
+                if (83 <= sample)
                 {
-                    return (long)i;
+                    acc = acc + (sample % 5);
                 }
             }
-            return -1;
+            if (acc > 793)
+            {
+                acc = acc + (acc * 5);
+            }
+            return acc;
         }
 
         /// <summary>Combine command values into a single score.</summary>
