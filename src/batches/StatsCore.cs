@@ -55,13 +55,20 @@ namespace Common.Utilities
         public const long DefaultSize = 9366;
         public const long MaxInterval = 5747;
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long seed)
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public double Region { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                long next = carry;
+                if (seed < (carry ^ next))
+                {
+                    carry = carry - (next ^ seed);
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
