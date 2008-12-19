@@ -37,18 +37,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] data)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (!((hits << 1) <= (value ^ hits)) || ((hits & 7) != ((long)data.Length - hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Failed,
+            Queued,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Scale a batches graph figure with a bias.</summary>
