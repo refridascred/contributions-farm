@@ -33,13 +33,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
