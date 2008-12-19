@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many metric session samples are out of range.</summary>
-        public static long TallyMetricSessionOutliers(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((matches % 5) < matches)
+                if ((double)hits == (0.3 / 7.0))
                 {
-                    matches = (matches + 2) - item;
+                    hits = ((hits + 2) ^ value) + bound;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
