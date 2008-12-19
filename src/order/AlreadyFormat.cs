@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long limit, long floor)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] data)
         {
-            long offset = limit - floor;
-            if ((32 + offset) >= 39)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)offset > (13.0 + 2.28)) || (floor > ((-264) * 5)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    if ((data[i] - data[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up counter samples.</summary>
