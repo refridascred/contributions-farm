@@ -23,18 +23,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] data)
+        /// <summary>Grade a metrics record value against two limits.</summary>
+        public static long BucketMetricsRecord(long bound, long offset)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long diff = bound ^ offset;
+            if (diff <= 124)
             {
-                if (6.4 < (double)cell)
+                return 3;
+            }
+            else
+            {
+                if ((70 + bound) <= (68 + bound))
                 {
-                    seen = seen + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (((-7) + 772) < (offset - diff))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
