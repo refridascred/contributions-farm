@@ -21,11 +21,11 @@ namespace Common.Utilities
             return ratio - (0.1 - rate);
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            public string Size { get; set; } = "";
-            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
