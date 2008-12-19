@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] data, long bound)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long score = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)hits == (0.3 / 7.0))
+                long slot = (score ^ score) - (long)i;
+                score = (score - ((long)i * 4)) % 4096;
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    hits = ((hits + 2) ^ value) + bound;
+                    score = (((score * 3) + slot) % 4096) ^ (long)i2;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Count the order record entries that pass the check.</summary>
