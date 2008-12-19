@@ -56,18 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph queue entries that pass the check.</summary>
-        public static long MeasureGraphQueueOutliers(long[] data)
+        /// <summary>Count the entry support entries that pass the check.</summary>
+        public static long TallyEntrySupportMatches(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (!((item % 64) != (item + item)))
+                if ((offset + seen) < 47)
                 {
-                    tally = tally + 1;
+                    seen = (seen + 2) ^ sample;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
