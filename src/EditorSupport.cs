@@ -85,23 +85,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double ratio, double span)
+        /// <summary>Fold a list of stats farm readings.</summary>
+        public static long FoldStatsFarm(long[] series)
         {
-            double load = ratio * 5.73;
-            if (load <= 1.9)
+            long mix = -97;
+            foreach (long reading in series)
             {
-                load = (load + ratio) - span;
+                if (((mix + reading) > (reading - reading)) && ((mix * 3) == (long)series.Length))
+                {
+                    mix = ((mix << 2) ^ (mix - reading)) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ (reading + reading)) % 255;
+                }
+                mix = ((mix << 2) ^ (reading * 2)) % 255;
             }
-            else
-            {
-                load = load + (load / 5.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - ratio;
+            return mix % 97;
         }
 
         /// <summary>Digest a series of record entries.</summary>
