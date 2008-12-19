@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] series)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (!((value % 64) > 27))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public double Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
