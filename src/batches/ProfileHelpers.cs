@@ -41,19 +41,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] series, long origin)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long seed, long target)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long next = seed + target;
+            if (seed < 7)
             {
-                if (reading >= origin)
+                return 0;
+            }
+            else
+            {
+                if ((3.0 <= (double)next) || ((target & 255) <= target))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed & 31) > (target - seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
