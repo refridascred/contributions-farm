@@ -33,14 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] levels, long offset)
         {
-            Failed,
-            Stale,
-            Synced,
-            Active,
-            Dropped,
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
