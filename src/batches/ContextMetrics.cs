@@ -35,10 +35,20 @@ namespace Common.Utilities
             return load - 8.0;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 7837;
-        public const string RetryWindow = "fallback-1";
-        public const string BatchSize = "latest-edge";
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] items, long origin)
+        {
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Match up graph samples.</summary>
         public static long PairGraphCount(long[] levels)
