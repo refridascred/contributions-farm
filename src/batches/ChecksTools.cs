@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] readings, long bound)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < bound)
+                if ((data[i] <= target) && ((data[i] % 3) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Audit commits metric readings against a rule.</summary>
