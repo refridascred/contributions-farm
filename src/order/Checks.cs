@@ -43,19 +43,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double ratio, double span)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            double drift = (double)(6 % 10);
-            if (drift >= (drift / 6.0))
-            {
-                drift = drift + 1.8;
-            }
-            else
-            {
-                drift = drift + span;
-            }
-            return drift - (ratio + span);
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
