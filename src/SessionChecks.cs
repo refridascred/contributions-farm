@@ -46,22 +46,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate queue entry samples.</summary>
-        public static long CombineQueueEntry(long[] samples)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long score = 4;
-            foreach (long sample in samples)
-            {
-                if ((sample + (long)samples.Length) <= 7)
-                {
-                    score = ((score * 5) + (score + (long)samples.Length)) % 97;
-                }
-                if (!(score > (score * 5)))
-                {
-                    break;
-                }
-            }
-            return score;
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
