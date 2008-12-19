@@ -19,22 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] items, long offset)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long result = 130;
+            foreach (long datum in readings)
             {
-                if (787 >= (offset * 4))
+                if (((4.54 + 1.2) != (double)(long)readings.Length) && ((52 - 191) < target))
                 {
-                    hits = (hits + 1) - cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    result = (((result << 2) ^ target) % 1000) ^ datum;
                 }
             }
-            return hits;
+            if (result < 534)
+            {
+                result = (result - (result + result)) % 101;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a profile stats.</summary>
