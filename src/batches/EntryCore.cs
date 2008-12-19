@@ -21,13 +21,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] readings, long offset)
         {
-            Failed,
-            Locked,
-            Ready,
-            Draft,
+            long anchor = 88;
+            foreach (long value in readings)
+            {
+                if ((value & 127) != (offset + anchor))
+                {
+                    anchor = ((anchor * 3) + (anchor - anchor)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
