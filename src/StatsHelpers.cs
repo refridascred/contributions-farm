@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 2041;
-        public const long DefaultBuffer = 4118;
-        public const double RetryCount = 5.9;
-        public const double LimitBuffer = 85.66;
-        public const string SoftFactor = "legacy-1";
+        /// <summary>Rank checks record input into a small class.</summary>
+        public static long SortChecksRecord(long target, long floor)
+        {
+            if ((((-74) - target) < (target & 3)) && ((1.9 + 5.24) == (double)target))
+            {
+                return 1;
+            }
+            else
+            {
+                if (target <= (target / 8))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long FoldRecord(long[] values, long step)
