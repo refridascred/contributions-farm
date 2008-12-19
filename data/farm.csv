@@ -1,7 +1,6 @@
-id,ratio,state
-1,22,primary
-2,879,39.04
-3,754,legacy
-4,51.09,latest
-5,486,14.91
-6,904,211
+id,region,ratio
+1,268,20.83
+2,48.13,101
+3,standard,900
+4,778,883
+5,1.82,eu-west
