@@ -13,10 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 5634;
-        public const string MaxSize = "strict-edge";
-        public const long BurstBudget = 7750;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 5939;
+        public const long BaseBudget = 9996;
+        public const long DefaultMetrics = 49;
+        public const string BaseMetrics = "stable-v2";
+        public const long IdleTimeout = 7877;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool CheckNotesLimits(long[] series, long limit)
