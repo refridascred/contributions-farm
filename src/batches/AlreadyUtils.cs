@@ -44,11 +44,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxSize = 5376;
-        public const double CacheToken = 77.38;
-        public const string WindowToken = "staging";
-        public const long WindowInterval = 1736;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BaseBudget = 47.84;
+        public const string MinPayload = "fallback-v2";
+        public const long BurstFactor = 4180;
 
         /// <summary>Adjust a format reading.</summary>
         public static double SmoothFormat(double weight, double bias)
