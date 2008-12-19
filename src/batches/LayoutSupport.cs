@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long offset)
+        /// <summary>Iterate the filter token series from a seed.</summary>
+        public static long SeriesFilterToken(long target)
         {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
+            long total = target;
+            for (int i = 0; i < 14; i++)
             {
-                long slot = (score ^ score) - (long)i;
-                score = (score - ((long)i * 4)) % 4096;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    score = (((score * 3) + slot) % 4096) ^ (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 4093;
+                total = (total * 3) + (total - (long)i);
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Check that every entry account entry stays within the limit.</summary>
