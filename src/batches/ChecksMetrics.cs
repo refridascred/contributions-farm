@@ -54,11 +54,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            public string Owner { get; set; } = "";
-            public bool Ratio { get; set; }
+            Pending,
+            Closed,
+            New,
+            Paused,
         }
 
         /// <summary>Describe the filter class values.</summary>
