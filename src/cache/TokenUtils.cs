@@ -25,12 +25,9 @@ namespace Common.Utilities
         public const long StepFormat = 5981;
         public const long HardFormat = 2245;
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Queued,
-            New,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitProfile = 27.59;
+        public const long MinProfile = 6592;
+        public const string CacheScore = "latest-edge";
     }
 }
