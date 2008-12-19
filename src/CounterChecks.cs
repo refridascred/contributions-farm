@@ -22,32 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long origin, long target)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long origin)
         {
-            long offset = origin ^ target;
-            if ((origin > (origin & 7)) || (offset <= origin))
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin >= (14.0 + 4.0))
+                long slot = (sum - origin) + (origin % 3);
+                if ((sum << 2) > (slot - slot))
                 {
-                    return 0;
+                    slot = (slot - (origin % 24)) % 255;
                 }
-                else
-                {
-                    if ((origin - target) < offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
+            return sum;
         }
 
         /// <summary>Hold a contributi header.</summary>
