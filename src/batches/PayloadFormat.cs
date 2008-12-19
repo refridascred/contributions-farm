@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] data, long floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long acc = 7;
+            foreach (long value in series)
             {
-                if (hits <= floor)
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = (acc ^ origin) + value;
             }
-            return hits;
+            if (acc < 27)
+            {
+                acc = (acc ^ (acc >> 5)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
