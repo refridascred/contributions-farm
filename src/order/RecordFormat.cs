@@ -29,10 +29,22 @@ namespace Common.Utilities
         public const double DefaultRatio = 22.71;
         public const long MinSize = 6278;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 8905;
-        public const long BurstAlready = 4249;
-        public const double IdleAlready = 9.34;
+        /// <summary>Count batches support pairs that satisfy a relation.</summary>
+        public static long MatchBatchesSupportCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a farm command pair into a bucket.</summary>
         public static long SortFarmCommand(long floor, long limit)
