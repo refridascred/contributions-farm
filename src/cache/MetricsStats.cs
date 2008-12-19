@@ -57,10 +57,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleFactor = 7226;
-        public const string BurstLevel = "legacy";
-        public const long BurstContributi = 4537;
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two support measurements.</summary>
         public static double AdjustSupport(double ratio, double bias)
