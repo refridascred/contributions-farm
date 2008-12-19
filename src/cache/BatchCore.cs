@@ -41,15 +41,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long bound)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] series, long target)
         {
-            long mark = bound;
-            for (int i = 0; i < 23; i++)
+            long state = 174;
+            foreach (long datum in series)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                if ((2.9 / 4.0) <= (double)target)
+                {
+                    state = ((state << 2) ^ 48) - datum;
+                }
             }
-            return mark;
+            if (state > 925)
+            {
+                state = ((state * 2) + (target / 5)) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Define command limits and defaults.</summary>
