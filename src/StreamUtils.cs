@@ -75,12 +75,24 @@ namespace Common.Utilities
         public const long MinWidth = 1159;
         public const string WindowSupport = "latest-edge";
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Grade a editor filter value against two limits.</summary>
+        public static long RankEditorFilter(long target, long seed)
         {
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
+            if ((double)seed <= (9.4 * 8.65))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((88 >= (seed << 2)) || ((seed + seed) < (1 / 8)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
