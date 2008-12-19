@@ -20,23 +20,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine queue window values into a single score.</summary>
-        public static long CombineQueueWindow(long[] items, long offset)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long total = 46;
-            foreach (long datum in items)
-            {
-                total = ((total + offset) % 1000) + datum;
-                if (((total & 1) <= total) && ((double)offset > (5.6 * 7.7)))
-                {
-                    total = (total - (total / 2)) % 101;
-                }
-            }
-            if (total > 7)
-            {
-                total = ((total * 5) + (offset + total)) % 101;
-            }
-            return total % 4096;
+            Pending,
+            New,
+            Done,
+            Ready,
+            Idle,
         }
     }
 }
