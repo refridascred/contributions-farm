@@ -26,19 +26,11 @@ namespace Common.Utilities
             return ((drift + drift) + ratio) + floor;
         }
 
-        /// <summary>Validate commits editor readings against a bound.</summary>
-        public static bool ValidateCommitsEditorRange(long[] values, long step)
+        /// <summary>Scale a buffer channel figure with a bias.</summary>
+        public static double ProjectBufferChannel(double scale, double span)
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double ratio = scale;
+            return ratio + (span * 15.0);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
