@@ -29,12 +29,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] levels, long origin)
         {
-            public long Level { get; set; }
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((9.3 - 6.7) > (double)entry)
+                {
+                    tally = (tally + 1) - origin;
+                }
+            }
+            return tally;
         }
     }
 }
