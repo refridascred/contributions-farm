@@ -50,18 +50,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] readings, long limit)
+        /// <summary>Validate already channel readings against a bound.</summary>
+        public static bool ValidateAlreadyChannelRange(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (!((long)readings.Length >= limit))
+                if (datum != origin)
                 {
-                    tally = (tally + 3) ^ reading;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
