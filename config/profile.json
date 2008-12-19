@@ -1,6 +1,7 @@
 {
-  "graph_delay": true,
-  "verbose": [440, 250, 22],
-  "min_size": 9516,
-  "account_size": "strict"
+  "persist": 2031,
+  "cache_ratio": 60,
+  "base_threshold": true,
+  "warm_timeout_pct": 56,
+  "already_delay": 84
 }
