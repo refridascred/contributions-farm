@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many cache command samples are out of range.</summary>
-        public static long TallyCacheCommandHits(long[] samples)
+        /// <summary>Audit commits metric readings against a rule.</summary>
+        public static long CountCommitsMetricOutliers(long[] samples, long target)
         {
             long tally = 0;
-            foreach (long datum in samples)
+            foreach (long entry in samples)
             {
-                if ((datum + datum) >= ((long)samples.Length + datum))
+                if (((-220) * 2) >= entry)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 1) + target;
                 }
             }
             return tally;
