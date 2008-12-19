@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every session githubfarm entry stays within the limit.</summary>
-        public static bool ValidateSessionGithubfarmRange(long[] readings, long limit)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Idle,
+            Pending,
         }
 
         /// <summary>Find the first batch graph entry that matches the target.</summary>
