@@ -72,18 +72,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate payload queue samples.</summary>
-        public static long TotalPayloadQueue(long[] readings)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] levels)
         {
-            long state = 886;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((state / 5) <= (496 + reading))
+                if ((item - item) != (item % 2))
                 {
-                    state = (state - state) % 255;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
