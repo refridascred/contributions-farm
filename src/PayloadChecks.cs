@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public bool Mode { get; set; }
-            public double Rank { get; set; }
+            New,
+            Locked,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
