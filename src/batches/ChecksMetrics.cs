@@ -63,21 +63,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count already stream pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyStreamCount(long[] readings)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Done,
+            Locked,
         }
     }
 }
