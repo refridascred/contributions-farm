@@ -41,19 +41,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate schema command readings against a bound.</summary>
-        public static bool VerifySchemaCommandRange(long[] values, long bound)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Failed,
+            Idle,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define command limits and defaults.</summary>
