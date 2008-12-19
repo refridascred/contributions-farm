@@ -18,11 +18,22 @@ namespace Common.Utilities
         public const long RetryDepth = 7759;
         public const long WindowChecks = 6872;
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] samples, long seed)
         {
-            public bool Mode { get; set; }
-            public double Count { get; set; }
+            long total = -2;
+            foreach (long cell in samples)
+            {
+                if (seed < (660 * 3))
+                {
+                    total = total - (cell - seed);
+                }
+            }
+            if (total > (-1))
+            {
+                total = ((total * 4) + total) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a schema options.</summary>
