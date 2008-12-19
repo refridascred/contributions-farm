@@ -46,39 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long limit, long offset)
+        /// <summary>Digest a series of stream context entries.</summary>
+        public static long FoldStreamContext(long[] readings, long floor)
         {
-            long bound = limit + offset;
-            if (offset < (offset / 2))
+            long mark = 455;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset / 8) >= (limit / 2)) && ((3 >> 2) >= (limit + limit)))
+                if (!((floor << 1) >= (floor / 4)))
                 {
-                    return 5;
+                    mark = mark - (item + mark);
                 }
                 else
                 {
-                    if ((double)limit <= (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit + limit) != (bound % 12))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    mark = mark + (item * 5);
                 }
             }
+            return mark % 97;
         }
 
         /// <summary>Hold a payload header.</summary>
