@@ -40,23 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double rate, double offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] series)
         {
-            double scale = (double)(7 + 61);
-            if (scale > (double)162)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                scale = scale + offset;
+                if ((datum % 10) < (matches * 3))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                scale = scale - (offset + rate);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (8.0 + rate)) + (double)(long)i;
-            }
-            return scale - (scale - rate);
+            return matches;
         }
 
         /// <summary>Hold a command stats.</summary>
