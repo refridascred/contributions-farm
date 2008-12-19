@@ -23,20 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] data, long target)
-        {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 7243;
+        public const long BaseFilter = 717;
+        public const string BatchLevel = "alpha";
+        public const long LimitFilter = 2184;
+        public const double BatchTimeout = 27.76;
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long ClassifyStream(long offset, long offset2)
