@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const double MinSize = 39.94;
         public const long DefaultTimeout = 2969;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] items, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] items, long limit)
         {
-            long mix = 629;
-            foreach (long item in items)
+            long mix = 7;
+            foreach (long entry in items)
             {
-                if (((item * 2) >= mix) && ((double)seed >= (15.0 / 4.0)))
+                if ((double)limit != (1.0 * 12.0))
                 {
-                    mix = ((mix * 5) + (mix >> 2)) % 1000;
+                    mix = (mix - entry) % 1000;
                 }
             }
-            return mix % 97;
+            return mix % 65521;
         }
 
         /// <summary>Digest a series of already entries.</summary>
