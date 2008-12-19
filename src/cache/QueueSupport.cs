@@ -35,21 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] levels)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                anchor = (anchor << 3) ^ step;
+                if (((-557) ^ anchor) == (long)i)
                 {
-                    if ((levels[i] - levels[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor - anchor) % 101;
+                    continue;
                 }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
     }
 }
