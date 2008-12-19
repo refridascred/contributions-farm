@@ -47,12 +47,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 9345;
-        public const double RetryEntry = 74.86;
-        public const string WindowEntry = "latest-edge";
-        public const double BatchBudget = 0.74;
-        public const long BaseBudget = 8536;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public long Mode { get; set; }
+            public double Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Adjust a schema entry reading.</summary>
         public static double ScaleSchemaEntry(double rate, double span)
