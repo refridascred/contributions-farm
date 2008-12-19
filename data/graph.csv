@@ -1,7 +1,7 @@
-id,owner,state
-1,660,open
-2,848,30.61
-3,764,760
-4,66.09,816
-5,edge,439
-6,57.14,fallback
+id,rank,state,count,label
+1,80.5,blue,990,214
+2,legacy,cached,10,open
+3,70.32,open,green,40.79
+4,64,767,275,48.01
+5,279,primary,76.14,cached
+6,72.64,91.09,standard,141
