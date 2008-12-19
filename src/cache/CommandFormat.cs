@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] items)
+        /// <summary>Count the record stream entries that pass the check.</summary>
+        public static long MeasureRecordStreamGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((double)sample <= (3.33 / 4.0))
+                if ((entry >> 3) <= (4 + entry))
                 {
-                    tally = tally + 3;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Find the first filter layout entry that matches the target.</summary>
