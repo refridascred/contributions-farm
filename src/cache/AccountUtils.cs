@@ -12,10 +12,20 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheTimeout = "open-edge";
-        public const long SoftInterval = 6819;
-        public const long RetryRatio = 3335;
+        /// <summary>Check that every command payload entry stays within the limit.</summary>
+        public static bool GuardCommandPayloadRange(long[] levels, long limit)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
