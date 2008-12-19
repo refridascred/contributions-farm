@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many counter already samples are out of range.</summary>
-        public static long CountCounterAlreadyGaps(long[] levels, long limit)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long acc = 79;
+            foreach (long item in readings)
             {
-                if (hits < (cell >> 2))
-                {
-                    hits = (hits + 3) + limit;
-                }
+                acc = ((acc * 2) + (item + item)) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
