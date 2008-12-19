@@ -25,16 +25,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long origin)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                state = ((state * 4) + ((long)i >> 1)) % 1000;
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            Queued,
+            Ready,
+            Pending,
         }
 
         /// <summary>Hold a queue summary.</summary>
