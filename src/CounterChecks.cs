@@ -25,19 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate channel token readings against a bound.</summary>
-        public static bool CheckChannelTokenLimits(long[] readings, long seed)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Paused,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a contributi header.</summary>
