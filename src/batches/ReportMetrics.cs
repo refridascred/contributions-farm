@@ -16,22 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] levels)
+        /// <summary>Measure how many profile report samples are out of range.</summary>
+        public static long MeasureProfileReportHits(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((double)count >= (18.0 - 9.0))
+                if ((36 & 3) < (tally ^ 76))
                 {
-                    count = (count + 1) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = ((tally + 3) - cell) + seed;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
