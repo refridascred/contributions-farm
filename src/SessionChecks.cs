@@ -20,10 +20,20 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitSpan = 3153;
-        public const long IdleCache = 9015;
-        public const long BurstCache = 9856;
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double gain, double span)
+        {
+            double mean = span;
+            if (mean < (mean * 5.65))
+            {
+                mean = mean - (gain - 3.58);
+            }
+            else
+            {
+                mean = mean + (mean + 14.0);
+            }
+            return mean - mean;
+        }
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
