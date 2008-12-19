@@ -1,5 +1,9 @@
 {
-  "poll_depth_s": ["edge", "local"],
-  "sync_delay_count": [404, 150],
-  "warm_ratio": [31, 297, 444, 365]
+  "idle_ttl_s": 30,
+  "record_interval": false,
+  "hard_timeout": {
+    "retry_limit_count": 89.84,
+    "default_capacity_pct": "eu-west",
+    "hard_timeout_pct": "eu-west"
+  }
 }
