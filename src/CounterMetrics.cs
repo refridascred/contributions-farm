@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long step, long target)
-        {
-            if (((8 >> 2) == (step + target)) && ((5.3 / 5.0) < (double)target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step >> 3) <= step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchScore = "strict-1";
+        public const long HardMetric = 6750;
+        public const double RetryMetric = 50.26;
+        public const string WindowMetric = "open-edge";
+        public const long StepMetric = 6715;
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long IterateFarm(long seed)
