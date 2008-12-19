@@ -35,15 +35,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of window cluster readings.</summary>
-        public static long ScoreWindowCluster(long[] values)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] values)
         {
-            long mark = 495;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = mark + ((long)values.Length + reading);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
