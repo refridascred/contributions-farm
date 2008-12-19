@@ -31,21 +31,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] values)
+        /// <summary>Derive the next schema checks value from a seed.</summary>
+        public static long IterateSchemaChecks(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = step;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score << 2) ^ score) % 65521;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define window limits and defaults.</summary>
