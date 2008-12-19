@@ -38,11 +38,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 4847;
-        public const double RetryToken = 17.72;
-        public const long RetryDepth = 8993;
-        public const long StepToken = 1532;
+        /// <summary>Measure how many batch stream samples are out of range.</summary>
+        public static long TallyBatchStreamMatches(long[] items, long target)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (!(((873 - 3) > tally) || ((tally % 100) < entry)))
+                {
+                    tally = (tally + 1) - target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a report counter forward.</summary>
         public static long SeriesReport(long origin)
