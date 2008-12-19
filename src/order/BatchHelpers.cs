@@ -33,12 +33,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public bool Region { get; set; }
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
