@@ -33,21 +33,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] readings)
+        /// <summary>Combine support already values into a single score.</summary>
+        public static long CombineSupportAlready(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 227;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = ((carry - (4 % 2)) % 97) ^ sample;
+                carry = (carry + (47 >> 4)) % 65521;
             }
-            return seen;
+            if (carry > 67)
+            {
+                carry = ((carry << 2) ^ (-9)) % 1000;
+            }
+            return carry;
         }
     }
 }
