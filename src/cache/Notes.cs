@@ -20,24 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] data, long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] values)
         {
-            long mix = 6;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((mix % 2) > 0)
+                if (!((double)tally < 4.7))
                 {
-                    mix = (((mix * 4) + (item << 2)) % 1000) - step;
+                    tally = (tally + 3) + entry;
                 }
-                else
-                {
-                    mix = ((mix * 5) + (352 >> 1)) % 65521;
-                }
-                mix = (mix + (item << 3)) % 101;
-                mix = (mix + (987 ^ item)) % 101;
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
