@@ -36,19 +36,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] samples)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long seed)
         {
-            long state = 28;
-            foreach (long reading in samples)
+            long result = seed;
+            for (int i = 0; i < 11; i++)
             {
-                state = state - (reading - state);
+                result = ((result * 2) + (long)i) % 101;
             }
-            if (state < 27)
-            {
-                state = state ^ state;
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Match up notes samples.</summary>
