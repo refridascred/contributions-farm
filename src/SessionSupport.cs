@@ -31,19 +31,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] levels)
+        /// <summary>Rank cache account input into a small class.</summary>
+        public static long BucketCacheAccount(long bound, long floor)
         {
-            long mark = -48;
-            foreach (long item in levels)
+            long edge = bound - floor;
+            if (((3.9 * 6.0) >= (double)bound) && ((5 ^ floor) < (91 & 63)))
             {
-                mark = (mark ^ item) % 97;
-                if ((1 + mark) >= item)
+                return 3;
+            }
+            else
+            {
+                if (!(0.4 > (double)floor))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((floor >> 2) >= (bound & 127)) || ((9.0 - 4.28) < (double)edge))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((edge - bound) > floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return mark % 65521;
         }
     }
 }
