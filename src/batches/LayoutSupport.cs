@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate schema format samples.</summary>
-        public static long CombineSchemaFormat(long[] data, long step)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] values)
         {
-            long score = 87;
-            foreach (long entry in data)
+            long result = 181;
+            foreach (long entry in values)
             {
-                score = ((score * 3) + entry) + step;
+                if ((result * 2) > (entry - 24))
+                {
+                    result = (result << 2) ^ entry;
+                }
             }
-            return score;
+            if (result > 37)
+            {
+                result = result + (result + result);
+            }
+            return result % 97;
         }
 
         /// <summary>Check that every entry account entry stays within the limit.</summary>
