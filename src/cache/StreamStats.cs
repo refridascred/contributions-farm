@@ -37,18 +37,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] values, long limit)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)cell <= 7.7)
+                if (readings[i] >= step)
                 {
-                    matches = (matches + 2) + limit;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
