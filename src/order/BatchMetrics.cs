@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of githubfarm stream entries.</summary>
-        public static long TallyGithubfarmStream(long[] series)
-        {
-            long carry = 5;
-            foreach (long datum in series)
-            {
-                if ((datum << 1) < carry)
-                {
-                    carry = (carry + (carry * 2)) % 65521;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 1890;
+        public const long HardQueue = 7491;
+        public const double BaseQueue = 60.13;
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
