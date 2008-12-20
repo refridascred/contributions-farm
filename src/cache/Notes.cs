@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] readings, long step)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long origin)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long total = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Blend two layout measurements.</summary>
