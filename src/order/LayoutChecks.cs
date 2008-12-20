@@ -68,19 +68,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] samples, long floor)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long acc = 7;
-            foreach (long cell in samples)
-            {
-                acc = ((acc - (acc / 6)) % 101) + cell;
-            }
-            if (acc < (-59))
-            {
-                acc = (acc * 4) + (7 - floor);
-            }
-            return acc;
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
