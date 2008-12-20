@@ -31,20 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] data, long bound)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long anchor = 6;
-            foreach (long entry in data)
-            {
-                anchor = anchor - (8 - bound);
-                anchor = ((anchor << 2) ^ entry) % 101;
-            }
-            if (anchor > 42)
-            {
-                anchor = ((anchor << 3) ^ (anchor / 2)) % 1000;
-            }
-            return anchor % 97;
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
