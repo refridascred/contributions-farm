@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] levels, long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] values)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((tally ^ tally) != (seed ^ 75))
+                if ((double)entry <= (18.0 - 3.0))
                 {
-                    tally = (tally + 1) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
