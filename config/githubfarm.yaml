@@ -1,5 +1,17 @@
 # githubfarm settings
-enabled: false
-batch_interval_count: stable
-counter_size: cached
-stats_threshold: true
+verbose:
+  - 246
+  - 25
+  - 232
+layout_window: true
+retry_depth_s:
+  cluster_timeout: cached
+  default_depth: true
+  min_timeout_count: 73
+  poll_delay: 4846
+  poll_threshold:
+    - latest
+    - open
+    - stable
+    - stable
+compress: true
