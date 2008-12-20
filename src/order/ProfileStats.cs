@@ -25,25 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long bound, long offset)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long floor)
         {
-            long span = bound + offset;
-            if ((bound + span) >= 3)
+            long total = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
+                total = (total - (long)i) % 101;
+                total = ((total * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((offset > bound) && ((double)offset == (double)4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return total;
         }
 
         /// <summary>Match up session channel samples.</summary>
