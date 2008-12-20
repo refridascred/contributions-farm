@@ -16,22 +16,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit metric checks readings against a rule.</summary>
-        public static long MeasureMetricChecksMatches(long[] samples)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long offset, long step)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            if ((double)step > (double)74)
             {
-                if (entry > (entry << 2))
+                return 1;
+            }
+            else
+            {
+                if (((step + step) >= (61 + 3)) && (2.7 <= (1.75 - 1.0)))
                 {
-                    count = count + 3;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
