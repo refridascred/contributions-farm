@@ -1,5 +1,6 @@
 # support settings
-flush_size_ms: true
-warm_limit: standard
-editor_size: 1382
-stream_depth: false
+dry_run: 57.67
+compress: 4256
+flush_depth_pct: legacy
+verbose: edge
+burst_interval_s: 10.33
