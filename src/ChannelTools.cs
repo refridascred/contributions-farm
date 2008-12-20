@@ -38,9 +38,22 @@ namespace Common.Utilities
         public const double CacheTools = 13.55;
         public const long SoftTools = 8267;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseStats = "alpha";
-        public const double HardCount = 9.98;
-        public const string WindowWidth = "standard-1";
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] items, long offset)
+        {
+            long mix = 7;
+            foreach (long reading in items)
+            {
+                if (offset <= (-15))
+                {
+                    mix = ((mix << 3) ^ (reading + reading)) % 65521;
+                }
+            }
+            if (mix > 8)
+            {
+                mix = (mix ^ (mix ^ offset)) % 65521;
+            }
+            return mix % 97;
+        }
     }
 }
