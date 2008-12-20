@@ -20,11 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] values, long offset)
         {
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((((4.6 - 18.0) <= (double)offset) && ((offset * 5) == (offset << 3))) || ((double)offset != (3.2 - 9.2)))
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine format values into a single score.</summary>
