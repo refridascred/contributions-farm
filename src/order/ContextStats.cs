@@ -47,19 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] series, long seed)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Count { get; set; }
+            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
