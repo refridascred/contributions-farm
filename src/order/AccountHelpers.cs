@@ -38,24 +38,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long floor, long step)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            if (!((double)step <= 0.71))
-            {
-                return 6;
-            }
-            else
-            {
-                if (floor > (step ^ floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a already summary.</summary>
