@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long MinScore = 3771;
         public const long MaxChannel = 3671;
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] values)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] items, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 10;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)state > (4.87 - 9.0))
                 {
-                    if ((values[i] - values[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state << 3) ^ (item & 127)) - limit;
                 }
             }
-            return matches;
+            return state % 65521;
         }
 
         /// <summary>Roll a githubfarm layout counter forward.</summary>
