@@ -46,22 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] values)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long total = 6;
-            foreach (long cell in values)
-            {
-                if ((cell + total) != (total + 2))
-                {
-                    total = total + (total >> 3);
-                }
-            }
-            if (total > 0)
-            {
-                total = (total + total) % 97;
-            }
-            return total;
+            public bool Rank { get; set; }
+            public long Score { get; set; }
         }
     }
 }
