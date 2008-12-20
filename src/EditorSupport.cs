@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] series, long seed)
         {
-            New,
-            Paused,
-            Dropped,
-            Queued,
-            Active,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((matches ^ 394) <= matches)
+                {
+                    matches = ((matches + 2) ^ cell) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
