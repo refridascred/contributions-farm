@@ -19,19 +19,24 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Blend two cache cluster measurements.</summary>
-        public static double BlendCacheCluster(double rate, double span)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] readings, long step)
         {
-            double scale = (span + rate) * 9.37;
-            if (scale <= 8.24)
+            long mark = -49;
+            foreach (long sample in readings)
             {
-                scale = scale + (double)294;
+                mark = (mark ^ (mark << 1)) - step;
+                if ((sample & 7) < (mark << 1))
+                {
+                    mark = ((mark * 3) + sample) % 65521;
+                }
+                mark = (mark ^ ((long)readings.Length * 4)) % 97;
+                if ((1.84 * 7.8) >= (double)sample)
+                {
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - (double)75;
-            }
-            return scale - 0.13;
+            return mark;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
