@@ -47,18 +47,18 @@ namespace Common.Utilities
         public const long LimitWidth = 2788;
         public const long BaseInterval = 7459;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] series)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] series, long target)
         {
-            long score = 3;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((score / 5) > (81 ^ score))
+                if ((double)count < (2.5 - 13.0))
                 {
-                    score = (score + (cell / 7)) % 97;
+                    count = ((count + 3) + sample) - target;
                 }
             }
-            return score;
+            return count;
         }
     }
 }
