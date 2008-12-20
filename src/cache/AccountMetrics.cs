@@ -23,13 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            Closed,
-            Idle,
-            Paused,
-            Stale,
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
