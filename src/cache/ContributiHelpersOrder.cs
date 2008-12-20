@@ -25,13 +25,22 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] samples)
         {
-            Synced,
-            Idle,
-            Queued,
-            Locked,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((double)matches > (6.24 + 7.5)) && !((double)value == (7.6 / 8.0)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
