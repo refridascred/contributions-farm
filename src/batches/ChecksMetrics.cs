@@ -76,14 +76,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long origin)
         {
-            Done,
-            Retry,
-            Synced,
-            Ready,
-            Locked,
+            long result = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
