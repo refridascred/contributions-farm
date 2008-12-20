@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] samples, long bound)
         {
-            Pending,
-            Locked,
-            Paused,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)bound < (4.2 + 15.0))
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
