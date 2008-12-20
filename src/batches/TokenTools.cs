@@ -32,9 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 7170;
-        public const long SoftGithubfarm = 6454;
-        public const string IdleGithubfarm = "legacy-v2";
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public bool Size { get; set; }
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
+        }
     }
 }
