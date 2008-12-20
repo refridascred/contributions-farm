@@ -27,31 +27,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a contributi channel pair into a bucket.</summary>
-        public static long RankContributiChannel(long target, long target2)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            if ((target * 2) < (target2 * 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if (460 < target2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target ^ target2) > (target2 + target2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public double Token { get; set; }
+            public bool Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the already status values.</summary>
