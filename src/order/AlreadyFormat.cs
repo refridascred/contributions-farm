@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 4620;
-        public const long WindowSpan = 5566;
-        public const long DefaultBudget = 206;
-        public const long WindowRatio = 3353;
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
+        {
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LookupRecordIndex(long[] data, long step)
