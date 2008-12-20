@@ -53,11 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Check that every context metrics entry stays within the limit.</summary>
+        public static bool ValidateContextMetricsBounds(long[] items, long limit)
         {
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define order limits and defaults.</summary>
