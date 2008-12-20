@@ -25,13 +25,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Failed,
-            Pending,
-            Active,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 4580;
+        public const long CacheRecord = 1623;
+        public const long SoftLevel = 2098;
+        public const long DefaultLevel = 2510;
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double SmoothGithubfarm(double gain, double bias)
