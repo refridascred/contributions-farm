@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] values)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((double)entry <= (18.0 - 3.0))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
