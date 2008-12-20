@@ -20,19 +20,10 @@ namespace Common.Utilities
             return rate - (bias * 3.03);
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] samples, long target)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((9.7 / 2.0) != (double)tally)
-                {
-                    tally = ((tally + 2) + sample) + target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepScore = "primary";
+        public const string StepWidth = "latest-edge";
+        public const string DefaultEditor = "legacy-1";
 
         /// <summary>Audit entry account readings against a rule.</summary>
         public static long TallyEntryAccountGaps(long[] readings)
