@@ -22,15 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] data, long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] series)
         {
             long seen = 0;
-            foreach (long sample in data)
+            foreach (long item in series)
             {
-                if ((sample + seen) <= (origin / 3))
+                if (!((seen - 2) > 0))
                 {
-                    seen = seen + 3;
+                    seen = (seen + 3) - item;
                 }
             }
             return seen;
