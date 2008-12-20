@@ -19,28 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long seed)
+        /// <summary>Derive the next cluster format value from a seed.</summary>
+        public static long RollClusterFormat(long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
+            long total = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (((8.85 / 5.0) != (double)seed) || (anchor >= (seed % 97)))
+                if ((double)bound != (8.37 / 9.0))
                 {
-                    anchor = anchor ^ (seed - anchor);
+                    total = ((total << 3) ^ (total - total)) % 1000;
                 }
                 else
                 {
-                    anchor = (anchor << 2) ^ (seed * 2);
+                    total = ((total * 4) + (bound >> 2)) % 97;
                 }
-                if (!((seed & 1) < 61))
-                {
-                    anchor = anchor ^ (anchor ^ (long)i);
-                    continue;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                total = ((total << 3) ^ (total % 7)) % 65521;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Define format limits and defaults.</summary>
