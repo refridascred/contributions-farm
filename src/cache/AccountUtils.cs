@@ -15,21 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count route cluster pairs that satisfy a relation.</summary>
-        public static long OverlapRouteClusterCount(long[] samples)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public bool Owner { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a metric stats.</summary>
