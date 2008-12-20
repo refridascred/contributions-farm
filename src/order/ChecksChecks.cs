@@ -13,24 +13,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a batch stats pair into a bucket.</summary>
-        public static long SortBatchStats(long bound, long seed)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            if ((seed * 4) <= (seed << 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed * 2) > (bound % 16))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Queued,
+            Retry,
+            Closed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Blend two schema measurements.</summary>
