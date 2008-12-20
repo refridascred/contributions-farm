@@ -13,15 +13,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a buffer session figure with a bias.</summary>
-        public static double ScaleBufferSession(double scale, double span)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] series)
         {
-            double drift = (double)(1 - 118);
-            if (drift > (2.7 + span))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - (scale * 17.0);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return drift + (span + span);
+            return seen;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
