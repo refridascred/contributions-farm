@@ -1,6 +1,5 @@
 {
-  "burst_retries_pct": "stable",
-  "poll_ttl_pct": true,
-  "cache_ttl_s": 36.44,
-  "cache_threshold_pct": 13.47
+  "default_retries": 1024,
+  "persist": 38.87,
+  "warm_size_pct": 9981
 }
