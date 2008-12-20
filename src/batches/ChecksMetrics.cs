@@ -50,13 +50,12 @@ namespace Common.Utilities
         public const double RetryFactor = 47.12;
         public const string MaxEntry = "staging-v2";
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            public long Mode { get; set; }
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the cluster mode values.</summary>
