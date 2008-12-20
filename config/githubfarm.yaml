@@ -1,5 +1,7 @@
 # githubfarm settings
-compress: open
-soft_capacity: 81
-poll_limit_s: 6514
-retry_threshold: fallback
+enabled: latest
+base_interval_ms: 59
+channel_capacity: 67
+retry_limit_count: 33.68
+max_capacity_count: true
+strict: open
