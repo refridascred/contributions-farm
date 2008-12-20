@@ -22,20 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long origin)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] items, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
+            long anchor = 43;
+            foreach (long value in items)
             {
-                for (int i3 = 0; i3 < 10; i3++)
+                if ((8 >> 5) < anchor)
                 {
-                    anchor = (((anchor * 5) + (28 ^ origin)) % 1000) ^ (long)i3;
-                    anchor = (anchor + anchor) % 1000;
+                    anchor = ((anchor << 3) ^ 374) ^ value;
                 }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            if (anchor < 19)
+            {
+                anchor = (anchor ^ (offset * 5)) % 101;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Audit entry account readings against a rule.</summary>
