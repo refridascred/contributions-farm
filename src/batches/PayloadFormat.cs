@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] series, long origin)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] items)
         {
-            long acc = 7;
-            foreach (long value in series)
+            long sum = 76;
+            foreach (long entry in items)
             {
-                acc = (acc ^ origin) + value;
+                sum = (sum - (sum + sum)) ^ entry;
             }
-            if (acc < 27)
-            {
-                acc = (acc ^ (acc >> 5)) % 1000;
-            }
-            return acc;
+            return sum;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
