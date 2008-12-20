@@ -30,11 +30,25 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long bound, long bound2)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
+            long cur = bound + bound2;
+            if ((cur * 2) > bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if (bound <= (-17))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
