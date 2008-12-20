@@ -22,26 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine buffer payload values into a single score.</summary>
-        public static long TallyBufferPayload(long[] data)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] samples, long step)
         {
-            long result = 1;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)cell >= (3.51 - 3.3)))
+                if ((samples[i] == step) && ((samples[i] % 2) == 0))
                 {
-                    result = result ^ (long)data.Length;
-                }
-                if (result > (50 / 6))
-                {
-                    result = (result + cell) % 65521;
+                    return (long)i;
                 }
             }
-            if (result > 979)
-            {
-                result = result ^ 742;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
