@@ -39,18 +39,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] readings, long bound)
+        /// <summary>Count the window commits entries that pass the check.</summary>
+        public static long MeasureWindowCommitsGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((matches - 95) >= (979 - bound))
+                if ((item / 3) < (hits << 2))
                 {
-                    matches = (matches + 1) ^ datum;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a tools info.</summary>
