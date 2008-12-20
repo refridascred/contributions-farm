@@ -12,14 +12,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long limit)
         {
-            Closed,
-            Stale,
-            Locked,
-            Pending,
-            Done,
+            long total = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Match up command samples.</summary>
