@@ -60,18 +60,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] levels)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((long)levels.Length <= (entry << 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Ready,
+            Dropped,
+            Paused,
+            Locked,
+            Synced,
         }
     }
 }
