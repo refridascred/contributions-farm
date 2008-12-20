@@ -27,32 +27,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long bound, long target)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long delta = bound + target;
-            if ((double)delta != (4.7 - 8.3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target << 3) < (1 + target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (delta <= (target & 63))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Draft,
+            Closed,
+            Locked,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a contributi info.</summary>
