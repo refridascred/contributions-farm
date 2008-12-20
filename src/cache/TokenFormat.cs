@@ -31,10 +31,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstCount = 7295;
-        public const string LimitLevel = "fallback-edge";
-        public const long CacheNotes = 5482;
-        public const double BatchLevel = 70.13;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((double)matches > 2.82)
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
