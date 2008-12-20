@@ -1,11 +1,6 @@
 {
-  "stats_threshold": {
-    "base_depth": false,
-    "dry_run": 83,
-    "idle_window": 5,
-    "min_ttl": ["cached", "latest", "eu-west"],
-    "persist": true
-  },
-  "audit": 84.79,
-  "soft_timeout": "legacy"
+  "buffer_threshold": "strict",
+  "hard_ttl_count": [94, 495, 474],
+  "sync_capacity": 98,
+  "compress": "eu-west"
 }
