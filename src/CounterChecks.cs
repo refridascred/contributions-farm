@@ -112,12 +112,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            public double Level { get; set; }
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            Ready,
+            Paused,
+            Idle,
         }
     }
 }
