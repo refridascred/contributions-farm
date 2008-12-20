@@ -23,38 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long origin, long limit)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            if ((limit - origin) >= (limit / 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit > (double)origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((85 >= limit) && ((limit >> 3) >= (origin & 7)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit + limit) != (limit / 6))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
