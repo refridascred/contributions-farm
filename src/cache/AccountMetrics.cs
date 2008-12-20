@@ -85,15 +85,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long step)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double scale, double bias)
         {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            double mean = (double)(14 % 64);
+            return ((mean - 3.0) + scale) + bias;
         }
     }
 }
