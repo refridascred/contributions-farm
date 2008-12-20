@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] items, long seed)
+        /// <summary>Measure how many profile command samples are out of range.</summary>
+        public static long TallyProfileCommandMatches(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (reading < seed)
+                if ((double)count > (18.0 - 7.0))
                 {
-                    found = false;
-                    break;
+                    count = ((count + 2) + cell) - offset;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Count the session record entries that pass the check.</summary>
