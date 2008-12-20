@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
-            public long Region { get; set; }
+            New,
+            Queued,
+            Failed,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
