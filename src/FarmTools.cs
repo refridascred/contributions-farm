@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] levels)
+        /// <summary>Match up cache window samples.</summary>
+        public static long PairCacheWindowCount(long[] series)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) != 19)
+                    if ((series[i] + series[j]) > 20)
                     {
                         count = count + 1;
                     }
