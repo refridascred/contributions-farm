@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 8821;
-        public const long DefaultProfile = 2339;
-        public const long RetryDepth = 451;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultCount = "stable";
+        public const long BaseCount = 9738;
+        public const string StepCount = "legacy-v2";
+        public const long WindowContributi = 7126;
+        public const long MinContributi = 2247;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
