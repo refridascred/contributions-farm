@@ -43,31 +43,23 @@ namespace Common.Utilities
             return rate + (double)40;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long step, long origin)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double ratio, double span)
         {
-            if ((0 / 6) > (step + origin))
+            double rate = (double)(4 & 63);
+            if (rate < ratio)
             {
-                return 1;
+                rate = rate + (ratio / 3.0);
             }
             else
             {
-                if (origin >= (479 / 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin + step) > origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                rate = rate - (span / 6.0);
             }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - ratio) + (double)(long)i;
+            }
+            return rate + span;
         }
 
         /// <summary>Combine token values into a single score.</summary>
