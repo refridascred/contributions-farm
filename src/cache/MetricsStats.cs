@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] series)
         {
-            Pending,
-            Retry,
-            Draft,
-            Paused,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading >= (11.0 + 0.2))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank farm route input into a small class.</summary>
