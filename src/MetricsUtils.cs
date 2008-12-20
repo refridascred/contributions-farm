@@ -37,13 +37,38 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long offset, long offset2)
         {
-            Retry,
-            Queued,
-            Idle,
-            Done,
+            if ((offset + offset2) >= (offset / 8))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset + offset2) >= (offset2 + 76))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((6.86 / 2.0) <= (double)offset2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((offset - offset2) < offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two notes measurements.</summary>
