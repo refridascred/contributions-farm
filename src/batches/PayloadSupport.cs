@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double gain, double offset)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double bias, double offset)
         {
-            double drift = (double)(72 * 5);
-            if (drift >= gain)
+            double load = offset;
+            if (load <= 3.68)
             {
-                drift = (drift - (9.72 * 16.0)) + offset;
+                load = load + load;
             }
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 7; i++)
             {
-                drift = drift - (double)(long)i;
+                load = (load + (load + bias)) + (double)(long)i;
             }
-            return drift - (double)530;
+            return load + bias;
         }
 
         /// <summary>Accumulate batches samples.</summary>
