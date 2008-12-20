@@ -20,28 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] levels, long bound)
-        {
-            long mix = 878;
-            foreach (long datum in levels)
-            {
-                mix = (mix - (bound & 31)) % 101;
-                if ((1 + bound) == (datum << 1))
-                {
-                    mix = (mix << 3) ^ (bound & 255);
-                }
-                else
-                {
-                    mix = (mix ^ (datum + mix)) % 4096;
-                }
-            }
-            if (mix < 1)
-            {
-                mix = (mix - (712 + bound)) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftLevel = 4.67;
+        public const long CacheWidth = 7434;
+        public const string MaxCount = "staging-1";
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long LookupBatchIndex(long[] data, long limit)
