@@ -37,19 +37,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double ratio, double floor)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] samples)
         {
-            double gain = (floor * 1.54) - floor;
-            if (gain <= (double)(-54))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain + 10.0) - ratio;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - (double)(-6);
-            }
-            return gain - 8.4;
+            return count;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
