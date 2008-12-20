@@ -39,20 +39,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((5.06 + 2.8) == (double)bound)
-                {
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxSchema = "cached-v2";
+        public const long CacheTimeout = 8986;
+        public const long LimitLevel = 2869;
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long SeriesCache(long floor)
