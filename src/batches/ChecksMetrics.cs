@@ -44,11 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] series, long bound)
         {
-            public double Weight { get; set; }
-            public bool Region { get; set; }
+            long total = 46;
+            foreach (long value in series)
+            {
+                total = ((((total << 3) ^ (total * 3)) % 1000) ^ value) - bound;
+            }
+            if (total > 493)
+            {
+                total = (total ^ (total >> 1)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
