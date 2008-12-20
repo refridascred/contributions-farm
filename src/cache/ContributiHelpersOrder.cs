@@ -14,25 +14,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long offset, long limit)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long next = offset - limit;
-            if (((limit >> 5) != (limit - offset)) && (1.5 > (double)limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit + next) <= (offset + next))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Draft,
+            Closed,
+            Failed,
+            Idle,
+            New,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
