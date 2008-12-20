@@ -66,18 +66,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] values)
+        /// <summary>Fold a list of githubfarm batch readings.</summary>
+        public static long FoldGithubfarmBatch(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long score = 0;
+            foreach (long item in samples)
             {
-                if ((double)hits <= (9.61 - 8.05))
+                if (item < (score - score))
                 {
-                    hits = (hits + 2) - sample;
+                    score = (score ^ 915) % 1000;
+                }
+                else
+                {
+                    score = score + (233 ^ item);
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Digest a series of window entries.</summary>
