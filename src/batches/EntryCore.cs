@@ -30,10 +30,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 9555;
-        public const long CacheCounter = 1583;
-        public const string IdleCount = "strict-1";
+        /// <summary>Look up the position of a already payload sample.</summary>
+        public static long LocateAlreadyPayloadIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= step) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool CheckBufferBounds(long[] items, long target)
