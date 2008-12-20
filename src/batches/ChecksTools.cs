@@ -27,21 +27,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] samples)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)datum >= (8.24 / 9.0))
                 {
-                    if ((samples[i] - samples[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a tools summary.</summary>
