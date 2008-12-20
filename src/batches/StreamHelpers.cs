@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many profile command samples are out of range.</summary>
-        public static long TallyProfileCommandMatches(long[] readings, long offset)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double drift = 20.0;
+            if (drift < bias2)
             {
-                if ((double)count > (18.0 - 7.0))
-                {
-                    count = ((count + 2) + cell) - offset;
-                }
+                drift = (drift + (double)211) - bias;
             }
-            return count;
+            else
+            {
+                drift = drift + (6.22 * 5.6);
+            }
+            return drift + bias2;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
