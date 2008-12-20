@@ -50,16 +50,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] readings)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long mix = 9;
-            foreach (long cell in readings)
-            {
-                mix = ((mix - (mix + mix)) % 1000) ^ cell;
-                mix = (mix - mix) % 1000;
-            }
-            return mix;
+            Paused,
+            Pending,
+            Closed,
         }
 
         /// <summary>Scale a notes cluster figure with a bias.</summary>
