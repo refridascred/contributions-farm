@@ -1,5 +1,6 @@
 {
-  "max_threshold_pct": "eu-west",
-  "readonly": 20.84,
-  "queue_ttl": ["edge", "eu-west", "staging", "blue"]
+  "retry_timeout": 53.12,
+  "batch_interval_s": 8.21,
+  "verbose": 168,
+  "githubfarm_window": 100
 }
