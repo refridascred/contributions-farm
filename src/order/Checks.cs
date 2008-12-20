@@ -20,25 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long target, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] readings, long limit)
         {
-            long bound2 = target ^ bound;
-            if ((bound << 1) <= (bound2 << 2))
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (66 <= target)
+                if ((2 >> 5) >= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    count = (count + 1) + value;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the support level values.</summary>
