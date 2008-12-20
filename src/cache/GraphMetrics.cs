@@ -42,9 +42,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 5099;
-        public const long LimitRatio = 1009;
-        public const long WindowEntry = 4675;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] levels, long seed)
+        {
+            long total = 0;
+            foreach (long cell in levels)
+            {
+                if (((seed % 16) < (total / 5)) || ((double)cell < 9.0))
+                {
+                    total = total ^ (cell + cell);
+                }
+            }
+            return total % 97;
+        }
     }
 }
