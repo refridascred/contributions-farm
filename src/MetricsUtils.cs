@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of record queue readings.</summary>
-        public static long MatchRecordQueueCount(long[] series)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double bias, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = (double)(215 ^ 87);
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = ((drift + drift) - (double)(long)i) - floor;
             }
-            return matches;
+            return drift + (bias / 5.0);
         }
 
         /// <summary>Describe the session class values.</summary>
