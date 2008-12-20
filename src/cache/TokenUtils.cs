@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxWindow = 89.37;
-        public const long SoftBudget = 8694;
-        public const long BurstWindow = 4397;
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            New,
+            Paused,
+            Ready,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Project the next buffer value.</summary>
         public static double SmoothBuffer(double bias, double offset)
