@@ -1,7 +1,6 @@
 {
-  "session_limit": "strict",
-  "retry_ratio_pct": 2549,
-  "route_limit": ["fallback", "edge", "staging"],
-  "account_retries": [109, 304, 320],
-  "sync_depth_ms": true
+  "enabled": true,
+  "burst_limit_s": [84, 187, 174, 81],
+  "verbose": false,
+  "default_delay": false
 }
