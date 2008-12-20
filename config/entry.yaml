@@ -1,18 +1,18 @@
 # entry settings
-strict:
-  - 463
-  - 241
-  - 420
-stream_size: open
-hard_limit_count: fallback
-max_capacity_count: strict
-warm_size_ms:
-  persist: 81.8
-  flush_ttl_ms: edge
-  warm_window_count: 5907
-  cache_delay_ms: 5943
-  strict: 100
-  checks_depth:
-    - 324
-    - 146
-    - 107
+layout_ttl:
+  compress: false
+  sync_window: true
+  hard_timeout:
+    persist: 60
+    notes_limit: standard
+    hard_retries_count: green
+    report_threshold: staging
+    min_ttl: false
+  burst_capacity_s: 25
+max_timeout_pct: 61
+entry_timeout:
+  - fallback
+  - green
+  - legacy
+soft_retries_count: standard
+channel_ttl: 45
