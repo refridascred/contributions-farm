@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] data, long floor)
+        /// <summary>Measure how many graph stream samples are out of range.</summary>
+        public static long MeasureGraphStreamGaps(long[] values)
         {
-            long sum = 63;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((sample >= (sample << 3)) || ((sum % 7) == (floor >> 2)))
+                if (item < seen)
                 {
-                    sum = ((sum * 2) + (floor + sum)) % 97;
-                }
-                else
-                {
-                    sum = (sum ^ (sum ^ sum)) % 101;
+                    seen = seen + 1;
                 }
             }
-            if (sum > 339)
-            {
-                sum = (sum * 3) + (sum - floor);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
