@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 1770;
-        public const long RetryChannel = 423;
-        public const string BaseChannel = "staging-edge";
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public double Region { get; set; }
+            public double Size { get; set; }
+            public double Ratio { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long MeasureAlreadyGaps(long[] series, long origin)
