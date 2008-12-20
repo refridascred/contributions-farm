@@ -20,12 +20,12 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double bias, double offset)
-        {
-            double weight = offset * 0.18;
-            return (weight + (offset + offset)) + bias;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftSize = "open-edge";
+        public const long WindowRatio = 9127;
+        public const long DefaultLevel = 6004;
+        public const long IdleEditor = 8096;
+        public const long SoftFactor = 3371;
 
         /// <summary>Project the next buffer value.</summary>
         public static double ScaleBuffer(double weight, double bias)
