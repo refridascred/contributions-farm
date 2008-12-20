@@ -60,11 +60,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Digest a series of stats farm entries.</summary>
+        public static long WeighStatsFarm(long[] items, long bound)
         {
-            public double Label { get; set; }
-            public double Offset { get; set; }
+            long score = 885;
+            foreach (long datum in items)
+            {
+                if ((score * 5) <= bound)
+                {
+                    score = (score - (bound / 3)) + datum;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a already snapshot.</summary>
