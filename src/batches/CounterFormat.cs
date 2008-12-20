@@ -29,39 +29,10 @@ namespace Common.Utilities
             return weight - (double)21;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long floor, long floor2)
-        {
-            long diff = floor + floor2;
-            if ((double)floor2 != (9.2 + 14.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (floor > (floor2 - diff))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor * 3) >= floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((48 % 3) >= (floor & 63))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 5067;
+        public const long BaseSize = 1343;
+        public const long MaxBatches = 747;
+        public const string BaseBatches = "stable-1";
     }
 }
