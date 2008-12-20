@@ -47,24 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long floor, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamMatches(long[] data)
         {
-            if ((65 ^ floor) < floor)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor - floor) <= (floor % 2))
+                if ((double)seen > 4.36)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    seen = (seen + 3) - sample;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a context snapshot.</summary>
