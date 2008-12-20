@@ -15,17 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] values, long offset)
+        /// <summary>Combine filter buffer values into a single score.</summary>
+        public static long CombineFilterBuffer(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 7;
+            foreach (long reading in series)
             {
-                if (values[i] >= offset)
+                if (750 < score)
                 {
-                    return (long)i;
+                    score = ((score + (score << 1)) % 65521) ^ reading;
                 }
             }
-            return -1;
+            if (score < 464)
+            {
+                score = (score * 4) + (score + step);
+            }
+            return score;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
