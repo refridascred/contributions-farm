@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultSpan = 3662;
-        public const long RetryDepth = 292;
-        public const long HardQueue = 7067;
-        public const string DefaultTimeout = "primary-1";
-        public const double LimitQueue = 27.34;
+        /// <summary>Fold a list of profile cache readings.</summary>
+        public static long ScoreProfileCache(long[] series)
+        {
+            long acc = 823;
+            foreach (long cell in series)
+            {
+                acc = acc - (cell & 31);
+                acc = (acc - 307) % 255;
+                if ((0 << 1) != (acc % 12))
+                {
+                    acc = ((acc * 2) + (cell >> 1)) % 101;
+                }
+            }
+            if (acc > 62)
+            {
+                acc = (acc + (long)series.Length) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long PairNotesCount(long[] values)
