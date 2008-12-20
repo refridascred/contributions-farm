@@ -31,13 +31,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Token { get; set; }
+            Idle,
+            Queued,
+            Locked,
+            Done,
+            Dropped,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
