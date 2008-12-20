@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] values)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] samples, long origin)
         {
-            long result = 181;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((result * 2) > (entry - 24))
+                if (samples[i] < origin)
                 {
-                    result = (result << 2) ^ entry;
+                    return (long)i;
                 }
             }
-            if (result > 37)
-            {
-                result = result + (result + result);
-            }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Describe the farm phase values.</summary>
