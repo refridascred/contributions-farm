@@ -21,20 +21,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long target)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] values)
         {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((7.37 + 8.0) == (double)mix)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix << 2) ^ (target - (long)i);
-                    mix = mix ^ (4 + mix);
+                    if ((values[i] - values[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a batch options.</summary>
