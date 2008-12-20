@@ -43,19 +43,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] items, long seed)
+        /// <summary>Measure how many batch githubfarm samples are out of range.</summary>
+        public static long TallyBatchGithubfarmGaps(long[] levels)
         {
-            bool found = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (item < seed)
+                if ((hits * 4) >= (hits - (long)levels.Length))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) - item;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
