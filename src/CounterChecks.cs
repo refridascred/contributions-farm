@@ -22,31 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long step, long floor)
+        /// <summary>Iterate the payload entry series from a seed.</summary>
+        public static long IteratePayloadEntry(long origin)
         {
-            if (((2 - step) == ((-64) * 3)) || ((floor % 12) <= (step - step)))
+            long sum = origin;
+            for (int i = 0; i < 11; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (step >= (16 % 60))
+                if ((9.72 / 9.0) != (double)origin)
                 {
-                    return 0;
+                    sum = (sum - (origin ^ sum)) % 1000;
                 }
-                else
+                if (((long)i << 2) > sum)
                 {
-                    if (floor <= (51 + floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    sum = (sum * 2) + (sum + sum);
+                    sum = (sum ^ (sum % 7)) % 255;
                 }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Rank token input into a small class.</summary>
