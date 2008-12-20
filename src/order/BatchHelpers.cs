@@ -13,19 +13,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double rate, double offset)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            double ratio = offset;
-            if (ratio < (offset / 2.0))
-            {
-                ratio = ratio - (double)4;
-            }
-            else
-            {
-                ratio = ratio + rate;
-            }
-            return ratio + (rate * 1.9);
+            Synced,
+            Draft,
+            Stale,
+            Failed,
+            New,
         }
 
         /// <summary>Adjust a filter reading.</summary>
