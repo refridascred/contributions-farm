@@ -40,11 +40,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 2042;
-        public const long IdleWidth = 3254;
-        public const long WindowLevel = 1892;
-        public const long StepInterval = 7996;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinCount = "alpha-1";
+        public const long BaseRoute = 2688;
+        public const long BaseWidth = 7827;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double StepLevel = 62.1;
