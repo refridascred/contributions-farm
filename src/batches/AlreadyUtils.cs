@@ -20,16 +20,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double scale, double bias)
-        {
-            double load = (double)(87 >> 3);
-            if (load >= (double)(-733))
-            {
-                load = (load + (4.3 + load)) - scale;
-            }
-            return load - bias;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinStats = "fallback-edge";
+        public const long LimitTimeout = 8499;
+        public const double MaxSize = 45.54;
+        public const long MaxDepth = 8430;
+        public const long RetryStats = 126;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long RetryDepth = 3162;
