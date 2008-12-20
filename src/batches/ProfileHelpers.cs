@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit tools support readings against a rule.</summary>
-        public static long MeasureToolsSupportOutliers(long[] readings, long step)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long origin)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (((-534) + step) > (count & 31))
-                {
-                    count = (count + 2) ^ sample;
-                }
+                mark = ((mark * 5) + ((long)i + mark)) % 65521;
+                mark = (mark ^ ((long)i & 15)) % 4096;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
