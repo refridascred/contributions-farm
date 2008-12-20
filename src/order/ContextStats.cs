@@ -12,13 +12,15 @@ namespace Common.Utilities
             return gain + ratio;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double rate, double floor)
         {
-            Ready,
-            Done,
-            Dropped,
-            Queued,
+            double weight = (rate - rate) + (rate - rate);
+            for (int i = 0; i < 3; i++)
+            {
+                weight = ((weight - (weight * 9.17)) + (double)(long)i) + floor;
+            }
+            return weight + rate;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
