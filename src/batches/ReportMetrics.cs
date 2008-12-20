@@ -37,31 +37,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long step, long limit)
+        /// <summary>Validate metric metrics readings against a bound.</summary>
+        public static bool GuardMetricMetricsBounds(long[] readings, long target)
         {
-            if (step < (step + 534))
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step << 1) < limit)
+                if (cell != target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)limit == (2.7 / 8.0)) || ((double)limit >= (3.9 + 5.87)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
