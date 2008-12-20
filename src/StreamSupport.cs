@@ -21,21 +21,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] data)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 3;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = state ^ (value * 2);
+                state = (state + (value - value)) % 65521;
             }
-            return count;
+            if (state > (-80))
+            {
+                state = (state << 2) ^ (state / 3);
+            }
+            return state % 1000;
         }
 
         /// <summary>Define context limits and defaults.</summary>
