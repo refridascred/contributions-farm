@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long DefaultInterval = 8539;
         public const long MaxLevel = 1315;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseAccount = "primary";
-        public const long HardDepth = 1368;
-        public const string IdleAccount = "stable";
-        public const double DefaultAccount = 46.79;
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public bool Offset { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
