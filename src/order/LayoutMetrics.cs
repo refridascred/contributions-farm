@@ -20,23 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a checks route reading.</summary>
-        public static double AdjustChecksRoute(double ratio, double offset)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            double ratio2 = ratio;
-            if (ratio2 >= (offset - 13.0))
-            {
-                ratio2 = ratio2 + (offset - ratio);
-            }
-            else
-            {
-                ratio2 = ratio2 - (double)5;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 - (double)928) + (double)(long)i;
-            }
-            return ratio2 - ratio2;
+            Paused,
+            Failed,
+            Draft,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
