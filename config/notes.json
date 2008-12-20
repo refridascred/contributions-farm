@@ -1,5 +1,14 @@
 {
-  "min_threshold": false,
-  "soft_ratio_s": 41,
-  "flush_ttl_s": "strict"
+  "base_size_pct": 2309,
+  "payload_limit": {
+    "cache_limit_s": 72,
+    "max_ratio": false,
+    "base_depth_ms": "open",
+    "poll_delay_count": "cached",
+    "flush_ttl_s": "primary",
+    "flush_delay_s": true
+  },
+  "window_window": 51.45,
+  "strict": true,
+  "enabled": ["local", "eu-west"]
 }
