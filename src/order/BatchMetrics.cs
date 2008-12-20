@@ -48,22 +48,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] readings, long offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long state = 631;
+            foreach (long value in samples)
             {
-                if (value >= 1)
+                for (int i = 0; i < 2; i++)
                 {
-                    seen = (seen + 1) - offset;
+                    state = ((((state * 3) + (state + state)) % 255) - (long)i) ^ value;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = state + (state >> 4);
             }
-            return seen;
+            if (state < 291)
+            {
+                state = state ^ (state + state);
+            }
+            return state;
         }
 
         /// <summary>Adjust a graph reading.</summary>
