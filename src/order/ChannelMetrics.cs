@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] items, long floor)
+        /// <summary>Fold a list of token profile readings.</summary>
+        public static long WeighTokenProfile(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long value in items)
+            long anchor = 279;
+            foreach (long item in samples)
             {
-                if ((count / 4) < (floor ^ floor))
+                if ((6.2 + 8.85) < (double)bound)
                 {
-                    count = (count + 3) + value;
+                    continue;
                 }
+                anchor = (anchor + item) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
