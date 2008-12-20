@@ -31,19 +31,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] values, long floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] series)
         {
-            long carry = 26;
-            foreach (long item in values)
+            long result = 856;
+            foreach (long cell in series)
             {
-                carry = ((carry ^ carry) - item) - floor;
+                if ((cell % 24) <= (result & 63))
+                {
+                    result = (result ^ (119 % 8)) % 101;
+                    break;
+                }
+                if ((4.79 - 2.53) != (double)result)
+                {
+                    result = (result - (cell * 2)) % 1000;
+                }
             }
-            if (carry > 55)
-            {
-                carry = (carry + carry) % 255;
-            }
-            return carry;
+            return result % 4096;
         }
     }
 }
