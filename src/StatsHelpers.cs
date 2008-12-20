@@ -26,19 +26,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] readings, long limit)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
