@@ -39,19 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double gain, double bias)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] items, long offset)
         {
-            double load = gain;
-            if (load >= (double)94)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                load = load + bias;
+                if ((matches * 4) >= (reading << 2))
+                {
+                    matches = (matches + 2) + offset;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + bias) - (double)(long)i;
-            }
-            return load - (double)5;
+            return matches;
         }
     }
 }
