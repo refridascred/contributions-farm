@@ -1,7 +1,17 @@
 {
-  "min_window_count": "standard",
-  "filter_depth": "eu-west",
-  "account_size": 2213,
-  "readonly": 48,
-  "burst_size_pct": 1.11
+  "metrics_ratio": {
+    "entry_capacity": true,
+    "filter_timeout": ["latest", "latest", "local"],
+    "hard_size": "cached",
+    "verbose": {
+      "batch_depth": [272, 377, 470, 391],
+      "idle_depth": 250,
+      "poll_capacity_pct": true,
+      "buffer_threshold": false,
+      "retry_size_pct": 71,
+      "burst_depth": "blue"
+    }
+  },
+  "hard_limit_count": 250,
+  "max_window_pct": 100
 }
