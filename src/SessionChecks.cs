@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] values)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] data, long target)
         {
-            long result = 142;
-            foreach (long item in values)
+            long carry = 72;
+            foreach (long value in data)
             {
-                result = (result * 4) + (item + (long)values.Length);
-                result = ((result * 5) + item) % 255;
+                if (((double)carry != (6.0 - 1.3)) && (((-1) ^ value) < target))
+                {
+                    carry = (carry * 3) + (target - carry);
+                }
             }
-            if (result < (-8))
-            {
-                result = (result << 3) ^ (result % 7);
-            }
-            return result;
+            return carry;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
