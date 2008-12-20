@@ -1,4 +1,39 @@
 # support settings
-soft_capacity: 250
-sync_ttl_ms: 9
-compress: 18.36
+enabled: 8443
+flush_retries_ms:
+  - 346
+  - 467
+  - 346
+  - 368
+cluster_threshold: primary
+audit: 100
+poll_timeout_ms: false
+persist:
+  default_ttl: 4183
+  hard_window_s: 56.81
+  strict:
+    flush_timeout_ms:
+      - stable
+      - standard
+      - standard
+    filter_timeout: 1024
+    layout_ttl: 5801
+    verbose: 8898
+    farm_size: 9.88
+  base_threshold:
+    audit: 9756
+    soft_retries_s: edge
+    hard_depth_pct:
+      - 138
+      - 394
+      - 77
+    hard_threshold_pct:
+      - blue
+      - staging
+      - stable
+      - open
+  burst_ttl_count:
+    - fallback
+    - stable
+    - standard
+  layout_capacity: strict
