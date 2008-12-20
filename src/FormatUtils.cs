@@ -37,14 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] series)
         {
-            Draft,
-            Dropped,
-            Idle,
-            Failed,
-            Retry,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((seen << 2) <= reading)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the entry phase values.</summary>
