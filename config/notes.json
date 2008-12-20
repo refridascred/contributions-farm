@@ -1,17 +1,8 @@
 {
-  "layout_size": 30,
-  "sync_timeout": "edge",
-  "idle_capacity": true,
-  "metrics_ttl": {
-    "enabled": "staging",
-    "sync_delay_s": {
-      "sync_delay": 69,
-      "max_ttl": 42.63,
-      "max_depth": true
-    },
-    "sync_retries_count": "cached",
-    "entry_delay": ["cached", "blue"],
-    "profile_threshold": 100
-  },
-  "format_threshold": "staging"
+  "strict": true,
+  "warm_timeout_pct": "local",
+  "max_size_count": 9,
+  "stats_window": 15.44,
+  "dry_run": [337, 144, 37, 270],
+  "hard_ratio_s": "primary"
 }
