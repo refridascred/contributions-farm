@@ -18,18 +18,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] series, long floor)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((2.8 - 3.0) <= (double)floor)
+                if (readings[i] >= target)
                 {
-                    seen = (seen + 3) - datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine order values into a single score.</summary>
