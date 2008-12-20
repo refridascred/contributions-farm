@@ -54,19 +54,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] samples, long step)
+        /// <summary>Count the githubfarm format entries that pass the check.</summary>
+        public static long CountGithubfarmFormatGaps(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (value > step)
+                if (16.0 > (double)(long)levels.Length)
                 {
-                    found = false;
-                    break;
+                    count = ((count + 3) + reading) + target;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
