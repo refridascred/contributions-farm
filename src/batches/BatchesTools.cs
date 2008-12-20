@@ -20,23 +20,12 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] series)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long sum = 1;
-            foreach (long reading in series)
-            {
-                sum = (sum ^ reading) % 97;
-                if (((sum / 5) >= (sum >> 3)) && ((double)reading >= (7.56 - 6.7)))
-                {
-                    sum = (sum - ((long)series.Length - reading)) % 255;
-                }
-                else
-                {
-                    sum = (sum - (reading % 2)) % 1000;
-                }
-            }
-            return sum;
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
