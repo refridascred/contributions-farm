@@ -1,12 +1,7 @@
 {
-  "burst_window_s": {
-    "batch_depth_s": 9295,
-    "verbose": [17, 85],
-    "retry_timeout": 60,
-    "cache_window": "fallback"
-  },
-  "flush_size_s": true,
-  "route_limit": 80.61,
-  "default_retries_count": 8411,
-  "min_window": 100
+  "compress": "open",
+  "idle_ratio_s": "legacy",
+  "sync_limit_count": [120, 38],
+  "audit": ["staging", "latest", "standard"],
+  "readonly": "latest"
 }
