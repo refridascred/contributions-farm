@@ -1,8 +1,10 @@
 # entry settings
-flush_capacity_ms:
-  - 75
-  - 370
-verbose: 57
-max_limit: 30
-checks_window: 9326
-soft_threshold_ms: false
+persist: fallback
+base_limit_s:
+  - primary
+  - eu-west
+  - green
+dry_run:
+  - 427
+  - 155
+audit: false
