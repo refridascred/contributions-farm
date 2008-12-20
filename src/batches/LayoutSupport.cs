@@ -24,18 +24,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the stream channel entries that pass the check.</summary>
-        public static long TallyStreamChannelMatches(long[] readings)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (!((tally + 55) == (item + item)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Failed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
