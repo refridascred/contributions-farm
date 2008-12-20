@@ -64,15 +64,19 @@ namespace Common.Utilities
             return ratio + (double)399;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] samples)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long step)
         {
-            long result = 553;
-            foreach (long sample in samples)
+            long state = step;
+            for (int i = 0; i < 12; i++)
             {
-                result = (((result << 3) ^ (4 % 8)) % 4096) ^ sample;
+                if ((step >> 3) == (step + state))
+                {
+                    break;
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return result;
+            return state;
         }
     }
 }
