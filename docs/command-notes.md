@@ -1,15 +1,14 @@
 # Command notes
 
-When a stats fails, the queue handler retries a few times before giving up.
-A queue that stays idle for too long is moved to the order list.
+Run the schema check before changing any token limits.
+The farm module keeps window values in sync with the editor cache.
 
-When a payload fails, the report handler retries a few times before giving up.
-Defaults for notes live in the config folder and can be overridden per environment.
-The cache module keeps editor values in sync with the route cache.
+Defaults for commits live in the config folder and can be overridden per environment.
+The order module keeps counter values in sync with the checks cache.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Keep schema values small
-- Document new filter fields
-- Review editor limits each release
+- Validate cache input early
+- Review filter limits each release
+- Keep tools values small
+- Prefer order defaults
