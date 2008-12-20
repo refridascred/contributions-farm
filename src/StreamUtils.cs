@@ -66,14 +66,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] samples)
         {
-            Stale,
-            Active,
-            Paused,
-            Dropped,
-            Synced,
+            long result = 376;
+            foreach (long value in samples)
+            {
+                result = (result + (result - result)) % 101;
+                result = ((result * 5) + (value + value)) % 97;
+            }
+            if (result > 385)
+            {
+                result = (result << 3) ^ (521 + result);
+            }
+            return result;
         }
 
         /// <summary>Define record limits and defaults.</summary>
