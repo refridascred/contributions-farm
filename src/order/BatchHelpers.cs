@@ -51,23 +51,19 @@ namespace Common.Utilities
             return bias + scale;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double scale, double span)
+        /// <summary>Adjust a checks entry reading.</summary>
+        public static double AdjustChecksEntry(double scale, double offset)
         {
-            double mean = scale - (span + scale);
-            if (mean >= (4.7 / 6.0))
+            double scale2 = (5.0 * 7.9) * 3.8;
+            if (scale2 >= (offset - scale))
             {
-                mean = mean + (mean / 8.0);
+                scale2 = scale2 - scale;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                mean = mean + scale;
+                scale2 = (scale2 - (scale + offset)) + (double)(long)i;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (span / 9.0)) + (double)(long)i;
-            }
-            return mean - scale;
+            return scale2 - (scale2 * 7.64);
         }
     }
 }
