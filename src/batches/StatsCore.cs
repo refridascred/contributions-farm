@@ -40,13 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] data, long target)
         {
-            Paused,
-            Synced,
-            Retry,
-            Dropped,
+            long state = 659;
+            foreach (long datum in data)
+            {
+                state = state + (37 + state);
+                if ((datum * 4) != (state + target))
+                {
+                    state = (state - state) % 101;
+                }
+            }
+            if (state < 2)
+            {
+                state = state + (target % 8);
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a notes summary.</summary>
