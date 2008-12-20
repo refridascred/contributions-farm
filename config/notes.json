@@ -1,8 +1,11 @@
 {
-  "profile_window": 26,
-  "soft_window_pct": 23,
-  "hard_ttl_count": "standard",
-  "stream_ratio": 88.28,
-  "retry_depth": 250,
-  "support_delay": "staging"
+  "batches_size": {
+    "audit": 9743,
+    "dry_run": 61.82,
+    "idle_timeout_s": 26.22,
+    "cache_ttl": "stable",
+    "burst_depth_s": "local"
+  },
+  "base_delay_s": "local",
+  "verbose": 7045
 }
