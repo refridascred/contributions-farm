@@ -1,6 +1,6 @@
 {
-  "default_limit_pct": "edge",
-  "persist": true,
-  "sync_window_ms": false,
-  "idle_size": 250
+  "dry_run": 9381,
+  "max_retries_s": 47.76,
+  "cache_ratio_count": "green",
+  "idle_capacity_s": 50.62
 }
