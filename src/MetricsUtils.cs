@@ -22,19 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double gain, double bias)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            double drift = gain;
-            if (drift < (double)593)
-            {
-                drift = drift - gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (drift / 5.0)) + (double)(long)i;
-            }
-            return drift + bias;
+            Stale,
+            Active,
+            New,
+            Done,
+            Synced,
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
