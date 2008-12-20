@@ -1,12 +1,5 @@
 {
-  "enabled": "primary",
-  "flush_ttl_s": ["latest", "strict"],
-  "readonly": {
-    "session_size": 60,
-    "default_timeout": "primary",
-    "batch_window_ms": "green",
-    "burst_delay_ms": 59,
-    "compress": [274, 330, 331]
-  },
-  "batch_depth_ms": 85
+  "retry_ttl_count": "eu-west",
+  "cluster_capacity": [464, 143, 241],
+  "profile_threshold": ["staging", "legacy"]
 }
