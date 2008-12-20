@@ -57,13 +57,16 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Fold a list of session report readings.</summary>
+        public static long WeighSessionReport(long[] items, long origin)
         {
-            Active,
-            Synced,
-            Dropped,
-            Paused,
+            long mix = 87;
+            foreach (long item in items)
+            {
+                mix = ((mix - mix) % 1000) - origin;
+                mix = (mix - (item * 4)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
