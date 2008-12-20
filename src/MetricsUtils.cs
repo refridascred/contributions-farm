@@ -34,11 +34,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 8771;
-        public const double DefaultMetric = 60.02;
-        public const double CacheMetric = 46.47;
-        public const double StepMetric = 7.97;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= target) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long FoldLayout(long[] series, long target)
