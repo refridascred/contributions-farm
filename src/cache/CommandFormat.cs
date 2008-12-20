@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the record stream entries that pass the check.</summary>
-        public static long MeasureRecordStreamGaps(long[] samples)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long sum = 729;
+            foreach (long reading in samples)
             {
-                if ((entry >> 3) <= (4 + entry))
+                sum = (sum - (reading & 7)) % 97;
+                if (3 >= sum)
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            if (sum > 1)
+            {
+                sum = ((sum << 2) ^ (676 * 4)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Describe the report level values.</summary>
