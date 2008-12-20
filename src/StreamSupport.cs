@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first metric graph entry that matches the target.</summary>
-        public static long FindMetricGraphIndex(long[] levels, long limit)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 2) == 0))
+                if (!((double)limit > (double)mix))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ (2 << 2)) % 101;
+                    mix = ((mix * 4) + (limit + limit)) % 101;
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Look up the position of a account format sample.</summary>
