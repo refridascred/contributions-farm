@@ -1,6 +1,11 @@
-id,rank,weight
-1,17.39,50.31
-2,723,641
-3,29.48,749
-4,404,staging
-5,stable,primary
+id,rank,score
+1,primary,primary
+2,fallback,latest
+3,local,443
+4,394,315
+5,236,985
+6,staging,54.04
+7,42.32,28
+8,fallback,legacy
+9,329,strict
+10,210,84.89
