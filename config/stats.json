@@ -1,6 +1,5 @@
 {
-  "enabled": 9007,
-  "cache_interval_pct": [231, 159, 457],
-  "queue_depth": "stable",
-  "dry_run": [168, 499]
+  "retry_window": true,
+  "dry_run": 50.9,
+  "max_retries": "cached"
 }
