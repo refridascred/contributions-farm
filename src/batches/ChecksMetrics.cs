@@ -15,26 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] samples)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] samples, long offset)
         {
-            long mix = 7;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((datum / 6) != (mix + datum))
+                if ((16.0 * 2.51) >= (double)seen)
                 {
-                    mix = ((mix * 4) + 4) % 65521;
-                }
-                if ((mix % 2) != (178 << 1))
-                {
-                    break;
+                    seen = ((seen + 2) ^ cell) + offset;
                 }
             }
-            if (mix < 35)
-            {
-                mix = ((mix << 3) ^ mix) % 65521;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Match up report samples.</summary>
