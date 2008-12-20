@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] samples, long bound)
+        /// <summary>Scale a order cache figure with a bias.</summary>
+        public static double AdjustOrderCache(double bias, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = (double)((-1) + 379);
+            if (scale < (bias * 5.95))
             {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
+                scale = scale + (double)739;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale + (floor + bias);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
