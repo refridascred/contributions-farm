@@ -17,15 +17,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a batches contributi figure with a bias.</summary>
-        public static double ProjectBatchesContributi(double weight, double bias)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] levels)
         {
-            double rate = (bias * 0.35) * 3.84;
-            if (rate < (weight * 20.0))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate - rate;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return rate + (double)34;
+            return hits;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
