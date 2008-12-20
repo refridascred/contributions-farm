@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] levels)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] samples, long seed)
         {
-            long anchor = 920;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if ((0 > (datum - (-80))) || ((datum & 15) < datum))
+                if (reading >= seed)
                 {
-                    anchor = (anchor - anchor) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return anchor % 97;
+            return found;
         }
 
         /// <summary>Describe the profile kind values.</summary>
