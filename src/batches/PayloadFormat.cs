@@ -40,10 +40,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxStream = 11.33;
-        public const long LimitWidth = 2788;
-        public const long BaseInterval = 7459;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] items)
+        {
+            long state = 28;
+            foreach (long cell in items)
+            {
+                state = ((state * 4) + (state + cell)) % 65521;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesHits(long[] series, long target)
