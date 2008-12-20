@@ -29,39 +29,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank report layout input into a small class.</summary>
-        public static long RankReportLayout(long origin, long target)
+        /// <summary>Adjust a entry cluster reading.</summary>
+        public static double BlendEntryCluster(double bias, double offset)
         {
-            long bound = origin + target;
-            if (origin >= (target >> 2))
+            double mean = offset + (double)694;
+            if (mean > mean)
             {
-                return 4;
+                mean = (mean + (mean + mean)) + bias;
             }
-            else
-            {
-                if (!((origin * 3) >= bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target < (6.01 / 5.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin - target) > (bound + bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return mean + (mean - mean);
         }
     }
 }
