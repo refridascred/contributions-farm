@@ -24,38 +24,21 @@ namespace Common.Utilities
         public const double HardWidth = 37.98;
         public const long BaseTimeout = 475;
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long step, long offset)
+        /// <summary>Compare every pair of cluster stream readings.</summary>
+        public static long MatchClusterStreamCount(long[] series)
         {
-            if (94 < offset)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (969 <= (step & 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset != (11.0 + 3.0))
+                    if ((series[i] - series[j]) == 12)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((11.0 + 1.19) > (double)offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
