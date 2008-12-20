@@ -49,24 +49,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank payload token input into a small class.</summary>
-        public static long RankPayloadToken(long origin, long offset)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] readings)
         {
-            if (((offset + 5) < (origin / 2)) || ((double)offset < (double)origin))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((offset + offset) > (origin & 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    if ((readings[i] - readings[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
