@@ -1,6 +1,7 @@
-id,owner,rank
-1,483,386
-2,66,cached
-3,61.45,81
-4,stable,52
-5,711,8.98
+id,owner,count,score
+1,eu-west,staging,legacy
+2,strict,79.73,legacy
+3,36.42,56.36,887
+4,760,222,326
+5,948,815,eu-west
+6,332,6.78,2.06
