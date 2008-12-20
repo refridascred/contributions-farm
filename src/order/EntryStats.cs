@@ -62,18 +62,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of window report readings.</summary>
-        public static long TotalWindowReport(long[] values)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            long total = 48;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((reading - reading) > 74) && (total >= (reading ^ total)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total + (total << 2)) % 101;
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
     }
 }
