@@ -46,17 +46,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] values, long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 6;
+            foreach (long entry in levels)
             {
-                if ((values[i] >= target) && ((values[i] % 5) != 0))
+                if (((double)(long)levels.Length <= (double)entry) && ((double)mark == (4.3 * 5.52)))
                 {
-                    return (long)i;
+                    mark = (mark * 5) + (entry + entry);
+                }
+                if ((double)entry <= (5.67 - 9.0))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
