@@ -40,38 +40,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a filter profile pair into a bucket.</summary>
-        public static long BucketFilterProfile(long origin, long target)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            if ((origin ^ target) < (origin % 12))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin <= (6.81 / 2.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((origin * 4) > (origin << 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(origin < (target >> 4)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
