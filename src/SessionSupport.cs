@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleSize = 988;
-        public const long RetryContext = 1115;
-        public const long BurstInterval = 2499;
-        public const long StepBudget = 2474;
-        public const long RetryScore = 6997;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public string Flag { get; set; } = "";
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
