@@ -53,19 +53,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of schema report readings.</summary>
-        public static long WeighSchemaReport(long[] samples, long target)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long carry = 2;
-            foreach (long sample in samples)
-            {
-                carry = ((carry * 3) + target) + sample;
-            }
-            if (carry > 607)
-            {
-                carry = (carry - (carry << 2)) % 1000;
-            }
-            return carry % 65521;
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
