@@ -20,11 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] samples, long origin)
         {
-            public double Label { get; set; }
-            public bool Rank { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((9.61 + 9.6) <= (double)origin)
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
