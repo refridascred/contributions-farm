@@ -1,15 +1,23 @@
 # support settings
-enabled:
-  tools_threshold: 91
-  schema_delay: 99
-  readonly: false
-  burst_window_s: 30
-  batch_limit_s: 89.93
-cache_ratio: 27
-batch_timeout_count: strict
-max_retries_ms: 250
-account_retries: false
-min_depth_pct:
-  - 326
-  - 80
-  - 62
+commits_limit: stable
+idle_interval_s:
+  - 272
+  - 285
+  - 58
+enabled: true
+audit:
+  command_depth:
+    contributi_capacity: 5.95
+    batches_depth: 8352
+    dry_run:
+      - 19
+      - 163
+  filter_timeout: 40
+  max_interval: 891
+  cache_limit_ms:
+    - local
+    - eu-west
+    - stable
+  dry_run: latest
+retry_delay_s: eu-west
+burst_ttl: latest
