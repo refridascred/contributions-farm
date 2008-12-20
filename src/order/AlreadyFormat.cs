@@ -54,17 +54,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] levels, long target)
         {
-            long mix = target;
-            for (int i = 0; i < 19; i++)
+            long mix = 53;
+            foreach (long entry in levels)
             {
-                if (!(mix > ((long)i << 3)))
+                if (!((9.08 + 2.8) > (double)target))
                 {
-                    mix = (mix - (960 / 7)) % 4096;
+                    mix = ((mix * 2) + (mix / 8)) % 1000;
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
+                else
+                {
+                    mix = (mix - 433) % 255;
+                }
+                mix = (mix << 3) ^ (mix % 8);
+                if ((entry >> 4) != (mix - entry))
+                {
+                    mix = ((mix << 2) ^ (entry + mix)) % 4096;
+                }
+                else
+                {
+                    mix = (mix - entry) % 65521;
+                }
             }
             return mix;
         }
