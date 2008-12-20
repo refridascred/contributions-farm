@@ -32,19 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate report githubfarm readings against a bound.</summary>
-        public static bool VerifyReportGithubfarmBounds(long[] readings, long offset)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            double mean = floor - rate;
+            for (int i = 0; i < 3; i++)
             {
-                if (datum >= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = (mean - (mean - rate)) + (double)(long)i;
             }
-            return valid;
+            return mean - floor;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
