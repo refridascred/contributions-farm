@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] items)
         {
-            Synced,
-            Dropped,
-            Pending,
-            Idle,
-            Paused,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
