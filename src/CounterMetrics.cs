@@ -48,32 +48,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long origin, long limit)
+        /// <summary>Accumulate session commits samples.</summary>
+        public static long FoldSessionCommits(long[] items, long step)
         {
-            long offset = origin ^ limit;
-            if (((limit >> 2) > (origin ^ origin)) || ((limit + origin) > (limit >> 5)))
+            long mix = 63;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)origin >= 1.29) && ((offset * 5) == (limit + origin)))
+                mix = ((mix << 3) ^ mix) % 97;
+                if (74 > (3 - value))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((offset << 1) <= (offset >> 4)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mix = (mix + value) % 1000;
                 }
             }
+            if (mix < 91)
+            {
+                mix = (mix + (step >> 2)) % 101;
+            }
+            return mix;
         }
     }
 }
