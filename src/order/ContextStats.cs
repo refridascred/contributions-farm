@@ -13,11 +13,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardTools = 46.86;
-        public const long StepTools = 2900;
-        public const double IdleTools = 62.94;
-        public const long LimitSize = 4533;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Ready,
+            Done,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandGaps(long[] values, long limit)
