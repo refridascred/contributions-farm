@@ -22,17 +22,19 @@ namespace Common.Utilities
         public const double MaxInterval = 21.11;
         public const double CacheDepth = 3.98;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] data, long seed)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] data, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if ((data[i] == seed) && ((data[i] % 3) != 0))
+                if (value != origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a metric header.</summary>
