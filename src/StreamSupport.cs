@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] series, long floor)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long item in series)
+            double bias = ratio;
+            for (int i = 0; i < 9; i++)
             {
-                if (item > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = ((bias + ratio) + (double)(long)i) + floor;
             }
-            return valid;
+            return bias + (double)38;
         }
 
         /// <summary>Digest a series of order filter entries.</summary>
