@@ -19,13 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] items, long limit)
         {
-            Draft,
-            Synced,
-            Retry,
-            Active,
+            long anchor = 75;
+            foreach (long item in items)
+            {
+                if ((double)483 < (double)anchor)
+                {
+                    anchor = (anchor - (620 >> 3)) + item;
+                }
+                else
+                {
+                    anchor = (anchor ^ (limit + limit)) % 1000;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Derive the next support metric value from a seed.</summary>
