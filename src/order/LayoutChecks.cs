@@ -53,21 +53,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] items)
+        /// <summary>Rank graph buffer input into a small class.</summary>
+        public static long BucketGraphBuffer(long limit, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long span = limit ^ seed;
+            if ((double)span < (double)limit)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((limit % 3) == (seed >> 5)) || (41 < (limit + seed)))
                 {
-                    if ((items[i] ^ items[j]) < 17)
+                    return 0;
+                }
+                else
+                {
+                    if ((4.34 + 6.82) != (double)seed)
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit * 4) < (limit + limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
