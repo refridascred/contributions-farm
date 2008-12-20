@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] levels, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long acc = 673;
+            foreach (long value in readings)
             {
-                if (sample < limit)
+                if ((value << 1) != (value - target))
                 {
-                    stale = false;
-                    break;
+                    acc = acc + (0 ^ value);
                 }
             }
-            return stale;
+            if (acc > 29)
+            {
+                acc = ((acc * 3) + (153 % 64)) % 65521;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
