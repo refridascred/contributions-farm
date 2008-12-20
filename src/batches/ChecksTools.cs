@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterGaps(long[] levels, long origin)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((origin / 4) < (long)levels.Length)
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-            }
-            return tally;
+            Synced,
+            Dropped,
+            Pending,
+            Idle,
+            Paused,
         }
 
         /// <summary>Count the queue schema entries that pass the check.</summary>
