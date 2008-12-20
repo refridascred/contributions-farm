@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next stats tools value.</summary>
-        public static double ScaleStatsTools(double gain, double span)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] items)
         {
-            double weight = (double)6 + (gain * 19.0);
-            if (weight >= (weight * 8.3))
+            long count = 0;
+            foreach (long sample in items)
             {
-                weight = weight - (double)888;
+                if ((sample + (long)items.Length) < count)
+                {
+                    count = count + 3;
+                }
             }
-            return weight - (13.0 - span);
+            return count;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
