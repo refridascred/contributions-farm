@@ -13,17 +13,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] series, long origin)
+        /// <summary>Count route cluster pairs that satisfy a relation.</summary>
+        public static long OverlapRouteClusterCount(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] > origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a metric stats.</summary>
