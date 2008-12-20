@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] values, long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long mark = -1;
+            foreach (long entry in values)
             {
-                if (item >= floor)
+                mark = (mark * 4) + (mark + entry);
+                if ((entry * 4) == (origin + entry))
                 {
-                    flag = false;
-                    break;
+                    mark = mark - (entry << 2);
                 }
             }
-            return flag;
+            if (mark < (-82))
+            {
+                mark = mark + origin;
+            }
+            return mark;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
