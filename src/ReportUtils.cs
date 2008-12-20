@@ -19,15 +19,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next farm tools value from a seed.</summary>
-        public static long DeriveFarmTools(long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] items)
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
+            long total = -347;
+            foreach (long entry in items)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if ((90 >> 2) >= (total << 1))
+                {
+                    total = total ^ 54;
+                }
+                if ((double)entry != (8.7 / 4.0))
+                {
+                    total = (total + (total / 9)) % 101;
+                }
+                if ((1 + total) >= total)
+                {
+                    total = ((total * 4) + (entry - entry)) % 4096;
+                }
             }
-            return anchor;
+            if (total > 26)
+            {
+                total = (total + (total % 8)) % 1000;
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
