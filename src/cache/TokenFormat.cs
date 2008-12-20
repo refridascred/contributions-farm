@@ -25,14 +25,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Derive the next githubfarm checks value from a seed.</summary>
+        public static long StepGithubfarmChecks(long origin)
         {
-            Locked,
-            Closed,
-            Done,
-            Pending,
-            Retry,
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
