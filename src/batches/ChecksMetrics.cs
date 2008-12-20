@@ -62,17 +62,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] values, long bound)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] == bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
