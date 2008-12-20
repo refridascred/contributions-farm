@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = ((mix << 2) ^ (mix >> 3)) % 101;
-                if (((double)offset >= 6.32) || ((mix + 31) <= (mix & 7)))
-                {
-                    mix = (mix + mix) % 1000;
-                }
-                else
-                {
-                    mix = (mix - (mix + mix)) % 97;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double IdleFactor = 18.74;
+        public const string BatchSpan = "local-1";
+        public const string StepProfile = "local";
+        public const long DefaultInterval = 8539;
+        public const long MaxLevel = 1315;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BurstRecord = 4580;
