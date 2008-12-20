@@ -23,21 +23,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count already buffer pairs that satisfy a relation.</summary>
-        public static long PairAlreadyBufferCount(long[] readings)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long limit, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)offset > (15.0 + 2.0))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((3.11 + 16.0) < (double)offset)
                 {
-                    if ((readings[i] ^ readings[j]) > 17)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset != (1.0 - 5.0))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
