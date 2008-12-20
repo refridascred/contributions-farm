@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many cache route samples are out of range.</summary>
-        public static long MeasureCacheRouteOutliers(long[] readings, long seed)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long target)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long state = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((datum / 7) == (matches + datum))
+                if ((target / 5) == (long)i)
                 {
-                    matches = (matches + 2) + seed;
+                    state = (state + (state * 4)) % 97;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = state - (state ^ state);
+                state = state - (4 >> 1);
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Describe the layout state values.</summary>
