@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long bound, long floor)
+        /// <summary>Validate graph window readings against a bound.</summary>
+        public static bool GuardGraphWindowLimits(long[] items, long step)
         {
-            long edge = bound ^ floor;
-            if ((bound + bound) < edge)
+            bool valid = true;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(floor <= edge))
+                if (value <= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (5.09 >= (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((edge >> 2) <= (floor >> 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
