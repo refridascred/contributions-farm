@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] series)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long anchor = 920;
+            foreach (long datum in levels)
             {
-                if ((double)reading < (20.0 / 3.0))
+                if ((0 > (datum - (-80))) || ((datum & 15) < datum))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    anchor = (anchor - anchor) % 101;
                 }
             }
-            return tally;
+            return anchor % 97;
         }
 
         /// <summary>Describe the profile kind values.</summary>
