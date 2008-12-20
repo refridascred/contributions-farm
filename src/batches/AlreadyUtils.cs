@@ -5,20 +5,39 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a already stream counter forward.</summary>
-        public static long SeriesAlreadyStream(long step)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long bound, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
+            long edge = bound ^ floor;
+            if ((bound + bound) < edge)
             {
-                long hits = (long)i << 2;
-                if (!((4.9 / 8.0) <= (double)hits))
-                {
-                    hits = (hits ^ ((long)i % 60)) % 65521;
-                }
-                score = ((score * 3) + (long)i) % 97;
+                return 8;
             }
-            return score;
+            else
+            {
+                if (!(floor <= edge))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (5.09 >= (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((edge >> 2) <= (floor >> 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
