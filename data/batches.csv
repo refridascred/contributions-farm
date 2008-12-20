@@ -1,7 +1,7 @@
-id,weight,count,rank
-1,17,25,65.35
-2,42.7,40.59,755
-3,cached,39.2,eu-west
-4,76.57,strict,48.48
-5,48.36,cached,132
-6,888,stable,584
+id,score,owner,active,rank
+1,805,0.14,254,cached
+2,18.08,staging,413,25.2
+3,838,strict,284,222
+4,primary,97.07,4.98,9.75
+5,155,31.07,537,922
+6,11.04,blue,581,601
