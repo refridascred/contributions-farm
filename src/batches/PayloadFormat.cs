@@ -31,18 +31,21 @@ namespace Common.Utilities
         public const long BurstBudget = 1760;
         public const long SoftRecord = 3082;
 
-        /// <summary>Fold a list of graph batch readings.</summary>
-        public static long WeighGraphBatch(long[] items)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] samples)
         {
-            long total = -103;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((total - total) == (cell / 8))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total ^ (total + cell)) % 255;
+                    if ((samples[i] ^ samples[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total % 4096;
+            return count;
         }
     }
 }
