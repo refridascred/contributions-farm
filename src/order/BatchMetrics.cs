@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long target, long step)
+        /// <summary>Look up the position of a format commits sample.</summary>
+        public static long LocateFormatCommitsIndex(long[] data, long seed)
         {
-            if ((double)step <= 9.1)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (target > (-45))
+                if ((data[i] == seed) && ((data[i] % 5) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (77 >= (step % 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
