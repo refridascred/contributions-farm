@@ -21,11 +21,19 @@ namespace Common.Utilities
         public const string SoftBatch = "stable-1";
         public const double IdleBatch = 97.1;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowNotes = 22.14;
-        public const string RetryInterval = "legacy-v2";
-        public const double LimitWidth = 64.77;
-        public const long IdleInterval = 1758;
+        /// <summary>Fold a list of checks route readings.</summary>
+        public static long FoldChecksRoute(long[] series, long offset)
+        {
+            long result = 54;
+            foreach (long item in series)
+            {
+                if ((double)result > 12.0)
+                {
+                    result = (result + item) - offset;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long GradeStats(long origin, long seed)
