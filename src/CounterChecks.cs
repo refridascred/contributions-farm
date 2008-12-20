@@ -28,22 +28,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] levels)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double ratio, double bias)
         {
-            long score = 584;
-            foreach (long datum in levels)
+            double rate = ratio;
+            if (rate <= ratio)
             {
-                if ((datum << 1) >= (score + score))
-                {
-                    score = (score + (datum ^ score)) % 65521;
-                }
+                rate = rate - bias;
             }
-            if (score > 417)
+            else
             {
-                score = (score ^ (score - score)) % 65521;
+                rate = rate - (double)8;
             }
-            return score % 97;
+            return rate + (double)40;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
