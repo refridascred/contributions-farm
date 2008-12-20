@@ -1,13 +1,11 @@
 # Command notes
 
-The entry helpers are pure functions, so they are safe to call from any thread.
-Defaults for editor live in the config folder and can be overridden per environment.
-
-Keep batch and route names short and lowercase.
-Each commits is validated before it reaches the account queue.
+Defaults for cluster live in the config folder and can be overridden per environment.
+When a order fails, the farm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate stats input early
-- Document new counter fields
-- Log every record change
+- Prefer metric defaults
+- Review stats limits each release
+- Keep stats values small
+- Validate payload input early
