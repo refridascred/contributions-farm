@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long bound, long origin)
+        /// <summary>Audit stream githubfarm readings against a rule.</summary>
+        public static long TallyStreamGithubfarmGaps(long[] data)
         {
-            if ((double)origin <= (0.58 / 4.0))
+            long count = 0;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin % 64) < (bound ^ bound))
+                if ((cell << 1) > count)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin / 6) != (bound + bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
