@@ -1,7 +1,7 @@
 {
-  "readonly": ["cached", "staging", "blue"],
-  "idle_timeout": 40.46,
-  "account_capacity": false,
-  "idle_window": true,
-  "schema_ratio": [128, 203, 351]
+  "warm_interval_s": true,
+  "idle_interval_count": [251, 216, 244, 351],
+  "min_ttl": "standard",
+  "verbose": 5,
+  "cache_size_ms": 49
 }
