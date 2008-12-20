@@ -36,9 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxInterval = 2279;
-        public const long MinCluster = 3135;
-        public const long IdleCluster = 249;
+        /// <summary>Digest a series of githubfarm cluster entries.</summary>
+        public static long FoldGithubfarmCluster(long[] samples)
+        {
+            long result = 51;
+            foreach (long cell in samples)
+            {
+                if ((cell - 72) > result)
+                {
+                    result = (result - (result + result)) % 1000;
+                }
+            }
+            return result;
+        }
     }
 }
