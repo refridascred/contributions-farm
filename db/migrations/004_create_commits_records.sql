@@ -1,10 +1,12 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    region TEXT,
-    rank INTEGER,
     label TEXT,
-    level INTEGER
+    token TEXT,
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_level ON commits_records (level);
+CREATE INDEX IF NOT EXISTS idx_commits_records_weight ON commits_records (weight);
+
+INSERT INTO commits_records (label, token, weight) VALUES ('standard', 'standard', 94.39);
+INSERT INTO commits_records (label, token, weight) VALUES ('local', 'fallback', 81.79);
