@@ -80,24 +80,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long offset, long origin)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] levels, long step)
         {
-            if (((double)origin <= (7.0 * 6.5)) || ((origin * 3) > (80 >> 5)))
+            long sum = 12;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (478 >= (origin / 4))
+                if ((sum - step) <= (step & 7))
                 {
-                    return 1;
+                    sum = ((sum * 3) + (step * 4)) ^ cell;
                 }
                 else
                 {
-                    return 6;
+                    sum = (sum ^ (sum + step)) % 4096;
                 }
             }
+            return sum % 1000;
         }
     }
 }
