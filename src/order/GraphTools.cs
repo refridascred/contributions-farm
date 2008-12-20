@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long seed)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
+            long total = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (((long)i << 1) < 7)
-                {
-                    result = result + (result + 884);
-                }
-                result = ((result * 2) + (long)i) % 97;
+                total = (total ^ (total & 255)) % 101;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Describe the format state values.</summary>
