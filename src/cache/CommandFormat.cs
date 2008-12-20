@@ -35,12 +35,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Locate a commits batch reading by value.</summary>
+        public static long LookupCommitsBatchIndex(long[] samples, long floor)
         {
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= floor) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
