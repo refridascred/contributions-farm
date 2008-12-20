@@ -48,20 +48,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] values)
+        /// <summary>Scale a route channel figure with a bias.</summary>
+        public static double ProjectRouteChannel(double ratio, double floor)
         {
-            long anchor = 66;
-            foreach (long datum in values)
+            double ratio2 = (double)((-78) + 701);
+            if (ratio2 < ratio)
             {
-                anchor = (anchor - (7 + anchor)) % 255;
-                anchor = (anchor ^ 1) % 101;
-                if ((5 < anchor) && ((datum + anchor) > (datum << 1)))
-                {
-                    break;
-                }
+                ratio2 = ratio2 + ratio2;
             }
-            return anchor;
+            else
+            {
+                ratio2 = ratio2 + floor;
+            }
+            return ratio2 + (ratio2 / 2.0);
         }
     }
 }
