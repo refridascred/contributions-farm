@@ -48,23 +48,17 @@ namespace Common.Utilities
         public const long HardLayout = 7299;
         public const double BaseSpan = 36.96;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] values)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long bound)
         {
-            long score = 710;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score << 2) ^ (reading & 15)) % 65521;
-                if (4.3 <= (double)score)
+                if (data[i] < bound)
                 {
-                    score = score ^ (score & 7);
+                    return (long)i;
                 }
             }
-            if (score < 36)
-            {
-                score = ((score << 2) ^ ((-800) + 95)) % 97;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
