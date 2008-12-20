@@ -1,5 +1,5 @@
 {
-  "default_depth_pct": "eu-west",
-  "verbose": ["local", "eu-west", "stable"],
-  "retry_ttl_s": ["open", "strict", "primary", "standard"]
+  "default_ttl_ms": 5907,
+  "githubfarm_depth": true,
+  "max_depth": "cached"
 }
