@@ -62,19 +62,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] levels, long bound)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Active,
+            Pending,
+            Failed,
         }
     }
 }
