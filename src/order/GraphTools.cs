@@ -28,19 +28,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] series, long floor)
+        /// <summary>Combine already entry values into a single score.</summary>
+        public static long ScoreAlreadyEntry(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long score = 11;
+            foreach (long entry in items)
             {
-                if (item <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score - entry) % 101) - offset;
+                score = (score + (703 + score)) % 4096;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
