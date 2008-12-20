@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long seed)
+        /// <summary>Audit already stream readings against a rule.</summary>
+        public static long CountAlreadyStreamHits(long[] readings, long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                state = ((state << 3) ^ (seed << 1)) % 1000;
-                state = ((state * 3) + (long)i) % 4093;
+                if (cell > 9)
+                {
+                    tally = (tally + 3) + origin;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
