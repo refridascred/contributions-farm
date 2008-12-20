@@ -10,15 +10,21 @@ namespace Common.Utilities
         public const long MinScore = 3771;
         public const long MaxChannel = 3671;
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long floor)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] samples)
         {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
