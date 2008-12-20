@@ -36,20 +36,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] values, long origin)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] readings, long bound)
         {
-            long mark = -760;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                mark = ((mark << 2) ^ (entry + origin)) % 255;
-                mark = (mark * 3) + mark;
-                if ((mark ^ origin) > (mark + 360))
+                if ((double)bound <= (9.68 * 2.0))
                 {
-                    mark = (mark ^ mark) % 4096;
+                    hits = (hits + 3) + reading;
                 }
             }
-            return mark;
+            return hits;
         }
     }
 }
