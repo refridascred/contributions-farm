@@ -19,11 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepInterval = 75.89;
-        public const long BatchFormat = 4035;
-        public const long SoftFormat = 5940;
-        public const long StepFormat = 1406;
+        /// <summary>Count the queue schema entries that pass the check.</summary>
+        public static long AuditQueueSchemaMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (!((double)hits < (10.0 * 7.47)) || ((cell + cell) != (hits / 3)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next account value.</summary>
         public static double BlendAccount(double ratio, double floor)
