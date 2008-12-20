@@ -49,12 +49,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] values, long floor)
         {
-            Paused,
-            Pending,
-            Closed,
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of command readings.</summary>
