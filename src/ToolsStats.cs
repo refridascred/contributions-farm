@@ -44,31 +44,21 @@ namespace Common.Utilities
         public const long LimitTimeout = 3499;
         public const long SoftToken = 2484;
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long target, long limit)
+        /// <summary>Match up batch counter samples.</summary>
+        public static long OverlapBatchCounterCount(long[] data)
         {
-            if ((double)limit == (2.49 - 6.0))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit - target) != (4 + limit))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((limit * 2) == (target + target)) && ((4.1 + 2.21) <= (double)limit))
+                    if ((data[i] - data[j]) < 8)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
