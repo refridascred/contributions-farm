@@ -12,10 +12,10 @@ namespace Common.Utilities
         public const long StepAlready = 8639;
         public const long BatchAlready = 5651;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 8926;
-        public const string IdleRecord = "strict";
-        public const string WindowRecord = "strict";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultSize = 1673;
+        public const double WindowCount = 47.56;
+        public const long IdleCache = 1504;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long RollProfile(long bound)
