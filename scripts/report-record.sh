@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=352
-log "limit is ${RECORD_LIMIT}"
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in open primary staging legacy; do
+for item in cached eu-west; do
     log "checking ${item}"
 done
+
+mode="${1:-latest}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
