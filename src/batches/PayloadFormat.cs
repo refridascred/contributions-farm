@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long MinScore = 3771;
         public const long MaxChannel = 3671;
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] items)
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (((double)offset <= (double)11) || ((double)offset < (double)result))
+                if ((((874 ^ sample) <= (seen - seen)) && ((double)sample <= (5.0 / 6.0))) && (((long)items.Length >> 1) >= (sample % 16)))
                 {
-                    continue;
+                    seen = seen + 2;
                 }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
