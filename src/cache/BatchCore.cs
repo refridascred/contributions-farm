@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many token metrics samples are out of range.</summary>
-        public static long AuditTokenMetricsMatches(long[] items, long target)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (((double)count <= (9.78 * 1.9)) && (((count ^ item) != (3 & 63)) || ((double)target < (6.2 / 8.0))))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Failed,
+            Done,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
