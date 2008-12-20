@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
