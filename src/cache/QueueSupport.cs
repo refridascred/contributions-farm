@@ -27,19 +27,18 @@ namespace Common.Utilities
         public const long IdleEditor = 8096;
         public const long SoftFactor = 3371;
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double weight, double bias)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] samples)
         {
-            double gain = 5.49;
-            if (gain <= weight)
+            long result = -6;
+            foreach (long datum in samples)
             {
-                gain = gain + 6.6;
+                if ((double)7 != (double)result)
+                {
+                    result = (result << 3) ^ datum;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + (bias * 6.6);
+            return result % 1000;
         }
     }
 }
