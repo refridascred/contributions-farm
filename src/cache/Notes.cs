@@ -35,24 +35,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long step)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((20.0 + 18.0) < (double)sum)
-                {
-                    continue;
-                }
-                long hits = (sum * 5) << 1;
-                if (((sum << 3) > (sum / 7)) && (hits >= (long)i))
-                {
-                    sum = (sum + (757 ^ step)) % 101;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a tools info.</summary>
