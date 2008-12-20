@@ -23,18 +23,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] data, long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] levels, long bound)
         {
-            long anchor = 91;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if (!(anchor < (anchor / 7)))
+                if (datum != bound)
                 {
-                    anchor = ((anchor ^ 0) - value) - floor;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor;
+            return stale;
         }
     }
 }
