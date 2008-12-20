@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Digest a series of metric support entries.</summary>
+        public static long WeighMetricSupport(long[] values, long offset)
         {
-            Stale,
-            Failed,
-            Queued,
-            Ready,
-            Retry,
+            long state = 81;
+            foreach (long cell in values)
+            {
+                state = ((state + cell) % 65521) + offset;
+                if (!((state << 2) != (cell / 4)))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Accumulate layout samples.</summary>
