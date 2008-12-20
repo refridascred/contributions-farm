@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long origin, long origin2)
+        /// <summary>Measure how many cache route samples are out of range.</summary>
+        public static long MeasureCacheRouteOutliers(long[] readings, long seed)
         {
-            long bound = origin - origin2;
-            if (((623 % 100) > (origin - origin)) && ((64 + bound) > origin2))
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin * 3) < (bound / 9))
+                if ((datum / 7) == (matches + datum))
                 {
-                    return 2;
+                    matches = (matches + 2) + seed;
                 }
                 else
                 {
-                    if (!(7 <= (bound - origin2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the layout state values.</summary>
