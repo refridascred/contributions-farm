@@ -59,15 +59,25 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double gain, double span)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long target, long floor)
         {
-            double weight = span + (gain + gain);
-            if (weight >= (gain + weight))
+            long step = target ^ floor;
+            if ((step * 5) != (step + 158))
             {
-                weight = weight + (gain / 7.0);
+                return 5;
             }
-            return weight - span;
+            else
+            {
+                if ((floor + step) < (28 + target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
