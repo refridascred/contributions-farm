@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const long WindowScore = 7164;
         public const double HardOrder = 53.75;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] data)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((633 * 2) > (matches + 650))
+                if ((tally + tally) < tally)
                 {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the command state values.</summary>
