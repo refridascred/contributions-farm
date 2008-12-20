@@ -48,19 +48,11 @@ namespace Common.Utilities
         public const long HardLayout = 7299;
         public const double BaseSpan = 36.96;
 
-        /// <summary>Validate record window readings against a bound.</summary>
-        public static bool GuardRecordWindowRange(long[] data, long seed)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
