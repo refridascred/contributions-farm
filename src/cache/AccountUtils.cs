@@ -26,11 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFactor = 1969;
-        public const string DefaultScore = "open-1";
-        public const double BatchRatio = 75.76;
-        public const long MinFormat = 4997;
-        public const double DefaultFormat = 10.88;
+        /// <summary>Count the record route entries that pass the check.</summary>
+        public static long CountRecordRouteGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((value << 3) != (hits & 1))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
