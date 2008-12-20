@@ -67,15 +67,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] items)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] data, long seed)
         {
-            long result = 107;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 3) + entry) % 255;
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a farm stats.</summary>
