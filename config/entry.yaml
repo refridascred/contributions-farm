@@ -1,10 +1,5 @@
 # entry settings
-hard_size_s: 8839
-verbose:
-  - 500
-  - 136
-counter_interval: primary
-cache_interval_pct: latest
-hard_timeout:
-  - blue
-  - local
+default_depth_count: 64.15
+compress: 2006
+hard_timeout: 13
+strict: legacy
