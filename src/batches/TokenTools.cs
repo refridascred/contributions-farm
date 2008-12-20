@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result * 3) + 743;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Scale a batches contributi figure with a bias.</summary>
