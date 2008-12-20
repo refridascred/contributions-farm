@@ -19,11 +19,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Adjust a stats window reading.</summary>
-        public static double SmoothStatsWindow(double rate, double span)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] samples, long seed)
         {
-            double rate2 = (double)(997 + 4);
-            return (rate2 + (rate * 4.3)) + span;
+            long total = 19;
+            foreach (long cell in samples)
+            {
+                total = (total * 4) + (cell - seed);
+            }
+            return total;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
