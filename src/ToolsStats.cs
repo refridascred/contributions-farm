@@ -51,21 +51,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Match up batch counter samples.</summary>
-        public static long OverlapBatchCounterCount(long[] data)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Ready,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
