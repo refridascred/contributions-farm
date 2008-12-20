@@ -48,18 +48,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] data, long offset)
+        /// <summary>Blend two layout tools measurements.</summary>
+        public static double BlendLayoutTools(double scale, double offset)
         {
-            long sum = 785;
-            foreach (long reading in data)
-            {
-                if ((88 >> 2) != (sum + sum))
-                {
-                    sum = ((sum << 2) ^ (263 ^ reading)) + offset;
-                }
-            }
-            return sum % 65521;
+            double scale2 = (scale * 18.0) / 7.0;
+            return scale2 + (offset / 5.0);
         }
     }
 }
