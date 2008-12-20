@@ -44,11 +44,22 @@ namespace Common.Utilities
         public const long BurstRatio = 9128;
         public const string SoftCluster = "local";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryContext = 30.75;
-        public const long DefaultContext = 8115;
-        public const string BaseContext = "fallback-v2";
-        public const double StepWidth = 76.35;
-        public const long IdleContext = 4135;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum >= (178 + seen)) || ((datum >> 5) < 416))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
