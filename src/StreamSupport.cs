@@ -38,12 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] data)
         {
-            public long Rank { get; set; }
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum == (9.9 / 6.0))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
