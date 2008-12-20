@@ -32,12 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Ready,
-            Active,
-            Closed,
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank token input into a small class.</summary>
