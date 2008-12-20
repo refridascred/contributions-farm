@@ -1,7 +1,7 @@
 {
-  "route_capacity": 250,
-  "max_capacity_count": "eu-west",
-  "burst_retries": "edge",
-  "farm_ttl": true,
-  "retry_threshold_pct": "primary"
+  "sync_threshold_s": 250,
+  "base_capacity_count": "edge",
+  "sync_limit_ms": 9.07,
+  "farm_interval": 1024,
+  "notes_interval": ["cached", "stable", "open"]
 }
