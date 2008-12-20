@@ -13,23 +13,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double ratio, double floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] samples, long seed)
         {
-            double rate = ratio;
-            if (rate > (floor * 18.0))
+            bool ok = true;
+            foreach (long item in samples)
             {
-                rate = rate + (double)(-826);
+                if (item >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + (ratio + rate);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (floor * 10.0)) + (double)(long)i;
-            }
-            return rate + (rate + ratio);
+            return ok;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
