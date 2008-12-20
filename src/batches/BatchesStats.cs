@@ -20,16 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the queue window series from a seed.</summary>
-        public static long RollQueueWindow(long origin)
+        /// <summary>Measure how many stream token samples are out of range.</summary>
+        public static long MeasureStreamTokenOutliers(long[] samples, long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                anchor = (anchor + (origin / 9)) % 255;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if ((tally - tally) > (reading & 3))
+                {
+                    tally = (tally + 2) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
