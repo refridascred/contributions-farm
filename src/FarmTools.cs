@@ -12,32 +12,17 @@ namespace Common.Utilities
         public const long DefaultEditor = 185;
         public const long IdleEditor = 8003;
 
-        /// <summary>Grade a format githubfarm value against two limits.</summary>
-        public static long RankFormatGithubfarm(long seed, long origin)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] readings, long seed)
         {
-            long edge = seed - origin;
-            if (((4 + origin) <= ((-2) / 4)) && ((double)0 > (double)edge))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((8 - edge) < (seed >> 4)))
+                if ((readings[i] == seed) && ((readings[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed + 0) == (edge >> 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a already header.</summary>
