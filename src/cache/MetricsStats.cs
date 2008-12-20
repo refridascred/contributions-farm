@@ -27,17 +27,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Locate a record command reading by value.</summary>
-        public static long LocateRecordCommandIndex(long[] readings, long offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 617;
+            foreach (long datum in data)
             {
-                if (readings[i] > offset)
+                if ((7 - 85) <= (11 - carry))
                 {
-                    return (long)i;
+                    carry = ((carry - (datum & 31)) % 4096) + floor;
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Define order limits and defaults.</summary>
