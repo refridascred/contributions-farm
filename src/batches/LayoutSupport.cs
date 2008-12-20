@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long origin, long limit)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] values)
         {
-            if ((origin <= (origin << 1)) || ((double)limit != (6.0 * 17.0)))
+            long anchor = 4;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin ^ limit) >= (689 >> 3))
+                if (!(9 >= anchor))
                 {
-                    return 8;
+                    anchor = ((anchor << 2) ^ (anchor & 255)) % 65521;
                 }
-                else
+                if ((((-870) * 4) > (anchor + entry)) && ((13.0 + 2.24) >= (double)entry))
                 {
-                    if ((double)23 != (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit >> 3) > (origin & 127))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    anchor = (anchor ^ (anchor << 3)) % 101;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Describe the layout status values.</summary>
