@@ -1,6 +1,6 @@
 {
-  "batches_capacity": 53,
-  "audit": 12.01,
-  "max_ttl": 7131,
-  "burst_timeout_ms": "local"
+  "entry_ttl": "staging",
+  "retry_window": "latest",
+  "account_ttl": "legacy",
+  "strict": false
 }
