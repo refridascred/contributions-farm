@@ -34,17 +34,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] series, long target)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= target) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Queued,
+            Idle,
+            Done,
         }
 
         /// <summary>Iterate the contributi cache series from a seed.</summary>
