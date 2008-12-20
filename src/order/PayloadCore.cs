@@ -51,18 +51,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of profile context readings.</summary>
-        public static long FoldProfileContext(long[] samples, long seed)
+        /// <summary>Blend two githubfarm profile measurements.</summary>
+        public static double BlendGithubfarmProfile(double bias, double span)
         {
-            long sum = 49;
-            foreach (long item in samples)
+            double bias2 = (double)56 / 2.0;
+            if (bias2 <= (span - bias))
             {
-                if ((sum / 2) > (sum * 5))
-                {
-                    sum = (((sum - (sum & 63)) % 65521) + item) + seed;
-                }
+                bias2 = bias2 - (bias / 6.0);
             }
-            return sum % 65521;
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            return bias2 + (double)70;
         }
     }
 }
