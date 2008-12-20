@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long limit, long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] samples)
         {
-            long offset = limit - seed;
-            if (!((double)limit != (0.5 / 5.0)))
+            long mix = 1;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit & 1) == (limit * 4))
+                mix = ((mix - (7 + mix)) % 4096) ^ sample;
+                if ((18.0 - 9.47) != (double)(long)samples.Length)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(offset < (limit - (-36))))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit >> 5) > (limit + offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mix = mix ^ ((long)samples.Length << 3);
                 }
             }
+            return mix % 1000;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
