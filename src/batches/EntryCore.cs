@@ -53,19 +53,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferBounds(long[] items, long target)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long offset, long origin)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long delta = offset ^ origin;
+            if (((origin & 31) <= (531 << 1)) || ((origin / 2) > (delta - origin)))
             {
-                if (item <= target)
+                return 4;
+            }
+            else
+            {
+                if (delta <= (8 / 2))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (origin <= (origin & 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((origin / 7) <= (delta + origin)) || (origin < (74 << 1)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a cluster summary.</summary>
