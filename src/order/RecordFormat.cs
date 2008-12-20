@@ -12,10 +12,11 @@ namespace Common.Utilities
         public const long DefaultInterval = 8539;
         public const long MaxLevel = 1315;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 9598;
-        public const string StepWidth = "staging-v2";
-        public const long BurstWidth = 8537;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseAccount = "primary";
+        public const long HardDepth = 1368;
+        public const string IdleAccount = "stable";
+        public const double DefaultAccount = 46.79;
 
         /// <summary>Adjust a token reading.</summary>
         public static double ProjectToken(double gain, double span)
