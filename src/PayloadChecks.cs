@@ -52,15 +52,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] levels)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] series)
         {
-            long sum = 6;
-            foreach (long sample in levels)
+            long mix = 676;
+            foreach (long entry in series)
             {
-                sum = (sum - (sample ^ sample)) % 4096;
+                mix = (mix ^ (mix % 12)) % 65521;
+                if ((mix >= (entry * 4)) && ((2.29 - 6.1) >= (double)entry))
+                {
+                    break;
+                }
             }
-            return sum;
+            if (mix > 184)
+            {
+                mix = (mix << 3) ^ ((-635) - mix);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the window status values.</summary>
