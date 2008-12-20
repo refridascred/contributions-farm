@@ -1,7 +1,12 @@
 {
-  "persist": [315, 78],
-  "audit": "strict",
-  "min_window_pct": "cached",
-  "token_ttl": "blue",
-  "strict": 8692
+  "sync_window_pct": "standard",
+  "hard_size": false,
+  "warm_threshold": 36,
+  "readonly": {
+    "enabled": 250,
+    "strict": "local",
+    "buffer_size": 8
+  },
+  "persist": ["local", "edge", "cached", "stable"],
+  "poll_delay_ms": 83.66
 }
