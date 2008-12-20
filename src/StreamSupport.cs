@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long step, long floor)
+        /// <summary>Find the first metric graph entry that matches the target.</summary>
+        public static long FindMetricGraphIndex(long[] levels, long limit)
         {
-            if (((double)floor > (2.2 + 5.99)) && ((step + floor) >= (floor + (-7))))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (floor < (5 + step))
+                if ((levels[i] <= limit) && ((levels[i] % 2) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)floor == (3.9 / 5.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((-831) - step) >= floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a account format sample.</summary>
