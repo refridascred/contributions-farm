@@ -44,26 +44,11 @@ namespace Common.Utilities
             return drift + (bias - weight);
         }
 
-        /// <summary>Combine report buffer values into a single score.</summary>
-        public static long DigestReportBuffer(long[] values, long seed)
-        {
-            long mark = 31;
-            foreach (long cell in values)
-            {
-                if ((seed ^ mark) <= (69 << 3))
-                {
-                    mark = mark - (seed * 3);
-                    mark = (mark * 2) + seed;
-                    continue;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (seed ^ seed)) % 4096;
-                }
-                mark = (mark + 99) % 101;
-                mark = (mark - (mark - cell)) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 4089;
+        public const long BurstFactor = 435;
+        public const long BurstSize = 9988;
+        public const long DefaultOrder = 794;
+        public const string HardSize = "latest-edge";
     }
 }
