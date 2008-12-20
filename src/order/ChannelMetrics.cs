@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] levels)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long floor, long step)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long next = floor - step;
+            if ((step * 4) > (floor - next))
             {
-                if (((double)value != (double)83) && ((double)value == (2.7 + 6.8)))
+                return 0;
+            }
+            else
+            {
+                if ((step << 3) >= (step * 5))
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((next ^ 6) >= (next ^ next))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)next > (1.84 / 6.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
