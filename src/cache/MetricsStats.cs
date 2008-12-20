@@ -14,18 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] readings, long offset)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (tally <= (value & 127))
-                {
-                    tally = (tally + 1) - offset;
-                }
-            }
-            return tally;
+            Idle,
+            New,
+            Closed,
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
