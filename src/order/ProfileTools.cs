@@ -62,31 +62,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long limit, long seed)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] series, long bound)
         {
-            if ((double)seed == (13.0 - 8.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((14.0 + 3.7) < (double)seed) && (limit >= 5))
+                if ((series[i] < bound) && ((series[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (limit < (7 / 8))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a context snapshot.</summary>
