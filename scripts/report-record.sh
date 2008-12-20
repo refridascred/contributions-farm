@@ -6,11 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=142
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-edge}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
+for item in local cached green edge; do
+    log "checking ${item}"
 done
-log "total ${total}"
