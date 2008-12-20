@@ -34,17 +34,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] readings, long limit)
+        /// <summary>Project the next session filter value.</summary>
+        public static double ProjectSessionFilter(double scale, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = scale - (bias * 8.8);
+            if (load > (load / 5.0))
             {
-                if ((readings[i] >= limit) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                load = load - (double)87;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + scale) + (double)(long)i;
+            }
+            return load - 5.8;
         }
     }
 }
