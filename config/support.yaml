@@ -1,9 +1,7 @@
 # support settings
-max_window_count: staging
-report_size: false
-farm_ratio: false
-enabled: 19.82
-compress:
-  - open
-  - green
-batch_timeout_count: 4492
+retry_interval: legacy
+verbose: 5959
+persist: false
+base_timeout_ms: primary
+idle_timeout_s: strict
+notes_depth: false
