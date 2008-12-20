@@ -27,13 +27,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] items, long target)
         {
-            public double Total { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= target) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a contributi info.</summary>
