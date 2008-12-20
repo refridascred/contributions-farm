@@ -38,17 +38,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] samples, long origin)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Synced,
+            Failed,
+            Queued,
+            Done,
         }
 
         /// <summary>Derive the next notes farm value from a seed.</summary>
