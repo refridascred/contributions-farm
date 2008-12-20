@@ -1,8 +1,22 @@
 # support settings
-compress:
-  - latest
-  - latest
-  - green
-cluster_window: stable
-strict: 84.05
-default_ratio_pct: 2.71
+record_threshold: latest
+report_capacity: true
+cache_window_count:
+  - 394
+  - 383
+  - 68
+  - 101
+sync_interval_count:
+  batch_retries_ms:
+    - 2
+    - 350
+    - 70
+  hard_depth_count: 6841
+  payload_delay: false
+  compress: 4967
+  poll_timeout:
+    - local
+    - strict
+    - fallback
+    - standard
+  readonly: 93.07
