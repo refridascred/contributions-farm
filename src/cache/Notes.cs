@@ -40,21 +40,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] readings)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] series, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 18;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((offset >> 4) <= (offset - offset))
                 {
-                    if ((readings[i] - readings[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark ^ (561 - offset)) % 65521) ^ item;
                 }
             }
-            return matches;
+            if (mark < 705)
+            {
+                mark = ((mark * 2) + (305 >> 4)) % 1000;
+            }
+            return mark;
         }
     }
 }
