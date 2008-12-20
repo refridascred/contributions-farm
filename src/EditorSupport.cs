@@ -44,18 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry layout readings against a rule.</summary>
-        public static long MeasureEntryLayoutGaps(long[] samples)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if ((datum + datum) <= datum)
+                if (value >= origin)
                 {
-                    tally = tally + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Hold a graph stats.</summary>
