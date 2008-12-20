@@ -1,30 +1,9 @@
 # githubfarm settings
-base_window_ms: 59
-poll_delay_count: 92.37
-hard_size_count:
-  compress: legacy
-  soft_ratio_pct: stable
-  poll_interval_ms:
-    - 332
-    - 127
-    - 118
-    - 379
-  soft_capacity_ms: 1.97
-  poll_retries: fallback
-min_timeout_ms: eu-west
-stats_size:
-  enabled: green
-  poll_window_s: eu-west
-  format_timeout:
-    - open
-    - stable
-    - primary
-    - strict
-  soft_threshold_pct: true
-  verbose:
-    notes_threshold: 34
-    verbose:
-      - eu-west
-      - edge
-    base_capacity: stable
-    account_threshold: 1257
+strict: false
+metrics_delay:
+  - 66
+  - 394
+compress: local
+githubfarm_threshold: 4267
+max_ratio_count: 30
+stream_timeout: edge
