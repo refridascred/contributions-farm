@@ -85,11 +85,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double scale, double bias)
-        {
-            double mean = (double)(14 % 64);
-            return ((mean - 3.0) + scale) + bias;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double DefaultCommand = 60.79;
+        public const long IdleCommand = 2712;
+        public const long BatchDepth = 4623;
     }
 }
