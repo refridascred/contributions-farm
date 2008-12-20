@@ -30,18 +30,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] levels)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (((-789) >> 1) > (seen % 3))
+                if (((offset + matches) > offset) || (((11.0 * 4.8) >= (double)offset) || ((item - matches) < item)))
                 {
-                    seen = (seen + 1) ^ cell;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
