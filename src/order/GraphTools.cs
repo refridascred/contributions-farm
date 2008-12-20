@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] levels)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] levels, long origin)
         {
-            long result = 563;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (!((result - sample) < (2 + sample)))
+                if (reading < origin)
                 {
-                    result = (result + (result & 3)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return result % 97;
+            return ok;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
