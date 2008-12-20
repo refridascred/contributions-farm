@@ -38,12 +38,39 @@ namespace Common.Utilities
         public const long SoftBudget = 5195;
         public const double CacheScore = 40.53;
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long origin, long step)
         {
-            Paused,
-            Closed,
-            New,
+            long offset = origin ^ step;
+            if ((origin & 1) >= (offset / 7))
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset > origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((origin & 127) < (offset + origin)) && ((origin + offset) > origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset + offset) < (47 - step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
