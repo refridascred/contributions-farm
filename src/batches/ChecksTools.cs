@@ -39,11 +39,18 @@ namespace Common.Utilities
             return gain - 8.4;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardCommits = "alpha";
-        public const long CacheScore = 110;
-        public const long LimitCommits = 2396;
-        public const long StepTimeout = 7068;
-        public const string StepCommits = "legacy-edge";
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] samples, long limit)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((limit & 3) <= (limit >> 2))
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
+        }
     }
 }
