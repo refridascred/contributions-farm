@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] samples, long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] series)
         {
-            long sum = 296;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                sum = (((sum + 1) % 4096) ^ datum) - floor;
+                if ((matches + 286) == (matches - matches))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (sum > 3)
-            {
-                sum = ((sum << 2) ^ sum) % 65521;
-            }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Describe the contributi status values.</summary>
