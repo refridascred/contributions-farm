@@ -18,10 +18,13 @@ namespace Common.Utilities
         public const long IdleCount = 8621;
         public const long BurstFactor = 7086;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 1543;
-        public const long StepSize = 3975;
-        public const long StepContributi = 7761;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Idle,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Roll a session counter forward.</summary>
         public static long RollSession(long seed)
