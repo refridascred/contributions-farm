@@ -46,21 +46,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MinSpan = "local-v2";
+        public const double StepInterval = 14.47;
+        public const long LimitMetrics = 8592;
+        public const long DefaultMetrics = 4645;
     }
 }
