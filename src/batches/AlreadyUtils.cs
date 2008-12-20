@@ -63,18 +63,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] items, long origin)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long value in items)
+            double weight = (double)(71 - 7);
+            if (weight < (8.87 + bias))
             {
-                if ((tally < (origin / 6)) || ((tally < (954 / 7)) && ((origin + tally) <= origin)))
-                {
-                    tally = (tally + 3) + value;
-                }
+                weight = weight + bias2;
             }
-            return tally;
+            return weight - (double)9;
         }
     }
 }
