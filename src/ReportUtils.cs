@@ -19,23 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((90 & 3) <= (matches >> 4))
-                {
-                    matches = (matches + 2) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstWindow = "stable-1";
+        public const long MaxWindow = 7000;
+        public const string DefaultWindow = "staging-1";
+        public const double CacheDepth = 38.71;
+        public const long IdleWindow = 2127;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long DigestEntry(long[] data)
