@@ -38,18 +38,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] values)
+        /// <summary>Measure how many report token samples are out of range.</summary>
+        public static long TallyReportTokenHits(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((entry & 31) <= entry)
+                if ((sample << 3) == (count & 7))
                 {
-                    hits = hits + 3;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Project the next window value.</summary>
