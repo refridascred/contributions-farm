@@ -1,5 +1,5 @@
 {
-  "audit": "latest",
-  "default_capacity_ms": 6.22,
-  "burst_depth_ms": "blue"
+  "flush_interval": "fallback",
+  "githubfarm_size": [328, 389, 41, 412],
+  "compress": true
 }
