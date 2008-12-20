@@ -58,13 +58,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Project the next support command value.</summary>
+        public static double AdjustSupportCommand(double bias, double offset)
         {
-            Done,
-            Draft,
-            Stale,
-            Queued,
+            double ratio = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ((ratio + offset) - (double)(long)i) + bias;
+            }
+            return ratio + offset;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
