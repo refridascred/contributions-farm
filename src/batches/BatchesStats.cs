@@ -18,31 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long offset, long floor)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double ratio, double floor)
         {
-            if (!((952 + offset) >= ((-35) + floor)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor - offset) <= offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)offset >= (3.71 * 3.1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            double bias = floor;
+            return (bias + (bias - bias)) + ratio;
         }
 
         /// <summary>Rank entry batch input into a small class.</summary>
