@@ -1,10 +1,14 @@
 # Command notes
 
-Each commits is validated before it reaches the batches queue.
-The session module keeps channel values in sync with the graph cache.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+When a context fails, the batches handler retries a few times before giving up.
+Keep channel and order names short and lowercase.
+
+The stream module keeps farm values in sync with the order cache.
+The schema report groups every farm by metric.
 
 ## Guidelines
 
-- Log every report change
-- Prefer order defaults
-- Validate order input early
+- Keep token values small
+- Prefer layout defaults
+- Log every record change
