@@ -19,24 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next cluster format value from a seed.</summary>
-        public static long RollClusterFormat(long bound)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long total = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)bound != (8.37 / 9.0))
-                {
-                    total = ((total << 3) ^ (total - total)) % 1000;
-                }
-                else
-                {
-                    total = ((total * 4) + (bound >> 2)) % 97;
-                }
-                total = ((total << 3) ^ (total % 7)) % 65521;
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            public string Total { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define format limits and defaults.</summary>
