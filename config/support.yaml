@@ -1,7 +1,6 @@
 # support settings
-retry_interval: legacy
-verbose: 5959
-persist: false
-base_timeout_ms: primary
-idle_timeout_s: strict
-notes_depth: false
+audit: 1535
+counter_threshold: 98.13
+flush_window_ms:
+  - 401
+  - 479
