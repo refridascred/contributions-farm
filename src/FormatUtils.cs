@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of counter profile entries.</summary>
-        public static long TotalCounterProfile(long[] levels)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long anchor = 65;
-            foreach (long value in levels)
-            {
-                anchor = anchor - value;
-                if ((anchor + value) <= (value >> 3))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Queued,
+            Synced,
+            Retry,
+            Stale,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
