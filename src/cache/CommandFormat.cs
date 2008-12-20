@@ -21,18 +21,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] items, long step)
+        /// <summary>Derive the next schema report value from a seed.</summary>
+        public static long RollSchemaReport(long limit)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample <= step)
-                {
-                    hits = hits + 3;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Locate a commits batch reading by value.</summary>
