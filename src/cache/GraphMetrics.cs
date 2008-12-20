@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] series)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((matches + 286) == (matches - matches))
+                if (hits >= (value ^ value))
                 {
-                    matches = (matches + 2) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the contributi status values.</summary>
