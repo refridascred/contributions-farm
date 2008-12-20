@@ -22,22 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate route report samples.</summary>
-        public static long FoldRouteReport(long[] values, long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long step)
         {
-            long total = -3;
-            foreach (long item in values)
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((3 + bound) > (70 - item))
-                {
-                    total = (total - (bound * 2)) % 65521;
-                }
+                result = (result ^ (result & 15)) % 1000;
+                result = ((result * 5) + (long)i) % 97;
             }
-            if (total < (-204))
-            {
-                total = total ^ bound;
-            }
-            return total % 65521;
+            return result;
         }
 
         /// <summary>Hold a route snapshot.</summary>
