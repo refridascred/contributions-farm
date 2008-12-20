@@ -58,10 +58,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleCache = "primary";
-        public const string DefaultCache = "latest-edge";
-        public const double DefaultRatio = 55.27;
-        public const long WindowCache = 3897;
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
+        }
     }
 }
