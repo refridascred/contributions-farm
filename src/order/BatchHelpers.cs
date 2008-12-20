@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long floor, long step)
+        /// <summary>Adjust a schema counter reading.</summary>
+        public static double BlendSchemaCounter(double weight, double floor)
         {
-            if ((5 < (step << 3)) && ((863 + step) < floor))
+            double ratio = floor;
+            if (ratio >= (double)49)
             {
-                return 0;
+                ratio = ratio - (1.9 * 4.0);
             }
             else
             {
-                if (!((step % 60) == (step ^ step)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((7.22 / 5.0) >= (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((floor >> 4) > (floor & 31)) || (step < 6))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                ratio = ratio - weight;
             }
+            return ratio + (weight - weight);
         }
 
         /// <summary>Roll a stats counter forward.</summary>
