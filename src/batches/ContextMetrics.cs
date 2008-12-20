@@ -38,23 +38,19 @@ namespace Common.Utilities
         public const string RetryBudget = "stable";
         public const long StepWidth = 9557;
 
-        /// <summary>Derive the next cluster notes value from a seed.</summary>
-        public static long DeriveClusterNotes(long origin)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double scale, double floor)
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
+            double rate = (double)3 + floor;
+            if (rate > (scale - 8.4))
             {
-                if ((origin - origin) >= origin)
-                {
-                    break;
-                }
-                else
-                {
-                    score = (score ^ score) % 97;
-                }
-                score = ((score * 3) + (long)i) % 1000;
+                rate = rate - (floor * 17.0);
             }
-            return score;
+            else
+            {
+                rate = rate + scale;
+            }
+            return rate - (double)5;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
