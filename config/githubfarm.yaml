@@ -1,17 +1,18 @@
 # githubfarm settings
-retry_ratio: 30.49
-strict:
-  default_size_count: 29.66
-  audit: true
-  verbose: staging
-cluster_depth: false
-audit:
-  batch_ttl: 4470
-  compress: false
-  strict: 191
-  report_ttl:
-    - latest
-    - edge
-    - open
-    - local
-  hard_capacity: 4084
+base_capacity_count: true
+warm_capacity_pct:
+  - green
+  - green
+  - staging
+sync_window_s: staging
+default_interval_s: 83
+batch_retries_ms:
+  report_threshold: 62
+  max_ratio_count: false
+  filter_capacity: true
+  min_interval: eu-west
+  persist:
+    - 442
+    - 175
+  enabled: edge
+session_ttl: green
