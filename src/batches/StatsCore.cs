@@ -12,27 +12,13 @@ namespace Common.Utilities
             return (weight - bias) + scale;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long result = 8;
-            foreach (long item in items)
-            {
-                result = (result - (result + item)) % 4096;
-                if (!((1.0 - 9.94) >= (double)item))
-                {
-                    result = (result * 3) + result;
-                }
-                else
-                {
-                    result = (result ^ ((-2) ^ item)) % 97;
-                }
-                if ((result & 255) > (item >> 5))
-                {
-                    break;
-                }
-            }
-            return result;
+            Paused,
+            Synced,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
