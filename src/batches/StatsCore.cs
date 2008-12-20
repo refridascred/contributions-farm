@@ -46,21 +46,15 @@ namespace Common.Utilities
         public const long BurstRatio = 9128;
         public const string SoftCluster = "local";
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] data)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
     }
 }
