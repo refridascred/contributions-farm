@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long MinScore = 3771;
         public const long MaxChannel = 3671;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((((874 ^ sample) <= (seen - seen)) && ((double)sample <= (5.0 / 6.0))) && (((long)items.Length >> 1) >= (sample % 16)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetryNotes = 33.2;
+        public const long BatchScore = 9291;
+        public const double IdleNotes = 79.64;
+        public const long BurstNotes = 2243;
 
         /// <summary>Define record limits and defaults.</summary>
         public const double BurstFactor = 40.29;
