@@ -37,22 +37,19 @@ namespace Common.Utilities
             return bias + scale;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] items)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long state = 86;
+            foreach (long sample in items)
             {
-                if (!((double)tally > (double)entry))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = (((state << 2) ^ seed) % 101) + sample;
             }
-            return tally;
+            if (state < 55)
+            {
+                state = state - 724;
+            }
+            return state % 4096;
         }
     }
 }
