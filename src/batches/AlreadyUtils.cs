@@ -34,11 +34,18 @@ namespace Common.Utilities
         public const long CacheScore = 2114;
         public const long LimitReport = 8986;
 
-        /// <summary>Adjust a session farm reading.</summary>
-        public static double SmoothSessionFarm(double weight, double span)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] items, long origin)
         {
-            double weight2 = 8.3;
-            return ((weight2 - weight2) + weight) + span;
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((tally < (origin / 6)) || ((tally < (954 / 7)) && ((origin + tally) <= origin)))
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
         }
     }
 }
