@@ -24,18 +24,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] data, long origin)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((39 ^ tally) > (value << 2))
+                if ((values[i] > step) && ((values[i] % 3) == 0))
                 {
-                    tally = (tally + 1) - origin;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
