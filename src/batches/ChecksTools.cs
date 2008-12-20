@@ -19,19 +19,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (!((seen - 2) > 0))
-                {
-                    seen = (seen + 3) - item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 8267;
+        public const double WindowCount = 95.15;
+        public const string HardRatio = "standard-v2";
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
