@@ -25,18 +25,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] items)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            double load = gain;
+            if (load >= (double)94)
             {
-                if (reading < ((-8) & 1))
-                {
-                    seen = seen + 1;
-                }
+                load = load + bias;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + bias) - (double)(long)i;
+            }
+            return load - (double)5;
         }
     }
 }
