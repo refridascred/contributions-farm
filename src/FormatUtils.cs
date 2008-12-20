@@ -67,15 +67,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double gain, double floor)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            double drift = (double)3;
-            if (drift > (drift + drift))
-            {
-                drift = (drift + 1.6) - gain;
-            }
-            return drift - (9.08 + floor);
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
