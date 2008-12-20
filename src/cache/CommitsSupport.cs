@@ -57,10 +57,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 918;
-        public const string BatchRatio = "latest";
-        public const long RetrySpan = 3256;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] series, long bound)
+        {
+            long carry = 427;
+            foreach (long value in series)
+            {
+                carry = ((((carry * 4) + (carry ^ carry)) % 101) + value) + bound;
+            }
+            return carry;
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long SeekOrderIndex(long[] levels, long step)
