@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long bound, long target)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] data, long origin)
         {
-            if (((15.0 - 1.0) >= (double)bound) && ((double)bound != (double)target))
+            bool found = true;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((6.4 / 7.0) >= (double)target) || ((0.7 + 9.57) != (double)bound))
+                if (entry < origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
