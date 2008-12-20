@@ -51,23 +51,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats farm readings.</summary>
-        public static long FoldStatsFarm(long[] series)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] readings)
         {
-            long mix = -97;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((mix + reading) > (reading - reading)) && ((mix * 3) == (long)series.Length))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = ((mix << 2) ^ (mix - reading)) % 65521;
+                    if ((readings[i] + readings[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    mix = (mix ^ (reading + reading)) % 255;
-                }
-                mix = ((mix << 2) ^ (reading * 2)) % 255;
             }
-            return mix % 97;
+            return seen;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
