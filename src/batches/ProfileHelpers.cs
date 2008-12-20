@@ -50,31 +50,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long origin, long seed)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] readings, long limit)
         {
-            if (seed > 9)
+            long state = 8;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin <= seed)
+                if ((66 - 120) >= limit)
                 {
-                    return 1;
+                    state = (state << 2) ^ (datum + datum);
                 }
-                else
+                if ((limit % 60) != (state + datum))
                 {
-                    if ((double)origin >= (0.36 * 3.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
