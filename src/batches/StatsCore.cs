@@ -66,12 +66,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public bool Mode { get; set; }
-            public double Total { get; set; }
-            public double Score { get; set; }
+            New,
+            Dropped,
+            Ready,
+            Idle,
+            Active,
         }
 
         /// <summary>Check that every githubfarm profile entry stays within the limit.</summary>
