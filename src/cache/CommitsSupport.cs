@@ -56,13 +56,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] data, long target)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a order reading by value.</summary>
