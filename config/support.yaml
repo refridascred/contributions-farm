@@ -1,13 +1,13 @@
 # support settings
-audit: 30
-default_limit_count: 100
-queue_size:
-  buffer_capacity: 6628
-  route_interval: 43.73
-  sync_size: true
-  compress: 52.6
-  batch_interval: 92
-enabled: legacy
-burst_interval:
-  - 27
-  - 96
+soft_ratio_count:
+  persist:
+    - staging
+    - standard
+    - cached
+  session_timeout: standard
+  stats_delay: green
+verbose: 100
+strict: green
+retry_size:
+  - 191
+  - 338
