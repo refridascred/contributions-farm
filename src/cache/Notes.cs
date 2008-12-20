@@ -29,19 +29,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] readings, long bound)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long target)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long score = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Rank session input into a small class.</summary>
