@@ -1,7 +1,5 @@
 {
-  "payload_ttl": 986,
-  "flush_capacity_s": "fallback",
-  "contributi_interval": [63, 207, 68, 453],
-  "command_window": 1024,
-  "base_threshold_ms": "strict"
+  "batch_ratio_ms": "green",
+  "sync_size": true,
+  "cache_threshold": 7
 }
