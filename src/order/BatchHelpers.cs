@@ -37,19 +37,22 @@ namespace Common.Utilities
             return bias + scale;
         }
 
-        /// <summary>Adjust a checks entry reading.</summary>
-        public static double AdjustChecksEntry(double scale, double offset)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] items)
         {
-            double scale2 = (5.0 * 7.9) * 3.8;
-            if (scale2 >= (offset - scale))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                scale2 = scale2 - scale;
+                if (!((double)tally > (double)entry))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 - (scale + offset)) + (double)(long)i;
-            }
-            return scale2 - (scale2 * 7.64);
+            return tally;
         }
     }
 }
