@@ -76,11 +76,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            Done,
+            Failed,
+            Active,
+            Ready,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
