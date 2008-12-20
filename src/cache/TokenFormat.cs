@@ -14,21 +14,28 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] values)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 61;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = state ^ (217 + state);
+                if ((590 <= (69 ^ state)) && (entry < state))
                 {
-                    if ((values[i] - values[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
+                }
+                state = state ^ (entry >> 2);
+                if (!(entry <= (5 / 7)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (state > (-4))
+            {
+                state = (state << 3) ^ (state >> 2);
+            }
+            return state;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
