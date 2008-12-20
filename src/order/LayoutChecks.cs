@@ -36,21 +36,39 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] samples)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long floor, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long diff = floor ^ bound;
+            if ((3.52 < (double)floor) || ((bound + 869) != (7 - bound)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)floor != (double)diff)
                 {
-                    if ((samples[i] - samples[j]) < 11)
+                    return 5;
+                }
+                else
+                {
+                    if ((diff - floor) < (floor % 16))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)floor == (7.02 / 8.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Rank graph buffer input into a small class.</summary>
