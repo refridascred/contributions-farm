@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] series, long bound)
         {
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
