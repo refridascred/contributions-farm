@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Check that every support account entry stays within the limit.</summary>
+        public static bool GuardSupportAccountLimits(long[] series, long floor)
         {
-            Retry,
-            Draft,
-            Failed,
-            Pending,
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a route record.</summary>
