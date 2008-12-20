@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long bound)
         {
-            Retry,
-            Failed,
-            Closed,
+            long total = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                if (bound > (total & 15))
+                {
+                    total = ((total << 3) ^ (60 + total)) % 97;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
