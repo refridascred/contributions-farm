@@ -1,7 +1,5 @@
 {
-  "sync_threshold_s": 250,
-  "base_capacity_count": "edge",
-  "sync_limit_ms": 9.07,
-  "farm_interval": 1024,
-  "notes_interval": ["cached", "stable", "open"]
+  "default_depth_pct": "eu-west",
+  "verbose": ["local", "eu-west", "stable"],
+  "retry_ttl_s": ["open", "strict", "primary", "standard"]
 }
