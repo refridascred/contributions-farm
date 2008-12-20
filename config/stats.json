@@ -1,8 +1,7 @@
 {
-  "stream_retries": ["local", "standard"],
-  "audit": 52.43,
-  "max_retries_count": "stable",
-  "counter_delay": 58.79,
-  "idle_ratio": "primary",
-  "window_timeout": "latest"
+  "default_timeout_s": "primary",
+  "metrics_delay": "open",
+  "compress": 30.16,
+  "idle_threshold": ["local", "standard", "cached"],
+  "default_delay_pct": false
 }
