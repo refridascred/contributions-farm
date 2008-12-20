@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseFactor = 7855;
-        public const double WindowSize = 32.88;
-        public const double MinLayout = 46.74;
-        public const long SoftLayout = 1113;
+        /// <summary>Project the next githubfarm context value.</summary>
+        public static double BlendGithubfarmContext(double bias, double span)
+        {
+            double scale = (bias * 12.0) - span;
+            if (scale <= (scale * 6.8))
+            {
+                scale = scale + scale;
+            }
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long CombineSchema(long[] values, long step)
