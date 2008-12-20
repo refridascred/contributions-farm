@@ -42,12 +42,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] data, long bound)
         {
-            Locked,
-            Ready,
-            Queued,
+            long anchor = 6;
+            foreach (long entry in data)
+            {
+                anchor = anchor - (8 - bound);
+                anchor = ((anchor << 2) ^ entry) % 101;
+            }
+            if (anchor > 42)
+            {
+                anchor = ((anchor << 3) ^ (anchor / 2)) % 1000;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the checks phase values.</summary>
