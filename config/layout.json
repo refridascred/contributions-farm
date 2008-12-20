@@ -1,5 +1,6 @@
 {
-  "cache_threshold": 24.93,
-  "batch_timeout_s": [149, 199],
-  "soft_size_ms": 15.53
+  "idle_retries_s": false,
+  "retry_retries_s": 19.35,
+  "context_ratio": false,
+  "verbose": 21
 }
