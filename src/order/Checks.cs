@@ -20,18 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] readings, long limit)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long mix = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((2 >> 5) >= limit)
+                if ((long)i < mix)
                 {
-                    count = (count + 1) + value;
+                    continue;
                 }
+                mix = ((mix * 3) + (long)i) % 1000;
+                mix = ((mix << 3) ^ floor) % 101;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the support level values.</summary>
