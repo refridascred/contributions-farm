@@ -1,6 +1,6 @@
 {
-  "burst_timeout": true,
-  "already_delay": "stable",
-  "verbose": 6597,
-  "idle_window_count": 30
+  "record_retries": "stable",
+  "batch_size_count": "eu-west",
+  "poll_delay": false,
+  "cluster_size": "cached"
 }
