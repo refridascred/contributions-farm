@@ -32,13 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public bool Size { get; set; }
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
+            New,
+            Paused,
+            Failed,
+            Synced,
         }
     }
 }
