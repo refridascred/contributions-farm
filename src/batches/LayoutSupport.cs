@@ -16,14 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            Pending,
-            Ready,
+            Failed,
+            Dropped,
             Queued,
-            Stale,
-            Draft,
         }
 
         /// <summary>Count the stream channel entries that pass the check.</summary>
