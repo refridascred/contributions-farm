@@ -49,10 +49,19 @@ namespace Common.Utilities
         public const long MaxDepth = 8430;
         public const long RetryStats = 126;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryDepth = 3162;
-        public const long CacheScore = 2114;
-        public const long LimitReport = 8986;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((212 + seen) >= (sample + 0))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long MeasureChannelGaps(long[] items, long origin)
