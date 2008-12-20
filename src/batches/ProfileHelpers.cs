@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long origin)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = ((mark * 5) + ((long)i + mark)) % 65521;
-                mark = (mark ^ ((long)i & 15)) % 4096;
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Done,
+            Stale,
+            Idle,
+            Draft,
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
