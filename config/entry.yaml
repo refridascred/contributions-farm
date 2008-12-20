@@ -1,20 +1,4 @@
 # entry settings
-soft_delay: 8543
-record_depth: 500
-compress:
-  cache_depth:
-    - 124
-    - 3
-    - 485
-  max_retries_count:
-    flush_threshold: 68.52
-    stream_depth: false
-    poll_delay_ms: staging
-    verbose:
-      - 330
-      - 177
-      - 107
-      - 12
-  idle_delay_count:
-    - cached
-    - latest
+hard_interval: 100
+batch_capacity: 21.63
+batch_size_pct: strict
