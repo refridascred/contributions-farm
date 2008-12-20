@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit metrics context readings against a rule.</summary>
-        public static long TallyMetricsContextOutliers(long[] readings)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long offset, long step)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long next = offset - step;
+            if (((8.4 - 3.4) != (double)offset) && ((offset - 975) > 369))
             {
-                if ((double)tally > (15.0 / 4.0))
+                return 7;
+            }
+            else
+            {
+                if ((offset - offset) >= 644)
                 {
-                    tally = (tally + 1) ^ entry;
+                    return 4;
+                }
+                else
+                {
+                    if (next <= step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)step <= (3.5 / 9.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
