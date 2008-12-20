@@ -23,18 +23,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] values)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(datum > (datum % 60)) || !((datum + matches) > (matches & 63)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((samples[i] - samples[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
