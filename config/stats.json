@@ -1,7 +1,11 @@
 {
-  "checks_capacity": "standard",
-  "warm_size_s": 1024,
-  "enabled": true,
-  "burst_threshold_s": false,
-  "sync_retries_ms": "latest"
+  "dry_run": "local",
+  "persist": "blue",
+  "verbose": "green",
+  "sync_retries_ms": {
+    "strict": "strict",
+    "cache_retries": 4971,
+    "burst_ratio_count": "staging"
+  },
+  "metrics_limit": 60
 }
