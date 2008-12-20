@@ -24,21 +24,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] data)
+        /// <summary>Rank schema commits input into a small class.</summary>
+        public static long ClassifySchemaCommits(long target, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long next = target + limit;
+            if ((target / 4) == (next % 97))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((limit ^ limit) <= (target - target)) || ((limit * 5) <= (next / 8)))
                 {
-                    if ((data[i] ^ data[j]) > 4)
+                    return 2;
+                }
+                else
+                {
+                    if ((limit * 2) >= (limit * 3))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return count;
         }
     }
 }
