@@ -28,16 +28,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] levels, long target)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] series, long floor)
         {
-            long anchor = 2;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long value in series)
             {
-                anchor = (((anchor * 3) + (849 % 10)) % 101) - target;
-                anchor = (anchor + ((-9) + datum)) % 255;
+                if (value <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor % 4096;
+            return flag;
         }
     }
 }
