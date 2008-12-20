@@ -23,18 +23,19 @@ namespace Common.Utilities
             return (mean - 20.0) + span;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] data)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((hits << 2) != (cell - hits))
+                if (entry <= offset)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
