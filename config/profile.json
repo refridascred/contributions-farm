@@ -1,5 +1,17 @@
 {
-  "entry_timeout": 96.38,
-  "base_window_pct": 250,
-  "batch_delay": false
+  "order_ratio": 9124,
+  "filter_delay": {
+    "strict": ["local", "fallback", "green"],
+    "support_threshold": true,
+    "warm_ttl_pct": {
+      "dry_run": 4077,
+      "persist": "edge",
+      "filter_capacity": ["cached", "staging", "green", "stable"],
+      "support_limit": 726,
+      "max_delay_count": false
+    },
+    "batch_size_ms": 49.04,
+    "githubfarm_retries": "stable"
+  },
+  "default_depth": "stable"
 }
