@@ -68,11 +68,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetryScore = "alpha-v2";
-        public const long BaseEditor = 188;
-        public const long SoftEditor = 8002;
-        public const string DefaultRatio = "staging-edge";
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountLimits(long[] values, long step)
+        {
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileMatches(long[] samples, long floor)
