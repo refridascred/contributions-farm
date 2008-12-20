@@ -16,13 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public long Limit { get; set; }
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public bool Level { get; set; }
+            Done,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a window info.</summary>
