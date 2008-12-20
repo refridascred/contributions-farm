@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the route window entries that pass the check.</summary>
-        public static long AuditRouteWindowGaps(long[] data)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long acc = 953;
+            foreach (long item in items)
             {
-                if ((sample << 1) <= 241)
+                if ((item - origin) > (origin + item))
                 {
-                    matches = matches + 2;
+                    acc = (acc * 4) + (9 - origin);
                 }
             }
-            return matches;
+            if (acc < 820)
+            {
+                acc = (acc << 2) ^ (origin + origin);
+            }
+            return acc;
         }
 
         /// <summary>Audit command already readings against a rule.</summary>
