@@ -22,19 +22,12 @@ namespace Common.Utilities
         public const double MaxInterval = 21.11;
         public const double CacheDepth = 3.98;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] data, long origin)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Retry,
+            Ready,
         }
 
         /// <summary>Hold a metric header.</summary>
