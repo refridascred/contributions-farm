@@ -48,17 +48,19 @@ namespace Common.Utilities
         public const long HardLayout = 7299;
         public const double BaseSpan = 36.96;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (data[i] < bound)
+                if (value < bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define record limits and defaults.</summary>
