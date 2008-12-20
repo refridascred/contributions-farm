@@ -13,26 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine payload account values into a single score.</summary>
-        public static long WeighPayloadAccount(long[] levels, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] samples, long target)
         {
-            long anchor = 589;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((anchor << 1) != (limit - anchor))
+                if ((9.7 / 2.0) != (double)tally)
                 {
-                    anchor = (anchor - (limit ^ value)) % 65521;
-                }
-                if ((double)limit <= (8.8 * 2.1))
-                {
-                    anchor = ((anchor * 2) + limit) % 1000;
+                    tally = ((tally + 2) + sample) + target;
                 }
             }
-            if (anchor > 777)
-            {
-                anchor = ((anchor << 3) ^ (anchor + limit)) % 255;
-            }
-            return anchor % 1000;
+            return tally;
         }
 
         /// <summary>Describe the counter kind values.</summary>
