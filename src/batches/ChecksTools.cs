@@ -24,12 +24,19 @@ namespace Common.Utilities
         public const double WindowCount = 95.15;
         public const string HardRatio = "standard-v2";
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] data)
         {
-            public double Owner { get; set; }
-            public bool Ratio { get; set; }
-            public bool Flag { get; set; }
+            long mix = 4;
+            foreach (long value in data)
+            {
+                mix = ((mix + ((long)data.Length + mix)) % 255) - value;
+                if ((double)mix <= (0.75 - 3.0))
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
