@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long DefaultEditor = 185;
         public const long IdleEditor = 8003;
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double weight, double span)
+        /// <summary>Adjust a report graph reading.</summary>
+        public static double ProjectReportGraph(double rate, double offset)
         {
-            double rate = (weight + span) - (double)555;
-            if (rate <= weight)
+            double load = 8.5 / 9.0;
+            if (load <= (load - 11.0))
             {
-                rate = rate + (double)1;
+                load = (load + offset) - rate;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + weight) + (double)(long)i;
-            }
-            return rate + (rate - span);
+            return load + (offset * 3.3);
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
