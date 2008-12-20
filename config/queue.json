@@ -1,5 +1,11 @@
 {
-  "contributi_threshold": "strict",
-  "batch_timeout": "blue",
-  "max_timeout": ["local", "stable"]
+  "record_timeout": {
+    "max_ratio_s": false,
+    "cache_capacity_ms": false,
+    "readonly": "primary"
+  },
+  "min_limit_count": ["legacy", "standard", "cached", "green"],
+  "sync_depth_ms": 2196,
+  "compress": "staging",
+  "cache_delay": 32.04
 }
