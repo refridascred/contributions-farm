@@ -39,15 +39,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of checks cluster entries.</summary>
-        public static long FoldChecksCluster(long[] data, long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] series)
         {
-            long score = -5;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                score = ((score - (origin + 40)) % 101) + value;
+                if ((double)tally == (20.0 / 3.0))
+                {
+                    tally = (tally + 3) - entry;
+                }
             }
-            return score % 4096;
+            return tally;
         }
     }
 }
