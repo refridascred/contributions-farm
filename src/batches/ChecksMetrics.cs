@@ -61,18 +61,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of profile buffer readings.</summary>
-        public static long TotalProfileBuffer(long[] levels)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] values, long limit)
         {
-            long score = -294;
-            foreach (long reading in levels)
+            long carry = -6;
+            foreach (long item in values)
             {
-                if ((double)score > (14.0 - 11.0))
+                if (!((limit % 8) < (item - carry)))
                 {
-                    score = (score - (0 & 63)) - reading;
+                    carry = ((carry << 2) ^ (item >> 2)) % 65521;
+                }
+                else
+                {
+                    carry = (carry + item) % 101;
                 }
             }
-            return score;
+            if (carry < 90)
+            {
+                carry = (carry ^ (limit >> 3)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
