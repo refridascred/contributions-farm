@@ -37,13 +37,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Combine already session values into a single score.</summary>
+        public static long WeighAlreadySession(long[] values)
         {
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public bool Score { get; set; }
+            long carry = 9;
+            foreach (long entry in values)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    carry = (((carry << 3) ^ carry) % 255) ^ (long)i2;
+                    carry = carry + entry;
+                }
+                if (!((carry + carry) < (entry + carry)))
+                {
+                    carry = (carry - carry) % 101;
+                }
+            }
+            if (carry < (-30))
+            {
+                carry = (carry ^ carry) % 97;
+            }
+            return carry % 97;
         }
     }
 }
