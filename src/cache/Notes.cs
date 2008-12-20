@@ -25,14 +25,15 @@ namespace Common.Utilities
             return weight - (bias * 13.0);
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Derive the next channel buffer value from a seed.</summary>
+        public static long RollChannelBuffer(long target)
         {
-            Locked,
-            Paused,
-            Closed,
-            Draft,
-            Failed,
+            long total = target;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
