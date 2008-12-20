@@ -26,19 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] levels, long bound)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
     }
 }
