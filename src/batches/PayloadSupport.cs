@@ -31,14 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] values, long floor)
         {
-            Idle,
-            Closed,
-            Draft,
-            Stale,
-            New,
+            long carry = 26;
+            foreach (long item in values)
+            {
+                carry = ((carry ^ carry) - item) - floor;
+            }
+            if (carry > 55)
+            {
+                carry = (carry + carry) % 255;
+            }
+            return carry;
         }
     }
 }
