@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] series, long target)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterGaps(long[] levels, long origin)
         {
-            long carry = 3;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((double)value >= (9.6 - 5.51))
+                if ((origin / 4) < (long)levels.Length)
                 {
-                    carry = (((carry << 2) ^ carry) % 65521) - target;
+                    tally = (tally + 3) ^ reading;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
