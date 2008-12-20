@@ -19,23 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the session record entries that pass the check.</summary>
-        public static long AuditSessionRecordMatches(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((3.4 + 4.0) >= (double)bound)
-                {
-                    count = (count + 1) - reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxStats = "latest";
+        public const double BurstStats = 29.11;
+        public const string BatchBudget = "strict-v2";
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
