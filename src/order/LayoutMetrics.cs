@@ -43,19 +43,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double weight, double bias)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] samples)
         {
-            double gain = (double)(7 + 1);
-            if (gain < weight)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain + weight) - bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - (6.1 + gain);
-            }
-            return gain - (double)9;
+            return count;
         }
     }
 }
