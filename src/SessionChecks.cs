@@ -33,18 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entry entries that pass the check.</summary>
-        public static long CountCommandEntryMatches(long[] readings)
+        /// <summary>Rank filter checks input into a small class.</summary>
+        public static long ClassifyFilterChecks(long step, long floor)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            if (((floor - floor) >= floor) || ((floor & 127) != (floor / 5)))
             {
-                if ((seen + seen) >= sample)
+                return 3;
+            }
+            else
+            {
+                if (((floor + 8) < (floor / 4)) && ((floor + floor) == (8 ^ floor)))
                 {
-                    seen = seen + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (floor <= (step / 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Locate a window reading by value.</summary>
