@@ -1,7 +1,17 @@
 {
-  "filter_timeout": true,
-  "default_retries_ms": 52,
-  "counter_interval": "edge",
-  "strict": "fallback",
-  "report_window": 98.51
+  "contributi_size": 1533,
+  "cache_limit": 55,
+  "strict": {
+    "enabled": [149, 79, 298],
+    "session_window": "edge",
+    "idle_ratio": 5508,
+    "hard_threshold": {
+      "editor_depth": "fallback",
+      "idle_delay": 78,
+      "idle_ttl_s": 1706,
+      "sync_interval_s": false
+    }
+  },
+  "base_limit_count": 5861,
+  "max_threshold": 71
 }
