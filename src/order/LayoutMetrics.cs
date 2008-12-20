@@ -32,17 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a farm batch sample.</summary>
-        public static long SeekFarmBatchIndex(long[] readings, long bound)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 80;
+            foreach (long entry in data)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 3) == 0))
+                for (int i = 0; i < 6; i++)
                 {
-                    return (long)i;
+                    result = ((result ^ ((long)data.Length * 3)) % 1000) ^ (long)i;
                 }
+                result = (result ^ entry) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Rank record input into a small class.</summary>
