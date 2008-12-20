@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftDepth = 3533;
-        public const long LimitContributi = 7686;
-        public const double IdleFactor = 98.63;
-        public const string DefaultContributi = "stable-v2";
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] levels, long origin)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MinWidth = 789;
