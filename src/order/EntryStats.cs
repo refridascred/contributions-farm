@@ -55,23 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] levels, long offset)
-        {
-            long sum = 2;
-            foreach (long cell in levels)
-            {
-                sum = ((sum * 2) + (sum & 15)) + cell;
-                if ((double)offset <= 2.8)
-                {
-                    sum = sum + (74 >> 2);
-                }
-                if (25 < (offset % 12))
-                {
-                    sum = sum - ((-935) + sum);
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxContext = 4.44;
+        public const string BaseInterval = "strict-edge";
+        public const long HardContext = 9490;
+        public const long CacheContext = 5296;
+        public const long BaseContext = 1794;
     }
 }
