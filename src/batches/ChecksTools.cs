@@ -19,19 +19,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] items, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((sample % 60) <= (197 * 3))
-                {
-                    hits = (hits + 3) - limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double StepInterval = 75.89;
+        public const long BatchFormat = 4035;
+        public const long SoftFormat = 5940;
+        public const long StepFormat = 1406;
 
         /// <summary>Project the next account value.</summary>
         public static double BlendAccount(double ratio, double floor)
