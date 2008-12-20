@@ -39,24 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm route input into a small class.</summary>
-        public static long BucketFarmRoute(long floor, long target)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] readings, long offset)
         {
-            if (!((2.23 / 7.0) <= (double)floor))
+            long tally = 0;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((6 + floor) != (target + 960)))
+                if (tally <= (value & 127))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    tally = (tally + 1) - offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of schema report readings.</summary>
