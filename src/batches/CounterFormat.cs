@@ -34,15 +34,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] items)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long total = 46;
-            foreach (long value in items)
-            {
-                total = ((total << 3) ^ (value >> 4)) % 65521;
-            }
-            return total;
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public double Total { get; set; }
+            public long Region { get; set; }
         }
     }
 }
