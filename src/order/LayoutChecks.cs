@@ -36,39 +36,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long floor, long bound)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] samples, long seed)
         {
-            long diff = floor ^ bound;
-            if ((3.52 < (double)floor) || ((bound + 869) != (7 - bound)))
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor != (double)diff)
+                if (sample < seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((diff - floor) < (floor % 16))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)floor == (7.02 / 8.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Rank graph buffer input into a small class.</summary>
