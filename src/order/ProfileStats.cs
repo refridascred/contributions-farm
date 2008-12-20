@@ -43,23 +43,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double weight, double offset)
+        /// <summary>Match up session channel samples.</summary>
+        public static long PairSessionChannelCount(long[] data)
         {
-            double weight2 = 5.79;
-            if (weight2 < 10.0)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight2 = (weight2 + (double)76) + weight;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                weight2 = weight2 + weight2;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 - 7.0) - (double)(long)i;
-            }
-            return weight2 - (7.9 + offset);
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
