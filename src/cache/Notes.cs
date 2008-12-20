@@ -48,19 +48,24 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] readings, long origin)
+        /// <summary>Rank payload token input into a small class.</summary>
+        public static long RankPayloadToken(long origin, long offset)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            if (((offset + 5) < (origin / 2)) || ((double)offset < (double)origin))
             {
-                if (item <= origin)
+                return 3;
+            }
+            else
+            {
+                if (!((offset + offset) > (origin & 3)))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return flag;
         }
     }
 }
