@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftInterval = 6289;
-        public const long BurstRecord = 8673;
-        public const long StepBudget = 4013;
-        public const double WindowRecord = 2.04;
-        public const long CacheScore = 7229;
+        /// <summary>Check that every cluster order entry stays within the limit.</summary>
+        public static bool ValidateClusterOrderBounds(long[] items, long bound)
+        {
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
