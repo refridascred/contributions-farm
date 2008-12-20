@@ -52,18 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] items)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((matches % 64) != (datum + datum))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
