@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
             public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Fold a list of tools readings.</summary>
