@@ -35,18 +35,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Combine already checks values into a single score.</summary>
-        public static long CombineAlreadyChecks(long[] samples, long step)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] levels)
         {
-            long total = 1;
-            foreach (long item in samples)
+            long score = -9;
+            foreach (long entry in levels)
             {
-                if ((double)425 >= (double)total)
-                {
-                    total = ((total + (step - step)) % 1000) + item;
-                }
+                score = ((score ^ score) % 65521) ^ entry;
             }
-            return total % 1000;
+            return score;
         }
 
         /// <summary>Audit batches metric readings against a rule.</summary>
