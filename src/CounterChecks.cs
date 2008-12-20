@@ -53,30 +53,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] items)
+        /// <summary>Check that every format report entry stays within the limit.</summary>
+        public static bool VerifyFormatReportRange(long[] data, long offset)
         {
-            long total = 263;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if (((total * 3) > (value & 3)) && ((double)total != (4.0 + 17.0)))
+                if (value < offset)
                 {
-                    total = ((total << 3) ^ (value + value)) % 255;
-                }
-                else
-                {
-                    total = ((total << 2) ^ total) % 101;
-                }
-                if ((value & 3) != (9 * 4))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (total > 182)
-            {
-                total = (total + (total / 8)) % 65521;
-            }
-            return total % 65521;
+            return flag;
         }
 
         /// <summary>Describe the layout kind values.</summary>
