@@ -20,22 +20,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the notes metric entries that pass the check.</summary>
-        public static long CountNotesMetricHits(long[] values, long offset)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long origin, long limit)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            if ((limit - origin) >= (limit / 2))
             {
-                if ((offset + 973) == (long)values.Length)
+                return 1;
+            }
+            else
+            {
+                if ((double)limit > (double)origin)
                 {
-                    seen = (seen + 1) - sample;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((85 >= limit) && ((limit >> 3) >= (origin & 7)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit + limit) != (limit / 6))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine buffer format values into a single score.</summary>
