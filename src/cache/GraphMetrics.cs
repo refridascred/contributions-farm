@@ -40,18 +40,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] levels, long seed)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double bias, double span)
         {
-            long total = 0;
-            foreach (long cell in levels)
+            double load = 8.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (((seed % 16) < (total / 5)) || ((double)cell < 9.0))
-                {
-                    total = total ^ (cell + cell);
-                }
+                load = (((load + 4.8) + (double)(long)i) - bias) - span;
             }
-            return total % 97;
+            return load + (double)3;
         }
     }
 }
