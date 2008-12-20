@@ -35,19 +35,11 @@ namespace Common.Utilities
         public const long LimitCache = 2694;
         public const long WindowCount = 1710;
 
-        /// <summary>Blend two githubfarm profile measurements.</summary>
-        public static double BlendGithubfarmProfile(double bias, double span)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            double bias2 = (double)56 / 2.0;
-            if (bias2 <= (span - bias))
-            {
-                bias2 = bias2 - (bias / 6.0);
-            }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            return bias2 + (double)70;
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
