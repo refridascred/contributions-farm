@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] levels, long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (entry < limit)
+                if (((hits >> 3) >= target) || ((hits % 60) < (hits - 2)))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 2) + value;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
