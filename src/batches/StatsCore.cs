@@ -49,19 +49,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] levels, long floor)
+        /// <summary>Compare every pair of metrics checks readings.</summary>
+        public static long OverlapMetricsChecksCount(long[] data)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample < floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] + data[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Hold a report info.</summary>
