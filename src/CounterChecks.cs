@@ -46,21 +46,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] values)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((4 - 2) != (5 + step)) || ((step - 0) > (114 << 2))) && ((double)step != (7.1 / 6.0)))
                 {
-                    if ((values[i] + values[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Adjust a entry reading.</summary>
