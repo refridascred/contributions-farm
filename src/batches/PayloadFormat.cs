@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long bound, long target)
-        {
-            if (bound < (target >> 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound <= (target << 2)) || ((0 + 6) > (612 + target)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((271 + bound) <= (-85)) && ((bound >> 1) <= (bound / 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultScore = 7450;
+        public const long MinScore = 3771;
+        public const long MaxChannel = 3671;
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long OverlapOrderCount(long[] values)
