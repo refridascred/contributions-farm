@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in legacy local eu-west open; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 4); do
+for i in $(seq 1 10); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in green edge; do
-    log "checking ${item}"
-done
-
-mode="${1:-legacy}"
+mode="${1:-stable}"
 case "${mode}" in
-    open)
+    strict)
         log "fast path"
         ;;
     *)
