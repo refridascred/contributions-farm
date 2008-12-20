@@ -29,19 +29,39 @@ namespace Common.Utilities
             return weight - (double)21;
         }
 
-        /// <summary>Blend two window entry measurements.</summary>
-        public static double ScaleWindowEntry(double rate, double floor)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long floor, long floor2)
         {
-            double bias = floor * 18.0;
-            if (bias < (floor + bias))
+            long diff = floor + floor2;
+            if ((double)floor2 != (9.2 + 14.0))
             {
-                bias = bias - (rate / 6.0);
+                return 8;
             }
             else
             {
-                bias = bias - (rate - floor);
+                if (floor > (floor2 - diff))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor * 3) >= floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((48 % 3) >= (floor & 63))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return bias + floor;
         }
     }
 }
