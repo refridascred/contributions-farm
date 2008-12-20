@@ -1,27 +1,5 @@
 # githubfarm settings
-queue_size:
-  base_limit: 2488
-  cache_ttl: true
-  retry_ttl_ms: blue
-  sync_retries_s:
-    compress: 30
-    base_window:
-      - open
-      - strict
-      - green
-      - blue
-    sync_size: 1024
-    soft_depth_count: 45.81
-    sync_retries_ms: 8922
-    batch_size_s: true
-  entry_depth:
-    - edge
-    - stable
-  retry_limit_count:
-    compress: 68.86
-    batch_threshold: 100
-    warm_window_s: 250
-    soft_retries_s: 250
-    entry_delay: latest
-dry_run: 79.84
-base_timeout_s: false
+warm_window: 1024
+format_size: true
+retry_limit: 3817
+verbose: 30
