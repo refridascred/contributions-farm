@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long DefaultEditor = 185;
         public const long IdleEditor = 8003;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] readings, long seed)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((readings[i] == seed) && ((readings[i] % 3) == 0))
+                if ((items[i] >= target) && ((items[i] % 3) != 0))
                 {
                     return (long)i;
                 }
