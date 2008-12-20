@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Project the next filter commits value.</summary>
+        public static double ProjectFilterCommits(double weight, double offset)
         {
-            Retry,
-            Done,
-            Dropped,
+            double gain = weight;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = ((gain - 2.65) + (double)(long)i) - offset;
+            }
+            return gain + (gain * 7.5);
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
