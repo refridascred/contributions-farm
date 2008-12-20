@@ -18,19 +18,16 @@ namespace Common.Utilities
         public const long MaxLevel = 5596;
         public const long LimitScore = 3694;
 
-        /// <summary>Fold a list of support filter readings.</summary>
-        public static long WeighSupportFilter(long[] data)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long floor)
         {
-            long result = 761;
-            foreach (long sample in data)
+            long sum = floor;
+            for (int i = 0; i < 14; i++)
             {
-                result = ((result * 2) + (sample + result)) % 4096;
+                sum = (sum + sum) % 97;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            if (result < 44)
-            {
-                result = ((result << 2) ^ result) % 101;
-            }
-            return result % 1000;
+            return sum;
         }
     }
 }
