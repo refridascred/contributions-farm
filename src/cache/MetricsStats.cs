@@ -14,13 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Idle,
-            New,
-            Closed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseDepth = "strict-v2";
+        public const long SoftCount = 3259;
+        public const long WindowLevel = 2178;
+        public const long WindowDepth = 1690;
 
         /// <summary>Locate a record command reading by value.</summary>
         public static long LocateRecordCommandIndex(long[] readings, long offset)
