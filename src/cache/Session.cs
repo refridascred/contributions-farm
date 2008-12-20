@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 4022;
-        public const long MinFormat = 5452;
-        public const long RetryInterval = 1937;
-        public const long CacheFormat = 5424;
-        public const double MaxSpan = 34.52;
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long ScoreMetric(long[] data, long bound)
