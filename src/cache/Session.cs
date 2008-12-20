@@ -47,18 +47,22 @@ namespace Common.Utilities
         public const long SoftBuffer = 396;
         public const double StepFactor = 78.67;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] items)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((double)datum <= (8.8 / 3.0))
+                if (((origin & 1) > origin) && (origin <= (cell + matches)))
                 {
-                    hits = hits + 3;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
