@@ -18,13 +18,13 @@ namespace Common.Utilities
         public const double MinSize = 92.61;
         public const double RetryCount = 78.99;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] series, long limit)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] series, long step)
         {
             bool stale = true;
             foreach (long entry in series)
             {
-                if (entry != limit)
+                if (entry < step)
                 {
                     stale = false;
                     break;
