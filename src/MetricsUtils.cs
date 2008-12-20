@@ -23,16 +23,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MinFarm = "primary-v2";
+        public const long BaseLevel = 8500;
+        public const long MaxFarm = 113;
+        public const long HardFarm = 8697;
+        public const long StepLevel = 6132;
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
