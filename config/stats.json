@@ -1,5 +1,20 @@
 {
-  "default_timeout_count": "eu-west",
-  "poll_window_count": 33,
-  "base_capacity": false
+  "sync_limit_s": false,
+  "enabled": "staging",
+  "readonly": ["local", "standard", "staging", "standard"],
+  "cluster_depth": 1682,
+  "dry_run": 96.32,
+  "flush_timeout_pct": {
+    "batch_delay_pct": {
+      "burst_limit": 79.39,
+      "sync_timeout_count": 90,
+      "readonly": true,
+      "strict": 60
+    },
+    "persist": ["open", "open"],
+    "route_interval": "fallback",
+    "max_delay_pct": 6055,
+    "farm_size": "stable",
+    "tools_window": 60
+  }
 }
