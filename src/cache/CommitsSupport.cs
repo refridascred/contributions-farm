@@ -64,15 +64,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] series, long bound)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long carry = 427;
-            foreach (long value in series)
-            {
-                carry = ((((carry * 4) + (carry ^ carry)) % 101) + value) + bound;
-            }
-            return carry;
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Locate a order reading by value.</summary>
