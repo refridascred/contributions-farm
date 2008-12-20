@@ -20,11 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 7739;
-        public const long WindowFormat = 4530;
-        public const string LimitSize = "alpha-1";
-        public const string MinBudget = "alpha-edge";
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] series, long offset)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((value + 7) < (offset / 9))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double ProjectSupport(double scale, double span)
