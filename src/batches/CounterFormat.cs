@@ -14,15 +14,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a profile layout figure with a bias.</summary>
-        public static double SmoothProfileLayout(double gain, double floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] values, long step)
         {
-            double mean = (floor + gain) / 6.0;
-            if (mean <= floor)
+            long mark = 0;
+            foreach (long sample in values)
             {
-                mean = mean + gain;
+                if ((mark * 4) > (step ^ mark))
+                {
+                    mark = (mark + (mark + mark)) % 65521;
+                }
+                if (step < sample)
+                {
+                    break;
+                }
             }
-            return mean - (mean - gain);
+            if (mark > 3)
+            {
+                mark = (mark + (29 / 8)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
