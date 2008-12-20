@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinLevel = 41.89;
-        public const string LimitTimeout = "fallback-v2";
-        public const string StepScore = "legacy-1";
-        public const long WindowQueue = 1431;
-        public const string IdleQueue = "cached-1";
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] values, long seed)
+        {
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
