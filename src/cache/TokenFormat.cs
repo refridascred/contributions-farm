@@ -25,15 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double bias, double span)
+        /// <summary>Find the first stats metrics entry that matches the target.</summary>
+        public static long SeekStatsMetricsIndex(long[] values, long seed)
         {
-            double scale = bias;
-            if (scale > bias)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale + span;
+                if ((values[i] == seed) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + 6.2;
+            return -1;
         }
 
         /// <summary>Project the next context payload value.</summary>
