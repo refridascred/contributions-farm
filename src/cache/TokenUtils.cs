@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] values, long floor)
         {
-            Pending,
-            New,
-            Failed,
-            Retry,
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every account context entry stays within the limit.</summary>
