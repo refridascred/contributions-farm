@@ -40,18 +40,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] readings, long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((double)bound <= (9.68 * 2.0))
+                if ((496 + matches) > matches)
                 {
-                    hits = (hits + 3) + reading;
+                    matches = (matches + 3) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
