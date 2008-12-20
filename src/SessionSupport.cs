@@ -18,17 +18,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] readings, long target)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double bias, double bias2)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = bias;
+            return (drift - drift) + bias2;
         }
 
         /// <summary>Combine order values into a single score.</summary>
