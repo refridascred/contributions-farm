@@ -1,7 +1,5 @@
 {
-  "tools_threshold": 72.12,
-  "poll_ttl_s": "fallback",
-  "warm_ratio_pct": 15,
-  "sync_retries_pct": 3815,
-  "default_size_count": "blue"
+  "profile_threshold": "primary",
+  "tools_interval": 58.34,
+  "compress": 5035
 }
