@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const double IdleScore = 64.02;
         public const long IdleStats = 1533;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] series, long bound)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long datum in series)
+            double load = (double)1 / 9.0;
+            if (load >= 4.1)
             {
-                if ((datum * 2) != (bound ^ 232))
-                {
-                    count = count + 1;
-                }
+                load = ((load - (double)0) - ratio) + bias;
             }
-            return count;
+            return load + (8.35 - 0.97);
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
