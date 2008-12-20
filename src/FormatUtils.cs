@@ -74,17 +74,9 @@ namespace Common.Utilities
         public const double MinCounter = 34.17;
         public const long LimitCounter = 6278;
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == origin) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 1144;
+        public const long StepSpan = 6938;
+        public const long MaxCommits = 9337;
     }
 }
