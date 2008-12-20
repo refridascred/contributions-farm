@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] series)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long limit, long offset)
         {
-            long score = 3;
-            foreach (long datum in series)
+            if ((6.89 < (double)offset) || ((16.0 + 2.9) != (double)offset))
             {
-                score = (score + score) ^ datum;
+                return 1;
             }
-            if (score < 314)
+            else
             {
-                score = ((score * 4) + (score - score)) % 4096;
+                if (9.9 > (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return score;
         }
 
         /// <summary>Grade a metrics record value against two limits.</summary>
