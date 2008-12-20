@@ -37,18 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of githubfarm cluster entries.</summary>
-        public static long FoldGithubfarmCluster(long[] samples)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double weight, double floor)
         {
-            long result = 51;
-            foreach (long cell in samples)
+            double ratio = (double)47 + (weight / 2.0);
+            if (ratio <= (ratio - weight))
             {
-                if ((cell - 72) > result)
-                {
-                    result = (result - (result + result)) % 1000;
-                }
+                ratio = (ratio + (weight + weight)) - floor;
             }
-            return result;
+            else
+            {
+                ratio = ratio - (double)169;
+            }
+            return ratio - weight;
         }
     }
 }
