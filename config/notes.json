@@ -1,5 +1,17 @@
 {
-  "soft_threshold_s": true,
-  "strict": [254, 235, 98, 271],
-  "enabled": 500
+  "layout_size": 30,
+  "sync_timeout": "edge",
+  "idle_capacity": true,
+  "metrics_ttl": {
+    "enabled": "staging",
+    "sync_delay_s": {
+      "sync_delay": 69,
+      "max_ttl": 42.63,
+      "max_depth": true
+    },
+    "sync_retries_count": "cached",
+    "entry_delay": ["cached", "blue"],
+    "profile_threshold": 100
+  },
+  "format_threshold": "staging"
 }
