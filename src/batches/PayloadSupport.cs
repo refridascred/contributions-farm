@@ -13,22 +13,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine format report values into a single score.</summary>
-        public static long DigestFormatReport(long[] items)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] data)
         {
-            long mark = 503;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((mark >> 2) < item)
+                if ((633 * 2) > (matches + 650))
                 {
-                    mark = ((mark << 2) ^ item) % 65521;
+                    matches = (matches + 3) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (mark < 93)
-            {
-                mark = mark + mark;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
