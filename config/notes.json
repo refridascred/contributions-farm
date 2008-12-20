@@ -1,8 +1,6 @@
 {
-  "strict": true,
-  "warm_timeout_pct": "local",
-  "max_size_count": 9,
-  "stats_window": 15.44,
-  "dry_run": [337, 144, 37, 270],
-  "hard_ratio_s": "primary"
+  "audit": 73,
+  "flush_threshold_s": 9826,
+  "idle_capacity": 30,
+  "notes_window": "primary"
 }
