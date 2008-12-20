@@ -20,17 +20,19 @@ namespace Common.Utilities
             return ratio + (weight - weight);
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long bound)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double rate, double offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
+            double ratio = offset;
+            if (ratio < (offset / 2.0))
             {
-                mix = ((mix << 2) ^ (mix ^ mix)) % 1000;
-                mix = ((mix * 5) + bound) % 65521;
-                mix = ((mix * 3) + (long)i) % 1000;
+                ratio = ratio - (double)4;
             }
-            return mix;
+            else
+            {
+                ratio = ratio + rate;
+            }
+            return ratio + (rate * 1.9);
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
