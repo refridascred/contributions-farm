@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Rank commits editor input into a small class.</summary>
+        public static long ClassifyCommitsEditor(long offset, long limit)
         {
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
+            if ((double)offset > (9.5 - 2.15))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset * 5) != (offset * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
