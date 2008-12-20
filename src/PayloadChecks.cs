@@ -48,20 +48,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long origin)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] levels)
         {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
+            long sum = 6;
+            foreach (long sample in levels)
             {
-                if ((origin ^ total) < total)
-                {
-                    total = total + (4 + (long)i);
-                    total = ((total << 3) ^ (origin & 1)) % 101;
-                }
-                total = ((total * 3) + (long)i) % 101;
+                sum = (sum - (sample ^ sample)) % 4096;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Check that every session filter entry stays within the limit.</summary>
