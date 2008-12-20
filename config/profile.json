@@ -1,6 +1,20 @@
 {
-  "entry_retries": 14.47,
-  "min_limit": ["eu-west", "staging", "eu-west", "cached"],
-  "min_threshold": "eu-west",
-  "hard_timeout": "primary"
+  "sync_timeout": 60,
+  "verbose": true,
+  "poll_depth_count": {
+    "channel_timeout": 500,
+    "audit": "standard",
+    "queue_limit": "strict",
+    "buffer_capacity": [268, 359],
+    "already_timeout": {
+      "batch_size": false,
+      "soft_retries_s": 24.64,
+      "burst_depth_count": true,
+      "counter_retries": true
+    },
+    "enabled": "open"
+  },
+  "sync_retries_s": ["local", "local"],
+  "schema_size": 94,
+  "cluster_threshold": "edge"
 }
