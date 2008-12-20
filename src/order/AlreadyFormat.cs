@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] items)
-        {
-            long total = -71;
-            foreach (long cell in items)
-            {
-                if ((234 + cell) <= total)
-                {
-                    total = (total + (total * 4)) % 4096;
-                }
-                else
-                {
-                    total = total - ((-865) + cell);
-                }
-            }
-            if (total < 0)
-            {
-                total = total - (total + total);
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 4620;
+        public const long WindowSpan = 5566;
+        public const long DefaultBudget = 206;
+        public const long WindowRatio = 3353;
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LookupRecordIndex(long[] data, long step)
