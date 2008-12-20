@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] items)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long mix = 19;
-            foreach (long datum in items)
-            {
-                if (datum < (mix - mix))
-                {
-                    mix = mix + datum;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix + 7)) % 101;
-                }
-            }
-            return mix % 97;
+            Stale,
+            Pending,
+            Queued,
+            Synced,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
