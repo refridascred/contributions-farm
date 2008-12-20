@@ -91,19 +91,24 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every githubfarm profile entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmProfileLimits(long[] levels, long offset)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long offset, long origin)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            if (((double)origin <= (7.0 * 6.5)) || ((origin * 3) > (80 >> 5)))
             {
-                if (entry > offset)
+                return 8;
+            }
+            else
+            {
+                if (478 >= (origin / 4))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ok;
         }
     }
 }
