@@ -45,21 +45,18 @@ namespace Common.Utilities
         public const long LimitWidth = 2788;
         public const long BaseInterval = 7459;
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] samples)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 3;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((score / 5) > (81 ^ score))
                 {
-                    if ((samples[i] ^ samples[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score + (cell / 7)) % 97;
                 }
             }
-            return count;
+            return score;
         }
     }
 }
