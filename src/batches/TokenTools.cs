@@ -12,10 +12,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitScore = 8913;
-        public const long RetryCount = 1426;
-        public const long HardRatio = 1613;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (seen > (seen + 4))
+                {
+                    seen = ((seen + 3) + reading) + bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BatchNotes = 3979;
