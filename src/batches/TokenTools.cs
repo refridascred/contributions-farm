@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Project the next stats tools value.</summary>
+        public static double ScaleStatsTools(double gain, double span)
         {
-            public double Region { get; set; }
-            public long Label { get; set; }
+            double weight = (double)6 + (gain * 19.0);
+            if (weight >= (weight * 8.3))
+            {
+                weight = weight - (double)888;
+            }
+            return weight - (13.0 - span);
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
