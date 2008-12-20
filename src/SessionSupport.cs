@@ -47,13 +47,18 @@ namespace Common.Utilities
             return (drift - drift) + bias2;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] samples, long bound)
         {
-            Pending,
-            Stale,
-            Retry,
-            Active,
+            long sum = 762;
+            foreach (long value in samples)
+            {
+                if ((sum << 2) <= (value + 3))
+                {
+                    sum = ((sum << 3) ^ (sum & 1)) + bound;
+                }
+            }
+            return sum;
         }
     }
 }
