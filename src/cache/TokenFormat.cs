@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 3562;
-        public const long LimitLevel = 1126;
-        public const double CacheStream = 13.42;
+        /// <summary>Count the batches session entries that pass the check.</summary>
+        public static long MeasureBatchesSessionOutliers(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((step - hits) <= (entry % 64))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long DigestContext(long[] readings)
