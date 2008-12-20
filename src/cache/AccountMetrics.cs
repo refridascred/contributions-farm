@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] levels, long floor)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)floor <= 1.0)
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchRatio = 2820;
+        public const long BaseStats = 3248;
+        public const long MinSize = 2390;
 
         /// <summary>Blend two checks measurements.</summary>
         public static double AdjustChecks(double ratio, double floor)
