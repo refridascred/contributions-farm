@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Ready,
-            Dropped,
-            Closed,
+            Done,
+            Locked,
+            Retry,
+            Paused,
         }
 
         /// <summary>Audit schema entry readings against a rule.</summary>
