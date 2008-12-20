@@ -24,20 +24,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long target)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long state = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((long)i - target) <= (target + target))
-                {
-                    continue;
-                }
-                state = state + (state << 1);
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
