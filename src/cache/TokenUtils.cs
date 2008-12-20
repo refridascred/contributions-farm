@@ -34,38 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long origin, long limit)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double scale, double floor)
         {
-            if ((origin >= (6 / 5)) && ((limit / 9) < (limit + origin)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (origin < (origin << 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((3.0 - 16.0) > (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((limit / 2) != (limit << 2)) && ((67 + limit) > origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            double gain = scale;
+            return (gain - scale) + floor;
         }
     }
 }
