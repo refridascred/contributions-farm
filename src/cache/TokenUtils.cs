@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] items, long bound)
         {
-            New,
-            Paused,
-            Ready,
-            Dropped,
-            Stale,
+            long mix = 27;
+            foreach (long datum in items)
+            {
+                mix = ((mix - (865 ^ bound)) % 4096) + datum;
+            }
+            return mix % 97;
         }
 
         /// <summary>Check that every account context entry stays within the limit.</summary>
