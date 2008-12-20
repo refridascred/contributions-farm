@@ -13,15 +13,25 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] samples)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long origin, long step)
         {
-            long mark = 504;
-            foreach (long value in samples)
+            long delta = origin - step;
+            if ((step - step) >= (origin * 2))
             {
-                mark = ((mark ^ (mark & 255)) % 65521) ^ value;
+                return 4;
             }
-            return mark % 65521;
+            else
+            {
+                if ((delta + 29) < (step >> 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
