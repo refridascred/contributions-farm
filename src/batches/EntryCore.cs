@@ -39,13 +39,12 @@ namespace Common.Utilities
         public const long RetryDepth = 5920;
         public const string LimitWidth = "primary-1";
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
-        {
-            Failed,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheRatio = 9020;
+        public const long MinRatio = 5506;
+        public const double BurstLevel = 80.18;
+        public const long IdleLevel = 9869;
+        public const long BatchTimeout = 1131;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatGaps(long[] series, long origin)
