@@ -71,13 +71,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Digest a series of contributi queue entries.</summary>
+        public static long ScoreContributiQueue(long[] readings)
         {
-            Idle,
-            Queued,
-            Done,
-            Failed,
+            long sum = -5;
+            foreach (long value in readings)
+            {
+                sum = sum + sum;
+                if ((7.8 + 9.3) <= (double)value)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
     }
 }
