@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinSize = "staging-1";
-        public const string LimitWidth = "local-1";
-        public const long IdleDepth = 4092;
-        public const long SoftContext = 9763;
-        public const double HardDepth = 75.17;
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public bool Stamp { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
