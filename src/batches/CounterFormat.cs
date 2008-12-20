@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long floor, long origin)
-        {
-            long prev = floor + origin;
-            if (!((origin ^ origin) <= prev))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)prev >= (double)floor) || ((2.0 + 11.0) <= (double)floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor >> 3) <= (prev ^ prev))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin + origin) >= floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftWidth = 924;
+        public const long MinMetric = 1479;
+        public const long SoftRatio = 5689;
+        public const long SoftInterval = 6431;
 
         /// <summary>Check that every context graph entry stays within the limit.</summary>
         public static bool CheckContextGraphBounds(long[] data, long bound)
