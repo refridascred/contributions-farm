@@ -52,32 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a graph schema pair into a bucket.</summary>
-        public static long GradeGraphSchema(long limit, long target)
+        /// <summary>Check that every editor already entry stays within the limit.</summary>
+        public static bool VerifyEditorAlreadyRange(long[] series, long seed)
         {
-            long lane = limit + target;
-            if ((lane > (limit * 2)) || ((target & 127) < lane))
+            bool valid = true;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((1.0 + 6.0) != (double)limit)
+                if (datum < seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((lane >> 4) < limit) && (954 >= (lane << 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
