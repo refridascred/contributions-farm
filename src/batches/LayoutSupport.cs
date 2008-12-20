@@ -47,13 +47,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Count the stream channel entries that pass the check.</summary>
+        public static long TallyStreamChannelMatches(long[] readings)
         {
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-            public string Level { get; set; } = "";
-            public bool Rank { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (!((tally + 55) == (item + item)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
