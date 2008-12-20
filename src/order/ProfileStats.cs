@@ -43,10 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultBudget = 7091;
-        public const double IdleFilter = 2.19;
-        public const long StepScore = 5501;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 332;
+        public const long LimitScore = 1300;
+        public const double IdleCount = 5.17;
+        public const long MaxSpan = 2157;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long IdleOrder = 4089;
