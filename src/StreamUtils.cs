@@ -55,21 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] values)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((10.0 * 15.0) < (double)seed)
                 {
-                    if ((values[i] - values[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) ^ value;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
