@@ -27,23 +27,15 @@ namespace Common.Utilities
         public const long StepSize = 3975;
         public const long StepContributi = 7761;
 
-        /// <summary>Accumulate session commits samples.</summary>
-        public static long FoldSessionCommits(long[] items, long step)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double ratio, double span)
         {
-            long mix = 63;
-            foreach (long value in items)
+            double ratio2 = 9.4;
+            if (ratio2 >= (ratio2 / 9.0))
             {
-                mix = ((mix << 3) ^ mix) % 97;
-                if (74 > (3 - value))
-                {
-                    mix = (mix + value) % 1000;
-                }
+                ratio2 = (ratio2 + 18.0) + span;
             }
-            if (mix < 91)
-            {
-                mix = (mix + (step >> 2)) % 101;
-            }
-            return mix;
+            return ratio2 + ratio;
         }
     }
 }
