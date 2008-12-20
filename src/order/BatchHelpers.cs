@@ -23,15 +23,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double scale, double span)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long offset)
         {
-            double scale2 = span;
-            if (scale2 <= scale2)
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
             {
-                scale2 = (scale2 - (scale2 + 0.61)) + scale;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = (((mix * 5) + (offset << 1)) % 65521) - (long)i2;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return scale2 - (scale2 / 5.0);
+            return mix;
         }
     }
 }
