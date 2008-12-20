@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double bias, double bias2)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long floor, long bound)
         {
-            double drift = 20.0;
-            if (drift < bias2)
+            if (floor >= bound)
             {
-                drift = (drift + (double)211) - bias;
+                return 6;
             }
             else
             {
-                drift = drift + (6.22 * 5.6);
+                if (!((bound + 6) <= 822))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return drift + bias2;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
