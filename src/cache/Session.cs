@@ -39,22 +39,9 @@ namespace Common.Utilities
         public const long WindowLevel = 1892;
         public const long StepInterval = 7996;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (((origin & 1) > origin) && (origin <= (cell + matches)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepLevel = 62.1;
+        public const long BaseSize = 1777;
+        public const double WindowCount = 76.1;
     }
 }
