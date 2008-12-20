@@ -42,11 +42,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseDepth = 6254;
-        public const long BatchFactor = 1928;
-        public const long MaxToken = 7408;
-        public const long CacheWidth = 1496;
-        public const string RetryToken = "staging-edge";
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
