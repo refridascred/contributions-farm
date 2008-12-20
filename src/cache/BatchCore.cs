@@ -12,10 +12,12 @@ namespace Common.Utilities
         public const double IdleLevel = 25.03;
         public const double DefaultTimeout = 63.44;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultSize = 1673;
-        public const double WindowCount = 47.56;
-        public const long IdleCache = 1504;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 3034;
+        public const double LimitRatio = 80.65;
+        public const long HardBuffer = 6400;
+        public const long IdleBuffer = 4143;
+        public const double RetryBuffer = 23.08;
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
