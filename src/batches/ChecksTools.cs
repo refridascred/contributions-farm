@@ -48,13 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] items, long floor)
         {
-            public long Weight { get; set; }
-            public double Count { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
