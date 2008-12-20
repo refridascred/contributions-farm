@@ -43,27 +43,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] values, long bound)
-        {
-            long total = 6;
-            foreach (long reading in values)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    total = ((((total * 3) + bound) % 255) - (long)i) ^ reading;
-                }
-                total = ((total << 2) ^ (total & 127)) % 4096;
-                if (7.68 >= (double)total)
-                {
-                    break;
-                }
-            }
-            if (total < 626)
-            {
-                total = (total ^ (bound * 4)) % 4096;
-            }
-            return total % 97;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleSession = 82.65;
+        public const double MinSession = 38.82;
+        public const long BaseSession = 3104;
+        public const long BatchSession = 5490;
     }
 }
