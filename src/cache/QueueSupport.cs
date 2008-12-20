@@ -40,12 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long step)
         {
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
+            long result = step;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((double)step == (double)6))
+                {
+                    result = (result * 5) + (result & 63);
+                }
+                result = (result * 5) + (step ^ (long)i);
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
