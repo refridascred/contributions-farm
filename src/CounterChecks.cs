@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] items)
+        /// <summary>Roll a channel context counter forward.</summary>
+        public static long SeriesChannelContext(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((items[i] - items[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    score = (((score << 2) ^ ((long)i / 4)) % 101) - (long)i2;
                 }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Combine farm editor values into a single score.</summary>
