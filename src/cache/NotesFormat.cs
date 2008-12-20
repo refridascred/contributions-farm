@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
+            Ready,
+            Idle,
+            Failed,
+            Draft,
+            Closed,
         }
 
         /// <summary>Grade a token support value against two limits.</summary>
