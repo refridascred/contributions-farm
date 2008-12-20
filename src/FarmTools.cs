@@ -11,10 +11,14 @@ namespace Common.Utilities
         public const double IdleLevel = 81.59;
         public const long MaxCommits = 7228;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardInterval = 8648;
-        public const long LimitChecks = 4431;
-        public const long RetryScore = 4570;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Ready,
+            Locked,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double BlendChannel(double weight, double offset)
