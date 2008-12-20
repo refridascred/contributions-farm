@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] levels, long target)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long target)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long acc = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((target - hits) < (target >> 5))
-                {
-                    hits = (hits + 1) ^ cell;
-                }
+                acc = acc ^ acc;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Count support report pairs that satisfy a relation.</summary>
