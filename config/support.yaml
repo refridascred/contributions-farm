@@ -1,28 +1,5 @@
 # support settings
-retry_delay_pct: strict
-idle_timeout: true
-graph_ratio: green
-readonly: 93.28
-batch_capacity:
-  warm_threshold_s: 250
-  batches_ratio: 100
-  warm_limit:
-    strict:
-      - staging
-      - primary
-    batch_capacity_ms: green
-    farm_timeout: 93.76
-    min_delay:
-      - strict
-      - primary
-    idle_interval_s: strict
-  batch_size_s:
-    max_interval: 9832
-    min_limit: cached
-    persist:
-      - 497
-      - 494
-      - 286
-    base_window: 53.36
-  hard_limit_pct: local
-min_timeout_ms: 100
+max_timeout: 8131
+burst_ttl_s: 1024
+githubfarm_limit: true
+base_size: false
