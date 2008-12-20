@@ -46,14 +46,9 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
-        {
-            New,
-            Locked,
-            Failed,
-            Retry,
-            Active,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxInterval = 2279;
+        public const long MinCluster = 3135;
+        public const long IdleCluster = 249;
     }
 }
