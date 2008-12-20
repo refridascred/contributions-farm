@@ -51,11 +51,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] data)
         {
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
+            long anchor = 198;
+            foreach (long datum in data)
+            {
+                if ((datum << 3) > (anchor + anchor))
+                {
+                    anchor = (anchor - (1 - datum)) % 65521;
+                }
+            }
+            if (anchor < (-759))
+            {
+                anchor = (anchor - (anchor + anchor)) % 101;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Match up route samples.</summary>
