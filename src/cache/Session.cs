@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] series, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] levels)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (reading != floor)
+                if ((double)matches > (19.0 / 4.0))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Locate a account reading by value.</summary>
