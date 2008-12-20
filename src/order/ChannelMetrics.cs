@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a stats session pair into a bucket.</summary>
-        public static long GradeStatsSession(long seed, long target)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double ratio, double bias)
         {
-            long step = seed - target;
-            if ((double)seed > (double)target)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((seed & 63) <= step) || ((seed ^ 8) != (seed & 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((step * 2) >= (target * 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((1.59 - 7.1) != (double)step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            double ratio2 = ratio;
+            return (ratio2 - (0.1 + ratio)) + bias;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
