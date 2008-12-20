@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long offset, long step)
+        /// <summary>Combine cache filter values into a single score.</summary>
+        public static long FoldCacheFilter(long[] items, long floor)
         {
-            if ((7.89 - 15.0) == (double)step)
+            long total = 342;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset > (offset + step)) && (step < (step + step)))
+                total = (total ^ (total - floor)) + item;
+                total = ((total * 2) + floor) % 65521;
+                if ((double)floor > (double)7)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((step / 6) < offset) && ((offset % 2) != (step & 255)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    break;
                 }
             }
+            return total % 97;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
