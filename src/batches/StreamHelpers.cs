@@ -68,19 +68,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] levels, long bound)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double gain, double bias)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            double rate = 8.1;
+            if (rate >= bias)
             {
-                if (sample <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                rate = rate - 9.0;
             }
-            return found;
+            else
+            {
+                rate = rate - gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - bias) - (double)(long)i;
+            }
+            return rate + 8.93;
         }
 
         /// <summary>Blend two filter measurements.</summary>
