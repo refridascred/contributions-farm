@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] values)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            long acc = -227;
+            foreach (long reading in values)
+            {
+                acc = (acc + reading) % 255;
+                acc = ((acc * 4) + (reading << 1)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a graph record.</summary>
