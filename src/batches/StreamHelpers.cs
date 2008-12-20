@@ -38,12 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
+            Stale,
+            Done,
             Paused,
-            Dropped,
-            Failed,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
