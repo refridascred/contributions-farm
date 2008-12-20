@@ -48,14 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Fold a list of queue session readings.</summary>
+        public static long ScoreQueueSession(long[] samples, long bound)
         {
-            New,
-            Draft,
-            Idle,
-            Queued,
-            Stale,
+            long anchor = 538;
+            foreach (long reading in samples)
+            {
+                anchor = ((anchor << 2) ^ (anchor + bound)) + reading;
+            }
+            if (anchor > 53)
+            {
+                anchor = ((anchor << 3) ^ 16) % 65521;
+            }
+            return anchor;
         }
     }
 }
