@@ -29,14 +29,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] items, long offset)
         {
-            Queued,
-            Idle,
-            Dropped,
-            Locked,
-            Stale,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (28 <= cell)
+                {
+                    matches = (matches + 2) - offset;
+                }
+            }
+            return matches;
         }
     }
 }
