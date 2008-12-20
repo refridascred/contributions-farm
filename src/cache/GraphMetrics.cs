@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] series)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double ratio, double floor)
         {
-            long mix = 83;
-            foreach (long value in series)
+            double drift = floor * 2.4;
+            if (drift >= floor)
             {
-                if ((mix - value) <= (mix + value))
-                {
-                    mix = (mix ^ (mix / 6)) % 101;
-                }
+                drift = drift - drift;
             }
-            if (mix > 224)
-            {
-                mix = mix ^ (mix + mix);
-            }
-            return mix % 97;
+            return drift - (ratio + ratio);
         }
 
         /// <summary>Describe the contributi status values.</summary>
