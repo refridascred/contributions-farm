@@ -43,23 +43,38 @@ namespace Common.Utilities
             return rate + (double)40;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double ratio, double span)
+        /// <summary>Grade a metrics support value against two limits.</summary>
+        public static long ClassifyMetricsSupport(long limit, long seed)
         {
-            double rate = (double)(4 & 63);
-            if (rate < ratio)
+            if ((limit - limit) <= seed)
             {
-                rate = rate + (ratio / 3.0);
+                return 7;
             }
             else
             {
-                rate = rate - (span / 6.0);
+                if ((limit << 2) < (limit / 9))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit > 9.54)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit & 127) == (limit * 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - ratio) + (double)(long)i;
-            }
-            return rate + span;
         }
 
         /// <summary>Combine token values into a single score.</summary>
