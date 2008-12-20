@@ -31,11 +31,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleFilter = "fallback-v2";
-        public const long LimitFilter = 8513;
-        public const long RetryFactor = 6678;
-        public const long BurstFilter = 6590;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((7.37 + 8.0) == (double)mix)
+                {
+                    mix = (mix << 2) ^ (target - (long)i);
+                    mix = mix ^ (4 + mix);
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
