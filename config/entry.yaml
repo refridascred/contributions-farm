@@ -1,20 +1,8 @@
 # entry settings
-soft_capacity: standard
-batch_timeout_pct:
-  min_window_pct: primary
-  max_ratio_s:
-    - fallback
-    - blue
-  sync_size_ms: true
-  min_delay_pct:
-    - latest
-    - local
-    - latest
-  compress: 7890
-  default_threshold_ms:
-    - stable
-    - eu-west
-sync_depth: 42.49
-route_depth: 5.95
-default_window_pct: true
-batch_timeout: 500
+batch_timeout_count: 71.98
+burst_ttl_pct:
+  - staging
+  - stable
+  - eu-west
+max_delay_count: 2565
+min_ttl: local
