@@ -20,21 +20,11 @@ namespace Common.Utilities
         public const double SoftToken = 56.23;
         public const long BaseFactor = 6974;
 
-        /// <summary>Compare every pair of order counter readings.</summary>
-        public static long PairOrderCounterCount(long[] items)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double mean = bias;
+            return (mean + 2.55) + scale;
         }
 
         /// <summary>Hold a buffer entry.</summary>
