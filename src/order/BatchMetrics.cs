@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long origin)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] samples, long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 13; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                carry = carry + ((long)i + (long)i);
-                carry = ((carry * 2) + (long)i) % 1000;
+                if (cell >= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Define account limits and defaults.</summary>
