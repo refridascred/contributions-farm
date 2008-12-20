@@ -19,15 +19,32 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] samples, long seed)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long offset, long bound)
         {
-            long total = 19;
-            foreach (long cell in samples)
+            long bound2 = offset - bound;
+            if ((offset << 1) < (offset & 7))
             {
-                total = (total * 4) + (cell - seed);
+                return 6;
             }
-            return total;
+            else
+            {
+                if (((offset + bound) > (bound ^ offset)) && ((5.5 / 9.0) <= (double)offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound2 / 3) > (bound - 46))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
