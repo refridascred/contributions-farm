@@ -50,18 +50,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cache graph entries that pass the check.</summary>
-        public static long CountCacheGraphGaps(long[] data, long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if (((item << 2) > item) || (step < (step + (-80))))
+                if (value > limit)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
