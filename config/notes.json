@@ -1,12 +1,8 @@
 {
-  "base_ratio_s": {
-    "cache_threshold_pct": 20,
-    "hard_depth": true,
-    "default_delay_pct": "fallback",
-    "cache_delay_ms": "legacy",
-    "report_interval": [59, 18]
-  },
-  "dry_run": 2827,
-  "hard_window": 37.92,
-  "verbose": 56.35
+  "verbose": false,
+  "warm_retries": [156, 151],
+  "cache_threshold_count": "cached",
+  "poll_window": 30,
+  "compress": 3060,
+  "burst_timeout_s": false
 }
