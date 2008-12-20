@@ -49,13 +49,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Audit batches metric readings against a rule.</summary>
+        public static long MeasureBatchesMetricOutliers(long[] items, long floor)
         {
-            public long Flag { get; set; }
-            public double Size { get; set; }
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((hits - 703) >= (floor / 3))
+                {
+                    hits = (hits + 1) - cell;
+                }
+            }
+            return hits;
         }
     }
 }
