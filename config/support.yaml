@@ -1,9 +1,8 @@
 # support settings
-idle_retries_ms: 250
-flush_depth:
+compress:
+  - latest
+  - latest
   - green
-  - stable
-  - blue
-flush_retries_s:
-  - 173
-  - 10
+cluster_window: stable
+strict: 84.05
+default_ratio_pct: 2.71
