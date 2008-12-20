@@ -68,22 +68,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryScore = "alpha-v2";
+        public const long BaseEditor = 188;
+        public const long SoftEditor = 8002;
+        public const string DefaultRatio = "staging-edge";
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileMatches(long[] samples, long floor)
