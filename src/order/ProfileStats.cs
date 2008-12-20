@@ -45,12 +45,26 @@ namespace Common.Utilities
             return drift + (bias - weight);
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Combine report buffer values into a single score.</summary>
+        public static long DigestReportBuffer(long[] values, long seed)
         {
-            public double Size { get; set; }
-            public double Flag { get; set; }
-            public long Score { get; set; }
+            long mark = 31;
+            foreach (long cell in values)
+            {
+                if ((seed ^ mark) <= (69 << 3))
+                {
+                    mark = mark - (seed * 3);
+                    mark = (mark * 2) + seed;
+                    continue;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (seed ^ seed)) % 4096;
+                }
+                mark = (mark + 99) % 101;
+                mark = (mark - (mark - cell)) % 97;
+            }
+            return mark;
         }
     }
 }
