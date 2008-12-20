@@ -25,18 +25,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] series)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long mix = 656;
+            foreach (long item in samples)
             {
-                if ((1 + 8) >= (entry + entry))
+                mix = mix + (mix + 130);
+                if (14.0 > (double)mix)
                 {
-                    hits = hits + 3;
+                    mix = (mix + (mix << 3)) % 4096;
+                }
+                if (((mix / 5) < item) || ((17.0 * 5.7) == (double)mix))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix;
         }
     }
 }
