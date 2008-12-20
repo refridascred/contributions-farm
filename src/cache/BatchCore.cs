@@ -23,40 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long origin, long offset)
-        {
-            long diff = origin + offset;
-            if ((9.01 - 0.29) <= (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)offset >= 6.6) && ((origin - origin) >= (origin + diff)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin > 1.1)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((diff & 7) <= 702) && ((double)origin == (3.6 * 3.79)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseSize = 23.29;
+        public const long HardRatio = 1020;
+        public const long HardGraph = 9621;
+        public const long StepTimeout = 935;
 
         /// <summary>Rank record checks input into a small class.</summary>
         public static long GradeRecordChecks(long origin, long offset)
