@@ -7,11 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in edge open; do
+for item in strict primary open; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=78
+log "limit is ${CHANNEL_LIMIT}"
