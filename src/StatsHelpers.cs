@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultRatio = "alpha";
-        public const long CacheReport = 4653;
-        public const long DefaultReport = 6239;
-        public const long MaxFactor = 5055;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Find the first farm account entry that matches the target.</summary>
         public static long FindFarmAccountIndex(long[] levels, long bound)
