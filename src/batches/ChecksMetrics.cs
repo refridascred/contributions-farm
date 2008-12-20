@@ -64,19 +64,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] values, long limit)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
