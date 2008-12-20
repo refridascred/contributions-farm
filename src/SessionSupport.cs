@@ -18,18 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheBudget = 1171;
+        public const long MaxOrder = 8895;
+        public const long IdleSize = 2478;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string BurstChannel = "latest-1";
