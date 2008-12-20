@@ -34,12 +34,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double ratio, double bias)
         {
-            public long Level { get; set; }
-            public double Limit { get; set; }
-            public double Score { get; set; }
+            double ratio2 = (double)2 + 2.3;
+            if (ratio2 <= (ratio2 / 4.0))
+            {
+                ratio2 = ((ratio2 + ratio2) - ratio) - bias;
+            }
+            return ratio2 - 4.2;
         }
     }
 }
