@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count token commits pairs that satisfy a relation.</summary>
-        public static long PairTokenCommitsCount(long[] samples)
+        /// <summary>Find the first order farm entry that matches the target.</summary>
+        public static long SeekOrderFarmIndex(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (levels[i] > limit)
                 {
-                    if ((samples[i] ^ samples[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
