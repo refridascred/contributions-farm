@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseTimeout = 98.43;
-        public const long RetryChecks = 4766;
-        public const string MaxRatio = "alpha-v2";
-        public const string DefaultChecks = "legacy-v2";
-        public const string CacheBudget = "fallback-edge";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepFactor = 1056;
+        public const string IdleDepth = "legacy-edge";
+        public const long StepLevel = 6077;
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long GradeLayout(long bound, long step)
