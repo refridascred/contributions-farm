@@ -15,18 +15,10 @@ namespace Common.Utilities
         public const long RetryCount = 1426;
         public const long HardRatio = 1613;
 
-        /// <summary>Count the profile stats entries that pass the check.</summary>
-        public static long AuditProfileStatsHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (((cell % 100) == (tally << 2)) && ((tally - tally) > tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 3979;
+        public const long IdleFactor = 4150;
+        public const double StepNotes = 80.61;
+        public const string CacheNotes = "fallback-v2";
     }
 }
