@@ -20,18 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] samples, long origin)
+        /// <summary>Iterate the queue window series from a seed.</summary>
+        public static long RollQueueWindow(long origin)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((9.61 + 9.6) <= (double)origin)
-                {
-                    matches = (matches + 2) ^ entry;
-                }
+                anchor = (anchor + (origin / 9)) % 255;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
