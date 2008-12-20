@@ -1,7 +1,8 @@
 {
-  "githubfarm_window": "open",
-  "cache_capacity_ms": 66.39,
-  "route_retries": 21,
-  "batch_interval_pct": 7928,
-  "hard_limit": 703
+  "batch_interval": 7235,
+  "window_ttl": false,
+  "hard_capacity_pct": 65,
+  "cache_threshold_s": "local",
+  "strict": 41,
+  "persist": 30
 }
