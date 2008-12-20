@@ -30,11 +30,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double bias, double span)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] readings, long limit)
         {
-            double weight = (double)372 - bias;
-            return weight + span;
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
