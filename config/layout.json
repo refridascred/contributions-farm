@@ -1,19 +1,10 @@
 {
-  "flush_delay": {
-    "min_ttl_count": ["staging", "eu-west"],
-    "flush_depth_pct": "standard",
-    "default_interval": 500,
-    "flush_size_ms": true,
-    "poll_interval": [147, 128, 114, 215],
-    "command_limit": 95.65
-  },
-  "retry_size_pct": [251, 415, 429],
-  "soft_timeout_count": "local",
-  "default_interval_count": "latest",
-  "compress": ["edge", "blue", "local", "open"],
-  "burst_timeout_s": {
-    "verbose": "legacy",
-    "githubfarm_window": 22,
-    "soft_timeout_ms": 15.89
+  "min_depth_count": "edge",
+  "editor_ttl": 74.82,
+  "dry_run": {
+    "enabled": "legacy",
+    "readonly": 3786,
+    "stream_depth": 1584,
+    "sync_depth": 100
   }
 }
