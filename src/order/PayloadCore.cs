@@ -23,22 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] items, long limit)
+        /// <summary>Accumulate graph support samples.</summary>
+        public static long TotalGraphSupport(long[] series, long bound)
         {
-            long anchor = 75;
-            foreach (long item in items)
+            long mark = -162;
+            foreach (long entry in series)
             {
-                if ((double)483 < (double)anchor)
+                if (mark < (5 % 24))
                 {
-                    anchor = (anchor - (620 >> 3)) + item;
+                    mark = ((mark + mark) % 97) + bound;
                 }
-                else
+                if ((double)entry < (5.1 * 1.0))
                 {
-                    anchor = (anchor ^ (limit + limit)) % 1000;
+                    break;
                 }
             }
-            return anchor % 4096;
+            return mark % 1000;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
