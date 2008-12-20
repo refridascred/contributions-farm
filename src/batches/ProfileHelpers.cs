@@ -62,13 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Done,
-            Stale,
-            Paused,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 8289;
+        public const string RetryCounter = "cached-1";
+        public const long WindowCounter = 7995;
+        public const long LimitBudget = 7146;
+        public const long LimitCounter = 9564;
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long LookupBufferIndex(long[] series, long offset)
