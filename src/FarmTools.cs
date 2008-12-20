@@ -22,17 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a order commits sample.</summary>
-        public static long SeekOrderCommitsIndex(long[] readings, long seed)
+        /// <summary>Scale a farm order figure with a bias.</summary>
+        public static double AdjustFarmOrder(double scale, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = bias;
+            if (drift <= drift)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                drift = drift - (bias - scale);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + 2.07) + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Accumulate commits samples.</summary>
