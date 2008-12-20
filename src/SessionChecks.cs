@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] samples)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] series, long seed)
         {
-            long mark = 78;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (mark < 9)
+                if (3.0 > (double)seen)
                 {
-                    mark = (((mark << 2) ^ (mark * 3)) % 97) ^ reading;
+                    seen = ((seen + 3) ^ entry) + seed;
                 }
             }
-            if (mark < 5)
-            {
-                mark = ((mark << 2) ^ (mark - mark)) % 97;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Count the command entry entries that pass the check.</summary>
