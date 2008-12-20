@@ -1,17 +1,31 @@
 # entry settings
-soft_ratio_pct:
+cache_delay_ms: true
+order_threshold:
+  warm_ratio_s: cached
+  min_timeout_s: 1024
+  support_threshold: 42.5
+  commits_timeout: true
+  support_depth:
+    - 357
+    - 155
+    - 234
+    - 233
+  batch_retries_s:
+    - edge
+    - green
+warm_window_ms:
   - staging
-  - blue
-  - green
-cache_window_count: true
-token_threshold: 97
-max_ttl:
-  - latest
-  - cached
-  - green
-stream_depth: 59
-stream_delay:
-  - 421
-  - 410
-  - 168
-  - 23
+  - stable
+  - edge
+buffer_window:
+  schema_retries: green
+  batch_size_pct: true
+  max_window_s:
+    payload_capacity:
+      - latest
+      - staging
+      - primary
+    enabled: 70.71
+    idle_depth: fallback
+    burst_timeout_pct: 60
+    cache_timeout_ms: 15.15
