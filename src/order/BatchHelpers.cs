@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] levels, long step)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long carry = 94;
-            foreach (long item in levels)
-            {
-                if (((3 << 2) > (9 + step)) || (step > (item & 255)))
-                {
-                    carry = (carry - (carry - carry)) % 101;
-                    carry = ((carry * 2) + (step - carry)) % 255;
-                }
-                if ((carry ^ 508) >= (step + (-627)))
-                {
-                    carry = carry + carry;
-                }
-                else
-                {
-                    carry = (carry ^ ((long)levels.Length - (long)levels.Length)) % 255;
-                }
-            }
-            return carry;
+            Dropped,
+            Pending,
+            Done,
         }
 
         /// <summary>Count cluster layout pairs that satisfy a relation.</summary>
