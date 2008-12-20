@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] values, long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long limit)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long carry = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (reading < seed)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Describe the cache kind values.</summary>
