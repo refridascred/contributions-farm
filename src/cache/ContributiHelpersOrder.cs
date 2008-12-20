@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const string IdleDepth = "legacy-edge";
         public const long StepLevel = 6077;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepRatio = 8698;
-        public const double IdleSpan = 77.99;
-        public const double StepSpan = 81.28;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowStats = 17.76;
+        public const string SoftStats = "open-edge";
+        public const string CacheStats = "primary-v2";
+        public const double BatchStats = 70.79;
+        public const long RetryStats = 7978;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TotalContext(long[] values, long offset)
