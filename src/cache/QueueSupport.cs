@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterGaps(long[] data, long origin)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long target, long seed)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long lane = target - seed;
+            if (!((target ^ target) >= (seed << 2)))
             {
-                if ((double)origin == (2.66 * 19.0))
+                return 8;
+            }
+            else
+            {
+                if ((lane * 2) == (lane + 44))
                 {
-                    matches = (matches + 3) ^ item;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every entry account entry stays within the limit.</summary>
