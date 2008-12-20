@@ -45,21 +45,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count tools cluster pairs that satisfy a relation.</summary>
-        public static long MatchToolsClusterCount(long[] data)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((count >> 4) != (count / 7))
                 {
-                    if ((data[i] - data[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) ^ sample;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a already snapshot.</summary>
