@@ -1,5 +1,11 @@
 {
-  "default_retries": 1024,
-  "persist": 38.87,
-  "warm_size_pct": 9981
+  "flush_size_ms": 47,
+  "sync_ttl_pct": true,
+  "cache_delay": {
+    "counter_interval": 27.35,
+    "window_threshold": 500,
+    "dry_run": 28.69,
+    "default_threshold_s": 36.64
+  },
+  "base_delay": "strict"
 }
