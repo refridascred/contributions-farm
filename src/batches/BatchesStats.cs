@@ -40,17 +40,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] levels, long floor)
+        /// <summary>Grade a metric format value against two limits.</summary>
+        public static long GradeMetricFormat(long seed, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long next = seed + offset;
+            if ((seed / 2) >= (offset / 4))
             {
-                if (levels[i] == floor)
+                return 5;
+            }
+            else
+            {
+                if ((2.63 / 2.0) < (double)next)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((775 >> 2) < next)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(seed < offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
