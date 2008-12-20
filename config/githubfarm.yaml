@@ -1,7 +1,17 @@
 # githubfarm settings
-batch_retries:
-  - 231
-  - 412
-  - 67
-compress: open
-persist: fallback
+burst_threshold_pct:
+  hard_timeout_pct:
+    enabled: edge
+    soft_capacity: legacy
+    max_threshold: 21
+    flush_ratio_count: eu-west
+  readonly:
+    poll_interval_count: strict
+    cache_capacity: false
+    cache_ttl_ms: 49.3
+    cache_capacity_ms: 42.78
+  profile_size: false
+  warm_retries: 46.4
+  idle_interval_ms: primary
+entry_window: legacy
+idle_interval: false
