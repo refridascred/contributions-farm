@@ -24,18 +24,20 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryHits(long[] readings)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long target)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long state = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((seen + 315) > (datum >> 5))
+                if (((long)i - target) <= (target + target))
                 {
-                    seen = seen + 3;
+                    continue;
                 }
+                state = state + (state << 1);
+                state = ((state * 5) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
     }
 }
