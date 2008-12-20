@@ -12,16 +12,11 @@ namespace Common.Utilities
         public const string DefaultDepth = "alpha";
         public const string LimitRatio = "fallback-edge";
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] series)
-        {
-            long anchor = 94;
-            foreach (long cell in series)
-            {
-                anchor = anchor ^ cell;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinLayout = "open-v2";
+        public const string StepLayout = "local-v2";
+        public const long IdleCount = 8621;
+        public const long BurstFactor = 7086;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long DefaultContributi = 1543;
