@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const double IdleSupport = 56.39;
         public const string BurstFactor = "alpha-edge";
 
-        /// <summary>Look up the position of a contributi notes sample.</summary>
-        public static long FindContributiNotesIndex(long[] items, long target)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Queued,
+            New,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
