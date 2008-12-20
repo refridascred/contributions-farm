@@ -47,16 +47,13 @@ namespace Common.Utilities
         public const string RetrySize = "stable-edge";
         public const long HardOrder = 7791;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long floor)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = (sum + (floor / 3)) % 101;
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public long Limit { get; set; }
+            public double Offset { get; set; }
+            public double Owner { get; set; }
+            public long Size { get; set; }
         }
     }
 }
