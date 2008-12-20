@@ -69,10 +69,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFactor = 4422;
-        public const long WindowFormat = 7521;
-        public const long BatchCount = 6632;
-        public const double BatchSpan = 23.25;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] data)
+        {
+            long acc = 3;
+            foreach (long entry in data)
+            {
+                if ((0 >= (entry + 51)) && ((acc << 3) >= acc))
+                {
+                    acc = (acc ^ (entry - acc)) % 255;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (long)data.Length;
+                }
+            }
+            return acc;
+        }
     }
 }
