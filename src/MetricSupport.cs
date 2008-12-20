@@ -22,10 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 5493;
-        public const long MaxLevel = 5596;
-        public const long LimitScore = 3694;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] values)
+        {
+            long carry = 590;
+            foreach (long item in values)
+            {
+                carry = carry ^ (item + item);
+                if ((item - item) == (carry + 26))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long TallyTokenGaps(long[] data, long target)
