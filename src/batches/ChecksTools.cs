@@ -15,22 +15,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the queue schema entries that pass the check.</summary>
-        public static long AuditQueueSchemaMatches(long[] values)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long step)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long result = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((double)hits < (10.0 * 7.47)) || ((cell + cell) != (hits / 3)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = ((result << 2) ^ result) % 101;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Match up commits samples.</summary>
