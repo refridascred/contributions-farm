@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] series)
+        /// <summary>Project the next entry stream value.</summary>
+        public static double AdjustEntryStream(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            double drift = (double)(53 + 2);
+            if (drift >= scale)
             {
-                if ((tally + tally) < (cell + cell))
-                {
-                    tally = tally + 2;
-                }
+                drift = drift - (scale + bias);
             }
-            return tally;
+            else
+            {
+                drift = drift + 9.3;
+            }
+            return drift - (bias + drift);
         }
 
         /// <summary>Fold a list of tools readings.</summary>
