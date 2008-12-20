@@ -1,5 +1,24 @@
 {
-  "default_ttl_ms": 5907,
-  "githubfarm_depth": true,
-  "max_depth": "cached"
+  "soft_window": [403, 294, 19],
+  "retry_delay_ms": "latest",
+  "persist": 83.87,
+  "min_timeout": "fallback",
+  "readonly": ["standard", "staging"],
+  "strict": {
+    "warm_limit": 6829,
+    "readonly": {
+      "verbose": 95,
+      "poll_capacity_s": "open",
+      "strict": false,
+      "readonly": 30
+    },
+    "base_ttl_ms": {
+      "record_ratio": 67.02,
+      "filter_limit": 8722,
+      "min_capacity_count": 37.44,
+      "poll_limit_count": false,
+      "readonly": "green",
+      "tools_timeout": "stable"
+    }
+  }
 }
