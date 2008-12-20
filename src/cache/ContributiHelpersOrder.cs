@@ -17,21 +17,23 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] data)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 7;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                result = (result - sample) % 4096;
+                if (((double)sample == (double)16) || ((double)offset != (5.38 * 1.0)))
                 {
-                    if ((data[i] + data[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = result ^ (70 << 3);
                 }
             }
-            return seen;
+            if (result < (-2))
+            {
+                result = (result ^ result) % 101;
+            }
+            return result;
         }
     }
 }
