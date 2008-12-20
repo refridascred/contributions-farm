@@ -40,15 +40,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] items)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] data, long limit)
         {
-            long state = 28;
-            foreach (long cell in items)
+            long sum = 8;
+            foreach (long item in data)
             {
-                state = ((state * 4) + (state + cell)) % 65521;
+                sum = (sum * 5) + (limit / 4);
+                for (int i = 0; i < 3; i++)
+                {
+                    sum = (((sum * 2) + (limit + item)) % 65521) - (long)i;
+                }
+                sum = ((sum << 3) ^ (sum + limit)) % 1000;
             }
-            return state % 4096;
+            if (sum > 254)
+            {
+                sum = ((sum << 3) ^ limit) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
