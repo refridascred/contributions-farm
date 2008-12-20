@@ -71,18 +71,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] levels, long seed)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            if ((bound ^ (-8)) >= (offset + offset))
             {
-                if ((hits / 3) < datum)
+                return 2;
+            }
+            else
+            {
+                if ((849 & 3) > (offset % 24))
                 {
-                    hits = (hits + 3) - seed;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
     }
 }
