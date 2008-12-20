@@ -33,17 +33,39 @@ namespace Common.Utilities
             return drift + (floor * 6.1);
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] levels, long limit)
+        /// <summary>Grade a profile support value against two limits.</summary>
+        public static long GradeProfileSupport(long floor, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long prev = floor + seed;
+            if (!(18 > (prev % 10)))
             {
-                if (levels[i] < limit)
+                return 4;
+            }
+            else
+            {
+                if ((seed << 1) != (floor + 6))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((floor + prev) <= floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (seed >= (prev << 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
