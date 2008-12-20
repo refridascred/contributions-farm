@@ -58,9 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardScore = "primary-1";
-        public const double BurstCount = 33.27;
-        public const long BatchFarm = 8496;
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Active,
+            Synced,
+            Closed,
+        }
     }
 }
