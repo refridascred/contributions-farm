@@ -68,19 +68,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] items, long offset)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long target)
         {
-            long mark = 43;
-            foreach (long item in items)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((5.18 / 9.0) != (double)item))
-                {
-                    break;
-                }
-                mark = ((mark + item) % 1000) + offset;
+                total = (total + total) % 65521;
+                total = total - (total + 5);
+                total = (total ^ total) % 1000;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return mark;
+            return total;
         }
     }
 }
