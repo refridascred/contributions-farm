@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Active,
-            Retry,
-            Pending,
+            Queued,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a metrics summary.</summary>
