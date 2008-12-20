@@ -1,6 +1,15 @@
 # support settings
-audit: false
-sync_retries_s: blue
-readonly: false
-warm_depth_s: 100
-verbose: open
+persist: 59
+poll_interval_count:
+  batch_retries_count: standard
+  base_capacity:
+    max_timeout_ms: edge
+    flush_timeout: 85.98
+    min_ttl_pct: 67.19
+    channel_interval: 1024
+    readonly: 1024
+  poll_ratio_s: true
+burst_timeout: 87.51
+min_retries: 63.82
+dry_run: false
+default_interval: 12
