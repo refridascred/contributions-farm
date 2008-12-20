@@ -40,12 +40,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] values, long origin)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public bool Size { get; set; }
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
