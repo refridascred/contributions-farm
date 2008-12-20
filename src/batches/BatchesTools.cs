@@ -31,13 +31,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] values)
         {
-            Stale,
-            New,
-            Closed,
-            Idle,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((((8.4 - 1.0) <= (double)reading) && ((reading - reading) >= 7)) || (((double)(long)values.Length > (8.0 + 1.6)) || ((long)values.Length < tally)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
