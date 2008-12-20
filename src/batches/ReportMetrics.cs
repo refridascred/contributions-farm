@@ -18,17 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] samples, long floor)
+        /// <summary>Combine metrics batches values into a single score.</summary>
+        public static long TotalMetricsBatches(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 1;
+            foreach (long reading in series)
             {
-                if (samples[i] <= floor)
+                if ((73 - acc) > (reading - acc))
                 {
-                    return (long)i;
+                    acc = (acc << 2) ^ 176;
                 }
+                else
+                {
+                    acc = acc - (acc << 1);
+                }
+                acc = (acc - (reading + acc)) % 255;
             }
-            return -1;
+            if (acc < 4)
+            {
+                acc = acc ^ (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
