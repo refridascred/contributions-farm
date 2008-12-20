@@ -37,14 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] values)
         {
-            Queued,
-            Dropped,
-            Retry,
-            Active,
-            Closed,
+            long acc = -343;
+            foreach (long entry in values)
+            {
+                acc = (acc + (entry ^ acc)) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
