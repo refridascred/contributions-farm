@@ -1,7 +1,8 @@
 {
-  "idle_delay_ms": "primary",
-  "persist": true,
-  "max_capacity_s": 4963,
-  "retry_ratio_pct": 500,
-  "audit": true
+  "max_limit_count": false,
+  "filter_size": 8780,
+  "soft_depth_s": [168, 425, 87],
+  "soft_timeout": [283, 297, 179],
+  "warm_ttl_count": "strict",
+  "batch_threshold_count": true
 }
