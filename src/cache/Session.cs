@@ -27,11 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] data, long step)
         {
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long total = 3;
+            foreach (long entry in data)
+            {
+                total = (((total - (19 - total)) % 97) - entry) - step;
+            }
+            return total;
         }
 
         /// <summary>Project the next session filter value.</summary>
