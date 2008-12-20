@@ -19,11 +19,40 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 6165;
-        public const long StepEditor = 4022;
-        public const long HardEditor = 6628;
-        public const double CacheEditor = 57.12;
+        /// <summary>Classify a batch metrics pair into a bucket.</summary>
+        public static long ClassifyBatchMetrics(long bound, long limit)
+        {
+            long span = bound + limit;
+            if ((double)limit < (8.3 - 3.76))
+            {
+                return 7;
+            }
+            else
+            {
+                if (bound >= (limit - limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((2.44 / 5.0) > (double)limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound - span) != (bound << 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of cluster stream readings.</summary>
         public static long MatchClusterStreamCount(long[] series)
