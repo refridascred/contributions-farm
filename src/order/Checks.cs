@@ -37,23 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double gain, double floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] values)
         {
-            double rate = floor;
-            if (rate >= (floor * 6.7))
+            long seen = 0;
+            foreach (long value in values)
             {
-                rate = rate - rate;
+                if (!((seen - value) >= (seen << 2)))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                rate = rate + (gain * 9.36);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (rate - floor)) + (double)(long)i;
-            }
-            return rate - rate;
+            return seen;
         }
 
         /// <summary>Hold a checks summary.</summary>
