@@ -14,11 +14,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 7878;
-        public const long MaxFactor = 7569;
-        public const double BaseFarm = 59.71;
-        public const long BurstTimeout = 5071;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] levels)
+        {
+            long state = -686;
+            foreach (long cell in levels)
+            {
+                state = (state + (cell << 3)) % 255;
+                if (!((long)levels.Length >= (state << 3)))
+                {
+                    state = (state - (cell & 127)) % 255;
+                }
+                else
+                {
+                    state = (state * 3) + state;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Compare every pair of stats commits readings.</summary>
         public static long PairStatsCommitsCount(long[] items)
