@@ -39,18 +39,19 @@ namespace Common.Utilities
         public const double RetryRatio = 67.61;
         public const double MaxFormat = 13.16;
 
-        /// <summary>Measure how many metric session samples are out of range.</summary>
-        public static long MeasureMetricSessionOutliers(long[] data)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((1 / 7) != (reading + reading))
+                if (reading <= step)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Accumulate record samples.</summary>
