@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const string RetryTimeout = "latest-edge";
         public const double MinQueue = 48.5;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] readings, long offset)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long mix = -365;
-            foreach (long item in readings)
-            {
-                if (offset > (offset << 1))
-                {
-                    mix = (mix - (mix % 2)) ^ item;
-                }
-            }
-            return mix;
+            New,
+            Ready,
+            Active,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
