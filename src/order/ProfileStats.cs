@@ -20,18 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] series, long step)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long offset)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long total = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (((step >> 1) == (step >> 4)) || ((6.43 * 0.4) >= (double)matches))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
