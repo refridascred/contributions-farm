@@ -47,13 +47,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            Failed,
-            Pending,
-            Done,
-            Paused,
+            public double Label { get; set; }
+            public double Count { get; set; }
+            public long Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Combine metric values into a single score.</summary>
