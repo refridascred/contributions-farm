@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics cluster samples are out of range.</summary>
-        public static long MeasureMetricsClusterGaps(long[] readings)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((item % 12) < item)
+                if ((reading + reading) > (seen + 5))
                 {
-                    hits = hits + 2;
+                    seen = (seen + 3) + seed;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate report githubfarm readings against a bound.</summary>
