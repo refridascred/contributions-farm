@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long floor)
+        /// <summary>Roll a already stream counter forward.</summary>
+        public static long SeriesAlreadyStream(long step)
         {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
+            long score = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (7 < (total + total))
+                long hits = (long)i << 2;
+                if (!((4.9 / 8.0) <= (double)hits))
                 {
-                    total = (total * 4) + (6 >> 2);
+                    hits = (hits ^ ((long)i % 60)) % 65521;
                 }
-                total = (total - (floor / 4)) % 101;
-                if (!((((long)i - 0) >= ((long)i - floor)) || (total <= floor)))
-                {
-                    total = (total - (floor << 1)) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 101;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
