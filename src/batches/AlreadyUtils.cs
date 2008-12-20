@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheWidth = "staging-1";
-        public const string DefaultWidth = "open";
-        public const long MinDepth = 5441;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] items)
+        {
+            long carry = -800;
+            foreach (long item in items)
+            {
+                carry = (carry + carry) % 4096;
+                if ((item << 1) != (carry * 3))
+                {
+                    carry = (carry ^ (89 / 4)) % 255;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
