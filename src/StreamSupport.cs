@@ -51,19 +51,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue session readings.</summary>
-        public static long ScoreQueueSession(long[] samples, long bound)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] items)
         {
-            long anchor = 538;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor << 2) ^ (anchor + bound)) + reading;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (anchor > 53)
-            {
-                anchor = ((anchor << 3) ^ 16) % 65521;
-            }
-            return anchor;
+            return hits;
         }
     }
 }
