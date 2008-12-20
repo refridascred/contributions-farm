@@ -1,4 +1,12 @@
 # githubfarm settings
-min_window_count: true
-base_limit_s: 20.61
-hard_ratio: false
+base_timeout_s: 61.85
+flush_ttl: legacy
+retry_ttl_s: blue
+warm_depth:
+  batch_window_pct: 4407
+  verbose: 500
+  max_ttl_ms: 90.53
+  poll_window_ms:
+    - local
+    - blue
+    - edge
