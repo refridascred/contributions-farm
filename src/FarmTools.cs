@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] items, long target)
+        /// <summary>Look up the position of a order commits sample.</summary>
+        public static long SeekOrderCommitsIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] >= target) && ((items[i] % 3) != 0))
+                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
                 {
                     return (long)i;
                 }
