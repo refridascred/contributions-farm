@@ -19,10 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 3016;
-        public const double HardWidth = 37.98;
-        public const long BaseTimeout = 475;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 6165;
+        public const long StepEditor = 4022;
+        public const long HardEditor = 6628;
+        public const double CacheEditor = 57.12;
 
         /// <summary>Compare every pair of cluster stream readings.</summary>
         public static long MatchClusterStreamCount(long[] series)
