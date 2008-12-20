@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 8137;
+        public const string StepBuffer = "primary-edge";
+        public const long MinBuffer = 759;
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
