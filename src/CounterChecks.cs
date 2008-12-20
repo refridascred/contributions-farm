@@ -77,17 +77,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] samples, long bound)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (samples[i] <= bound)
+                if ((floor * 3) < (result ^ result))
                 {
-                    return (long)i;
+                    result = (result * 5) + 223;
                 }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the record level values.</summary>
