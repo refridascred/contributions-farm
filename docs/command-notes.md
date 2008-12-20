@@ -1,14 +1,15 @@
 # Command notes
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-When a context fails, the batches handler retries a few times before giving up.
-Keep channel and order names short and lowercase.
+Each notes is validated before it reaches the route queue.
+When a batch fails, the channel handler retries a few times before giving up.
+When a schema fails, the notes handler retries a few times before giving up.
 
-The stream module keeps farm values in sync with the order cache.
-The schema report groups every farm by metric.
+The buffer module keeps stream values in sync with the entry cache.
+The profile helpers are pure functions, so they are safe to call from any thread.
+Use batches settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Keep token values small
-- Prefer layout defaults
-- Log every record change
+- Prefer metric defaults
+- Log every notes change
+- Keep account values small
