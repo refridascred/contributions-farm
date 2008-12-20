@@ -16,11 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] values)
         {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up filter samples.</summary>
