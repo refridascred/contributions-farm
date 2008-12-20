@@ -19,10 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinSize = "staging";
-        public const double StepScore = 22.15;
-        public const long HardChannel = 9223;
+        /// <summary>Count support report pairs that satisfy a relation.</summary>
+        public static long MatchSupportReportCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long PairFilterCount(long[] series)
