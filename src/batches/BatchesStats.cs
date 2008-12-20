@@ -56,12 +56,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            public bool Flag { get; set; }
-            public double Token { get; set; }
-            public long Size { get; set; }
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
