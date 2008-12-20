@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const long SoftFormat = 4819;
         public const string SoftDepth = "legacy-v2";
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] values, long step)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double rate, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = span;
+            if (gain <= rate)
             {
-                if ((values[i] > step) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain - (span * 7.49);
             }
-            return -1;
+            return gain + (span * 9.81);
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
