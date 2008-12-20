@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double ratio, double offset)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            double load = ratio;
-            if (load <= ratio)
-            {
-                load = load - (offset / 6.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (double)(-644)) + (double)(long)i;
-            }
-            return load + offset;
+            Stale,
+            Paused,
+            New,
+            Active,
         }
 
         /// <summary>Roll a notes counter forward.</summary>
