@@ -1,22 +1,20 @@
 # entry settings
-soft_limit_pct:
-  base_timeout: 13.7
-  warm_timeout_count: true
-  max_capacity_count: strict
-  warm_delay_s: 20
-  soft_timeout:
+soft_delay: 8543
+record_depth: 500
+compress:
+  cache_depth:
+    - 124
+    - 3
+    - 485
+  max_retries_count:
+    flush_threshold: 68.52
+    stream_depth: false
+    poll_delay_ms: staging
+    verbose:
+      - 330
+      - 177
+      - 107
+      - 12
+  idle_delay_count:
     - cached
-    - standard
-  readonly: false
-persist: true
-idle_ratio:
-  - local
-  - blue
-  - green
-  - cached
-buffer_window: edge
-flush_ttl:
-  cache_size_ms: 7.04
-  idle_window_s: blue
-  base_interval_count: edge
-  hard_capacity_s: strict
+    - latest
