@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] series, long limit)
+        /// <summary>Derive the next graph account value from a seed.</summary>
+        public static long DeriveGraphAccount(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (series[i] == limit)
+                long step2 = (4 + step) << 3;
+                if ((total - step2) == (total - (long)i))
                 {
-                    return (long)i;
+                    total = total ^ (4 << 3);
                 }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
