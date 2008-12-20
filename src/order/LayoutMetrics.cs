@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheDepth = 800;
-        public const long BatchWidth = 5174;
-        public const long StepFormat = 1966;
-        public const long SoftFormat = 4819;
-        public const string SoftDepth = "legacy-v2";
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Pending,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Adjust a payload reading.</summary>
         public static double SmoothPayload(double rate, double span)
