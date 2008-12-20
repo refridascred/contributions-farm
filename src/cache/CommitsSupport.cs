@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up channel checks samples.</summary>
-        public static long OverlapChannelChecksCount(long[] levels)
+        /// <summary>Look up the position of a entry stats sample.</summary>
+        public static long FindEntryStatsIndex(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (items[i] == origin)
                 {
-                    if ((levels[i] ^ levels[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many metrics cluster samples are out of range.</summary>
