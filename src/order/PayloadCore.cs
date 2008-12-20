@@ -47,11 +47,11 @@ namespace Common.Utilities
         public const long LimitCache = 2694;
         public const long WindowCount = 1710;
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
+            public double Offset { get; set; }
+            public long Level { get; set; }
         }
     }
 }
