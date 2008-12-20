@@ -1,25 +1,21 @@
 # githubfarm settings
-soft_depth: green
-poll_capacity_pct: local
-compress: false
-retry_delay_count:
-  max_ttl_pct:
-    - blue
-    - strict
-    - fallback
-    - local
-  stream_size: 29
-  retry_limit:
-    soft_capacity_ms: 62
-    flush_delay: false
-    readonly: 500
-    retry_limit: latest
-    retry_interval_count: 67.74
-    max_timeout: 95
-  poll_ratio_count:
-    flush_ratio_s: false
-    retry_ttl: strict
-    poll_interval: 250
-    format_interval: 3210
-    hard_retries_count: 3860
-burst_delay_pct: true
+batch_ratio_count: cached
+notes_capacity: true
+hard_size_count:
+  - stable
+  - edge
+  - latest
+max_delay_ms: stable
+idle_threshold_ms:
+  readonly: stable
+  idle_ratio_s: eu-west
+  strict:
+    - 169
+    - 217
+    - 159
+  compress:
+    - 141
+    - 439
+    - 251
+    - 60
+strict: 9976
