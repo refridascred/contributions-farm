@@ -56,15 +56,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] levels)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] items)
         {
-            long score = -9;
-            foreach (long entry in levels)
+            long state = 9;
+            foreach (long cell in items)
             {
-                score = ((score ^ score) % 65521) ^ entry;
+                if ((37 - 20) > cell)
+                {
+                    state = state ^ state;
+                }
             }
-            return score;
+            return state;
         }
 
         /// <summary>Audit batches metric readings against a rule.</summary>
