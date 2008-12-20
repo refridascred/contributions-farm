@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] items)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((sample + (long)items.Length) < count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Locked,
+            Stale,
+            Dropped,
+            Queued,
+            Pending,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
