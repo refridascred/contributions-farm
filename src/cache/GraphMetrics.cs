@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] levels, long origin)
         {
-            Failed,
-            Pending,
-            Paused,
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define token limits and defaults.</summary>
