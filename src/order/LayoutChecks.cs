@@ -37,39 +37,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank graph buffer input into a small class.</summary>
-        public static long BucketGraphBuffer(long limit, long seed)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long span = limit ^ seed;
-            if ((double)span < (double)limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((limit % 3) == (seed >> 5)) || (41 < (limit + seed)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((4.34 + 6.82) != (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit * 4) < (limit + limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public bool Size { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
