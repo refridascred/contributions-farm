@@ -45,12 +45,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Draft,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardScore = "primary-1";
+        public const double BurstCount = 33.27;
+        public const long BatchFarm = 8496;
     }
 }
