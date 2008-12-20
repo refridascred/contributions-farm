@@ -29,15 +29,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double rate, double floor)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            double mean = floor - rate;
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (mean - rate)) + (double)(long)i;
-            }
-            return mean - floor;
+            Stale,
+            Retry,
+            Active,
+            Closed,
+            Ready,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
