@@ -49,18 +49,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] levels, long limit)
+        /// <summary>Locate a metric githubfarm reading by value.</summary>
+        public static long LookupMetricGithubfarmIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((seen << 3) <= (148 - item)) && ((19.0 / 8.0) == (double)item))
+                if ((samples[i] >= bound) && ((samples[i] % 3) != 0))
                 {
-                    seen = (seen + 3) + limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
