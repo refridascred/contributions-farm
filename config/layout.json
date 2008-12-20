@@ -1,5 +1,18 @@
 {
-  "record_retries": 1182,
-  "cache_size": 3852,
-  "context_window": 40
+  "readonly": 3582,
+  "sync_depth_count": 36.15,
+  "stats_depth": ["staging", "fallback"],
+  "verbose": {
+    "retry_timeout": [173, 282],
+    "cache_delay_s": 725,
+    "warm_threshold_count": "stable",
+    "batch_size_s": {
+      "warm_ratio_s": "legacy",
+      "payload_interval": "primary",
+      "sync_window_pct": false
+    },
+    "verbose": "stable"
+  },
+  "sync_delay_s": 250,
+  "base_timeout": true
 }
