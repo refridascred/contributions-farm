@@ -68,19 +68,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountLimits(long[] values, long step)
+        /// <summary>Rank route session input into a small class.</summary>
+        public static long SortRouteSession(long step, long offset)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long delta = step - offset;
+            if (!(((-845) - offset) <= offset))
             {
-                if (item >= step)
+                return 5;
+            }
+            else
+            {
+                if ((step & 7) < 7)
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((step ^ 9) == (delta & 255))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the batch level values.</summary>
