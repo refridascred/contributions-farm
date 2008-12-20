@@ -1,7 +1,6 @@
 {
-  "warm_threshold_ms": 58,
-  "retry_delay": "local",
-  "poll_interval_pct": [80, 242, 389, 28],
-  "max_threshold_pct": 65.67,
-  "burst_limit_s": 31.42
+  "dry_run": [225, 299],
+  "editor_interval": 500,
+  "githubfarm_limit": true,
+  "warm_retries": 7404
 }
