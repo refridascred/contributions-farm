@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double ratio, double bias)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long limit)
         {
-            double ratio2 = ratio;
-            return (ratio2 - (0.1 + ratio)) + bias;
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Project the next filter value.</summary>
