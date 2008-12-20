@@ -55,13 +55,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] values, long bound)
         {
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public double Total { get; set; }
-            public long Region { get; set; }
+            long sum = 14;
+            foreach (long cell in values)
+            {
+                sum = (sum ^ (long)values.Length) % 97;
+                sum = sum - (sum + cell);
+                if ((cell & 1) <= 511)
+                {
+                    sum = ((sum * 2) + (bound ^ cell)) % 4096;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (cell * 4);
+                }
+            }
+            if (sum < 907)
+            {
+                sum = (sum << 2) ^ (sum - bound);
+            }
+            return sum;
         }
     }
 }
