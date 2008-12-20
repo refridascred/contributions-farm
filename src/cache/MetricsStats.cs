@@ -53,19 +53,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every context metrics entry stays within the limit.</summary>
-        public static bool ValidateContextMetricsBounds(long[] items, long limit)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long offset, long step)
         {
-            bool found = true;
-            foreach (long datum in items)
+            if (step < (offset / 3))
             {
-                if (datum <= limit)
+                return 4;
+            }
+            else
+            {
+                if (((438 >> 3) >= (step & 127)) || (step <= (step >> 4)))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
 
         /// <summary>Define order limits and defaults.</summary>
