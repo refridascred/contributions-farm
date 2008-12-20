@@ -22,39 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a batch metrics pair into a bucket.</summary>
-        public static long ClassifyBatchMetrics(long bound, long limit)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long target)
         {
-            long span = bound + limit;
-            if ((double)limit < (8.3 - 3.76))
+            long acc = target;
+            for (int i = 0; i < 9; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound >= (limit - limit))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 5;
+                    acc = (((acc * 2) + target) % 65521) - (long)i2;
                 }
-                else
-                {
-                    if ((2.44 / 5.0) > (double)limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound - span) != (bound << 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
+            return acc;
         }
 
         /// <summary>Compare every pair of cluster stream readings.</summary>
