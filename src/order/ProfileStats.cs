@@ -22,10 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowFactor = 6256;
-        public const long MaxRatio = 8660;
-        public const long StepProfile = 8770;
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Adjust a contributi buffer reading.</summary>
         public static double SmoothContributiBuffer(double weight, double bias)
