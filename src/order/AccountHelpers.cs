@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] samples, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (item >= seed)
+                if ((entry > (entry * 3)) && ((step / 3) <= 926))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
