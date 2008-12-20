@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Grade a cache metrics value against two limits.</summary>
+        public static long SortCacheMetrics(long bound, long limit)
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
-            public double Limit { get; set; }
+            long edge = bound ^ limit;
+            if ((bound >> 2) > ((-98) * 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((139 * 3) == (edge * 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound / 4) >= (limit ^ bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
