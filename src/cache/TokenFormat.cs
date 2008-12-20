@@ -23,19 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] values, long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (sample > origin)
+                if (entry < limit)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Hold a payload record.</summary>
