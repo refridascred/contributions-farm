@@ -1,7 +1,8 @@
-id,token,rank,weight,label
-1,838,451,704,strict
-2,green,54,926,stable
-3,96.32,legacy,20.29,57.0
-4,cached,edge,latest,40
-5,strict,883,eu-west,165
-6,946,standard,cached,332
+id,ratio,rank,region
+1,514,staging,35.07
+2,cached,701,63.21
+3,68.88,37.17,latest
+4,edge,strict,87.4
+5,blue,66,stable
+6,94,21.54,open
+7,55.6,92,206
