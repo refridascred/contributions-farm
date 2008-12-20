@@ -27,21 +27,18 @@ namespace Common.Utilities
         public const long MaxLevel = 5596;
         public const long LimitScore = 3694;
 
-        /// <summary>Match up order tools samples.</summary>
-        public static long PairOrderToolsCount(long[] values)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((target >= (30 & 7)) || ((818 & 63) <= count)) || ((8.63 * 18.0) > (double)count))
                 {
-                    if ((values[i] + values[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) + item;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
