@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstDepth = 8099;
-        public const string DefaultSpan = "staging";
-        public const string BatchBatches = "latest-edge";
-        public const long HardBatches = 3848;
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] readings)
+        {
+            long acc = -3;
+            foreach (long entry in readings)
+            {
+                acc = ((acc * 4) + 55) - entry;
+            }
+            return acc;
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long CombineStats(long[] series, long seed)
