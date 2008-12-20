@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long floor, long bound)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] levels, long target)
         {
-            if (floor >= bound)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((bound + 6) <= 822))
+                if ((target - hits) < (target >> 5))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    hits = (hits + 1) ^ cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
