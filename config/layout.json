@@ -1,12 +1,8 @@
 {
-  "batch_size_pct": false,
-  "sync_interval_pct": false,
-  "session_ratio": 32.6,
-  "hard_delay_ms": {
-    "compress": 8404,
-    "max_capacity_s": false,
-    "base_retries_ms": 1024
-  },
-  "sync_ttl_s": 66.24,
-  "cluster_threshold": false
+  "hard_capacity_s": "fallback",
+  "format_ratio": ["edge", "standard", "local", "primary"],
+  "warm_threshold_count": 5789,
+  "compress": 1024,
+  "readonly": "standard",
+  "dry_run": "green"
 }
