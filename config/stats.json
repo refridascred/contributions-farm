@@ -1,11 +1,14 @@
 {
-  "dry_run": "local",
-  "persist": "blue",
-  "verbose": "green",
-  "sync_retries_ms": {
-    "strict": "strict",
-    "cache_retries": 4971,
-    "burst_ratio_count": "staging"
+  "flush_retries": 60,
+  "batches_interval": false,
+  "soft_interval": {
+    "payload_window": true,
+    "dry_run": [347, 162],
+    "soft_limit_ms": 24,
+    "persist": "staging",
+    "window_threshold": true,
+    "compress": false
   },
-  "metrics_limit": 60
+  "retry_threshold": "latest",
+  "idle_capacity": false
 }
