@@ -41,11 +41,14 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleLevel = 9914;
-        public const double WindowCache = 65.33;
-        public const long LimitCache = 2694;
-        public const long WindowCount = 1710;
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
+        {
+            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Rank { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long TallyAccount(long[] readings)
