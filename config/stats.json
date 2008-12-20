@@ -1,7 +1,5 @@
 {
-  "poll_ttl": "latest",
-  "dry_run": true,
-  "compress": 250,
-  "sync_ratio_s": 12.6,
-  "max_retries": 76.08
+  "session_capacity": 95.62,
+  "poll_threshold": false,
+  "base_ratio_pct": "cached"
 }
