@@ -14,21 +14,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Grade a token support value against two limits.</summary>
+        public static long SortTokenSupport(long offset, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((offset / 3) == (step * 5))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (offset >= (5 / 5))
                 {
-                    if ((readings[i] ^ readings[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
