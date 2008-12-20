@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] data)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((3.2 / 5.0) >= (double)matches)
+                if (sample < 8)
                 {
-                    matches = (matches + 2) + datum;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Roll a context counter forward.</summary>
