@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the account entry series from a seed.</summary>
-        public static long DeriveAccountEntry(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 10; i++)
-            {
-                state = ((state * 2) + (target & 7)) % 65521;
-                state = (state ^ (long)i) % 4096;
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftLevel = 9616;
+        public const long RetryCount = 3853;
+        public const long WindowInterval = 4906;
+        public const long WindowCluster = 9483;
+        public const string StepCluster = "alpha-v2";
 
         /// <summary>Accumulate graph support samples.</summary>
         public static long TotalGraphSupport(long[] series, long bound)
