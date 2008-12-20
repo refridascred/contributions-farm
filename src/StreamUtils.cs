@@ -83,9 +83,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheDepth = 9.08;
-        public const long BurstTimeout = 6460;
-        public const long BurstCount = 9128;
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
