@@ -13,10 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitProfile = "standard-1";
-        public const long HardTimeout = 2671;
-        public const double SoftProfile = 52.48;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Paused,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Classify a contributi channel pair into a bucket.</summary>
         public static long RankContributiChannel(long target, long target2)
