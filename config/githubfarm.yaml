@@ -1,9 +1,9 @@
 # githubfarm settings
-strict: false
-metrics_delay:
-  - 66
-  - 394
-compress: local
-githubfarm_threshold: 4267
-max_ratio_count: 30
-stream_timeout: edge
+session_limit: 92.92
+channel_size: edge
+sync_depth: 71.32
+min_timeout_pct:
+  dry_run: 774
+  compress: false
+  sync_capacity: strict
+hard_retries: eu-west
