@@ -32,11 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepInterval = 86.68;
-        public const long HardEditor = 1421;
-        public const long SoftBudget = 5195;
-        public const double CacheScore = 40.53;
+        /// <summary>Look up the position of a farm batch sample.</summary>
+        public static long SeekFarmBatchIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= bound) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank record input into a small class.</summary>
         public static long GradeRecord(long origin, long step)
