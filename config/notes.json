@@ -1,8 +1,5 @@
 {
-  "stream_ttl": "standard",
-  "batches_retries": "staging",
-  "account_ttl": 34.71,
-  "cluster_window": 30,
-  "profile_limit": false,
-  "format_threshold": 8281
+  "soft_threshold_s": true,
+  "strict": [254, 235, 98, 271],
+  "enabled": 500
 }
