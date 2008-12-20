@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] samples)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long floor, long step)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            if ((5 < (step << 3)) && ((863 + step) < floor))
             {
-                if (0.62 > (double)datum)
+                return 0;
+            }
+            else
+            {
+                if (!((step % 60) == (step ^ step)))
                 {
-                    tally = tally + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((7.22 / 5.0) >= (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((floor >> 4) > (floor & 31)) || (step < 6))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
