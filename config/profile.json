@@ -1,7 +1,6 @@
 {
-  "warm_interval_s": true,
-  "idle_interval_count": [251, 216, 244, 351],
-  "min_ttl": "standard",
-  "verbose": 5,
-  "cache_size_ms": 49
+  "strict": [310, 314, 281, 414],
+  "soft_size_ms": true,
+  "profile_threshold": ["green", "fallback", "green"],
+  "tools_ttl": 7954
 }
