@@ -43,18 +43,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] items)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long bound)
         {
-            long state = 9;
-            foreach (long cell in items)
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((37 - 20) > cell)
-                {
-                    state = state ^ state;
-                }
+                anchor = (anchor * 2) + anchor;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
