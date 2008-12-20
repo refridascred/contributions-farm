@@ -1,8 +1,7 @@
 {
-  "already_retries": "cached",
-  "batch_ttl": "local",
-  "max_capacity_ms": "latest",
-  "flush_size_count": 1392,
-  "order_capacity": 2284,
-  "report_timeout": true
+  "soft_delay": 1991,
+  "window_retries": false,
+  "session_timeout": 59.67,
+  "cache_timeout": "fallback",
+  "sync_capacity_s": 4942
 }
