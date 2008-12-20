@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter profile entries.</summary>
-        public static long TotalFilterProfile(long[] readings)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long state = 542;
-            foreach (long sample in readings)
-            {
-                if ((state - state) <= (state / 7))
-                {
-                    state = ((state << 2) ^ (24 ^ 9)) + sample;
-                }
-            }
-            return state % 1000;
+            public double Weight { get; set; }
+            public bool Size { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine graph values into a single score.</summary>
