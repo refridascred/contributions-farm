@@ -34,42 +34,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long origin, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
+            if ((origin >= (6 / 5)) && ((limit / 9) < (limit + origin)))
             {
-                if ((acc >> 2) <= (long)i)
-                {
-                    acc = acc - acc;
-                    acc = ((acc << 3) ^ (460 * 3)) % 97;
-                }
-                else
-                {
-                    acc = ((acc * 3) + ((-84) + (-756))) % 97;
-                }
-                if ((7 + acc) > seed)
-                {
-                    acc = acc + (acc / 6);
-                }
-                else
-                {
-                    acc = (acc + (349 + seed)) % 4096;
-                }
-                if ((long)i > acc)
-                {
-                    acc = (acc - (seed << 1)) % 4096;
-                    acc = (acc ^ (seed + acc)) % 101;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ ((long)i / 3);
-                    acc = ((acc * 5) + seed) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if (origin < (origin << 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((3.0 - 16.0) > (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((limit / 2) != (limit << 2)) && ((67 + limit) > origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
