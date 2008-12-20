@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the checks record entries that pass the check.</summary>
-        public static long TallyChecksRecordHits(long[] values)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((((77 / 9) >= (entry - seen)) && ((7 >> 3) >= (entry & 15))) || ((seen << 1) < 7))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
