@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] samples)
+        /// <summary>Accumulate farm command samples.</summary>
+        public static long TallyFarmCommand(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long mix = 953;
+            foreach (long datum in levels)
             {
-                if (sample < 8)
+                mix = (mix * 4) + mix;
+                if (datum >= (datum - datum))
                 {
-                    hits = hits + 3;
+                    mix = ((mix << 3) ^ (mix << 1)) % 97;
+                }
+                else
+                {
+                    mix = mix - (datum / 2);
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Roll a context counter forward.</summary>
