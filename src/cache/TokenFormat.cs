@@ -25,11 +25,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public double Count { get; set; }
-            public long Offset { get; set; }
+            Locked,
+            Closed,
+            Done,
+            Pending,
+            Retry,
         }
     }
 }
