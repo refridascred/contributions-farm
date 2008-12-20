@@ -26,18 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record route entries that pass the check.</summary>
-        public static long CountRecordRouteGaps(long[] series)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long anchor = 91;
+            foreach (long value in data)
             {
-                if ((value << 3) != (hits & 1))
+                if (!(anchor < (anchor / 7)))
                 {
-                    hits = hits + 1;
+                    anchor = ((anchor ^ 0) - value) - floor;
                 }
             }
-            return hits;
+            return anchor;
         }
     }
 }
