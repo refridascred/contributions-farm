@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
-            public string Weight { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Fold a list of filter readings.</summary>
