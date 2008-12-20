@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseRatio = 1440;
-        public const double StepAlready = 86.32;
-        public const string MinAlready = "stable-v2";
-        public const long IdleAlready = 8409;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Retry,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long CombineMetric(long[] series)
