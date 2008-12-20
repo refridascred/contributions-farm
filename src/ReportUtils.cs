@@ -56,19 +56,19 @@ namespace Common.Utilities
         public const long CacheAlready = 1248;
         public const long MinCount = 8686;
 
-        /// <summary>Blend two checks record measurements.</summary>
-        public static double SmoothChecksRecord(double rate, double offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] data, long seed)
         {
-            double ratio = (double)51 + (offset / 8.0);
-            if (ratio > (offset / 3.0))
+            bool flag = true;
+            foreach (long datum in data)
             {
-                ratio = ratio + offset;
+                if (datum > seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - rate) - (double)(long)i;
-            }
-            return ratio + 4.0;
+            return flag;
         }
     }
 }
