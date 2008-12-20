@@ -15,19 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] levels, long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] values)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (item <= bound)
+                if (((9 / 2) == (seen + value)) && ((value & 1) <= (value ^ value)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
