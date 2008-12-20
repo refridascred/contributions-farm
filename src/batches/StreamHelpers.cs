@@ -25,12 +25,16 @@ namespace Common.Utilities
         public const double StepScore = 22.15;
         public const long HardChannel = 9223;
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long limit)
         {
-            Stale,
-            Done,
-            Paused,
+            long carry = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 65521;
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
