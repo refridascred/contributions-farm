@@ -80,16 +80,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double weight, double offset)
         {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
+            double mean = (double)(2 / 6);
+            for (int i = 0; i < 6; i++)
             {
-                total = (total * 3) + bound;
-                total = ((total * 4) + (long)i) % 1000;
+                mean = ((mean + weight) + (double)(long)i) + offset;
             }
-            return total;
+            return mean + mean;
         }
     }
 }
