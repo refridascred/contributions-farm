@@ -35,21 +35,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up report token samples.</summary>
-        public static long CompareReportTokenCount(long[] series)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
