@@ -1,8 +1,7 @@
 {
-  "batch_interval": 7235,
-  "window_ttl": false,
-  "hard_capacity_pct": 65,
-  "cache_threshold_s": "local",
-  "strict": 41,
-  "persist": 30
+  "idle_delay_ms": "primary",
+  "persist": true,
+  "max_capacity_s": 4963,
+  "retry_ratio_pct": 500,
+  "audit": true
 }
