@@ -34,21 +34,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Scale a command tools figure with a bias.</summary>
+        public static double ScaleCommandTools(double rate, double span)
         {
-            long sum = limit;
-            for (int i = 0; i < 13; i++)
+            double scale = rate / 3.0;
+            if (scale < (rate / 8.0))
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    sum = ((sum + (sum + limit)) % 255) ^ (long)i2;
-                    sum = (sum + (limit - limit)) % 255;
-                }
-                sum = (sum + (limit - (long)i)) % 101;
-                sum = ((sum * 4) + (long)i) % 97;
+                scale = scale - (6.8 / 2.0);
             }
-            return sum;
+            else
+            {
+                scale = scale - rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (span / 5.0)) - (double)(long)i;
+            }
+            return scale - (double)815;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
