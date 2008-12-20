@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long SoftBudget = 8694;
         public const long BurstWindow = 4397;
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] data)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 42;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((acc <= (value << 1)) && (value >= (acc & 3)))
                 {
-                    if ((data[i] - data[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc << 2) ^ (acc / 2)) % 97;
                 }
             }
-            return matches;
+            return acc % 65521;
         }
 
         /// <summary>Grade a filter counter value against two limits.</summary>
