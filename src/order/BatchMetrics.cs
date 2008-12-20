@@ -73,24 +73,19 @@ namespace Common.Utilities
             return (load + (double)7) + weight;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long target, long seed)
+        /// <summary>Validate filter payload readings against a bound.</summary>
+        public static bool ValidateFilterPayloadRange(long[] items, long offset)
         {
-            if (target < ((-4) & 3))
+            bool valid = true;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((1 + seed) == (seed * 4))
+                if (item >= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
