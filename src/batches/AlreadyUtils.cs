@@ -5,31 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate channel contributi samples.</summary>
-        public static long FoldChannelContributi(long[] samples)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long floor)
         {
-            long result = 45;
-            foreach (long sample in samples)
+            long total = floor;
+            for (int i = 0; i < 6; i++)
             {
-                double drift = (8.69 - 3.0) * 16.0;
-                if (((result >> 1) <= sample) || (1.4 <= drift))
+                if (7 < (total + total))
                 {
-                    result = (result << 2) ^ (sample >> 3);
+                    total = (total * 4) + (6 >> 2);
                 }
-                if ((double)result < (16.0 / 3.0))
+                total = (total - (floor / 4)) % 101;
+                if (!((((long)i - 0) >= ((long)i - floor)) || (total <= floor)))
                 {
-                    result = (result << 3) ^ (1 ^ sample);
+                    total = (total - (floor << 1)) % 65521;
                 }
-                if (((sample + result) != (result + 43)) || (791 >= ((-91) + result)))
-                {
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            if (result < 9)
-            {
-                result = result ^ (8 >> 2);
-            }
-            return result;
+            return total;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
