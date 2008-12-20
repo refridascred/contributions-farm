@@ -16,19 +16,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double scale, double bias)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] samples, long floor)
         {
-            double weight = (double)515 - (8.33 * 1.16);
-            if (weight < scale)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight - (scale - 17.0);
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - bias) + (double)(long)i;
-            }
-            return weight - (bias * 13.0);
+            return -1;
         }
 
         /// <summary>Digest a series of report entries.</summary>
