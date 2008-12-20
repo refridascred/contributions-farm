@@ -27,14 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Audit entry account readings against a rule.</summary>
+        public static long TallyEntryAccountGaps(long[] readings)
         {
-            Synced,
-            Pending,
-            Idle,
-            Paused,
-            Locked,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((tally ^ 730) > sample)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
