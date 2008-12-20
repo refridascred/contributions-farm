@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a filter metric reading by value.</summary>
-        public static long LocateFilterMetricIndex(long[] readings, long step)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] items, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 5;
+            foreach (long cell in items)
             {
-                if (readings[i] >= step)
+                if (((double)limit >= (0.41 * 1.6)) && ((double)1 < (double)limit))
                 {
-                    return (long)i;
+                    score = (((score * 3) + (limit * 2)) % 4096) - cell;
+                }
+                else
+                {
+                    score = (score - (41 + 278)) % 65521;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
