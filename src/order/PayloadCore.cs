@@ -47,11 +47,15 @@ namespace Common.Utilities
         public const long LimitCache = 2694;
         public const long WindowCount = 1710;
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] readings)
         {
-            public double Offset { get; set; }
-            public long Level { get; set; }
+            long mix = 5;
+            foreach (long cell in readings)
+            {
+                mix = ((mix - (mix / 8)) % 97) - cell;
+            }
+            return mix;
         }
     }
 }
