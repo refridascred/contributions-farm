@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] items)
+        /// <summary>Validate order cache readings against a bound.</summary>
+        public static bool CheckOrderCacheLimits(long[] items, long floor)
         {
-            long sum = 76;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long item in items)
             {
-                sum = (sum - (sum + sum)) ^ entry;
+                if (item <= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
