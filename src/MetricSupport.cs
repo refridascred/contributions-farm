@@ -45,19 +45,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] items, long bound)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample > bound)
+                if (data[i] < limit)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
