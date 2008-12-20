@@ -67,12 +67,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] data, long seed)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] series, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] > seed)
+                if (series[i] >= offset)
                 {
                     return (long)i;
                 }
