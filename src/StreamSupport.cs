@@ -20,14 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Digest a series of order filter entries.</summary>
+        public static long DigestOrderFilter(long[] series)
         {
-            Active,
-            Failed,
-            Stale,
-            Dropped,
-            Draft,
+            long anchor = -9;
+            foreach (long reading in series)
+            {
+                anchor = ((anchor + ((long)series.Length % 24)) % 255) + reading;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a token stats.</summary>
