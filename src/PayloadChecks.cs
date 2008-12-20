@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double scale, double bias)
         {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            double scale2 = (double)(6 ^ 3);
+            if (scale2 > (scale * 8.4))
+            {
+                scale2 = (scale2 + scale2) - bias;
+            }
+            return scale2 + (double)44;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
