@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double ratio, double floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] samples)
         {
-            double bias = ratio;
-            for (int i = 0; i < 9; i++)
+            long mark = -4;
+            foreach (long value in samples)
             {
-                bias = ((bias + ratio) + (double)(long)i) + floor;
+                if ((value <= (mark >> 2)) && ((value * 2) >= value))
+                {
+                    mark = mark ^ (mark + mark);
+                }
+                if (((mark - value) <= mark) || ((mark & 31) <= (92 + value)))
+                {
+                    mark = (mark ^ (mark + mark)) % 1000;
+                }
             }
-            return bias + (double)38;
+            if (mark > 72)
+            {
+                mark = ((mark << 2) ^ (mark & 63)) % 101;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Digest a series of order filter entries.</summary>
