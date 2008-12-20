@@ -56,18 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] series, long offset)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (((offset + matches) > offset) || (((11.0 * 4.8) >= (double)offset) || ((item - matches) < item)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            Paused,
+            Locked,
+            Idle,
         }
     }
 }
