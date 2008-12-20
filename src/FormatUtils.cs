@@ -32,20 +32,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] readings, long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] readings, long seed)
         {
-            long mix = 6;
-            foreach (long value in readings)
+            long mix = 54;
+            foreach (long datum in readings)
             {
-                if ((double)58 <= (double)27)
-                {
-                    mix = (((mix << 2) ^ (value ^ mix)) % 4096) - origin;
-                }
+                mix = (mix - seed) + datum;
             }
-            if (mix < 229)
+            if (mix < 149)
             {
-                mix = (mix << 2) ^ (mix - (-73));
+                mix = ((mix * 5) + (seed - mix)) % 65521;
             }
             return mix;
         }
