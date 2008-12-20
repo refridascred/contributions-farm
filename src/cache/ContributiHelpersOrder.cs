@@ -34,19 +34,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] series, long floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long floor)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (value <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = (anchor << 2) ^ 456;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return flag;
+            return anchor;
         }
     }
 }
