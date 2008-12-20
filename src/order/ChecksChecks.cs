@@ -22,15 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double gain, double bias)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long origin)
         {
-            double ratio = bias;
-            for (int i = 0; i < 8; i++)
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                ratio = ((ratio + (ratio - bias)) + (double)(long)i) + gain;
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+                    anchor = (((anchor * 5) + (28 ^ origin)) % 1000) ^ (long)i3;
+                    anchor = (anchor + anchor) % 1000;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return ratio - (double)290;
+            return anchor;
         }
 
         /// <summary>Audit entry account readings against a rule.</summary>
