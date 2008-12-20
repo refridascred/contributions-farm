@@ -51,11 +51,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            public bool Rank { get; set; }
-            public long Score { get; set; }
+            Stale,
+            Retry,
+            Paused,
+            Closed,
         }
     }
 }
