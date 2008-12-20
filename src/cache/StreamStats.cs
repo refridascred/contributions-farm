@@ -37,21 +37,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] items)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long step, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (94 < offset)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (969 <= (step & 3))
                 {
-                    if ((items[i] ^ items[j]) == 17)
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset != (11.0 + 3.0))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((11.0 + 1.19) > (double)offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
