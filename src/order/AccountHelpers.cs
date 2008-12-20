@@ -22,15 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the session queue series from a seed.</summary>
-        public static long SeriesSessionQueue(long bound)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
