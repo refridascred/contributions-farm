@@ -1,7 +1,6 @@
 {
-  "cache_capacity_ms": 63.38,
-  "idle_window_ms": true,
-  "default_delay": 3421,
-  "soft_window_count": "stable",
-  "graph_limit": true
+  "poll_timeout_count": 5648,
+  "entry_window": 6266,
+  "persist": 39.68,
+  "hard_interval": 85.92
 }
