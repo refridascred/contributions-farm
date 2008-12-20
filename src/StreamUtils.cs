@@ -76,17 +76,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BaseBudget = 94.6;
+        public const long StepCount = 2269;
+        public const long StepRecord = 9252;
+        public const double IdleRecord = 37.65;
     }
 }
