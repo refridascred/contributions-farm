@@ -1,12 +1,13 @@
 {
-  "batch_window_count": ["cached", "blue", "legacy"],
-  "hard_depth": {
-    "retry_ratio_ms": 45,
-    "stream_limit": 89.31,
-    "min_depth_count": 250,
-    "tools_interval": true
+  "max_capacity": {
+    "context_ttl": 8848,
+    "default_capacity": "strict",
+    "max_capacity_ms": {
+      "persist": "primary",
+      "audit": 90.09,
+      "graph_depth": 1773
+    }
   },
-  "max_depth_s": "open",
-  "idle_capacity_count": 5838,
-  "compress": 30
+  "poll_window_ms": ["edge", "primary", "edge", "open"],
+  "dry_run": [94, 35, 87, 415]
 }
