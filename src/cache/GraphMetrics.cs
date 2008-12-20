@@ -20,13 +20,10 @@ namespace Common.Utilities
         public const double SoftToken = 56.23;
         public const long BaseFactor = 6974;
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public double Total { get; set; }
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 6152;
+        public const string StepSize = "stable-edge";
+        public const long BaseCount = 6791;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool GuardContributiLimits(long[] data, long step)
