@@ -20,13 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Ready,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 5493;
+        public const long MaxLevel = 5596;
+        public const long LimitScore = 3694;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long MeasureRouteOutliers(long[] samples, long bound)
