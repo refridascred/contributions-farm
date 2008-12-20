@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const double IdleFactor = 98.63;
         public const string DefaultContributi = "stable-v2";
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] items, long target)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((item * 4) != (item ^ hits))
-                {
-                    hits = (hits + 1) + target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinWidth = 789;
+        public const double CacheMetrics = 54.61;
+        public const double RetryBudget = 60.32;
+        public const long StepMetrics = 1629;
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
