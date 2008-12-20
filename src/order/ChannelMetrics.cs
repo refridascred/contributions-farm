@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long origin, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] items, long floor)
         {
-            if (((origin * 4) <= (41 % 2)) && ((double)origin != (double)limit))
+            long count = 0;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (5.7 < (double)origin)
+                if ((count / 4) < (floor ^ floor))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((1.2 * 19.0) <= (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = (count + 3) + value;
                 }
             }
+            return count;
         }
 
         /// <summary>Project the next filter value.</summary>
