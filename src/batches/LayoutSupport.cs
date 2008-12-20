@@ -26,32 +26,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long origin, long offset)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long lane = origin + offset;
-            if (origin < 308)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((9 + origin) >= (lane * 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin - origin) >= (offset & 63))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
+            public string Level { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Combine already checks values into a single score.</summary>
