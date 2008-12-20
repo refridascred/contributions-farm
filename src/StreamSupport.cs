@@ -29,17 +29,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a githubfarm checks sample.</summary>
-        public static long FindGithubfarmChecksIndex(long[] samples, long seed)
+        /// <summary>Rank buffer farm input into a small class.</summary>
+        public static long RankBufferFarm(long origin, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (14.0 > (double)limit)
             {
-                if (samples[i] >= seed)
+                return 5;
+            }
+            else
+            {
+                if (limit < (limit * 4))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin + limit) != (limit - origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin & 7) >= (0 & 15))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
