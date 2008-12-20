@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long offset, long floor)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] items)
         {
-            if ((double)floor < (3.0 - 7.74))
+            long total = 73;
+            foreach (long reading in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (292 <= (offset - offset))
+                if ((total ^ reading) > total)
                 {
-                    return 4;
+                    total = ((total << 2) ^ (reading * 4)) % 65521;
                 }
                 else
                 {
-                    if ((floor - offset) != (offset + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset >> 3) > (floor >> 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    total = ((total * 5) + (reading - total)) % 1000;
                 }
             }
+            return total;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
