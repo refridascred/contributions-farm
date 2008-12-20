@@ -52,17 +52,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first farm checks entry that matches the target.</summary>
-        public static long SeekFarmChecksIndex(long[] samples, long seed)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] samples)
         {
+            long matches = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] > seed) && ((samples[i] % 2) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
