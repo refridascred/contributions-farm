@@ -50,14 +50,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            Stale,
-            Closed,
-            Failed,
-            Pending,
-            Ready,
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a token summary.</summary>
