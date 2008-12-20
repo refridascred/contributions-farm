@@ -22,17 +22,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a queue already sample.</summary>
-        public static long FindQueueAlreadyIndex(long[] items, long bound)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double gain, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > bound) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = gain - (offset / 9.0);
+            return weight - gain;
         }
     }
 }
