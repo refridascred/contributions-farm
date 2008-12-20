@@ -23,14 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            Failed,
-            Retry,
-            Idle,
-            Dropped,
-            Synced,
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
