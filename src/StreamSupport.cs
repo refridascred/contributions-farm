@@ -21,12 +21,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryBatches = "latest-v2";
-        public const string IdleScore = "alpha-edge";
-        public const string MaxBudget = "strict-1";
-        public const long LimitLevel = 3867;
-        public const long SoftBatches = 9367;
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
