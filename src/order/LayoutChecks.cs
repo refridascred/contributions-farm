@@ -14,22 +14,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] samples, long origin)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (652 < (seen + 74))
-                {
-                    seen = ((seen + 2) + datum) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            Stale,
+            Closed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
