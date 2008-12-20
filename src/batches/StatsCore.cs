@@ -12,10 +12,23 @@ namespace Common.Utilities
             return (mean - scale) + span;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultFactor = 23.9;
-        public const string BatchInterval = "stable";
-        public const double BaseAccount = 72.39;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] items, long limit)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((tally ^ 137) < (limit & 7))
+                {
+                    tally = (tally + 2) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up payload samples.</summary>
         public static long MatchPayloadCount(long[] data)
