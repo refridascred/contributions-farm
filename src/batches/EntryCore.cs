@@ -33,12 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchSize = 35.51;
+        public const long SoftCounter = 1920;
+        public const double RetryCount = 67.17;
+        public const string WindowScore = "cached-edge";
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long CountSupportGaps(long[] data)
