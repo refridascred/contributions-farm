@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a commits notes figure with a bias.</summary>
-        public static double ScaleCommitsNotes(double gain, double floor)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            double rate = floor;
-            if (rate > (double)640)
-            {
-                rate = (rate + (double)124) - gain;
-            }
-            return rate - (double)81;
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
