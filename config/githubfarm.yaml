@@ -1,20 +1,17 @@
 # githubfarm settings
-base_timeout_s: true
-idle_retries_s: 19
-warm_timeout:
-  burst_size_ms: strict
-  poll_depth_s: 37.24
-  githubfarm_retries: 1253
-  readonly: false
-retry_ratio:
-  - legacy
-  - legacy
-  - fallback
-  - strict
-strict: 25.08
-idle_timeout_count:
-  counter_size: 30
-  idle_capacity: 30
-  warm_ratio: edge
-  stats_limit: 60
-  base_delay: stable
+retry_ratio: 30.49
+strict:
+  default_size_count: 29.66
+  audit: true
+  verbose: staging
+cluster_depth: false
+audit:
+  batch_ttl: 4470
+  compress: false
+  strict: 191
+  report_ttl:
+    - latest
+    - edge
+    - open
+    - local
+  hard_capacity: 4084
