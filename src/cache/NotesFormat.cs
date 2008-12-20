@@ -30,21 +30,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepLevel = 3256;
+        public const long BaseWindow = 9424;
+        public const double MaxWindow = 45.28;
+        public const long RetrySpan = 5772;
+        public const long LimitWindow = 81;
     }
 }
