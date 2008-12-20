@@ -69,11 +69,12 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double scale, double bias)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            double ratio = (2.0 / 3.0) - bias;
-            return (ratio + (double)880) + scale;
+            public long Mode { get; set; }
+            public double Label { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
