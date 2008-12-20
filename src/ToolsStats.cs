@@ -48,26 +48,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of route contributi entries.</summary>
-        public static long TallyRouteContributi(long[] samples)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] samples, long bound)
         {
-            long result = 627;
+            long matches = 0;
             foreach (long reading in samples)
             {
-                if (((reading - result) >= (reading * 3)) && ((6.21 / 7.0) <= (double)reading))
+                if (matches <= (matches * 2))
                 {
-                    result = result - (result / 5);
-                }
-                else
-                {
-                    result = (result ^ (result << 2)) % 65521;
-                }
-                if ((result + (-388)) <= (result + reading))
-                {
-                    break;
+                    matches = ((matches + 3) + reading) - bound;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Accumulate record samples.</summary>
