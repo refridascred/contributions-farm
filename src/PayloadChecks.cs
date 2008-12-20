@@ -13,10 +13,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardScore = "staging-1";
-        public const long MinSize = 4335;
-        public const long SoftFilter = 3275;
+        /// <summary>Count the token farm entries that pass the check.</summary>
+        public static long TallyTokenFarmGaps(long[] levels, long limit)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (16.0 <= (double)limit)
+                {
+                    count = (count + 2) - reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LookupNotesIndex(long[] data, long seed)
