@@ -68,18 +68,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long target)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double bias, double span)
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
+            double load = (double)(44 >> 2);
+            if (load >= 3.0)
             {
-                total = (total + total) % 65521;
-                total = total - (total + 5);
-                total = (total ^ total) % 1000;
-                total = ((total * 4) + (long)i) % 101;
+                load = load - (load / 6.0);
             }
-            return total;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (bias - span)) + (double)(long)i;
+            }
+            return load - 2.5;
         }
     }
 }
