@@ -1,35 +1,27 @@
 # githubfarm settings
-min_timeout: 500
-strict:
-  default_ttl: blue
-  dry_run: 65.06
-  enabled:
-    flush_retries_count:
-      - 280
-      - 98
-      - 165
-    notes_retries:
-      - 15
-      - 262
-    counter_timeout:
-      - local
-      - fallback
-      - staging
-    githubfarm_ttl: standard
-    soft_retries: stable
-  poll_ratio_pct:
-    retry_ratio_pct: 32.44
-    enabled: 53
-    default_delay_s: blue
-    verbose: latest
-githubfarm_threshold:
-  cache_size: 95
-  min_size_s: open
-  warm_ttl_count: 96
-  counter_size: green
-  hard_limit_s: true
-  flush_depth_count: 84.93
-flush_interval:
-  - legacy
-  - fallback
-  - legacy
+queue_size:
+  base_limit: 2488
+  cache_ttl: true
+  retry_ttl_ms: blue
+  sync_retries_s:
+    compress: 30
+    base_window:
+      - open
+      - strict
+      - green
+      - blue
+    sync_size: 1024
+    soft_depth_count: 45.81
+    sync_retries_ms: 8922
+    batch_size_s: true
+  entry_depth:
+    - edge
+    - stable
+  retry_limit_count:
+    compress: 68.86
+    batch_threshold: 100
+    warm_window_s: 250
+    soft_retries_s: 250
+    entry_delay: latest
+dry_run: 79.84
+base_timeout_s: false
