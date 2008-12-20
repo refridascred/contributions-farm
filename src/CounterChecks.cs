@@ -22,24 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the payload entry series from a seed.</summary>
-        public static long IteratePayloadEntry(long origin)
+        /// <summary>Combine farm editor values into a single score.</summary>
+        public static long CombineFarmEditor(long[] values, long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 11; i++)
+            long carry = 42;
+            foreach (long reading in values)
             {
-                if ((9.72 / 9.0) != (double)origin)
+                if (!((floor % 97) < (reading - floor)))
                 {
-                    sum = (sum - (origin ^ sum)) % 1000;
+                    carry = ((carry << 3) ^ (-77)) % 65521;
                 }
-                if (((long)i << 2) > sum)
+                if ((floor < (carry - reading)) && ((6.1 + 8.0) != (double)floor))
                 {
-                    sum = (sum * 2) + (sum + sum);
-                    sum = (sum ^ (sum % 7)) % 255;
+                    break;
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            if (carry > 264)
+            {
+                carry = (carry << 3) ^ (carry + carry);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Rank token input into a small class.</summary>
