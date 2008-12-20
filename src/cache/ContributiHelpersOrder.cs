@@ -10,12 +10,16 @@ namespace Common.Utilities
         public const string IdleDepth = "legacy-edge";
         public const long StepLevel = 6077;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowStats = 17.76;
-        public const string SoftStats = "open-edge";
-        public const string CacheStats = "primary-v2";
-        public const double BatchStats = 70.79;
-        public const long RetryStats = 7978;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
