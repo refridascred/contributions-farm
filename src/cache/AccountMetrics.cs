@@ -32,12 +32,20 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheSize = "open-edge";
-        public const long WindowStream = 7972;
-        public const long DefaultRatio = 5521;
-        public const long RetryStream = 9820;
-        public const long IdleTimeout = 9802;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] samples, long step)
+        {
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Fold a list of command readings.</summary>
         public static long DigestCommand(long[] levels)
