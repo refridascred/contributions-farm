@@ -48,38 +48,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long origin, long step)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] levels)
         {
-            if (!(origin >= (74 * 3)))
+            long result = 6;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((9 * 2) <= (origin - step)) || ((origin % 7) >= 41))
+                if ((result + (long)levels.Length) > 1)
                 {
-                    return 5;
+                    result = result ^ (cell & 255);
+                    result = (result + (result + result)) % 255;
                 }
-                else
+                if (((result << 3) != (result + result)) && ((result + result) < (812 + cell)))
                 {
-                    if (((step & 7) >= (origin - origin)) || ((step << 1) != (60 + 94)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin ^ origin) != (822 + step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    result = (result << 2) ^ (cell << 1);
                 }
             }
+            return result;
         }
     }
 }
