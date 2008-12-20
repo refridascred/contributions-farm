@@ -44,20 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] series, long bound)
-        {
-            long total = 46;
-            foreach (long value in series)
-            {
-                total = ((((total << 3) ^ (total * 3)) % 1000) ^ value) - bound;
-            }
-            if (total > 493)
-            {
-                total = (total ^ (total >> 1)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 5642;
+        public const long HardEntry = 6886;
+        public const double RetryFactor = 47.12;
+        public const string MaxEntry = "staging-v2";
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
