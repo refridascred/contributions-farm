@@ -26,31 +26,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a payload context pair into a bucket.</summary>
-        public static long GradePayloadContext(long seed, long seed2)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] levels, long target)
         {
-            if (((double)seed != (double)seed2) || ((37 ^ seed2) != (seed2 & 255)))
+            long score = 11;
+            foreach (long cell in levels)
             {
-                return 5;
+                score = (((score * 4) + cell) % 97) + target;
             }
-            else
-            {
-                if (seed2 >= (seed - seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(7.9 > (double)seed2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Hold a stats info.</summary>
