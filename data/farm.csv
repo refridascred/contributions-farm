@@ -1,10 +1,6 @@
-id,active,rank,label
-1,346,69.85,62.11
-2,568,stable,legacy
-3,legacy,1.32,eu-west
-4,strict,35.92,783
-5,50.08,956,221
-6,75.02,eu-west,577
-7,64.92,6.97,legacy
-8,88.57,local,36
-9,504,edge,572
+id,rank,weight
+1,17.39,50.31
+2,723,641
+3,29.48,749
+4,404,staging
+5,stable,primary
