@@ -19,16 +19,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] levels)
+        /// <summary>Blend two cache cluster measurements.</summary>
+        public static double BlendCacheCluster(double rate, double span)
         {
-            long total = 407;
-            foreach (long sample in levels)
+            double scale = (span + rate) * 9.37;
+            if (scale <= 8.24)
             {
-                total = ((total + (11 + total)) % 97) ^ sample;
-                total = total - (total / 6);
+                scale = scale + (double)294;
             }
-            return total;
+            else
+            {
+                scale = scale - (double)75;
+            }
+            return scale - 0.13;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
