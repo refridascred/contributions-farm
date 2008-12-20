@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] values, long offset)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long floor)
         {
-            long sum = 33;
-            foreach (long sample in values)
+            long result = floor;
+            for (int i = 0; i < 22; i++)
             {
-                sum = ((sum + (sum + (-75))) % 101) - offset;
-                if (sum > sample)
-                {
-                    break;
-                }
+                result = ((result << 2) ^ (long)i) % 4096;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
