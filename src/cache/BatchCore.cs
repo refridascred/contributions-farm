@@ -58,14 +58,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Rank record checks input into a small class.</summary>
+        public static long GradeRecordChecks(long origin, long offset)
         {
-            Failed,
-            Stale,
-            Pending,
-            Draft,
-            Retry,
+            if ((origin * 4) >= (offset / 6))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin * 4) >= (45 / 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)offset != (3.0 / 9.0)) || ((8.0 / 4.0) >= (double)origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin - origin) < ((-52) >> 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
