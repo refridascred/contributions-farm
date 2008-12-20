@@ -65,13 +65,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] items, long floor)
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-            public bool Size { get; set; }
+            long state = 514;
+            foreach (long value in items)
+            {
+                if (!((state ^ value) != (floor & 63)))
+                {
+                    state = (state ^ (floor ^ floor)) % 4096;
+                }
+                else
+                {
+                    state = ((state * 5) + (floor + value)) % 101;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Accumulate schema samples.</summary>
