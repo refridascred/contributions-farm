@@ -12,10 +12,16 @@ namespace Common.Utilities
         public const double IdleSupport = 56.39;
         public const string BurstFactor = "alpha-edge";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitTimeout = 4202;
-        public const long IdleOrder = 5233;
-        public const long BaseOrder = 4753;
+        /// <summary>Scale a batches contributi figure with a bias.</summary>
+        public static double ProjectBatchesContributi(double weight, double bias)
+        {
+            double rate = (bias * 0.35) * 3.84;
+            if (rate < (weight * 20.0))
+            {
+                rate = rate - rate;
+            }
+            return rate + (double)34;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double SoftScore = 67.31;
