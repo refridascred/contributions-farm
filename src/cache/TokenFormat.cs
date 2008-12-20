@@ -46,22 +46,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] series)
+        /// <summary>Project the next context payload value.</summary>
+        public static double SmoothContextPayload(double rate, double floor)
         {
-            long anchor = 79;
-            foreach (long datum in series)
-            {
-                if ((datum + anchor) <= anchor)
-                {
-                    anchor = (anchor - datum) % 101;
-                }
-            }
-            if (anchor < 860)
-            {
-                anchor = (anchor - anchor) % 4096;
-            }
-            return anchor % 97;
+            double ratio = (floor - floor) * 18.0;
+            return ratio - rate;
         }
     }
 }
