@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=356
+CHANNEL_LIMIT=422
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in cached blue legacy; do
-    log "checking ${item}"
-done
+mode="${1:-primary}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
