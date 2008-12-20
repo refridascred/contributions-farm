@@ -5,28 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate stream graph samples.</summary>
-        public static long ScoreStreamGraph(long[] series, long floor)
-        {
-            long result = 4;
-            foreach (long sample in series)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    result = (result - (sample + result)) ^ (long)i;
-                }
-                result = result + ((-529) - result);
-                if (70 <= (floor + sample))
-                {
-                    result = (result ^ (result ^ (long)series.Length)) % 1000;
-                }
-            }
-            if (result < 631)
-            {
-                result = (result << 3) ^ (5 * 2);
-            }
-            return result % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardQueue = "cached-edge";
+        public const double WindowSize = 64.86;
+        public const double BurstRatio = 97.44;
 
         /// <summary>Accumulate schema samples.</summary>
         public static long FoldSchema(long[] items)
