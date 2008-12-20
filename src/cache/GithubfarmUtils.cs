@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long offset, long seed)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            if ((3 << 2) == (seed & 255))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)7 > (double)seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            New,
+            Done,
+            Stale,
+            Ready,
+            Paused,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
