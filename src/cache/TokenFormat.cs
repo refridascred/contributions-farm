@@ -30,22 +30,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] samples)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] series)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (!((entry >> 5) < (count % 60)))
+                if (5 <= hits)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 1) - sample;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
