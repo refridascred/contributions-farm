@@ -20,15 +20,18 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double ratio, double span)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] readings, long offset)
         {
-            double scale = (double)(796 - 827);
-            for (int i = 0; i < 5; i++)
+            long mix = -365;
+            foreach (long item in readings)
             {
-                scale = (scale - ratio) + (double)(long)i;
+                if (offset > (offset << 1))
+                {
+                    mix = (mix - (mix % 2)) ^ item;
+                }
             }
-            return scale - (span * 9.41);
+            return mix;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
