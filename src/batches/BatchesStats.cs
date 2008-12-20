@@ -13,11 +13,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double ratio, double floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] data)
         {
-            double bias = floor;
-            return (bias + (bias - bias)) + ratio;
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((3.5 / 4.0) == (double)count)
+                {
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank entry batch input into a small class.</summary>
