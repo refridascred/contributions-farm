@@ -44,22 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] values)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((value - seen) > (long)values.Length)
+                if ((hits - hits) < (cell - limit))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Digest a series of layout cache entries.</summary>
