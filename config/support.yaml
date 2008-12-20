@@ -1,23 +1,9 @@
 # support settings
-commits_limit: stable
-idle_interval_s:
-  - 272
-  - 285
-  - 58
-enabled: true
-audit:
-  command_depth:
-    contributi_capacity: 5.95
-    batches_depth: 8352
-    dry_run:
-      - 19
-      - 163
-  filter_timeout: 40
-  max_interval: 891
-  cache_limit_ms:
-    - local
-    - eu-west
-    - stable
-  dry_run: latest
-retry_delay_s: eu-west
-burst_ttl: latest
+max_window_count: staging
+report_size: false
+farm_ratio: false
+enabled: 19.82
+compress:
+  - open
+  - green
+batch_timeout_count: 4492
