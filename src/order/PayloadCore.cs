@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] data)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] readings, long seed)
         {
-            long carry = -907;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (carry <= (entry * 3))
+                if (((double)seen != (3.22 * 9.52)) && !(seed >= (cell * 2)))
                 {
-                    carry = carry - (carry * 5);
-                }
-                else
-                {
-                    carry = (carry - entry) % 97;
+                    seen = seen + 1;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the profile class values.</summary>
