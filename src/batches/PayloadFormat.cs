@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long MinScore = 3771;
         public const long MaxChannel = 3671;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] items, long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long offset)
         {
-            long state = 10;
-            foreach (long item in items)
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)state > (4.87 - 9.0))
+                if (((double)offset <= (double)11) || ((double)offset < (double)result))
                 {
-                    state = ((state << 3) ^ (item & 127)) - limit;
+                    continue;
                 }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return state % 65521;
+            return result;
         }
 
         /// <summary>Roll a githubfarm layout counter forward.</summary>
