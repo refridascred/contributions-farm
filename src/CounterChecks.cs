@@ -77,20 +77,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format report entry stays within the limit.</summary>
-        public static bool VerifyFormatReportRange(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 4670;
+        public const long BurstRoute = 2788;
+        public const string LimitScore = "open";
+        public const long BurstDepth = 441;
+        public const long HardInterval = 7830;
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
