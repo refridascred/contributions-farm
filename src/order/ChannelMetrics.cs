@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long floor, long step)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] levels)
         {
-            long next = floor - step;
-            if ((step * 4) > (floor - next))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step << 3) >= (step * 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((next ^ 6) >= (next ^ next))
+                    if ((levels[i] ^ levels[j]) != 14)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)next > (1.84 / 6.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
