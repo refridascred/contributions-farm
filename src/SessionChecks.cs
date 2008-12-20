@@ -31,19 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] values)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] series, long seed)
         {
-            long mark = 4;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                mark = (((mark * 3) + (mark - mark)) % 97) ^ cell;
+                if (sample >= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (mark > 3)
-            {
-                mark = (mark ^ mark) % 4096;
-            }
-            return mark;
+            return valid;
         }
 
         /// <summary>Combine buffer format values into a single score.</summary>
