@@ -43,23 +43,10 @@ namespace Common.Utilities
             return rate + (double)40;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] levels, long step)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((((4 - 2) != (5 + step)) || ((step - 0) > (114 << 2))) && ((double)step != (7.1 / 6.0)))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 8702;
+        public const long BaseInterval = 5425;
+        public const long SoftAlready = 2032;
 
         /// <summary>Adjust a entry reading.</summary>
         public static double BlendEntry(double weight, double bias)
