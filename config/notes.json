@@ -1,5 +1,7 @@
 {
-  "warm_capacity": ["staging", "open"],
-  "hard_interval_count": "local",
-  "min_window": 250
+  "min_timeout_s": [20, 113],
+  "hard_retries_s": "standard",
+  "flush_interval": 32,
+  "sync_threshold": "edge",
+  "buffer_timeout": ["cached", "local"]
 }
