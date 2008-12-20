@@ -1,6 +1,8 @@
-id,score,label,active
-1,93.35,edge,standard
-2,998,63.61,919
-3,eu-west,64,54.85
-4,431,green,27
-5,fallback,primary,208
+id,weight,level,state
+1,stable,staging,811
+2,55.9,263,93.99
+3,82.83,78.06,staging
+4,326,399,20.33
+5,942,63.23,797
+6,63.19,253,edge
+7,65.06,cached,cached
