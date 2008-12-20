@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 5548;
+        public const double BaseSchema = 43.9;
+        public const long BurstInterval = 9033;
+        public const string HardSchema = "staging-v2";
+        public const long WindowScore = 7863;
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long GradeFarm(long origin, long step)
