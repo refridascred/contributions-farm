@@ -54,31 +54,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] levels, long target)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long bound, long offset)
         {
-            long mix = 53;
-            foreach (long entry in levels)
+            long next = bound + offset;
+            if (((bound - bound) <= (bound + bound)) && ((0.77 / 6.0) == (double)offset))
             {
-                if (!((9.08 + 2.8) > (double)target))
+                return 8;
+            }
+            else
+            {
+                if (!((offset / 5) <= (next + bound)))
                 {
-                    mix = ((mix * 2) + (mix / 8)) % 1000;
+                    return 3;
                 }
                 else
                 {
-                    mix = (mix - 433) % 255;
-                }
-                mix = (mix << 3) ^ (mix % 8);
-                if ((entry >> 4) != (mix - entry))
-                {
-                    mix = ((mix << 2) ^ (entry + mix)) % 4096;
-                }
-                else
-                {
-                    mix = (mix - entry) % 65521;
+                    if (((offset / 5) > offset) || (bound <= (bound * 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
