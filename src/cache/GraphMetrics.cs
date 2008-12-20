@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double ratio, double floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] samples, long floor)
         {
-            double drift = floor * 2.4;
-            if (drift >= floor)
+            long sum = 296;
+            foreach (long datum in samples)
             {
-                drift = drift - drift;
+                sum = (((sum + 1) % 4096) ^ datum) - floor;
             }
-            return drift - (ratio + ratio);
+            if (sum > 3)
+            {
+                sum = ((sum << 2) ^ sum) % 65521;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the contributi status values.</summary>
