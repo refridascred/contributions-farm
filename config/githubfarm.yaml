@@ -1,9 +1,20 @@
 # githubfarm settings
-min_timeout: 500
-tools_timeout: 7.49
-stats_threshold:
-  - 312
-  - 122
-  - 183
-  - 297
-soft_capacity_s: edge
+dry_run:
+  soft_threshold_pct: eu-west
+  base_size: 250
+  filter_size:
+    - 475
+    - 303
+  graph_threshold: edge
+  max_retries: strict
+hard_limit_count:
+  soft_threshold_ms: 8884
+  audit: 100
+  soft_size: 85
+  stream_ratio: legacy
+  persist: latest
+  dry_run: 1024
+base_interval_pct: 20
+hard_size: 40.51
+enabled: 100
+max_limit_count: 60
