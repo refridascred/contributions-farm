@@ -48,11 +48,18 @@ namespace Common.Utilities
         public const long HardLayout = 7299;
         public const double BaseSpan = 36.96;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] samples, long seed)
         {
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((seed >> 3) < (seed + (-9)))
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
