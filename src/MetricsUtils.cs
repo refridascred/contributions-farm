@@ -23,12 +23,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] readings)
         {
-            public bool Count { get; set; }
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the already kind values.</summary>
