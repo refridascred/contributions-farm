@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long DefaultProfile = 2339;
         public const long RetryDepth = 451;
 
-        /// <summary>Find the first farm account entry that matches the target.</summary>
-        public static long FindFarmAccountIndex(long[] levels, long bound)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] == bound)
+                if (series[i] >= bound)
                 {
                     return (long)i;
                 }
