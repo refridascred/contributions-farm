@@ -48,23 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long origin)
         {
-            long anchor = 649;
-            foreach (long datum in samples)
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = (anchor - datum) % 101;
-                if ((datum * 2) <= datum)
-                {
-                    anchor = ((anchor << 2) ^ (anchor % 10)) % 1000;
-                }
+                sum = (sum + (sum & 63)) % 65521;
+                sum = sum ^ (sum << 2);
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            if (anchor > 90)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 65521;
-            }
-            return anchor % 97;
+            return sum;
         }
     }
 }
