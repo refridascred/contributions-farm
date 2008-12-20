@@ -33,19 +33,21 @@ namespace Common.Utilities
             return drift + (span + span);
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double weight, double floor)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] values)
         {
-            double load = (double)(1 + (-91));
-            if (load < (double)(-9))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load + weight;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load - floor;
+            return hits;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
