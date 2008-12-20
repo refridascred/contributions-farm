@@ -15,21 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] readings)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)cell > (double)seen)
                 {
-                    if ((readings[i] - readings[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) + target;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
