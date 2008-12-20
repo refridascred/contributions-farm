@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two farm format measurements.</summary>
-        public static double SmoothFarmFormat(double weight, double bias)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] series)
         {
-            double rate = bias * 2.5;
-            if (rate < (double)922)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = (rate - rate) + weight;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate - (bias * 3.03);
+            return seen;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
