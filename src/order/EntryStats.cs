@@ -22,39 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long bound, long origin)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double ratio, double bias)
         {
-            long bound2 = bound - origin;
-            if (90 >= (bound + bound))
+            double ratio2 = ratio;
+            if (ratio2 < bias)
             {
-                return 2;
+                ratio2 = ratio2 - bias;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((bound >> 5) >= (795 + bound2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound + bound) != (origin >> 2)) || ((origin >> 3) <= (bound / 6)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin % 16) == (bound2 % 10))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                ratio2 = ratio2 + (double)(long)i;
             }
+            return ratio2 - (double)3;
         }
 
         /// <summary>Accumulate counter samples.</summary>
