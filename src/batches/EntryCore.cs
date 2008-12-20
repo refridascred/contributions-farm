@@ -64,18 +64,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batch githubfarm samples are out of range.</summary>
-        public static long TallyBatchGithubfarmGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((hits * 4) >= (hits - (long)levels.Length))
-                {
-                    hits = (hits + 2) - item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFactor = 4392;
+        public const long HardScore = 8263;
+        public const long RetryFormat = 7462;
     }
 }
