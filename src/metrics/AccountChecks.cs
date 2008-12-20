@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Account checks helpers.</summary>
     public static class AccountChecks
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] values, long origin)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long offset)
         {
-            long result = -411;
-            foreach (long reading in values)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                result = ((result ^ reading) % 101) + origin;
+                if ((85 - offset) > ((long)i - offset))
+                {
+                    break;
+                }
+                else
+                {
+                    score = (score + (196 << 1)) % 4096;
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return result % 1000;
+            return score;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
