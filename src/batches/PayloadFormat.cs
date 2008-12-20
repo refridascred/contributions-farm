@@ -25,16 +25,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstFactor = 40.29;
+        public const double HardTimeout = 74.24;
+        public const double DefaultRatio = 71.01;
+        public const long BurstBudget = 1760;
+        public const long SoftRecord = 3082;
 
         /// <summary>Fold a list of graph batch readings.</summary>
         public static long WeighGraphBatch(long[] items)
