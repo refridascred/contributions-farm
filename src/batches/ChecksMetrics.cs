@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] data)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (9.3 <= (8.63 * 1.0))
-                {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Ready,
+            Closed,
+            Idle,
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
