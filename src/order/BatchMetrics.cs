@@ -40,25 +40,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long seed, long seed2)
+        /// <summary>Measure how many entry contributi samples are out of range.</summary>
+        public static long MeasureEntryContributiMatches(long[] items)
         {
-            long step = seed ^ seed2;
-            if ((6.3 > (double)seed) && (step > 3))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step + seed2) < 1)
+                if (((double)hits != (2.65 * 8.4)) || (((long)items.Length - hits) != (656 + hits)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    hits = (hits + 2) - cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
