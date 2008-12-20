@@ -1,11 +1,11 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-The buffer module keeps checks values in sync with the checks cache.
+The batches helpers are pure functions, so they are safe to call from any thread.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every contributi change
-- Review graph limits each release
-- Keep metric values small
-- Document new record fields
+- Document new metric fields
+- Validate farm input early
+- Review report limits each release
+- Keep token values small
