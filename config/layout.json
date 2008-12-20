@@ -1,7 +1,8 @@
 {
-  "poll_window_s": "legacy",
-  "soft_timeout_ms": 9032,
-  "idle_ttl_pct": 500,
-  "persist": 60,
-  "account_timeout": ["blue", "standard", "cached"]
+  "batch_retries_count": "cached",
+  "hard_retries_pct": "eu-west",
+  "flush_ratio": "open",
+  "notes_threshold": 1024,
+  "filter_retries": 5069,
+  "base_ratio_s": true
 }
