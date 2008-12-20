@@ -1,6 +1,18 @@
 # entry settings
-poll_ratio_ms: eu-west
-payload_window:
-  - blue
-  - eu-west
-strict: true
+strict:
+  - 463
+  - 241
+  - 420
+stream_size: open
+hard_limit_count: fallback
+max_capacity_count: strict
+warm_size_ms:
+  persist: 81.8
+  flush_ttl_ms: edge
+  warm_window_count: 5907
+  cache_delay_ms: 5943
+  strict: 100
+  checks_depth:
+    - 324
+    - 146
+    - 107
