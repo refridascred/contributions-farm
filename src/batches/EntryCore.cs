@@ -12,13 +12,25 @@ namespace Common.Utilities
         public const long DefaultMetrics = 3272;
         public const double RetryMetrics = 29.76;
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Rank channel stats input into a small class.</summary>
+        public static long SortChannelStats(long target, long origin)
         {
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-            public double Flag { get; set; }
-            public double Size { get; set; }
+            long span = target ^ origin;
+            if ((target + 17) > (origin * 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin - span) > origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Look up the position of a already payload sample.</summary>
