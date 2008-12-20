@@ -69,32 +69,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank route session input into a small class.</summary>
-        public static long SortRouteSession(long step, long offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] series, long floor)
         {
-            long delta = step - offset;
-            if (!(((-845) - offset) <= offset))
+            long total = 802;
+            foreach (long value in series)
             {
-                return 5;
+                total = (total ^ total) - floor;
+                total = total + value;
             }
-            else
-            {
-                if ((step & 7) < 7)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step ^ 9) == (delta & 255))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Hold a token info.</summary>
