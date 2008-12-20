@@ -38,13 +38,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 3634;
+        public const long StepInterval = 7512;
+        public const double SoftContext = 40.43;
     }
 }
