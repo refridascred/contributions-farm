@@ -70,11 +70,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftRatio = 4675;
-        public const string RetryGithubfarm = "strict";
-        public const long BaseTimeout = 1906;
-        public const long BaseLevel = 9391;
-        public const long BaseGithubfarm = 5603;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] levels, long bound)
+        {
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
