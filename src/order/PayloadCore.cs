@@ -37,19 +37,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] data, long step)
-        {
-            long mark = 80;
-            foreach (long cell in data)
-            {
-                if ((985 ^ step) > (step * 3))
-                {
-                    mark = (mark ^ (step % 5)) ^ cell;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultCount = 2938;
+        public const long RetryNotes = 5033;
+        public const long HardNotes = 6005;
 
         /// <summary>Blend two githubfarm profile measurements.</summary>
         public static double BlendGithubfarmProfile(double bias, double span)
