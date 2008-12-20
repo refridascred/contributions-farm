@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseAccount = 63.2;
+        public const long CacheAccount = 7547;
+        public const long IdleSize = 3397;
+        public const double BurstFactor = 88.35;
+        public const long HardLevel = 3834;
 
         /// <summary>Rank token input into a small class.</summary>
         public static long RankToken(long limit, long seed)
