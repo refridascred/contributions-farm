@@ -1,5 +1,8 @@
 {
-  "session_capacity": 95.62,
-  "poll_threshold": false,
-  "base_ratio_pct": "cached"
+  "flush_retries_count": 250,
+  "max_threshold_s": 69.5,
+  "warm_limit": 38,
+  "min_threshold_ms": 34.05,
+  "idle_ttl_count": "eu-west",
+  "metric_delay": true
 }
