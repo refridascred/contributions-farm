@@ -52,15 +52,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next graph counter value from a seed.</summary>
-        public static long StepGraphCounter(long step)
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double weight, double bias)
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
+            double drift = weight - weight;
+            for (int i = 0; i < 2; i++)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                drift = (drift + (bias * 3.16)) + (double)(long)i;
             }
-            return carry;
+            return drift - weight;
         }
 
         /// <summary>Hold a graph options.</summary>
