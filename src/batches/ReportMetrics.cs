@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit queue order readings against a rule.</summary>
-        public static long TallyQueueOrderHits(long[] data)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((cell >> 5) == (cell & 255))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine metrics batches values into a single score.</summary>
