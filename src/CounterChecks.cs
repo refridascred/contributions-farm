@@ -90,13 +90,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            Dropped,
             Ready,
-            Stale,
-            Closed,
+            Active,
+            New,
         }
 
         /// <summary>Describe the context phase values.</summary>
