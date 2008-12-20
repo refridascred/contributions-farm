@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next graph account value from a seed.</summary>
-        public static long DeriveGraphAccount(long step)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] levels)
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                long step2 = (4 + step) << 3;
-                if ((total - step2) == (total - (long)i))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = total ^ (4 << 3);
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Digest a series of already entries.</summary>
