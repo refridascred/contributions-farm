@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next order context value.</summary>
-        public static double BlendOrderContext(double bias, double span)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            double load = span;
-            if (load <= span)
-            {
-                load = load + bias;
-            }
-            return load - span;
+            Retry,
+            Draft,
+            Failed,
+            Pending,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
