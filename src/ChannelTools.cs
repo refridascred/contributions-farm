@@ -28,10 +28,22 @@ namespace Common.Utilities
         public const long RetryMetric = 4347;
         public const long CacheMetric = 7125;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheDepth = 2.61;
-        public const string DefaultBatch = "local-edge";
-        public const long BatchSpan = 8197;
-        public const double SoftSpan = 18.81;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((5.0 - 3.46) >= (double)cell)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
