@@ -48,22 +48,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] items, long floor)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] values, long bound)
         {
-            long state = 514;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((state ^ value) != (floor & 63)))
+                if (values[i] > bound)
                 {
-                    state = (state ^ (floor ^ floor)) % 4096;
-                }
-                else
-                {
-                    state = ((state * 5) + (floor + value)) % 101;
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Accumulate schema samples.</summary>
