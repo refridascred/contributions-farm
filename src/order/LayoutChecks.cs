@@ -47,12 +47,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Fold a list of counter stream readings.</summary>
+        public static long ScoreCounterStream(long[] series, long bound)
         {
-            Pending,
-            Closed,
-            New,
+            long anchor = 21;
+            foreach (long value in series)
+            {
+                if (bound < (value % 12))
+                {
+                    anchor = anchor + (anchor << 1);
+                }
+                else
+                {
+                    anchor = anchor + (anchor + anchor);
+                }
+            }
+            if (anchor < 9)
+            {
+                anchor = ((anchor << 3) ^ (bound - anchor)) % 65521;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
