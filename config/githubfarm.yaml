@@ -1,17 +1,25 @@
 # githubfarm settings
-verbose:
-  - 246
-  - 25
-  - 232
-layout_window: true
-retry_depth_s:
-  cluster_timeout: cached
-  default_depth: true
-  min_timeout_count: 73
-  poll_delay: 4846
-  poll_threshold:
-    - latest
-    - open
-    - stable
-    - stable
-compress: true
+soft_depth: green
+poll_capacity_pct: local
+compress: false
+retry_delay_count:
+  max_ttl_pct:
+    - blue
+    - strict
+    - fallback
+    - local
+  stream_size: 29
+  retry_limit:
+    soft_capacity_ms: 62
+    flush_delay: false
+    readonly: 500
+    retry_limit: latest
+    retry_interval_count: 67.74
+    max_timeout: 95
+  poll_ratio_count:
+    flush_ratio_s: false
+    retry_ttl: strict
+    poll_interval: 250
+    format_interval: 3210
+    hard_retries_count: 3860
+burst_delay_pct: true
