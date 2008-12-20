@@ -27,11 +27,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
+            Idle,
+            Closed,
+            Draft,
+            Stale,
+            New,
         }
     }
 }
