@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            Locked,
-            Idle,
-            Done,
-            Stale,
-            Closed,
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a cache info.</summary>
