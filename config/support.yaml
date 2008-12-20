@@ -1,4 +1,18 @@
 # support settings
-soft_retries_ms: false
-cache_threshold_count: 53.84
-default_limit_pct: strict
+idle_ratio_count: 60
+max_ratio_ms:
+  compress: 35.03
+  base_ratio_s: false
+  strict: false
+  audit: 87.99
+  idle_ttl_pct: stable
+notes_ttl:
+  - open
+  - local
+sync_interval:
+  - strict
+  - green
+  - standard
+  - primary
+readonly: latest
+batch_timeout: 1803
