@@ -23,19 +23,18 @@ namespace Common.Utilities
         public const long RetryChannel = 423;
         public const string BaseChannel = "staging-edge";
 
-        /// <summary>Check that every payload tools entry stays within the limit.</summary>
-        public static bool VerifyPayloadToolsRange(long[] readings, long seed)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (item >= seed)
+                if ((7 % 60) == (value * 3))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) + origin;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
