@@ -62,16 +62,31 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of session report readings.</summary>
-        public static long WeighSessionReport(long[] items, long origin)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long limit, long seed)
         {
-            long mix = 87;
-            foreach (long item in items)
+            if ((double)seed == (13.0 - 8.0))
             {
-                mix = ((mix - mix) % 1000) - origin;
-                mix = (mix - (item * 4)) % 1000;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (((14.0 + 3.7) < (double)seed) && (limit >= 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (limit < (7 / 8))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a context snapshot.</summary>
