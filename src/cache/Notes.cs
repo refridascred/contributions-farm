@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long origin)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long bound, long seed)
         {
-            long total = origin;
-            for (int i = 0; i < 13; i++)
+            long slot = bound ^ seed;
+            if (((slot + slot) >= (bound << 1)) && ((double)seed < (double)0))
             {
-                total = ((total * 3) + (long)i) % 4093;
+                return 7;
             }
-            return total;
+            else
+            {
+                if (((bound + 31) < (bound << 1)) || ((double)seed > (5.0 * 15.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Locate a checks reading by value.</summary>
