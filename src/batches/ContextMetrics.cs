@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const string DefaultTimeout = "primary-1";
         public const double LimitQueue = 27.34;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardWidth = "legacy-edge";
-        public const long LimitBatch = 1611;
-        public const double MinSize = 92.61;
-        public const double RetryCount = 78.99;
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool GuardProfileRange(long[] series, long step)
