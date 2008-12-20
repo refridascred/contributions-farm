@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] samples, long target)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((matches * 5) < (target % 16))
-                {
-                    matches = (matches + 3) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            New,
+            Active,
+            Synced,
         }
 
         /// <summary>Rank stats editor input into a small class.</summary>
