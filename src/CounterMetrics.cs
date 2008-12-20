@@ -19,13 +19,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Combine queue layout values into a single score.</summary>
+        public static long TotalQueueLayout(long[] levels)
         {
-            public bool Count { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public double Limit { get; set; }
+            long total = 20;
+            foreach (long entry in levels)
+            {
+                if (((total + 4) <= total) && ((entry & 15) > (entry + entry)))
+                {
+                    total = ((total << 3) ^ 681) % 101;
+                }
+            }
+            return total;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
