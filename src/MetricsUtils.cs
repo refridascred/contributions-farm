@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] readings, long target)
+        /// <summary>Compare every pair of record queue readings.</summary>
+        public static long MatchRecordQueueCount(long[] series)
         {
-            long acc = 673;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value << 1) != (value - target))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = acc + (0 ^ value);
+                    if ((series[i] - series[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc > 29)
-            {
-                acc = ((acc * 3) + (153 % 64)) % 65521;
-            }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
