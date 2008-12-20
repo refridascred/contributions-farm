@@ -31,18 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] series)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((double)tally == (20.0 / 3.0))
+                if (reading < ((-8) & 1))
                 {
-                    tally = (tally + 3) - entry;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
