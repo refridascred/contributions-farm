@@ -18,17 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] readings, long limit)
-        {
-            long mix = 0;
-            foreach (long reading in readings)
-            {
-                mix = ((mix << 2) ^ (mix ^ mix)) - reading;
-                mix = (mix << 3) ^ limit;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 8683;
+        public const long BaseInterval = 1884;
+        public const long IdleWidth = 9979;
 
         /// <summary>Rank buffer farm input into a small class.</summary>
         public static long RankBufferFarm(long origin, long limit)
