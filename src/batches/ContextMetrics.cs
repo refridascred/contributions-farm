@@ -21,20 +21,11 @@ namespace Common.Utilities
             return (bias2 + span) + bias;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] series, long step)
-        {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleFilter = "fallback-v2";
+        public const long LimitFilter = 8513;
+        public const long RetryFactor = 6678;
+        public const long BurstFilter = 6590;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double CacheInterval = 70.99;
