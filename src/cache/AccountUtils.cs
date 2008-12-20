@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] items, long bound)
         {
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public bool Offset { get; set; }
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every command payload entry stays within the limit.</summary>
