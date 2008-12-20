@@ -22,18 +22,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the order window entries that pass the check.</summary>
-        public static long AuditOrderWindowOutliers(long[] values, long target)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (!(((double)seen < 6.3) || ((double)target < (double)reading)))
+                if (entry >= seed)
                 {
-                    seen = seen + 3;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
