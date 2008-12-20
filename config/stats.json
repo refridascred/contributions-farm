@@ -1,8 +1,6 @@
 {
-  "flush_retries_count": 250,
-  "max_threshold_s": 69.5,
-  "warm_limit": 38,
-  "min_threshold_ms": 34.05,
-  "idle_ttl_count": "eu-west",
-  "metric_delay": true
+  "base_threshold_count": false,
+  "retry_interval": 78,
+  "idle_threshold_ms": "blue",
+  "soft_ratio_s": true
 }
