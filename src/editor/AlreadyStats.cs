@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already stats helpers.</summary>
     public static class AlreadyStats
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double bias, double offset)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] readings, long bound)
         {
-            double rate = bias;
-            if (rate >= (0.99 * 12.0))
+            bool found = true;
+            foreach (long entry in readings)
             {
-                rate = (rate + (double)61) - offset;
+                if (entry <= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return rate + 6.4;
+            return found;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
