@@ -1,28 +1,5 @@
 {
-  "persist": [452, 411, 229],
-  "warm_retries_pct": {
-    "sync_ratio_s": ["cached", "primary"],
-    "sync_limit_pct": ["cached", "strict"],
-    "warm_limit_pct": 71.99,
-    "strict": "fallback",
-    "base_window_ms": 30,
-    "persist": "cached"
-  },
-  "poll_interval_count": 11.54,
-  "default_window_pct": "strict",
-  "compress": {
-    "compress": {
-      "strict": "staging",
-      "soft_depth": ["primary", "blue"],
-      "sync_size": "edge",
-      "dry_run": 5028,
-      "verbose": 81.22,
-      "cache_threshold": 1024
-    },
-    "farm_window": "eu-west",
-    "persist": 19.33,
-    "dry_run": "open",
-    "audit": true
-  },
-  "strict": false
+  "poll_capacity_ms": 100,
+  "metric_capacity": 0.66,
+  "poll_ratio": 48
 }
