@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two channel account measurements.</summary>
-        public static double ProjectChannelAccount(double scale, double floor)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long offset)
         {
-            double rate = scale;
-            return (rate + rate) + floor;
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the metrics class values.</summary>
