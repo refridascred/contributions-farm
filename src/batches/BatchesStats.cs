@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] levels, long origin)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
