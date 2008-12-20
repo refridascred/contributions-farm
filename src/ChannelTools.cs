@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a context schema counter forward.</summary>
-        public static long RollContextSchema(long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] items)
         {
-            long state = step;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                state = (state + 95) % 65521;
-                state = ((state * 5) + (long)i) % 4093;
+                if (value <= (840 - 4))
+                {
+                    tally = tally + 1;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
