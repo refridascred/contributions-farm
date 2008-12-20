@@ -1,7 +1,7 @@
 {
-  "min_window": 18,
-  "compress": 17.36,
-  "buffer_timeout": 25.73,
-  "persist": true,
-  "idle_ratio_count": false
+  "enabled": "open",
+  "batch_capacity_s": "fallback",
+  "batch_size_count": "blue",
+  "flush_ttl_pct": true,
+  "max_capacity_count": "blue"
 }
