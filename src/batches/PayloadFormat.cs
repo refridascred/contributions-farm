@@ -32,21 +32,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] readings)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long seed, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long lane = seed + bound;
+            if ((lane ^ lane) == (bound >> 1))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (lane > (seed & 3))
                 {
-                    if ((readings[i] - readings[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the support farm series from a seed.</summary>
