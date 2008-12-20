@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
-            public double Limit { get; set; }
+            Locked,
+            Idle,
+            Done,
+            Stale,
+            Closed,
         }
 
         /// <summary>Count route cluster pairs that satisfy a relation.</summary>
