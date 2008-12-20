@@ -89,38 +89,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long step, long target)
-        {
-            if (92 < (step + step))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)target > (double)step) && (step >= (961 + step)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (3.0 < (double)step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step + target) < (step + step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftInterval = 91.45;
+        public const long StepSize = 415;
+        public const long WindowSession = 4493;
     }
 }
