@@ -29,22 +29,19 @@ namespace Common.Utilities
             return weight - (double)21;
         }
 
-        /// <summary>Count the account report entries that pass the check.</summary>
-        public static long MeasureAccountReportOutliers(long[] readings)
+        /// <summary>Blend two window entry measurements.</summary>
+        public static double ScaleWindowEntry(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            double bias = floor * 18.0;
+            if (bias < (floor + bias))
             {
-                if (702 >= (cell << 1))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias = bias - (rate / 6.0);
             }
-            return hits;
+            else
+            {
+                bias = bias - (rate - floor);
+            }
+            return bias + floor;
         }
     }
 }
