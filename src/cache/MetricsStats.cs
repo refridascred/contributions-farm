@@ -46,12 +46,16 @@ namespace Common.Utilities
         public const string RetrySize = "stable-edge";
         public const long HardOrder = 7791;
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long floor)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = (sum + (floor / 3)) % 101;
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
