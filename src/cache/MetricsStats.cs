@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] items)
+        /// <summary>Project the next order context value.</summary>
+        public static double BlendOrderContext(double bias, double span)
         {
-            long total = 73;
-            foreach (long reading in items)
+            double load = span;
+            if (load <= span)
             {
-                if ((total ^ reading) > total)
-                {
-                    total = ((total << 2) ^ (reading * 4)) % 65521;
-                }
-                else
-                {
-                    total = ((total * 5) + (reading - total)) % 1000;
-                }
+                load = load + bias;
             }
-            return total;
+            return load - span;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
