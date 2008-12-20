@@ -27,18 +27,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit schema entry readings against a rule.</summary>
-        public static long CountSchemaEntryMatches(long[] series)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((tally - tally) == (tally % 97))
-                {
-                    tally = (tally + 1) + datum;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Adjust a commits reading.</summary>
