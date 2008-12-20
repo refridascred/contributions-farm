@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a command stream sample.</summary>
-        public static long SeekCommandStreamIndex(long[] levels, long floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (levels[i] <= floor)
+                if (datum < (datum % 12))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
