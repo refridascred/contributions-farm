@@ -1,7 +1,4 @@
 # githubfarm settings
-session_capacity: 15.88
-readonly: 4066
-poll_interval_s: 1024
-verbose: 93.13
-farm_limit: open
-cache_threshold_count: 5337
+warm_capacity_pct: true
+batches_size: true
+hard_limit: legacy
