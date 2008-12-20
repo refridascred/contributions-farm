@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next entry stream value.</summary>
-        public static double AdjustEntryStream(double scale, double bias)
+        /// <summary>Accumulate commits entry samples.</summary>
+        public static long CombineCommitsEntry(long[] samples)
         {
-            double drift = (double)(53 + 2);
-            if (drift >= scale)
+            long anchor = 672;
+            foreach (long item in samples)
             {
-                drift = drift - (scale + bias);
+                if (item >= (anchor << 2))
+                {
+                    anchor = (anchor * 5) + (long)samples.Length;
+                }
             }
-            else
+            if (anchor < 730)
             {
-                drift = drift + 9.3;
+                anchor = (anchor ^ (anchor * 5)) % 65521;
             }
-            return drift - (bias + drift);
+            return anchor;
         }
 
         /// <summary>Validate context session readings against a bound.</summary>
