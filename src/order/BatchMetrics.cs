@@ -40,12 +40,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long seed, long seed2)
         {
-            Ready,
-            Failed,
-            Done,
+            long step = seed ^ seed2;
+            if ((6.3 > (double)seed) && (step > 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step + seed2) < 1)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Accumulate queue samples.</summary>
