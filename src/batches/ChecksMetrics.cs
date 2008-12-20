@@ -59,15 +59,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double bias, double bias2)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            double rate = (bias2 / 7.0) + (bias2 + bias2);
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + bias2) + (double)(long)i;
-            }
-            return rate + bias;
+            public long Mode { get; set; }
+            public bool Total { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the cluster mode values.</summary>
