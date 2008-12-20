@@ -23,17 +23,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] samples, long floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (samples[i] == floor)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
