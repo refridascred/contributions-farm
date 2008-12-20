@@ -36,10 +36,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 5067;
-        public const long BaseSize = 1343;
-        public const long MaxBatches = 747;
-        public const string BaseBatches = "stable-1";
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
+        {
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
