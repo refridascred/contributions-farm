@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitRatio = 3118;
-        public const long BurstDepth = 9433;
-        public const string IdleRatio = "cached-1";
-        public const long DefaultEditor = 185;
-        public const long IdleEditor = 8003;
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LookupProfileIndex(long[] items, long target)
