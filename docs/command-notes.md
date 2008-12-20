@@ -1,10 +1,11 @@
 # Command notes
 
-The payload module keeps editor values in sync with the cache cache.
-When a queue fails, the stats handler retries a few times before giving up.
+The githubfarm module keeps session values in sync with the window cache.
+The notes module keeps format values in sync with the buffer cache.
+Run the entry check before changing any record limits.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Document new stats fields
-- Log every schema change
+- Log every support change
+- Keep route values small
+- Prefer report defaults
