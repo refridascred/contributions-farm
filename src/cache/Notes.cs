@@ -35,12 +35,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] items, long limit)
         {
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
+            long carry = 599;
+            foreach (long value in items)
+            {
+                carry = (((carry << 2) ^ (carry >> 1)) % 1000) - limit;
+                carry = ((carry << 2) ^ value) % 4096;
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a tools info.</summary>
