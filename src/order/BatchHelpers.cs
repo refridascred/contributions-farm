@@ -20,23 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double scale, double floor)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            double bias = scale;
-            if (bias >= floor)
-            {
-                bias = bias - floor;
-            }
-            else
-            {
-                bias = bias - (scale - floor);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - 4.5) + (double)(long)i;
-            }
-            return bias + scale;
+            Ready,
+            Failed,
+            Active,
+            Synced,
+            Idle,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
