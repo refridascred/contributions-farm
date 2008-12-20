@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string DefaultWidth = "open";
         public const long MinDepth = 5441;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] readings, long target)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] data)
         {
-            long mix = -7;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((double)target <= (2.6 + 11.0))
+                if (((double)value == (4.02 + 6.9)) || ((981 + hits) == (hits % 3)))
                 {
-                    mix = (((mix * 3) + (target + target)) % 1000) ^ item;
+                    hits = hits + 3;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
