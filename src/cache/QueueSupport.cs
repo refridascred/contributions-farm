@@ -23,22 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] values)
+        /// <summary>Check that every entry account entry stays within the limit.</summary>
+        public static bool CheckEntryAccountRange(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((seen >> 5) > (-557))
+                if (sample < floor)
                 {
-                    seen = (seen + 3) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
