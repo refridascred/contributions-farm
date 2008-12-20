@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchWidth = 4164;
-        public const long CacheTimeout = 329;
-        public const string HardFactor = "strict-v2";
-        public const long SoftCommits = 7644;
-        public const string DefaultCommits = "stable-v2";
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a batches contributi figure with a bias.</summary>
         public static double ProjectBatchesContributi(double weight, double bias)
