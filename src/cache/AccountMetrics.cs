@@ -65,9 +65,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 3196;
-        public const long MinCount = 8626;
-        public const string RetryCommits = "strict";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstChannel = 10.34;
+        public const double SoftChannel = 75.54;
+        public const double BaseSize = 91.74;
     }
 }
