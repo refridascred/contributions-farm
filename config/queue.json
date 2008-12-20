@@ -1,8 +1,21 @@
 {
-  "hard_capacity_count": 500,
-  "poll_capacity_ms": ["eu-west", "cached", "blue"],
-  "batch_ttl_s": true,
-  "flush_delay_count": 1024,
-  "contributi_capacity": [202, 204, 287, 131],
-  "batch_size": 77.89
+  "max_capacity_count": false,
+  "warm_depth": "legacy",
+  "poll_ratio_s": true,
+  "flush_size_s": {
+    "cache_timeout": "blue",
+    "burst_retries_s": {
+      "cache_ratio_count": 2,
+      "warm_ttl": "local",
+      "flush_window_pct": [27, 375, 259],
+      "warm_retries_ms": "open"
+    },
+    "metric_capacity": {
+      "min_capacity_ms": "legacy",
+      "persist": 427,
+      "flush_interval": true,
+      "default_depth": "eu-west"
+    }
+  },
+  "readonly": 4400
 }
