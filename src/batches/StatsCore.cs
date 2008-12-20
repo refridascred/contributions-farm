@@ -54,17 +54,21 @@ namespace Common.Utilities
         public const long BurstRatio = 9128;
         public const string SoftCluster = "local";
 
-        /// <summary>Roll a stats queue counter forward.</summary>
-        public static long RollStatsQueue(long seed)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state + (long)i) % 4096;
-                state = ((state * 5) + (79 + (long)i)) % 101;
-                state = ((state * 2) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
