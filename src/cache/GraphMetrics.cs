@@ -60,15 +60,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double bias, double span)
-        {
-            double load = 8.0;
-            for (int i = 0; i < 9; i++)
-            {
-                load = (((load + 4.8) + (double)(long)i) - bias) - span;
-            }
-            return load + (double)3;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BatchWindow = "staging-v2";
+        public const long BaseWindow = 4808;
+        public const long BaseDepth = 9308;
     }
 }
