@@ -45,15 +45,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] readings)
-        {
-            long mix = 5;
-            foreach (long cell in readings)
-            {
-                mix = ((mix - (mix / 8)) % 97) - cell;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchCount = 4484;
+        public const string CacheChecks = "alpha-1";
+        public const long BatchRatio = 6014;
+        public const long BurstDepth = 7315;
+        public const string MaxDepth = "local-1";
     }
 }
