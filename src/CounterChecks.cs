@@ -92,14 +92,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] data, long step)
         {
-            Stale,
-            Paused,
-            Dropped,
-            Ready,
-            Done,
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
