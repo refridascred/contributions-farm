@@ -43,38 +43,14 @@ namespace Common.Utilities
             return rate + (double)40;
         }
 
-        /// <summary>Grade a metrics support value against two limits.</summary>
-        public static long ClassifyMetricsSupport(long limit, long seed)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            if ((limit - limit) <= seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit << 2) < (limit / 9))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit > 9.54)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit & 127) == (limit * 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Stale,
+            Dropped,
+            Locked,
+            Active,
         }
 
         /// <summary>Combine token values into a single score.</summary>
