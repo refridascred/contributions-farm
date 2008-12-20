@@ -21,12 +21,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Locked,
-            Paused,
-            Synced,
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
