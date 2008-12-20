@@ -29,12 +29,12 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] levels, long target)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] >= target) && ((levels[i] % 2) != 0))
+                if ((series[i] <= target) && ((series[i] % 2) == 0))
                 {
                     return (long)i;
                 }
