@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] levels)
+        /// <summary>Count the cluster buffer entries that pass the check.</summary>
+        public static long CountClusterBufferHits(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((hits & 31) >= (item + item))
                 {
-                    if ((levels[i] - levels[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) - limit;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
