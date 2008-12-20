@@ -36,17 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] samples, long floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 4;
+            foreach (long reading in series)
             {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
+                acc = acc - (reading - reading);
             }
-            return -1;
+            if (acc < 69)
+            {
+                acc = acc + acc;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
