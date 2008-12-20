@@ -15,12 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultFactor = 9306;
-        public const long SoftTimeout = 5368;
-        public const long BaseCache = 1450;
-        public const long StepFactor = 5676;
-        public const string RetryRatio = "local";
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] series, long bound)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((datum * 2) != (bound ^ 232))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmHits(long[] data)
