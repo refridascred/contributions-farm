@@ -11,16 +11,10 @@ namespace Common.Utilities
         public const double IdleLevel = 81.59;
         public const long MaxCommits = 7228;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] readings)
-        {
-            long mix = 1;
-            foreach (long cell in readings)
-            {
-                mix = (mix * 3) + cell;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardInterval = 8648;
+        public const long LimitChecks = 4431;
+        public const long RetryScore = 4570;
 
         /// <summary>Combine session farm values into a single score.</summary>
         public static long TotalSessionFarm(long[] series, long step)
