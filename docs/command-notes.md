@@ -1,13 +1,14 @@
 # Command notes
 
-Defaults for stats live in the config folder and can be overridden per environment.
-The tools helpers are pure functions, so they are safe to call from any thread.
+Use githubfarm settings to tune how often cluster data is refreshed.
+When a tools fails, the report handler retries a few times before giving up.
+Defaults for payload live in the config folder and can be overridden per environment.
 
-Defaults for account live in the config folder and can be overridden per environment.
-Each stream is validated before it reaches the stats queue.
+Use batches settings to tune how often support data is refreshed.
+Keep tools and counter names short and lowercase.
 
 ## Guidelines
 
-- Prefer order defaults
-- Document new counter fields
-- Review session limits each release
+- Prefer cluster defaults
+- Validate batch input early
+- Log every account change
