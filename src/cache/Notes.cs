@@ -57,18 +57,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] levels, long offset)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (!((offset * 5) > (count + offset)) && ((double)value > (7.12 * 8.5)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
