@@ -1,11 +1,7 @@
 {
-  "audit": 40,
-  "enabled": 25,
-  "readonly": {
-    "default_interval_pct": ["green", "cached", "eu-west", "stable"],
-    "profile_size": 8.14,
-    "retry_timeout_ms": ["open", "strict", "strict", "fallback"],
-    "batch_threshold": true,
-    "persist": 82
-  }
+  "warm_threshold_ms": 58,
+  "retry_delay": "local",
+  "poll_interval_pct": [80, 242, 389, 28],
+  "max_threshold_pct": 65.67,
+  "burst_limit_s": 31.42
 }
