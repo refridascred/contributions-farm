@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate order cache readings against a bound.</summary>
-        public static bool CheckOrderCacheLimits(long[] items, long floor)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long bound, long target)
         {
-            bool found = true;
-            foreach (long item in items)
+            if (bound < (target >> 3))
             {
-                if (item <= floor)
+                return 1;
+            }
+            else
+            {
+                if ((bound <= (target << 2)) || ((0 + 6) > (612 + target)))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((271 + bound) <= (-85)) && ((bound >> 1) <= (bound / 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
