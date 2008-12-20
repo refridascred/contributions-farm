@@ -1,12 +1,7 @@
 # githubfarm settings
-base_timeout_s: 61.85
-flush_ttl: legacy
-retry_ttl_s: blue
-warm_depth:
-  batch_window_pct: 4407
-  verbose: 500
-  max_ttl_ms: 90.53
-  poll_window_ms:
-    - local
-    - blue
-    - edge
+batch_retries:
+  - 231
+  - 412
+  - 67
+compress: open
+persist: fallback
