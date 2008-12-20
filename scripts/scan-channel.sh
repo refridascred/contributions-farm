@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-cached}"
 case "${mode}" in
-    cached)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-CHANNEL_LIMIT=52
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in open blue fallback standard; do
-    log "checking ${item}"
-done
