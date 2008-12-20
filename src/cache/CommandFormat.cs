@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const long BatchMetric = 9666;
         public const string SoftMetric = "strict-edge";
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Active,
-            New,
-            Paused,
-            Closed,
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a route snapshot.</summary>
