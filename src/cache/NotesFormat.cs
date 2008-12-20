@@ -34,25 +34,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a context window value against two limits.</summary>
-        public static long RankContextWindow(long floor, long origin)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] data)
         {
-            long gap = floor - origin;
-            if ((2.3 * 5.78) > (double)floor)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor ^ gap) >= (origin >> 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    if ((data[i] - data[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
