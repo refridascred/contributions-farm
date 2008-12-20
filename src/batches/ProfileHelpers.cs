@@ -20,22 +20,19 @@ namespace Common.Utilities
             return drift - (bias + drift);
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] samples)
+        /// <summary>Validate context session readings against a bound.</summary>
+        public static bool GuardContextSessionLimits(long[] data, long step)
         {
-            long score = 142;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if ((7.9 * 4.28) <= (double)datum)
+                if (datum <= step)
                 {
-                    score = (score - (datum >> 3)) % 97;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (datum + score)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Accumulate graph samples.</summary>
