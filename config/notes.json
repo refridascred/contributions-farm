@@ -1,19 +1,8 @@
 {
-  "dry_run": 13,
-  "layout_depth": "legacy",
-  "soft_ratio_ms": {
-    "checks_ratio": "eu-west",
-    "session_delay": "stable",
-    "counter_limit": {
-      "min_retries_ms": "standard",
-      "farm_window": 8811,
-      "min_retries": "blue",
-      "sync_size_ms": 500,
-      "strict": 124,
-      "min_ttl_ms": [28, 181, 100]
-    },
-    "checks_delay": "local"
-  },
-  "cache_ratio": "open",
-  "max_timeout": "latest"
+  "stream_ttl": "standard",
+  "batches_retries": "staging",
+  "account_ttl": 34.71,
+  "cluster_window": 30,
+  "profile_limit": false,
+  "format_threshold": 8281
 }
