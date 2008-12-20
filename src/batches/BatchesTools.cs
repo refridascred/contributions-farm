@@ -27,12 +27,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Pending,
-            Closed,
-            Idle,
+            Paused,
+            Done,
+            Dropped,
+            Synced,
             Queued,
         }
     }
