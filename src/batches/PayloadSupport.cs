@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] levels, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((limit + limit) != (limit + hits))
-                {
-                    hits = (hits + 1) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 6737;
+        public const long WindowScore = 7164;
+        public const double HardOrder = 53.75;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderGaps(long[] data)
