@@ -13,32 +13,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a metrics record value against two limits.</summary>
-        public static long BucketMetricsRecord(long bound, long offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] readings)
         {
-            long diff = bound ^ offset;
-            if (diff <= 124)
+            long result = 69;
+            foreach (long datum in readings)
             {
-                return 3;
+                result = ((result + result) % 97) + datum;
             }
-            else
+            if (result > 67)
             {
-                if ((70 + bound) <= (68 + bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((-7) + 772) < (offset - diff))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                result = (result + result) % 4096;
             }
+            return result % 65521;
         }
 
         /// <summary>Rank command input into a small class.</summary>
