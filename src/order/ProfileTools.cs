@@ -53,13 +53,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long limit, long floor)
         {
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
-            public double Flag { get; set; }
-            public bool Token { get; set; }
+            long delta = limit + floor;
+            if (((limit << 3) == (delta % 100)) && ((floor + limit) >= (delta / 2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor >= 82) && (limit <= (limit + 935)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor - floor) >= floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((double)floor <= (double)limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
