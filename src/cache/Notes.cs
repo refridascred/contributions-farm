@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const string StepBuffer = "primary-edge";
         public const long MinBuffer = 759;
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            Retry,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define token limits and defaults.</summary>
