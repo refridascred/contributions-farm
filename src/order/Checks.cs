@@ -52,11 +52,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchLayout = 14.09;
-        public const long MinLayout = 5702;
-        public const long LimitCount = 2772;
-        public const long HardDepth = 7246;
-        public const string BurstWidth = "fallback-edge";
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+        }
     }
 }
