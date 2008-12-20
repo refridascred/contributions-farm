@@ -64,21 +64,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long offset)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] data, long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                state = ((state * 3) + (state ^ offset)) % 97;
-                state = (state << 3) ^ offset;
-                if ((5 ^ 290) == ((long)i / 4))
+                if (sample < origin)
                 {
-                    state = (state - (offset ^ offset)) % 4096;
+                    stale = false;
+                    break;
                 }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
