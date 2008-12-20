@@ -45,11 +45,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a counter payload reading.</summary>
-        public static double SmoothCounterPayload(double ratio, double floor)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long origin, long seed)
         {
-            double drift = floor;
-            return drift + ratio;
+            long span = origin - seed;
+            if ((195 & 127) > origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((850 >> 2) != (seed / 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (span < seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
