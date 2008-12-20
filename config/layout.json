@@ -1,5 +1,5 @@
 {
-  "warm_ttl_pct": 75.61,
-  "hard_threshold_pct": 55.0,
-  "graph_ttl": "local"
+  "route_threshold": 23,
+  "sync_threshold_pct": 500,
+  "layout_retries": "latest"
 }
