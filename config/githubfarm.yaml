@@ -1,6 +1,21 @@
 # githubfarm settings
-batch_ratio_s: legacy
-flush_capacity: false
-warm_ttl_ms: false
-sync_interval_count: 20.57
-enabled: false
+commits_capacity: latest
+idle_capacity_s:
+  batch_ttl_s: open
+  hard_ttl_ms: 34.56
+  default_window_pct:
+    - blue
+    - green
+    - staging
+    - eu-west
+  queue_capacity: false
+  verbose: latest
+  strict: 6
+flush_timeout: false
+hard_limit_s: eu-west
+compress: 30
+editor_threshold:
+  - standard
+  - fallback
+  - edge
+  - cached
