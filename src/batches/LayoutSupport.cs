@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] samples, long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 1;
+            foreach (long sample in items)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor - (sample + 3)) % 255;
+                anchor = (anchor + (anchor + sample)) % 4096;
             }
-            return -1;
+            if (anchor < 120)
+            {
+                anchor = anchor - ((long)items.Length & 31);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the layout state values.</summary>
