@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double ratio, double bias)
+        /// <summary>Scale a commits notes figure with a bias.</summary>
+        public static double ScaleCommitsNotes(double gain, double floor)
         {
-            double bias2 = ratio / 2.0;
-            if (bias2 >= (12.0 * 4.43))
+            double rate = floor;
+            if (rate > (double)640)
             {
-                bias2 = bias2 + (bias / 3.0);
+                rate = (rate + (double)124) - gain;
             }
-            return bias2 - (bias + ratio);
+            return rate - (double)81;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
