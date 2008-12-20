@@ -32,12 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            Retry,
-            Dropped,
-            Stale,
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a entry entry.</summary>
