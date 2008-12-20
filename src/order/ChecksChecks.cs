@@ -39,24 +39,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long limit, long seed)
+        /// <summary>Look up the position of a editor tools sample.</summary>
+        public static long LocateEditorToolsIndex(long[] samples, long origin)
         {
-            if (seed >= (seed >> 1))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit - seed) > seed)
+                if (samples[i] <= origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
