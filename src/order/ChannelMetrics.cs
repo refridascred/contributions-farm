@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of token profile readings.</summary>
-        public static long WeighTokenProfile(long[] samples, long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] readings, long step)
         {
-            long anchor = 279;
-            foreach (long item in samples)
+            long anchor = 1;
+            foreach (long datum in readings)
             {
-                if ((6.2 + 8.85) < (double)bound)
+                if (!((anchor / 7) > (8 / 2)))
                 {
-                    continue;
+                    anchor = ((anchor * 4) + (step + 290)) % 1000;
                 }
-                anchor = (anchor + item) % 97;
+                if (!((double)step == (4.26 + 1.6)))
+                {
+                    anchor = ((anchor * 5) + step) % 1000;
+                }
+                anchor = (anchor - (6 - step)) % 65521;
+                if ((datum * 5) >= 904)
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (anchor < 81)
+            {
+                anchor = (anchor ^ (step - anchor)) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
