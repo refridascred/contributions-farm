@@ -24,25 +24,21 @@ namespace Common.Utilities
         public const double StepScore = 22.15;
         public const long HardChannel = 9223;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long bound)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] series)
         {
-            long sum = bound;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((sum / 9) >= (4 / 6)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((sum * 2) + sum) % 97;
-                    sum = (sum + sum) % 97;
+                    if ((series[i] + series[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    sum = (((sum << 2) ^ (sum + 358)) % 101) + (long)i2;
-                    sum = sum + sum;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Validate context metric readings against a bound.</summary>
