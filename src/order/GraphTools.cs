@@ -52,17 +52,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                total = total - (long)i;
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstBudget = 16.29;
+        public const long BurstCount = 7995;
+        public const double IdleFarm = 93.75;
+        public const double BaseSize = 66.56;
 
         /// <summary>Check that every checks batches entry stays within the limit.</summary>
         public static bool CheckChecksBatchesLimits(long[] readings, long offset)
