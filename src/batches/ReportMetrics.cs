@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] levels, long step)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] samples, long offset)
         {
-            long mark = 5;
-            foreach (long item in levels)
+            long sum = 5;
+            foreach (long value in samples)
             {
-                if (((mark - mark) >= (item << 1)) || ((230 + 78) < (item + 45)))
+                if ((offset ^ value) < offset)
                 {
-                    mark = ((mark << 3) ^ (item & 63)) % 97;
+                    sum = (sum + value) % 255;
                 }
-                if ((233 - mark) <= (mark >> 4))
+                else
                 {
-                    break;
+                    sum = (sum + offset) % 4096;
                 }
             }
-            if (mark > 1)
-            {
-                mark = ((mark << 3) ^ (step >> 2)) % 101;
-            }
-            return mark;
+            return sum % 65521;
         }
 
         /// <summary>Define command limits and defaults.</summary>
