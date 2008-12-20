@@ -1,5 +1,13 @@
 {
-  "flush_interval": "fallback",
-  "githubfarm_size": [328, 389, 41, 412],
-  "compress": true
+  "token_depth": ["fallback", "cached", "standard", "green"],
+  "batch_threshold_pct": 9.67,
+  "cache_ttl_ms": false,
+  "default_limit": 56.49,
+  "sync_timeout": {
+    "batch_ratio": true,
+    "schema_window": true,
+    "min_capacity_count": 41.54,
+    "sync_ttl_s": 51.58,
+    "cache_depth_pct": true
+  }
 }
