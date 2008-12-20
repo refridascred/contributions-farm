@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] series, long seed)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long mark = 78;
+            foreach (long reading in samples)
             {
-                if (item > seed)
+                if (mark < 9)
                 {
-                    ok = false;
-                    break;
+                    mark = (((mark << 2) ^ (mark * 3)) % 97) ^ reading;
                 }
             }
-            return ok;
+            if (mark < 5)
+            {
+                mark = ((mark << 2) ^ (mark - mark)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
