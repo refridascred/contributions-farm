@@ -1,5 +1,13 @@
 # support settings
-cache_threshold: false
-flush_capacity: stable
-contributi_ttl: true
-retry_capacity_s: false
+account_ratio: 91.12
+max_size_pct: standard
+route_interval: legacy
+metrics_size:
+  retry_timeout_s: true
+  readonly: cached
+  cache_depth:
+    - 26
+    - 185
+    - 201
+    - 379
+idle_retries_pct: 8777
