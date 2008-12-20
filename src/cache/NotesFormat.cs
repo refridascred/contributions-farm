@@ -15,24 +15,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a token support value against two limits.</summary>
-        public static long SortTokenSupport(long offset, long step)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            if ((offset / 3) == (step * 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if (offset >= (5 / 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Closed,
+            Stale,
+            Locked,
+            Pending,
+            Done,
         }
 
         /// <summary>Adjust a metrics reading.</summary>
