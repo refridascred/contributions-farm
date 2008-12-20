@@ -1,6 +1,4 @@
 # entry settings
-retry_timeout_s: false
-poll_size: false
-warm_ttl: true
-compress: 9839
-batch_depth: 2598
+idle_limit_ms: green
+cache_ttl: 30
+poll_size_count: 1024
