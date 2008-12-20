@@ -16,13 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Audit metric checks readings against a rule.</summary>
+        public static long MeasureMetricChecksMatches(long[] samples)
         {
-            Retry,
-            Draft,
-            Paused,
-            Ready,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (entry > (entry << 2))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
