@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every command payload entry stays within the limit.</summary>
-        public static bool GuardCommandPayloadRange(long[] levels, long limit)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Fold a list of notes readings.</summary>
