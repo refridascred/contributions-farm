@@ -51,18 +51,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] data, long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long mix = 9;
+            foreach (long cell in readings)
             {
-                if ((origin + (-46)) <= origin)
-                {
-                    seen = (seen + 1) + entry;
-                }
+                mix = ((mix - (mix + mix)) % 1000) ^ cell;
+                mix = (mix - mix) % 1000;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Scale a notes cluster figure with a bias.</summary>
