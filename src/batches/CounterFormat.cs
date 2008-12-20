@@ -32,39 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long seed, long target)
+        /// <summary>Project the next githubfarm batches value.</summary>
+        public static double AdjustGithubfarmBatches(double bias, double offset)
         {
-            long next = seed ^ target;
-            if (0 >= (next % 60))
+            double weight = (offset + offset) * 12.0;
+            if (weight < (double)350)
             {
-                return 0;
+                weight = (weight + (offset * 6.3)) + bias;
             }
             else
             {
-                if ((next % 8) > (target * 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (target < (next + next))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((double)seed > (double)target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                weight = weight - (double)9;
             }
+            return weight - (double)21;
         }
 
         /// <summary>Count the account report entries that pass the check.</summary>
