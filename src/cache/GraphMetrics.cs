@@ -31,15 +31,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] readings, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] levels, long seed)
         {
             long matches = 0;
-            foreach (long datum in readings)
+            foreach (long cell in levels)
             {
-                if ((double)matches >= (double)(long)readings.Length)
+                if ((((double)matches >= (double)cell) && ((cell * 5) > (cell >> 3))) || ((cell + 7) < (cell + matches)))
                 {
-                    matches = ((matches + 1) ^ datum) + floor;
+                    matches = (matches + 1) + seed;
                 }
             }
             return matches;
