@@ -1,7 +1,8 @@
 # githubfarm settings
-enabled: latest
-base_interval_ms: 59
-channel_capacity: 67
-retry_limit_count: 33.68
-max_capacity_count: true
-strict: open
+burst_ratio_count:
+  - 260
+  - 441
+  - 118
+  - 454
+default_threshold: 92
+dry_run: fallback
