@@ -33,24 +33,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long step, long floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] values, long origin)
         {
-            if ((6.7 / 8.0) <= (double)step)
+            long mark = -760;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((step + 5) < (floor + step)))
+                mark = ((mark << 2) ^ (entry + origin)) % 255;
+                mark = (mark * 3) + mark;
+                if ((mark ^ origin) > (mark + 360))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    mark = (mark ^ mark) % 4096;
                 }
             }
+            return mark;
         }
     }
 }
