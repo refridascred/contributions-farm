@@ -65,23 +65,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double scale, double span)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            double drift = (scale + span) * 4.0;
-            if (drift <= (double)2)
-            {
-                drift = drift + span;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + 3.9) + (double)(long)i;
-            }
-            return drift - (double)31;
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Accumulate schema samples.</summary>
