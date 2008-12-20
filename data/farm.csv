@@ -1,7 +1,6 @@
-id,token,count,ratio
-1,86.2,626,895
-2,67.53,staging,419
-3,489,648,594
-4,160,98.76,62.24
-5,19.39,latest,cached
-6,staging,126,cached
+id,owner,rank
+1,483,386
+2,66,cached
+3,61.45,81
+4,stable,52
+5,711,8.98
