@@ -22,21 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] samples)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double scale, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double weight = (offset * 6.0) - (offset + offset);
+            return (weight - offset) + scale;
         }
 
         /// <summary>Compare every pair of cluster stream readings.</summary>
