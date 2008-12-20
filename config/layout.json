@@ -1,8 +1,5 @@
 {
-  "hard_capacity_s": "fallback",
-  "format_ratio": ["edge", "standard", "local", "primary"],
-  "warm_threshold_count": 5789,
-  "compress": 1024,
-  "readonly": "standard",
-  "dry_run": "green"
+  "burst_size_count": "latest",
+  "flush_ratio_pct": true,
+  "max_timeout": 27.08
 }
