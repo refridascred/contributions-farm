@@ -63,18 +63,16 @@ namespace Common.Utilities
         public const string IdleDepth = "standard-edge";
         public const long HardRecord = 9261;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] levels, long floor)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long offset)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (((seen + 796) >= (floor - entry)) || ((585 - seen) >= (entry % 8)))
-                {
-                    seen = seen + 1;
-                }
+                sum = (sum - (98 - 6)) % 65521;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
     }
 }
