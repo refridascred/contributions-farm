@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] samples, long origin)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long origin, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((origin <= (origin << 1)) || ((double)limit != (6.0 * 17.0)))
             {
-                if (samples[i] < origin)
+                return 7;
+            }
+            else
+            {
+                if ((origin ^ limit) >= (689 >> 3))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)23 != (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit >> 3) > (origin & 127))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the farm phase values.</summary>
