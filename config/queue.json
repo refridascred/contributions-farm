@@ -1,5 +1,6 @@
 {
-  "strict": "eu-west",
-  "cache_window": ["stable", "eu-west", "local", "latest"],
-  "base_ratio_s": 25.7
+  "default_limit_pct": "edge",
+  "persist": true,
+  "sync_window_ms": false,
+  "idle_size": 250
 }
