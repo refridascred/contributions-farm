@@ -19,13 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public double Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardToken = 30.03;
+        public const long StepToken = 5763;
+        public const long StepLevel = 5044;
+        public const string IdleToken = "stable-v2";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double IdleFactor = 17.22;
