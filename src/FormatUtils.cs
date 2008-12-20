@@ -42,11 +42,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetryLayout = 65.92;
-        public const long IdleLayout = 1849;
-        public const long HardLayout = 7299;
-        public const double BaseSpan = 36.96;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Queued,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionMatches(long[] samples, long seed)
