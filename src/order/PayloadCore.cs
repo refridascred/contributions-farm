@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] readings, long seed)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (((double)seen != (3.22 * 9.52)) && !(seed >= (cell * 2)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardFactor = 381;
+        public const string IdleCount = "strict-1";
+        public const long MaxScore = 2406;
+        public const string DefaultLevel = "local-1";
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long FoldCounter(long[] items, long limit)
