@@ -1,7 +1,5 @@
 {
-  "sync_capacity": ["edge", "standard"],
-  "batch_ratio": true,
-  "cache_window": 77,
-  "layout_delay": "fallback",
-  "cache_threshold": "primary"
+  "entry_timeout": 96.38,
+  "base_window_pct": 250,
+  "batch_delay": false
 }
