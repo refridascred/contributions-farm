@@ -59,11 +59,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitSize = 4849;
-        public const double RetryCache = 28.32;
-        public const string SoftCount = "cached-edge";
-        public const long BurstInterval = 1194;
-        public const long IdleCache = 7284;
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
+        {
+            public string Total { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
