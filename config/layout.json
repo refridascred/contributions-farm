@@ -1,7 +1,6 @@
 {
-  "soft_capacity_ms": "strict",
-  "cluster_timeout": 90.42,
-  "strict": [147, 391],
-  "soft_size_pct": [498, 429, 202],
-  "enabled": "standard"
+  "compress": [145, 474, 99, 316],
+  "strict": [27, 62, 321, 98],
+  "sync_window": 1024,
+  "readonly": 72
 }
