@@ -48,18 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] series)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (((seen >= (seen + seen)) && ((seen >> 3) >= (seen ^ 8))) && (((seen + 40) < (seen / 7)) && (seen >= (sample + sample))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
+            public double Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the metrics mode values.</summary>
