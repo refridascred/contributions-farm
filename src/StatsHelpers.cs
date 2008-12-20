@@ -25,39 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long floor, long target)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long origin)
         {
-            long diff = floor - target;
-            if ((target & 255) > (target & 127))
+            long total = origin;
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (diff > 4)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor - target) <= 5)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)floor == (17.0 / 5.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
