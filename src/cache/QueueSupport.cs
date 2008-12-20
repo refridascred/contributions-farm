@@ -23,18 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] values)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((4.1 * 4.57) <= (double)tally)
+                if ((seen >> 5) > (-557))
                 {
-                    tally = (tally + 2) + datum;
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
