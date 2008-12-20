@@ -29,20 +29,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double scale, double offset)
         {
-            long result = origin;
-            for (int i = 0; i < 18; i++)
+            double rate = (double)(801 % 2);
+            if (rate > (3.9 + scale))
             {
-                result = (result - (origin + 429)) % 101;
-                if ((result - (long)i) < origin)
-                {
-                    result = (result << 2) ^ (8 >> 1);
-                }
-                result = ((result * 3) + (long)i) % 65521;
+                rate = (rate + (17.0 + rate)) + offset;
             }
-            return result;
+            else
+            {
+                rate = rate + (double)742;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (double)729) - (double)(long)i;
+            }
+            return rate - (4.3 * 5.4);
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
