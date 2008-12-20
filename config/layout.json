@@ -1,7 +1,7 @@
 {
-  "soft_delay": 1991,
-  "window_retries": false,
-  "session_timeout": 59.67,
-  "cache_timeout": "fallback",
-  "sync_capacity_s": 4942
+  "session_limit": "strict",
+  "retry_ratio_pct": 2549,
+  "route_limit": ["fallback", "edge", "staging"],
+  "account_retries": [109, 304, 320],
+  "sync_depth_ms": true
 }
