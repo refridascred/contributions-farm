@@ -28,12 +28,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 5663;
-        public const long BurstContributi = 2160;
-        public const long StepContributi = 6643;
-        public const long BaseInterval = 5996;
-        public const string SoftContributi = "open-edge";
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
