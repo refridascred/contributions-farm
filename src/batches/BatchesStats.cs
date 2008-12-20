@@ -38,19 +38,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] items, long seed)
+        /// <summary>Rank entry batch input into a small class.</summary>
+        public static long BucketEntryBatch(long step, long offset)
         {
-            bool ready = true;
-            foreach (long value in items)
+            if ((double)step < 7.3)
             {
-                if (value > seed)
+                return 6;
+            }
+            else
+            {
+                if ((0 << 1) == (offset & 3))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a order info.</summary>
