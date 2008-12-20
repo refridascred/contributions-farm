@@ -32,15 +32,11 @@ namespace Common.Utilities
         public const long CacheAlready = 1248;
         public const long MinCount = 8686;
 
-        /// <summary>Derive the next stream batch value from a seed.</summary>
-        public static long RollStreamBatch(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxRatio = 5;
+        public const double IdleBudget = 78.38;
+        public const string MinContext = "alpha";
+        public const long CacheContext = 8261;
+        public const long SoftContext = 6624;
     }
 }
