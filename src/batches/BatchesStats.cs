@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] series)
         {
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long total = 34;
+            foreach (long item in series)
+            {
+                if (!((0.8 * 1.8) < (double)total))
+                {
+                    total = total - item;
+                }
+                if (item > (total >> 4))
+                {
+                    total = (total * 4) + total;
+                }
+            }
+            if (total < 24)
+            {
+                total = ((total << 3) ^ (total % 12)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a report options.</summary>
