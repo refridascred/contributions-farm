@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Blend two farm format measurements.</summary>
+        public static double SmoothFarmFormat(double weight, double bias)
         {
-            Active,
-            Ready,
-            Failed,
+            double rate = bias * 2.5;
+            if (rate < (double)922)
+            {
+                rate = (rate - rate) + weight;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate - (bias * 3.03);
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
