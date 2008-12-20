@@ -42,21 +42,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] series)
+        /// <summary>Roll a batch batches counter forward.</summary>
+        public static long IterateBatchBatches(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = target;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Classify a session counter pair into a bucket.</summary>
