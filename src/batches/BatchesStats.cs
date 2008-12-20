@@ -56,9 +56,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetrySupport = "latest-v2";
-        public const string WindowSize = "legacy-1";
-        public const double MinSupport = 7.23;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public bool Flag { get; set; }
+            public double Token { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
