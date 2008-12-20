@@ -25,22 +25,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] items, long offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((6.4 * 9.9) <= (double)entry)
-                {
-                    count = (count + 3) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Synced,
+            Dropped,
+            Pending,
         }
     }
 }
