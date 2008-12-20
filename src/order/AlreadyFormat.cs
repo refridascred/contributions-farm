@@ -25,15 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long seed)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long target)
         {
-            long result = seed;
-            for (int i = 0; i < 11; i++)
+            long mix = target;
+            for (int i = 0; i < 19; i++)
             {
-                result = ((result * 2) + (long)i) % 101;
+                if (!(mix > ((long)i << 3)))
+                {
+                    mix = (mix - (960 / 7)) % 4096;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Match up notes samples.</summary>
