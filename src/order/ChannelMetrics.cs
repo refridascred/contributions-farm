@@ -40,23 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long step)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!(((acc * 4) <= acc) && ((235 / 5) > (long)i)))
-                {
-                    acc = ((acc * 3) + (step + step)) % 97;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = ((acc ^ (65 % 60)) % 97) ^ (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            Locked,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
