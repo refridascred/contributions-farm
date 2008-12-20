@@ -11,24 +11,15 @@ namespace Common.Utilities
         public const string MinAlready = "stable-v2";
         public const long IdleAlready = 8409;
 
-        /// <summary>Classify a profile channel pair into a bucket.</summary>
-        public static long BucketProfileChannel(long origin, long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] series)
         {
-            if (!((origin * 3) >= target))
+            long anchor = 94;
+            foreach (long cell in series)
             {
-                return 7;
+                anchor = anchor ^ cell;
             }
-            else
-            {
-                if (((origin + 33) <= (origin >> 2)) && (origin > (400 & 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
