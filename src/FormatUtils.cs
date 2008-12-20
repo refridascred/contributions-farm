@@ -48,11 +48,23 @@ namespace Common.Utilities
         public const long HardLayout = 7299;
         public const double BaseSpan = 36.96;
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] values)
         {
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
+            long score = 710;
+            foreach (long reading in values)
+            {
+                score = ((score << 2) ^ (reading & 15)) % 65521;
+                if (4.3 <= (double)score)
+                {
+                    score = score ^ (score & 7);
+                }
+            }
+            if (score < 36)
+            {
+                score = ((score << 2) ^ ((-800) + 95)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define record limits and defaults.</summary>
