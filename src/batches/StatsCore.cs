@@ -27,14 +27,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            Draft,
-            Closed,
-            Locked,
-            Retry,
-            Failed,
+            public double Total { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a contributi info.</summary>
