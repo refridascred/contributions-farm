@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-open}"
 case "${mode}" in
-    strict)
+    green)
         log "fast path"
         ;;
     *)
@@ -17,11 +17,11 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 1))
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in stable staging standard; do
+for item in green strict edge; do
     log "checking ${item}"
 done
