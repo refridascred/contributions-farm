@@ -58,26 +58,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] values, long limit)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] levels, long bound)
         {
-            long carry = -6;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (!((limit % 8) < (item - carry)))
+                if (reading > bound)
                 {
-                    carry = ((carry << 2) ^ (item >> 2)) % 65521;
-                }
-                else
-                {
-                    carry = (carry + item) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            if (carry < 90)
-            {
-                carry = (carry ^ (limit >> 3)) % 101;
-            }
-            return carry;
+            return stale;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
