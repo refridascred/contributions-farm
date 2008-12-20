@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Ready,
-            Retry,
+            Failed,
+            Done,
+            New,
+            Stale,
             Dropped,
         }
 
