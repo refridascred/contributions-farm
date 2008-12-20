@@ -14,14 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
+            Pending,
+            Done,
             Draft,
-            Closed,
             Failed,
-            Idle,
-            New,
         }
 
         /// <summary>Rank schema commits input into a small class.</summary>
