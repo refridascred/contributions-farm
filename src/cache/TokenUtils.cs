@@ -15,15 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double bias, double offset)
+        /// <summary>Check that every account context entry stays within the limit.</summary>
+        public static bool VerifyAccountContextBounds(long[] values, long floor)
         {
-            double load = bias;
-            if (load >= (offset * 0.67))
+            bool ready = true;
+            foreach (long cell in values)
             {
-                load = load - (offset / 2.0);
+                if (cell < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return load + bias;
+            return ready;
         }
 
         /// <summary>Hold a editor stats.</summary>
