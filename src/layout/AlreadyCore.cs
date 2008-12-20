@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const string SoftBuffer = "fallback";
         public const long StepLevel = 703;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 6994;
-        public const string BaseMetrics = "fallback-1";
-        public const double IdleWidth = 77.51;
-        public const string WindowMetrics = "strict";
-        public const long DefaultMetrics = 3163;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool GuardWindowRange(long[] items, long target)
