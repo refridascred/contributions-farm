@@ -36,19 +36,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] levels, long offset)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell > offset)
+                if (samples[i] >= floor)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Match up stream farm samples.</summary>
