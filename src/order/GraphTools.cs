@@ -67,12 +67,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            Locked,
-            New,
-            Pending,
+            Draft,
+            Paused,
             Ready,
         }
     }
