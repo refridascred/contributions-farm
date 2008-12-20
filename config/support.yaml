@@ -1,7 +1,8 @@
 # support settings
-batch_capacity_pct:
-  - green
-  - staging
-warm_limit_ms: 1024
-warm_timeout_ms: 61
-dry_run: true
+base_interval_ms: false
+metric_window:
+  - stable
+  - eu-west
+max_ratio: 250
+warm_ttl_pct: 25.17
+contributi_capacity: cached
