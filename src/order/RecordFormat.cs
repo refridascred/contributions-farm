@@ -37,22 +37,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] samples, long step)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (((item + seen) > (step % 100)) || !((double)seen < (6.1 * 7.08)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
