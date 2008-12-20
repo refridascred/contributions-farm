@@ -45,23 +45,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double gain, double span)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            double ratio = (double)((-26) - 6);
-            if (ratio > (gain + span))
-            {
-                ratio = ratio + (gain / 5.0);
-            }
-            else
-            {
-                ratio = ratio + gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (ratio / 5.0)) - (double)(long)i;
-            }
-            return ratio + (double)399;
+            public double Total { get; set; }
+            public double Count { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
