@@ -14,15 +14,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next route farm value.</summary>
-        public static double BlendRouteFarm(double gain, double floor)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long offset, long limit)
         {
-            double gain2 = (double)(52 + (-873));
-            for (int i = 0; i < 8; i++)
+            long next = offset - limit;
+            if (((limit >> 5) != (limit - offset)) && (1.5 > (double)limit))
             {
-                gain2 = (gain2 - (double)(long)i) - floor;
+                return 7;
             }
-            return gain2 - gain;
+            else
+            {
+                if ((limit + next) <= (offset + next))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
