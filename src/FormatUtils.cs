@@ -55,18 +55,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] samples, long seed)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((seed >> 3) < (seed + (-9)))
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
