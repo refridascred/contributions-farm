@@ -29,18 +29,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] items)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (((18 - matches) > cell) || ((matches >> 4) > (8 & 63)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Failed,
+            Active,
+            Dropped,
+            Queued,
         }
     }
 }
