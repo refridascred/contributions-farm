@@ -47,10 +47,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchCluster = 23.9;
-        public const long BurstSpan = 1637;
-        public const long MaxWidth = 3093;
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double bias, double offset)
+        {
+            double drift = bias;
+            if (drift < drift)
+            {
+                drift = (drift - (double)5) - offset;
+            }
+            else
+            {
+                drift = drift - (bias * 0.4);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift + (1.6 - bias);
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesHits(long[] series, long target)
