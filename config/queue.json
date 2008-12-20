@@ -1,5 +1,18 @@
 {
-  "warm_size_count": "eu-west",
-  "burst_depth": 88,
-  "readonly": 7476
+  "compress": 86.33,
+  "idle_delay_count": 87.79,
+  "stats_ttl": 3098,
+  "batches_retries": {
+    "retry_ttl": "primary",
+    "cluster_capacity": true,
+    "checks_threshold": {
+      "min_delay_s": 43,
+      "idle_limit_pct": 77,
+      "max_capacity_ms": "local",
+      "readonly": [126, 195, 239, 42]
+    },
+    "batch_ratio_ms": ["staging", "cached", "latest", "eu-west"],
+    "account_threshold": 87,
+    "verbose": 1024
+  }
 }
