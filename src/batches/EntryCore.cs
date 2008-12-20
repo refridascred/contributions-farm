@@ -14,18 +14,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchOrder = "open";
+        public const double LimitOrder = 23.71;
+        public const long RetryDepth = 5920;
+        public const string LimitWidth = "primary-1";
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
