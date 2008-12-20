@@ -32,17 +32,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] items, long target)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long origin, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((origin - bound) >= origin) && (bound > origin))
             {
-                if ((items[i] == target) && ((items[i] % 3) == 0))
+                return 4;
+            }
+            else
+            {
+                if (bound < origin)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((723 <= (origin + origin)) && ((49 >> 3) < origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
