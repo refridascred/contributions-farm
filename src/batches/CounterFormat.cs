@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            Idle,
-            Ready,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseFactor = 7855;
+        public const double WindowSize = 32.88;
+        public const double MinLayout = 46.74;
+        public const long SoftLayout = 1113;
 
         /// <summary>Accumulate schema samples.</summary>
         public static long CombineSchema(long[] values, long step)
