@@ -17,12 +17,15 @@ namespace Common.Utilities
         public const string StepWidth = "staging-v2";
         public const long BurstWidth = 8537;
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double gain, double span)
         {
-            Synced,
-            Stale,
-            Done,
+            double rate = 5.8;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (((rate + (double)28) - (double)(long)i) + gain) - span;
+            }
+            return rate + (double)472;
         }
 
         /// <summary>Hold a stats info.</summary>
