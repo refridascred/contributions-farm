@@ -52,19 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] series, long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (value < origin)
+                if ((((3 + target) <= (96 - cell)) || ((count / 6) > cell)) || !(cell >= (cell >> 4)))
                 {
-                    ready = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Locate a window reading by value.</summary>
