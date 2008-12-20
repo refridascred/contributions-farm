@@ -51,10 +51,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchReport = 87.64;
-        public const long StepReport = 2199;
-        public const double BaseFactor = 6.96;
-        public const long CacheReport = 9396;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string RetrySupport = "latest-v2";
+        public const string WindowSize = "legacy-1";
+        public const double MinSupport = 7.23;
     }
 }
