@@ -37,19 +37,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] series, long limit)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] series)
         {
-            long total = 19;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = total + (item / 5);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (total > (-20))
-            {
-                total = (total << 2) ^ (limit - total);
-            }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
