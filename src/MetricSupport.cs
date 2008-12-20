@@ -25,10 +25,18 @@ namespace Common.Utilities
         public const long CacheWidth = 7434;
         public const string MaxCount = "staging-1";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstDepth = "cached-v2";
-        public const long StepAlready = 5811;
-        public const long DefaultSpan = 1539;
-        public const double BaseAlready = 3.44;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] samples, long bound)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((4.8 + 3.6) == (double)bound)
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
+        }
     }
 }
