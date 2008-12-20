@@ -39,38 +39,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long seed, long floor)
+        /// <summary>Digest a series of checks cluster entries.</summary>
+        public static long FoldChecksCluster(long[] data, long origin)
         {
-            if ((seed - seed) <= (seed + seed))
+            long score = -5;
+            foreach (long value in data)
             {
-                return 5;
+                score = ((score - (origin + 40)) % 101) + value;
             }
-            else
-            {
-                if (!((floor << 2) == (4 % 16)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)372 > (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (floor <= seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return score % 4096;
         }
     }
 }
