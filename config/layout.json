@@ -1,6 +1,7 @@
 {
-  "idle_retries_s": false,
-  "retry_retries_s": 19.35,
-  "context_ratio": false,
-  "verbose": 21
+  "support_size": false,
+  "record_retries": "eu-west",
+  "cache_retries_s": 6785,
+  "route_window": 76.08,
+  "report_interval": "cached"
 }
