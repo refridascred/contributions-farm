@@ -20,21 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long floor)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] levels)
         {
-            long mix = floor;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((long)i < mix)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    continue;
+                    if ((levels[i] ^ levels[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = ((mix * 3) + (long)i) % 1000;
-                mix = ((mix << 3) ^ floor) % 101;
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
