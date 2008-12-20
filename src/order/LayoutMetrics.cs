@@ -35,27 +35,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine already session values into a single score.</summary>
-        public static long WeighAlreadySession(long[] values)
-        {
-            long carry = 9;
-            foreach (long entry in values)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    carry = (((carry << 3) ^ carry) % 255) ^ (long)i2;
-                    carry = carry + entry;
-                }
-                if (!((carry + carry) < (entry + carry)))
-                {
-                    carry = (carry - carry) % 101;
-                }
-            }
-            if (carry < (-30))
-            {
-                carry = (carry ^ carry) % 97;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 2091;
+        public const long MinSpan = 4294;
+        public const long LimitFactor = 9316;
+        public const long MaxLevel = 6149;
     }
 }
