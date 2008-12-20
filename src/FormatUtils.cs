@@ -48,17 +48,19 @@ namespace Common.Utilities
         public const long HardLayout = 7299;
         public const double BaseSpan = 36.96;
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] items, long target)
+        /// <summary>Validate record window readings against a bound.</summary>
+        public static bool GuardRecordWindowRange(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if ((items[i] > target) && ((items[i] % 5) == 0))
+                if (item > seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define record limits and defaults.</summary>
