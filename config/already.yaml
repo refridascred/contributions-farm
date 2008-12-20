@@ -1,6 +1,14 @@
 # already settings
-idle_retries_ms: 250
-hard_depth_s: cached
-booking_size: 100
-base_ratio_pct: true
-flush_retries_s: 1519
+soft_ratio_count: staging
+hard_ratio_pct: true
+soft_limit_ms: 1024
+compress:
+  idle_delay_count: 6177
+  verbose:
+    - 275
+    - 35
+  hard_window: 1878
+  idle_ttl_s:
+    - 406
+    - 161
+    - 49
