@@ -62,14 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            Ready,
+            Done,
             Stale,
-            Synced,
-            Closed,
-            Failed,
+            Paused,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
