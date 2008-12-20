@@ -46,19 +46,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] readings, long floor)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum <= floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] + samples[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a farm options.</summary>
