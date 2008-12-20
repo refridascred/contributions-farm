@@ -42,19 +42,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (value >= (hits << 1))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryLayout = 65.92;
+        public const long IdleLayout = 1849;
+        public const long HardLayout = 7299;
+        public const double BaseSpan = 36.96;
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long SeekToolsIndex(long[] items, long target)
