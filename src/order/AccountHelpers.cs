@@ -81,22 +81,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] readings, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] readings, long offset)
         {
-            long result = 77;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((69 >> 5) <= result)
+                if (((long)readings.Length - matches) > (matches >> 5))
                 {
-                    result = ((result - datum) % 97) + origin;
+                    matches = ((matches + 2) + item) + offset;
                 }
             }
-            if (result > 199)
-            {
-                result = ((result << 2) ^ (result << 1)) % 97;
-            }
-            return result;
+            return matches;
         }
     }
 }
