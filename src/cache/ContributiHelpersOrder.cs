@@ -12,15 +12,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long offset)
+        /// <summary>Project the next route farm value.</summary>
+        public static double BlendRouteFarm(double gain, double floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
+            double gain2 = (double)(52 + (-873));
+            for (int i = 0; i < 8; i++)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                gain2 = (gain2 - (double)(long)i) - floor;
             }
-            return sum;
+            return gain2 - gain;
         }
 
         /// <summary>Describe the channel level values.</summary>
