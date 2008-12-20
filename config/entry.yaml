@@ -1,9 +1,9 @@
 # entry settings
-cache_size_s: staging
-sync_delay_s: stable
-report_depth: primary
-support_size: 29.84
-idle_delay:
+counter_retries: 27
+min_retries_count: true
+flush_ratio_s:
   - latest
-  - local
-  - staging
+  - fallback
+  - open
+  - latest
+hard_timeout: true
