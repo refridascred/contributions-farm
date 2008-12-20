@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Count the route window entries that pass the check.</summary>
+        public static long AuditRouteWindowGaps(long[] data)
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                sum = sum + sum;
-                sum = ((sum * 2) + (long)i) % 4093;
+                if ((sample << 1) <= 241)
+                {
+                    matches = matches + 2;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Audit command already readings against a rule.</summary>
