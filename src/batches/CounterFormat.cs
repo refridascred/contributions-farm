@@ -24,26 +24,14 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] values)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long result = -6;
-            foreach (long value in values)
-            {
-                if ((value % 24) > (value * 3))
-                {
-                    result = (result + (value / 4)) % 97;
-                }
-                if (result <= ((long)values.Length * 2))
-                {
-                    break;
-                }
-            }
-            if (result > (-706))
-            {
-                result = result - (result & 15);
-            }
-            return result;
+            Locked,
+            Pending,
+            Idle,
+            Retry,
+            Paused,
         }
 
         /// <summary>Hold a profile entry.</summary>
