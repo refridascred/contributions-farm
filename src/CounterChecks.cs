@@ -77,19 +77,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long floor)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long result = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((floor * 3) < (result ^ result))
-                {
-                    result = (result * 5) + 223;
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
