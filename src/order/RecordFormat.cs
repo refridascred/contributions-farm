@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the support phase values.</summary>
