@@ -62,17 +62,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] values, long offset)
+        /// <summary>Fold a list of window report readings.</summary>
+        public static long TotalWindowReport(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 48;
+            foreach (long reading in values)
             {
-                if (values[i] <= offset)
+                if (((reading - reading) > 74) && (total >= (reading ^ total)))
                 {
-                    return (long)i;
+                    total = (total + (total << 2)) % 101;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
