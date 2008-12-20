@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long target)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long mark = target;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mark = (mark + ((long)i & 255)) ^ (long)i2;
-                    mark = ((mark * 4) + (target + (long)i)) % 1000;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
