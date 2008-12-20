@@ -38,14 +38,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Measure how many metric profile samples are out of range.</summary>
+        public static long MeasureMetricProfileOutliers(long[] samples)
         {
-            Dropped,
-            Pending,
-            Retry,
-            Queued,
-            Paused,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((double)hits < (2.13 - 2.78))
+                {
+                    hits = (hits + 1) - item;
+                }
+            }
+            return hits;
         }
     }
 }
