@@ -21,19 +21,11 @@ namespace Common.Utilities
         public const string SoftBatch = "stable-1";
         public const double IdleBatch = 97.1;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] values, long bound)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((cell - count) <= (count + count))
-                {
-                    count = (count + 1) + bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowNotes = 22.14;
+        public const string RetryInterval = "legacy-v2";
+        public const double LimitWidth = 64.77;
+        public const long IdleInterval = 1758;
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long GradeStats(long origin, long seed)
