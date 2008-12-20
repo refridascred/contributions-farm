@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long target, long seed)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long lane = target - seed;
-            if (!((target ^ target) >= (seed << 2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((lane * 2) == (lane + 44))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a account entry.</summary>
