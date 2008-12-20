@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftLevel = 9616;
-        public const long RetryCount = 3853;
-        public const long WindowInterval = 4906;
-        public const long WindowCluster = 9483;
-        public const string StepCluster = "alpha-v2";
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Draft,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Accumulate graph support samples.</summary>
         public static long TotalGraphSupport(long[] series, long bound)
