@@ -59,15 +59,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double gain, double offset)
+        /// <summary>Classify a session counter pair into a bucket.</summary>
+        public static long RankSessionCounter(long bound, long target)
         {
-            double ratio = (6.0 * 20.0) - (offset + offset);
-            for (int i = 0; i < 2; i++)
+            if (((double)target >= (19.0 * 4.7)) || ((double)target > (double)bound))
             {
-                ratio = ((ratio + ratio) + (double)(long)i) - gain;
+                return 3;
             }
-            return ratio - offset;
+            else
+            {
+                if ((bound - target) <= (target % 100))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (6 <= bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
