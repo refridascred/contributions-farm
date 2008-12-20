@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const string StepBuffer = "primary-edge";
         public const long MinBuffer = 759;
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Validate farm contributi readings against a bound.</summary>
+        public static bool ValidateFarmContributiLimits(long[] data, long limit)
         {
-            public double Ratio { get; set; }
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public long Total { get; set; }
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
