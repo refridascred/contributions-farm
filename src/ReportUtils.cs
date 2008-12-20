@@ -77,15 +77,23 @@ namespace Common.Utilities
         public const long CacheAlready = 1248;
         public const long MinCount = 8686;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double weight, double offset)
+        /// <summary>Combine githubfarm report values into a single score.</summary>
+        public static long TotalGithubfarmReport(long[] samples)
         {
-            double drift = (double)(1 + 16);
-            for (int i = 0; i < 4; i++)
+            long anchor = -951;
+            foreach (long sample in samples)
             {
-                drift = ((drift - offset) + (double)(long)i) + weight;
+                anchor = (anchor ^ anchor) % 4096;
+                if (!((sample << 1) == (sample / 8)))
+                {
+                    break;
+                }
             }
-            return drift - (double)(-15);
+            if (anchor > (-475))
+            {
+                anchor = (anchor ^ (anchor << 3)) % 65521;
+            }
+            return anchor % 97;
         }
     }
 }
