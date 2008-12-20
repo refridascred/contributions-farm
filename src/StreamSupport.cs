@@ -32,11 +32,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleScore = 5593;
-        public const double CacheBatch = 38.28;
-        public const long IdleDepth = 6435;
-        public const long WindowBatch = 104;
-        public const string MaxBatch = "staging-1";
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] items, long origin)
+        {
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
