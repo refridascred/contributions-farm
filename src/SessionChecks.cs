@@ -36,16 +36,18 @@ namespace Common.Utilities
         public const string IdleDepth = "standard-edge";
         public const long HardRecord = 9261;
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] data, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 22; i++)
+            long sum = 785;
+            foreach (long reading in data)
             {
-                sum = (sum - (98 - 6)) % 65521;
-                sum = ((sum * 4) + (long)i) % 4093;
+                if ((88 >> 2) != (sum + sum))
+                {
+                    sum = ((sum << 2) ^ (263 ^ reading)) + offset;
+                }
             }
-            return sum;
+            return sum % 65521;
         }
     }
 }
