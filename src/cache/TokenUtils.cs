@@ -30,11 +30,28 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] samples)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            long total = 52;
+            foreach (long sample in samples)
+            {
+                total = total ^ (sample + 2);
+                if (((sample + total) < (total << 1)) || ((double)sample > 4.0))
+                {
+                    total = (total * 5) + (sample ^ sample);
+                    total = ((total << 2) ^ (sample + sample)) % 65521;
+                }
+                if ((sample >> 5) == (9 * 5))
+                {
+                    total = total ^ sample;
+                }
+                if (213 > (total << 2))
+                {
+                    break;
+                }
+            }
+            return total % 1000;
         }
     }
 }
