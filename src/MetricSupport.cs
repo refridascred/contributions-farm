@@ -22,22 +22,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] readings, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long mix = 878;
+            foreach (long datum in levels)
             {
-                if (14.0 <= (double)reading)
+                mix = (mix - (bound & 31)) % 101;
+                if ((1 + bound) == (datum << 1))
                 {
-                    hits = (hits + 2) + step;
+                    mix = (mix << 3) ^ (bound & 255);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mix = (mix ^ (datum + mix)) % 4096;
                 }
             }
-            return hits;
+            if (mix < 1)
+            {
+                mix = (mix - (712 + bound)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
