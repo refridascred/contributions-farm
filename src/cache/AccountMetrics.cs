@@ -82,15 +82,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two schema channel measurements.</summary>
-        public static double ScaleSchemaChannel(double weight, double span)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long seed, long bound)
         {
-            double rate = (double)(62 ^ 1);
-            for (int i = 0; i < 4; i++)
+            long bound2 = seed ^ bound;
+            if (((bound2 + bound) <= (bound - seed)) && ((4 + bound) >= bound2))
             {
-                rate = (rate - (double)(long)i) + span;
+                return 5;
             }
-            return rate + weight;
+            else
+            {
+                if (!(bound < (bound % 7)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound < 19.0)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
