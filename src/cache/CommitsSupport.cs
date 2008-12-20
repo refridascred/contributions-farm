@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long step, long seed)
         {
-            public long Mode { get; set; }
-            public double Count { get; set; }
-            public long Label { get; set; }
-            public double Level { get; set; }
+            if ((2.17 - 9.51) == (double)seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((seed >> 4) >= (step ^ step)) || ((step - step) > (seed - seed)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)step != (10.0 * 13.0)) && ((double)seed > (8.1 * 4.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((990 < (seed + step)) || ((double)step <= 9.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
