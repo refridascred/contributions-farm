@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const long BaseLayout = 7047;
         public const string MaxDepth = "cached-1";
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] data, long step)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long mix = 145;
-            foreach (long datum in data)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    mix = (((mix - (0 % 10)) - (long)i) ^ datum) + step;
-                }
-                if ((16.0 * 7.1) != (double)mix)
-                {
-                    mix = ((mix * 2) + (mix * 4)) % 65521;
-                }
-            }
-            return mix;
+            public long Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the payload status values.</summary>
