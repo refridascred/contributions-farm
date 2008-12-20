@@ -1,6 +1,7 @@
-id,label,owner,level,ratio
-1,fallback,80.04,793,448
-2,18,69.15,493,64
-3,63,251,273,247
-4,stable,624,5.84,749
-5,95.37,938,181,staging
+id,state,label
+1,68.63,432
+2,eu-west,strict
+3,86.84,fallback
+4,73.68,primary
+5,legacy,944
+6,36.02,fallback
