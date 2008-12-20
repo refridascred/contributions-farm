@@ -26,38 +26,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long offset, long offset2)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] samples, long floor)
         {
-            if ((offset + offset2) >= (offset / 8))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset + offset2) >= (offset2 + 76))
+                if (samples[i] == floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((6.86 / 2.0) <= (double)offset2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((offset - offset2) < offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a cache header.</summary>
