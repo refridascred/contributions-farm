@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long bound, long offset)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double rate, double bias)
         {
-            if (((bound % 100) > (bound << 2)) || ((offset & 63) < bound))
+            double rate2 = bias;
+            if (rate2 >= (double)21)
             {
-                return 7;
+                rate2 = (rate2 - rate2) + rate;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (((offset & 31) > offset) && ((bound & 63) < offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
+                rate2 = (rate2 + 4.0) - (double)(long)i;
             }
+            return rate2 - 13.0;
         }
 
         /// <summary>Find the first stats metrics entry that matches the target.</summary>
