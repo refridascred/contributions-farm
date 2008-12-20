@@ -17,20 +17,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a already editor reading.</summary>
-        public static double ProjectAlreadyEditor(double bias, double floor)
-        {
-            double scale = (double)(865 + (-40));
-            if (scale <= (0.4 / 7.0))
-            {
-                scale = scale - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + floor) + (double)(long)i;
-            }
-            return scale - floor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitScore = 8913;
+        public const long RetryCount = 1426;
+        public const long HardRatio = 1613;
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
