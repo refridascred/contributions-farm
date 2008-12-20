@@ -1,17 +1,9 @@
 # githubfarm settings
-burst_threshold_pct:
-  hard_timeout_pct:
-    enabled: edge
-    soft_capacity: legacy
-    max_threshold: 21
-    flush_ratio_count: eu-west
-  readonly:
-    poll_interval_count: strict
-    cache_capacity: false
-    cache_ttl_ms: 49.3
-    cache_capacity_ms: 42.78
-  profile_size: false
-  warm_retries: 46.4
-  idle_interval_ms: primary
-entry_window: legacy
-idle_interval: false
+min_timeout: 500
+tools_timeout: 7.49
+stats_threshold:
+  - 312
+  - 122
+  - 183
+  - 297
+soft_capacity_s: edge
