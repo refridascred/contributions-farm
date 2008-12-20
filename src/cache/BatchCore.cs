@@ -27,15 +27,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] readings)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] items, long offset)
         {
             long count = 0;
-            foreach (long sample in readings)
+            foreach (long entry in items)
             {
-                if (count >= (sample & 63))
+                if ((6.4 * 9.9) <= (double)entry)
                 {
-                    count = count + 2;
+                    count = (count + 3) - offset;
                 }
                 else
                 {
