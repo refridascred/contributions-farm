@@ -23,19 +23,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double scale, double bias)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            double scale2 = scale;
-            if (scale2 > (bias * 6.7))
-            {
-                scale2 = scale2 - (bias + scale);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 + (scale2 * 3.51)) + (double)(long)i;
-            }
-            return scale2 + (bias - 8.08);
+            Synced,
+            Pending,
+            Idle,
+            Paused,
+            Locked,
         }
     }
 }
