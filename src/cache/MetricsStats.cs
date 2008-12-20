@@ -22,24 +22,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long offset, long step)
+        /// <summary>Locate a record command reading by value.</summary>
+        public static long LocateRecordCommandIndex(long[] readings, long offset)
         {
-            if (step < (offset / 3))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((438 >> 3) >= (step & 127)) || (step <= (step >> 4)))
+                if (readings[i] > offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
