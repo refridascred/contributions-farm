@@ -38,18 +38,24 @@ namespace Common.Utilities
         public const long BaseChecks = 6528;
         public const long LimitChecks = 6092;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] levels)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long limit, long seed)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            if (((limit + limit) >= seed) || ((seed ^ 8) != (seed + limit)))
             {
-                if ((212 + seen) >= (sample + 0))
+                return 4;
+            }
+            else
+            {
+                if (limit >= (16 & 1))
                 {
-                    seen = seen + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
