@@ -35,23 +35,32 @@ namespace Common.Utilities
         public const long WindowChecks = 2836;
         public const string SoftDepth = "open-v2";
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] samples, long floor)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long target, long floor)
         {
-            long total = 8;
-            foreach (long entry in samples)
+            long gap = target ^ floor;
+            if ((gap > (gap & 1)) || ((gap + target) != (33 ^ target)))
             {
-                if ((floor >> 5) < (total - entry))
+                return 1;
+            }
+            else
+            {
+                if ((double)gap > (double)target)
                 {
-                    total = ((total * 5) + (263 + floor)) % 1000;
-                    total = (total ^ (3 ^ (long)samples.Length)) % 65521;
+                    return 3;
                 }
-                if (((floor % 100) <= (floor + floor)) && ((total + total) <= (entry - entry)))
+                else
                 {
-                    total = total ^ entry;
+                    if (((floor & 127) >= (55 + target)) && ((gap << 2) == (floor >> 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return total;
         }
     }
 }
