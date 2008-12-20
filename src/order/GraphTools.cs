@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Audit window batch readings against a rule.</summary>
+        public static long CountWindowBatchHits(long[] samples, long origin)
         {
-            Queued,
-            Done,
-            Idle,
-            Dropped,
-            Ready,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (200 <= seen)
+                {
+                    seen = ((seen + 2) + reading) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the format state values.</summary>
