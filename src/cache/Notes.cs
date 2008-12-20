@@ -14,19 +14,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] samples, long step)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long total = 320;
-            foreach (long entry in samples)
-            {
-                total = (((total * 4) + ((-311) - 215)) % 97) - entry;
-            }
-            if (total > 999)
-            {
-                total = total + step;
-            }
-            return total;
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
