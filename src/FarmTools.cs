@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string CacheSpan = "legacy-1";
+        public const double BaseTimeout = 86.85;
+        public const string LimitFormat = "open";
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long OverlapGraphCount(long[] items)
