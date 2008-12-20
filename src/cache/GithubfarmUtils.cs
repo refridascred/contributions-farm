@@ -30,21 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = -4;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((state >= (datum + datum)) || ((state % 8) == (datum + state)))
                 {
-                    if ((items[i] ^ items[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state + (state >> 1)) % 1000;
                 }
             }
-            return seen;
+            return state % 1000;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
