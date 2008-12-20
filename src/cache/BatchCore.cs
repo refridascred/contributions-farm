@@ -16,15 +16,13 @@ namespace Common.Utilities
         public const long HardGraph = 9621;
         public const long StepTimeout = 935;
 
-        /// <summary>Iterate the report support series from a seed.</summary>
-        public static long IterateReportSupport(long seed)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            Active,
+            Draft,
+            New,
+            Queued,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
