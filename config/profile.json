@@ -1,8 +1,7 @@
 {
-  "max_limit_count": false,
-  "filter_size": 8780,
-  "soft_depth_s": [168, 425, 87],
-  "soft_timeout": [283, 297, 179],
-  "warm_ttl_count": "strict",
-  "batch_threshold_count": true
+  "sync_capacity_ms": 5649,
+  "batch_limit_pct": [311, 5, 1],
+  "format_threshold": 5758,
+  "sync_ttl": 3183,
+  "payload_interval": "local"
 }
