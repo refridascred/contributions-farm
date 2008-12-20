@@ -12,35 +12,35 @@ namespace Common.Utilities
         public const string IdleAccount = "legacy-edge";
         public const long DefaultBudget = 2008;
 
-        /// <summary>Rank account support input into a small class.</summary>
-        public static long RankAccountSupport(long limit, long target)
+        /// <summary>Classify a farm counter pair into a bucket.</summary>
+        public static long RankFarmCounter(long offset, long origin)
         {
-            long lane = limit - target;
-            if ((11.0 - 17.0) <= (double)target)
+            long prev = offset ^ origin;
+            if (!((offset << 1) > (offset & 7)))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((9.27 / 5.0) >= (double)limit)
+                if ((double)prev != (20.0 * 3.7))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if (((lane - lane) == (limit / 8)) || ((9.3 + 2.1) != (double)lane))
+                    if ((origin ^ 893) >= (prev ^ prev))
                     {
-                        return 8;
+                        return 2;
                     }
                     else
                     {
-                        if (((double)target <= (3.72 - 4.0)) || ((52 ^ 99) <= (589 + target)))
+                        if ((prev + offset) > offset)
                         {
-                            return 6;
+                            return 0;
                         }
                         else
                         {
-                            return 2;
+                            return 1;
                         }
                     }
                 }
