@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] data, long seed)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 8561;
+        public const long BaseStats = 1652;
+        public const long LimitStats = 2524;
+        public const double IdleScore = 64.02;
+        public const long IdleStats = 1533;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long TallyTokenMatches(long[] series, long bound)
