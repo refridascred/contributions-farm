@@ -1,6 +1,30 @@
 {
-  "record_retries": "stable",
-  "batch_size_count": "eu-west",
-  "poll_delay": false,
-  "cluster_size": "cached"
+  "retry_delay": "cached",
+  "base_ttl_ms": 60,
+  "hard_window_ms": {
+    "editor_threshold": 51.02,
+    "min_delay": [496, 96, 136],
+    "farm_retries": ["primary", "primary", "staging"]
+  },
+  "context_threshold": "open",
+  "readonly": {
+    "batch_ttl_pct": {
+      "soft_ttl": [93, 285, 473, 111],
+      "readonly": false,
+      "cache_limit": true,
+      "hard_timeout": "green"
+    },
+    "queue_interval": 250,
+    "poll_window": {
+      "warm_threshold_ms": 100,
+      "batch_threshold_s": 56.3,
+      "hard_timeout_ms": true,
+      "cache_interval_pct": 94.11,
+      "enabled": [454, 487],
+      "idle_ratio_s": ["standard", "green", "legacy"]
+    },
+    "strict": 100,
+    "max_window": false,
+    "already_timeout": 28.96
+  }
 }
