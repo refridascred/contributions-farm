@@ -77,12 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 4670;
-        public const long BurstRoute = 2788;
-        public const string LimitScore = "open";
-        public const long BurstDepth = 441;
-        public const long HardInterval = 7830;
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
