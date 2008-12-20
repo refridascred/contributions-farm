@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long step, long limit)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] values, long target)
         {
-            long span = step - limit;
-            if ((span << 1) <= limit)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(6.2 <= (double)step))
+                if (values[i] < target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step >> 2) > (limit - span))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank filter checks input into a small class.</summary>
