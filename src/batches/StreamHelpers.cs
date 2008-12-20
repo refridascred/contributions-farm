@@ -58,25 +58,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long floor, long offset)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long origin)
         {
-            long edge = floor ^ offset;
-            if ((offset + 0) != (floor % 60))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((edge & 7) <= (floor + offset))
+                if (series[i] <= origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
