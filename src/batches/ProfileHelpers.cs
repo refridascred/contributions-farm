@@ -14,19 +14,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate context session readings against a bound.</summary>
-        public static bool GuardContextSessionLimits(long[] data, long step)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long bound)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum <= step)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    ready = false;
-                    break;
+                    acc = (acc - ((long)i + bound)) ^ (long)i2;
                 }
+                acc = ((acc << 3) ^ (47 + (long)i)) % 1000;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Describe the context status values.</summary>
