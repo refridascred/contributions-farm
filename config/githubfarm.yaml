@@ -1,9 +1,6 @@
 # githubfarm settings
-batch_limit_count: 14
-command_threshold: cached
-flush_retries_ms: false
-readonly:
-  - 318
-  - 447
-  - 394
-  - 427
+batch_ratio_s: legacy
+flush_capacity: false
+warm_ttl_ms: false
+sync_interval_count: 20.57
+enabled: false
