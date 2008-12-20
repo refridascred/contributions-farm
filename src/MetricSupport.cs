@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const string BatchCluster = "staging-v2";
         public const long HardTimeout = 6224;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardRecord = 78.94;
-        public const double LimitScore = 34.87;
-        public const long MaxRecord = 3771;
-        public const long IdleCount = 5144;
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
+        {
+            public long Flag { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long MeasureRouteOutliers(long[] samples, long bound)
