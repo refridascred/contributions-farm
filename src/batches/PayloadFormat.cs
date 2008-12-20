@@ -22,24 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long floor, long origin)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double rate, double offset)
         {
-            if (!((floor << 2) > origin))
+            double drift = (double)(466 & 127);
+            if (drift <= 2.7)
             {
-                return 2;
+                drift = ((drift + (double)527) - rate) + offset;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (floor > (origin + origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
+                drift = (drift - drift) - (double)(long)i;
             }
+            return drift - drift;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
