@@ -49,21 +49,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of metrics checks readings.</summary>
-        public static long OverlapMetricsChecksCount(long[] data)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a report info.</summary>
