@@ -12,15 +12,39 @@ namespace Common.Utilities
         public const string IdleAccount = "legacy-edge";
         public const long DefaultBudget = 2008;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] items, long floor)
+        /// <summary>Rank account support input into a small class.</summary>
+        public static long RankAccountSupport(long limit, long target)
         {
-            long acc = 52;
-            foreach (long entry in items)
+            long lane = limit - target;
+            if ((11.0 - 17.0) <= (double)target)
             {
-                acc = ((acc ^ (floor - acc)) % 1000) ^ entry;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((9.27 / 5.0) >= (double)limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((lane - lane) == (limit / 8)) || ((9.3 + 2.1) != (double)lane))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)target <= (3.72 - 4.0)) || ((52 ^ 99) <= (589 + target)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a schema summary.</summary>
