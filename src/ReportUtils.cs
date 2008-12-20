@@ -32,14 +32,15 @@ namespace Common.Utilities
         public const long CacheAlready = 1248;
         public const long MinCount = 8686;
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Derive the next stream batch value from a seed.</summary>
+        public static long RollStreamBatch(long target)
         {
-            Done,
-            Stale,
-            Dropped,
-            Queued,
-            Closed,
+            long total = target;
+            for (int i = 0; i < 10; i++)
+            {
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
