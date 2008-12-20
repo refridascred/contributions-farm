@@ -15,18 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] values, long target)
+        /// <summary>Derive the next queue report value from a seed.</summary>
+        public static long StepQueueReport(long floor)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long total = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)cell > (double)seen)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    seen = (seen + 2) + target;
+                    total = total + ((long)i2 >> 4);
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
