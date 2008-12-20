@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long origin)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long result = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                result = (result * 3) + 743;
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            Ready,
+            Queued,
+            Idle,
+            Active,
+            Done,
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
