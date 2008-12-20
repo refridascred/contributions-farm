@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long bound, long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] data)
         {
-            long cur = bound ^ offset;
-            if (bound >= (cur & 7))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((bound - bound) >= (offset * 5)) || ((bound + bound) > offset))
+                if (9.3 <= (8.63 * 1.0))
                 {
-                    return 5;
+                    tally = (tally + 1) + item;
                 }
                 else
                 {
-                    if ((-34) > (cur * 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
