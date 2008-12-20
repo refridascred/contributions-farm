@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] samples)
+        /// <summary>Classify a stats session pair into a bucket.</summary>
+        public static long GradeStatsSession(long seed, long target)
         {
-            long total = 911;
-            foreach (long sample in samples)
+            long step = seed - target;
+            if ((double)seed > (double)target)
             {
-                total = ((total * 2) + sample) % 255;
+                return 0;
             }
-            return total;
+            else
+            {
+                if (((seed & 63) <= step) || ((seed ^ 8) != (seed & 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((step * 2) >= (target * 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((1.59 - 7.1) != (double)step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
