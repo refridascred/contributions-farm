@@ -1,8 +1,5 @@
 {
-  "batch_retries_count": "cached",
-  "hard_retries_pct": "eu-west",
-  "flush_ratio": "open",
-  "notes_threshold": 1024,
-  "filter_retries": 5069,
-  "base_ratio_s": true
+  "cache_threshold": 24.93,
+  "batch_timeout_s": [149, 199],
+  "soft_size_ms": 15.53
 }
