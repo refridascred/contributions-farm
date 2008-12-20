@@ -44,12 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public double Limit { get; set; }
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
+            public double Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Compare every pair of context readings.</summary>
