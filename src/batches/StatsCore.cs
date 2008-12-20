@@ -37,12 +37,19 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryCluster = 71.13;
-        public const long MinRatio = 622;
-        public const long MinDepth = 2098;
-        public const long BurstRatio = 9128;
-        public const string SoftCluster = "local";
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((8 % 10) >= item)
+                {
+                    seen = (seen + 3) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long AuditClusterMatches(long[] levels)
