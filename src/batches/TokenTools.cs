@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            Ready,
-            Queued,
-            Idle,
-            Active,
-            Done,
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
