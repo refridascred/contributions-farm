@@ -1,21 +1,15 @@
 # entry settings
-retry_size:
-  - 169
-  - 276
-  - 131
-retry_interval_count:
-  poll_capacity:
-    - 101
-    - 297
-    - 66
-    - 45
-  max_threshold_count: 7490
-  burst_capacity: legacy
-  context_limit: open
-compress:
+default_depth:
+  - latest
   - legacy
-  - primary
-  - fallback
-  - local
-verbose: 97.52
-poll_timeout: 0.98
+enabled:
+  readonly:
+    - blue
+    - latest
+    - strict
+  tools_window: stable
+  filter_retries: false
+channel_threshold:
+  - 426
+  - 382
+  - 164
