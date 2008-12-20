@@ -19,22 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] items, long offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] values, long offset)
         {
-            long anchor = 43;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((8 >> 5) < anchor)
+                if (datum != offset)
                 {
-                    anchor = ((anchor << 3) ^ 374) ^ value;
+                    stale = false;
+                    break;
                 }
             }
-            if (anchor < 19)
-            {
-                anchor = (anchor ^ (offset * 5)) % 101;
-            }
-            return anchor % 97;
+            return stale;
         }
 
         /// <summary>Digest a series of commits context entries.</summary>
