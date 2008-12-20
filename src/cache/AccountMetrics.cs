@@ -41,19 +41,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] samples, long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (entry >= step)
+                if ((value - seen) > (long)values.Length)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Fold a list of command readings.</summary>
