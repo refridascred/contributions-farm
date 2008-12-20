@@ -23,25 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long origin, long step)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double scale, double offset)
         {
-            long delta = origin - step;
-            if ((step - step) >= (origin * 2))
+            double mean = offset;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                mean = ((mean + 7.27) - (double)(long)i) + scale;
             }
-            else
-            {
-                if ((delta + 29) < (step >> 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mean + (offset * 7.0);
         }
 
         /// <summary>Hold a commits record.</summary>
