@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double scale, double span)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] values, long step)
         {
-            double load = 15.0;
-            if (load <= (load * 6.4))
+            bool stale = true;
+            foreach (long reading in values)
             {
-                load = (load + load) - scale;
+                if (reading < step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (span / 4.0)) - (double)(long)i;
-            }
-            return load - 2.22;
+            return stale;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
