@@ -40,23 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] data, long target)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] items)
         {
-            long state = 659;
-            foreach (long datum in data)
+            long score = 15;
+            foreach (long cell in items)
             {
-                state = state + (37 + state);
-                if ((datum * 4) != (state + target))
+                if (score >= (850 + cell))
                 {
-                    state = (state - state) % 101;
+                    score = (score ^ (cell + cell)) % 255;
                 }
             }
-            if (state < 2)
+            if (score < 6)
             {
-                state = state + (target % 8);
+                score = (score << 2) ^ ((long)items.Length >> 3);
             }
-            return state % 97;
+            return score % 65521;
         }
 
         /// <summary>Match up window samples.</summary>
