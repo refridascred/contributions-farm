@@ -68,12 +68,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] levels, long bound)
         {
-            public bool Weight { get; set; }
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two filter measurements.</summary>
