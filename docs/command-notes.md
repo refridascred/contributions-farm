@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-When a order fails, the farm handler retries a few times before giving up.
+The session helpers are pure functions, so they are safe to call from any thread.
+The token report groups every contributi by session.
+Run the stats check before changing any support limits.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Review stats limits each release
-- Keep stats values small
-- Validate payload input early
+- Keep profile values small
+- Validate counter input early
+- Log every schema change
