@@ -61,18 +61,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit batches metric readings against a rule.</summary>
-        public static long MeasureBatchesMetricOutliers(long[] items, long floor)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long origin, long step)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            if (!(origin >= (74 * 3)))
             {
-                if ((hits - 703) >= (floor / 3))
+                return 1;
+            }
+            else
+            {
+                if (((9 * 2) <= (origin - step)) || ((origin % 7) >= 41))
                 {
-                    hits = (hits + 1) - cell;
+                    return 5;
+                }
+                else
+                {
+                    if (((step & 7) >= (origin - origin)) || ((step << 1) != (60 + 94)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin ^ origin) != (822 + step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
