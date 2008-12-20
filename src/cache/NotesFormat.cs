@@ -35,18 +35,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] series, long step)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (((count > (step + count)) || ((double)cell <= (6.0 * 3.03))) && ((count << 1) < (count - 328)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public double Label { get; set; }
         }
     }
 }
