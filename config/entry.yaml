@@ -1,8 +1,17 @@
 # entry settings
-audit:
-  profile_size: false
-  hard_retries_ms: 45
-  soft_threshold_ms: 250
-  token_threshold: true
-flush_ttl_s: blue
-burst_ratio_s: false
+soft_ratio_pct:
+  - staging
+  - blue
+  - green
+cache_window_count: true
+token_threshold: 97
+max_ttl:
+  - latest
+  - cached
+  - green
+stream_depth: 59
+stream_delay:
+  - 421
+  - 410
+  - 168
+  - 23
