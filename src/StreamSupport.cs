@@ -21,20 +21,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] samples)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] items)
         {
-            long state = 3;
-            foreach (long value in samples)
+            long state = 1;
+            foreach (long value in items)
             {
-                state = state ^ (value * 2);
-                state = (state + (value - value)) % 65521;
+                state = (state << 2) ^ (value - state);
             }
-            if (state > (-80))
-            {
-                state = (state << 2) ^ (state / 3);
-            }
-            return state % 1000;
+            return state % 97;
         }
 
         /// <summary>Define context limits and defaults.</summary>
