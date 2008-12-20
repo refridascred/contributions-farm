@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchRatio = 2820;
-        public const long BaseStats = 3248;
-        public const long MinSize = 2390;
+        /// <summary>Blend two stream cluster measurements.</summary>
+        public static double ScaleStreamCluster(double scale, double floor)
+        {
+            double weight = (double)(1 ^ 1);
+            if (weight <= 3.2)
+            {
+                weight = weight + (floor / 4.0);
+            }
+            return weight - scale;
+        }
 
         /// <summary>Audit buffer commits readings against a rule.</summary>
         public static long AuditBufferCommitsMatches(long[] samples)
