@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleCluster = "strict-edge";
-        public const double MinCluster = 66.93;
-        public const double BaseCluster = 9.98;
-        public const string BatchCluster = "staging-v2";
-        public const long HardTimeout = 6224;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading < (20.0 / 3.0))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
