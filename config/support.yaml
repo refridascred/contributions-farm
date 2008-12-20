@@ -1,18 +1,9 @@
 # support settings
-already_ttl:
+idle_retries_ms: 250
+flush_depth:
+  - green
+  - stable
   - blue
-  - cached
-  - edge
-checks_threshold:
-  - eu-west
-  - strict
-  - legacy
-default_ratio:
-  - 90
-  - 258
-base_timeout_s: strict
-cache_depth_count: 250
-payload_capacity:
-  - 257
-  - 129
-  - 44
+flush_retries_s:
+  - 173
+  - 10
