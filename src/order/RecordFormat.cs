@@ -38,16 +38,38 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long offset)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long floor, long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
+            if ((52 % 2) <= (floor / 8))
             {
-                mark = (mark * 2) + (offset + offset);
-                mark = ((mark * 2) + (long)i) % 4093;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if (target < (-37))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor == (double)4)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target > floor) || ((3 + floor) >= 4))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
