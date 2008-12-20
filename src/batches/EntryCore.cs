@@ -30,13 +30,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 9555;
+        public const long CacheCounter = 1583;
+        public const string IdleCount = "strict-1";
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool CheckBufferBounds(long[] items, long target)
