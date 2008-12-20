@@ -1,6 +1,17 @@
 {
-  "max_window_count": "green",
-  "context_retries": 18,
-  "warm_timeout_pct": "strict",
-  "hard_window_count": 51
+  "base_capacity_s": 75,
+  "queue_capacity": {
+    "checks_threshold": 500,
+    "default_depth_s": "latest",
+    "hard_depth": {
+      "dry_run": "latest",
+      "retry_depth_pct": "stable",
+      "account_ttl": 1024,
+      "burst_interval_s": true,
+      "audit": "green",
+      "stats_depth": "green"
+    }
+  },
+  "persist": [146, 151, 487],
+  "poll_retries": "fallback"
 }
