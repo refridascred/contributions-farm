@@ -22,10 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 8683;
-        public const long BaseInterval = 1884;
-        public const long IdleWidth = 9979;
+        /// <summary>Look up the position of a account format sample.</summary>
+        public static long SeekAccountFormatIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool VerifyChannelBounds(long[] values, long step)
