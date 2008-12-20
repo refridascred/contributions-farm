@@ -1,4 +1,8 @@
 # entry settings
-idle_limit_ms: green
-cache_ttl: 30
-poll_size_count: 1024
+audit:
+  batches_threshold: staging
+  base_limit_s: false
+  metric_ttl: 125
+  default_limit: open
+retry_threshold_ms: standard
+sync_ratio_s: true
