@@ -13,22 +13,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsMatches(long[] levels, long target)
+        /// <summary>Combine format report values into a single score.</summary>
+        public static long DigestFormatReport(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long mark = 503;
+            foreach (long item in items)
             {
-                if (((double)target != (double)sample) && ((seen + target) <= (target * 5)))
+                if ((mark >> 2) < item)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mark = ((mark << 2) ^ item) % 65521;
                 }
             }
-            return seen;
+            if (mark < 93)
+            {
+                mark = mark + mark;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of account readings.</summary>
