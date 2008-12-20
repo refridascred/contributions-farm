@@ -1,10 +1,15 @@
 # support settings
-warm_timeout:
-  - 88
-  - 178
-  - 317
-  - 307
-sync_delay_s:
-  - 325
-  - 268
-flush_depth_pct: 1697
+enabled:
+  tools_threshold: 91
+  schema_delay: 99
+  readonly: false
+  burst_window_s: 30
+  batch_limit_s: 89.93
+cache_ratio: 27
+batch_timeout_count: strict
+max_retries_ms: 250
+account_retries: false
+min_depth_pct:
+  - 326
+  - 80
+  - 62
