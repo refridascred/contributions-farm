@@ -50,11 +50,16 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryAlready = "latest-v2";
-        public const string LimitAlready = "cached";
-        public const string LimitBudget = "strict";
-        public const string StepAlready = "stable";
-        public const long RetrySize = 5725;
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = acc - bound;
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
