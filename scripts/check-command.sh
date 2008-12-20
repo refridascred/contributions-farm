@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached primary strict; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-COMMAND_LIMIT=113
+COMMAND_LIMIT=439
 log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-blue}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
