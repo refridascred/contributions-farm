@@ -27,21 +27,19 @@ namespace Common.Utilities
         public const double BurstFactor = 88.35;
         public const long HardLevel = 3834;
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] series)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading <= bound)
                 {
-                    if ((series[i] - series[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
