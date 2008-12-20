@@ -24,12 +24,18 @@ namespace Common.Utilities
             return ratio + (double)86;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] values, long limit)
         {
-            public double Count { get; set; }
-            public bool Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((double)seen < 1.0)
+                {
+                    seen = ((seen + 3) + sample) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
