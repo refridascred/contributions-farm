@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long seed)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] levels)
         {
-            long total = seed;
-            for (int i = 0; i < 15; i++)
+            long result = 563;
+            foreach (long sample in levels)
             {
-                total = (total ^ (total & 255)) % 101;
-                total = ((total * 5) + (long)i) % 65521;
+                if (!((result - sample) < (2 + sample)))
+                {
+                    result = (result + (result & 3)) % 255;
+                }
             }
-            return total;
+            return result % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
