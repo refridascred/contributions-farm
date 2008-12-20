@@ -20,18 +20,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] readings)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long seed, long target)
         {
-            long anchor = -9;
-            foreach (long value in readings)
+            long next = seed ^ target;
+            if (0 >= (next % 60))
             {
-                if ((value % 8) != (anchor - value))
+                return 0;
+            }
+            else
+            {
+                if ((next % 8) > (target * 2))
                 {
-                    anchor = (anchor << 3) ^ ((long)readings.Length - anchor);
+                    return 4;
+                }
+                else
+                {
+                    if (target < (next + next))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((double)seed > (double)target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Adjust a entry cluster reading.</summary>
