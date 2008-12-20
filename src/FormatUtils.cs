@@ -26,17 +26,21 @@ namespace Common.Utilities
         public const double BaseFarm = 59.71;
         public const long BurstTimeout = 5071;
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] data, long bound)
+        /// <summary>Compare every pair of stats commits readings.</summary>
+        public static long PairStatsCommitsCount(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (data[i] <= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the entry phase values.</summary>
