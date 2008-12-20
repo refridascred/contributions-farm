@@ -34,16 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] samples)
         {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                total = total - (total + total);
-                total = ((total * 4) + (long)i) % 65521;
+                if ((double)seen > (7.5 + 9.0))
+                {
+                    seen = (seen + 2) + value;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
