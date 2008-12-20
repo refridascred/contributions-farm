@@ -40,10 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryCount = 5664;
-        public const double RetryGithubfarm = 77.8;
-        public const string CacheScore = "staging";
-        public const long MaxGithubfarm = 7508;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public long Level { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
+        }
     }
 }
