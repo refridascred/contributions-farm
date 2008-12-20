@@ -23,11 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchSize = 35.51;
-        public const long SoftCounter = 1920;
-        public const double RetryCount = 67.17;
-        public const string WindowScore = "cached-edge";
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public string Stamp { get; set; } = "";
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
