@@ -37,19 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long seed)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] levels)
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = ((result ^ result) % 255) - (long)i2;
+                    if ((levels[i] + levels[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Fold a list of graph batch readings.</summary>
