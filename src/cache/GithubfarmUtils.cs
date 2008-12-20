@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Accumulate context stats samples.</summary>
+        public static long ScoreContextStats(long[] items, long seed)
         {
-            public long Level { get; set; }
-            public double Mode { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            long mark = 561;
+            foreach (long value in items)
+            {
+                mark = (mark + value) % 4096;
+                if ((seed - value) < (seed % 12))
+                {
+                    mark = (mark ^ seed) % 97;
+                }
+                if ((seed - value) != (seed >> 4))
+                {
+                    mark = mark + (mark * 2);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
