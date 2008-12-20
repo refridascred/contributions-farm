@@ -74,9 +74,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 958;
-        public const long StepCount = 8712;
-        public const long BatchCounter = 1698;
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
+        {
+            public double Ratio { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
