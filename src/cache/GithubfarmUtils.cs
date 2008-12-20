@@ -30,18 +30,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] samples)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long offset)
         {
-            long state = -4;
-            foreach (long datum in samples)
+            long total = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((state >= (datum + datum)) || ((state % 8) == (datum + state)))
-                {
-                    state = (state + (state >> 1)) % 1000;
-                }
+                total = total - (total + total);
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return state % 1000;
+            return total;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
