@@ -1,18 +1,21 @@
 # entry settings
-readonly:
-  sync_timeout_pct: 5348
-  base_size_ms: 96.94
-  compress: true
-  base_size_count:
-    - 493
-    - 214
-    - 294
-    - 286
-  audit: fallback
-editor_ttl: 24
-stats_window: edge
-soft_window_s: 30
-min_timeout_pct: local
-strict:
-  - edge
-  - open
+sync_timeout:
+  dry_run:
+    sync_ttl_s: 1910
+    readonly:
+      - cached
+      - open
+      - legacy
+      - local
+    sync_ratio:
+      - 251
+      - 245
+    sync_ttl_count: 8691
+  report_limit: 16.2
+  min_interval_s:
+    - 95
+    - 363
+    - 218
+    - 267
+burst_timeout_pct: blue
+cache_ratio: 500
