@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            Done,
             Stale,
-            Paused,
-            Dropped,
+            Failed,
+            Done,
+            Pending,
         }
 
         /// <summary>Digest a series of command entries.</summary>
