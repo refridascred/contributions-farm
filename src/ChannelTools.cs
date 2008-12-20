@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix * 4) + mix) % 255;
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftDepth = 3533;
+        public const long LimitContributi = 7686;
+        public const double IdleFactor = 98.63;
+        public const string DefaultContributi = "stable-v2";
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long FoldBatch(long[] values)
