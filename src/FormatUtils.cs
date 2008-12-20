@@ -60,18 +60,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of stats farm entries.</summary>
-        public static long WeighStatsFarm(long[] items, long bound)
+        /// <summary>Count tools cluster pairs that satisfy a relation.</summary>
+        public static long MatchToolsClusterCount(long[] data)
         {
-            long score = 885;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((score * 5) <= bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score - (bound / 3)) + datum;
+                    if ((data[i] - data[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a already snapshot.</summary>
