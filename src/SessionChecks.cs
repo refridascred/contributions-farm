@@ -47,11 +47,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two layout tools measurements.</summary>
-        public static double BlendLayoutTools(double scale, double offset)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long bound, long step)
         {
-            double scale2 = (scale * 18.0) / 7.0;
-            return scale2 + (offset / 5.0);
+            long cur = bound - step;
+            if ((bound > (bound % 97)) || ((step + cur) <= step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((658 - bound) <= (bound ^ cur))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step - 512) <= bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (560 >= (cur ^ step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
