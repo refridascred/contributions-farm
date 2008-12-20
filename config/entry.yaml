@@ -1,5 +1,6 @@
 # entry settings
-readonly: 9191
-min_limit: 6716
-flush_retries: 81.43
-soft_interval: 88
+retry_timeout_s: false
+poll_size: false
+warm_ttl: true
+compress: 9839
+batch_depth: 2598
