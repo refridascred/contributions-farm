@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of githubfarm contributi readings.</summary>
-        public static long DigestGithubfarmContributi(long[] data)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long step)
         {
-            long score = 91;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 5) + (7 / 8)) + value;
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            if (score > 65)
-            {
-                score = (score * 2) + (score + 837);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
