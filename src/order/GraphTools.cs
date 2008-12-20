@@ -64,11 +64,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            public long Size { get; set; }
+            public double Level { get; set; }
         }
     }
 }
