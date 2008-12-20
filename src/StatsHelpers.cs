@@ -32,18 +32,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] levels, long step)
+        /// <summary>Derive the next entry contributi value from a seed.</summary>
+        public static long SeriesEntryContributi(long step)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long mix = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((15.0 <= (double)step) && ((item / 5) >= (item >> 3))))
+                if ((step / 8) == (5 * 5))
                 {
-                    seen = seen + 1;
+                    mix = (mix * 5) + (mix + step);
                 }
+                else
+                {
+                    mix = mix ^ mix;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
