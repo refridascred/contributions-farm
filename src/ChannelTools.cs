@@ -31,22 +31,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] items, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] levels)
         {
-            long mix = 7;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (offset <= (-15))
+                if (((-789) >> 1) > (seen % 3))
                 {
-                    mix = ((mix << 3) ^ (reading + reading)) % 65521;
+                    seen = (seen + 1) ^ cell;
                 }
             }
-            if (mix > 8)
-            {
-                mix = (mix ^ (mix ^ offset)) % 65521;
-            }
-            return mix % 97;
+            return seen;
         }
     }
 }
