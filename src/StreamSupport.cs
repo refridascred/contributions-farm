@@ -23,38 +23,19 @@ namespace Common.Utilities
         public const long BaseInterval = 1884;
         public const long IdleWidth = 9979;
 
-        /// <summary>Rank buffer farm input into a small class.</summary>
-        public static long RankBufferFarm(long origin, long limit)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] values, long step)
         {
-            if (14.0 > (double)limit)
+            bool valid = true;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (limit < (limit * 4))
+                if (value <= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin + limit) != (limit - origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin & 7) >= (0 & 15))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
