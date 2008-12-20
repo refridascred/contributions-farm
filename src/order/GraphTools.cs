@@ -17,19 +17,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((2.3 * 4.0) <= (double)hits)
-                {
-                    hits = (hits + 2) - entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftCount = "fallback-v2";
+        public const long BurstCommand = 4932;
+        public const double RetryCommand = 0.89;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool CheckSessionBounds(long[] readings, long offset)
