@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate batch tools readings against a bound.</summary>
-        public static bool ValidateBatchToolsLimits(long[] samples, long target)
-        {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardDepth = "standard-edge";
+        public const string MaxTimeout = "legacy-1";
+        public const long HardEditor = 2014;
+        public const string WindowEditor = "standard-v2";
+        public const long CacheEditor = 8371;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long TallyTokenMatches(long[] series, long bound)
