@@ -46,15 +46,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long seed)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] readings, long floor)
         {
-            long total = seed;
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                total = ((total * 4) + (long)i) % 101;
+                if (datum <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Hold a farm options.</summary>
