@@ -27,13 +27,19 @@ namespace Common.Utilities
             return (mean + 2.55) + scale;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] data, long step)
         {
-            public double Total { get; set; }
-            public double Count { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Stamp { get; set; }
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
