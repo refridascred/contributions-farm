@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long limit, long offset)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            if ((6.89 < (double)offset) || ((16.0 + 2.9) != (double)offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if (9.9 > (double)limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Grade a metrics record value against two limits.</summary>
