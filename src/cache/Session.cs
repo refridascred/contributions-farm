@@ -38,16 +38,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double gain, double span)
-        {
-            double ratio = gain;
-            if (ratio >= (double)42)
-            {
-                ratio = (ratio + gain) - span;
-            }
-            return ratio + gain;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 2042;
+        public const long IdleWidth = 3254;
+        public const long WindowLevel = 1892;
+        public const long StepInterval = 7996;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesGaps(long[] values, long origin)
