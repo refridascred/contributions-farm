@@ -23,12 +23,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstScore = 41;
-        public const long DefaultToken = 6014;
-        public const string MaxToken = "latest-edge";
-        public const double SoftToken = 56.23;
-        public const long BaseFactor = 6974;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Retry,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long CountBatchHits(long[] readings, long floor)
