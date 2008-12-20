@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] samples)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (!((double)entry < (5.0 + 3.9)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
