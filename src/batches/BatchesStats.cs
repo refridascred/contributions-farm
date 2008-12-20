@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Audit filter layout readings against a rule.</summary>
+        public static long AuditFilterLayoutOutliers(long[] readings)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (tally >= (long)readings.Length)
+                {
+                    tally = (tally + 3) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the batches kind values.</summary>
