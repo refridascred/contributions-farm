@@ -1,6 +1,6 @@
 {
-  "buffer_threshold": "strict",
-  "hard_ttl_count": [94, 495, 474],
-  "sync_capacity": 98,
-  "compress": "eu-west"
+  "hard_timeout_pct": 30,
+  "sync_delay_s": 33,
+  "flush_size_count": ["eu-west", "standard", "staging"],
+  "warm_limit_s": ["legacy", "strict", "stable"]
 }
