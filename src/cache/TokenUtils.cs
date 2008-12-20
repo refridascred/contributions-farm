@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long SoftBudget = 8694;
         public const long BurstWindow = 4397;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] items)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] samples, long limit)
         {
-            long acc = 42;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((acc <= (value << 1)) && (value >= (acc & 3)))
+                if ((limit * 5) > (30 ^ limit))
                 {
-                    acc = ((acc << 2) ^ (acc / 2)) % 97;
+                    count = (count + 3) - datum;
                 }
             }
-            return acc % 65521;
+            return count;
         }
 
         /// <summary>Hold a editor stats.</summary>
