@@ -36,16 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] data, long step)
-        {
-            long total = 3;
-            foreach (long entry in data)
-            {
-                total = (((total - (19 - total)) % 97) - entry) - step;
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 4492;
+        public const long MaxScore = 1059;
+        public const long SoftBuffer = 396;
+        public const double StepFactor = 78.67;
 
         /// <summary>Project the next session filter value.</summary>
         public static double ProjectSessionFilter(double scale, double bias)
