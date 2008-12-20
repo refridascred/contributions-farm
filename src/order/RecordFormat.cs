@@ -36,19 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stream token values into a single score.</summary>
-        public static long WeighStreamToken(long[] series)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] samples, long step)
         {
-            long total = 431;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                total = ((total << 3) ^ (datum - total)) % 97;
+                if (((item + seen) > (step % 100)) || !((double)seen < (6.1 * 7.08)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (total < 84)
-            {
-                total = ((total * 2) + total) % 101;
-            }
-            return total % 65521;
+            return seen;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
