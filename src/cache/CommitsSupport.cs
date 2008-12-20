@@ -62,21 +62,17 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] data)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (levels[i] == step)
                 {
-                    if ((data[i] + data[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
