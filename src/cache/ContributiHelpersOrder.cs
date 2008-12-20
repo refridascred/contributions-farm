@@ -17,23 +17,13 @@ namespace Common.Utilities
         public const double BatchStats = 70.79;
         public const long RetryStats = 7978;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] values, long offset)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long result = 7;
-            foreach (long sample in values)
-            {
-                result = (result - sample) % 4096;
-                if (((double)sample == (double)16) || ((double)offset != (5.38 * 1.0)))
-                {
-                    result = result ^ (70 << 3);
-                }
-            }
-            if (result < (-2))
-            {
-                result = (result ^ result) % 101;
-            }
-            return result;
+            Synced,
+            Idle,
+            Queued,
+            Locked,
         }
     }
 }
