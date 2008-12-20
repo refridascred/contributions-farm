@@ -1,20 +1,30 @@
 # githubfarm settings
-dry_run:
-  soft_threshold_pct: eu-west
-  base_size: 250
-  filter_size:
-    - 475
-    - 303
-  graph_threshold: edge
-  max_retries: strict
-hard_limit_count:
-  soft_threshold_ms: 8884
-  audit: 100
-  soft_size: 85
-  stream_ratio: legacy
-  persist: latest
-  dry_run: 1024
-base_interval_pct: 20
-hard_size: 40.51
-enabled: 100
-max_limit_count: 60
+base_window_ms: 59
+poll_delay_count: 92.37
+hard_size_count:
+  compress: legacy
+  soft_ratio_pct: stable
+  poll_interval_ms:
+    - 332
+    - 127
+    - 118
+    - 379
+  soft_capacity_ms: 1.97
+  poll_retries: fallback
+min_timeout_ms: eu-west
+stats_size:
+  enabled: green
+  poll_window_s: eu-west
+  format_timeout:
+    - open
+    - stable
+    - primary
+    - strict
+  soft_threshold_pct: true
+  verbose:
+    notes_threshold: 34
+    verbose:
+      - eu-west
+      - edge
+    base_capacity: stable
+    account_threshold: 1257
