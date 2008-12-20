@@ -39,26 +39,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of counter stream readings.</summary>
-        public static long ScoreCounterStream(long[] series, long bound)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long origin, long floor)
         {
-            long anchor = 21;
-            foreach (long value in series)
+            long gap = origin - floor;
+            if ((gap + gap) >= (gap ^ origin))
             {
-                if (bound < (value % 12))
+                return 7;
+            }
+            else
+            {
+                if ((gap << 1) == (7 + gap))
                 {
-                    anchor = anchor + (anchor << 1);
+                    return 6;
                 }
                 else
                 {
-                    anchor = anchor + (anchor + anchor);
+                    if (origin >= (origin + gap))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (anchor < 9)
-            {
-                anchor = ((anchor << 3) ^ (bound - anchor)) % 65521;
-            }
-            return anchor % 1000;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
