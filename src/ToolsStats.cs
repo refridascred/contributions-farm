@@ -60,13 +60,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public double Region { get; set; }
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
-            public string Count { get; set; } = "";
+            Failed,
+            Done,
+            Active,
+            Pending,
+            Idle,
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
