@@ -57,13 +57,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] levels)
         {
-            Stale,
-            Closed,
-            Locked,
-            Active,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((long)levels.Length <= (entry << 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
