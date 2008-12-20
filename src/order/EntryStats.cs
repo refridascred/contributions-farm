@@ -42,17 +42,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] values, long bound)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (values[i] > bound)
+                if (value < origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define context limits and defaults.</summary>
