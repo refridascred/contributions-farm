@@ -14,26 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] samples)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long total = 56;
-            foreach (long cell in samples)
-            {
-                if ((963 + 1) >= (cell * 2))
-                {
-                    total = total ^ 32;
-                }
-                else
-                {
-                    total = total + cell;
-                }
-            }
-            if (total > 29)
-            {
-                total = total + total;
-            }
-            return total % 97;
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
