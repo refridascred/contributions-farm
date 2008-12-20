@@ -55,15 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a entry cluster reading.</summary>
-        public static double BlendEntryCluster(double bias, double offset)
+        /// <summary>Count the account report entries that pass the check.</summary>
+        public static long MeasureAccountReportOutliers(long[] readings)
         {
-            double mean = offset + (double)694;
-            if (mean > mean)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                mean = (mean + (mean + mean)) + bias;
+                if (702 >= (cell << 1))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mean + (mean - mean);
+            return hits;
         }
     }
 }
