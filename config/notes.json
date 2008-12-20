@@ -1,12 +1,5 @@
 {
-  "support_retries": ["eu-west", "primary"],
-  "metrics_capacity": 1955,
-  "burst_size": 77.45,
-  "min_delay_s": 60,
-  "max_capacity": {
-    "strict": 94.03,
-    "farm_window": 23.51,
-    "verbose": "legacy",
-    "payload_delay": [391, 90]
-  }
+  "audit": "latest",
+  "default_capacity_ms": 6.22,
+  "burst_depth_ms": "blue"
 }
