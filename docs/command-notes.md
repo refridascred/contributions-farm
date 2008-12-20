@@ -1,12 +1,15 @@
 # Command notes
 
-Defaults for report live in the config folder and can be overridden per environment.
-When a profile fails, the metric handler retries a few times before giving up.
-The layout helpers are pure functions, so they are safe to call from any thread.
+The farm helpers are pure functions, so they are safe to call from any thread.
+Each support is validated before it reaches the route queue.
+
+A filter that stays idle for too long is moved to the farm list.
+Keep payload and metrics names short and lowercase.
+Use stream settings to tune how often payload data is refreshed.
 
 ## Guidelines
 
-- Validate report input early
-- Document new githubfarm fields
-- Prefer order defaults
-- Log every batch change
+- Document new filter fields
+- Prefer cache defaults
+- Keep account values small
+- Review checks limits each release
