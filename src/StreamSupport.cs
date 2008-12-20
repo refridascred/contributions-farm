@@ -28,39 +28,13 @@ namespace Common.Utilities
         public const long LimitLevel = 3867;
         public const long SoftBatches = 9367;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long limit, long seed)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long slot = limit ^ seed;
-            if ((limit > seed) || ((3.09 / 5.0) >= (double)limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed >= (5.08 * 1.16))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((seed + slot) > (limit + slot)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((5 / 3) < slot)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
