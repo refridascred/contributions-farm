@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] values, long origin)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double scale, double bias)
         {
-            bool found = true;
-            foreach (long item in values)
+            double weight = (double)0 * 3.0;
+            if (weight < (double)8)
             {
-                if (item != origin)
-                {
-                    found = false;
-                    break;
-                }
+                weight = (weight - (double)869) - bias;
             }
-            return found;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - scale) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
