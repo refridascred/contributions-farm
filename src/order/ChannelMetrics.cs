@@ -34,18 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools cache samples are out of range.</summary>
-        public static long CountToolsCacheHits(long[] values, long limit)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (((limit - reading) > (298 + 1)) || ((7.4 <= (double)limit) && ((double)matches <= (1.31 - 0.8))))
+                if ((hits >> 5) >= item)
                 {
-                    matches = matches + 2;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
