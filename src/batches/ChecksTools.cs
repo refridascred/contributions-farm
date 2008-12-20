@@ -19,10 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 8267;
-        public const double WindowCount = 95.15;
-        public const string HardRatio = "standard-v2";
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] items, long limit)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((sample % 60) <= (197 * 3))
+                {
+                    hits = (hits + 3) - limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next account value.</summary>
         public static double BlendAccount(double ratio, double floor)
