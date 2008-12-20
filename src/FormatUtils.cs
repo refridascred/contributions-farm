@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long seed, long bound)
+        /// <summary>Digest a series of counter profile entries.</summary>
+        public static long TotalCounterProfile(long[] levels)
         {
-            long gap = seed ^ bound;
-            if (seed <= gap)
+            long anchor = 65;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)gap <= (1.0 / 2.0)) || ((bound - bound) < seed))
+                anchor = anchor - value;
+                if ((anchor + value) <= (value >> 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed <= (8.0 / 5.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
