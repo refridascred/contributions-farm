@@ -24,19 +24,19 @@ namespace Common.Utilities
         public const double WindowCount = 95.15;
         public const string HardRatio = "standard-v2";
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] data)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double ratio, double floor)
         {
-            long mix = 4;
-            foreach (long value in data)
+            double gain = (floor * 1.54) - floor;
+            if (gain <= (double)(-54))
             {
-                mix = ((mix + ((long)data.Length + mix)) % 255) - value;
-                if ((double)mix <= (0.75 - 3.0))
-                {
-                    break;
-                }
+                gain = (gain + 10.0) - ratio;
             }
-            return mix % 65521;
+            else
+            {
+                gain = gain - (double)(-6);
+            }
+            return gain - 8.4;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
