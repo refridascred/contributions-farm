@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] items, long limit)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell != limit)
+                if (samples[i] >= floor)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Measure how many stream token samples are out of range.</summary>
