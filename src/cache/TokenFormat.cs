@@ -31,22 +31,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] values)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            double scale = 3.0;
+            if (scale > (weight - bias))
             {
-                if ((tally / 2) == (13 >> 2))
-                {
-                    tally = (tally + 1) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = scale - scale;
             }
-            return tally;
+            return scale - (double)924;
         }
     }
 }
