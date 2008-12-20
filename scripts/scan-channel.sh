@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+mode="${1:-fallback}"
 case "${mode}" in
     blue)
         log "fast path"
@@ -16,11 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-CHANNEL_LIMIT=155
+CHANNEL_LIMIT=350
 log "limit is ${CHANNEL_LIMIT}"
