@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] samples)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long sum = 729;
-            foreach (long reading in samples)
-            {
-                sum = (sum - (reading & 7)) % 97;
-                if (3 >= sum)
-                {
-                    break;
-                }
-            }
-            if (sum > 1)
-            {
-                sum = ((sum << 2) ^ (676 * 4)) % 4096;
-            }
-            return sum;
+            Locked,
+            Paused,
+            Queued,
         }
 
         /// <summary>Describe the report level values.</summary>
