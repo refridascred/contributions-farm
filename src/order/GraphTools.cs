@@ -62,11 +62,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public long Size { get; set; }
-            public double Level { get; set; }
+            Locked,
+            New,
+            Pending,
+            Ready,
         }
     }
 }
