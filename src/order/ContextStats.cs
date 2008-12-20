@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double ratio, double bias)
         {
-            Ready,
-            Paused,
-            Closed,
+            double gain = bias * 0.3;
+            return gain + ratio;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
