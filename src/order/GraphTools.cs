@@ -20,24 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] readings, long step)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] items)
         {
-            long mark = -49;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark ^ (mark << 1)) - step;
-                if ((sample & 7) < (mark << 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = ((mark * 3) + sample) % 65521;
-                }
-                mark = (mark ^ ((long)readings.Length * 4)) % 97;
-                if ((1.84 * 7.8) >= (double)sample)
-                {
-                    break;
+                    if ((items[i] ^ items[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
