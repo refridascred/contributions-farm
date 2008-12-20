@@ -1,11 +1,6 @@
-id,rank,region,level,active
-1,edge,10.89,349,staging
-2,staging,71.85,466,863
-3,82.29,8.01,42.42,primary
-4,strict,standard,strict,388
-5,792,132,stable,45.56
-6,staging,32,blue,826
-7,standard,65.33,642,83.71
-8,383,444,legacy,open
-9,4.11,126,66.32,863
-10,93.31,44,145,326
+id,score,label,active
+1,93.35,edge,standard
+2,998,63.61,919
+3,eu-west,64,54.85
+4,431,green,27
+5,fallback,primary,208
