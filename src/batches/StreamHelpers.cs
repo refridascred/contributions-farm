@@ -25,16 +25,25 @@ namespace Common.Utilities
         public const double StepScore = 22.15;
         public const long HardChannel = 9223;
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long limit)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long bound)
         {
-            long carry = limit;
-            for (int i = 0; i < 18; i++)
+            long sum = bound;
+            for (int i = 0; i < 14; i++)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
-                carry = ((carry * 4) + (long)i) % 1000;
+                if (!((sum / 9) >= (4 / 6)))
+                {
+                    sum = ((sum * 2) + sum) % 97;
+                    sum = (sum + sum) % 97;
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    sum = (((sum << 2) ^ (sum + 358)) % 101) + (long)i2;
+                    sum = sum + sum;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
