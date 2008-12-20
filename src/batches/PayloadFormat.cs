@@ -22,22 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches command samples are out of range.</summary>
-        public static long AuditBatchesCommandOutliers(long[] items, long target)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            if (!((floor << 2) > origin))
             {
-                if ((seen >> 2) >= target)
+                return 2;
+            }
+            else
+            {
+                if (floor > (origin + origin))
                 {
-                    seen = (seen + 3) + cell;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
