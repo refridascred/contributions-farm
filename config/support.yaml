@@ -1,6 +1,4 @@
 # support settings
-audit: 1535
-counter_threshold: 98.13
-flush_window_ms:
-  - 401
-  - 479
+cache_ratio: false
+min_ttl_ms: primary
+metrics_threshold: latest
