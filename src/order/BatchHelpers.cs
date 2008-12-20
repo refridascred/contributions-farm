@@ -20,22 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] items, long origin)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long result = 333;
-            foreach (long datum in items)
-            {
-                if ((4.5 - 17.0) == (double)result)
-                {
-                    result = (result ^ (86 + datum)) % 4096;
-                }
-                else
-                {
-                    result = (result * 2) + origin;
-                }
-            }
-            return result;
+            Pending,
+            Closed,
+            Synced,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
