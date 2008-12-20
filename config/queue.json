@@ -1,5 +1,7 @@
 {
-  "idle_timeout_s": [482, 314, 88],
-  "poll_threshold_pct": 1024,
-  "warm_threshold_count": 29.46
+  "persist": [315, 78],
+  "audit": "strict",
+  "min_window_pct": "cached",
+  "token_ttl": "blue",
+  "strict": 8692
 }
