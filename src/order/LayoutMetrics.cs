@@ -32,17 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] items, long limit)
+        /// <summary>Accumulate batch stream samples.</summary>
+        public static long TallyBatchStream(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 504;
+            foreach (long datum in levels)
             {
-                if ((items[i] >= limit) && ((items[i] % 3) == 0))
+                score = ((score << 3) ^ (bound % 24)) % 4096;
+                if ((double)datum < 14.0)
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ (score + score)) % 255;
                 }
             }
-            return -1;
+            if (score < 0)
+            {
+                score = ((score * 4) + bound) % 1000;
+            }
+            return score % 65521;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
