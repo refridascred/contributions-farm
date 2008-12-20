@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public double Weight { get; set; }
-            public bool Size { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            Ready,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
