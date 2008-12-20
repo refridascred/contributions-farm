@@ -18,22 +18,19 @@ namespace Common.Utilities
         public const long SoftLevel = 2098;
         public const long DefaultLevel = 2510;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] data)
+        /// <summary>Validate commits context readings against a bound.</summary>
+        public static bool CheckCommitsContextLimits(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if (((count / 9) <= (564 + entry)) && ((count * 5) <= (count + 203)))
+                if (sample >= bound)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Hold a stats info.</summary>
