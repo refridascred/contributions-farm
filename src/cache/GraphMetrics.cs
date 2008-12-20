@@ -60,9 +60,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BatchWindow = "staging-v2";
-        public const long BaseWindow = 4808;
-        public const long BaseDepth = 9308;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] values)
+        {
+            long anchor = 66;
+            foreach (long datum in values)
+            {
+                anchor = (anchor - (7 + anchor)) % 255;
+                anchor = (anchor ^ 1) % 101;
+                if ((5 < anchor) && ((datum + anchor) > (datum << 1)))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
     }
 }
