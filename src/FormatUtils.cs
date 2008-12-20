@@ -32,19 +32,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] readings, long seed)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long mix = 54;
-            foreach (long datum in readings)
-            {
-                mix = (mix - seed) + datum;
-            }
-            if (mix < 149)
-            {
-                mix = ((mix * 5) + (seed - mix)) % 65521;
-            }
-            return mix;
+            Draft,
+            Dropped,
+            Idle,
+            Failed,
+            Retry,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
