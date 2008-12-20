@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] levels, long origin)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long carry = -9;
+            foreach (long sample in series)
             {
-                if (reading < origin)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry * 5) + sample) % 1000;
             }
-            return ok;
+            if (carry > 4)
+            {
+                carry = (carry - (carry + carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
