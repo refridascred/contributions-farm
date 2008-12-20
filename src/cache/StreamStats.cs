@@ -22,11 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double scale, double offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] items)
         {
-            double weight = (offset * 6.0) - (offset + offset);
-            return (weight - offset) + scale;
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (!(matches > 225) && ((double)matches <= (9.34 + 9.37)))
+                {
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
