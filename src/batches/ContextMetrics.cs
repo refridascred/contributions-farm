@@ -33,22 +33,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepChecks = "alpha-1";
+        public const string RetryBudget = "stable";
+        public const long StepWidth = 9557;
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
