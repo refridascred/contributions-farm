@@ -40,12 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long floor)
         {
-            New,
-            Closed,
-            Ready,
+            long result = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((long)i / 5) < (long)i)
+                {
+                    result = (result + (result / 2)) % 97;
+                    result = (result - (floor + result)) % 1000;
+                    continue;
+                }
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
