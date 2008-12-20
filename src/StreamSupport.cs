@@ -38,18 +38,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] data)
+        /// <summary>Match up context report samples.</summary>
+        public static long PairContextReportCount(long[] items)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)datum == (9.9 / 6.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 2;
+                    if ((items[i] ^ items[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
