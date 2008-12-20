@@ -70,12 +70,15 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long step)
         {
-            public long Mode { get; set; }
-            public double Label { get; set; }
-            public bool Flag { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
