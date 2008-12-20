@@ -54,19 +54,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long step)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long state = step;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((step >> 3) == (step + state))
-                {
-                    break;
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            public string Weight { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
