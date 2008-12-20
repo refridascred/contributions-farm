@@ -32,11 +32,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
-        {
-            public bool Label { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 7170;
+        public const long SoftGithubfarm = 6454;
+        public const string IdleGithubfarm = "legacy-v2";
     }
 }
