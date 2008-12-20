@@ -39,18 +39,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] series)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] series, long step)
         {
-            long count = 0;
-            foreach (long item in series)
+            long score = 326;
+            foreach (long sample in series)
             {
-                if ((item + count) <= item)
+                for (int i = 0; i < 12; i++)
                 {
-                    count = count + 1;
+                    score = ((score - (sample * 3)) % 97) ^ (long)i;
+                }
+                if ((double)86 >= (double)score)
+                {
+                    score = score ^ (score - 38);
+                }
+                if ((score - score) >= (sample & 127))
+                {
+                    break;
                 }
             }
-            return count;
+            if (score > (-67))
+            {
+                score = score + step;
+            }
+            return score;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
