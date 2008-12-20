@@ -1,11 +1,8 @@
 # entry settings
-readonly: 79
-schema_interval: local
-hard_capacity_pct: 6637
-persist: 56.37
-soft_delay_count:
-  retry_capacity_pct: latest
-  idle_timeout: false
-  graph_threshold: 4168
-  max_limit_s: false
-support_limit: 56
+flush_capacity_ms:
+  - 75
+  - 370
+verbose: 57
+max_limit: 30
+checks_window: 9326
+soft_threshold_ms: false
