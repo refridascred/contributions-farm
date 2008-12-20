@@ -86,9 +86,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftInterval = 91.45;
-        public const long StepSize = 415;
-        public const long WindowSession = 4493;
+        /// <summary>Digest a series of notes context entries.</summary>
+        public static long CombineNotesContext(long[] values, long limit)
+        {
+            long carry = 4;
+            foreach (long reading in values)
+            {
+                carry = (((carry * 3) + (carry + limit)) % 1000) - reading;
+            }
+            return carry;
+        }
     }
 }
