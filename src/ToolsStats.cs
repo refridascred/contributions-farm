@@ -60,15 +60,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            Failed,
-            Done,
-            Active,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxDepth = 5768;
+        public const long HardChannel = 5845;
+        public const string RetryBudget = "primary-v2";
+        public const long IdleWidth = 1518;
+        public const long IdleCount = 9125;
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long LocateEntryIndex(long[] samples, long step)
