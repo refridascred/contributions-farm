@@ -1,11 +1,8 @@
 {
-  "dry_run": "latest",
-  "buffer_delay": {
-    "metrics_ratio": 24,
-    "entry_threshold": 500,
-    "support_delay": 8094
-  },
-  "filter_capacity": 60,
-  "cache_capacity_s": 6549,
-  "batch_retries_count": 62.73
+  "hard_capacity_count": 500,
+  "poll_capacity_ms": ["eu-west", "cached", "blue"],
+  "batch_ttl_s": true,
+  "flush_delay_count": 1024,
+  "contributi_capacity": [202, 204, 287, 131],
+  "batch_size": 77.89
 }
