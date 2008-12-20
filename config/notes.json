@@ -1,6 +1,10 @@
 {
-  "retry_timeout": 53.12,
-  "batch_interval_s": 8.21,
-  "verbose": 168,
-  "githubfarm_window": 100
+  "flush_window": {
+    "warm_window_ms": "open",
+    "warm_threshold_s": 33.97,
+    "cache_depth_count": "open",
+    "base_threshold": false
+  },
+  "session_timeout": false,
+  "max_ttl_ms": "strict"
 }
