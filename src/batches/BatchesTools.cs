@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double ratio, double offset)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            double mean = ratio;
-            return (mean - (3.11 * 8.5)) + offset;
+            public long Score { get; set; }
+            public double Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Adjust a entry reading.</summary>
