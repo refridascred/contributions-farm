@@ -46,18 +46,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the stats payload entries that pass the check.</summary>
-        public static long MeasureStatsPayloadOutliers(long[] data, long origin)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((origin % 97) <= hits)
+                if (datum >= origin)
                 {
-                    hits = (hits + 2) ^ reading;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
