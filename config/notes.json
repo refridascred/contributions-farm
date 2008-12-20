@@ -1,5 +1,8 @@
 {
-  "audit": true,
-  "base_timeout_s": "staging",
-  "retry_ttl_s": "eu-west"
+  "profile_window": 26,
+  "soft_window_pct": 23,
+  "hard_ttl_count": "standard",
+  "stream_ratio": 88.28,
+  "retry_depth": 250,
+  "support_delay": "staging"
 }
