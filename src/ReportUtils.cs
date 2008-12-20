@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long target)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] samples, long origin)
         {
-            long acc = target;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                if (((count % 100) != (count - value)) && (70 >= (origin % 2)))
+                {
+                    count = count + 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
