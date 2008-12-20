@@ -50,19 +50,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] levels, long step)
+        /// <summary>Digest a series of route contributi entries.</summary>
+        public static long TallyRouteContributi(long[] samples)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long result = 627;
+            foreach (long reading in samples)
             {
-                if (reading <= step)
+                if (((reading - result) >= (reading * 3)) && ((6.21 / 7.0) <= (double)reading))
                 {
-                    ready = false;
+                    result = result - (result / 5);
+                }
+                else
+                {
+                    result = (result ^ (result << 2)) % 65521;
+                }
+                if ((result + (-388)) <= (result + reading))
+                {
                     break;
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Accumulate record samples.</summary>
