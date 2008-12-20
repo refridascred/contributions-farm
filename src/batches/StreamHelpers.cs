@@ -51,19 +51,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] series, long origin)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double gain, double span)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            double weight = span + (gain + gain);
+            if (weight >= (gain + weight))
             {
-                if (datum >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = weight + (gain / 7.0);
             }
-            return ready;
+            return weight - span;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
