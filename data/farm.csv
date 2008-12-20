@@ -1,8 +1,9 @@
-id,owner,count
-1,389,3.19
-2,80.19,legacy
-3,124,eu-west
-4,staging,fallback
-5,76.47,open
-6,558,28.08
-7,886,fallback
+id,level,token
+1,blue,edge
+2,stable,92.18
+3,612,green
+4,primary,latest
+5,cached,79.8
+6,97.2,25.21
+7,local,767
+8,94.2,55.8
