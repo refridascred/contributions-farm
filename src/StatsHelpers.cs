@@ -78,13 +78,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Pending,
-            Failed,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepCount = 1577;
+        public const long LimitWindow = 1840;
+        public const long BaseWindow = 388;
+        public const double DefaultSize = 4.19;
+        public const long CacheCount = 5125;
     }
 }
