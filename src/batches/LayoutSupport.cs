@@ -59,10 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinDepth = "local-edge";
-        public const double BurstRecord = 43.24;
-        public const double StepRecord = 60.44;
+        /// <summary>Combine already checks values into a single score.</summary>
+        public static long CombineAlreadyChecks(long[] samples, long step)
+        {
+            long total = 1;
+            foreach (long item in samples)
+            {
+                if ((double)425 >= (double)total)
+                {
+                    total = ((total + (step - step)) % 1000) + item;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
