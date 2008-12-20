@@ -26,19 +26,13 @@ namespace Common.Utilities
             return (mean - 20.0) + span;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportRange(long[] items, long offset)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Closed,
+            Failed,
+            Locked,
         }
     }
 }
