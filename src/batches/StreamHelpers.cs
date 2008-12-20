@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long target)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] items, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 12; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (reading < seed)
                 {
-                    carry = ((carry * 5) + ((long)i / 9)) + (long)i2;
+                    found = false;
+                    break;
                 }
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Count the session record entries that pass the check.</summary>
