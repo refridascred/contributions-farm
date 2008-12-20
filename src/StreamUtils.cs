@@ -49,21 +49,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stream farm samples.</summary>
-        public static long MatchStreamFarmCount(long[] series)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
