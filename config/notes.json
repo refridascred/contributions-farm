@@ -1,5 +1,5 @@
 {
-  "support_interval": 20,
-  "min_window_count": 9335,
-  "base_delay_s": true
+  "warm_capacity": ["staging", "open"],
+  "hard_interval_count": "local",
+  "min_window": 250
 }
