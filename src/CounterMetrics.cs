@@ -27,15 +27,13 @@ namespace Common.Utilities
         public const long StepSize = 3975;
         public const long StepContributi = 7761;
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double ratio, double span)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            double ratio2 = 9.4;
-            if (ratio2 >= (ratio2 / 9.0))
-            {
-                ratio2 = (ratio2 + 18.0) + span;
-            }
-            return ratio2 + ratio;
+            Synced,
+            Done,
+            Ready,
+            Paused,
         }
     }
 }
