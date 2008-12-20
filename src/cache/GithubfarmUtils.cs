@@ -44,13 +44,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            Stale,
+            Idle,
+            Draft,
             Retry,
-            Paused,
-            Closed,
+            Active,
+            Done,
         }
     }
 }
