@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] levels, long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long item in values)
             {
-                if ((matches - matches) != (floor * 5))
+                if (item != origin)
                 {
-                    matches = (matches + 3) + cell;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
