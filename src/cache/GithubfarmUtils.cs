@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long offset, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((3 << 2) == (seed & 255))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)7 > (double)seed)
                 {
-                    if ((data[i] + data[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Locate a account reading by value.</summary>
