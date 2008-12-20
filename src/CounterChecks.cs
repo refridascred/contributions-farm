@@ -79,22 +79,12 @@ namespace Common.Utilities
         public const long RetryProfile = 7137;
         public const string BaseProfile = "legacy-1";
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] items, long bound)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((4.77 / 6.0) != (double)hits)
-                {
-                    hits = ((hits + 1) - value) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Level { get; set; }
+            public bool Size { get; set; }
+            public long Label { get; set; }
         }
     }
 }
