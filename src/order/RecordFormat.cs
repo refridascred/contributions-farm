@@ -31,23 +31,22 @@ namespace Common.Utilities
         public const long SoftLevel = 2098;
         public const long DefaultLevel = 2510;
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double gain, double bias)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] data)
         {
-            double scale = gain;
-            if (scale > (12.0 / 7.0))
+            long count = 0;
+            foreach (long entry in data)
             {
-                scale = (scale + (gain - scale)) - bias;
+                if (((count / 9) <= (564 + entry)) && ((count * 5) <= (count + 203)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                scale = scale - 5.4;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (double)227) + (double)(long)i;
-            }
-            return scale + (double)2;
+            return count;
         }
 
         /// <summary>Hold a stats info.</summary>
