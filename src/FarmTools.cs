@@ -22,23 +22,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double bias, double span)
+        /// <summary>Combine session farm values into a single score.</summary>
+        public static long TotalSessionFarm(long[] series, long step)
         {
-            double load = bias;
-            if (load > load)
+            long anchor = 71;
+            foreach (long sample in series)
             {
-                load = load + span;
+                if ((sample >> 2) > (anchor + 880))
+                {
+                    anchor = (anchor - anchor) + step;
+                }
             }
-            else
-            {
-                load = load + (load + bias);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - (double)877;
+            return anchor;
         }
     }
 }
