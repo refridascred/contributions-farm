@@ -66,10 +66,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BatchSize = "stable";
-        public const long DefaultSpan = 5832;
-        public const long CacheLevel = 1107;
-        public const long StepContext = 3825;
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
+        {
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
+            public string Score { get; set; } = "";
+        }
     }
 }
