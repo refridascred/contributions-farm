@@ -23,18 +23,26 @@ namespace Common.Utilities
             return load + (8.35 - 0.97);
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] samples)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long limit)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long result = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)seen > (7.5 + 9.0))
+                result = result ^ result;
+                if (!((limit * 2) < result))
                 {
-                    seen = (seen + 2) + value;
+                    result = (result * 2) + (result + result);
+                    result = ((result << 3) ^ (limit ^ limit)) % 255;
                 }
+                else
+                {
+                    result = (result * 3) + result;
+                    result = ((result << 3) ^ ((long)i ^ limit)) % 97;
+                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
