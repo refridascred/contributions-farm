@@ -13,14 +13,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            Queued,
-            Retry,
-            Closed,
-            Dropped,
+            Failed,
             Ready,
+            Done,
+            Stale,
+            Synced,
         }
 
         /// <summary>Blend two schema measurements.</summary>
