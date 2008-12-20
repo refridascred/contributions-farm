@@ -16,17 +16,18 @@ namespace Common.Utilities
             return scale2 + (double)44;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] readings, long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (readings[i] <= bound)
+                if (((seen ^ target) <= (591 & 31)) && ((target & 1) != (target << 3)))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
