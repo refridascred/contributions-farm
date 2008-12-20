@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 1081;
-        public const long MaxCache = 4601;
-        public const long BurstFactor = 6786;
-        public const double SoftInterval = 27.26;
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Idle,
+            Done,
+            Closed,
+        }
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long SortEntry(long target, long bound)
