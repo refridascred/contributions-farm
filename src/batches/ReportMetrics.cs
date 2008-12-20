@@ -23,31 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long limit, long offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] samples)
         {
-            if ((double)offset > (15.0 + 2.0))
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((3.11 + 16.0) < (double)offset)
+                if ((double)matches < (3.0 * 9.0))
                 {
-                    return 4;
+                    matches = (matches + 3) + sample;
                 }
                 else
                 {
-                    if ((double)offset != (1.0 - 5.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
