@@ -22,22 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] data, long bound)
+        /// <summary>Blend two githubfarm farm measurements.</summary>
+        public static double AdjustGithubfarmFarm(double gain, double span)
         {
-            long mix = 463;
-            foreach (long reading in data)
+            double bias = (double)(26 % 16);
+            for (int i = 0; i < 6; i++)
             {
-                if (((mix & 63) != (reading + 54)) || ((double)reading < (19.0 - 3.5)))
-                {
-                    mix = (mix + (reading - mix)) % 97;
-                }
-                else
-                {
-                    mix = (mix + (bound >> 1)) % 97;
-                }
+                bias = ((bias - (double)(long)i) - gain) + span;
             }
-            return mix;
+            return bias - (double)(-95);
         }
 
         /// <summary>Define session limits and defaults.</summary>
