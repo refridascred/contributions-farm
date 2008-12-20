@@ -22,21 +22,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] items)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long bound, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long delta = bound + target;
+            if ((double)delta != (4.7 - 8.3))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((target << 3) < (1 + target))
                 {
-                    if ((items[i] ^ items[j]) < 18)
+                    return 5;
+                }
+                else
+                {
+                    if (delta <= (target & 63))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a contributi info.</summary>
