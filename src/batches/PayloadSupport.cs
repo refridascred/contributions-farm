@@ -13,16 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine window commits values into a single score.</summary>
-        public static long TallyWindowCommits(long[] series)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] levels, long seed)
         {
-            long anchor = -42;
-            foreach (long sample in series)
+            long mix = 77;
+            foreach (long value in levels)
             {
-                anchor = (((anchor << 2) ^ (anchor + 6)) % 4096) + sample;
-                anchor = ((anchor << 2) ^ (459 - (long)series.Length)) % 1000;
+                mix = (mix ^ value) % 4096;
             }
-            return anchor;
+            if (mix > 824)
+            {
+                mix = (mix + (256 - seed)) % 65521;
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the counter status values.</summary>
