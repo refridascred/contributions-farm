@@ -39,12 +39,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] levels, long seed)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] levels, long limit)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
+                if (levels[i] < limit)
                 {
                     return (long)i;
                 }
