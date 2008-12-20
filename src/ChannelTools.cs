@@ -22,12 +22,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Classify a counter account pair into a bucket.</summary>
+        public static long RankCounterAccount(long step, long seed)
         {
-            Closed,
-            Stale,
-            Synced,
+            if (((double)step != (double)seed) && ((5.71 / 2.0) < (double)seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((3.98 / 4.0) != (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed - step) != (4 >> 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((seed & 1) >= (step & 255)) || ((step - seed) < seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
