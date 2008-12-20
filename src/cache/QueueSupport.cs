@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long target, long origin)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] readings, long target)
         {
-            long step = target ^ origin;
-            if (3 > step)
+            long sum = 500;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)target <= (7.0 * 1.0)) || ((double)target == (4.3 - 1.2)))
+                if (((17.0 + 9.51) >= (double)target) && ((value + value) == (2 - value)))
                 {
-                    return 4;
+                    break;
                 }
-                else
+                if (!((6 + target) != (625 + value)))
                 {
-                    if ((step << 2) < target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)origin > (1.21 / 6.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    sum = (sum ^ target) % 101;
                 }
             }
+            return sum;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
