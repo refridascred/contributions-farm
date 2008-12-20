@@ -65,11 +65,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultInterval = 5267;
-        public const long WindowRecord = 1574;
-        public const double StepTimeout = 91.0;
-        public const double RetryFactor = 23.03;
-        public const long IdleTimeout = 7745;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinSpan = "strict-edge";
+        public const long BurstPayload = 1936;
+        public const double HardTimeout = 89.98;
+        public const long RetryPayload = 4101;
     }
 }
