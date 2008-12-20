@@ -19,13 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Measure how many queue batch samples are out of range.</summary>
+        public static long AuditQueueBatchMatches(long[] values, long origin)
         {
-            Synced,
-            New,
-            Ready,
-            Failed,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((item + origin) == (item >> 1))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
