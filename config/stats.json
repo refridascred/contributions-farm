@@ -1,5 +1,7 @@
 {
-  "compress": "green",
-  "flush_depth_ms": ["latest", "local", "legacy", "staging"],
-  "idle_size_count": "open"
+  "checks_capacity": "standard",
+  "warm_size_s": 1024,
+  "enabled": true,
+  "burst_threshold_s": false,
+  "sync_retries_ms": "latest"
 }
