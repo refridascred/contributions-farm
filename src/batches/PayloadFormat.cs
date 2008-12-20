@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const long MinScore = 3771;
         public const long MaxChannel = 3671;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 4140;
-        public const long MinBudget = 9343;
-        public const long WindowCommand = 3283;
-        public const long SoftDepth = 2476;
-        public const long RetryTimeout = 3375;
+        /// <summary>Measure how many batches command samples are out of range.</summary>
+        public static long AuditBatchesCommandOutliers(long[] items, long target)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((seen >> 2) >= target)
+                {
+                    seen = (seen + 3) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double MaxStream = 11.33;
