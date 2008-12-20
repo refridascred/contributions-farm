@@ -1,15 +1,10 @@
 # entry settings
-default_depth:
-  - latest
-  - legacy
-enabled:
-  readonly:
-    - blue
-    - latest
-    - strict
-  tools_window: stable
-  filter_retries: false
-channel_threshold:
-  - 426
-  - 382
-  - 164
+hard_size_s: 8839
+verbose:
+  - 500
+  - 136
+counter_interval: primary
+cache_interval_pct: latest
+hard_timeout:
+  - blue
+  - local
