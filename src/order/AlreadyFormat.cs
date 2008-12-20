@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Audit metrics context readings against a rule.</summary>
+        public static long TallyMetricsContextOutliers(long[] readings)
         {
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)tally > (15.0 / 4.0))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
