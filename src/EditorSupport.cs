@@ -42,25 +42,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long offset, long bound)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long next = offset + bound;
-            if (!((next ^ bound) <= (next + 1)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((-69) % 100) != (offset & 63))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
