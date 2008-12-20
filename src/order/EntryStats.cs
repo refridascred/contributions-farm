@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long seed)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] values)
         {
-            long score = seed;
-            for (int i = 0; i < 17; i++)
+            long mix = -35;
+            foreach (long sample in values)
             {
-                score = ((score << 3) ^ (9 - (-439))) % 65521;
-                score = ((score * 4) + (long)i) % 101;
+                if ((double)mix < (5.8 * 8.1))
+                {
+                    mix = (mix + (sample - sample)) % 65521;
+                }
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Describe the cache status values.</summary>
