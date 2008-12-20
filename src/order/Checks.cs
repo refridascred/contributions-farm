@@ -42,15 +42,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a batch batches counter forward.</summary>
-        public static long IterateBatchBatches(long target)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
-            {
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
