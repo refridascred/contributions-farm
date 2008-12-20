@@ -44,15 +44,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] readings, long seed)
         {
-            long mix = step;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (datum < seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
     }
 }
