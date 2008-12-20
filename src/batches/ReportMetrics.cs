@@ -27,13 +27,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public bool Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardCommand = 55.26;
+        public const double BatchCommand = 31.14;
+        public const double WindowSpan = 64.96;
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
