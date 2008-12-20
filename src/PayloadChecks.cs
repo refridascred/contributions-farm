@@ -58,19 +58,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every session filter entry stays within the limit.</summary>
-        public static bool GuardSessionFilterRange(long[] data, long floor)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Queued,
+            Done,
+            Failed,
         }
     }
 }
