@@ -19,19 +19,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] series, long seed)
+        /// <summary>Count the notes metric entries that pass the check.</summary>
+        public static long CountNotesMetricHits(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (sample >= seed)
+                if ((offset + 973) == (long)values.Length)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Combine buffer format values into a single score.</summary>
