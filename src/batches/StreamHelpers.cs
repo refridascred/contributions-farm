@@ -20,10 +20,10 @@ namespace Common.Utilities
             return drift + bias2;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxStats = "latest";
-        public const double BurstStats = 29.11;
-        public const string BatchBudget = "strict-v2";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinSize = "staging";
+        public const double StepScore = 22.15;
+        public const long HardChannel = 9223;
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
