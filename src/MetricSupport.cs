@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] readings, long limit)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double ratio, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = ratio / 2.0;
+            if (bias2 >= (12.0 * 4.43))
             {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + (bias / 3.0);
             }
-            return -1;
+            return bias2 - (bias + ratio);
         }
 
         /// <summary>Define batches limits and defaults.</summary>
