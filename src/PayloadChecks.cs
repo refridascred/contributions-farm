@@ -13,18 +13,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the token farm entries that pass the check.</summary>
-        public static long TallyTokenFarmGaps(long[] levels, long limit)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (16.0 <= (double)limit)
+                if (readings[i] <= bound)
                 {
-                    count = (count + 2) - reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
