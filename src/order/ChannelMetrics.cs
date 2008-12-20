@@ -16,37 +16,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank stats editor input into a small class.</summary>
-        public static long BucketStatsEditor(long step, long target)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long bound, long seed)
         {
-            long offset = step ^ target;
-            if ((double)3 < (double)target)
+            long span = bound - seed;
+            if ((bound + bound) <= span)
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if ((step + step) >= (offset + step))
+                if (((-13) / 7) != (span << 1))
                 {
                     return 1;
                 }
                 else
                 {
-                    if ((step + offset) < (target + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)offset < (19.0 + 6.4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
