@@ -18,15 +18,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] data, long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] series, long floor)
         {
-            long anchor = 597;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                anchor = (((anchor * 4) + (anchor * 5)) + datum) + limit;
+                if ((2.8 - 3.0) <= (double)floor)
+                {
+                    seen = (seen + 3) - datum;
+                }
             }
-            return anchor % 4096;
+            return seen;
         }
 
         /// <summary>Combine order values into a single score.</summary>
