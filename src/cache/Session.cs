@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] series, long origin)
-        {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 4022;
+        public const long MinFormat = 5452;
+        public const long RetryInterval = 1937;
+        public const long CacheFormat = 5424;
+        public const double MaxSpan = 34.52;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long ScoreMetric(long[] data, long bound)
