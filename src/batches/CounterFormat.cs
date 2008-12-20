@@ -14,19 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next githubfarm batches value.</summary>
-        public static double AdjustGithubfarmBatches(double bias, double offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] data, long target)
         {
-            double weight = (offset + offset) * 12.0;
-            if (weight < (double)350)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                weight = (weight + (offset * 6.3)) + bias;
+                if (datum < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (double)9;
-            }
-            return weight - (double)21;
+            return flag;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
