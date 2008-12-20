@@ -1,25 +1,6 @@
 # support settings
-persist: 2660
-soft_interval_pct: 94
-default_depth_s:
-  metric_window: 91
-  cache_ttl_s: 100
-  filter_retries:
-    cache_window:
-      - edge
-      - local
-      - legacy
-      - open
-    enabled:
-      - cached
-      - latest
-      - local
-      - open
-    checks_limit:
-      - primary
-      - blue
-    strict: legacy
-    hard_limit_s: 74.56
-    batch_size: false
-  persist: staging
-burst_threshold_s: cached
+audit: false
+sync_retries_s: blue
+readonly: false
+warm_depth_s: 100
+verbose: open
