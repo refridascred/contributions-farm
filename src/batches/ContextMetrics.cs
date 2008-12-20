@@ -37,12 +37,14 @@ namespace Common.Utilities
         public const long RetryFactor = 6678;
         public const long BurstFilter = 6590;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheInterval = 70.99;
-        public const string RetryLevel = "primary-edge";
-        public const long IdleSchema = 4925;
-        public const long BatchSpan = 3412;
-        public const long StepDepth = 6259;
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Failed,
+            Pending,
+            Done,
+            Paused,
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long FoldMetric(long[] readings, long limit)
