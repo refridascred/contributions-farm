@@ -22,15 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two githubfarm farm measurements.</summary>
-        public static double AdjustGithubfarmFarm(double gain, double span)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] samples, long seed)
         {
-            double bias = (double)(26 % 16);
-            for (int i = 0; i < 6; i++)
+            long carry = 73;
+            foreach (long cell in samples)
             {
-                bias = ((bias - (double)(long)i) - gain) + span;
+                if (!(seed < carry))
+                {
+                    carry = (carry + (carry - cell)) % 97;
+                }
+                if (!((double)seed == (18.0 / 9.0)))
+                {
+                    break;
+                }
             }
-            return bias - (double)(-95);
+            return carry;
         }
 
         /// <summary>Define session limits and defaults.</summary>
