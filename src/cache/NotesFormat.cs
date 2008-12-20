@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate queue buffer readings against a bound.</summary>
-        public static bool CheckQueueBufferLimits(long[] series, long floor)
-        {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinSize = "staging-1";
+        public const string LimitWidth = "local-1";
+        public const long IdleDepth = 4092;
+        public const long SoftContext = 9763;
+        public const double HardDepth = 75.17;
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
