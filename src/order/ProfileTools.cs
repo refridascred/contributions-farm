@@ -28,39 +28,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long limit, long floor)
+        /// <summary>Locate a record farm reading by value.</summary>
+        public static long SeekRecordFarmIndex(long[] items, long seed)
         {
-            long delta = limit + floor;
-            if (((limit << 3) == (delta % 100)) && ((floor + limit) >= (delta / 2)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor >= 82) && (limit <= (limit + 935)))
+                if (items[i] < seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor - floor) >= floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((double)floor <= (double)limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
