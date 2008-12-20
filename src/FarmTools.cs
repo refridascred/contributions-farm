@@ -12,13 +12,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            Ready,
-            Locked,
-            Draft,
-            Stale,
+            public string Limit { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
