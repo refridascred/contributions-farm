@@ -66,17 +66,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a route context sample.</summary>
-        public static long FindRouteContextIndex(long[] samples, long seed)
+        /// <summary>Check that every layout entry entry stays within the limit.</summary>
+        public static bool GuardLayoutEntryLimits(long[] data, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((samples[i] < seed) && ((samples[i] % 2) != 0))
+                if (item > origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Validate filter payload readings against a bound.</summary>
