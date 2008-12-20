@@ -5,35 +5,28 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long seed, long target)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long offset, long origin)
         {
-            if ((seed >> 5) <= ((-9) << 2))
+            if ((offset * 5) < 26)
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if (((double)target <= 1.7) && ((seed ^ seed) < seed))
+                if ((origin * 3) >= (origin - 27))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    if (((16.0 / 7.0) >= (double)seed) || ((seed - target) > seed))
+                    if ((double)offset <= (15.0 * 8.53))
                     {
-                        return 5;
+                        return 4;
                     }
                     else
                     {
-                        if ((target ^ target) > (target + target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 6;
                     }
                 }
             }
