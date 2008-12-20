@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] values, long bound)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long target, long origin)
         {
-            long total = 110;
-            foreach (long item in values)
+            long step = target ^ origin;
+            if (3 > step)
             {
-                if (total <= (total & 15))
+                return 2;
+            }
+            else
+            {
+                if (((double)target <= (7.0 * 1.0)) || ((double)target == (4.3 - 1.2)))
                 {
-                    total = ((total - (bound >> 2)) % 101) ^ item;
+                    return 4;
+                }
+                else
+                {
+                    if ((step << 2) < target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)origin > (1.21 / 6.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
