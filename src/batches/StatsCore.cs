@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long limit)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long result = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                result = (result << 2) ^ (long)i;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Ready,
+            Queued,
+            Draft,
+            Pending,
         }
 
         /// <summary>Define account limits and defaults.</summary>
