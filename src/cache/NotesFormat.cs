@@ -24,15 +24,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long limit)
+        /// <summary>Compare every pair of githubfarm channel readings.</summary>
+        public static long CompareGithubfarmChannelCount(long[] levels)
         {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a context entry.</summary>
