@@ -34,18 +34,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] values, long floor)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] items, long target)
         {
-            long count = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (590 > sample)
+                if ((items[i] > target) && ((items[i] % 3) == 0))
                 {
-                    count = (count + 2) - floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
