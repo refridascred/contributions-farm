@@ -58,12 +58,9 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Ready,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitTimeout = "legacy-edge";
+        public const string CacheInterval = "alpha-1";
+        public const long SoftScore = 3056;
     }
 }
