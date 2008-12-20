@@ -20,15 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long offset)
+        /// <summary>Digest a series of filter profile entries.</summary>
+        public static long TotalFilterProfile(long[] readings)
         {
-            long total = offset;
-            for (int i = 0; i < 20; i++)
+            long state = 542;
+            foreach (long sample in readings)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                if ((state - state) <= (state / 7))
+                {
+                    state = ((state << 2) ^ (24 ^ 9)) + sample;
+                }
             }
-            return total;
+            return state % 1000;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
