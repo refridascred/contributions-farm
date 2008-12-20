@@ -56,12 +56,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] data)
         {
-            public string Total { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((cell & 1) > (cell % 3))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
