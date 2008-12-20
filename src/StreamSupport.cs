@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] items)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long step, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((double)floor > (2.2 + 5.99)) && ((step + floor) >= (floor + (-7))))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (floor < (5 + step))
                 {
-                    if ((items[i] ^ items[j]) > 8)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor == (3.9 / 5.0))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((-831) - step) >= floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a account format sample.</summary>
