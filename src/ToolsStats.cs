@@ -59,18 +59,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] samples)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long mix = 2;
-            foreach (long sample in samples)
-            {
-                if (!((sample >> 1) >= mix))
-                {
-                    mix = ((mix * 4) + mix) % 255;
-                }
-            }
-            return mix;
+            public double Region { get; set; }
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate session samples.</summary>
