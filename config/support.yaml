@@ -1,33 +1,6 @@
 # support settings
-verbose: 2694
-strict: 73.19
-max_interval_count: standard
-hard_depth_pct: legacy
-buffer_timeout: cached
-enabled:
-  sync_capacity_ms: 500
-  idle_ratio_s: true
-  default_interval_count: 74.38
-  idle_window_ms:
-    support_retries:
-      - fallback
-      - local
-      - legacy
-      - fallback
-    idle_threshold_ms: 250
-    min_retries_pct:
-      - local
-      - open
-      - cached
-      - fallback
-    flush_ttl_ms: open
-    hard_capacity:
-      - standard
-      - green
-  flush_threshold:
-    sync_capacity_count: 22.83
-    retry_limit: false
-    soft_threshold_count: 2569
-    idle_size_pct: legacy
-    readonly: false
-    audit: standard
+sync_window_s: blue
+checks_ttl: 85
+channel_size: 1
+route_capacity: 74.83
+flush_threshold: 60
