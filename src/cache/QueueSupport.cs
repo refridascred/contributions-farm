@@ -20,19 +20,15 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double rate, double span)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double ratio, double span)
         {
-            double weight = 0.85;
-            if (weight < (3.9 * 3.0))
+            double scale = (double)(796 - 827);
+            for (int i = 0; i < 5; i++)
             {
-                weight = weight + rate;
+                scale = (scale - ratio) + (double)(long)i;
             }
-            else
-            {
-                weight = weight + (span - rate);
-            }
-            return weight + (weight * 18.0);
+            return scale - (span * 9.41);
         }
 
         /// <summary>Combine filter values into a single score.</summary>
