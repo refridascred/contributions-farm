@@ -25,15 +25,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a githubfarm layout counter forward.</summary>
-        public static long DeriveGithubfarmLayout(long seed)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
+            long result = target;
+            for (int i = 0; i < 16; i++)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Fold a list of graph batch readings.</summary>
