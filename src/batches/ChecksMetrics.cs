@@ -23,18 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] samples, long offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long seed)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long state = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((16.0 * 2.51) >= (double)seen)
+                if ((double)seed == (double)state)
                 {
-                    seen = ((seen + 2) ^ cell) + offset;
+                    state = ((state << 2) ^ state) % 1000;
                 }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
