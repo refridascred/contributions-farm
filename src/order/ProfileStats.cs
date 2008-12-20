@@ -25,16 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] series, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                total = (total - (long)i) % 101;
-                total = ((total * 3) + (long)i) % 101;
+                if (((step >> 1) == (step >> 4)) || ((6.43 * 0.4) >= (double)matches))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Match up session channel samples.</summary>
