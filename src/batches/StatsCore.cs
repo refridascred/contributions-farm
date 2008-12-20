@@ -83,14 +83,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            New,
-            Dropped,
-            Ready,
-            Idle,
-            Active,
+            public bool Score { get; set; }
+            public bool Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Check that every githubfarm profile entry stays within the limit.</summary>
