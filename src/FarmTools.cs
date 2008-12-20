@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank commits editor input into a small class.</summary>
-        public static long ClassifyCommitsEditor(long offset, long limit)
-        {
-            if ((double)offset > (9.5 - 2.15))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset * 5) != (offset * 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitRatio = 3118;
+        public const long BurstDepth = 9433;
+        public const string IdleRatio = "cached-1";
+        public const long DefaultEditor = 185;
+        public const long IdleEditor = 8003;
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double AdjustRecord(double weight, double span)
