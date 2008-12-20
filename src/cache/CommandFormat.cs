@@ -34,14 +34,13 @@ namespace Common.Utilities
             return gain - (double)31;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            Synced,
-            Pending,
-            Idle,
-            Paused,
-            Locked,
+            public long Weight { get; set; }
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
