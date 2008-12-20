@@ -39,12 +39,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowWidth = 2363;
-        public const string MaxScore = "primary-v2";
-        public const long DefaultBudget = 9206;
-        public const long BatchChannel = 8169;
-        public const long LimitChannel = 1412;
+        /// <summary>Derive the next graph counter value from a seed.</summary>
+        public static long StepGraphCounter(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long FoldCommits(long[] items)
