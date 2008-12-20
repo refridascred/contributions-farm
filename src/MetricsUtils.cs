@@ -34,18 +34,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= seed) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleToken = 40.82;
+        public const string WindowToken = "primary-v2";
+        public const long RetryRatio = 2115;
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long SortPayload(long offset, long bound)
