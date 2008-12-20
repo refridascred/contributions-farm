@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the channel graph series from a seed.</summary>
-        public static long RollChannelGraph(long seed)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long sum = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Locked,
+            New,
+            Stale,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
