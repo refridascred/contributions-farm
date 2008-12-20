@@ -40,13 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Compare every pair of session batch readings.</summary>
+        public static long MatchSessionBatchCount(long[] samples)
         {
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
