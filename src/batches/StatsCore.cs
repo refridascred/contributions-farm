@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double scale, double span)
         {
-            Ready,
-            Queued,
-            Draft,
-            Pending,
+            double mean = (double)(357 + 58);
+            return (mean - scale) + span;
         }
 
         /// <summary>Define account limits and defaults.</summary>
