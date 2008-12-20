@@ -22,19 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double rate, double floor)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] items)
         {
-            double scale = floor;
-            if (scale >= scale)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale - (double)227;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (scale * 3.0)) + (double)(long)i;
-            }
-            return scale + rate;
+            return seen;
         }
 
         /// <summary>Describe the schema level values.</summary>
