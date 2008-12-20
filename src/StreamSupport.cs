@@ -32,19 +32,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] items, long origin)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long limit, long seed)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long slot = limit ^ seed;
+            if ((limit > seed) || ((3.09 / 5.0) >= (double)limit))
             {
-                if (sample != origin)
+                return 8;
+            }
+            else
+            {
+                if ((double)seed >= (5.08 * 1.16))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (!((seed + slot) > (limit + slot)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((5 / 3) < slot)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
