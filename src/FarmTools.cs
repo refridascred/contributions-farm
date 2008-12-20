@@ -16,23 +16,15 @@ namespace Common.Utilities
         public const long LimitChecks = 4431;
         public const long RetryScore = 4570;
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double ratio, double floor)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double weight, double offset)
         {
-            double scale = floor;
-            if (scale < floor)
+            double bias = (double)(92 / 7);
+            for (int i = 0; i < 5; i++)
             {
-                scale = scale - (floor * 7.4);
+                bias = ((bias - weight) + (double)(long)i) - offset;
             }
-            else
-            {
-                scale = scale - 3.88;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (ratio * 0.22)) + (double)(long)i;
-            }
-            return scale - scale;
+            return bias + bias;
         }
     }
 }
