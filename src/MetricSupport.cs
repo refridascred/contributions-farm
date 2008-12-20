@@ -23,11 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            Ready,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
