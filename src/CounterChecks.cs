@@ -20,26 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine farm editor values into a single score.</summary>
-        public static long CombineFarmEditor(long[] values, long floor)
+        /// <summary>Count the profile order entries that pass the check.</summary>
+        public static long AuditProfileOrderOutliers(long[] series)
         {
-            long carry = 42;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (!((floor % 97) < (reading - floor)))
+                if (((252 + tally) >= (tally ^ tally)) || (tally >= sample))
                 {
-                    carry = ((carry << 3) ^ (-77)) % 65521;
+                    tally = tally + 1;
                 }
-                if ((floor < (carry - reading)) && ((6.1 + 8.0) != (double)floor))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (carry > 264)
-            {
-                carry = (carry << 3) ^ (carry + carry);
-            }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Iterate the channel session series from a seed.</summary>
