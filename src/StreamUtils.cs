@@ -72,13 +72,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long step)
         {
-            public bool Label { get; set; }
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            long mark = step;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a batch notes reading.</summary>
