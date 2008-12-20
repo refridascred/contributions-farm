@@ -20,12 +20,15 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long bound)
         {
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
