@@ -25,17 +25,10 @@ namespace Common.Utilities
         public const long CacheWidth = 7434;
         public const string MaxCount = "staging-1";
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstDepth = "cached-v2";
+        public const long StepAlready = 5811;
+        public const long DefaultSpan = 1539;
+        public const double BaseAlready = 3.44;
     }
 }
