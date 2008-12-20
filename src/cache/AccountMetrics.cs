@@ -68,22 +68,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] data)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long origin, long limit)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            if ((limit - origin) < (limit / 4))
             {
-                if (((long)data.Length & 31) >= sample)
+                return 6;
+            }
+            else
+            {
+                if (((limit * 5) >= 46) && ((origin % 10) > limit))
                 {
-                    tally = tally + 2;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((7.1 * 0.6) == (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit * 3) > (origin / 7))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
