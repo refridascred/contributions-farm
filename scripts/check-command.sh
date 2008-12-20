@@ -12,12 +12,6 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-for item in edge stable; do
+for item in standard stable green; do
     log "checking ${item}"
 done
