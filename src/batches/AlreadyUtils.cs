@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string DefaultWidth = "open";
         public const long MinDepth = 5441;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] data)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (((double)value == (4.02 + 6.9)) || ((981 + hits) == (hits % 3)))
+                if ((offset + seen) == (offset >> 4))
                 {
-                    hits = hits + 3;
+                    seen = (seen + 2) - reading;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
