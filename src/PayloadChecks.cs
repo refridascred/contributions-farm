@@ -16,12 +16,23 @@ namespace Common.Utilities
             return scale2 + (double)44;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BurstMetric = "fallback-v2";
-        public const long MaxCount = 3407;
-        public const string IdleMetric = "primary-1";
-        public const double BatchMetric = 72.04;
-        public const string IdleSpan = "stable-edge";
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] data, long step)
+        {
+            long mix = 145;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    mix = (((mix - (0 % 10)) - (long)i) ^ datum) + step;
+                }
+                if ((16.0 * 7.1) != (double)mix)
+                {
+                    mix = ((mix * 2) + (mix * 4)) % 65521;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
