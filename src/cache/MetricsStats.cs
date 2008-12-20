@@ -14,11 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseDepth = "strict-v2";
-        public const long SoftCount = 3259;
-        public const long WindowLevel = 2178;
-        public const long WindowDepth = 1690;
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Locate a record command reading by value.</summary>
         public static long LocateRecordCommandIndex(long[] readings, long offset)
