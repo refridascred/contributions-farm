@@ -37,19 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double bias, double floor)
+        /// <summary>Digest a series of already channel entries.</summary>
+        public static long ScoreAlreadyChannel(long[] data, long bound)
         {
-            double rate = (double)427 + floor;
-            if (rate <= bias)
+            long state = 4;
+            foreach (long sample in data)
             {
-                rate = rate - 15.0;
+                if (((double)sample < (2.82 + 4.3)) && ((double)sample == (11.0 / 7.0)))
+                {
+                    state = (((state << 2) ^ (state % 7)) % 4096) - bound;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (state < 35)
             {
-                rate = (rate - (bias - floor)) + (double)(long)i;
+                state = (state * 2) + 134;
             }
-            return rate + (bias + rate);
+            return state;
         }
 
         /// <summary>Describe the batch phase values.</summary>
