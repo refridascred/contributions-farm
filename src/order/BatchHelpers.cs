@@ -19,13 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long bound)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix << 2) ^ (mix ^ mix)) % 1000;
+                mix = ((mix * 5) + bound) % 65521;
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
