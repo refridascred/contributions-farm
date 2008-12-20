@@ -1,22 +1,32 @@
 # support settings
-record_threshold: latest
-report_capacity: true
-cache_window_count:
-  - 394
-  - 383
-  - 68
-  - 101
-sync_interval_count:
-  batch_retries_ms:
-    - 2
-    - 350
-    - 70
-  hard_depth_count: 6841
-  payload_delay: false
-  compress: 4967
-  poll_timeout:
-    - local
-    - strict
-    - fallback
-    - standard
-  readonly: 93.07
+burst_limit_s:
+  flush_capacity_ms: 96
+  batch_ttl: 92
+  audit:
+    - eu-west
+    - staging
+  compress: true
+  idle_threshold_s: 33
+  channel_retries: 57.32
+flush_size: eu-west
+channel_retries: 8
+filter_ratio: 250
+poll_limit:
+  strict:
+    retry_ttl_pct: 10.76
+    persist:
+      - eu-west
+      - eu-west
+      - blue
+      - strict
+    default_depth_pct: cached
+    max_timeout_pct: false
+  counter_depth: fallback
+  notes_interval:
+    poll_capacity_pct: staging
+    flush_threshold: eu-west
+    compress: 1747
+    tools_size: primary
+    session_ttl: 9613
+  readonly: 5730
+  audit: blue
