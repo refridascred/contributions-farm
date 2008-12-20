@@ -23,12 +23,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            Queued,
-            Closed,
+            Pending,
             Ready,
+            Queued,
+            Stale,
+            Draft,
         }
 
         /// <summary>Count the stream channel entries that pass the check.</summary>
