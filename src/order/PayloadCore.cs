@@ -37,22 +37,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of already channel entries.</summary>
-        public static long ScoreAlreadyChannel(long[] data, long bound)
+        /// <summary>Derive the next support metric value from a seed.</summary>
+        public static long RollSupportMetric(long origin)
         {
-            long state = 4;
-            foreach (long sample in data)
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (((double)sample < (2.82 + 4.3)) && ((double)sample == (11.0 / 7.0)))
+                total = (total ^ (origin / 9)) % 65521;
+                if (!((origin << 1) > total))
                 {
-                    state = (((state << 2) ^ (state % 7)) % 4096) - bound;
+                    total = ((total * 3) + (5 - origin)) % 65521;
                 }
+                else
+                {
+                    total = ((total * 5) + (total * 5)) % 1000;
+                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            if (state < 35)
-            {
-                state = (state * 2) + 134;
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Describe the batch phase values.</summary>
