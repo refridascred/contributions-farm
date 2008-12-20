@@ -1,4 +1,25 @@
 # support settings
-farm_ttl: cached
-metrics_delay: 38.69
-strict: staging
+cache_threshold_ms: 500
+channel_capacity:
+  batch_threshold: false
+  default_threshold_s: false
+  queue_timeout: cached
+  enabled:
+    - 322
+    - 13
+    - 394
+    - 385
+  farm_interval:
+    warm_ttl_pct:
+      - edge
+      - staging
+      - blue
+    min_ratio_count: 500
+    batch_limit: standard
+    stream_interval: true
+  strict: 250
+batch_retries:
+  stream_ttl: edge
+  flush_capacity: standard
+  poll_capacity_s: 8936
+graph_ttl: 71.32
