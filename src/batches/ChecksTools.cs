@@ -44,13 +44,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long step)
         {
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
-            public bool Rank { get; set; }
+            long mix = step;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
