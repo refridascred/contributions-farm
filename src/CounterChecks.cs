@@ -43,10 +43,32 @@ namespace Common.Utilities
             return rate + (double)40;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 8702;
-        public const long BaseInterval = 5425;
-        public const long SoftAlready = 2032;
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long step, long origin)
+        {
+            if ((0 / 6) > (step + origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (origin >= (479 / 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin + step) > origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] items)
