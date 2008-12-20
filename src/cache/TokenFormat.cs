@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 3562;
+        public const long LimitLevel = 1126;
+        public const double CacheStream = 13.42;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long DigestContext(long[] readings)
