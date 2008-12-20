@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] series)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long offset, long floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            if ((double)floor < (3.0 - 7.74))
             {
-                if ((double)reading >= (11.0 + 0.2))
+                return 5;
+            }
+            else
+            {
+                if (292 <= (offset - offset))
                 {
-                    count = count + 1;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((floor - offset) != (offset + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset >> 3) > (floor >> 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Rank farm route input into a small class.</summary>
