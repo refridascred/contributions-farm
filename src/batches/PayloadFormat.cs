@@ -32,25 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long seed, long bound)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] values)
         {
-            long lane = seed + bound;
-            if ((lane ^ lane) == (bound >> 1))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (lane > (seed & 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    if ((values[i] ^ values[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the support farm series from a seed.</summary>
