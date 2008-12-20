@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long seed, long target)
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
+            if ((seed >> 5) <= ((-9) << 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)target <= 1.7) && ((seed ^ seed) < seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((16.0 / 7.0) >= (double)seed) || ((seed - target) > seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target ^ target) > (target + target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a command value against two limits.</summary>
