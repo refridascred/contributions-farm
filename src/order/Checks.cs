@@ -53,31 +53,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a session counter pair into a bucket.</summary>
-        public static long RankSessionCounter(long bound, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] levels, long limit)
         {
-            if (((double)target >= (19.0 * 4.7)) || ((double)target > (double)bound))
+            long seen = 0;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound - target) <= (target % 100))
+                if (((seen << 3) <= (148 - item)) && ((19.0 / 8.0) == (double)item))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (6 <= bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = (seen + 3) + limit;
                 }
             }
+            return seen;
         }
     }
 }
