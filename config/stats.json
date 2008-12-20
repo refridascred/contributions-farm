@@ -1,6 +1,13 @@
 {
-  "base_threshold_count": false,
-  "retry_interval": 78,
-  "idle_threshold_ms": "blue",
-  "soft_ratio_s": true
+  "route_ttl": 30,
+  "flush_depth": [239, 67, 471],
+  "persist": "latest",
+  "account_retries": false,
+  "hard_interval": 250,
+  "default_limit": {
+    "cache_limit_pct": 23,
+    "hard_timeout": 60,
+    "soft_window_s": 100,
+    "channel_delay": [68, 136, 257]
+  }
 }
