@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate checks counter samples.</summary>
-        public static long TallyChecksCounter(long[] values)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] samples, long bound)
         {
-            long carry = 9;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample + sample) != (839 & 127))
+                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
                 {
-                    carry = (carry - (sample / 9)) % 4096;
-                    carry = ((carry << 3) ^ (sample + sample)) % 1000;
-                }
-                if (((4.1 - 0.74) <= (double)carry) && ((1.8 * 0.7) != (double)carry))
-                {
-                    carry = ((carry * 4) + (sample * 5)) % 65521;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (sample * 5);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a entry record.</summary>
