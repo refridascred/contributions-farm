@@ -13,20 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every buffer contributi entry stays within the limit.</summary>
-        public static bool GuardBufferContributiLimits(long[] data, long bound)
-        {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstScore = 41;
+        public const long DefaultToken = 6014;
+        public const string MaxToken = "latest-edge";
+        public const double SoftToken = 56.23;
+        public const long BaseFactor = 6974;
 
         /// <summary>Compare every pair of order counter readings.</summary>
         public static long PairOrderCounterCount(long[] items)
