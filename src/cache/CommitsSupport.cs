@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftDepth = 4609;
-        public const double BurstBatch = 49.18;
-        public const string StepDepth = "latest-v2";
-        public const string LimitTimeout = "staging-edge";
-        public const double DefaultBatch = 36.77;
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public long Region { get; set; }
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Measure how many metrics cluster samples are out of range.</summary>
         public static long MeasureMetricsClusterGaps(long[] readings)
