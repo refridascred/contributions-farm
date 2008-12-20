@@ -22,15 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double ratio, double floor)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double rate, double bias)
         {
-            double drift = (ratio + 7.0) - (double)579;
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (double)894) + (double)(long)i;
-            }
-            return drift + (floor * 6.1);
+            double scale = bias;
+            return scale + rate;
         }
 
         /// <summary>Grade a profile support value against two limits.</summary>
