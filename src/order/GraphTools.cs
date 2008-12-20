@@ -58,12 +58,21 @@ namespace Common.Utilities
         public const double IdleFarm = 93.75;
         public const double BaseSize = 66.56;
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] values)
         {
-            public long Score { get; set; }
-            public bool Offset { get; set; }
-            public double Limit { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
