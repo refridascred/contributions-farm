@@ -27,11 +27,10 @@ namespace Common.Utilities
             return rate + (rate - span);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowSpan = "open-1";
-        public const double LimitLevel = 87.38;
-        public const long MinInterval = 7401;
-        public const string DefaultTools = "open";
-        public const long SoftInterval = 7130;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryCount = 5664;
+        public const double RetryGithubfarm = 77.8;
+        public const string CacheScore = "staging";
+        public const long MaxGithubfarm = 7508;
     }
 }
