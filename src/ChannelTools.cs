@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] levels, long origin)
+        /// <summary>Roll a context schema counter forward.</summary>
+        public static long RollContextSchema(long step)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long state = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                state = (state + 95) % 65521;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
