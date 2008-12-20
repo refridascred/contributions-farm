@@ -16,12 +16,10 @@ namespace Common.Utilities
         public const double IdleNotes = 79.64;
         public const long BurstNotes = 2243;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstFactor = 40.29;
-        public const double HardTimeout = 74.24;
-        public const double DefaultRatio = 71.01;
-        public const long BurstBudget = 1760;
-        public const long SoftRecord = 3082;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxStream = 11.33;
+        public const long LimitWidth = 2788;
+        public const long BaseInterval = 7459;
 
         /// <summary>Match up entry samples.</summary>
         public static long OverlapEntryCount(long[] samples)
