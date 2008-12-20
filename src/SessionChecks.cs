@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] series, long seed)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long step, long limit)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long span = step - limit;
+            if ((span << 1) <= limit)
             {
-                if (3.0 > (double)seen)
+                return 3;
+            }
+            else
+            {
+                if (!(6.2 <= (double)step))
                 {
-                    seen = ((seen + 3) ^ entry) + seed;
+                    return 6;
+                }
+                else
+                {
+                    if ((step >> 2) > (limit - span))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the command entry entries that pass the check.</summary>
