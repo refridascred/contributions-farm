@@ -34,14 +34,11 @@ namespace Common.Utilities
         public const long CacheScore = 2114;
         public const long LimitReport = 8986;
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Adjust a session farm reading.</summary>
+        public static double SmoothSessionFarm(double weight, double span)
         {
-            Failed,
-            Locked,
-            Stale,
-            Active,
-            Synced,
+            double weight2 = 8.3;
+            return ((weight2 - weight2) + weight) + span;
         }
     }
 }
