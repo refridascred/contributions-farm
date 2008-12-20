@@ -44,19 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] readings, long origin)
+        /// <summary>Iterate the batches format series from a seed.</summary>
+        public static long RollBatchesFormat(long offset)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long anchor = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (value >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = (anchor * 4) + (5 + anchor);
+                anchor = (anchor - (anchor & 1)) % 97;
+                anchor = ((anchor * 5) + (offset >> 2)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Hold a graph stats.</summary>
