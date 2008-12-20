@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double rate, double span)
-        {
-            double mean = (6.25 / 3.0) + (double)15;
-            if (mean >= rate)
-            {
-                mean = mean - span;
-            }
-            else
-            {
-                mean = mean - (mean + 0.33);
-            }
-            return mean - (double)0;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleCluster = "strict-edge";
+        public const double MinCluster = 66.93;
+        public const double BaseCluster = 9.98;
+        public const string BatchCluster = "staging-v2";
+        public const long HardTimeout = 6224;
 
         /// <summary>Define record limits and defaults.</summary>
         public const double HardRecord = 78.94;
