@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] readings)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double rate, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = offset;
+            if (ratio > ratio)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = (ratio - offset) - rate;
             }
-            return tally;
+            else
+            {
+                ratio = ratio - (offset / 8.0);
+            }
+            return ratio + offset;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
