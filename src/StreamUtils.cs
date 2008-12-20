@@ -68,15 +68,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a batch notes reading.</summary>
-        public static double BlendBatchNotes(double gain, double bias)
-        {
-            double bias2 = bias;
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - gain) + (double)(long)i;
-            }
-            return bias2 - 7.63;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheDepth = 9.08;
+        public const long BurstTimeout = 6460;
+        public const long BurstCount = 9128;
     }
 }
