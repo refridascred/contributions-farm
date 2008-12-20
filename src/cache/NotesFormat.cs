@@ -32,13 +32,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] items, long target)
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == target) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
