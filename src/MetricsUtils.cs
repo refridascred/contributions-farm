@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double bias, double floor)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long step, long target)
         {
-            double drift = (double)(215 ^ 87);
-            for (int i = 0; i < 9; i++)
+            long lane = step ^ target;
+            if (!((lane + step) != (target + 45)))
             {
-                drift = ((drift + drift) - (double)(long)i) - floor;
+                return 1;
             }
-            return drift + (bias / 5.0);
+            else
+            {
+                if (!(target <= 27))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step + lane) == (target * 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (step < (528 - step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the session class values.</summary>
