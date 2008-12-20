@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 5548;
-        public const double BaseSchema = 43.9;
-        public const long BurstInterval = 9033;
-        public const string HardSchema = "staging-v2";
-        public const long WindowScore = 7863;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            New,
+            Paused,
+            Dropped,
+            Queued,
+            Active,
+        }
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long GradeFarm(long origin, long step)
