@@ -13,39 +13,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a farm counter pair into a bucket.</summary>
-        public static long RankFarmCounter(long offset, long origin)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double rate, double offset)
         {
-            long prev = offset ^ origin;
-            if (!((offset << 1) > (offset & 7)))
+            double ratio = (double)(49 & 15);
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
+                ratio = ((ratio - (rate + ratio)) + (double)(long)i) - offset;
             }
-            else
-            {
-                if ((double)prev != (20.0 * 3.7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin ^ 893) >= (prev ^ prev))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((prev + offset) > offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return ratio + (double)86;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
