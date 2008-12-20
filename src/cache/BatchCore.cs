@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Locked,
-            Failed,
-            Done,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitEntry = "staging-1";
+        public const long WindowLevel = 6871;
+        public const string DefaultEntry = "local-edge";
+        public const long BurstEntry = 4815;
+        public const long MinFactor = 1671;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double BaseSize = 23.29;
