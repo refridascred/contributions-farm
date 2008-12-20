@@ -25,38 +25,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long origin, long origin2)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] levels, long offset)
         {
-            if ((origin + origin) <= 6)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin2 << 2) <= (origin & 31))
+                if (cell > offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (origin2 >= (origin - origin2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((49 + origin2) <= (origin + origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
