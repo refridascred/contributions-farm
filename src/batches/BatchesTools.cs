@@ -39,22 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] values)
+        /// <summary>Check that every payload tools entry stays within the limit.</summary>
+        public static bool VerifyPayloadToolsRange(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((((8.4 - 1.0) <= (double)reading) && ((reading - reading) >= 7)) || (((double)(long)values.Length > (8.0 + 1.6)) || ((long)values.Length < tally)))
+                if (item >= seed)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
