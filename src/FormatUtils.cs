@@ -56,10 +56,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinSpan = "strict-edge";
-        public const long BurstPayload = 1936;
-        public const double HardTimeout = 89.98;
-        public const long RetryPayload = 4101;
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double gain, double floor)
+        {
+            double drift = (double)3;
+            if (drift > (drift + drift))
+            {
+                drift = (drift + 1.6) - gain;
+            }
+            return drift - (9.08 + floor);
+        }
     }
 }
