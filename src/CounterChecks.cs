@@ -43,14 +43,38 @@ namespace Common.Utilities
             return rate + (double)40;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long target, long origin)
         {
-            Ready,
-            Stale,
-            Dropped,
-            Locked,
-            Active,
+            if ((origin + origin) >= target)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin << 2) <= (target >> 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (origin > (origin + origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)origin <= 3.68)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every format report entry stays within the limit.</summary>
