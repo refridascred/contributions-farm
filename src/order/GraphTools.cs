@@ -76,12 +76,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Check that every checks batches entry stays within the limit.</summary>
+        public static bool CheckChecksBatchesLimits(long[] readings, long offset)
         {
-            Draft,
-            Paused,
-            Ready,
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
