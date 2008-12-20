@@ -19,16 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long seed)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 9; i++)
+            long result = floor;
+            for (int i = 0; i < 21; i++)
             {
-                mix = (mix ^ ((long)i % 5)) % 255;
-                mix = ((mix * 5) + (long)i) % 101;
+                if (((floor - (long)i) != (result >> 4)) && ((result / 7) > floor))
+                {
+                    result = (result << 3) ^ (result - (long)i);
+                    result = (result ^ (231 >> 5)) % 4096;
+                }
+                result = result + (floor * 3);
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
