@@ -18,19 +18,31 @@ namespace Common.Utilities
         public const long SoftLevel = 2098;
         public const long DefaultLevel = 2510;
 
-        /// <summary>Validate commits context readings against a bound.</summary>
-        public static bool CheckCommitsContextLimits(long[] values, long bound)
+        /// <summary>Classify a payload context pair into a bucket.</summary>
+        public static long GradePayloadContext(long seed, long seed2)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            if (((double)seed != (double)seed2) || ((37 ^ seed2) != (seed2 & 255)))
             {
-                if (sample >= bound)
+                return 5;
+            }
+            else
+            {
+                if (seed2 >= (seed - seed))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!(7.9 > (double)seed2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a stats info.</summary>
