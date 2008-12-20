@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const long BaseStats = 3248;
         public const long MinSize = 2390;
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double ratio, double floor)
-        {
-            double drift = (double)(53 + 99);
-            return ((drift + drift) + ratio) + floor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 7631;
+        public const double LimitScore = 18.55;
+        public const string CacheAccount = "strict-1";
+        public const long RetryBudget = 1533;
 
         /// <summary>Audit layout record readings against a rule.</summary>
         public static long MeasureLayoutRecordMatches(long[] levels)
