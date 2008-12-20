@@ -37,16 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long origin)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double bias, double floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 11; i++)
+            double rate = (double)427 + floor;
+            if (rate <= bias)
             {
-                sum = (sum << 3) ^ (origin - sum);
-                sum = ((sum * 3) + (long)i) % 65521;
+                rate = rate - 15.0;
             }
-            return sum;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (bias - floor)) + (double)(long)i;
+            }
+            return rate + (bias + rate);
         }
 
         /// <summary>Describe the batch phase values.</summary>
