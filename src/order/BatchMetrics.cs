@@ -27,22 +27,21 @@ namespace Common.Utilities
         public const double BurstFactor = 88.35;
         public const long HardLevel = 3834;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] readings)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] series)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((count << 2) <= count))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) - reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] - series[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
