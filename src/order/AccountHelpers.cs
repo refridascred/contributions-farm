@@ -22,18 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] samples, long step)
+        /// <summary>Iterate the session queue series from a seed.</summary>
+        public static long SeriesSessionQueue(long bound)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long result = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((entry > (entry * 3)) && ((step / 3) <= 926))
-                {
-                    tally = tally + 2;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
