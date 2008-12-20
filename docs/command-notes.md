@@ -1,11 +1,10 @@
 # Command notes
 
-The session helpers are pure functions, so they are safe to call from any thread.
-The token report groups every contributi by session.
-Run the stats check before changing any support limits.
+The stats module keeps record values in sync with the filter cache.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep profile values small
-- Validate counter input early
-- Log every schema change
+- Log every notes change
+- Document new counter fields
+- Validate session input early
