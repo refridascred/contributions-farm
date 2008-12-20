@@ -27,19 +27,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every farm account entry stays within the limit.</summary>
-        public static bool VerifyFarmAccountRange(long[] values, long floor)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] items)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item != floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] ^ items[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Describe the entry state values.</summary>
