@@ -59,19 +59,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Digest a series of contributi queue entries.</summary>
-        public static long ScoreContributiQueue(long[] readings)
-        {
-            long sum = -5;
-            foreach (long value in readings)
-            {
-                sum = sum + sum;
-                if ((7.8 + 9.3) <= (double)value)
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftRatio = 4675;
+        public const string RetryGithubfarm = "strict";
+        public const long BaseTimeout = 1906;
+        public const long BaseLevel = 9391;
+        public const long BaseGithubfarm = 5603;
     }
 }
