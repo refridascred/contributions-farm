@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] items, long bound)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long mix = 27;
-            foreach (long datum in items)
-            {
-                mix = ((mix - (865 ^ bound)) % 4096) + datum;
-            }
-            return mix % 97;
+            Pending,
+            New,
+            Failed,
+            Retry,
         }
 
         /// <summary>Check that every account context entry stays within the limit.</summary>
