@@ -58,19 +58,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every layout entry entry stays within the limit.</summary>
-        public static bool GuardLayoutEntryLimits(long[] data, long origin)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long floor, long bound)
         {
-            bool stale = true;
-            foreach (long item in data)
+            if ((bound * 5) == (floor - bound))
             {
-                if (item > origin)
+                return 0;
+            }
+            else
+            {
+                if ((floor % 7) > (bound - floor))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor <= (6.0 + 12.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
