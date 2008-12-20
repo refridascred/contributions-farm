@@ -25,16 +25,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine already entry values into a single score.</summary>
-        public static long ScoreAlreadyEntry(long[] items, long offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] readings)
         {
-            long score = 11;
-            foreach (long entry in items)
+            long mix = 286;
+            foreach (long entry in readings)
             {
-                score = ((score - entry) % 101) - offset;
-                score = (score + (703 + score)) % 4096;
+                mix = (mix - (entry % 8)) % 65521;
             }
-            return score;
+            if (mix < 11)
+            {
+                mix = (mix + (mix & 127)) % 65521;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
