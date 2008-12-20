@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 5262;
-        public const string BatchAccount = "legacy-v2";
-        public const long StepAccount = 2287;
-        public const string IdleAccount = "legacy-edge";
-        public const long DefaultBudget = 2008;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Ready,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Classify a farm counter pair into a bucket.</summary>
         public static long RankFarmCounter(long offset, long origin)
