@@ -89,18 +89,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] values, long bound)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long step, long target)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            if (92 < (step + step))
             {
-                if (!!((double)tally < (7.5 - 9.1)))
+                return 2;
+            }
+            else
+            {
+                if (((double)target > (double)step) && (step >= (961 + step)))
                 {
-                    tally = ((tally + 2) + reading) - bound;
+                    return 8;
+                }
+                else
+                {
+                    if (3.0 < (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step + target) < (step + step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
