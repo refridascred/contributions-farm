@@ -22,19 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] levels, long bound)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long sum = 617;
-            foreach (long reading in levels)
-            {
-                if (bound < (reading + sum))
-                {
-                    sum = (sum * 5) + (sum - sum);
-                }
-                sum = sum + (bound - bound);
-            }
-            return sum;
+            Done,
+            Dropped,
+            Ready,
+            New,
+            Queued,
         }
 
         /// <summary>Accumulate batch samples.</summary>
