@@ -46,39 +46,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long bound, long floor)
+        /// <summary>Combine buffer format values into a single score.</summary>
+        public static long TallyBufferFormat(long[] values, long target)
         {
-            long prev = bound + floor;
-            if (prev <= (37 + 68))
+            long mix = 22;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor <= (2 + bound))
+                if ((double)target <= (double)mix)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((593 + bound) > (floor - prev))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor - 589) > 4)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mix = ((mix ^ target) % 97) ^ value;
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Audit route checks readings against a rule.</summary>
