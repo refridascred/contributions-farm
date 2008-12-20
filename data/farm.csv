@@ -1,10 +1,7 @@
-id,rank,region
-1,293,891
-2,810,blue
-3,blue,318
-4,936,fallback
-5,primary,195
-6,744,eu-west
-7,71.98,597
-8,2.22,88.19
-9,latest,86.93
+id,state,owner,score
+1,173,264,staging
+2,254,70,25.67
+3,932,978,523
+4,127,652,primary
+5,803,89.38,fallback
+6,green,latest,latest
