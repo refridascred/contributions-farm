@@ -22,15 +22,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double ratio, double bias)
+        /// <summary>Compare every pair of cache notes readings.</summary>
+        public static long OverlapCacheNotesCount(long[] values)
         {
-            double ratio2 = (double)2 + 2.3;
-            if (ratio2 <= (ratio2 / 4.0))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio2 = ((ratio2 + ratio2) - ratio) - bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio2 - 4.2;
+            return count;
         }
     }
 }
