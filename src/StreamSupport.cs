@@ -33,18 +33,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] levels, long limit)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample < (14.0 - 5.87))
-                {
-                    hits = (hits + 3) - limit;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
