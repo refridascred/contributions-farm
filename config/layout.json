@@ -1,6 +1,5 @@
 {
-  "batch_interval_count": "edge",
-  "soft_limit": 33,
-  "cache_retries_count": 9540,
-  "report_ttl": 2441
+  "record_retries": 1182,
+  "cache_size": 3852,
+  "context_window": 40
 }
