@@ -40,11 +40,27 @@ namespace Common.Utilities
         public const double CacheMetric = 46.47;
         public const double StepMetric = 7.97;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 1012;
-        public const string LimitAlready = "standard-edge";
-        public const long IdleAlready = 939;
-        public const long WindowDepth = 1532;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] series, long target)
+        {
+            long total = 5;
+            foreach (long reading in series)
+            {
+                if ((((long)series.Length - reading) == (total - total)) && ((reading + (-595)) > target))
+                {
+                    total = (total * 2) + (target + total);
+                }
+                else
+                {
+                    total = total + (target + 820);
+                }
+                if ((target + total) <= reading)
+                {
+                    total = (total << 2) ^ (952 ^ (-831));
+                }
+            }
+            return total;
+        }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long SortPayload(long offset, long bound)
