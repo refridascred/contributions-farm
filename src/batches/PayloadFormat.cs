@@ -49,16 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the support farm series from a seed.</summary>
-        public static long StepSupportFarm(long bound)
+        /// <summary>Check that every token commits entry stays within the limit.</summary>
+        public static bool CheckTokenCommitsLimits(long[] series, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                total = (total + bound) % 97;
-                total = ((total * 3) + (long)i) % 4093;
+                if (reading >= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Fold a list of graph batch readings.</summary>
