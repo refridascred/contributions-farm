@@ -47,17 +47,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] series, long bound)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long floor, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((65 ^ floor) < floor)
             {
-                if ((series[i] < bound) && ((series[i] % 3) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((floor - floor) <= (floor % 2))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a context snapshot.</summary>
