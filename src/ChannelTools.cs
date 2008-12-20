@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const double IdleFactor = 98.63;
         public const string DefaultContributi = "stable-v2";
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] values)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] items, long target)
         {
-            long mix = 248;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((double)mix >= (5.21 - 1.78))
+                if ((item * 4) != (item ^ hits))
                 {
-                    mix = (mix + (25 / 3)) % 4096;
-                }
-                if (mix >= sample)
-                {
-                    break;
+                    hits = (hits + 1) + target;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the checks level values.</summary>
