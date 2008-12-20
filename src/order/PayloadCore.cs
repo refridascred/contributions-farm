@@ -23,18 +23,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] samples)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (((long)samples.Length - seen) > (seen * 5))
-                {
-                    seen = (seen + 1) - value;
-                }
-            }
-            return seen;
+            Draft,
+            Synced,
+            Retry,
+            Active,
         }
 
         /// <summary>Derive the next support metric value from a seed.</summary>
