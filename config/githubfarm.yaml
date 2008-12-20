@@ -1,21 +1,6 @@
 # githubfarm settings
-batch_ratio_count: cached
-notes_capacity: true
-hard_size_count:
-  - stable
-  - edge
-  - latest
-max_delay_ms: stable
-idle_threshold_ms:
-  readonly: stable
-  idle_ratio_s: eu-west
-  strict:
-    - 169
-    - 217
-    - 159
-  compress:
-    - 141
-    - 439
-    - 251
-    - 60
-strict: 9976
+warm_window_pct: true
+cache_capacity: 23.25
+strict: true
+idle_retries: true
+dry_run: false
