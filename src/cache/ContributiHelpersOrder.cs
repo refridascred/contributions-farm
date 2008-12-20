@@ -19,20 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] values, long step)
-        {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 5638;
+        public const long BatchWindow = 9724;
+        public const string MinWindow = "staging-v2";
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long RollCounter(long floor)
