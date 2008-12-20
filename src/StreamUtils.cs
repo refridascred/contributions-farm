@@ -72,18 +72,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] values, long step)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (!((seen - datum) > (datum / 2)))
-                {
-                    seen = (seen + 1) - step;
-                }
-            }
-            return seen;
+            public bool Label { get; set; }
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Adjust a batch notes reading.</summary>
