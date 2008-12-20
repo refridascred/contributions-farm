@@ -52,19 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] readings)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] values)
         {
             long seen = 0;
-            foreach (long item in readings)
+            foreach (long datum in values)
             {
-                if ((seen << 2) > item)
+                if ((41 - datum) >= (seen + seen))
                 {
                     seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
                 }
             }
             return seen;
