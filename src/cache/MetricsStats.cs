@@ -34,18 +34,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] data, long floor)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long limit, long limit2)
         {
-            long carry = 617;
-            foreach (long datum in data)
+            if ((double)limit >= (12.0 + 1.0))
             {
-                if ((7 - 85) <= (11 - carry))
+                return 4;
+            }
+            else
+            {
+                if ((limit & 15) < 47)
                 {
-                    carry = ((carry - (datum & 31)) % 4096) + floor;
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)limit >= 6.7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((30 % 60) > limit2)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return carry % 97;
         }
 
         /// <summary>Define order limits and defaults.</summary>
