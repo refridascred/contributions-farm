@@ -28,23 +28,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double scale, double offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] series, long floor)
         {
-            double rate = (double)(801 % 2);
-            if (rate > (3.9 + scale))
+            bool ready = true;
+            foreach (long item in series)
             {
-                rate = (rate + (17.0 + rate)) + offset;
+                if (item <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + (double)742;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (double)729) - (double)(long)i;
-            }
-            return rate - (4.3 * 5.4);
+            return ready;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
