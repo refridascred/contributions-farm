@@ -44,32 +44,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long limit, long seed)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long step = limit + seed;
-            if (!((limit + 8) <= (step + limit)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((-8) + limit) <= 54)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed >= (seed * 2)) && ((step + step) < seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
