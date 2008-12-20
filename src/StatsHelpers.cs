@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultCount = "stable";
-        public const long BaseCount = 9738;
-        public const string StepCount = "legacy-v2";
-        public const long WindowContributi = 7126;
-        public const long MinContributi = 2247;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] readings, long offset)
+        {
+            long anchor = 537;
+            foreach (long cell in readings)
+            {
+                anchor = ((anchor << 3) ^ (anchor + cell)) - offset;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
