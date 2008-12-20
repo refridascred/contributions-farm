@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BatchSize = 97.35;
+        public const double BurstMetric = 0.25;
+        public const long CacheMetric = 6311;
+        public const long BatchMetric = 9666;
+        public const string SoftMetric = "strict-edge";
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
