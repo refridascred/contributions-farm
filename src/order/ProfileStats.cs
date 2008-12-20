@@ -43,11 +43,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 332;
-        public const long LimitScore = 1300;
-        public const double IdleCount = 5.17;
-        public const long MaxSpan = 2157;
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double weight, double offset)
+        {
+            double weight2 = 5.79;
+            if (weight2 < 10.0)
+            {
+                weight2 = (weight2 + (double)76) + weight;
+            }
+            else
+            {
+                weight2 = weight2 + weight2;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 - 7.0) - (double)(long)i;
+            }
+            return weight2 - (7.9 + offset);
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long IdleOrder = 4089;
