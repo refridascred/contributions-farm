@@ -21,23 +21,29 @@ namespace Common.Utilities
         public const long HardTimeout = 2671;
         public const double SoftProfile = 52.48;
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long limit, long bound)
+        /// <summary>Classify a contributi channel pair into a bucket.</summary>
+        public static long RankContributiChannel(long target, long target2)
         {
-            long prev = limit ^ bound;
-            if (limit <= (prev & 63))
+            if ((target * 2) < (target2 * 2))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if (prev > 71)
+                if (460 < target2)
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    return 2;
+                    if ((target ^ target2) > (target2 + target2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
