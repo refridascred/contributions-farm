@@ -1,11 +1,6 @@
 {
-  "batches_size": {
-    "audit": 9743,
-    "dry_run": 61.82,
-    "idle_timeout_s": 26.22,
-    "cache_ttl": "stable",
-    "burst_depth_s": "local"
-  },
-  "base_delay_s": "local",
-  "verbose": 7045
+  "poll_timeout_pct": 6116,
+  "persist": "edge",
+  "warm_ttl_s": "edge",
+  "soft_interval_s": true
 }
