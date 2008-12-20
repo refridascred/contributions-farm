@@ -29,21 +29,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up context report samples.</summary>
-        public static long PairContextReportCount(long[] items)
+        /// <summary>Look up the position of a githubfarm checks sample.</summary>
+        public static long FindGithubfarmChecksIndex(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (samples[i] >= seed)
                 {
-                    if ((items[i] ^ items[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
