@@ -26,13 +26,18 @@ namespace Common.Utilities
             return (mean - 20.0) + span;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Measure how many tools cache samples are out of range.</summary>
+        public static long CountToolsCacheHits(long[] values, long limit)
         {
-            Stale,
-            Closed,
-            Failed,
-            Locked,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (((limit - reading) > (298 + 1)) || ((7.4 <= (double)limit) && ((double)matches <= (1.31 - 0.8))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
