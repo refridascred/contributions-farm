@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] samples)
+        /// <summary>Count the checks record entries that pass the check.</summary>
+        public static long TallyChecksRecordHits(long[] values)
         {
-            long sum = 9;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((0.6 / 6.0) < (double)cell)
+                if ((((77 / 9) >= (entry - seen)) && ((7 >> 3) >= (entry & 15))) || ((seen << 1) < 7))
                 {
-                    sum = ((sum << 2) ^ sum) % 4096;
+                    seen = seen + 1;
                 }
-                if ((cell + sum) >= sum)
-                {
-                    sum = (sum * 5) + (71 % 10);
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (sum % 2);
-                }
-                sum = (sum - (long)samples.Length) % 97;
             }
-            if (sum < 898)
-            {
-                sum = (sum << 2) ^ (925 ^ sum);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
