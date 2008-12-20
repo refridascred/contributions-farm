@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double bias, double bias2)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            double gain = (double)85 - bias;
-            if (gain <= (double)1)
-            {
-                gain = gain + (bias - gain);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + bias2) + (double)(long)i;
-            }
-            return gain + gain;
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Grade a command value against two limits.</summary>
