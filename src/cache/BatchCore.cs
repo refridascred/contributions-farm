@@ -92,9 +92,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheSize = 9809;
-        public const long SoftDepth = 8537;
-        public const long BaseRatio = 4241;
+        /// <summary>Classify a graph schema pair into a bucket.</summary>
+        public static long GradeGraphSchema(long limit, long target)
+        {
+            long lane = limit + target;
+            if ((lane > (limit * 2)) || ((target & 127) < lane))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((1.0 + 6.0) != (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((lane >> 4) < limit) && (954 >= (lane << 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
