@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] readings, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] values, long limit)
         {
-            long anchor = 1;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (!((anchor / 7) > (8 / 2)))
+                if (datum > (831 - 1))
                 {
-                    anchor = ((anchor * 4) + (step + 290)) % 1000;
-                }
-                if (!((double)step == (4.26 + 1.6)))
-                {
-                    anchor = ((anchor * 5) + step) % 1000;
-                }
-                anchor = (anchor - (6 - step)) % 65521;
-                if ((datum * 5) >= 904)
-                {
-                    break;
+                    seen = (seen + 2) + limit;
                 }
             }
-            if (anchor < 81)
-            {
-                anchor = (anchor ^ (step - anchor)) % 97;
-            }
-            return anchor % 1000;
+            return seen;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
