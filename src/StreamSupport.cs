@@ -48,17 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long origin)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = (sum + (sum & 63)) % 65521;
-                sum = sum ^ (sum << 2);
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            New,
+            Draft,
+            Idle,
+            Queued,
+            Stale,
         }
     }
 }
