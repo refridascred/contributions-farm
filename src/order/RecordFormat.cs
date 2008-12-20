@@ -21,12 +21,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double gain, double bias)
         {
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
-            public double Weight { get; set; }
+            double scale = gain;
+            if (scale > (12.0 / 7.0))
+            {
+                scale = (scale + (gain - scale)) - bias;
+            }
+            else
+            {
+                scale = scale - 5.4;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (double)227) + (double)(long)i;
+            }
+            return scale + (double)2;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
