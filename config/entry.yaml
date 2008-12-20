@@ -1,8 +1,9 @@
 # entry settings
-batch_timeout_count: 71.98
-burst_ttl_pct:
-  - staging
-  - stable
-  - eu-west
-max_delay_count: 2565
-min_ttl: local
+persist: legacy
+batch_interval_count: 49
+token_timeout: true
+hard_delay_s: false
+stats_depth:
+  - 101
+  - 469
+  - 122
