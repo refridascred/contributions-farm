@@ -1,13 +1,11 @@
 {
-  "max_capacity": {
-    "context_ttl": 8848,
-    "default_capacity": "strict",
-    "max_capacity_ms": {
-      "persist": "primary",
-      "audit": 90.09,
-      "graph_depth": 1773
-    }
-  },
-  "poll_window_ms": ["edge", "primary", "edge", "open"],
-  "dry_run": [94, 35, 87, 415]
+  "readonly": ["blue", "open", "fallback", "latest"],
+  "soft_delay_pct": 93.97,
+  "metric_capacity": 23,
+  "route_window": "eu-west",
+  "hard_timeout_count": {
+    "compress": 30,
+    "flush_threshold": 24.25,
+    "record_ttl": 23
+  }
 }
