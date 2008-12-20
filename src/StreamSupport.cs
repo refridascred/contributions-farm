@@ -21,17 +21,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a account format sample.</summary>
-        public static long SeekAccountFormatIndex(long[] values, long step)
+        /// <summary>Derive the next support contributi value from a seed.</summary>
+        public static long StepSupportContributi(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
