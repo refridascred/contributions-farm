@@ -19,19 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long seed)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long seed, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
+            if ((seed - 537) >= (step % 100))
             {
-                if ((double)seed == (double)state)
-                {
-                    state = ((state << 2) ^ state) % 1000;
-                }
-                state = ((state * 2) + (long)i) % 1000;
+                return 1;
             }
-            return state;
+            else
+            {
+                if ((step * 2) > (step & 15))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
