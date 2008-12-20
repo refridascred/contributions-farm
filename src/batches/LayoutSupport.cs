@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long offset)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            Draft,
+            Ready,
+            Failed,
+            Synced,
         }
 
         /// <summary>Describe the layout state values.</summary>
