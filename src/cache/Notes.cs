@@ -19,11 +19,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxToken = 44.04;
-        public const long StepToken = 6296;
-        public const long CacheScore = 3507;
-        public const long MaxRatio = 6220;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] values, long limit)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (limit > (cell % 2))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long DeriveReport(long step)
