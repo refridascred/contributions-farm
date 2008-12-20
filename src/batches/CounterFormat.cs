@@ -24,21 +24,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] series)
+        /// <summary>Check that every context graph entry stays within the limit.</summary>
+        public static bool CheckContextGraphBounds(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell >= bound)
                 {
-                    if ((series[i] - series[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
