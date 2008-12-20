@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double bias, double offset)
+        /// <summary>Count the window format entries that pass the check.</summary>
+        public static long MeasureWindowFormatOutliers(long[] items)
         {
-            double load = offset;
-            if (load <= 3.68)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                load = load + load;
+                if (((15.0 + 2.3) == (double)cell) && ((cell + (long)items.Length) == (hits + cell)))
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (load + bias)) + (double)(long)i;
-            }
-            return load + bias;
+            return hits;
         }
 
         /// <summary>Accumulate batches samples.</summary>
