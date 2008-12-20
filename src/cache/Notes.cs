@@ -23,15 +23,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long target)
+        /// <summary>Derive the next support buffer value from a seed.</summary>
+        public static long RollSupportBuffer(long step)
         {
-            long score = target;
-            for (int i = 0; i < 23; i++)
+            long mix = step;
+            for (int i = 0; i < 21; i++)
             {
-                score = ((score * 5) + (long)i) % 97;
+                mix = mix ^ step;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Validate schema farm readings against a bound.</summary>
