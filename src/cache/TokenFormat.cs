@@ -16,18 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] data, long origin)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] samples, long bound)
         {
-            long sum = -34;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (((long)data.Length != (origin >> 2)) && ((double)sum < (double)1))
+                if (reading >= bound)
                 {
-                    sum = ((sum + (528 % 64)) % 101) ^ datum;
+                    flag = false;
+                    break;
                 }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
