@@ -29,12 +29,15 @@ namespace Common.Utilities
             return rate + (double)472;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long origin)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
+            long total = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
