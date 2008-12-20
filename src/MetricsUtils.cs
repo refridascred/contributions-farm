@@ -47,26 +47,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] series, long target)
+        /// <summary>Iterate the contributi cache series from a seed.</summary>
+        public static long DeriveContributiCache(long seed)
         {
-            long total = 5;
-            foreach (long reading in series)
+            long carry = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((((long)series.Length - reading) == (total - total)) && ((reading + (-595)) > target))
-                {
-                    total = (total * 2) + (target + total);
-                }
-                else
-                {
-                    total = total + (target + 820);
-                }
-                if ((target + total) <= reading)
-                {
-                    total = (total << 2) ^ (952 ^ (-831));
-                }
+                carry = carry - (carry * 3);
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
