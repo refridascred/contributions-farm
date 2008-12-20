@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long MinScore = 3771;
         public const long MaxChannel = 3671;
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 4140;
+        public const long MinBudget = 9343;
+        public const long WindowCommand = 3283;
+        public const long SoftDepth = 2476;
+        public const long RetryTimeout = 3375;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double MaxStream = 11.33;
