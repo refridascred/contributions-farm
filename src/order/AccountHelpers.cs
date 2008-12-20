@@ -30,15 +30,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next command schema value from a seed.</summary>
-        public static long IterateCommandSchema(long step)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long floor, long step)
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
+            if (!((double)step <= 0.71))
             {
-                result = ((result * 5) + (long)i) % 4093;
+                return 6;
             }
-            return result;
+            else
+            {
+                if (floor > (step ^ floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
