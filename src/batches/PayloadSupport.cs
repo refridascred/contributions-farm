@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long WindowScore = 7164;
         public const double HardOrder = 53.75;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] data)
+        /// <summary>Measure how many context editor samples are out of range.</summary>
+        public static long CountContextEditorOutliers(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((tally + tally) < tally)
+                if (entry <= (entry - 745))
                 {
-                    tally = (tally + 2) ^ datum;
+                    hits = (hits + 3) - offset;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the command state values.</summary>
