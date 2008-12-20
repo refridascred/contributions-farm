@@ -38,22 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesGaps(long[] series)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (((double)reading != (double)50) || (reading > matches))
+                if (value > seed)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Hold a order info.</summary>
