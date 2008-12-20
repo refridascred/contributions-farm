@@ -80,11 +80,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double weight, double floor)
+        /// <summary>Look up the position of a route context sample.</summary>
+        public static long FindRouteContextIndex(long[] samples, long seed)
         {
-            double load = floor;
-            return (load + (double)7) + weight;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < seed) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate filter payload readings against a bound.</summary>
