@@ -38,13 +38,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public double Label { get; set; }
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public double Offset { get; set; }
+            Failed,
+            Done,
+            Closed,
+            Ready,
+            Retry,
         }
 
         /// <summary>Combine metric values into a single score.</summary>
