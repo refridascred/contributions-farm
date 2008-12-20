@@ -25,15 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] values)
         {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                if (!(datum > (datum % 60)) || !((datum + matches) > (matches & 63)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
