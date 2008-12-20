@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] samples)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] data, long limit)
         {
-            long mark = -4;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value <= (mark >> 2)) && ((value * 2) >= value))
+                if ((data[i] < limit) && ((data[i] % 5) != 0))
                 {
-                    mark = mark ^ (mark + mark);
-                }
-                if (((mark - value) <= mark) || ((mark & 31) <= (92 + value)))
-                {
-                    mark = (mark ^ (mark + mark)) % 1000;
+                    return (long)i;
                 }
             }
-            if (mark > 72)
-            {
-                mark = ((mark << 2) ^ (mark & 63)) % 101;
-            }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Digest a series of order filter entries.</summary>
