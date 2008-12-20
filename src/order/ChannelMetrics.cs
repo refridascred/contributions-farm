@@ -30,18 +30,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] values)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] data)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits >> 5) >= item)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((data[i] ^ data[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
