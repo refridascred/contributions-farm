@@ -1,6 +1,6 @@
 {
-  "idle_limit_count": ["primary", "fallback"],
-  "warm_threshold_s": "eu-west",
-  "min_interval_count": "edge",
-  "hard_ratio_pct": false
+  "batch_interval_count": "edge",
+  "soft_limit": 33,
+  "cache_retries_count": 9540,
+  "report_ttl": 2441
 }
