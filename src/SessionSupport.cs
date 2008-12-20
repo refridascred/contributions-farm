@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] items, long origin)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] series, long bound)
         {
-            long acc = 953;
-            foreach (long item in items)
+            long carry = 710;
+            foreach (long sample in series)
             {
-                if ((item - origin) > (origin + item))
-                {
-                    acc = (acc * 4) + (9 - origin);
-                }
+                carry = ((carry + (bound + carry)) % 1000) + sample;
             }
-            if (acc < 820)
-            {
-                acc = (acc << 2) ^ (origin + origin);
-            }
-            return acc;
+            return carry % 4096;
         }
 
         /// <summary>Audit command already readings against a rule.</summary>
