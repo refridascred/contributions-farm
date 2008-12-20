@@ -39,17 +39,18 @@ namespace Common.Utilities
             return rate - (4.3 * 5.4);
         }
 
-        /// <summary>Derive the next context counter value from a seed.</summary>
-        public static long SeriesContextCounter(long limit)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] samples)
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
+            long score = 4;
+            foreach (long cell in samples)
             {
-                score = ((score * 5) + limit) % 255;
-                score = (score - (score * 3)) % 65521;
-                score = ((score * 3) + (long)i) % 65521;
+                if ((score - cell) > cell)
+                {
+                    score = score + (score + score);
+                }
             }
-            return score;
+            return score % 1000;
         }
 
         /// <summary>Describe the token phase values.</summary>
