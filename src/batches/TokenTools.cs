@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] levels, long bound)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (seen > (seen + 4))
-                {
-                    seen = ((seen + 3) + reading) + bound;
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public bool Size { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the support phase values.</summary>
