@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of metric support entries.</summary>
-        public static long WeighMetricSupport(long[] values, long offset)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double bias, double bias2)
         {
-            long state = 81;
-            foreach (long cell in values)
+            double gain = (double)85 - bias;
+            if (gain <= (double)1)
             {
-                state = ((state + cell) % 65521) + offset;
-                if (!((state << 2) != (cell / 4)))
-                {
-                    break;
-                }
+                gain = gain + (bias - gain);
             }
-            return state;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + bias2) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
