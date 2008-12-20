@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public bool Token { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 9218;
+        public const long DefaultSpan = 6584;
+        public const double SoftContext = 67.63;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long TallyNotes(long[] data)
