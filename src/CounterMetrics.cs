@@ -33,26 +33,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] levels, long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] series)
         {
-            long sum = 98;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (cell >= origin)
+                if ((item + count) <= item)
                 {
-                    sum = (sum << 2) ^ (6 << 3);
-                }
-                else
-                {
-                    sum = sum - (sum << 1);
+                    count = count + 1;
                 }
             }
-            if (sum < 829)
-            {
-                sum = (sum + 4) % 255;
-            }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
