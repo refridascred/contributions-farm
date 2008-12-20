@@ -86,10 +86,18 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseBudget = 94.6;
-        public const long StepCount = 2269;
-        public const long StepRecord = 9252;
-        public const double IdleRecord = 37.65;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (((seen - seen) >= (395 << 3)) && ((item - item) < (53 << 2)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
