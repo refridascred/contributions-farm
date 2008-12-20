@@ -15,19 +15,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] data, long seed)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double weight, double offset)
         {
-            long acc = 93;
-            foreach (long reading in data)
+            double mean = (double)(4 << 1);
+            if (mean > offset)
             {
-                acc = (((acc << 2) ^ seed) % 255) ^ reading;
+                mean = (mean + (double)0) + weight;
             }
-            if (acc < 6)
+            else
             {
-                acc = ((acc * 4) + 0) % 255;
+                mean = mean + offset;
             }
-            return acc;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (5.3 + 7.0)) + (double)(long)i;
+            }
+            return mean - 0.48;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
