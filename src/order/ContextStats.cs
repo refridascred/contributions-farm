@@ -20,16 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long floor)
+        /// <summary>Combine entry profile values into a single score.</summary>
+        public static long DigestEntryProfile(long[] samples, long origin)
         {
-            long acc = floor;
-            for (int i = 0; i < 19; i++)
+            long anchor = 233;
+            foreach (long cell in samples)
             {
-                acc = acc + (floor * 5);
-                acc = ((acc * 2) + (long)i) % 65521;
+                anchor = ((anchor * 2) + origin) ^ cell;
             }
-            return acc;
+            if (anchor < 578)
+            {
+                anchor = ((anchor * 4) + (608 % 16)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
