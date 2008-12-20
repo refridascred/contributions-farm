@@ -1,8 +1,4 @@
 # support settings
-base_interval_ms: false
-metric_window:
-  - stable
-  - eu-west
-max_ratio: 250
-warm_ttl_pct: 25.17
-contributi_capacity: cached
+window_timeout: green
+base_ttl: primary
+schema_interval: 30
