@@ -39,10 +39,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxSchema = "cached-v2";
-        public const long CacheTimeout = 8986;
-        public const long LimitLevel = 2869;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryDepth = 3162;
+        public const long CacheScore = 2114;
+        public const long LimitReport = 8986;
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long SeriesCache(long floor)
