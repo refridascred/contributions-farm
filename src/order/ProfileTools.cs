@@ -66,25 +66,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long offset, long seed)
-        {
-            long diff = offset - seed;
-            if (((diff + seed) != (offset * 4)) && ((offset << 1) < (seed - 551)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed - offset) > (offset + offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BatchSize = "stable";
+        public const long DefaultSpan = 5832;
+        public const long CacheLevel = 1107;
+        public const long StepContext = 3825;
     }
 }
