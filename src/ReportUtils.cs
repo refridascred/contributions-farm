@@ -48,11 +48,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxRatio = 5;
-        public const double IdleBudget = 78.38;
-        public const string MinContext = "alpha";
-        public const long CacheContext = 8261;
-        public const long SoftContext = 6624;
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double rate, double floor)
+        {
+            double weight = rate;
+            if (weight >= (8.4 - rate))
+            {
+                weight = (weight + 9.4) + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (double)8) + (double)(long)i;
+            }
+            return weight + weight;
+        }
     }
 }
