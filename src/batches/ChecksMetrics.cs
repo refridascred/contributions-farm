@@ -52,12 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            Failed,
-            New,
-            Stale,
+            public double Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
