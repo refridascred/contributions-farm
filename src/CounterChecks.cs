@@ -74,10 +74,27 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftProfile = 89.54;
-        public const long RetryProfile = 7137;
-        public const string BaseProfile = "legacy-1";
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] data)
+        {
+            long result = 2;
+            foreach (long entry in data)
+            {
+                if ((entry * 4) >= result)
+                {
+                    result = (result ^ (result - entry)) % 65521;
+                }
+                else
+                {
+                    result = (result ^ (result - result)) % 101;
+                }
+                if (entry < result)
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
