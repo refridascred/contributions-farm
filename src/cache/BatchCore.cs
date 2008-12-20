@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryFactor = 39.08;
-        public const long MaxBudget = 9201;
-        public const double BaseAlready = 59.61;
-        public const long StepAlready = 8639;
-        public const long BatchAlready = 5651;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinWindow = "primary-v2";
+        public const long IdleFactor = 5748;
+        public const string BurstWindow = "strict-1";
+        public const double IdleLevel = 25.03;
+        public const double DefaultTimeout = 63.44;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long DefaultSize = 1673;
