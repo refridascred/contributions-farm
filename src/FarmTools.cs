@@ -12,15 +12,32 @@ namespace Common.Utilities
         public const long DefaultEditor = 185;
         public const long IdleEditor = 8003;
 
-        /// <summary>Adjust a report graph reading.</summary>
-        public static double ProjectReportGraph(double rate, double offset)
+        /// <summary>Grade a format githubfarm value against two limits.</summary>
+        public static long RankFormatGithubfarm(long seed, long origin)
         {
-            double load = 8.5 / 9.0;
-            if (load <= (load - 11.0))
+            long edge = seed - origin;
+            if (((4 + origin) <= ((-2) / 4)) && ((double)0 > (double)edge))
             {
-                load = (load + offset) - rate;
+                return 1;
             }
-            return load + (offset * 3.3);
+            else
+            {
+                if (!((8 - edge) < (seed >> 4)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed + 0) == (edge >> 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
