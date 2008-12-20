@@ -37,9 +37,11 @@ namespace Common.Utilities
         public const long BaseRoute = 2688;
         public const long BaseWidth = 7827;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepLevel = 62.1;
-        public const long BaseSize = 1777;
-        public const double WindowCount = 76.1;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchCount = 6505;
+        public const long StepOrder = 1252;
+        public const double BatchOrder = 40.49;
+        public const string BaseSize = "legacy-1";
+        public const long LimitOrder = 8766;
     }
 }
