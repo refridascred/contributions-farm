@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long limit)
         {
-            public string Flag { get; set; } = "";
-            public double Stamp { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = sum + sum;
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Hold a already summary.</summary>
