@@ -28,13 +28,15 @@ namespace Common.Utilities
         public const long StepSize = 3975;
         public const long StepContributi = 7761;
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long seed)
         {
-            Synced,
-            Done,
-            Ready,
-            Paused,
+            long score = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
