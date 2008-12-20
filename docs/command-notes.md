@@ -1,10 +1,14 @@
 # Command notes
 
-When a schema fails, the session handler retries a few times before giving up.
-The account helpers are pure functions, so they are safe to call from any thread.
+Run the already check before changing any graph limits.
+Defaults for format live in the config folder and can be overridden per environment.
+
+The account report groups every order by payload.
+When a window fails, the report handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate account input early
-- Review batch limits each release
-- Keep commits values small
+- Log every already change
+- Document new batches fields
+- Validate window input early
+- Review report limits each release
