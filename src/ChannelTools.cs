@@ -23,38 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a counter account pair into a bucket.</summary>
-        public static long RankCounterAccount(long step, long seed)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            if (((double)step != (double)seed) && ((5.71 / 2.0) < (double)seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((3.98 / 4.0) != (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed - step) != (4 >> 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((seed & 1) >= (step & 255)) || ((step - seed) < seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public long Score { get; set; }
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
