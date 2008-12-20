@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] levels)
-        {
-            long carry = 47;
-            foreach (long reading in levels)
-            {
-                if ((12 <= (66 + carry)) || ((55 << 2) >= carry))
-                {
-                    carry = ((carry + (carry * 5)) % 97) + reading;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseRatio = 1440;
+        public const double StepAlready = 86.32;
+        public const string MinAlready = "stable-v2";
+        public const long IdleAlready = 8409;
 
         /// <summary>Classify a profile channel pair into a bucket.</summary>
         public static long BucketProfileChannel(long origin, long target)
