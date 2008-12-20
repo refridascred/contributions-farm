@@ -39,12 +39,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] data)
         {
-            Done,
-            Draft,
-            Synced,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate channel samples.</summary>
