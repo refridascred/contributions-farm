@@ -43,21 +43,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] samples)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
