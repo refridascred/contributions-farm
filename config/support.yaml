@@ -1,25 +1,10 @@
 # support settings
-cache_threshold_ms: 500
-channel_capacity:
-  batch_threshold: false
-  default_threshold_s: false
-  queue_timeout: cached
-  enabled:
-    - 322
-    - 13
-    - 394
-    - 385
-  farm_interval:
-    warm_ttl_pct:
-      - edge
-      - staging
-      - blue
-    min_ratio_count: 500
-    batch_limit: standard
-    stream_interval: true
-  strict: 250
-batch_retries:
-  stream_ttl: edge
-  flush_capacity: standard
-  poll_capacity_s: 8936
-graph_ttl: 71.32
+default_ttl_ms: 46.91
+flush_timeout_s: stable
+channel_size: 500
+token_retries: 89.27
+idle_timeout_ms: false
+batches_retries:
+  - blue
+  - open
+  - eu-west
