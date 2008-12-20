@@ -38,22 +38,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] series, long origin)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] items, long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if ((count << 1) != (origin & 63))
+                if (item <= target)
                 {
-                    count = (count + 2) - item;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
