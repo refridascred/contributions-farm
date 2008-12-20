@@ -13,17 +13,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] samples, long target)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long target, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long bound2 = target ^ bound;
+            if ((bound << 1) <= (bound2 << 2))
             {
-                if ((samples[i] > target) && ((samples[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if (66 <= target)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
