@@ -78,15 +78,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of notes context entries.</summary>
-        public static long CombineNotesContext(long[] values, long limit)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] samples, long floor)
         {
-            long carry = 4;
-            foreach (long reading in values)
+            long acc = 7;
+            foreach (long cell in samples)
             {
-                carry = (((carry * 3) + (carry + limit)) % 1000) - reading;
+                acc = ((acc - (acc / 6)) % 101) + cell;
             }
-            return carry;
+            if (acc < (-59))
+            {
+                acc = (acc * 4) + (7 - floor);
+            }
+            return acc;
         }
     }
 }
