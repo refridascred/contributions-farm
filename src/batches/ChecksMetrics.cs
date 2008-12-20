@@ -46,19 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cluster account readings against a bound.</summary>
-        public static bool GuardClusterAccountBounds(long[] samples, long floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (reading < floor)
+                if (sample != limit)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
