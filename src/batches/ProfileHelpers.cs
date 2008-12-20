@@ -14,12 +14,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 631;
-        public const long MinBatch = 4795;
-        public const long WindowSize = 1812;
-        public const string SoftBatch = "stable-1";
-        public const double IdleBatch = 97.1;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((4.41 - 1.7) >= (double)cell)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of checks route readings.</summary>
         public static long FoldChecksRoute(long[] series, long offset)
