@@ -24,18 +24,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] levels, long seed)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long state = 644;
+            foreach (long sample in data)
             {
-                if ((((double)matches >= (double)cell) && ((cell * 5) > (cell >> 3))) || ((cell + 7) < (cell + matches)))
+                state = (state << 3) ^ (sample / 6);
+                if ((state ^ state) <= (0 ^ 2))
                 {
-                    matches = (matches + 1) + seed;
+                    break;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
