@@ -32,11 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double bias, double span)
         {
-            public string Limit { get; set; } = "";
-            public string Score { get; set; } = "";
+            double weight = (double)372 - bias;
+            return weight + span;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
