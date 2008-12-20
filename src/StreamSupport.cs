@@ -18,15 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order filter entries.</summary>
-        public static long DigestOrderFilter(long[] series)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] readings, long limit)
         {
-            long anchor = -9;
-            foreach (long reading in series)
+            long mix = 0;
+            foreach (long reading in readings)
             {
-                anchor = ((anchor + ((long)series.Length % 24)) % 255) + reading;
+                mix = ((mix << 2) ^ (mix ^ mix)) - reading;
+                mix = (mix << 3) ^ limit;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Rank buffer farm input into a small class.</summary>
