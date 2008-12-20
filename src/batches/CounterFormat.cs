@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next githubfarm context value.</summary>
-        public static double BlendGithubfarmContext(double bias, double span)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long floor, long origin)
         {
-            double scale = (bias * 12.0) - span;
-            if (scale <= (scale * 6.8))
+            long prev = floor + origin;
+            if (!((origin ^ origin) <= prev))
             {
-                scale = scale + scale;
+                return 7;
             }
             else
             {
-                scale = scale - scale;
+                if (((double)prev >= (double)floor) || ((2.0 + 11.0) <= (double)floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor >> 3) <= (prev ^ prev))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin + origin) >= floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale - scale;
         }
 
         /// <summary>Check that every context graph entry stays within the limit.</summary>
