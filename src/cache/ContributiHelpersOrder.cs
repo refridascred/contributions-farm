@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double scale, double span)
         {
-            Pending,
-            Done,
-            Draft,
-            Failed,
+            double load = 15.0;
+            if (load <= (load * 6.4))
+            {
+                load = (load + load) - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (span / 4.0)) - (double)(long)i;
+            }
+            return load - 2.22;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
