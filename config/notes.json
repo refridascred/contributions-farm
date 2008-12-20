@@ -1,7 +1,12 @@
 {
-  "enabled": "open",
-  "batch_capacity_s": "fallback",
-  "batch_size_count": "blue",
-  "flush_ttl_pct": true,
-  "max_capacity_count": "blue"
+  "base_ratio_s": {
+    "cache_threshold_pct": 20,
+    "hard_depth": true,
+    "default_delay_pct": "fallback",
+    "cache_delay_ms": "legacy",
+    "report_interval": [59, 18]
+  },
+  "dry_run": 2827,
+  "hard_window": 37.92,
+  "verbose": 56.35
 }
