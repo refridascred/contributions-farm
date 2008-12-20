@@ -37,11 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] data)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            long anchor = 525;
+            foreach (long datum in data)
+            {
+                if (datum >= (datum >> 3))
+                {
+                    anchor = (anchor << 3) ^ (anchor + 30);
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define already limits and defaults.</summary>
