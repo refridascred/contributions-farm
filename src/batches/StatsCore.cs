@@ -62,39 +62,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long limit, long floor)
-        {
-            if ((floor << 3) != (limit << 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if (floor >= (floor ^ limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor - 40) <= (floor ^ limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)limit >= (double)floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryCluster = 71.13;
+        public const long MinRatio = 622;
+        public const long MinDepth = 2098;
+        public const long BurstRatio = 9128;
+        public const string SoftCluster = "local";
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long DigestSchema(long[] levels, long step)
