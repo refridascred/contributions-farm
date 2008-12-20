@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] samples, long offset)
+        /// <summary>Iterate the checks token series from a seed.</summary>
+        public static long SeriesChecksToken(long seed)
         {
-            long sum = 5;
-            foreach (long value in samples)
+            long result = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((offset ^ value) < offset)
-                {
-                    sum = (sum + value) % 255;
-                }
-                else
-                {
-                    sum = (sum + offset) % 4096;
-                }
+                result = ((result << 3) ^ seed) % 101;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return sum % 65521;
+            return result;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
