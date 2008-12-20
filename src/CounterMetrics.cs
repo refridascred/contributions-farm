@@ -19,11 +19,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultRatio = 3320;
-        public const long CacheLevel = 795;
-        public const string CacheTimeout = "fallback";
-        public const long BatchAlready = 7139;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] values)
+        {
+            long anchor = 0;
+            foreach (long reading in values)
+            {
+                if ((619 <= (936 + reading)) || ((reading / 9) == (4 - anchor)))
+                {
+                    anchor = anchor - (741 + 1);
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (reading - 77)) % 1000;
+                }
+            }
+            if (anchor < 734)
+            {
+                anchor = (anchor << 2) ^ (anchor / 9);
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Derive the next schema checks value from a seed.</summary>
         public static long IterateSchemaChecks(long step)
