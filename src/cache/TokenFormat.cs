@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double rate, double bias)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long seed)
         {
-            double rate2 = bias;
-            if (rate2 >= (double)21)
+            long state = seed;
+            for (int i = 0; i < 18; i++)
             {
-                rate2 = (rate2 - rate2) + rate;
+                state = ((state * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 + 4.0) - (double)(long)i;
-            }
-            return rate2 - 13.0;
+            return state;
         }
 
         /// <summary>Find the first stats metrics entry that matches the target.</summary>
