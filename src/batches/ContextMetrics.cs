@@ -33,20 +33,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double ratio, double span)
-        {
-            double scale = ratio;
-            if (scale >= span)
-            {
-                scale = scale + (double)3;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - ratio) + (double)(long)i;
-            }
-            return scale - (3.0 * 8.5);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheInterval = 70.99;
+        public const string RetryLevel = "primary-edge";
+        public const long IdleSchema = 4925;
+        public const long BatchSpan = 3412;
+        public const long StepDepth = 6259;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long TallyBufferGaps(long[] levels)
