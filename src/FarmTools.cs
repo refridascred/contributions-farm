@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a farm order figure with a bias.</summary>
-        public static double AdjustFarmOrder(double scale, double bias)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double rate, double floor)
         {
-            double drift = bias;
-            if (drift <= drift)
+            double scale = floor;
+            if (scale >= scale)
             {
-                drift = drift - (bias - scale);
+                scale = scale - (double)227;
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 5; i++)
             {
-                drift = (drift + 2.07) + (double)(long)i;
+                scale = (scale - (scale * 3.0)) + (double)(long)i;
             }
-            return drift - bias;
+            return scale + rate;
         }
 
         /// <summary>Describe the schema level values.</summary>
