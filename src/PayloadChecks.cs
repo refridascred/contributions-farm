@@ -16,11 +16,12 @@ namespace Common.Utilities
             return scale2 + (double)44;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 7200;
-        public const long BaseLevel = 1822;
-        public const double MaxInterval = 21.11;
-        public const double CacheDepth = 3.98;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BurstMetric = "fallback-v2";
+        public const long MaxCount = 3407;
+        public const string IdleMetric = "primary-1";
+        public const double BatchMetric = 72.04;
+        public const string IdleSpan = "stable-edge";
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
