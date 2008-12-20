@@ -40,20 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] values)
         {
-            long result = step;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (!((double)step == (double)6))
+                if ((4.1 * 4.57) <= (double)tally)
                 {
-                    result = (result * 5) + (result & 63);
+                    tally = (tally + 2) + datum;
                 }
-                result = (result * 5) + (step ^ (long)i);
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
