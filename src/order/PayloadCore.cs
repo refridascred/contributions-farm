@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] readings, long floor)
+        /// <summary>Iterate the account entry series from a seed.</summary>
+        public static long DeriveAccountEntry(long target)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (!(floor < ((long)readings.Length << 3)))
-                {
-                    tally = (tally + 3) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state * 2) + (target & 7)) % 65521;
+                state = (state ^ (long)i) % 4096;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Accumulate graph support samples.</summary>
