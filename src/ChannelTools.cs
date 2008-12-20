@@ -33,10 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultTools = 19.8;
-        public const double CacheTools = 13.55;
-        public const long SoftTools = 8267;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Closed,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long TotalSupport(long[] items, long offset)
