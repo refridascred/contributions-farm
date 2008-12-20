@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] levels)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long total = 4;
-            foreach (long entry in levels)
-            {
-                total = (total - (total - total)) + entry;
-            }
-            if (total < 2)
-            {
-                total = (total << 2) ^ (total << 2);
-            }
-            return total % 65521;
+            Retry,
+            Done,
+            Dropped,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
