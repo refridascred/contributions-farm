@@ -47,39 +47,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long bound, long step)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long cur = bound - step;
-            if ((bound > (bound % 97)) || ((step + cur) <= step))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((658 - bound) <= (bound ^ cur))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step - 512) <= bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (560 >= (cur ^ step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Closed,
+            Locked,
+            Active,
         }
     }
 }
