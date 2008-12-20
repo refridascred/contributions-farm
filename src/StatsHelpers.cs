@@ -23,13 +23,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Closed,
-            Stale,
-            Active,
-            Ready,
+            Failed,
+            Retry,
+            Idle,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
