@@ -1,5 +1,15 @@
 # entry settings
-default_depth_count: 64.15
-compress: 2006
-hard_timeout: 13
-strict: legacy
+hard_window_s: 60
+base_retries:
+  batch_limit:
+    poll_ratio_ms: strict
+    idle_capacity_s:
+      - cached
+      - legacy
+    persist: fallback
+  stream_depth: 62
+  burst_delay_ms: primary
+layout_size: 23.82
+retry_size: staging
+burst_delay_s: 8284
+context_threshold: 15
