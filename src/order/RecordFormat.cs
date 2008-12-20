@@ -18,15 +18,13 @@ namespace Common.Utilities
         public const string IdleAccount = "stable";
         public const double DefaultAccount = 46.79;
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double gain, double span)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            double rate = 5.8;
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (((rate + (double)28) - (double)(long)i) + gain) - span;
-            }
-            return rate + (double)472;
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
+            public double Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
