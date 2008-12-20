@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] levels)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)matches > (19.0 / 4.0))
-                {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public double Score { get; set; }
+            public bool Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Locate a account reading by value.</summary>
