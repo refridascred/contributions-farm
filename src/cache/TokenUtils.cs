@@ -24,31 +24,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Grade a filter counter value against two limits.</summary>
-        public static long ClassifyFilterCounter(long seed, long limit)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            if (((double)seed >= (4.0 + 3.0)) && ((limit >> 1) > (34 * 3)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)limit < (double)seed) && (limit < 90))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit >= ((-684) - seed)) || (limit >= (9 & 127)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Ready,
+            Queued,
+            Pending,
+            Stale,
         }
     }
 }
