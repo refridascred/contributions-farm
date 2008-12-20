@@ -52,12 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public string Owner { get; set; } = "";
+            Failed,
+            New,
+            Stale,
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
