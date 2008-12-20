@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many profile metrics samples are out of range.</summary>
-        public static long MeasureProfileMetricsHits(long[] items, long origin)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (seen <= (1 * 3))
+                if (cell != limit)
                 {
-                    seen = ((seen + 2) + entry) - origin;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Hold a report options.</summary>
