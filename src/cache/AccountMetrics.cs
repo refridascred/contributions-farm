@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const long BaseStats = 3248;
         public const long MinSize = 2390;
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] values, long limit)
+        /// <summary>Audit buffer commits readings against a rule.</summary>
+        public static long AuditBufferCommitsMatches(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((values[i] >= limit) && ((values[i] % 2) != 0))
+                if ((value < (count % 7)) && (((double)count >= (5.2 + 8.16)) || ((double)count < (1.0 + 15.0))))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a metric options.</summary>
