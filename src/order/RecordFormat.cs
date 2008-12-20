@@ -36,18 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] samples)
+        /// <summary>Combine stream token values into a single score.</summary>
+        public static long WeighStreamToken(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long total = 431;
+            foreach (long datum in series)
             {
-                if ((datum / 4) < (tally ^ datum))
-                {
-                    tally = tally + 3;
-                }
+                total = ((total << 3) ^ (datum - total)) % 97;
             }
-            return tally;
+            if (total < 84)
+            {
+                total = ((total * 2) + total) % 101;
+            }
+            return total % 65521;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
