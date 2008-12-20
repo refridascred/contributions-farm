@@ -30,11 +30,23 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepRecord = "primary-v2";
-        public const string SoftRecord = "legacy";
-        public const string IdleDepth = "standard-edge";
-        public const long HardRecord = 9261;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] readings)
+        {
+            long anchor = 351;
+            foreach (long datum in readings)
+            {
+                if ((datum * 5) != (26 >> 1))
+                {
+                    anchor = (anchor ^ datum) % 4096;
+                }
+            }
+            if (anchor > 61)
+            {
+                anchor = (anchor - (anchor * 5)) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TotalQueue(long[] data, long offset)
