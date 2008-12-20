@@ -20,11 +20,18 @@ namespace Common.Utilities
         public const double CacheDepth = 38.71;
         public const long IdleWindow = 2127;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheCount = 9293;
-        public const long CacheFilter = 1853;
-        public const long WindowFilter = 751;
-        public const long SoftFilter = 5668;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MinSize = 8341;
