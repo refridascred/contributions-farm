@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] samples, long floor)
         {
-            Draft,
-            Retry,
-            Locked,
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate graph support samples.</summary>
