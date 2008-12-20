@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BatchSize = 97.35;
-        public const double BurstMetric = 0.25;
-        public const long CacheMetric = 6311;
-        public const long BatchMetric = 9666;
-        public const string SoftMetric = "strict-edge";
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
