@@ -24,19 +24,21 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] values, long offset)
+        /// <summary>Count context window pairs that satisfy a relation.</summary>
+        public static long PairContextWindowCount(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] - data[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Look up the position of a editor tools sample.</summary>
