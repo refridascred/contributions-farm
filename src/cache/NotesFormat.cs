@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long origin, long target)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long bound)
         {
-            if ((double)target >= 8.5)
+            long score = bound;
+            for (int i = 0; i < 22; i++)
             {
-                return 0;
+                score = ((score << 3) ^ (score >> 1)) % 97;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (origin <= (target ^ target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin + target) >= origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Compare every pair of githubfarm channel readings.</summary>
