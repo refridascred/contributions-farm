@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long DefaultReport = 6239;
         public const long MaxFactor = 5055;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] values, long step)
+        /// <summary>Find the first farm account entry that matches the target.</summary>
+        public static long FindFarmAccountIndex(long[] levels, long bound)
         {
-            long score = 24;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score << 3) ^ reading) - step;
+                if (levels[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            if (score > 18)
-            {
-                score = ((score * 5) + score) % 101;
-            }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Match up tools samples.</summary>
