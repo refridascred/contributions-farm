@@ -19,30 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] items)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] series)
         {
-            long total = -347;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((90 >> 2) >= (total << 1))
+                if ((90 & 3) <= (matches >> 4))
                 {
-                    total = total ^ 54;
+                    matches = (matches + 2) + cell;
                 }
-                if ((double)entry != (8.7 / 4.0))
+                else
                 {
-                    total = (total + (total / 9)) % 101;
-                }
-                if ((1 + total) >= total)
-                {
-                    total = ((total * 4) + (entry - entry)) % 4096;
+                    matches = matches - 1;
                 }
             }
-            if (total > 26)
-            {
-                total = (total + (total % 8)) % 1000;
-            }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
