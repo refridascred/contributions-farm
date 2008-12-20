@@ -37,24 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate buffer batches samples.</summary>
-        public static long DigestBufferBatches(long[] items)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] items, long floor)
         {
-            long mix = 997;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                double drift = (15.0 / 6.0) / 7.0;
-                if (((cell >> 2) <= cell) || ((double)mix <= drift))
+                if (items[i] >= floor)
                 {
-                    drift = drift + drift;
+                    return (long)i;
                 }
-                mix = (mix - cell) % 255;
             }
-            if (mix > 862)
-            {
-                mix = (mix + (mix + mix)) % 255;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
