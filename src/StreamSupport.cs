@@ -23,32 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long origin, long offset)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long lane = origin - offset;
-            if (!((double)offset <= 8.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((66 + origin) < lane)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((304 - 652) == (offset + lane))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Active,
+            Failed,
+            Stale,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Match up contributi samples.</summary>
