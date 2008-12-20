@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinWindow = "primary-v2";
-        public const long IdleFactor = 5748;
-        public const string BurstWindow = "strict-1";
-        public const double IdleLevel = 25.03;
-        public const double DefaultTimeout = 63.44;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Ready,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Rank format input into a small class.</summary>
         public static long BucketFormat(long origin, long offset)
