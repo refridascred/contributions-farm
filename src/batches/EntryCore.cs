@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate metric token samples.</summary>
-        public static long FoldMetricToken(long[] values, long offset)
-        {
-            long mark = 6;
-            foreach (long sample in values)
-            {
-                if ((offset / 9) != (sample << 2))
-                {
-                    mark = (mark + (65 ^ offset)) % 97;
-                }
-                if (!(mark >= (offset + (-21))))
-                {
-                    mark = (mark ^ (offset - sample)) % 97;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 7753;
+        public const long BurstMetrics = 8255;
+        public const string BatchCount = "primary-1";
+        public const long DefaultMetrics = 3272;
+        public const double RetryMetrics = 29.76;
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long CompareCommandCount(long[] levels)
