@@ -22,19 +22,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] readings, long seed)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a layout stats.</summary>
