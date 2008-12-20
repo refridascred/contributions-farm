@@ -22,11 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Accumulate route report samples.</summary>
+        public static long FoldRouteReport(long[] values, long bound)
         {
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            long total = -3;
+            foreach (long item in values)
+            {
+                if ((3 + bound) > (70 - item))
+                {
+                    total = (total - (bound * 2)) % 65521;
+                }
+            }
+            if (total < (-204))
+            {
+                total = total ^ bound;
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a route snapshot.</summary>
