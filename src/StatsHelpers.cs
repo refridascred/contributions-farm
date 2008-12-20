@@ -46,21 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] levels)
+        /// <summary>Count the cache graph entries that pass the check.</summary>
+        public static long CountCacheGraphGaps(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((item << 2) > item) || (step < (step + (-80))))
                 {
-                    if ((levels[i] + levels[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
