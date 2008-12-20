@@ -57,19 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer format values into a single score.</summary>
-        public static long TallyBufferFormat(long[] values, long target)
-        {
-            long mix = 22;
-            foreach (long value in values)
-            {
-                if ((double)target <= (double)mix)
-                {
-                    mix = ((mix ^ target) % 97) ^ value;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepRecord = "primary-v2";
+        public const string SoftRecord = "legacy";
+        public const string IdleDepth = "standard-edge";
+        public const long HardRecord = 9261;
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long SeriesTools(long bound)
