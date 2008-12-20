@@ -37,23 +37,12 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] samples)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long mix = 656;
-            foreach (long item in samples)
-            {
-                mix = mix + (mix + 130);
-                if (14.0 > (double)mix)
-                {
-                    mix = (mix + (mix << 3)) % 4096;
-                }
-                if (((mix / 5) < item) || ((17.0 * 5.7) == (double)mix))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Queued,
+            Paused,
+            Synced,
         }
     }
 }
