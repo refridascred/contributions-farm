@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every cluster order entry stays within the limit.</summary>
-        public static bool ValidateClusterOrderBounds(long[] items, long bound)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long seed)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long result = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (datum > bound)
+                if (((long)i << 1) < 7)
                 {
-                    ok = false;
-                    break;
+                    result = result + (result + 884);
                 }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Describe the format state values.</summary>
