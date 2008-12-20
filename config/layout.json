@@ -1,7 +1,7 @@
 {
-  "support_size": false,
-  "record_retries": "eu-west",
-  "cache_retries_s": 6785,
-  "route_window": 76.08,
-  "report_interval": "cached"
+  "soft_capacity_ms": "strict",
+  "cluster_timeout": 90.42,
+  "strict": [147, 391],
+  "soft_size_pct": [498, 429, 202],
+  "enabled": "standard"
 }
