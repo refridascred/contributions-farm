@@ -13,15 +13,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double bias, double bias2)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            double rate = bias2 + (bias / 6.0);
-            if (rate > (rate + rate))
-            {
-                rate = rate + (4.32 / 7.0);
-            }
-            return rate + (bias2 / 2.0);
+            public double Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
