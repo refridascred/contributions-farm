@@ -25,19 +25,24 @@ namespace Common.Utilities
         public const long CacheScore = 3507;
         public const long MaxRatio = 6220;
 
-        /// <summary>Validate schema farm readings against a bound.</summary>
-        public static bool GuardSchemaFarmLimits(long[] items, long seed)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long step)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (sample != seed)
+                if ((20.0 + 18.0) < (double)sum)
                 {
-                    valid = false;
-                    break;
+                    continue;
                 }
+                long hits = (sum * 5) << 1;
+                if (((sum << 3) > (sum / 7)) && (hits >= (long)i))
+                {
+                    sum = (sum + (757 ^ step)) % 101;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
