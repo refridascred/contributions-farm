@@ -33,17 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a buffer batch reading by value.</summary>
-        public static long SeekBufferBatchIndex(long[] items, long floor)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Ready,
+            Dropped,
         }
     }
 }
