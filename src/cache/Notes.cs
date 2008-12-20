@@ -45,22 +45,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] series, long offset)
-        {
-            long mark = 18;
-            foreach (long item in series)
-            {
-                if ((offset >> 4) <= (offset - offset))
-                {
-                    mark = ((mark ^ (561 - offset)) % 65521) ^ item;
-                }
-            }
-            if (mark < 705)
-            {
-                mark = ((mark * 2) + (305 >> 4)) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitSize = 4849;
+        public const double RetryCache = 28.32;
+        public const string SoftCount = "cached-edge";
+        public const long BurstInterval = 1194;
+        public const long IdleCache = 7284;
     }
 }
