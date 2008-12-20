@@ -32,21 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] items)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            Active,
+            Closed,
         }
 
         /// <summary>Describe the cache mode values.</summary>
