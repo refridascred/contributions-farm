@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double rate, double offset)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long bound, long target)
         {
-            double ratio = offset;
-            if (ratio > ratio)
+            if (((15.0 - 1.0) >= (double)bound) && ((double)bound != (double)target))
             {
-                ratio = (ratio - offset) - rate;
+                return 7;
             }
             else
             {
-                ratio = ratio - (offset / 8.0);
+                if (((6.4 / 7.0) >= (double)target) || ((0.7 + 9.57) != (double)bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return ratio + offset;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
