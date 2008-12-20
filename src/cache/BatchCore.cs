@@ -16,19 +16,15 @@ namespace Common.Utilities
         public const long HardGraph = 9621;
         public const long StepTimeout = 935;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] items, long offset)
+        /// <summary>Iterate the report support series from a seed.</summary>
+        public static long IterateReportSupport(long seed)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long mark = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading > offset)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Check that every editor already entry stays within the limit.</summary>
