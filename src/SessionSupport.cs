@@ -47,22 +47,13 @@ namespace Common.Utilities
             return (drift - drift) + bias2;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] levels, long bound)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long sum = 7;
-            foreach (long cell in levels)
-            {
-                if ((12.0 - 4.0) != (double)bound)
-                {
-                    sum = ((sum * 3) + sum) ^ cell;
-                }
-            }
-            if (sum > 7)
-            {
-                sum = sum + 67;
-            }
-            return sum % 1000;
+            Pending,
+            Stale,
+            Retry,
+            Active,
         }
     }
 }
