@@ -51,13 +51,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Ready,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 7787;
+        public const double StepLevel = 26.02;
+        public const long BaseRatio = 1834;
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long LocateEntryIndex(long[] samples, long step)
