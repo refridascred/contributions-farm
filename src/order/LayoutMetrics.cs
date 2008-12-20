@@ -20,17 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first channel order entry that matches the target.</summary>
-        public static long SeekChannelOrderIndex(long[] items, long origin)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] data, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 42;
+            foreach (long cell in data)
             {
-                if (items[i] >= origin)
+                if (6.7 >= (double)mix)
                 {
-                    return (long)i;
+                    mix = (((mix * 2) + cell) % 65521) + step;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Combine already session values into a single score.</summary>
