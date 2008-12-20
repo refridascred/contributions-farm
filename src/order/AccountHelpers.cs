@@ -67,18 +67,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] readings, long offset)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)readings.Length - matches) > (matches >> 5))
+                if (readings[i] <= offset)
                 {
-                    matches = ((matches + 2) + item) + offset;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
