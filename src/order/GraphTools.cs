@@ -50,21 +50,17 @@ namespace Common.Utilities
             return rate - (4.3 * 5.4);
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] samples)
+        /// <summary>Derive the next context counter value from a seed.</summary>
+        public static long SeriesContextCounter(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score * 5) + limit) % 255;
+                score = (score - (score * 3)) % 65521;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the token phase values.</summary>
