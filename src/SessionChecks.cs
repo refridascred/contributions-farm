@@ -23,12 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public bool Region { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 8466;
+        public const string CacheMetric = "alpha-1";
+        public const string HardMetric = "legacy-1";
+        public const long StepInterval = 7665;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long FoldFarm(long[] readings)
