@@ -22,19 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long target)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] samples)
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (((acc * 2) + target) % 65521) - (long)i2;
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Compare every pair of cluster stream readings.</summary>
