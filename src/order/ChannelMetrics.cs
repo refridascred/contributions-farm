@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] values, long limit)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (datum > (831 - 1))
-                {
-                    seen = (seen + 2) + limit;
-                }
-            }
-            return seen;
+            New,
+            Locked,
+            Idle,
+            Closed,
+            Active,
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
