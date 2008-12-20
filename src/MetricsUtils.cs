@@ -46,19 +46,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] values, long origin)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item >= origin)
+                if ((values[i] >= target) && ((values[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
