@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate farm command samples.</summary>
-        public static long TallyFarmCommand(long[] levels)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long origin, long target)
         {
-            long mix = 953;
-            foreach (long datum in levels)
+            if ((double)target >= 8.5)
             {
-                mix = (mix * 4) + mix;
-                if (datum >= (datum - datum))
+                return 0;
+            }
+            else
+            {
+                if (origin <= (target ^ target))
                 {
-                    mix = ((mix << 3) ^ (mix << 1)) % 97;
+                    return 8;
                 }
                 else
                 {
-                    mix = mix - (datum / 2);
+                    if ((origin + target) >= origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Compare every pair of githubfarm channel readings.</summary>
