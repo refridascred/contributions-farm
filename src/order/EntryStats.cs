@@ -46,10 +46,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MinSpan = "local-v2";
-        public const double StepInterval = 14.47;
-        public const long LimitMetrics = 8592;
-        public const long DefaultMetrics = 4645;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] values)
+        {
+            long anchor = 38;
+            foreach (long sample in values)
+            {
+                anchor = (((anchor * 2) + anchor) % 101) + sample;
+            }
+            return anchor;
+        }
     }
 }
