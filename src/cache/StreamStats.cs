@@ -22,22 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] items)
+        /// <summary>Audit tools order readings against a rule.</summary>
+        public static long CountToolsOrderHits(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (!(matches > 225) && ((double)matches <= (9.34 + 9.37)))
+                if (!((tally + reading) >= reading))
                 {
-                    matches = (matches + 3) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
