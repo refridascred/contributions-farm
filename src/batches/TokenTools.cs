@@ -30,13 +30,18 @@ namespace Common.Utilities
         public const long RetryCount = 1426;
         public const long HardRatio = 1613;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Count the profile stats entries that pass the check.</summary>
+        public static long AuditProfileStatsHits(long[] samples)
         {
-            Paused,
-            Pending,
-            Active,
-            Locked,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (((cell % 100) == (tally << 2)) && ((tally - tally) > tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
