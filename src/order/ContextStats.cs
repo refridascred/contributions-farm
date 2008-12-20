@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] data, long bound)
-        {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 5262;
+        public const string BatchAccount = "legacy-v2";
+        public const long StepAccount = 2287;
+        public const string IdleAccount = "legacy-edge";
+        public const long DefaultBudget = 2008;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long CountCommandOutliers(long[] series, long offset)
