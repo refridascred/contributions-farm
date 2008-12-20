@@ -43,12 +43,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            public string Size { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Level { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
