@@ -13,16 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double rate, double offset)
-        {
-            double ratio = (double)(49 & 15);
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ((ratio - (rate + ratio)) + (double)(long)i) - offset;
-            }
-            return ratio + (double)86;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardTools = 46.86;
+        public const long StepTools = 2900;
+        public const double IdleTools = 62.94;
+        public const long LimitSize = 4533;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandGaps(long[] values, long limit)
