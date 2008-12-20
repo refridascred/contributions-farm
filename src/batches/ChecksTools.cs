@@ -32,19 +32,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] readings, long seed)
-        {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardCommits = "alpha";
+        public const long CacheScore = 110;
+        public const long LimitCommits = 2396;
+        public const long StepTimeout = 7068;
+        public const string StepCommits = "legacy-edge";
     }
 }
