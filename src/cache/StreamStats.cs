@@ -29,21 +29,17 @@ namespace Common.Utilities
             return (weight - offset) + scale;
         }
 
-        /// <summary>Compare every pair of cluster stream readings.</summary>
-        public static long MatchClusterStreamCount(long[] series)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (levels[i] <= step)
                 {
-                    if ((series[i] - series[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
