@@ -44,11 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Audit entry layout readings against a rule.</summary>
+        public static long MeasureEntryLayoutGaps(long[] samples)
         {
-            public double Weight { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum + datum) <= datum)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a graph stats.</summary>
