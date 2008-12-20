@@ -60,12 +60,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxDepth = 5768;
-        public const long HardChannel = 5845;
-        public const string RetryBudget = "primary-v2";
-        public const long IdleWidth = 1518;
-        public const long IdleCount = 9125;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long target, long limit)
+        {
+            if ((double)limit == (2.49 - 6.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit - target) != (4 + limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((limit * 2) == (target + target)) && ((4.1 + 2.21) <= (double)limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long LocateEntryIndex(long[] samples, long step)
