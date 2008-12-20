@@ -29,17 +29,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a commits batch reading by value.</summary>
-        public static long LookupCommitsBatchIndex(long[] samples, long floor)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= floor) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
