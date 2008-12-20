@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many graph stream samples are out of range.</summary>
-        public static long MeasureGraphStreamGaps(long[] values)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < seen)
+                if (levels[i] > limit)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
