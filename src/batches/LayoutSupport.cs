@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Failed,
-            Dropped,
-            Queued,
+            Locked,
+            Paused,
+            Synced,
         }
 
         /// <summary>Describe the batch kind values.</summary>
