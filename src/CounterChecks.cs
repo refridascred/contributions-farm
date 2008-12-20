@@ -42,38 +42,16 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long target, long origin)
+        /// <summary>Iterate the channel session series from a seed.</summary>
+        public static long StepChannelSession(long bound)
         {
-            if ((origin + origin) >= target)
+            long total = bound;
+            for (int i = 0; i < 4; i++)
             {
-                return 1;
+                total = (total ^ ((-259) * 5)) % 97;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((origin << 2) <= (target >> 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (origin > (origin + origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)origin <= 3.68)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
