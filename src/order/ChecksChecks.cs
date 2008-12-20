@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit stream githubfarm readings against a rule.</summary>
-        public static long TallyStreamGithubfarmGaps(long[] data)
+        /// <summary>Adjust a counter payload reading.</summary>
+        public static double ScaleCounterPayload(double gain, double span)
         {
-            long count = 0;
-            foreach (long cell in data)
+            double load = span;
+            if (load >= (span + span))
             {
-                if ((cell << 1) > count)
-                {
-                    count = count + 3;
-                }
+                load = load + (2.2 / 2.0);
             }
-            return count;
+            else
+            {
+                load = load + (double)(-3);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (16.0 * 3.2)) - (double)(long)i;
+            }
+            return load + gain;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
