@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long offset, long origin)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            if ((offset * 5) < 26)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin * 3) >= (origin - 27))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset <= (15.0 * 8.53))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Idle,
+            Ready,
+            Closed,
+            Synced,
         }
 
         /// <summary>Project the next githubfarm batches value.</summary>
