@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long SoftBudget = 8694;
         public const long BurstWindow = 4397;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] samples, long limit)
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double bias, double offset)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            double load = bias;
+            if (load >= (offset * 0.67))
             {
-                if ((limit * 5) > (30 ^ limit))
-                {
-                    count = (count + 3) - datum;
-                }
+                load = load - (offset / 2.0);
             }
-            return count;
+            return load + bias;
         }
 
         /// <summary>Hold a editor stats.</summary>
