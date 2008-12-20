@@ -31,23 +31,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] series)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long limit)
         {
-            long result = 856;
-            foreach (long cell in series)
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((cell % 24) <= (result & 63))
-                {
-                    result = (result ^ (119 % 8)) % 101;
-                    break;
-                }
-                if ((4.79 - 2.53) != (double)result)
-                {
-                    result = (result - (cell * 2)) % 1000;
-                }
+                carry = (carry * 3) + limit;
+                carry = carry ^ (limit + limit);
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return result % 4096;
+            return carry;
         }
     }
 }
