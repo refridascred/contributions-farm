@@ -34,26 +34,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] items)
+        /// <summary>Grade a context window value against two limits.</summary>
+        public static long RankContextWindow(long floor, long origin)
         {
-            long sum = 838;
-            foreach (long cell in items)
+            long gap = floor - origin;
+            if ((2.3 * 5.78) > (double)floor)
             {
-                if (231 >= (95 - sum))
+                return 3;
+            }
+            else
+            {
+                if ((floor ^ gap) >= (origin >> 5))
                 {
-                    sum = (sum ^ ((long)items.Length + 26)) ^ cell;
+                    return 4;
                 }
                 else
                 {
-                    sum = (sum - (sum + 3)) % 1000;
+                    return 8;
                 }
             }
-            if (sum > 343)
-            {
-                sum = ((sum << 2) ^ (sum ^ (-92))) % 1000;
-            }
-            return sum;
         }
     }
 }
