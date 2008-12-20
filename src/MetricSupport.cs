@@ -27,16 +27,21 @@ namespace Common.Utilities
         public const long MaxLevel = 5596;
         public const long LimitScore = 3694;
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long floor)
+        /// <summary>Match up order tools samples.</summary>
+        public static long PairOrderToolsCount(long[] values)
         {
-            long sum = floor;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum + sum) % 97;
-                sum = ((sum * 5) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
