@@ -47,21 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double ratio, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)(24 - 26);
+            if (mean <= floor)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean - (double)4;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (ratio - mean)) - (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Hold a metric info.</summary>
