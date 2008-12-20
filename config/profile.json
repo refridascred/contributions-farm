@@ -1,6 +1,7 @@
 {
-  "strict": [310, 314, 281, 414],
-  "soft_size_ms": true,
-  "profile_threshold": ["green", "fallback", "green"],
-  "tools_ttl": 7954
+  "githubfarm_window": "open",
+  "cache_capacity_ms": 66.39,
+  "route_retries": 21,
+  "batch_interval_pct": 7928,
+  "hard_limit": 703
 }
