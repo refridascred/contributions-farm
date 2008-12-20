@@ -29,38 +29,19 @@ namespace Common.Utilities
         public const long HardGraph = 9621;
         public const long StepTimeout = 935;
 
-        /// <summary>Rank record checks input into a small class.</summary>
-        public static long GradeRecordChecks(long origin, long offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] items, long offset)
         {
-            if ((origin * 4) >= (offset / 6))
+            bool ok = true;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin * 4) >= (45 / 7))
+                if (reading > offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)offset != (3.0 / 9.0)) || ((8.0 / 4.0) >= (double)origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin - origin) < ((-52) >> 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Check that every editor already entry stays within the limit.</summary>
