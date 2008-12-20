@@ -37,12 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Active,
             Retry,
-            Dropped,
+            Closed,
+            Active,
         }
     }
 }
