@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] readings, long bound)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long origin)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)bound > 2.0)
-                {
-                    matches = (matches + 1) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = ((mix * 4) + mix) % 255;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
