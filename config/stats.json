@@ -1,9 +1,5 @@
 {
-  "poll_interval": 250,
-  "channel_window": {
-    "token_interval": "primary",
-    "readonly": [473, 39],
-    "enabled": 7318
-  },
-  "queue_ratio": 70.89
+  "default_timeout_count": "eu-west",
+  "poll_window_count": 33,
+  "base_capacity": false
 }
