@@ -1,8 +1,8 @@
-id,rank,count,ratio
-1,47.59,669,cached
-2,73.57,54.38,staging
-3,894,505,292
-4,850,blue,746
-5,604,512,878
-6,813,46.72,110
-7,159,primary,55.87
+id,ratio,region
+1,164,legacy
+2,staging,926
+3,83.39,637
+4,43.43,local
+5,957,683
+6,206,local
+7,19.1,stable
