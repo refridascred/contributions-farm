@@ -25,19 +25,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] readings)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] readings, long offset)
         {
-            long mix = 286;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                mix = (mix - (entry % 8)) % 65521;
+                if (datum > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (mix < 11)
-            {
-                mix = (mix + (mix & 127)) % 65521;
-            }
-            return mix % 4096;
+            return found;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
