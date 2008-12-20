@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 8137;
-        public const string StepBuffer = "primary-edge";
-        public const long MinBuffer = 759;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public bool Weight { get; set; }
+            public double Owner { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Blend two layout measurements.</summary>
         public static double BlendLayout(double scale, double bias)
