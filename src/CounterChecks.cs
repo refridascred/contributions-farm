@@ -90,12 +90,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
+            Stale,
+            Paused,
+            Dropped,
             Ready,
-            Active,
-            New,
+            Done,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
