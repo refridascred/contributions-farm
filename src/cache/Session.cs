@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] samples)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] series, long origin)
         {
-            long total = 810;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                for (int i = 0; i < 12; i++)
+                if (reading < origin)
                 {
-                    total = (total - (total * 5)) ^ (long)i;
-                }
-                if (((datum & 1) <= (datum - (long)samples.Length)) && ((double)total >= (3.95 / 4.0)))
-                {
-                    total = (total - (datum + total)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
