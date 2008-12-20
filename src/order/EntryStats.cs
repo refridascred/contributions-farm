@@ -63,23 +63,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] items, long target)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] values, long offset)
         {
-            long result = 841;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                if (values[i] <= offset)
                 {
-                    result = ((result << 2) ^ (result - 605)) ^ (long)i;
-                }
-                result = result ^ (result - result);
-                if (((target << 1) >= 204) || ((result + target) <= ((-676) ^ (long)items.Length)))
-                {
-                    result = result + (item - 9);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
