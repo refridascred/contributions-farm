@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] levels, long limit)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] items)
         {
-            long total = 40;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total + (total >> 2)) % 97) ^ sample;
-                if (limit >= (56 >> 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = total + (total * 3);
-                }
-                else
-                {
-                    total = ((total << 2) ^ (total % 5)) % 255;
-                }
-                if ((807 + 109) != (total + limit))
-                {
-                    break;
+                    if ((items[i] - items[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
