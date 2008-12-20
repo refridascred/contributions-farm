@@ -39,22 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] samples, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] readings, long limit)
         {
-            long score = -93;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (666 >= score)
+                if (limit >= (5 + count))
                 {
-                    score = (score - (datum + (-750))) + limit;
+                    count = (count + 2) + entry;
                 }
             }
-            if (score > 3)
-            {
-                score = (score ^ 52) % 101;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a entry options.</summary>
