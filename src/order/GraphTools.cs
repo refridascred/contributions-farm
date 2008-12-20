@@ -19,10 +19,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftCount = "fallback-v2";
-        public const long BurstCommand = 4932;
-        public const double RetryCommand = 0.89;
+        /// <summary>Adjust a stats window reading.</summary>
+        public static double SmoothStatsWindow(double rate, double span)
+        {
+            double rate2 = (double)(997 + 4);
+            return (rate2 + (rate * 4.3)) + span;
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool CheckSessionBounds(long[] readings, long offset)
