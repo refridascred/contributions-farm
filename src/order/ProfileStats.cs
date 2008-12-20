@@ -26,18 +26,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] values)
+        /// <summary>Audit schema entry readings against a rule.</summary>
+        public static long CountSchemaEntryMatches(long[] series)
         {
-            long mix = 545;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (mix < (mix - value))
+                if ((tally - tally) == (tally % 97))
                 {
-                    mix = mix - (7 / 3);
+                    tally = (tally + 1) + datum;
                 }
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Adjust a commits reading.</summary>
