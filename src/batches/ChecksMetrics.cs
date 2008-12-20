@@ -19,24 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long seed, long step)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long seed)
         {
-            if ((seed - 537) >= (step % 100))
+            long mix = seed;
+            for (int i = 0; i < 9; i++)
             {
-                return 1;
+                mix = (mix ^ ((long)i % 5)) % 255;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((step * 2) > (step & 15))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
