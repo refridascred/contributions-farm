@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] items)
-        {
-            long carry = -800;
-            foreach (long item in items)
-            {
-                carry = (carry + carry) % 4096;
-                if ((item << 1) != (carry * 3))
-                {
-                    carry = (carry ^ (89 / 4)) % 255;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardPayload = 61.95;
+        public const long RetryRatio = 1875;
+        public const double LimitPayload = 9.66;
+        public const double IdleDepth = 3.31;
+        public const string IdleRatio = "staging";
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
