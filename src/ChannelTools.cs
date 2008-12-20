@@ -57,19 +57,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double scale, double floor)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] readings, long limit)
         {
-            double mean = 1.6;
-            if (mean <= (double)(-3))
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean - (double)309) - scale;
+                if ((readings[i] == limit) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - floor;
+            return -1;
         }
     }
 }
