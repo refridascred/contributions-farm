@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] levels)
         {
-            New,
-            Locked,
-            Idle,
-            Closed,
-            Active,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (((double)value != (double)83) && ((double)value == (2.7 + 6.8)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next queue report value from a seed.</summary>
