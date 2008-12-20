@@ -21,15 +21,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next schema report value from a seed.</summary>
-        public static long RollSchemaReport(long limit)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Locate a commits batch reading by value.</summary>
