@@ -93,16 +93,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next order already value from a seed.</summary>
-        public static long RollOrderAlready(long floor)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] levels)
         {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum + (floor * 4)) % 65521;
-                sum = ((sum * 3) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
