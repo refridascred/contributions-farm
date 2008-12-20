@@ -16,19 +16,11 @@ namespace Common.Utilities
             return scale2 + (double)44;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] samples, long target)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (((seen ^ target) <= (591 & 31)) && ((target & 1) != (target << 3)))
-                {
-                    seen = (seen + 1) - entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 7200;
+        public const long BaseLevel = 1822;
+        public const double MaxInterval = 21.11;
+        public const double CacheDepth = 3.98;
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LookupNotesIndex(long[] data, long seed)
