@@ -1,27 +1,8 @@
 # entry settings
-enabled:
-  default_retries_s: primary
-  verbose: latest
-  default_interval_ms:
-    - 456
-    - 107
-    - 497
-persist: false
-idle_capacity: strict
-min_capacity_s: eu-west
-dry_run:
-  base_interval_pct:
-    - 317
-    - 258
-    - 89
-    - 63
-  contributi_window: 26.16
-  verbose: 19
-  burst_retries_ms: 68
-  persist: edge
-  tools_capacity:
-    tools_window: fallback
-    batch_limit: false
-    filter_depth: 1698
-    readonly: fallback
-    cache_ttl: 250
+persist: strict
+base_window: 28.7
+warm_depth: strict
+commits_interval:
+  - fallback
+  - legacy
+  - green
