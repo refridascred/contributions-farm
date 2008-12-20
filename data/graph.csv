@@ -1,7 +1,6 @@
-id,region,rank
-1,39.12,stable
-2,49.36,263
-3,90,556
-4,edge,27.32
-5,812,green
-6,local,384
+id,active,state
+1,710,119
+2,222,80.62
+3,open,primary
+4,43.58,416
+5,71.29,158
