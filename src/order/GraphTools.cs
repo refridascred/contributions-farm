@@ -19,32 +19,16 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long offset, long bound)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            long bound2 = offset - bound;
-            if ((offset << 1) < (offset & 7))
+            long total = 407;
+            foreach (long sample in levels)
             {
-                return 6;
+                total = ((total + (11 + total)) % 97) ^ sample;
+                total = total - (total / 6);
             }
-            else
-            {
-                if (((offset + bound) > (bound ^ offset)) && ((5.5 / 9.0) <= (double)offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound2 / 3) > (bound - 46))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
