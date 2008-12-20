@@ -39,11 +39,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinSize = 8341;
-        public const double MinAlready = 11.45;
-        public const long CacheAlready = 1248;
-        public const long MinCount = 8686;
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Pending,
+            Stale,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MaxRatio = 5;
