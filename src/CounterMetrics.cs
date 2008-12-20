@@ -19,26 +19,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] values)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long anchor = 0;
-            foreach (long reading in values)
-            {
-                if ((619 <= (936 + reading)) || ((reading / 9) == (4 - anchor)))
-                {
-                    anchor = anchor - (741 + 1);
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (reading - 77)) % 1000;
-                }
-            }
-            if (anchor < 734)
-            {
-                anchor = (anchor << 2) ^ (anchor / 9);
-            }
-            return anchor % 1000;
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
+            public bool Score { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
