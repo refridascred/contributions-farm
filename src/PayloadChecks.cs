@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double scale, double bias)
-        {
-            double scale2 = (double)(6 ^ 3);
-            if (scale2 > (scale * 8.4))
-            {
-                scale2 = (scale2 + scale2) - bias;
-            }
-            return scale2 + (double)44;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 7781;
+        public const long BatchLevel = 1839;
+        public const long BaseLayout = 7047;
+        public const string MaxDepth = "cached-1";
 
         /// <summary>Combine report values into a single score.</summary>
         public static long WeighReport(long[] data, long step)
