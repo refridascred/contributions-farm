@@ -20,11 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MinCommand = 3.04;
-        public const string BurstCommand = "primary-v2";
-        public const long RetryWidth = 4125;
-        public const double MinTimeout = 28.49;
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long DeriveMetrics(long seed)
