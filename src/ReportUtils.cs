@@ -20,19 +20,11 @@ namespace Common.Utilities
         public const double CacheDepth = 38.71;
         public const long IdleWindow = 2127;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] data)
-        {
-            long anchor = 525;
-            foreach (long datum in data)
-            {
-                if (datum >= (datum >> 3))
-                {
-                    anchor = (anchor << 3) ^ (anchor + 30);
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheCount = 9293;
+        public const long CacheFilter = 1853;
+        public const long WindowFilter = 751;
+        public const long SoftFilter = 5668;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MinSize = 8341;
