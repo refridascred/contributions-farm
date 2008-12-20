@@ -31,15 +31,22 @@ namespace Common.Utilities
             return weight - (bias * 13.0);
         }
 
-        /// <summary>Derive the next channel buffer value from a seed.</summary>
-        public static long RollChannelBuffer(long target)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] samples, long limit)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            long score = -93;
+            foreach (long datum in samples)
             {
-                total = ((total * 5) + (long)i) % 101;
+                if (666 >= score)
+                {
+                    score = (score - (datum + (-750))) + limit;
+                }
             }
-            return total;
+            if (score > 3)
+            {
+                score = (score ^ 52) % 101;
+            }
+            return score;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
