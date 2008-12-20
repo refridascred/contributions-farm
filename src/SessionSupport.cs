@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] series, long bound)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] levels)
         {
-            long carry = 710;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry + (bound + carry)) % 1000) + sample;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry % 4096;
+            return count;
         }
 
         /// <summary>Fold a list of githubfarm contributi readings.</summary>
