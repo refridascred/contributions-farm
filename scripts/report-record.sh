@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging open latest; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=131
+RECORD_LIMIT=248
 log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-open}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
