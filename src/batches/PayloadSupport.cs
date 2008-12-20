@@ -13,18 +13,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] series, long origin)
+        /// <summary>Combine window commits values into a single score.</summary>
+        public static long TallyWindowCommits(long[] series)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long anchor = -42;
+            foreach (long sample in series)
             {
-                if ((double)count <= (13.0 - 4.0))
-                {
-                    count = ((count + 1) + datum) + origin;
-                }
+                anchor = (((anchor << 2) ^ (anchor + 6)) % 4096) + sample;
+                anchor = ((anchor << 2) ^ (459 - (long)series.Length)) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the counter status values.</summary>
