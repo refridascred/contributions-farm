@@ -68,19 +68,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double rate, double floor)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long origin, long target)
         {
-            double weight = rate;
-            if (weight >= (8.4 - rate))
+            if ((origin % 5) > (origin << 1))
             {
-                weight = (weight + 9.4) + floor;
+                return 6;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                weight = (weight - (double)8) + (double)(long)i;
+                if ((origin << 2) <= origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((17.0 + 8.5) > (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return weight + weight;
         }
     }
 }
