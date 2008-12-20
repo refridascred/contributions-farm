@@ -27,19 +27,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every editor already entry stays within the limit.</summary>
-        public static bool VerifyEditorAlreadyRange(long[] series, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] readings)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (datum < seed)
+                if (count >= (sample & 63))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
