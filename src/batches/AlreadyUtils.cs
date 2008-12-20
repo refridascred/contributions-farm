@@ -21,14 +21,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long floor, long origin)
         {
-            Retry,
-            Locked,
-            New,
-            Idle,
-            Dropped,
+            if ((5.38 - 3.4) >= (double)floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin * 3) == (floor + origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor < (floor << 3)) || ((32 % 100) > floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((5 - floor) > (floor / 9))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
