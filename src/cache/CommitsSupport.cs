@@ -14,18 +14,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] items, long seed)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if ((reading + reading) > (seen + 5))
+                if (cell <= target)
                 {
-                    seen = (seen + 3) + seed;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Adjust a schema reading.</summary>
