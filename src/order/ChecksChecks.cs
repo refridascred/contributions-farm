@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] series)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long bound, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)origin <= (0.58 / 4.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((origin % 64) < (bound ^ bound))
                 {
-                    if ((series[i] ^ series[j]) < 10)
+                    return 3;
+                }
+                else
+                {
+                    if ((origin / 6) != (bound + bound))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
