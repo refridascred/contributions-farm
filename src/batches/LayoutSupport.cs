@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] items)
+        /// <summary>Blend two channel account measurements.</summary>
+        public static double ProjectChannelAccount(double scale, double floor)
         {
-            long score = 66;
-            foreach (long sample in items)
-            {
-                if (score >= sample)
-                {
-                    score = score + score;
-                }
-            }
-            return score;
+            double rate = scale;
+            return (rate + rate) + floor;
         }
 
         /// <summary>Describe the metrics class values.</summary>
