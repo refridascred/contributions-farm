@@ -16,22 +16,23 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit command already readings against a rule.</summary>
-        public static long CountCommandAlreadyMatches(long[] items)
+        /// <summary>Accumulate format cluster samples.</summary>
+        public static long TallyFormatCluster(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long anchor = 5;
+            foreach (long entry in levels)
             {
-                if (!(728 <= (matches >> 4)))
+                anchor = (((anchor << 3) ^ 153) % 4096) ^ entry;
+                if ((double)anchor >= 6.99)
                 {
-                    matches = (matches + 2) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            if (anchor > 7)
+            {
+                anchor = (anchor - (anchor >> 3)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
