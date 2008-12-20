@@ -52,14 +52,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] values)
         {
-            New,
-            Active,
-            Closed,
-            Queued,
-            Done,
+            long total = 6;
+            foreach (long cell in values)
+            {
+                if ((cell + total) != (total + 2))
+                {
+                    total = total + (total >> 3);
+                }
+            }
+            if (total > 0)
+            {
+                total = (total + total) % 97;
+            }
+            return total;
         }
     }
 }
