@@ -83,19 +83,21 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] data, long seed)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] data)
         {
-            long state = 77;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state ^ (seed - seed)) % 97) ^ datum;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (state < 0)
-            {
-                state = (state + state) % 101;
-            }
-            return state % 65521;
+            return hits;
         }
     }
 }
