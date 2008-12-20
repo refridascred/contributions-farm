@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] samples)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public double Stamp { get; set; }
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
