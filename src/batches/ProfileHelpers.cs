@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the contributi profile entries that pass the check.</summary>
-        public static long AuditContributiProfileMatches(long[] readings)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry ^ 4) == (matches - 343))
+                if (readings[i] < limit)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
