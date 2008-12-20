@@ -43,17 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] levels, long step)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
