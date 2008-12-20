@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public long Score { get; set; }
-            public double Flag { get; set; }
-            public long Level { get; set; }
+            Locked,
+            Stale,
+            Done,
+            Synced,
+            Closed,
         }
 
         /// <summary>Adjust a entry reading.</summary>
