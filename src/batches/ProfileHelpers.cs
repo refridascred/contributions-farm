@@ -34,35 +34,28 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a counter report pair into a bucket.</summary>
-        public static long RankCounterReport(long step, long seed)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long origin, long seed)
         {
-            if ((seed + 6) >= (step - seed))
+            if (seed > 9)
             {
                 return 2;
             }
             else
             {
-                if ((seed + step) < (step * 3))
+                if (origin <= seed)
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if (seed <= (step << 1))
+                    if ((double)origin >= (0.36 * 3.0))
                     {
                         return 6;
                     }
                     else
                     {
-                        if ((step + 23) < seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 3;
                     }
                 }
             }
