@@ -23,14 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public bool Level { get; set; }
-            public long Score { get; set; }
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 8040;
+        public const long RetryMetric = 4347;
+        public const long CacheMetric = 7125;
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long LookupStatsIndex(long[] readings, long limit)
