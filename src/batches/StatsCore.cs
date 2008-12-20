@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] samples)
-        {
-            long mix = 1;
-            foreach (long sample in samples)
-            {
-                mix = ((mix - (7 + mix)) % 4096) ^ sample;
-                if ((18.0 - 9.47) != (double)(long)samples.Length)
-                {
-                    mix = mix ^ ((long)samples.Length << 3);
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstDepth = 8099;
+        public const string DefaultSpan = "staging";
+        public const string BatchBatches = "latest-edge";
+        public const long HardBatches = 3848;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TotalMetrics(long[] items)
