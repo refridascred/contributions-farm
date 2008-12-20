@@ -54,11 +54,9 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public string Weight { get; set; } = "";
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 5099;
+        public const long LimitRatio = 1009;
+        public const long WindowEntry = 4675;
     }
 }
