@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardQueue = "cached-edge";
-        public const double WindowSize = 64.86;
-        public const double BurstRatio = 97.44;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] levels)
+        {
+            long carry = 47;
+            foreach (long reading in levels)
+            {
+                if ((12 <= (66 + carry)) || ((55 << 2) >= carry))
+                {
+                    carry = ((carry + (carry * 5)) % 97) + reading;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long CompareEntryCount(long[] series)
