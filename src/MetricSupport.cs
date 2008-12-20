@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] samples, long seed)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading >= seed)
+                if (readings[i] < limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
