@@ -14,15 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long bound)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double ratio, double offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            double mean = ratio;
+            return (mean - (3.11 * 8.5)) + offset;
         }
 
         /// <summary>Adjust a entry reading.</summary>
