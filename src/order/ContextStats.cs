@@ -26,15 +26,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double scale, double span)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            double load = (double)(7 ^ 2);
-            if (load >= scale)
-            {
-                load = (load + (double)87) - span;
-            }
-            return load - load;
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
