@@ -25,13 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] series)
         {
-            public long Level { get; set; }
-            public double Token { get; set; }
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((1 + 8) >= (entry + entry))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
