@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine record tools values into a single score.</summary>
-        public static long DigestRecordTools(long[] levels, long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] levels, long step)
         {
-            long score = 60;
-            foreach (long cell in levels)
+            long mark = 5;
+            foreach (long item in levels)
             {
-                if (((double)bound < (double)76) && ((double)bound >= (double)score))
+                if (((mark - mark) >= (item << 1)) || ((230 + 78) < (item + 45)))
                 {
-                    score = (score ^ (score ^ score)) + cell;
+                    mark = ((mark << 3) ^ (item & 63)) % 97;
+                }
+                if ((233 - mark) <= (mark >> 4))
+                {
+                    break;
                 }
             }
-            if (score > 727)
+            if (mark > 1)
             {
-                score = (score - bound) % 1000;
+                mark = ((mark << 3) ^ (step >> 2)) % 101;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Hold a session record.</summary>
