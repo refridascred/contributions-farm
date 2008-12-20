@@ -1,6 +1,20 @@
 # githubfarm settings
-flush_delay_pct: standard
-command_ttl: 11.42
-burst_limit: false
-default_capacity_pct: cached
-queue_interval: stable
+base_timeout_s: true
+idle_retries_s: 19
+warm_timeout:
+  burst_size_ms: strict
+  poll_depth_s: 37.24
+  githubfarm_retries: 1253
+  readonly: false
+retry_ratio:
+  - legacy
+  - legacy
+  - fallback
+  - strict
+strict: 25.08
+idle_timeout_count:
+  counter_size: 30
+  idle_capacity: 30
+  warm_ratio: edge
+  stats_limit: 60
+  base_delay: stable
