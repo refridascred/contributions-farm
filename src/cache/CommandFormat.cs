@@ -21,12 +21,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] items, long step)
         {
-            Synced,
-            Paused,
-            Done,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (sample <= step)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a channel summary.</summary>
