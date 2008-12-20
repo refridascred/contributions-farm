@@ -74,15 +74,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long origin)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            Ready,
+            Closed,
+            Dropped,
         }
     }
 }
