@@ -47,14 +47,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] items, long seed)
         {
-            Idle,
-            Draft,
-            Retry,
-            Active,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
