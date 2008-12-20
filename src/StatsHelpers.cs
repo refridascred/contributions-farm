@@ -25,21 +25,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] items)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long floor, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long diff = floor - target;
+            if ((target & 255) > (target & 127))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (diff > 4)
                 {
-                    if ((items[i] - items[j]) == 5)
+                    return 2;
+                }
+                else
+                {
+                    if ((floor - target) <= 5)
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)floor == (17.0 / 5.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
