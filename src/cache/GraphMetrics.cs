@@ -24,19 +24,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] data)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long state = 644;
-            foreach (long sample in data)
-            {
-                state = (state << 3) ^ (sample / 6);
-                if ((state ^ state) <= (0 ^ 2))
-                {
-                    break;
-                }
-            }
-            return state;
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
