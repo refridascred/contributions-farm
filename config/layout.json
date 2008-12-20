@@ -1,10 +1,7 @@
 {
-  "min_depth_count": "edge",
-  "editor_ttl": 74.82,
-  "dry_run": {
-    "enabled": "legacy",
-    "readonly": 3786,
-    "stream_depth": 1584,
-    "sync_depth": 100
-  }
+  "poll_window_s": "legacy",
+  "soft_timeout_ms": 9032,
+  "idle_ttl_pct": 500,
+  "persist": 60,
+  "account_timeout": ["blue", "standard", "cached"]
 }
