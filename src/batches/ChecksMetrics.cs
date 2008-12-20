@@ -48,11 +48,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] items)
         {
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((matches % 64) != (datum + datum))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
