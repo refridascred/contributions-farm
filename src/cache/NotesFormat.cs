@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long bound)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                score = ((score << 3) ^ (score >> 1)) % 97;
-                score = ((score * 2) + (long)i) % 65521;
+                acc = (acc + (long)i) % 97;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Check that every schema graph entry stays within the limit.</summary>
