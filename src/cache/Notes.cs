@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const string StepBuffer = "primary-edge";
         public const long MinBuffer = 759;
 
-        /// <summary>Validate farm contributi readings against a bound.</summary>
-        public static bool ValidateFarmContributiLimits(long[] data, long limit)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long value in data)
+            double weight = (double)515 - (8.33 * 1.16);
+            if (weight < scale)
             {
-                if (value <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = weight - (scale - 17.0);
             }
-            return ready;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - bias) + (double)(long)i;
+            }
+            return weight - (bias * 13.0);
         }
 
         /// <summary>Describe the layout status values.</summary>
