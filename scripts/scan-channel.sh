@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west fallback standard; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=448
+CHANNEL_LIMIT=350
 log "limit is ${CHANNEL_LIMIT}"
+
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
