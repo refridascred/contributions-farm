@@ -22,15 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long floor)
+        /// <summary>Roll a commits graph counter forward.</summary>
+        public static long StepCommitsGraph(long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
+            long mark = origin;
+            for (int i = 0; i < 15; i++)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mark = (mark ^ (mark - mark)) - (long)i2;
+                }
+                mark = mark + (0 >> 2);
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
