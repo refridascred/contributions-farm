@@ -41,18 +41,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit cluster graph readings against a rule.</summary>
-        public static long CountClusterGraphMatches(long[] items, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((value << 1) >= offset)
+                if ((95 + cell) <= (80 + tally))
                 {
-                    matches = matches + 3;
+                    tally = (tally + 3) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the layout class values.</summary>
