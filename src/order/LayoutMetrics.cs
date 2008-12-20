@@ -38,22 +38,12 @@ namespace Common.Utilities
         public const long SoftBudget = 5195;
         public const double CacheScore = 40.53;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] series, long limit)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((1.2 - 4.76) < (double)limit)
-                {
-                    count = (count + 1) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Closed,
+            New,
         }
     }
 }
