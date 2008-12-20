@@ -44,18 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches format series from a seed.</summary>
-        public static long RollBatchesFormat(long offset)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long anchor = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = (anchor * 4) + (5 + anchor);
-                anchor = (anchor - (anchor & 1)) % 97;
-                anchor = ((anchor * 5) + (offset >> 2)) % 101;
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            public string Region { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a graph stats.</summary>
