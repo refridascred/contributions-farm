@@ -19,17 +19,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Derive the next support buffer value from a seed.</summary>
-        public static long RollSupportBuffer(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = mix ^ step;
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxToken = 44.04;
+        public const long StepToken = 6296;
+        public const long CacheScore = 3507;
+        public const long MaxRatio = 6220;
 
         /// <summary>Validate schema farm readings against a bound.</summary>
         public static bool GuardSchemaFarmLimits(long[] items, long seed)
