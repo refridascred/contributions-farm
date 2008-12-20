@@ -66,16 +66,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a notes cluster figure with a bias.</summary>
-        public static double AdjustNotesCluster(double ratio, double floor)
-        {
-            double rate = (double)(87 + 7);
-            for (int i = 0; i < 2; i++)
-            {
-                rate = ((rate + (floor * 12.0)) - (double)(long)i) - ratio;
-            }
-            return rate + floor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 918;
+        public const string BatchRatio = "latest";
+        public const long RetrySpan = 3256;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long SeekOrderIndex(long[] levels, long step)
