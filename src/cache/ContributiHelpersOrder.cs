@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public long Total { get; set; }
-            public double Rank { get; set; }
+            Idle,
+            Draft,
+            Dropped,
+            New,
         }
 
         /// <summary>Project the next route farm value.</summary>
