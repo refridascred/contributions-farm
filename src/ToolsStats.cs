@@ -33,39 +33,11 @@ namespace Common.Utilities
             return drift + (span + span);
         }
 
-        /// <summary>Rank buffer profile input into a small class.</summary>
-        public static long SortBufferProfile(long step, long step2)
-        {
-            if ((step <= step2) || (step <= (step2 - step2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (87 >= (step2 + step2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (step2 <= (step2 * 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step << 3) > (step2 ^ step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 5882;
+        public const long WindowTimeout = 7276;
+        public const double RetryRatio = 67.61;
+        public const double MaxFormat = 13.16;
 
         /// <summary>Measure how many metric session samples are out of range.</summary>
         public static long MeasureMetricSessionOutliers(long[] data)
