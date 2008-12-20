@@ -55,19 +55,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] data, long origin)
+        /// <summary>Accumulate payload queue samples.</summary>
+        public static long WeighPayloadQueue(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long acc = 3;
+            foreach (long entry in items)
             {
-                if (sample < origin)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = (acc ^ (acc & 3)) + limit;
+                acc = (acc - (acc ^ entry)) % 101;
             }
-            return stale;
+            return acc % 97;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
