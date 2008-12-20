@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] series, long origin)
         {
-            New,
-            Paused,
-            Ready,
-            Active,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((datum << 2) > (8 - 78))
+                {
+                    seen = (seen + 3) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
