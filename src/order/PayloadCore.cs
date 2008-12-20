@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardFactor = 381;
-        public const string IdleCount = "strict-1";
-        public const long MaxScore = 2406;
-        public const string DefaultLevel = "local-1";
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] readings, long floor)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (!(floor < ((long)readings.Length << 3)))
+                {
+                    tally = (tally + 3) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long FoldCounter(long[] items, long limit)
