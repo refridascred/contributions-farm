@@ -23,13 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            New,
-            Stale,
             Closed,
-            Dropped,
+            Idle,
+            Paused,
+            Stale,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
