@@ -20,10 +20,20 @@ namespace Common.Utilities
             return scale + (floor + bias);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftLevel = 4.67;
-        public const long CacheWidth = 7434;
-        public const string MaxCount = "staging-1";
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] samples, long step)
+        {
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long MeasureRouteOutliers(long[] samples, long bound)
