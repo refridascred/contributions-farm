@@ -1,9 +1,5 @@
 # support settings
-stats_ratio: 8414
-window_limit:
-  already_capacity: 6440
-  compress: 6786
-  format_delay: fallback
-  checks_ttl: latest
-token_ttl: 8
-verbose: standard
+cache_threshold: false
+flush_capacity: stable
+contributi_ttl: true
+retry_capacity_s: false
