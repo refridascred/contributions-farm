@@ -1,36 +1,14 @@
 # entry settings
-strict: open
-min_interval_ms:
-  - 267
-  - 488
-  - 229
-  - 305
-report_threshold: 83.68
-base_threshold_s: latest
-min_retries_ms:
-  editor_timeout: false
-  enabled: false
-  readonly:
-    poll_interval: false
-    base_delay_count:
-      - green
-      - local
-      - green
-      - fallback
-    idle_interval_pct: green
-    min_ttl_pct: true
-dry_run:
-  hard_capacity_count:
-    hard_threshold: 73
-    base_ttl_s: 35
-    audit: 86.91
-    metric_capacity: true
-    layout_depth:
-      - 147
-      - 278
-      - 467
-      - 109
-  strict: legacy
-  readonly: 39.54
-  max_capacity: fallback
-  persist: false
+batch_retries: 2622
+readonly: 100
+batch_capacity:
+  base_window:
+    schema_retries: standard
+    counter_ttl: 500
+    compress: legacy
+    poll_capacity: 60
+  sync_capacity_count: 55
+  githubfarm_timeout: true
+  hard_interval_ms: true
+  retry_interval: staging
+layout_limit: 30
