@@ -57,36 +57,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long floor, long target)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long step, long floor)
         {
-            if ((52 % 2) <= (floor / 8))
+            if ((6.7 / 8.0) <= (double)step)
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if (target < (-37))
+                if (!((step + 5) < (floor + step)))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)floor == (double)4)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target > floor) || ((3 + floor) >= 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
