@@ -20,12 +20,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstFactor = 19.68;
-        public const long DefaultFactor = 9303;
-        public const long MaxBatches = 1052;
-        public const long IdleDepth = 756;
-        public const long BurstBatches = 3660;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Closed,
+            Dropped,
+            Queued,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double MaxTimeout = 17.98;
