@@ -30,17 +30,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = (anchor * 2) + anchor;
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinInterval = 97.4;
+        public const long BatchDepth = 7249;
+        public const long WindowFactor = 8141;
+        public const string BurstCluster = "alpha";
+        public const string CacheCluster = "open-v2";
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
