@@ -67,20 +67,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] samples)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double rate, double bias)
         {
-            long result = 376;
-            foreach (long value in samples)
+            double scale = rate;
+            if (scale <= (6.01 + rate))
             {
-                result = (result + (result - result)) % 101;
-                result = ((result * 5) + (value + value)) % 97;
+                scale = scale - rate;
             }
-            if (result > 385)
+            else
             {
-                result = (result << 3) ^ (521 + result);
+                scale = scale - (double)47;
             }
-            return result;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (scale * 7.0)) + (double)(long)i;
+            }
+            return scale + bias;
         }
 
         /// <summary>Define record limits and defaults.</summary>
