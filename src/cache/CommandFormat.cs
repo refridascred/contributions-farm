@@ -19,19 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double rate, double bias)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            double gain = (bias * 1.0) + (bias * 5.6);
-            if (gain > bias)
-            {
-                gain = gain - (bias - rate);
-            }
-            else
-            {
-                gain = gain - (rate / 4.0);
-            }
-            return gain - (double)31;
+            Active,
+            New,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a stats options.</summary>
