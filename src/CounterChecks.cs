@@ -50,18 +50,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the githubfarm format entries that pass the check.</summary>
-        public static long CountGithubfarmFormatGaps(long[] levels, long target)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (16.0 > (double)(long)levels.Length)
-                {
-                    count = ((count + 3) + reading) + target;
-                }
-            }
-            return count;
+            Idle,
+            Closed,
+            Draft,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
