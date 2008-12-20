@@ -23,32 +23,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank schema commits input into a small class.</summary>
-        public static long ClassifySchemaCommits(long target, long limit)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] levels, long target)
         {
-            long next = target + limit;
-            if ((target / 4) == (next % 97))
+            long anchor = 2;
+            foreach (long datum in levels)
             {
-                return 4;
+                anchor = (((anchor * 3) + (849 % 10)) % 101) - target;
+                anchor = (anchor + ((-9) + datum)) % 255;
             }
-            else
-            {
-                if (((limit ^ limit) <= (target - target)) || ((limit * 5) <= (next / 8)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit * 2) >= (limit * 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return anchor % 4096;
         }
     }
 }
