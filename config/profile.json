@@ -1,6 +1,7 @@
 {
-  "poll_timeout_count": 5648,
-  "entry_window": 6266,
-  "persist": 39.68,
-  "hard_interval": 85.92
+  "sync_capacity": ["edge", "standard"],
+  "batch_ratio": true,
+  "cache_window": 77,
+  "layout_delay": "fallback",
+  "cache_threshold": "primary"
 }
