@@ -37,17 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long limit)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = (carry * 3) + limit;
-                carry = carry ^ (limit + limit);
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            Active,
+            Retry,
+            Dropped,
         }
     }
 }
