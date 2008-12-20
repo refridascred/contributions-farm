@@ -42,18 +42,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the window commits entries that pass the check.</summary>
-        public static long MeasureWindowCommitsGaps(long[] samples)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((item / 3) < (hits << 2))
+                if (!((offset * 5) > (count + offset)) && ((double)value > (7.12 * 8.5)))
                 {
-                    hits = hits + 3;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a tools info.</summary>
