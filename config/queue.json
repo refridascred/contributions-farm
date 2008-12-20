@@ -1,22 +1,5 @@
 {
-  "already_threshold": "stable",
-  "verbose": {
-    "verbose": 1,
-    "default_ttl": {
-      "compress": ["standard", "local", "open", "edge"],
-      "cache_timeout_pct": 62.21,
-      "strict": 77.63
-    },
-    "account_capacity": "strict",
-    "burst_size_ms": "eu-west",
-    "idle_size_s": false,
-    "audit": {
-      "hard_window_pct": 15.31,
-      "base_limit_s": [19, 498],
-      "editor_depth": "staging",
-      "session_capacity": 1024,
-      "editor_window": 10.03
-    }
-  },
-  "idle_size_pct": "green"
+  "contributi_threshold": "strict",
+  "batch_timeout": "blue",
+  "max_timeout": ["local", "stable"]
 }
