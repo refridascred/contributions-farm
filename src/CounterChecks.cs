@@ -88,26 +88,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] data)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long result = 2;
-            foreach (long entry in data)
-            {
-                if ((entry * 4) >= result)
-                {
-                    result = (result ^ (result - entry)) % 65521;
-                }
-                else
-                {
-                    result = (result ^ (result - result)) % 101;
-                }
-                if (entry < result)
-                {
-                    break;
-                }
-            }
-            return result;
+            Dropped,
+            Ready,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a payload info.</summary>
