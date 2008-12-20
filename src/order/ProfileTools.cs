@@ -66,24 +66,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long bound, long offset)
-        {
-            if ((bound ^ (-8)) >= (offset + offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((849 & 3) > (offset % 24))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 958;
+        public const long StepCount = 8712;
+        public const long BatchCounter = 1698;
     }
 }
