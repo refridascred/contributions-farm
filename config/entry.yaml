@@ -1,18 +1,36 @@
 # entry settings
-layout_ttl:
-  compress: false
-  sync_window: true
-  hard_timeout:
-    persist: 60
-    notes_limit: standard
-    hard_retries_count: green
-    report_threshold: staging
-    min_ttl: false
-  burst_capacity_s: 25
-max_timeout_pct: 61
-entry_timeout:
-  - fallback
-  - green
-  - legacy
-soft_retries_count: standard
-channel_ttl: 45
+strict: open
+min_interval_ms:
+  - 267
+  - 488
+  - 229
+  - 305
+report_threshold: 83.68
+base_threshold_s: latest
+min_retries_ms:
+  editor_timeout: false
+  enabled: false
+  readonly:
+    poll_interval: false
+    base_delay_count:
+      - green
+      - local
+      - green
+      - fallback
+    idle_interval_pct: green
+    min_ttl_pct: true
+dry_run:
+  hard_capacity_count:
+    hard_threshold: 73
+    base_ttl_s: 35
+    audit: 86.91
+    metric_capacity: true
+    layout_depth:
+      - 147
+      - 278
+      - 467
+      - 109
+  strict: legacy
+  readonly: 39.54
+  max_capacity: fallback
+  persist: false
