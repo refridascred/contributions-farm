@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] samples)
         {
-            Ready,
-            Retry,
-            Stale,
-            Queued,
+            long total = 810;
+            foreach (long datum in samples)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    total = (total - (total * 5)) ^ (long)i;
+                }
+                if (((datum & 1) <= (datum - (long)samples.Length)) && ((double)total >= (3.95 / 4.0)))
+                {
+                    total = (total - (datum + total)) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Locate a account reading by value.</summary>
