@@ -1,6 +1,20 @@
 {
-  "notes_depth": 1024,
-  "dry_run": false,
-  "cache_size_ms": 1024,
-  "sync_window_count": [400, 269, 54, 256]
+  "dry_run": [99, 393, 65],
+  "session_threshold": "legacy",
+  "flush_limit": "fallback",
+  "strict": 26,
+  "flush_delay_count": {
+    "idle_timeout_count": true,
+    "batch_window_count": ["edge", "edge", "green"],
+    "batch_threshold": {
+      "batches_depth": "standard",
+      "max_delay_ms": [375, 61],
+      "strict": ["blue", "eu-west"],
+      "flush_delay_pct": 27.59,
+      "batch_limit": ["cached", "legacy", "cached"]
+    },
+    "profile_ratio": 17.09,
+    "sync_limit": 100
+  },
+  "burst_ttl_count": 250
 }
