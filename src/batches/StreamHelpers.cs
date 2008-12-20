@@ -58,23 +58,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double gain, double bias)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long floor, long offset)
         {
-            double rate = 8.1;
-            if (rate >= bias)
+            long edge = floor ^ offset;
+            if ((offset + 0) != (floor % 60))
             {
-                rate = rate - 9.0;
+                return 8;
             }
             else
             {
-                rate = rate - gain;
+                if ((edge & 7) <= (floor + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - bias) - (double)(long)i;
-            }
-            return rate + 8.93;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
