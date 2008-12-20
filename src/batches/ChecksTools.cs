@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] series)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 3;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)value >= (9.6 - 5.51))
                 {
-                    if ((series[i] + series[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (((carry << 2) ^ carry) % 65521) - target;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
