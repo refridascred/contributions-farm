@@ -28,18 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] data)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long target)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long sum = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (2 <= ((-8) - (long)data.Length))
-                {
-                    tally = (tally + 3) ^ item;
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a stream header.</summary>
