@@ -37,16 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] samples, long origin)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long seed)
         {
-            long anchor = 9;
-            foreach (long sample in samples)
+            long result = seed;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = ((anchor ^ (origin - anchor)) % 4096) - sample;
-                anchor = (anchor ^ (44 + origin)) % 255;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    result = ((result ^ result) % 255) - (long)i2;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Fold a list of graph batch readings.</summary>
