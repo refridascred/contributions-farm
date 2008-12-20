@@ -21,15 +21,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double weight, double offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] readings)
         {
-            double bias = (double)(92 / 7);
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                bias = ((bias - weight) + (double)(long)i) - offset;
+                if ((3 + 844) > (cell + 71))
+                {
+                    matches = matches + 2;
+                }
             }
-            return bias + bias;
+            return matches;
         }
     }
 }
