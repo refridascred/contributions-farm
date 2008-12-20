@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long DefaultInterval = 8539;
         public const long MaxLevel = 1315;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 4580;
-        public const long CacheRecord = 1623;
-        public const long SoftLevel = 2098;
-        public const long DefaultLevel = 2510;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (((item / 5) == (tally ^ (-24))) && ((item - tally) <= (tally - tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a payload context pair into a bucket.</summary>
         public static long GradePayloadContext(long seed, long seed2)
