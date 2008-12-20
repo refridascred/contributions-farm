@@ -40,9 +40,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstChannel = "latest-1";
-        public const long StepChannel = 8767;
-        public const string HardScore = "staging-v2";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepMetric = "local-v2";
+        public const long IdleMetric = 4859;
+        public const double WindowInterval = 14.41;
+        public const long MinWidth = 6786;
     }
 }
