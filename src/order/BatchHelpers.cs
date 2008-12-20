@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] samples, long bound)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((samples[i] == bound) && ((samples[i] % 5) == 0))
+                if (value > offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
