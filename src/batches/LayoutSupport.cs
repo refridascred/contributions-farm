@@ -26,12 +26,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] data)
         {
-            Failed,
-            Retry,
-            Dropped,
+            long mix = 589;
+            foreach (long datum in data)
+            {
+                if ((mix & 63) >= (datum + mix))
+                {
+                    mix = mix - ((-3) + mix);
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
