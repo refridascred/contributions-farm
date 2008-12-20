@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long offset)
         {
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public double Weight { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = ((mix << 2) ^ (mix >> 3)) % 101;
+                if (((double)offset >= 6.32) || ((mix + 31) <= (mix & 7)))
+                {
+                    mix = (mix + mix) % 1000;
+                }
+                else
+                {
+                    mix = (mix - (mix + mix)) % 97;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Describe the support phase values.</summary>
