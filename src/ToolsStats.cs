@@ -38,11 +38,14 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 8249;
-        public const long HardSpan = 5843;
-        public const long LimitTimeout = 3499;
-        public const long SoftToken = 2484;
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
+        {
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Match up batch counter samples.</summary>
         public static long OverlapBatchCounterCount(long[] data)
