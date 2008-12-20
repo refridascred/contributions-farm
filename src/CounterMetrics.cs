@@ -19,18 +19,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine queue layout values into a single score.</summary>
-        public static long TotalQueueLayout(long[] levels)
+        /// <summary>Classify a profile channel pair into a bucket.</summary>
+        public static long BucketProfileChannel(long origin, long target)
         {
-            long total = 20;
-            foreach (long entry in levels)
+            if (!((origin * 3) >= target))
             {
-                if (((total + 4) <= total) && ((entry & 15) > (entry + entry)))
+                return 7;
+            }
+            else
+            {
+                if (((origin + 33) <= (origin >> 2)) && (origin > (400 & 3)))
                 {
-                    total = ((total << 3) ^ 681) % 101;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return total;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
