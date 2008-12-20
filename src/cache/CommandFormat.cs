@@ -29,11 +29,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
+            Paused,
+            Pending,
+            Synced,
+            Draft,
         }
     }
 }
