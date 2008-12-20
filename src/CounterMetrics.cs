@@ -55,18 +55,32 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] samples, long offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long origin, long limit)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long offset = origin ^ limit;
+            if (((limit >> 2) > (origin ^ origin)) || ((limit + origin) > (limit >> 5)))
             {
-                if (((item >> 2) < seen) || (2.58 <= (double)item))
+                return 8;
+            }
+            else
+            {
+                if (((double)origin >= 1.29) && ((offset * 5) == (limit + origin)))
                 {
-                    seen = (seen + 1) + offset;
+                    return 0;
+                }
+                else
+                {
+                    if (!((offset << 1) <= (offset >> 4)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
