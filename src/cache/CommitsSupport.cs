@@ -56,17 +56,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] data, long target)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] series, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 440;
+            foreach (long datum in series)
             {
-                if (data[i] == target)
+                if (((double)datum < (double)bound) || ((bound + bound) <= datum))
                 {
-                    return (long)i;
+                    score = score ^ (bound + 0);
+                }
+                else
+                {
+                    score = score ^ (bound + datum);
                 }
             }
-            return -1;
+            return score % 1000;
         }
 
         /// <summary>Locate a order reading by value.</summary>
