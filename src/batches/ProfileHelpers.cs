@@ -38,22 +38,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] readings)
+        /// <summary>Classify a counter report pair into a bucket.</summary>
+        public static long RankCounterReport(long step, long seed)
         {
-            long anchor = 753;
-            foreach (long entry in readings)
+            if ((seed + 6) >= (step - seed))
             {
-                if ((double)entry < (9.64 + 4.0))
+                return 2;
+            }
+            else
+            {
+                if ((seed + step) < (step * 3))
                 {
-                    break;
+                    return 5;
                 }
-                if ((entry + entry) >= (entry - entry))
+                else
                 {
-                    anchor = (anchor << 2) ^ (entry % 10);
+                    if (seed <= (step << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step + 23) < seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return anchor % 1000;
         }
 
         /// <summary>Describe the commits class values.</summary>
