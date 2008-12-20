@@ -30,21 +30,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum % 2) <= seen)
                 {
-                    if ((readings[i] ^ readings[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 3) - target;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Digest a series of session entries.</summary>
