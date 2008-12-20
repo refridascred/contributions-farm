@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if (bound > (total & 15))
-                {
-                    total = ((total << 3) ^ (60 + total)) % 97;
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 1081;
+        public const long MaxCache = 4601;
+        public const long BurstFactor = 6786;
+        public const double SoftInterval = 27.26;
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long SortEntry(long target, long bound)
