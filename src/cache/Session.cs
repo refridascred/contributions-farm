@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public double Count { get; set; }
-            public double Score { get; set; }
-            public bool Region { get; set; }
-            public long Weight { get; set; }
+            Ready,
+            Retry,
+            Stale,
+            Queued,
         }
 
         /// <summary>Locate a account reading by value.</summary>
