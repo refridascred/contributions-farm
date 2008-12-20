@@ -59,27 +59,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] values, long seed)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double bias, double bias2)
         {
-            long sum = 88;
-            foreach (long sample in values)
+            double rate = (bias2 / 7.0) + (bias2 + bias2);
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)sample == (5.0 / 2.0))
-                {
-                    sum = (sum - seed) % 97;
-                    sum = ((sum * 3) + (28 % 97)) % 1000;
-                }
-                if ((sum << 3) > (39 >> 2))
-                {
-                    sum = (sum ^ (3 - sample)) % 1000;
-                }
+                rate = (rate + bias2) + (double)(long)i;
             }
-            if (sum > 25)
-            {
-                sum = ((sum * 2) + (seed - sum)) % 4096;
-            }
-            return sum;
+            return rate + bias;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
