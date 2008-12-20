@@ -31,12 +31,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinStats = "fallback-edge";
-        public const long LimitTimeout = 8499;
-        public const double MaxSize = 45.54;
-        public const long MaxDepth = 8430;
-        public const long RetryStats = 126;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseCount = 1251;
+        public const string MinChecks = "open";
+        public const long WindowChecks = 197;
+        public const long BaseChecks = 6528;
+        public const long LimitChecks = 6092;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long CountCommandHits(long[] levels)
