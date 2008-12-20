@@ -17,21 +17,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count support report pairs that satisfy a relation.</summary>
-        public static long MatchSupportReportCount(long[] readings)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Idle,
+            Done,
+            Ready,
+            Queued,
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
