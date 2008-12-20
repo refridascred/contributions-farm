@@ -1,31 +1,11 @@
 # entry settings
-cache_delay_ms: true
-order_threshold:
-  warm_ratio_s: cached
-  min_timeout_s: 1024
-  support_threshold: 42.5
-  commits_timeout: true
-  support_depth:
-    - 357
-    - 155
-    - 234
-    - 233
-  batch_retries_s:
-    - edge
-    - green
-warm_window_ms:
-  - staging
-  - stable
-  - edge
-buffer_window:
-  schema_retries: green
-  batch_size_pct: true
-  max_window_s:
-    payload_capacity:
-      - latest
-      - staging
-      - primary
-    enabled: 70.71
-    idle_depth: fallback
-    burst_timeout_pct: 60
-    cache_timeout_ms: 15.15
+tools_window: true
+session_ttl: fallback
+githubfarm_threshold: 66.62
+flush_timeout: 1201
+payload_ttl:
+  token_delay: 46
+  warm_retries_ms: 2987
+  soft_timeout_count: latest
+  persist: local
+enabled: 4798
