@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long bound, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((bound % 100) > (bound << 2)) || ((offset & 63) < bound))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((offset & 31) > offset) && ((bound & 63) < offset))
                 {
-                    if ((items[i] - items[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
