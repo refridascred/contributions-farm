@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] readings, long target)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterGaps(long[] data, long origin)
         {
-            long sum = 500;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (((17.0 + 9.51) >= (double)target) && ((value + value) == (2 - value)))
+                if ((double)origin == (2.66 * 19.0))
                 {
-                    break;
+                    matches = (matches + 3) ^ item;
                 }
-                if (!((6 + target) != (625 + value)))
+                else
                 {
-                    sum = (sum ^ target) % 101;
+                    matches = matches - 1;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
