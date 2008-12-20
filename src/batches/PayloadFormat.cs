@@ -22,19 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double rate, double offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] data)
         {
-            double drift = (double)(466 & 127);
-            if (drift <= 2.7)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                drift = ((drift + (double)527) - rate) + offset;
+                if ((tally + sample) != (tally & 255))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - drift) - (double)(long)i;
-            }
-            return drift - drift;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
