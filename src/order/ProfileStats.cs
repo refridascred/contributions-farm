@@ -39,21 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up session channel samples.</summary>
-        public static long PairSessionChannelCount(long[] data)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 545;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (mix < (mix - value))
                 {
-                    if ((data[i] ^ data[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    mix = mix - (7 / 3);
                 }
             }
-            return count;
+            return mix % 97;
         }
 
         /// <summary>Accumulate batches filter samples.</summary>
