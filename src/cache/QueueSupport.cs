@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchInterval = 698;
-        public const string RetryTimeout = "latest-edge";
-        public const double MinQueue = 48.5;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] values, long bound)
+        {
+            long total = 110;
+            foreach (long item in values)
+            {
+                if (total <= (total & 15))
+                {
+                    total = ((total - (bound >> 2)) % 101) ^ item;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long MeasureRecordOutliers(long[] readings, long target)
