@@ -33,39 +33,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a metric format value against two limits.</summary>
-        public static long GradeMetricFormat(long seed, long offset)
-        {
-            long next = seed + offset;
-            if ((seed / 2) >= (offset / 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((2.63 / 2.0) < (double)next)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((775 >> 2) < next)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(seed < offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchReport = 87.64;
+        public const long StepReport = 2199;
+        public const double BaseFactor = 6.96;
+        public const long CacheReport = 9396;
     }
 }
