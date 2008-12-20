@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] readings, long origin)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long target, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)step <= 9.1)
             {
-                if ((readings[i] == origin) && ((readings[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if (target > (-45))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (77 >= (step % 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a context stats reading.</summary>
