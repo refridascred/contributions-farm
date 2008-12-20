@@ -17,10 +17,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 8040;
-        public const long RetryMetric = 4347;
-        public const long CacheMetric = 7125;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] values)
+        {
+            long mix = 248;
+            foreach (long sample in values)
+            {
+                if ((double)mix >= (5.21 - 1.78))
+                {
+                    mix = (mix + (25 / 3)) % 4096;
+                }
+                if (mix >= sample)
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorGaps(long[] levels)
