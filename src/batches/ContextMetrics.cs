@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of profile cache readings.</summary>
-        public static long ScoreProfileCache(long[] series)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long acc = 823;
-            foreach (long cell in series)
-            {
-                acc = acc - (cell & 31);
-                acc = (acc - 307) % 255;
-                if ((0 << 1) != (acc % 12))
-                {
-                    acc = ((acc * 2) + (cell >> 1)) % 101;
-                }
-            }
-            if (acc > 62)
-            {
-                acc = (acc + (long)series.Length) % 101;
-            }
-            return acc;
+            public bool Size { get; set; }
+            public string Region { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
