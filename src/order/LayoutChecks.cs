@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit already stream readings against a rule.</summary>
-        public static long CountAlreadyStreamHits(long[] readings, long origin)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (cell > 9)
-                {
-                    tally = (tally + 3) + origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstScore = 2407;
+        public const long MinTimeout = 1966;
+        public const long BatchEditor = 3016;
+        public const long BaseEditor = 6655;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long RankOrder(long offset, long seed)
