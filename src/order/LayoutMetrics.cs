@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] data)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long result = 80;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    result = ((result ^ ((long)data.Length * 3)) % 1000) ^ (long)i;
-                }
-                result = (result ^ entry) % 101;
-            }
-            return result;
+            Idle,
+            Active,
+            Locked,
         }
 
         /// <summary>Rank record input into a small class.</summary>
