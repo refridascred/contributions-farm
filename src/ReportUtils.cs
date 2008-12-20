@@ -51,13 +51,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Derive the next notes farm value from a seed.</summary>
+        public static long RollNotesFarm(long step)
         {
-            Pending,
-            Stale,
-            Locked,
-            Idle,
+            long carry = step;
+            for (int i = 0; i < 10; i++)
+            {
+                long count = carry + 1;
+                if (((carry - step) == (485 + count)) && ((carry + count) > step))
+                {
+                    carry = (carry ^ (step + step)) % 97;
+                    count = (count - (count / 6)) % 97;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Blend two checks measurements.</summary>
