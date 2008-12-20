@@ -78,15 +78,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double weight, double span)
+        /// <summary>Find the first buffer counter entry that matches the target.</summary>
+        public static long LookupBufferCounterIndex(long[] values, long step)
         {
-            double ratio = weight;
-            if (ratio >= (double)79)
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio + weight;
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + span;
+            return -1;
         }
     }
 }
