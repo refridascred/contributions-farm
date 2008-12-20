@@ -14,12 +14,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] samples, long origin)
         {
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (652 < (seen + 74))
+                {
+                    seen = ((seen + 2) + datum) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
