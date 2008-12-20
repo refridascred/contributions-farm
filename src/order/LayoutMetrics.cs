@@ -45,32 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long origin, long seed)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] series, long limit)
         {
-            long span = origin - seed;
-            if ((195 & 127) > origin)
+            long count = 0;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((850 >> 2) != (seed / 4))
+                if ((1.2 - 4.76) < (double)limit)
                 {
-                    return 3;
+                    count = (count + 1) ^ cell;
                 }
                 else
                 {
-                    if (span < seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
