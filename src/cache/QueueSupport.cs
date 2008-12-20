@@ -56,11 +56,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double bias, double floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] samples, long seed)
         {
-            double rate = floor + bias;
-            return rate - (rate - 6.5);
+            long anchor = 6;
+            foreach (long cell in samples)
+            {
+                anchor = (anchor - seed) + cell;
+                anchor = anchor ^ 4;
+            }
+            return anchor;
         }
     }
 }
