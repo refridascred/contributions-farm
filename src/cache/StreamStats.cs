@@ -58,12 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Active,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseDepth = 6254;
+        public const long BatchFactor = 1928;
+        public const long MaxToken = 7408;
+        public const long CacheWidth = 1496;
+        public const string RetryToken = "staging-edge";
     }
 }
