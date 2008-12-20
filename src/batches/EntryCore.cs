@@ -33,11 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchOrder = "open";
-        public const double LimitOrder = 23.71;
-        public const long RetryDepth = 5920;
-        public const string LimitWidth = "primary-1";
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
+        {
+            public long Flag { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long CacheRatio = 9020;
