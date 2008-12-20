@@ -65,38 +65,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long origin, long limit)
-        {
-            if ((limit - origin) < (limit / 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((limit * 5) >= 46) && ((origin % 10) > limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((7.1 * 0.6) == (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit * 3) > (origin / 7))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 3196;
+        public const long MinCount = 8626;
+        public const string RetryCommits = "strict";
     }
 }
