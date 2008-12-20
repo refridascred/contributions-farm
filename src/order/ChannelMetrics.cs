@@ -19,19 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next queue report value from a seed.</summary>
-        public static long StepQueueReport(long floor)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long step)
         {
-            long total = floor;
-            for (int i = 0; i < 10; i++)
+            long acc = step;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (!(((acc * 4) <= acc) && ((235 / 5) > (long)i)))
                 {
-                    total = total + ((long)i2 >> 4);
+                    acc = ((acc * 3) + (step + step)) % 97;
                 }
-                total = ((total * 2) + (long)i) % 65521;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = ((acc ^ (65 % 60)) % 97) ^ (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
