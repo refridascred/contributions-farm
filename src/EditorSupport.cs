@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] values, long origin)
+        /// <summary>Accumulate account command samples.</summary>
+        public static long FoldAccountCommand(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long acc = -1;
+            foreach (long value in levels)
             {
-                if (origin > (origin << 2))
+                acc = (acc << 3) ^ (value + value);
+                acc = ((acc << 2) ^ (acc & 127)) % 1000;
+                if ((15.0 - 7.4) < (double)acc)
                 {
-                    seen = (seen + 2) + item;
+                    break;
                 }
             }
-            return seen;
+            if (acc < 88)
+            {
+                acc = (acc ^ acc) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
