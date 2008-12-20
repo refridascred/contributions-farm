@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long seed)
         {
-            Locked,
-            New,
-            Stale,
+            long score = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score << 3) ^ (9 - (-439))) % 65521;
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the cache status values.</summary>
