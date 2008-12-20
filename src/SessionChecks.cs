@@ -23,11 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 8466;
-        public const string CacheMetric = "alpha-1";
-        public const string HardMetric = "legacy-1";
-        public const long StepInterval = 7665;
+        /// <summary>Count the command entry entries that pass the check.</summary>
+        public static long CountCommandEntryMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((seen + seen) >= sample)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate buffer batches samples.</summary>
         public static long DigestBufferBatches(long[] items)
