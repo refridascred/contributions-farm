@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a format commits sample.</summary>
-        public static long LocateFormatCommitsIndex(long[] data, long seed)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((data[i] == seed) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = carry + ((long)i + (long)i);
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define account limits and defaults.</summary>
