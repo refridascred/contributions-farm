@@ -25,15 +25,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next githubfarm checks value from a seed.</summary>
-        public static long StepGithubfarmChecks(long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] data)
         {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((5.17 + 5.0) >= (double)sample)
+                {
+                    tally = tally + 3;
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
