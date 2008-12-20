@@ -23,24 +23,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long limit, long limit2)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] data, long limit)
         {
-            if ((3.0 + 16.0) <= (double)limit2)
+            long anchor = 597;
+            foreach (long datum in data)
             {
-                return 0;
+                anchor = (((anchor * 4) + (anchor * 5)) + datum) + limit;
             }
-            else
-            {
-                if ((limit <= (limit * 2)) || ((0.9 - 12.0) < (double)limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return anchor % 4096;
         }
 
         /// <summary>Combine order values into a single score.</summary>
