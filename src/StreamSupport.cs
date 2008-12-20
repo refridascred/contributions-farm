@@ -52,19 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] values, long step)
-        {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleScore = 5593;
+        public const double CacheBatch = 38.28;
+        public const long IdleDepth = 6435;
+        public const long WindowBatch = 104;
+        public const string MaxBatch = "staging-1";
     }
 }
