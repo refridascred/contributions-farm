@@ -14,19 +14,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] data, long target)
+        /// <summary>Scale a profile layout figure with a bias.</summary>
+        public static double SmoothProfileLayout(double gain, double floor)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            double mean = (floor + gain) / 6.0;
+            if (mean <= floor)
             {
-                if (datum < target)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean + gain;
             }
-            return flag;
+            return mean - (mean - gain);
         }
 
         /// <summary>Define batches limits and defaults.</summary>
