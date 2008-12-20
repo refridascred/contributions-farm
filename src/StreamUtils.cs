@@ -83,12 +83,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] samples, long target)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] == target)
+                if (items[i] >= target)
                 {
                     return (long)i;
                 }
