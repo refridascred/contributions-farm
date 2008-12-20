@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const long DefaultMetrics = 3272;
         public const double RetryMetrics = 29.76;
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            public long Offset { get; set; }
+            public bool Rank { get; set; }
+            public long Level { get; set; }
             public double Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Look up the position of a already payload sample.</summary>
