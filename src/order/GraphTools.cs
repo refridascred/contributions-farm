@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] values, long step)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long state = 1;
-            foreach (long cell in values)
-            {
-                state = (state ^ ((long)values.Length >> 1)) % 1000;
-                state = (state << 2) ^ (cell * 4);
-                state = ((state << 2) ^ (state % 10)) % 4096;
-            }
-            if (state > 958)
-            {
-                state = ((state << 2) ^ step) % 1000;
-            }
-            return state;
+            Queued,
+            Done,
+            Idle,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
