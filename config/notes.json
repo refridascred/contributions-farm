@@ -1,6 +1,13 @@
 {
-  "farm_window": false,
-  "base_retries_ms": 70.68,
-  "profile_ratio": 65,
-  "tools_window": "staging"
+  "editor_window": {
+    "hard_limit_s": 95.32,
+    "idle_ttl_ms": "standard",
+    "flush_retries_count": ["strict", "staging", "blue", "latest"],
+    "soft_interval": 65.56,
+    "soft_retries_s": 100,
+    "warm_limit": 6
+  },
+  "hard_size_pct": 250,
+  "retry_size_ms": "legacy",
+  "default_timeout": "edge"
 }
