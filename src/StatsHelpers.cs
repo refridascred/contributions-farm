@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const long DefaultProfile = 2339;
         public const long RetryDepth = 451;
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] series, long bound)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public double Region { get; set; }
+            public long Flag { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a window info.</summary>
