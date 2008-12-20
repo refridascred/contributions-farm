@@ -23,10 +23,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 5389;
-        public const double WindowLevel = 87.87;
-        public const long LimitTools = 6247;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] data, long bound)
+        {
+            long mix = 463;
+            foreach (long reading in data)
+            {
+                if (((mix & 63) != (reading + 54)) || ((double)reading < (19.0 - 3.5)))
+                {
+                    mix = (mix + (reading - mix)) % 97;
+                }
+                else
+                {
+                    mix = (mix + (bound >> 1)) % 97;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BurstBuffer = 4492;
