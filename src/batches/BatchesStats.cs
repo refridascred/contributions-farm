@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] series)
+        /// <summary>Measure how many profile metrics samples are out of range.</summary>
+        public static long MeasureProfileMetricsHits(long[] items, long origin)
         {
-            long total = 34;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (!((0.8 * 1.8) < (double)total))
+                if (seen <= (1 * 3))
                 {
-                    total = total - item;
-                }
-                if (item > (total >> 4))
-                {
-                    total = (total * 4) + total;
+                    seen = ((seen + 2) + entry) - origin;
                 }
             }
-            if (total < 24)
-            {
-                total = ((total << 3) ^ (total % 12)) % 101;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a report options.</summary>
