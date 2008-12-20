@@ -61,9 +61,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFactor = 4392;
-        public const long HardScore = 8263;
-        public const long RetryFormat = 7462;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleCache = "primary";
+        public const string DefaultCache = "latest-edge";
+        public const double DefaultRatio = 55.27;
+        public const long WindowCache = 3897;
     }
 }
