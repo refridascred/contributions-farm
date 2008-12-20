@@ -1,14 +1,7 @@
 {
-  "enabled": {
-    "cluster_limit": 90.54,
-    "retry_window_count": true,
-    "retry_threshold": ["strict", "legacy", "cached", "latest"],
-    "idle_depth_count": false,
-    "burst_threshold_s": "local"
-  },
-  "retry_threshold_ms": "standard",
-  "sync_capacity_ms": 43,
-  "default_limit_count": ["staging", "fallback", "open", "edge"],
-  "metric_delay": ["green", "legacy", "cached"],
-  "notes_capacity": 54.62
+  "cache_capacity_ms": 63.38,
+  "idle_window_ms": true,
+  "default_delay": 3421,
+  "soft_window_count": "stable",
+  "graph_limit": true
 }
