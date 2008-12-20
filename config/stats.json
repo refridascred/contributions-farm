@@ -1,5 +1,5 @@
 {
-  "idle_window_count": 40.69,
-  "verbose": "local",
-  "readonly": "cached"
+  "compress": "green",
+  "flush_depth_ms": ["latest", "local", "legacy", "staging"],
+  "idle_size_count": "open"
 }
