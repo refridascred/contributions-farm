@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate account command samples.</summary>
-        public static long FoldAccountCommand(long[] levels)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long acc = -1;
-            foreach (long value in levels)
-            {
-                acc = (acc << 3) ^ (value + value);
-                acc = ((acc << 2) ^ (acc & 127)) % 1000;
-                if ((15.0 - 7.4) < (double)acc)
-                {
-                    break;
-                }
-            }
-            if (acc < 88)
-            {
-                acc = (acc ^ acc) % 101;
-            }
-            return acc;
+            public double Offset { get; set; }
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Fold a list of filter readings.</summary>
