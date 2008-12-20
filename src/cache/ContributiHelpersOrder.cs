@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const string IdleDepth = "legacy-edge";
         public const long StepLevel = 6077;
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long origin)
         {
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
+            long result = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                long diff = result + 462;
+                result = (result - (diff >> 4)) % 101;
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Combine context values into a single score.</summary>
