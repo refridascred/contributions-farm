@@ -1,6 +1,12 @@
 {
-  "compress": [145, 474, 99, 316],
-  "strict": [27, 62, 321, 98],
-  "sync_window": 1024,
-  "readonly": 72
+  "batch_size_pct": false,
+  "sync_interval_pct": false,
+  "session_ratio": 32.6,
+  "hard_delay_ms": {
+    "compress": 8404,
+    "max_capacity_s": false,
+    "base_retries_ms": 1024
+  },
+  "sync_ttl_s": 66.24,
+  "cluster_threshold": false
 }
