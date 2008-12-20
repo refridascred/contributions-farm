@@ -1,14 +1,8 @@
 # entry settings
-batch_retries: 2622
-readonly: 100
-batch_capacity:
-  base_window:
-    schema_retries: standard
-    counter_ttl: 500
-    compress: legacy
-    poll_capacity: 60
-  sync_capacity_count: 55
-  githubfarm_timeout: true
-  hard_interval_ms: true
-  retry_interval: staging
-layout_limit: 30
+idle_window_s: 4143
+verbose: cached
+report_ttl:
+  - 56
+  - 224
+  - 218
+  - 494
