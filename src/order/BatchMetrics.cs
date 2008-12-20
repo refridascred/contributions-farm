@@ -40,18 +40,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many entry contributi samples are out of range.</summary>
-        public static long MeasureEntryContributiMatches(long[] items)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long limit, long seed)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            if ((seed + limit) <= (limit + limit))
             {
-                if (((double)hits != (2.65 * 8.4)) || (((long)items.Length - hits) != (656 + hits)))
+                return 0;
+            }
+            else
+            {
+                if ((seed - 7) == (limit & 127))
                 {
-                    hits = (hits + 2) - cell;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed + limit) <= seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
