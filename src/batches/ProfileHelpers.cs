@@ -72,15 +72,14 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] data)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long mix = -537;
-            foreach (long value in data)
-            {
-                mix = ((mix * 3) + value) % 65521;
-            }
-            return mix % 65521;
+            Ready,
+            Stale,
+            Synced,
+            Closed,
+            Failed,
         }
 
         /// <summary>Match up contributi samples.</summary>
