@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Validate queue buffer readings against a bound.</summary>
+        public static bool CheckQueueBufferLimits(long[] series, long floor)
         {
-            Ready,
-            Idle,
-            Failed,
-            Draft,
-            Closed,
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the record class values.</summary>
