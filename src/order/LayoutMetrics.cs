@@ -45,12 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Adjust a counter payload reading.</summary>
+        public static double SmoothCounterPayload(double ratio, double floor)
         {
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
+            double drift = floor;
+            return drift + ratio;
         }
     }
 }
