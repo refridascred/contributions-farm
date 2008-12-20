@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] data, long step)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] series, long target)
         {
-            long mix = 42;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (6.7 >= (double)mix)
+                if (reading > target)
                 {
-                    mix = (((mix * 2) + cell) % 65521) + step;
+                    stale = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return stale;
         }
 
         /// <summary>Combine already session values into a single score.</summary>
