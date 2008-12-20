@@ -1,4 +1,8 @@
 # support settings
-window_timeout: green
-base_ttl: primary
-schema_interval: 30
+cache_window: true
+default_limit: open
+persist:
+  - 388
+  - 438
+  - 75
+burst_interval: 15.54
