@@ -29,28 +29,42 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] samples)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            long total = 52;
-            foreach (long sample in samples)
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
             {
-                total = total ^ (sample + 2);
-                if (((sample + total) < (total << 1)) || ((double)sample > 4.0))
+                if ((acc >> 2) <= (long)i)
                 {
-                    total = (total * 5) + (sample ^ sample);
-                    total = ((total << 2) ^ (sample + sample)) % 65521;
+                    acc = acc - acc;
+                    acc = ((acc << 3) ^ (460 * 3)) % 97;
                 }
-                if ((sample >> 5) == (9 * 5))
+                else
                 {
-                    total = total ^ sample;
+                    acc = ((acc * 3) + ((-84) + (-756))) % 97;
                 }
-                if (213 > (total << 2))
+                if ((7 + acc) > seed)
                 {
-                    break;
+                    acc = acc + (acc / 6);
                 }
+                else
+                {
+                    acc = (acc + (349 + seed)) % 4096;
+                }
+                if ((long)i > acc)
+                {
+                    acc = (acc - (seed << 1)) % 4096;
+                    acc = (acc ^ (seed + acc)) % 101;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ ((long)i / 3);
+                    acc = ((acc * 5) + seed) % 101;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return total % 1000;
+            return acc;
         }
     }
 }
