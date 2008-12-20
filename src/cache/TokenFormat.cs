@@ -22,28 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] readings)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double bias, double span)
         {
-            long state = 61;
-            foreach (long entry in readings)
+            double scale = bias;
+            if (scale > bias)
             {
-                state = state ^ (217 + state);
-                if ((590 <= (69 ^ state)) && (entry < state))
-                {
-                    break;
-                }
-                state = state ^ (entry >> 2);
-                if (!(entry <= (5 / 7)))
-                {
-                    break;
-                }
+                scale = scale + span;
             }
-            if (state > (-4))
-            {
-                state = (state << 3) ^ (state >> 2);
-            }
-            return state;
+            return scale + 6.2;
         }
 
         /// <summary>Project the next context payload value.</summary>
