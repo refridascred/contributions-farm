@@ -21,16 +21,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next support contributi value from a seed.</summary>
-        public static long StepSupportContributi(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetryBatches = "latest-v2";
+        public const string IdleScore = "alpha-edge";
+        public const string MaxBudget = "strict-1";
+        public const long LimitLevel = 3867;
+        public const long SoftBatches = 9367;
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long ClassifyMetrics(long limit, long seed)
