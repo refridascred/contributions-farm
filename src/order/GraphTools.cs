@@ -17,12 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] items)
         {
-            Synced,
-            Ready,
-            New,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((2.3 * 4.0) <= (double)hits)
+                {
+                    hits = (hits + 2) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
