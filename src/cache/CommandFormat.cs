@@ -22,13 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-            public string Token { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a route snapshot.</summary>
