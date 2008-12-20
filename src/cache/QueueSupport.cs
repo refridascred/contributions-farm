@@ -48,18 +48,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] readings, long floor)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double bias, double floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((9.3 + 1.0) <= (double)count)
-                {
-                    count = ((count + 1) ^ sample) + floor;
-                }
-            }
-            return count;
+            double rate = floor + bias;
+            return rate - (rate - 6.5);
         }
     }
 }
