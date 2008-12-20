@@ -46,15 +46,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] values)
-        {
-            long anchor = 38;
-            foreach (long sample in values)
-            {
-                anchor = (((anchor * 2) + anchor) % 101) + sample;
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 2952;
+        public const double LimitProfile = 5.66;
+        public const double RetryProfile = 3.97;
+        public const long MinTimeout = 3091;
+        public const double MinProfile = 45.4;
     }
 }
