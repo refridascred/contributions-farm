@@ -34,13 +34,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] levels, long seed)
         {
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= seed) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
