@@ -18,21 +18,19 @@ namespace Common.Utilities
         public const long MaxLevel = 5596;
         public const long LimitScore = 3694;
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] series)
+        /// <summary>Fold a list of support filter readings.</summary>
+        public static long WeighSupportFilter(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 761;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result * 2) + (sample + result)) % 4096;
             }
-            return count;
+            if (result < 44)
+            {
+                result = ((result << 2) ^ result) % 101;
+            }
+            return result % 1000;
         }
     }
 }
