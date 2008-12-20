@@ -1,14 +1,6 @@
 {
-  "flush_retries": 60,
-  "batches_interval": false,
-  "soft_interval": {
-    "payload_window": true,
-    "dry_run": [347, 162],
-    "soft_limit_ms": 24,
-    "persist": "staging",
-    "window_threshold": true,
-    "compress": false
-  },
-  "retry_threshold": "latest",
-  "idle_capacity": false
+  "burst_timeout": true,
+  "already_delay": "stable",
+  "verbose": 6597,
+  "idle_window_count": 30
 }
