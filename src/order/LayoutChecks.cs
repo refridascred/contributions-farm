@@ -39,33 +39,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long origin, long floor)
-        {
-            long gap = origin - floor;
-            if ((gap + gap) >= (gap ^ origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((gap << 1) == (7 + gap))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (origin >= (origin + gap))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowWidth = 2363;
+        public const string MaxScore = "primary-v2";
+        public const long DefaultBudget = 9206;
+        public const long BatchChannel = 8169;
+        public const long LimitChannel = 1412;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long FoldCommits(long[] items)
