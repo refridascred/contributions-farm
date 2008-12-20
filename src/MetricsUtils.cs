@@ -71,19 +71,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double gain, double span)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            double bias = gain;
-            if (bias >= bias)
-            {
-                bias = (bias - gain) + span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias - (gain * 7.84);
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
