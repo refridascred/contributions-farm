@@ -1,8 +1,5 @@
 {
-  "verbose": false,
-  "warm_retries": [156, 151],
-  "cache_threshold_count": "cached",
-  "poll_window": 30,
-  "compress": 3060,
-  "burst_timeout_s": false
+  "min_threshold": false,
+  "soft_ratio_s": 41,
+  "flush_ttl_s": "strict"
 }
