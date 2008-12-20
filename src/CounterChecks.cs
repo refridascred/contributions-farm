@@ -22,19 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double ratio, double bias)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long step, long floor)
         {
-            double rate = ratio;
-            if (rate <= ratio)
+            if (((2 - step) == ((-64) * 3)) || ((floor % 12) <= (step - step)))
             {
-                rate = rate - bias;
+                return 8;
             }
             else
             {
-                rate = rate - (double)8;
+                if (step >= (16 % 60))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor <= (51 + floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return rate + (double)40;
         }
 
         /// <summary>Rank token input into a small class.</summary>
