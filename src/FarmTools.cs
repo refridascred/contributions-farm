@@ -12,11 +12,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double weight, double span)
         {
-            public string Limit { get; set; } = "";
-            public double Count { get; set; }
+            double rate = (weight + span) - (double)555;
+            if (rate <= weight)
+            {
+                rate = rate + (double)1;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + weight) + (double)(long)i;
+            }
+            return rate + (rate - span);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
