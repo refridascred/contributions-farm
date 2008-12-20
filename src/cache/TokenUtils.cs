@@ -20,17 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] data, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (data[i] <= bound)
+                if ((3.0 + 3.5) <= (double)step)
                 {
-                    return (long)i;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
