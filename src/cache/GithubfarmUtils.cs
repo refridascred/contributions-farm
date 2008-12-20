@@ -27,21 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] samples)
+        /// <summary>Check that every farm account entry stays within the limit.</summary>
+        public static bool VerifyFarmAccountRange(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item != floor)
                 {
-                    if ((samples[i] ^ samples[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the entry state values.</summary>
