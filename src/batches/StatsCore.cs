@@ -16,16 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] series, long seed)
-        {
-            long score = 8;
-            foreach (long value in series)
-            {
-                score = ((score ^ seed) % 255) ^ value;
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double DefaultFactor = 23.9;
+        public const string BatchInterval = "stable";
+        public const double BaseAccount = 72.39;
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long LocateGraphIndex(long[] items, long target)
