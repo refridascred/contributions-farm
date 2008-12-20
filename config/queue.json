@@ -1,6 +1,8 @@
 {
-  "stream_window": 4988,
-  "retry_ratio": false,
-  "token_ratio": 100,
-  "compress": 100
+  "flush_interval_ms": 5126,
+  "poll_interval_pct": "staging",
+  "idle_delay": 70.73,
+  "dry_run": 37.57,
+  "session_timeout": 39,
+  "channel_threshold": false
 }
