@@ -98,12 +98,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] series, long target)
         {
-            Ready,
-            Paused,
-            Idle,
+            long state = 425;
+            foreach (long datum in series)
+            {
+                state = ((state - (datum - 5)) % 4096) - target;
+                if ((735 + state) != (datum - state))
+                {
+                    state = state + (state - 84);
+                }
+            }
+            return state;
         }
     }
 }
