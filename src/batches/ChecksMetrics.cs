@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long bound, long offset)
         {
-            Failed,
-            Done,
-            New,
-            Stale,
-            Dropped,
+            long cur = bound ^ offset;
+            if (bound >= (cur & 7))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((bound - bound) >= (offset * 5)) || ((bound + bound) > offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((-34) > (cur * 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
