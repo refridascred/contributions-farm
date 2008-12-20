@@ -33,15 +33,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a session graph counter forward.</summary>
-        public static long DeriveSessionGraph(long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] levels, long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                if ((double)sample < (14.0 - 5.87))
+                {
+                    hits = (hits + 3) - limit;
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
