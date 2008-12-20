@@ -37,17 +37,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first filter already entry that matches the target.</summary>
-        public static long LookupFilterAlreadyIndex(long[] samples, long limit)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Pending,
+            Retry,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Accumulate notes samples.</summary>
