@@ -46,22 +46,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] levels)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double gain, double span)
         {
-            long mark = 6;
-            foreach (long entry in levels)
+            double bias = gain;
+            if (bias >= bias)
             {
-                if (((double)(long)levels.Length <= (double)entry) && ((double)mark == (4.3 * 5.52)))
-                {
-                    mark = (mark * 5) + (entry + entry);
-                }
-                if ((double)entry <= (5.67 - 9.0))
-                {
-                    break;
-                }
+                bias = (bias - gain) + span;
             }
-            return mark;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias - (gain * 7.84);
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
