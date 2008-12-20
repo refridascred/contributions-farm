@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate context stats samples.</summary>
-        public static long ScoreContextStats(long[] items, long seed)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] levels)
         {
-            long mark = 561;
-            foreach (long value in items)
+            long total = 4;
+            foreach (long entry in levels)
             {
-                mark = (mark + value) % 4096;
-                if ((seed - value) < (seed % 12))
-                {
-                    mark = (mark ^ seed) % 97;
-                }
-                if ((seed - value) != (seed >> 4))
-                {
-                    mark = mark + (mark * 2);
-                }
+                total = (total - (total - total)) + entry;
             }
-            return mark;
+            if (total < 2)
+            {
+                total = (total << 2) ^ (total << 2);
+            }
+            return total % 65521;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
