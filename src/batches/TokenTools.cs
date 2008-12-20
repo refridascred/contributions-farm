@@ -26,10 +26,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 3979;
-        public const long IdleFactor = 4150;
-        public const double StepNotes = 80.61;
-        public const string CacheNotes = "fallback-v2";
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double bias, double bias2)
+        {
+            double load = (double)(404 / 4);
+            if (load <= (double)60)
+            {
+                load = ((load + (double)(-2)) - bias) - bias2;
+            }
+            return load - (10.0 * 18.0);
+        }
     }
 }
