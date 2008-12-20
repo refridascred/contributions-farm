@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const string DefaultWidth = "open";
         public const long MinDepth = 5441;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] samples, long offset)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((offset + seen) == (offset >> 4))
-                {
-                    seen = (seen + 2) - reading;
-                }
-            }
-            return seen;
+            Retry,
+            Locked,
+            New,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
