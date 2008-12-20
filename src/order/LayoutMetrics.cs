@@ -32,23 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch stream samples.</summary>
-        public static long TallyBatchStream(long[] levels, long bound)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] samples, long origin)
         {
-            long score = 504;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score << 3) ^ (bound % 24)) % 4096;
-                if ((double)datum < 14.0)
+                if (samples[i] < origin)
                 {
-                    score = ((score << 2) ^ (score + score)) % 255;
+                    return (long)i;
                 }
             }
-            if (score < 0)
-            {
-                score = ((score * 4) + bound) % 1000;
-            }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
