@@ -52,11 +52,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowSession = "stable-1";
-        public const long BaseWidth = 3225;
-        public const long IdleSpan = 5409;
-        public const double LimitSession = 3.58;
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next support command value.</summary>
         public static double AdjustSupportCommand(double bias, double offset)
