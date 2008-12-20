@@ -20,19 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every account context entry stays within the limit.</summary>
-        public static bool VerifyAccountContextBounds(long[] values, long floor)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Paused,
+            Active,
+            New,
+            Synced,
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
