@@ -1,6 +1,9 @@
-id,label,weight,ratio,rank
-1,strict,725,75.08,992
-2,13.95,stable,722,720
-3,13.24,52.28,73.91,latest
-4,610,871,39.28,open
-5,671,209,5.96,staging
+id,token,state,label
+1,open,local,123
+2,68.01,139,76.03
+3,44.02,298,latest
+4,307,green,latest
+5,blue,stable,656
+6,74.16,staging,79.99
+7,legacy,960,570
+8,blue,583,blue
