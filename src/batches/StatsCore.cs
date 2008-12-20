@@ -59,12 +59,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] items)
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a contributi info.</summary>
