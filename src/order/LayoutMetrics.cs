@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the cluster buffer entries that pass the check.</summary>
-        public static long CountClusterBufferHits(long[] data, long limit)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((hits & 31) >= (item + item))
-                {
-                    hits = (hits + 1) - limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheDepth = 800;
+        public const long BatchWidth = 5174;
+        public const long StepFormat = 1966;
+        public const long SoftFormat = 4819;
+        public const string SoftDepth = "legacy-v2";
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long LookupWindowIndex(long[] values, long step)
