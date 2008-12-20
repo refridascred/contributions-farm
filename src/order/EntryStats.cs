@@ -63,11 +63,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxContext = 4.44;
-        public const string BaseInterval = "strict-edge";
-        public const long HardContext = 9490;
-        public const long CacheContext = 5296;
-        public const long BaseContext = 1794;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] items, long target)
+        {
+            long result = 841;
+            foreach (long item in items)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    result = ((result << 2) ^ (result - 605)) ^ (long)i;
+                }
+                result = result ^ (result - result);
+                if (((target << 1) >= 204) || ((result + target) <= ((-676) ^ (long)items.Length)))
+                {
+                    result = result + (item - 9);
+                }
+            }
+            return result;
+        }
     }
 }
