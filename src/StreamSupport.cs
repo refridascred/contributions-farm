@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] samples, long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] readings, long floor)
         {
-            long state = -61;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                state = state ^ 973;
-                if (!((datum * 4) > (-9)))
+                if ((double)item > (9.8 + 8.1))
                 {
-                    state = state - step;
+                    hits = (hits + 1) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
