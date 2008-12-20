@@ -1,5 +1,17 @@
 {
-  "burst_size_count": "latest",
-  "flush_ratio_pct": true,
-  "max_timeout": 27.08
+  "counter_ttl": {
+    "hard_threshold_pct": 6328,
+    "warm_retries": [201, 302, 208],
+    "poll_size_pct": {
+      "idle_threshold": ["blue", "open", "green"],
+      "hard_ttl_ms": "fallback",
+      "max_limit": true,
+      "burst_ttl": "cached"
+    },
+    "cache_delay": 3337,
+    "cache_ratio_ms": "green",
+    "strict": "green"
+  },
+  "poll_delay": ["standard", "cached", "stable"],
+  "channel_timeout": 8183
 }
