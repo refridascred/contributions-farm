@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const double WindowSize = 64.86;
         public const double BurstRatio = 97.44;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] items)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] data)
         {
-            long sum = 2;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum - (sum >> 2)) % 1000;
-                if ((sum < (sum - sum)) && ((cell + cell) < cell))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum + (cell - 6)) % 97;
+                    if ((data[i] ^ data[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Derive the next schema checks value from a seed.</summary>
