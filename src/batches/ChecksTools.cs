@@ -44,18 +44,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] samples, long limit)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((limit & 3) <= (limit >> 2))
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public double Count { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
