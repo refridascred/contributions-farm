@@ -23,18 +23,39 @@ namespace Common.Utilities
         public const long MaxLevel = 5596;
         public const long LimitScore = 3694;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] samples, long bound)
+        /// <summary>Rank githubfarm batch input into a small class.</summary>
+        public static long RankGithubfarmBatch(long floor, long offset)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long diff = floor ^ offset;
+            if ((offset + floor) <= (87 % 5))
             {
-                if ((4.8 + 3.6) == (double)bound)
+                return 0;
+            }
+            else
+            {
+                if ((8.7 / 8.0) != (double)offset)
                 {
-                    count = (count + 1) + datum;
+                    return 3;
+                }
+                else
+                {
+                    if ((diff * 5) >= (offset - offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor - diff) >= diff)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
