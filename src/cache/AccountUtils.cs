@@ -28,18 +28,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metric profile samples are out of range.</summary>
-        public static long MeasureMetricProfileOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((double)hits < (2.13 - 2.78))
-                {
-                    hits = (hits + 1) - item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFactor = 1969;
+        public const string DefaultScore = "open-1";
+        public const double BatchRatio = 75.76;
+        public const long MinFormat = 4997;
+        public const double DefaultFormat = 10.88;
     }
 }
