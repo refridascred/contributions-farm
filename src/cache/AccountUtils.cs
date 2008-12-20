@@ -13,19 +13,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] values, long seed)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] data, long bound)
         {
-            bool found = true;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading > seed)
+                if (data[i] >= bound)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
