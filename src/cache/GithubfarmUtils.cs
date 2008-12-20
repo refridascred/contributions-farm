@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardDepth = "standard-edge";
-        public const string MaxTimeout = "legacy-1";
-        public const long HardEditor = 2014;
-        public const string WindowEditor = "standard-v2";
-        public const long CacheEditor = 8371;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (!((double)entry < (5.0 + 3.9)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long TallyTokenMatches(long[] series, long bound)
