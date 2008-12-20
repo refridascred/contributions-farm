@@ -47,19 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double ratio, double floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] values, long floor)
         {
-            double mean = (double)(24 - 26);
-            if (mean <= floor)
+            long count = 0;
+            foreach (long sample in values)
             {
-                mean = mean - (double)4;
+                if (590 > sample)
+                {
+                    count = (count + 2) - floor;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (ratio - mean)) - (double)(long)i;
-            }
-            return mean - mean;
+            return count;
         }
 
         /// <summary>Hold a metric info.</summary>
