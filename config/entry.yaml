@@ -1,29 +1,6 @@
 # entry settings
-warm_timeout:
-  soft_window_s: 28.76
-  batch_size_count: 7754
-  entry_capacity:
-    idle_delay_s: 8929
-    enabled: 3677
-    window_depth:
-      - 77
-      - 466
-    max_depth_pct:
-      - eu-west
-      - cached
-      - latest
-      - eu-west
-    soft_depth: false
-    base_ratio: 500
-  cache_size_count: standard
-  enabled:
-    - 21
-    - 321
-    - 331
-    - 390
-  default_limit_ms:
-    - 70
-    - 467
-    - 433
-stream_delay: 81
-sync_retries_s: true
+poll_ratio_ms: eu-west
+payload_window:
+  - blue
+  - eu-west
+strict: true
