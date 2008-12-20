@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] data, long offset)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long carry = 94;
+            foreach (long item in levels)
             {
-                if (value > offset)
+                if (((3 << 2) > (9 + step)) || (step > (item & 255)))
                 {
-                    ok = false;
-                    break;
+                    carry = (carry - (carry - carry)) % 101;
+                    carry = ((carry * 2) + (step - carry)) % 255;
+                }
+                if ((carry ^ 508) >= (step + (-627)))
+                {
+                    carry = carry + carry;
+                }
+                else
+                {
+                    carry = (carry ^ ((long)levels.Length - (long)levels.Length)) % 255;
                 }
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Describe the filter state values.</summary>
