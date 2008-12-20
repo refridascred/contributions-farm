@@ -32,13 +32,26 @@ namespace Common.Utilities
         public const double BatchCommand = 31.14;
         public const double WindowSpan = 64.96;
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Combine schema account values into a single score.</summary>
+        public static long ScoreSchemaAccount(long[] levels)
         {
-            Pending,
-            Ready,
-            New,
-            Active,
+            long anchor = -84;
+            foreach (long value in levels)
+            {
+                if (anchor >= (anchor + value))
+                {
+                    anchor = (anchor * 4) + (anchor - anchor);
+                }
+                else
+                {
+                    anchor = (anchor - (value << 1)) % 97;
+                }
+            }
+            if (anchor < 5)
+            {
+                anchor = (anchor - anchor) % 101;
+            }
+            return anchor % 65521;
         }
     }
 }
