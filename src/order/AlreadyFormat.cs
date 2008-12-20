@@ -83,18 +83,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] samples, long floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long total = 2;
+            foreach (long reading in data)
             {
-                if ((datum % 7) <= 46)
+                if ((918 - step) > (4 - reading))
                 {
-                    matches = (matches + 2) + floor;
+                    total = (total << 2) ^ (step ^ (long)data.Length);
+                }
+                else
+                {
+                    total = total - (885 % 3);
                 }
             }
-            return matches;
+            return total % 65521;
         }
     }
 }
