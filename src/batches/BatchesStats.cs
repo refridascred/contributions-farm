@@ -18,22 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream token samples are out of range.</summary>
-        public static long MeasureStreamTokenOutliers(long[] samples, long origin)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long offset, long floor)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            if (!((952 + offset) >= ((-35) + floor)))
             {
-                if ((tally - tally) > (reading & 3))
+                return 6;
+            }
+            else
+            {
+                if ((floor - offset) <= offset)
                 {
-                    tally = (tally + 2) - origin;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (!((double)offset >= (3.71 * 3.1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank entry batch input into a small class.</summary>
