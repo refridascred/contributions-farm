@@ -70,19 +70,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] readings, long target)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double gain, double offset)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            double ratio = (6.0 * 20.0) - (offset + offset);
+            for (int i = 0; i < 2; i++)
             {
-                if (item < target)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ((ratio + ratio) + (double)(long)i) - gain;
             }
-            return ready;
+            return ratio - offset;
         }
     }
 }
