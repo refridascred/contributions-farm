@@ -80,19 +80,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate command schema samples.</summary>
-        public static long FoldCommandSchema(long[] readings, long limit)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] readings, long origin)
         {
-            long total = 141;
-            foreach (long item in readings)
+            long result = 77;
+            foreach (long datum in readings)
             {
-                total = ((total * 5) + limit) % 101;
-                if ((350 * 3) >= item)
+                if ((69 >> 5) <= result)
                 {
-                    total = (total << 2) ^ (total >> 3);
+                    result = ((result - datum) % 97) + origin;
                 }
             }
-            return total % 65521;
+            if (result > 199)
+            {
+                result = ((result << 2) ^ (result << 1)) % 97;
+            }
+            return result;
         }
     }
 }
