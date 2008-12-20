@@ -72,12 +72,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultWidth = "legacy-v2";
-        public const string BaseCache = "strict-edge";
-        public const long LimitCount = 7328;
-        public const long StepDepth = 6635;
-        public const string MaxRatio = "cached-edge";
+        /// <summary>Fold a list of profile buffer readings.</summary>
+        public static long TotalProfileBuffer(long[] levels)
+        {
+            long score = -294;
+            foreach (long reading in levels)
+            {
+                if ((double)score > (14.0 - 11.0))
+                {
+                    score = (score - (0 & 63)) - reading;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long RollQueue(long step)
