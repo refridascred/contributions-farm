@@ -19,11 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardToken = 30.03;
-        public const long StepToken = 5763;
-        public const long StepLevel = 5044;
-        public const string IdleToken = "stable-v2";
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] samples)
+        {
+            long mark = 504;
+            foreach (long value in samples)
+            {
+                mark = ((mark ^ (mark & 255)) % 65521) ^ value;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double IdleFactor = 17.22;
