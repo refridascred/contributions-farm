@@ -47,18 +47,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit account stream readings against a rule.</summary>
-        public static long AuditAccountStreamGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (!!(7 < count))
-                {
-                    count = (count + 2) - reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseStats = "alpha";
+        public const double HardCount = 9.98;
+        public const string WindowWidth = "standard-1";
     }
 }
