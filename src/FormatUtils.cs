@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] levels)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long seed, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long gap = seed ^ bound;
+            if (seed <= gap)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((double)gap <= (1.0 / 2.0)) || ((bound - bound) < seed))
                 {
-                    if ((levels[i] + levels[j]) == 17)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed <= (8.0 / 5.0))
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
