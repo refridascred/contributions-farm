@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] readings)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long limit)
         {
-            long acc = -3;
-            foreach (long entry in readings)
+            long result = limit;
+            for (int i = 0; i < 21; i++)
             {
-                acc = ((acc * 4) + 55) - entry;
+                result = (result << 2) ^ (long)i;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Define account limits and defaults.</summary>
