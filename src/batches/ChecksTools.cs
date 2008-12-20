@@ -22,16 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long step)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result << 2) ^ result) % 101;
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public bool Limit { get; set; }
+            public double Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
