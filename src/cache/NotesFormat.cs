@@ -17,21 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of githubfarm channel readings.</summary>
-        public static long CompareGithubfarmChannelCount(long[] levels)
+        /// <summary>Check that every schema graph entry stays within the limit.</summary>
+        public static bool VerifySchemaGraphBounds(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell != step)
                 {
-                    if ((levels[i] ^ levels[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Hold a context entry.</summary>
