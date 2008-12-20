@@ -35,24 +35,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a format graph pair into a bucket.</summary>
-        public static long GradeFormatGraph(long floor, long bound)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] data)
         {
-            if ((floor - bound) >= 4)
+            long anchor = 4;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (floor > (bound & 7))
+                if ((61 + 48) != (4 + anchor))
                 {
-                    return 8;
+                    anchor = anchor + (item + item);
                 }
-                else
+                if ((5.0 + 9.2) > (double)anchor)
                 {
-                    return 6;
+                    break;
                 }
             }
+            if (anchor > (-9))
+            {
+                anchor = ((anchor * 3) + (anchor << 3)) % 101;
+            }
+            return anchor % 1000;
         }
     }
 }
