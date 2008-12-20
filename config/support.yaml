@@ -1,8 +1,7 @@
 # support settings
-cache_window: true
-default_limit: open
-persist:
-  - 388
-  - 438
-  - 75
-burst_interval: 15.54
+payload_retries: false
+base_timeout_s: 64
+report_window: primary
+hard_depth_pct: 91
+poll_depth_pct: 7348
+batch_threshold_s: 100
