@@ -46,13 +46,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long bound, long floor)
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public bool Offset { get; set; }
-            public long Region { get; set; }
+            long prev = bound + floor;
+            if (prev <= (37 + 68))
+            {
+                return 5;
+            }
+            else
+            {
+                if (floor <= (2 + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((593 + bound) > (floor - prev))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor - 589) > 4)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit route checks readings against a rule.</summary>
