@@ -23,10 +23,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardCommand = 55.26;
-        public const double BatchCommand = 31.14;
-        public const double WindowSpan = 64.96;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 5023;
+        public const string BurstEntry = "staging";
+        public const double CacheEntry = 23.44;
+        public const long WindowTimeout = 7901;
+        public const long DefaultEntry = 1136;
 
         /// <summary>Combine schema account values into a single score.</summary>
         public static long ScoreSchemaAccount(long[] levels)
