@@ -1,5 +1,21 @@
 {
-  "dry_run": true,
-  "default_interval_pct": 75.78,
-  "burst_threshold_s": 30
+  "sync_interval_s": {
+    "retry_interval_pct": false,
+    "soft_threshold": [372, 385],
+    "persist": ["fallback", "latest", "blue"],
+    "verbose": {
+      "sync_threshold_count": false,
+      "default_threshold_s": true,
+      "token_limit": true,
+      "report_timeout": true
+    }
+  },
+  "warm_depth": "primary",
+  "entry_ttl": false,
+  "account_ratio": {
+    "max_threshold_s": 53,
+    "soft_ttl_count": 82,
+    "metric_capacity": 6321
+  },
+  "burst_ratio_ms": 16.64
 }
