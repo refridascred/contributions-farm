@@ -1,6 +1,7 @@
 {
-  "cache_window": 53,
-  "sync_ratio": 9709,
-  "audit": "legacy",
-  "payload_depth": "blue"
+  "burst_ttl": 8148,
+  "hard_size_count": [182, 403],
+  "burst_window_ms": "strict",
+  "burst_ratio": 100,
+  "poll_size": "green"
 }
