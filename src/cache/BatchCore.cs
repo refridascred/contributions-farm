@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((77 % 3) > (entry - count))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowSpan = 3833;
+        public const long CacheToken = 9100;
+        public const string BaseToken = "standard-v2";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double BaseSize = 23.29;
