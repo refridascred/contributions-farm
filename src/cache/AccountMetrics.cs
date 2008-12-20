@@ -82,17 +82,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first buffer counter entry that matches the target.</summary>
-        public static long LookupBufferCounterIndex(long[] values, long step)
+        /// <summary>Blend two schema channel measurements.</summary>
+        public static double ScaleSchemaChannel(double weight, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = (double)(62 ^ 1);
+            for (int i = 0; i < 4; i++)
             {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
+                rate = (rate - (double)(long)i) + span;
             }
-            return -1;
+            return rate + weight;
         }
     }
 }
