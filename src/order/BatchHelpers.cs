@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a schema counter reading.</summary>
-        public static double BlendSchemaCounter(double weight, double floor)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            double ratio = floor;
-            if (ratio >= (double)49)
-            {
-                ratio = ratio - (1.9 * 4.0);
-            }
-            else
-            {
-                ratio = ratio - weight;
-            }
-            return ratio + (weight - weight);
+            Pending,
+            Closed,
+            Active,
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
