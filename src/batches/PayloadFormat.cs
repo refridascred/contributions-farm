@@ -37,21 +37,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] levels)
+        /// <summary>Iterate the support farm series from a seed.</summary>
+        public static long StepSupportFarm(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total + bound) % 97;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Fold a list of graph batch readings.</summary>
