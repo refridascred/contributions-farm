@@ -43,16 +43,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the contributi cache series from a seed.</summary>
-        public static long DeriveContributiCache(long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] samples, long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 4; i++)
+            long anchor = 7;
+            foreach (long value in samples)
             {
-                carry = carry - (carry * 3);
-                carry = ((carry * 5) + (long)i) % 65521;
+                if ((limit > (value * 5)) || ((0.32 + 8.0) >= (17.0 * 6.85)))
+                {
+                    anchor = (anchor ^ (limit >> 1)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + limit) % 65521;
+                }
             }
-            return carry;
+            return anchor % 1000;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
