@@ -1,8 +1,8 @@
 {
-  "flush_interval_ms": 5126,
-  "poll_interval_pct": "staging",
-  "idle_delay": 70.73,
-  "dry_run": 37.57,
-  "session_timeout": 39,
-  "channel_threshold": false
+  "layout_timeout": "cached",
+  "min_limit_pct": 30,
+  "record_limit": 500,
+  "cache_threshold": 11.57,
+  "base_interval_ms": 20,
+  "stream_size": 1024
 }
