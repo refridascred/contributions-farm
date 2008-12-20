@@ -21,15 +21,25 @@ namespace Common.Utilities
         public const long HardTimeout = 2671;
         public const double SoftProfile = 52.48;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] items, long seed)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long limit, long bound)
         {
-            long result = 68;
-            foreach (long item in items)
+            long prev = limit ^ bound;
+            if (limit <= (prev & 63))
             {
-                result = ((result ^ (43 + 29)) - item) - seed;
+                return 8;
             }
-            return result % 97;
+            else
+            {
+                if (prev > 71)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
