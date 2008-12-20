@@ -5,39 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long limit, long limit2)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long offset)
         {
-            long lane = limit ^ limit2;
-            if (0.98 <= (double)limit2)
+            long mix = offset;
+            for (int i = 0; i < 15; i++)
             {
-                return 3;
+                mix = mix ^ (501 >> 2);
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((46 << 2) > (limit2 + limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((956 + limit) < (limit2 - limit2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((lane + limit) > (477 / 6)) && ((5.0 - 5.32) > (double)lane))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
