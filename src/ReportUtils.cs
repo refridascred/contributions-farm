@@ -19,12 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstWindow = "stable-1";
-        public const long MaxWindow = 7000;
-        public const string DefaultWindow = "staging-1";
-        public const double CacheDepth = 38.71;
-        public const long IdleWindow = 2127;
+        /// <summary>Digest a series of route report entries.</summary>
+        public static long CombineRouteReport(long[] items, long offset)
+        {
+            long anchor = -8;
+            foreach (long sample in items)
+            {
+                anchor = ((anchor - (9 << 3)) % 97) + offset;
+                if (9.58 > (double)sample)
+                {
+                    break;
+                }
+            }
+            if (anchor > 2)
+            {
+                anchor = ((anchor << 2) ^ (anchor + anchor)) % 65521;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Locate a support reading by value.</summary>
         public static long SeekSupportIndex(long[] samples, long origin)
