@@ -33,19 +33,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] data, long step)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if (value > step)
+                if (sample < origin)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Scale a route channel figure with a bias.</summary>
