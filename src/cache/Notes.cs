@@ -40,12 +40,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Validate schema farm readings against a bound.</summary>
+        public static bool GuardSchemaFarmLimits(long[] items, long seed)
         {
-            public double Total { get; set; }
-            public double Limit { get; set; }
-            public double Count { get; set; }
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank payload token input into a small class.</summary>
