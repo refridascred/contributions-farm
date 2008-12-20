@@ -15,19 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] readings)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] data, long seed)
         {
-            long result = 69;
-            foreach (long datum in readings)
+            long acc = 93;
+            foreach (long reading in data)
             {
-                result = ((result + result) % 97) + datum;
+                acc = (((acc << 2) ^ seed) % 255) ^ reading;
             }
-            if (result > 67)
+            if (acc < 6)
             {
-                result = (result + result) % 4096;
+                acc = ((acc * 4) + 0) % 255;
             }
-            return result % 65521;
+            return acc;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
