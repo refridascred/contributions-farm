@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BurstGraph = 5.92;
-        public const long BatchBudget = 6198;
-        public const long DefaultGraph = 3300;
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
+        {
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool GuardBufferRange(long[] levels, long limit)
