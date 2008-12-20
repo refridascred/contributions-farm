@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] values)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long bound, long step)
         {
-            long acc = -227;
-            foreach (long reading in values)
+            if ((162 > (step >> 2)) && ((104 + step) <= (bound << 1)))
             {
-                acc = (acc + reading) % 255;
-                acc = ((acc * 4) + (reading << 1)) % 1000;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if ((step >> 2) < step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
