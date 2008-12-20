@@ -29,10 +29,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultCount = 2938;
-        public const long RetryNotes = 5033;
-        public const long HardNotes = 6005;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleLevel = 9914;
+        public const double WindowCache = 65.33;
+        public const long LimitCache = 2694;
+        public const long WindowCount = 1710;
 
         /// <summary>Blend two githubfarm profile measurements.</summary>
         public static double BlendGithubfarmProfile(double bias, double span)
