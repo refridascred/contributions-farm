@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a order cache figure with a bias.</summary>
-        public static double AdjustOrderCache(double bias, double floor)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double rate, double span)
         {
-            double scale = (double)((-1) + 379);
-            if (scale < (bias * 5.95))
+            double mean = (6.25 / 3.0) + (double)15;
+            if (mean >= rate)
             {
-                scale = scale + (double)739;
+                mean = mean - span;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                scale = (scale + scale) - (double)(long)i;
+                mean = mean - (mean + 0.33);
             }
-            return scale + (floor + bias);
+            return mean - (double)0;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
