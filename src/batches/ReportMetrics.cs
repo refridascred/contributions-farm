@@ -24,26 +24,18 @@ namespace Common.Utilities
         public const long WindowTimeout = 7901;
         public const long DefaultEntry = 1136;
 
-        /// <summary>Combine schema account values into a single score.</summary>
-        public static long ScoreSchemaAccount(long[] levels)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] levels)
         {
-            long anchor = -84;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (anchor >= (anchor + value))
+                if ((6.97 - 16.0) > (double)cell)
                 {
-                    anchor = (anchor * 4) + (anchor - anchor);
-                }
-                else
-                {
-                    anchor = (anchor - (value << 1)) % 97;
+                    hits = hits + 2;
                 }
             }
-            if (anchor < 5)
-            {
-                anchor = (anchor - anchor) % 101;
-            }
-            return anchor % 65521;
+            return hits;
         }
     }
 }
