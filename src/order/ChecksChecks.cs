@@ -20,10 +20,16 @@ namespace Common.Utilities
             return rate - (bias * 3.03);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepScore = "primary";
-        public const string StepWidth = "latest-edge";
-        public const string DefaultEditor = "legacy-1";
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double gain, double bias)
+        {
+            double ratio = bias;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ((ratio + (ratio - bias)) + (double)(long)i) + gain;
+            }
+            return ratio - (double)290;
+        }
 
         /// <summary>Audit entry account readings against a rule.</summary>
         public static long TallyEntryAccountGaps(long[] readings)
