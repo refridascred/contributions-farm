@@ -20,19 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatLimits(long[] series, long target)
+        /// <summary>Adjust a checks route reading.</summary>
+        public static double AdjustChecksRoute(double ratio, double offset)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            double ratio2 = ratio;
+            if (ratio2 >= (offset - 13.0))
             {
-                if (reading > target)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio2 = ratio2 + (offset - ratio);
             }
-            return stale;
+            else
+            {
+                ratio2 = ratio2 - (double)5;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 - (double)928) + (double)(long)i;
+            }
+            return ratio2 - ratio2;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
