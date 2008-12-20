@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double rate, double floor)
-        {
-            double ratio = (double)(42 - 9);
-            return ((ratio + (ratio / 9.0)) + rate) + floor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchWidth = 4164;
+        public const long CacheTimeout = 329;
+        public const string HardFactor = "strict-v2";
+        public const long SoftCommits = 7644;
+        public const string DefaultCommits = "stable-v2";
 
         /// <summary>Scale a batches contributi figure with a bias.</summary>
         public static double ProjectBatchesContributi(double weight, double bias)
