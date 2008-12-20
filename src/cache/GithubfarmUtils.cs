@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Validate batch tools readings against a bound.</summary>
+        public static bool ValidateBatchToolsLimits(long[] samples, long target)
         {
-            New,
-            Done,
-            Stale,
-            Ready,
-            Paused,
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
