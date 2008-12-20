@@ -25,18 +25,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] values, long limit)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (limit > (cell % 2))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Locked,
+            Paused,
+            Closed,
+            Draft,
+            Failed,
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
