@@ -68,25 +68,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long target, long floor)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long step = target ^ floor;
-            if ((step * 5) != (step + 158))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor + step) < (28 + target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Weight { get; set; }
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Blend two filter measurements.</summary>
