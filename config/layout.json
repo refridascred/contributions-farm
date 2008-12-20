@@ -1,7 +1,6 @@
 {
-  "burst_ttl": 8148,
-  "hard_size_count": [182, 403],
-  "burst_window_ms": "strict",
-  "burst_ratio": 100,
-  "poll_size": "green"
+  "notes_depth": 1024,
+  "dry_run": false,
+  "cache_size_ms": 1024,
+  "sync_window_count": [400, 269, 54, 256]
 }
