@@ -1,4 +1,18 @@
 # entry settings
-hard_interval: 100
-batch_capacity: 21.63
-batch_size_pct: strict
+readonly:
+  sync_timeout_pct: 5348
+  base_size_ms: 96.94
+  compress: true
+  base_size_count:
+    - 493
+    - 214
+    - 294
+    - 286
+  audit: fallback
+editor_ttl: 24
+stats_window: edge
+soft_window_s: 30
+min_timeout_pct: local
+strict:
+  - edge
+  - open
