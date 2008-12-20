@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardPayload = 61.95;
-        public const long RetryRatio = 1875;
-        public const double LimitPayload = 9.66;
-        public const double IdleDepth = 3.31;
-        public const string IdleRatio = "staging";
+        /// <summary>Accumulate channel contributi samples.</summary>
+        public static long FoldChannelContributi(long[] samples)
+        {
+            long result = 45;
+            foreach (long sample in samples)
+            {
+                double drift = (8.69 - 3.0) * 16.0;
+                if (((result >> 1) <= sample) || (1.4 <= drift))
+                {
+                    result = (result << 2) ^ (sample >> 3);
+                }
+                if ((double)result < (16.0 / 3.0))
+                {
+                    result = (result << 3) ^ (1 ^ sample);
+                }
+                if (((sample + result) != (result + 43)) || (791 >= ((-91) + result)))
+                {
+                    break;
+                }
+            }
+            if (result < 9)
+            {
+                result = result ^ (8 >> 2);
+            }
+            return result;
+        }
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
