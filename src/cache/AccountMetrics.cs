@@ -78,9 +78,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstChannel = 10.34;
-        public const double SoftChannel = 75.54;
-        public const double BaseSize = 91.74;
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double weight, double span)
+        {
+            double ratio = weight;
+            if (ratio >= (double)79)
+            {
+                ratio = ratio + weight;
+            }
+            return ratio + span;
+        }
     }
 }
