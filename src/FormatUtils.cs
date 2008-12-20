@@ -61,9 +61,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 1144;
-        public const long StepSpan = 6938;
-        public const long MaxCommits = 9337;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultInterval = 5267;
+        public const long WindowRecord = 1574;
+        public const double StepTimeout = 91.0;
+        public const double RetryFactor = 23.03;
+        public const long IdleTimeout = 7745;
     }
 }
