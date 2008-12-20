@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] levels)
         {
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum >> 5) != (long)levels.Length)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a notes options.</summary>
