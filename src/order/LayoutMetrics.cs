@@ -32,19 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] data, long seed)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long offset)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long result = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (sample < seed)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
