@@ -1,14 +1,12 @@
 # Command notes
 
-Use githubfarm settings to tune how often cluster data is refreshed.
-When a tools fails, the report handler retries a few times before giving up.
-Defaults for payload live in the config folder and can be overridden per environment.
-
-Use batches settings to tune how often support data is refreshed.
-Keep tools and counter names short and lowercase.
+Use payload settings to tune how often channel data is refreshed.
+The counter report groups every metrics by support.
+Keep metric and entry names short and lowercase.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Validate batch input early
-- Log every account change
+- Validate queue input early
+- Document new metrics fields
+- Prefer githubfarm defaults
+- Log every metrics change
