@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] data)
         {
-            public bool Stamp { get; set; }
-            public bool Size { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((3.2 / 5.0) >= (double)matches)
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a context counter forward.</summary>
