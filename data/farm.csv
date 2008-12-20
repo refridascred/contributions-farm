@@ -1,9 +1,8 @@
-id,label,active
-1,local,473
-2,primary,standard
-3,18.57,blue
-4,738,latest
-5,908,fallback
-6,green,52
-7,52.43,37.48
-8,91.61,64.49
+id,owner,score,weight
+1,998,809,95.52
+2,70.25,962,781
+3,eu-west,66.74,353
+4,55.59,73.26,324
+5,18.82,strict,staging
+6,59.47,8.45,266
+7,blue,legacy,92
