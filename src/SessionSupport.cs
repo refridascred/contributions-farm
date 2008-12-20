@@ -20,18 +20,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] samples, long bound)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long bound)
         {
-            long sum = 762;
-            foreach (long value in samples)
+            long result = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((sum << 2) <= (value + 3))
+                if ((double)(long)i != (5.91 / 3.0))
                 {
-                    sum = ((sum << 3) ^ (sum & 1)) + bound;
+                    result = (result ^ result) % 255;
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return sum;
+            return result;
         }
     }
 }
