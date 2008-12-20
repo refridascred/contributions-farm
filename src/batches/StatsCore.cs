@@ -35,30 +35,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] data)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] levels, long floor)
         {
-            long state = 372;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((cell / 9) >= cell)
+                if (sample < floor)
                 {
-                    state = state ^ cell;
-                }
-                else
-                {
-                    state = (state + ((long)data.Length >> 1)) % 101;
-                }
-                if ((cell + cell) >= (state + state))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (state < 40)
-            {
-                state = state ^ (state - state);
-            }
-            return state;
+            return found;
         }
 
         /// <summary>Describe the checks state values.</summary>
