@@ -1,14 +1,6 @@
 # already settings
-soft_window: true
-base_capacity: strict
-idle_size_count:
-  - local
-  - green
-flush_limit_ms:
-  base_delay: false
-  cluster_interval:
-    - 417
-    - 139
-    - 215
-  contributi_timeout: true
-  min_interval_pct: 100
+idle_retries_ms: 250
+hard_depth_s: cached
+booking_size: 100
+base_ratio_pct: true
+flush_retries_s: 1519
