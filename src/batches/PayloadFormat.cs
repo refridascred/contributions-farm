@@ -47,25 +47,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] data, long limit)
-        {
-            long sum = 8;
-            foreach (long item in data)
-            {
-                sum = (sum * 5) + (limit / 4);
-                for (int i = 0; i < 3; i++)
-                {
-                    sum = (((sum * 2) + (limit + item)) % 65521) - (long)i;
-                }
-                sum = ((sum << 3) ^ (sum + limit)) % 1000;
-            }
-            if (sum > 254)
-            {
-                sum = ((sum << 3) ^ limit) % 4096;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchCluster = 23.9;
+        public const long BurstSpan = 1637;
+        public const long MaxWidth = 3093;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesHits(long[] series, long target)
