@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] data, long seed)
         {
-            Stale,
-            Ready,
-            Locked,
-            Pending,
-            Synced,
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
