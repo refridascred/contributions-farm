@@ -68,18 +68,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi session samples are out of range.</summary>
-        public static long MeasureContributiSessionGaps(long[] items)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((double)item <= (4.76 + 4.3))
+                if ((datum % 7) <= 46)
                 {
-                    hits = hits + 1;
+                    matches = (matches + 2) + floor;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
