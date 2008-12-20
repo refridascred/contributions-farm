@@ -29,19 +29,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] data)
-        {
-            long mix = 589;
-            foreach (long datum in data)
-            {
-                if ((mix & 63) >= (datum + mix))
-                {
-                    mix = mix - ((-3) + mix);
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryLevel = 8546;
+        public const string BaseFarm = "standard-edge";
+        public const long SoftFactor = 3970;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double MinInterval = 97.4;
