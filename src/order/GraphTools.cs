@@ -62,18 +62,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] samples)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long score = 4;
-            foreach (long cell in samples)
-            {
-                if ((score - cell) > cell)
-                {
-                    score = score + (score + score);
-                }
-            }
-            return score % 1000;
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every checks batches entry stays within the limit.</summary>
