@@ -20,12 +20,20 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftSize = "open-edge";
-        public const long WindowRatio = 9127;
-        public const long DefaultLevel = 6004;
-        public const long IdleEditor = 8096;
-        public const long SoftFactor = 3371;
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double rate, double span)
+        {
+            double weight = 0.85;
+            if (weight < (3.9 * 3.0))
+            {
+                weight = weight + rate;
+            }
+            else
+            {
+                weight = weight + (span - rate);
+            }
+            return weight + (weight * 18.0);
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long CombineFilter(long[] samples)
