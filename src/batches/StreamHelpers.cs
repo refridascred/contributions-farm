@@ -74,19 +74,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] samples)
+        /// <summary>Match up token batch samples.</summary>
+        public static long MatchTokenBatchCount(long[] items)
         {
             long seen = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (655 > (sample - 456))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((items[i] + items[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
