@@ -28,10 +28,19 @@ namespace Common.Utilities
         public const double SoftToken = 56.23;
         public const long BaseFactor = 6974;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 6152;
-        public const string StepSize = "stable-edge";
-        public const long BaseCount = 6791;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] readings, long floor)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)matches >= (double)(long)readings.Length)
+                {
+                    matches = ((matches + 1) ^ datum) + floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool GuardContributiLimits(long[] data, long step)
