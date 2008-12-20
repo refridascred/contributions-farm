@@ -24,26 +24,26 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] values, long step)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            long mark = 0;
-            foreach (long sample in values)
+            long result = -6;
+            foreach (long value in values)
             {
-                if ((mark * 4) > (step ^ mark))
+                if ((value % 24) > (value * 3))
                 {
-                    mark = (mark + (mark + mark)) % 65521;
+                    result = (result + (value / 4)) % 97;
                 }
-                if (step < sample)
+                if (result <= ((long)values.Length * 2))
                 {
                     break;
                 }
             }
-            if (mark > 3)
+            if (result > (-706))
             {
-                mark = (mark + (29 / 8)) % 4096;
+                result = result - (result & 15);
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Hold a profile entry.</summary>
