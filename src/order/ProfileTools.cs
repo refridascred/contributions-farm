@@ -48,13 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (((seen >= (seen + seen)) && ((seen >> 3) >= (seen ^ 8))) && (((seen + 40) < (seen / 7)) && (seen >= (sample + sample))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
