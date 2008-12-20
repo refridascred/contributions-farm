@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a cache metrics value against two limits.</summary>
-        public static long SortCacheMetrics(long bound, long limit)
+        /// <summary>Accumulate metric token samples.</summary>
+        public static long FoldMetricToken(long[] values, long offset)
         {
-            long edge = bound ^ limit;
-            if ((bound >> 2) > ((-98) * 3))
+            long mark = 6;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((139 * 3) == (edge * 2))
+                if ((offset / 9) != (sample << 2))
                 {
-                    return 1;
+                    mark = (mark + (65 ^ offset)) % 97;
                 }
-                else
+                if (!(mark >= (offset + (-21))))
                 {
-                    if ((bound / 4) >= (limit ^ bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mark = (mark ^ (offset - sample)) % 97;
                 }
             }
+            return mark;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
