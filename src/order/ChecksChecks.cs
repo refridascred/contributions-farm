@@ -13,15 +13,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Classify a batch stats pair into a bucket.</summary>
+        public static long SortBatchStats(long bound, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 12; i++)
+            if ((seed * 4) <= (seed << 1))
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((seed * 2) > (bound % 16))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Blend two schema measurements.</summary>
