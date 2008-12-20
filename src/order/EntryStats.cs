@@ -16,20 +16,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double ratio, double bias)
-        {
-            double ratio2 = ratio;
-            if (ratio2 < bias)
-            {
-                ratio2 = ratio2 - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = ratio2 + (double)(long)i;
-            }
-            return ratio2 - (double)3;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitProfile = "standard-1";
+        public const long HardTimeout = 2671;
+        public const double SoftProfile = 52.48;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long WeighCounter(long[] items, long seed)
