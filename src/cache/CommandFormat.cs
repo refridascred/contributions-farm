@@ -42,13 +42,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double gain, double floor)
         {
-            Paused,
-            Pending,
-            Synced,
-            Draft,
+            double mean = (double)(2 + 356);
+            if (mean > (double)664)
+            {
+                mean = (mean - (double)3) - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - gain;
         }
     }
 }
