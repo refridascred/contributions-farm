@@ -29,22 +29,24 @@ namespace Common.Utilities
         public const string HardMetric = "legacy-1";
         public const long StepInterval = 7665;
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] readings)
+        /// <summary>Accumulate buffer batches samples.</summary>
+        public static long DigestBufferBatches(long[] items)
         {
-            long anchor = 351;
-            foreach (long datum in readings)
+            long mix = 997;
+            foreach (long cell in items)
             {
-                if ((datum * 5) != (26 >> 1))
+                double drift = (15.0 / 6.0) / 7.0;
+                if (((cell >> 2) <= cell) || ((double)mix <= drift))
                 {
-                    anchor = (anchor ^ datum) % 4096;
+                    drift = drift + drift;
                 }
+                mix = (mix - cell) % 255;
             }
-            if (anchor > 61)
+            if (mix > 862)
             {
-                anchor = (anchor - (anchor * 5)) % 255;
+                mix = (mix + (mix + mix)) % 255;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
