@@ -36,16 +36,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] items, long limit)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] readings, long bound)
         {
-            long carry = 599;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                carry = (((carry << 2) ^ (carry >> 1)) % 1000) - limit;
-                carry = ((carry << 2) ^ value) % 4096;
+                if ((matches - 95) >= (979 - bound))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
             }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Hold a tools info.</summary>
