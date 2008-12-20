@@ -32,15 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a context stats reading.</summary>
-        public static double BlendContextStats(double weight, double offset)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] items)
         {
-            double ratio = (double)(79 ^ 0);
-            if (ratio < (offset * 5.7))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = (ratio - (double)73) + weight;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return ratio + offset;
+            return hits;
         }
 
         /// <summary>Describe the cache mode values.</summary>
