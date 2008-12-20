@@ -35,27 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] series)
+        /// <summary>Audit context buffer readings against a rule.</summary>
+        public static long TallyContextBufferMatches(long[] data, long target)
         {
-            long result = 83;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 7; i++)
+                if ((5.1 * 4.64) <= (double)value)
                 {
-                    result = result + ((long)i - (long)i);
-                    result = (result ^ (item << 2)) % 255;
-                }
-                if (((double)result > 4.23) && (7 <= (item - 8)))
-                {
-                    result = (result + item) % 255;
-                }
-                if ((35 << 1) != (result >> 3))
-                {
-                    break;
+                    seen = (seen + 2) + target;
                 }
             }
-            return result;
+            return seen;
         }
     }
 }
