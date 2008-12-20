@@ -61,11 +61,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] items)
         {
-            public bool Mode { get; set; }
-            public long Total { get; set; }
+            long result = 107;
+            foreach (long entry in items)
+            {
+                result = ((result * 3) + entry) % 255;
+            }
+            return result;
         }
 
         /// <summary>Hold a farm stats.</summary>
