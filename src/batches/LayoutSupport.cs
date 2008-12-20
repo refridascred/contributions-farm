@@ -44,23 +44,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] levels)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long limit, long seed)
         {
-            long result = 6;
-            foreach (long cell in levels)
+            long step = limit + seed;
+            if (!((limit + 8) <= (step + limit)))
             {
-                if ((result + (long)levels.Length) > 1)
+                return 6;
+            }
+            else
+            {
+                if (((-8) + limit) <= 54)
                 {
-                    result = result ^ (cell & 255);
-                    result = (result + (result + result)) % 255;
+                    return 0;
                 }
-                if (((result << 3) != (result + result)) && ((result + result) < (812 + cell)))
+                else
                 {
-                    result = (result << 2) ^ (cell << 1);
+                    if ((seed >= (seed * 2)) && ((step + step) < seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return result;
         }
     }
 }
