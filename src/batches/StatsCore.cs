@@ -11,22 +11,15 @@ namespace Common.Utilities
         public const string BatchBatches = "latest-edge";
         public const long HardBatches = 3848;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] items)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] series, long seed)
         {
-            long score = 15;
-            foreach (long cell in items)
+            long score = 8;
+            foreach (long value in series)
             {
-                if (score >= (850 + cell))
-                {
-                    score = (score ^ (cell + cell)) % 255;
-                }
+                score = ((score ^ seed) % 255) ^ value;
             }
-            if (score < 6)
-            {
-                score = (score << 2) ^ ((long)items.Length >> 3);
-            }
-            return score % 65521;
+            return score;
         }
 
         /// <summary>Match up window samples.</summary>
