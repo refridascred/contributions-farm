@@ -14,24 +14,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long floor, long origin)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] samples)
         {
-            if ((72 & 255) != (origin / 3))
+            long score = 142;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((floor << 1) <= (363 - origin)) || ((7.0 / 5.0) <= (double)origin))
+                if ((7.9 * 4.28) <= (double)datum)
                 {
-                    return 1;
+                    score = (score - (datum >> 3)) % 97;
                 }
                 else
                 {
-                    return 0;
+                    score = ((score << 3) ^ (datum + score)) % 65521;
                 }
             }
+            return score;
         }
 
         /// <summary>Accumulate graph samples.</summary>
