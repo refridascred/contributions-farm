@@ -54,12 +54,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long floor)
         {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
+            long total = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                total = total - (long)i;
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Check that every checks batches entry stays within the limit.</summary>
