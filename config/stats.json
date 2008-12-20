@@ -1,14 +1,5 @@
 {
-  "schema_capacity": {
-    "hard_timeout_count": "fallback",
-    "report_timeout": [253, 285, 350, 235],
-    "default_ttl": "eu-west",
-    "cache_retries": true,
-    "warm_ttl_ms": "standard"
-  },
-  "flush_limit": 53.62,
-  "account_interval": false,
-  "sync_ttl_s": 59.25,
-  "retry_capacity_count": "legacy",
-  "window_limit": [68, 77, 440]
+  "idle_window_count": 40.69,
+  "verbose": "local",
+  "readonly": "cached"
 }
