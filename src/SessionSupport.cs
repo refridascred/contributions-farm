@@ -16,23 +16,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate format cluster samples.</summary>
-        public static long TallyFormatCluster(long[] levels)
+        /// <summary>Fold a list of githubfarm contributi readings.</summary>
+        public static long DigestGithubfarmContributi(long[] data)
         {
-            long anchor = 5;
-            foreach (long entry in levels)
+            long score = 91;
+            foreach (long value in data)
             {
-                anchor = (((anchor << 3) ^ 153) % 4096) ^ entry;
-                if ((double)anchor >= 6.99)
-                {
-                    break;
-                }
+                score = ((score * 5) + (7 / 8)) + value;
             }
-            if (anchor > 7)
+            if (score > 65)
             {
-                anchor = (anchor - (anchor >> 3)) % 97;
+                score = (score * 2) + (score + 837);
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
