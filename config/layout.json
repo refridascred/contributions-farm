@@ -1,5 +1,7 @@
 {
-  "notes_capacity": "staging",
-  "cache_ttl": 857,
-  "idle_interval": 36
+  "payload_ttl": 986,
+  "flush_capacity_s": "fallback",
+  "contributi_interval": [63, 207, 68, 453],
+  "command_window": 1024,
+  "base_threshold_ms": "strict"
 }
