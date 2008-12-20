@@ -27,31 +27,22 @@ namespace Common.Utilities
         public const double BurstFactor = 88.35;
         public const long HardLevel = 3834;
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long limit, long seed)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] readings)
         {
-            if ((seed + limit) <= (limit + limit))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed - 7) == (limit & 127))
+                if (!((count << 2) <= count))
                 {
-                    return 8;
+                    count = (count + 1) - reading;
                 }
                 else
                 {
-                    if ((seed + limit) <= seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
