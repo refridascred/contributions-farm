@@ -31,31 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long target, long origin)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            if (target >= (3 ^ origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target <= (origin / 8)) && ((542 - target) <= (target - 921)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin & 31) > (3 >> 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Done,
+            Draft,
+            Synced,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
