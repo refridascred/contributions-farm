@@ -37,12 +37,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] samples, long offset)
         {
-            Failed,
-            Closed,
-            New,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (((item >> 2) < seen) || (2.58 <= (double)item))
+                {
+                    seen = (seen + 1) + offset;
+                }
+            }
+            return seen;
         }
     }
 }
