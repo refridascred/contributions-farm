@@ -24,13 +24,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] readings)
         {
-            Ready,
-            Queued,
-            Pending,
-            Stale,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((seen + 315) > (datum >> 5))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
