@@ -1,4 +1,5 @@
 # githubfarm settings
-warm_capacity_pct: true
-batches_size: true
-hard_limit: legacy
+compress: open
+soft_capacity: 81
+poll_limit_s: 6514
+retry_threshold: fallback
