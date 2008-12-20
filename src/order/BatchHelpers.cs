@@ -20,21 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count cluster layout pairs that satisfy a relation.</summary>
-        public static long PairClusterLayoutCount(long[] items)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 333;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((4.5 - 17.0) == (double)result)
                 {
-                    if ((items[i] ^ items[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result ^ (86 + datum)) % 4096;
+                }
+                else
+                {
+                    result = (result * 2) + origin;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
