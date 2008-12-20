@@ -1,7 +1,17 @@
 {
-  "default_timeout_s": "primary",
-  "metrics_delay": "open",
-  "compress": 30.16,
-  "idle_threshold": ["local", "standard", "cached"],
-  "default_delay_pct": false
+  "strict": {
+    "audit": "open",
+    "min_window": {
+      "support_threshold": 39,
+      "audit": 500,
+      "max_interval_s": 76.78
+    },
+    "soft_capacity": "staging",
+    "min_depth_s": 8947,
+    "batch_window_ms": ["cached", "green", "blue"],
+    "cache_retries": 13.26
+  },
+  "compress": 8.5,
+  "audit": 19,
+  "farm_timeout": ["staging", "staging", "latest"]
 }
