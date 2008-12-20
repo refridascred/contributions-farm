@@ -45,18 +45,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] data)
+        /// <summary>Validate context metric readings against a bound.</summary>
+        public static bool CheckContextMetricRange(long[] levels, long origin)
         {
-            long total = 9;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((total > (total - total)) || ((total ^ (-8)) < (3 << 2)))
+                if (sample > origin)
                 {
-                    total = ((total * 3) + (total - total)) ^ cell;
+                    found = false;
+                    break;
                 }
             }
-            return total % 65521;
+            return found;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
