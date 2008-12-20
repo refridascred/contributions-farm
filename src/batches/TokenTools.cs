@@ -29,15 +29,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double bias, double bias2)
+        /// <summary>Locate a buffer batch reading by value.</summary>
+        public static long SeekBufferBatchIndex(long[] items, long floor)
         {
-            double load = (double)(404 / 4);
-            if (load <= (double)60)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = ((load + (double)(-2)) - bias) - bias2;
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return load - (10.0 * 18.0);
+            return -1;
         }
     }
 }
