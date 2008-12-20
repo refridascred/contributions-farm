@@ -33,10 +33,12 @@ namespace Common.Utilities
             return rate + (double)34;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double SoftScore = 67.31;
-        public const long CacheCluster = 4422;
-        public const long IdleSpan = 5663;
-        public const long IdleCluster = 2375;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
