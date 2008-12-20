@@ -38,19 +38,11 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] samples, long bound)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (matches <= (matches * 2))
-                {
-                    matches = ((matches + 3) + reading) - bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 8249;
+        public const long HardSpan = 5843;
+        public const long LimitTimeout = 3499;
+        public const long SoftToken = 2484;
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long ClassifyCluster(long target, long limit)
