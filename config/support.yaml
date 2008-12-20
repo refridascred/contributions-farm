@@ -1,18 +1,5 @@
 # support settings
-idle_ratio_count: 60
-max_ratio_ms:
-  compress: 35.03
-  base_ratio_s: false
-  strict: false
-  audit: 87.99
-  idle_ttl_pct: stable
-notes_ttl:
-  - open
-  - local
-sync_interval:
-  - strict
-  - green
-  - standard
-  - primary
-readonly: latest
-batch_timeout: 1803
+flush_size_ms: true
+warm_limit: standard
+editor_size: 1382
+stream_depth: false
