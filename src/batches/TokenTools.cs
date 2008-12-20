@@ -33,12 +33,11 @@ namespace Common.Utilities
             return rate + (double)34;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public bool Rank { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
         }
     }
 }
