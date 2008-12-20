@@ -27,19 +27,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every token commits entry stays within the limit.</summary>
-        public static bool CheckTokenCommitsLimits(long[] series, long limit)
+        /// <summary>Roll a githubfarm layout counter forward.</summary>
+        public static long DeriveGithubfarmLayout(long seed)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (reading >= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Fold a list of graph batch readings.</summary>
