@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Blend two stream cluster measurements.</summary>
-        public static double ScaleStreamCluster(double scale, double floor)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            double weight = (double)(1 ^ 1);
-            if (weight <= 3.2)
-            {
-                weight = weight + (floor / 4.0);
-            }
-            return weight - scale;
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Audit buffer commits readings against a rule.</summary>
