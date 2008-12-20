@@ -20,11 +20,12 @@ namespace Common.Utilities
         public const double SoftToken = 56.23;
         public const long BaseFactor = 6974;
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double scale, double bias)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            double mean = bias;
-            return (mean + 2.55) + scale;
+            public double Total { get; set; }
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
