@@ -42,14 +42,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            Stale,
-            Retry,
-            Active,
-            Closed,
+            Locked,
             Ready,
+            Queued,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
