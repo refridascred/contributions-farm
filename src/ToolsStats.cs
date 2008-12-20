@@ -68,20 +68,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] data, long seed)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] samples, long step)
         {
-            long mark = 5;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark - (reading * 3)) % 101) - seed;
-                mark = (mark + (397 >> 5)) % 4096;
+                if ((samples[i] < step) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 39)
-            {
-                mark = (mark ^ (mark ^ 2)) % 97;
-            }
-            return mark % 65521;
+            return -1;
         }
     }
 }
