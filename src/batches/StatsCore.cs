@@ -46,12 +46,38 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long limit, long floor)
         {
-            public bool Score { get; set; }
-            public bool Flag { get; set; }
-            public bool Rank { get; set; }
+            if ((floor << 3) != (limit << 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (floor >= (floor ^ limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor - 40) <= (floor ^ limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)limit >= (double)floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank payload input into a small class.</summary>
