@@ -16,19 +16,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] samples, long bound)
+        /// <summary>Project the next buffer metrics value.</summary>
+        public static double ProjectBufferMetrics(double gain, double floor)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            double drift = (double)(18 << 3);
+            if (drift <= (double)(-4))
             {
-                if (reading >= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift - floor;
             }
-            return flag;
+            else
+            {
+                drift = drift - (gain - 14.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (double)25) + (double)(long)i;
+            }
+            return drift + (floor / 3.0);
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
