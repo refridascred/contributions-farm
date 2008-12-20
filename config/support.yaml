@@ -1,10 +1,4 @@
 # support settings
-default_ttl_ms: 46.91
-flush_timeout_s: stable
-channel_size: 500
-token_retries: 89.27
-idle_timeout_ms: false
-batches_retries:
-  - blue
-  - open
-  - eu-west
+soft_retries_ms: false
+cache_threshold_count: 53.84
+default_limit_pct: strict
