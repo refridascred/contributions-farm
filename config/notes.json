@@ -1,7 +1,19 @@
 {
-  "context_interval": 56.04,
-  "enabled": "staging",
-  "batch_threshold_pct": true,
-  "flush_retries": [53, 401],
-  "default_ttl_pct": 92.64
+  "dry_run": 13,
+  "layout_depth": "legacy",
+  "soft_ratio_ms": {
+    "checks_ratio": "eu-west",
+    "session_delay": "stable",
+    "counter_limit": {
+      "min_retries_ms": "standard",
+      "farm_window": 8811,
+      "min_retries": "blue",
+      "sync_size_ms": 500,
+      "strict": 124,
+      "min_ttl_ms": [28, 181, 100]
+    },
+    "checks_delay": "local"
+  },
+  "cache_ratio": "open",
+  "max_timeout": "latest"
 }
