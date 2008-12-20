@@ -39,30 +39,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of commits context entries.</summary>
-        public static long CombineCommitsContext(long[] values, long step)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long limit, long seed)
         {
-            long carry = 85;
-            foreach (long datum in values)
+            if (seed >= (seed >> 1))
             {
-                if ((13.0 <= (double)datum) || (datum <= (440 & 63)))
+                return 7;
+            }
+            else
+            {
+                if ((limit - seed) > seed)
                 {
-                    carry = ((carry * 4) + ((-691) >> 4)) % 101;
+                    return 1;
                 }
                 else
                 {
-                    carry = ((carry << 2) ^ (step * 3)) % 1000;
-                }
-                if (carry <= (step * 5))
-                {
-                    carry = (carry ^ (long)values.Length) % 255;
+                    return 3;
                 }
             }
-            if (carry < 63)
-            {
-                carry = (carry + carry) % 97;
-            }
-            return carry;
         }
     }
 }
