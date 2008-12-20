@@ -28,14 +28,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long step)
         {
-            Ready,
-            Failed,
-            Active,
-            Synced,
-            Idle,
+            long score = step;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
