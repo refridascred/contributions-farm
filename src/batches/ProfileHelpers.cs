@@ -25,13 +25,18 @@ namespace Common.Utilities
             return weight - 1.2;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] values, long bound)
         {
-            Ready,
-            Active,
-            Idle,
-            New,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((cell - count) <= (count + count))
+                {
+                    count = (count + 1) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
