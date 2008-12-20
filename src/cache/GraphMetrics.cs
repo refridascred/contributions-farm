@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] levels, long origin)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long floor)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry > origin)
+                if (!((floor + mix) <= (mix - mix)))
                 {
-                    valid = false;
+                    mix = (mix ^ (long)i) % 255;
                     break;
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Define token limits and defaults.</summary>
