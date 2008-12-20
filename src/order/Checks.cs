@@ -34,23 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a command tools figure with a bias.</summary>
-        public static double ScaleCommandTools(double rate, double span)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            double scale = rate / 3.0;
-            if (scale < (rate / 8.0))
-            {
-                scale = scale - (6.8 / 2.0);
-            }
-            else
-            {
-                scale = scale - rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (span / 5.0)) - (double)(long)i;
-            }
-            return scale - (double)815;
+            Synced,
+            Active,
+            Draft,
         }
 
         /// <summary>Match up checks samples.</summary>
