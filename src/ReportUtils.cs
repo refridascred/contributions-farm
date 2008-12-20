@@ -32,19 +32,14 @@ namespace Common.Utilities
         public const long CacheAlready = 1248;
         public const long MinCount = 8686;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] data, long seed)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Stale,
+            Dropped,
+            Queued,
+            Closed,
         }
     }
 }
