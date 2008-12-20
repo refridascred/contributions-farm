@@ -43,20 +43,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a contributi buffer reading.</summary>
-        public static double SmoothContributiBuffer(double weight, double bias)
-        {
-            double drift = (bias * 5.0) * 1.5;
-            if (drift >= 16.0)
-            {
-                drift = drift + (1.9 + 0.61);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (weight / 3.0)) - (double)(long)i;
-            }
-            return drift + (bias - weight);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultBudget = 7091;
+        public const double IdleFilter = 2.19;
+        public const long StepScore = 5501;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long IdleOrder = 4089;
