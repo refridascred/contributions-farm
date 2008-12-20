@@ -22,22 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] levels)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long bound, long offset)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long span = bound + offset;
+            if ((bound + span) >= 3)
             {
-                if (((71 + item) > seen) && ((item + item) < seen))
+                return 2;
+            }
+            else
+            {
+                if ((offset > bound) && ((double)offset == (double)4))
                 {
-                    seen = seen + 1;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Adjust a contributi buffer reading.</summary>
