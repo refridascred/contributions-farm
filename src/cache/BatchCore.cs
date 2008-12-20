@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitEntry = "staging-1";
-        public const long WindowLevel = 6871;
-        public const string DefaultEntry = "local-edge";
-        public const long BurstEntry = 4815;
-        public const long MinFactor = 1671;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((77 % 3) > (entry - count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double BaseSize = 23.29;
