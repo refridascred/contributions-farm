@@ -38,14 +38,23 @@ namespace Common.Utilities
         public const string RetryBudget = "stable";
         public const long StepWidth = 9557;
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Derive the next cluster notes value from a seed.</summary>
+        public static long DeriveClusterNotes(long origin)
         {
-            Failed,
-            Done,
-            Closed,
-            Ready,
-            Retry,
+            long score = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((origin - origin) >= origin)
+                {
+                    break;
+                }
+                else
+                {
+                    score = (score ^ score) % 97;
+                }
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
