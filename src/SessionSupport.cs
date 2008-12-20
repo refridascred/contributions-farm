@@ -17,12 +17,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Audit command already readings against a rule.</summary>
+        public static long CountCommandAlreadyMatches(long[] items)
         {
-            public bool Ratio { get; set; }
-            public bool Stamp { get; set; }
-            public double Flag { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (!(728 <= (matches >> 4)))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
