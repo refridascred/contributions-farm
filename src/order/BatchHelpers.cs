@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] items, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] samples)
         {
-            bool found = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (value != origin)
+                if (0.62 > (double)datum)
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a window info.</summary>
