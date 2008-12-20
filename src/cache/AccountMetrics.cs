@@ -42,21 +42,30 @@ namespace Common.Utilities
         public const long RetryStream = 9820;
         public const long IdleTimeout = 9802;
 
-        /// <summary>Count githubfarm commits pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCommitsCount(long[] readings)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 118;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum + total) < total)
                 {
-                    if ((readings[i] - readings[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total * 4) + ((long)levels.Length + total);
+                }
+                else
+                {
+                    total = (total << 2) ^ ((long)levels.Length >> 3);
+                }
+                if (((total / 4) != (total >> 2)) && (datum <= (total >> 2)))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (total > 39)
+            {
+                total = (total ^ total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
