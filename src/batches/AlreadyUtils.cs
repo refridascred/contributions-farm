@@ -54,12 +54,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseCount = 1251;
-        public const string MinChecks = "open";
-        public const long WindowChecks = 197;
-        public const long BaseChecks = 6528;
-        public const long LimitChecks = 6092;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] data, long floor)
+        {
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long BucketMetric(long limit, long seed)
