@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public bool Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public string Total { get; set; } = "";
+            Retry,
+            Queued,
+            Draft,
+            Failed,
+            Stale,
         }
 
         /// <summary>Fold a list of tools readings.</summary>
