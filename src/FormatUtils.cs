@@ -56,10 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 1361;
-        public const double MinCounter = 34.17;
-        public const long LimitCounter = 6278;
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long IdleCommits = 1144;
