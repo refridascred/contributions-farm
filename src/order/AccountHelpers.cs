@@ -70,22 +70,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of githubfarm batch readings.</summary>
-        public static long FoldGithubfarmBatch(long[] samples)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long offset)
         {
-            long score = 0;
-            foreach (long item in samples)
+            long state = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (item < (score - score))
+                state = ((state * 3) + (state ^ offset)) % 97;
+                state = (state << 3) ^ offset;
+                if ((5 ^ 290) == ((long)i / 4))
                 {
-                    score = (score ^ 915) % 1000;
+                    state = (state - (offset ^ offset)) % 4096;
                 }
-                else
-                {
-                    score = score + (233 ^ item);
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Digest a series of window entries.</summary>
