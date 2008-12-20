@@ -57,21 +57,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] data)
+        /// <summary>Fold a list of profile context readings.</summary>
+        public static long FoldProfileContext(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 49;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sum / 2) > (sum * 5))
                 {
-                    if ((data[i] ^ data[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (((sum - (sum & 63)) % 65521) + item) + seed;
                 }
             }
-            return count;
+            return sum % 65521;
         }
     }
 }
