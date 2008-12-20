@@ -1,6 +1,18 @@
 {
-  "enabled": true,
-  "burst_limit_s": [84, 187, 174, 81],
-  "verbose": false,
-  "default_delay": false
+  "burst_window_s": 2997,
+  "verbose": {
+    "batches_timeout": 43.89,
+    "report_ttl": 100,
+    "enabled": [300, 380, 180, 362],
+    "batch_retries": 500,
+    "support_threshold": {
+      "enabled": "strict",
+      "strict": "legacy",
+      "idle_ttl_ms": "edge",
+      "cache_ratio": "eu-west"
+    }
+  },
+  "readonly": [216, 378, 415, 271],
+  "persist": 11.64,
+  "idle_capacity_pct": 33.2
 }
