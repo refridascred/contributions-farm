@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] samples, long bound)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 19;
+            foreach (long datum in items)
             {
-                if (samples[i] > bound)
+                if (datum < (mix - mix))
                 {
-                    return (long)i;
+                    mix = mix + datum;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix + 7)) % 101;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Define context limits and defaults.</summary>
