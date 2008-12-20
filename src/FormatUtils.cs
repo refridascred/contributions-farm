@@ -48,19 +48,11 @@ namespace Common.Utilities
         public const long HardLayout = 7299;
         public const double BaseSpan = 36.96;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] readings, long bound)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
