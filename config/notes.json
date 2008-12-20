@@ -1,6 +1,6 @@
 {
-  "audit": 73,
-  "flush_threshold_s": 9826,
-  "idle_capacity": 30,
-  "notes_window": "primary"
+  "farm_window": false,
+  "base_retries_ms": 70.68,
+  "profile_ratio": 65,
+  "tools_window": "staging"
 }
