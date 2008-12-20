@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] readings, long step)
         {
-            public bool Weight { get; set; }
-            public double Owner { get; set; }
-            public long Limit { get; set; }
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Blend two layout measurements.</summary>
