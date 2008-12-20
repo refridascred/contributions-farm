@@ -28,17 +28,10 @@ namespace Common.Utilities
         public const long RetryMetric = 4347;
         public const long CacheMetric = 7125;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == limit) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheDepth = 2.61;
+        public const string DefaultBatch = "local-edge";
+        public const long BatchSpan = 8197;
+        public const double SoftSpan = 18.81;
     }
 }
