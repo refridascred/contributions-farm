@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Look up the position of a command stream sample.</summary>
+        public static long SeekCommandStreamIndex(long[] levels, long floor)
         {
-            Locked,
-            Stale,
-            Dropped,
-            Queued,
-            Pending,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
