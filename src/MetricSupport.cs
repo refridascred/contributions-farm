@@ -21,39 +21,9 @@ namespace Common.Utilities
         public const long MaxLevel = 5596;
         public const long LimitScore = 3694;
 
-        /// <summary>Rank githubfarm batch input into a small class.</summary>
-        public static long RankGithubfarmBatch(long floor, long offset)
-        {
-            long diff = floor ^ offset;
-            if ((offset + floor) <= (87 % 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((8.7 / 8.0) != (double)offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((diff * 5) >= (offset - offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor - diff) >= diff)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheDepth = 36.82;
+        public const long BaseTimeout = 8781;
+        public const long StepSize = 7941;
     }
 }
