@@ -31,18 +31,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] items, long offset)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((matches * 4) >= (reading << 2))
-                {
-                    matches = (matches + 2) + offset;
-                }
-            }
-            return matches;
+            Stale,
+            New,
+            Closed,
+            Idle,
         }
     }
 }
