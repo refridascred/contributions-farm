@@ -1,7 +1,8 @@
-id,score,owner,active,rank
-1,805,0.14,254,cached
-2,18.08,staging,413,25.2
-3,838,strict,284,222
-4,primary,97.07,4.98,9.75
-5,155,31.07,537,922
-6,11.04,blue,581,601
+id,level,weight,state
+1,1.28,latest,stable
+2,515,legacy,273
+3,446,98.87,primary
+4,456,341,685
+5,39,60,798
+6,41.36,38.3,521
+7,edge,38.46,green
