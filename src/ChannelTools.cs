@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] readings, long bound)
         {
-            long state = target;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((target / 5) == (long)i)
+                if ((double)bound > 2.0)
                 {
-                    state = (state + (state * 4)) % 97;
+                    matches = (matches + 1) + item;
                 }
-                state = state - (state ^ state);
-                state = state - (4 >> 1);
-                state = ((state * 5) + (long)i) % 1000;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Classify a counter account pair into a bucket.</summary>
