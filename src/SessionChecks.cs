@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] data, long target)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] series, long seed)
         {
-            long carry = 72;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if (((double)carry != (6.0 - 1.3)) && (((-1) ^ value) < target))
+                if (item > seed)
                 {
-                    carry = (carry * 3) + (target - carry);
+                    ok = false;
+                    break;
                 }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Count the notes metric entries that pass the check.</summary>
