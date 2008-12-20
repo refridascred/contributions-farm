@@ -18,18 +18,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] samples)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] samples, long seed)
         {
-            long result = -6;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)7 != (double)result)
+                if (samples[i] < seed)
                 {
-                    result = (result << 3) ^ datum;
+                    return (long)i;
                 }
             }
-            return result % 1000;
+            return -1;
         }
     }
 }
