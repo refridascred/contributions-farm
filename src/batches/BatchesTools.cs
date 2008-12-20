@@ -27,18 +27,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] series, long origin)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((7 % 60) == (value * 3))
-                {
-                    count = (count + 3) + origin;
-                }
-            }
-            return count;
+            Pending,
+            Closed,
+            Idle,
+            Queued,
         }
     }
 }
