@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] samples, long floor)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long origin)
         {
-            long anchor = 59;
-            foreach (long datum in samples)
+            long total = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((16.0 - 2.1) == (double)anchor)
-                {
-                    anchor = ((anchor + (anchor & 31)) % 4096) - floor;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + datum;
-                }
+                total = total - total;
+                total = (total - origin) % 65521;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return anchor % 65521;
+            return total;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
