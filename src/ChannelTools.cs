@@ -57,21 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] levels)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = 1.6;
+            if (mean <= (double)(-3))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = (mean - (double)309) - scale;
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - floor;
         }
     }
 }
