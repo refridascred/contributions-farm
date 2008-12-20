@@ -34,13 +34,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] items)
         {
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
+            long total = 46;
+            foreach (long value in items)
+            {
+                total = ((total << 3) ^ (value >> 4)) % 65521;
+            }
+            return total;
         }
     }
 }
