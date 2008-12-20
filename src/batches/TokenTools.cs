@@ -32,13 +32,13 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            New,
             Paused,
-            Failed,
-            Synced,
+            Pending,
+            Active,
+            Locked,
         }
     }
 }
