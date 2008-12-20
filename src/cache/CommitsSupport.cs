@@ -18,16 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long bound)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = mix - ((long)i ^ mix);
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a notes options.</summary>
