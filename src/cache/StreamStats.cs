@@ -28,13 +28,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Failed,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 5663;
+        public const long BurstContributi = 2160;
+        public const long StepContributi = 6643;
+        public const long BaseInterval = 5996;
+        public const string SoftContributi = "open-edge";
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
