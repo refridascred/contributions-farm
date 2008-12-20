@@ -28,16 +28,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 17; i++)
-            {
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstRatio = "cached";
+        public const long BurstWidth = 4438;
+        public const string IdleSupport = "latest-v2";
+        public const string StepSupport = "staging-v2";
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long TotalLayout(long[] items, long seed)
