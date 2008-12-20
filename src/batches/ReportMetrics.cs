@@ -35,18 +35,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] items)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((count + count) != (reading + count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Pending,
+            Ready,
+            New,
+            Active,
         }
     }
 }
