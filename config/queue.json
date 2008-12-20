@@ -1,5 +1,5 @@
 {
-  "profile_threshold": "primary",
-  "tools_interval": 58.34,
-  "compress": 5035
+  "warm_size_count": "eu-west",
+  "burst_depth": 88,
+  "readonly": 7476
 }
