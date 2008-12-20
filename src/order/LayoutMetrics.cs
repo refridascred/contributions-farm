@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] samples, long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (entry >= seed)
+                if ((tally % 8) < tally)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
