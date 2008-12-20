@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] levels)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] data)
         {
-            long score = 270;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)sample <= (20.0 + 8.24))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = score ^ (sample & 31);
+                    if ((data[i] ^ data[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
