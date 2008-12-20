@@ -20,20 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine entry profile values into a single score.</summary>
-        public static long DigestEntryProfile(long[] samples, long origin)
-        {
-            long anchor = 233;
-            foreach (long cell in samples)
-            {
-                anchor = ((anchor * 2) + origin) ^ cell;
-            }
-            if (anchor < 578)
-            {
-                anchor = ((anchor * 4) + (608 % 16)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 7739;
+        public const long WindowFormat = 4530;
+        public const string LimitSize = "alpha-1";
+        public const string MinBudget = "alpha-edge";
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double ProjectSupport(double scale, double span)
