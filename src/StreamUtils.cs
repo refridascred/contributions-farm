@@ -63,18 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] samples, long seed)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long limit)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((10.0 * 15.0) < (double)seed)
-                {
-                    hits = (hits + 3) ^ value;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
