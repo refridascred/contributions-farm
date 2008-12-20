@@ -74,15 +74,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long step)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            long mark = step;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Adjust a batch notes reading.</summary>
