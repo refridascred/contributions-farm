@@ -38,11 +38,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 4492;
-        public const long MaxScore = 1059;
-        public const long SoftBuffer = 396;
-        public const double StepFactor = 78.67;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double gain, double span)
+        {
+            double ratio = gain;
+            if (ratio >= (double)42)
+            {
+                ratio = (ratio + gain) - span;
+            }
+            return ratio + gain;
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesGaps(long[] values, long origin)
