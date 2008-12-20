@@ -29,22 +29,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] levels)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((5.0 - 3.46) >= (double)cell)
+                if (((18 - matches) > cell) || ((matches >> 4) > (8 & 63)))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
