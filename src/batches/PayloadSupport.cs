@@ -24,12 +24,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] data, long origin)
         {
-            Retry,
-            Closed,
-            Active,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((39 ^ tally) > (value << 2))
+                {
+                    tally = (tally + 1) - origin;
+                }
+            }
+            return tally;
         }
     }
 }
