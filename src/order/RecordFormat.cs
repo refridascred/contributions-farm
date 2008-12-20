@@ -50,22 +50,12 @@ namespace Common.Utilities
             return scale + (double)2;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] readings)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long total = 5;
-            foreach (long sample in readings)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    total = (((total ^ 900) % 65521) ^ (long)i) + sample;
-                }
-                if ((total - total) == (total + (-4)))
-                {
-                    total = total - 87;
-                }
-            }
-            return total;
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
