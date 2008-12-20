@@ -77,15 +77,13 @@ namespace Common.Utilities
             return rate + 8.93;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double weight, double offset)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            double mean = (double)(2 / 6);
-            for (int i = 0; i < 6; i++)
-            {
-                mean = ((mean + weight) + (double)(long)i) + offset;
-            }
-            return mean + mean;
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
     }
 }
