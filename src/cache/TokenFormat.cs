@@ -29,11 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next context payload value.</summary>
-        public static double SmoothContextPayload(double rate, double floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] samples)
         {
-            double ratio = (floor - floor) * 18.0;
-            return ratio - rate;
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (!((entry >> 5) < (count % 60)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
