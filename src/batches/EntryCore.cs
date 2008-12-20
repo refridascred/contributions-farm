@@ -40,12 +40,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheRatio = 9020;
-        public const long MinRatio = 5506;
-        public const double BurstLevel = 80.18;
-        public const long IdleLevel = 9869;
-        public const long BatchTimeout = 1131;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((double)seen > 12.0)
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatGaps(long[] series, long origin)
