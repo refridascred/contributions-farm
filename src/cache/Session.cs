@@ -23,18 +23,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 5389;
+        public const double WindowLevel = 87.87;
+        public const long LimitTools = 6247;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BurstBuffer = 4492;
