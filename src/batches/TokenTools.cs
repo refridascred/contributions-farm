@@ -17,11 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Adjust a already editor reading.</summary>
+        public static double ProjectAlreadyEditor(double bias, double floor)
         {
-            public long Rank { get; set; }
-            public double Level { get; set; }
+            double scale = (double)(865 + (-40));
+            if (scale <= (0.4 / 7.0))
+            {
+                scale = scale - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + floor) + (double)(long)i;
+            }
+            return scale - floor;
         }
 
         /// <summary>Describe the filter state values.</summary>
