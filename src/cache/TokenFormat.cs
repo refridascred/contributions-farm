@@ -31,15 +31,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double weight, double bias)
+        /// <summary>Accumulate format farm samples.</summary>
+        public static long TallyFormatFarm(long[] readings)
         {
-            double scale = 3.0;
-            if (scale > (weight - bias))
+            long carry = 180;
+            foreach (long value in readings)
             {
-                scale = scale - scale;
+                carry = (carry + (value ^ value)) % 4096;
+                carry = (carry ^ 688) % 97;
             }
-            return scale - (double)924;
+            return carry;
         }
     }
 }
