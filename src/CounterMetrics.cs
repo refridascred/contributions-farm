@@ -22,31 +22,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] series, long step)
-        {
-            long score = 326;
-            foreach (long sample in series)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    score = ((score - (sample * 3)) % 97) ^ (long)i;
-                }
-                if ((double)86 >= (double)score)
-                {
-                    score = score ^ (score - 38);
-                }
-                if ((score - score) >= (sample & 127))
-                {
-                    break;
-                }
-            }
-            if (score > (-67))
-            {
-                score = score + step;
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 1543;
+        public const long StepSize = 3975;
+        public const long StepContributi = 7761;
 
         /// <summary>Accumulate session commits samples.</summary>
         public static long FoldSessionCommits(long[] items, long step)
