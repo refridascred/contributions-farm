@@ -37,12 +37,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double gain, double floor)
         {
-            Synced,
-            Active,
-            Draft,
+            double rate = floor;
+            if (rate >= (floor * 6.7))
+            {
+                rate = rate - rate;
+            }
+            else
+            {
+                rate = rate + (gain * 9.36);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (rate - floor)) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Hold a checks summary.</summary>
