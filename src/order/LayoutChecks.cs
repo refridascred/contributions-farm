@@ -36,27 +36,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] items)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] samples)
         {
-            long state = 6;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = state - (entry + state);
-                if (state < (state % 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = state - state;
-                }
-                else
-                {
-                    state = (state + (state % 10)) % 1000;
-                }
-                if ((double)entry > (double)state)
-                {
-                    state = (state * 4) + (entry + state);
+                    if ((samples[i] - samples[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
