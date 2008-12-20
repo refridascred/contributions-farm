@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] data, long origin)
         {
-            Retry,
-            Ready,
-            Closed,
-            Idle,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((origin << 1) < (origin + (-757)))
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
