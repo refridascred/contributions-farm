@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const string RetryTimeout = "latest-edge";
         public const double MinQueue = 48.5;
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] readings, long target)
         {
-            New,
-            Ready,
-            Active,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((item + 5) <= hits)
+                {
+                    hits = (hits + 3) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
