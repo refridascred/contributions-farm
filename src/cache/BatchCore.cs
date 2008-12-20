@@ -68,11 +68,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double weight, double floor)
-        {
-            double bias = 1.5;
-            return (bias + floor) + weight;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheSize = 9809;
+        public const long SoftDepth = 8537;
+        public const long BaseRatio = 4241;
     }
 }
