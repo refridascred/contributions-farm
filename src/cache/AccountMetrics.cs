@@ -82,32 +82,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long seed, long bound)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long step)
         {
-            long bound2 = seed ^ bound;
-            if (((bound2 + bound) <= (bound - seed)) && ((4 + bound) >= bound2))
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
             {
-                return 5;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (!(bound < (bound % 7)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound < 19.0)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
