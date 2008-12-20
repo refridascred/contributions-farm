@@ -1,9 +1,10 @@
 # entry settings
-persist: legacy
-batch_interval_count: 49
-token_timeout: true
-hard_delay_s: false
-stats_depth:
-  - 101
-  - 469
-  - 122
+hard_limit_ms:
+  - 483
+  - 332
+checks_depth:
+  - 169
+  - 46
+  - 289
+batch_limit_count: 51
+payload_window: edge
