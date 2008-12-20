@@ -97,12 +97,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Synced,
-            Failed,
-            Dropped,
+            public string Size { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
