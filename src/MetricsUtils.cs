@@ -23,12 +23,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MinFarm = "primary-v2";
-        public const long BaseLevel = 8500;
-        public const long MaxFarm = 113;
-        public const long HardFarm = 8697;
-        public const long StepLevel = 6132;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public bool Count { get; set; }
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
