@@ -61,23 +61,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] samples)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] readings)
         {
-            long state = 631;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                for (int i = 0; i < 2; i++)
+                if ((seen << 2) > item)
                 {
-                    state = ((((state * 3) + (state + state)) % 255) - (long)i) ^ value;
+                    seen = seen + 3;
                 }
-                state = state + (state >> 4);
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (state < 291)
-            {
-                state = state ^ (state + state);
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Look up the position of a route context sample.</summary>
