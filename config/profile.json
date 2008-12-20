@@ -1,5 +1,16 @@
 {
-  "poll_capacity_ms": 100,
-  "metric_capacity": 0.66,
-  "poll_ratio": 48
+  "cluster_size": {
+    "compress": "staging",
+    "poll_capacity": true,
+    "idle_size_pct": {
+      "batch_limit_s": 94,
+      "default_delay_ms": 49.16,
+      "order_limit": "latest"
+    }
+  },
+  "enabled": 60,
+  "verbose": "primary",
+  "retry_timeout": "legacy",
+  "report_interval": [342, 309, 104, 46],
+  "strict": "open"
 }
