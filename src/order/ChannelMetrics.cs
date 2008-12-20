@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] values)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (((double)value >= (6.0 - 12.0)) && ((hits / 7) == (812 / 9)))
+                if ((tally > (item % 24)) || (tally < (item & 7)))
                 {
-                    hits = hits + 2;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many tools cache samples are out of range.</summary>
