@@ -37,13 +37,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public bool Size { get; set; }
-            public string Total { get; set; } = "";
+            Pending,
+            Closed,
+            New,
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
