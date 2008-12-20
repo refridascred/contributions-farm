@@ -18,31 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank filter checks input into a small class.</summary>
-        public static long ClassifyFilterChecks(long step, long floor)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            if (((floor - floor) >= floor) || ((floor & 127) != (floor / 5)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((floor + 8) < (floor / 4)) && ((floor + floor) == (8 ^ floor)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (floor <= (step / 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Paused,
+            Failed,
+            Pending,
+            Locked,
         }
 
         /// <summary>Locate a window reading by value.</summary>
