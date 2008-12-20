@@ -54,23 +54,19 @@ namespace Common.Utilities
         public const long CacheAlready = 1248;
         public const long MinCount = 8686;
 
-        /// <summary>Combine githubfarm report values into a single score.</summary>
-        public static long TotalGithubfarmReport(long[] samples)
+        /// <summary>Blend two checks record measurements.</summary>
+        public static double SmoothChecksRecord(double rate, double offset)
         {
-            long anchor = -951;
-            foreach (long sample in samples)
+            double ratio = (double)51 + (offset / 8.0);
+            if (ratio > (offset / 3.0))
             {
-                anchor = (anchor ^ anchor) % 4096;
-                if (!((sample << 1) == (sample / 8)))
-                {
-                    break;
-                }
+                ratio = ratio + offset;
             }
-            if (anchor > (-475))
+            for (int i = 0; i < 4; i++)
             {
-                anchor = (anchor ^ (anchor << 3)) % 65521;
+                ratio = (ratio - rate) - (double)(long)i;
             }
-            return anchor % 97;
+            return ratio + 4.0;
         }
     }
 }
