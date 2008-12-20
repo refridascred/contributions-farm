@@ -30,17 +30,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Locate a record farm reading by value.</summary>
-        public static long SeekRecordFarmIndex(long[] items, long seed)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] < seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
