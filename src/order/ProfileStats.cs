@@ -40,19 +40,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Accumulate batches filter samples.</summary>
-        public static long WeighBatchesFilter(long[] levels, long limit)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double scale, double bias)
         {
-            long acc = 4;
-            foreach (long cell in levels)
+            double gain = scale - bias;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell > ((-2) + acc))
-                {
-                    acc = (acc << 3) ^ (long)levels.Length;
-                }
-                acc = (acc ^ (limit ^ 6)) % 4096;
+                gain = (gain + (double)17) - (double)(long)i;
             }
-            return acc;
+            return gain + (double)98;
         }
     }
 }
