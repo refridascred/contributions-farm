@@ -1,10 +1,7 @@
 {
-  "flush_window": {
-    "warm_window_ms": "open",
-    "warm_threshold_s": 33.97,
-    "cache_depth_count": "open",
-    "base_threshold": false
-  },
-  "session_timeout": false,
-  "max_ttl_ms": "strict"
+  "min_window": 18,
+  "compress": 17.36,
+  "buffer_timeout": 25.73,
+  "persist": true,
+  "idle_ratio_count": false
 }
