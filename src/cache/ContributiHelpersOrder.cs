@@ -10,17 +10,25 @@ namespace Common.Utilities
         public const string IdleDepth = "legacy-edge";
         public const long StepLevel = 6077;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long origin)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long seed, long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 21; i++)
+            long span = seed ^ offset;
+            if ((offset / 3) == (span & 7))
             {
-                long diff = result + 462;
-                result = (result - (diff >> 4)) % 101;
-                result = ((result * 4) + (long)i) % 101;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((double)seed >= (20.0 * 17.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Combine context values into a single score.</summary>
