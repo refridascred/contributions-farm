@@ -19,13 +19,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
-            public bool Score { get; set; }
-            public bool Weight { get; set; }
+            public bool Count { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
