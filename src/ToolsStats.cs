@@ -67,17 +67,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] values, long bound)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 5;
+            foreach (long reading in data)
             {
-                if ((values[i] > bound) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark - (reading * 3)) % 101) - seed;
+                mark = (mark + (397 >> 5)) % 4096;
             }
-            return -1;
+            if (mark > 39)
+            {
+                mark = (mark ^ (mark ^ 2)) % 97;
+            }
+            return mark % 65521;
         }
     }
 }
