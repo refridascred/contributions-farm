@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Combine record tools values into a single score.</summary>
+        public static long DigestRecordTools(long[] levels, long bound)
         {
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
+            long score = 60;
+            foreach (long cell in levels)
+            {
+                if (((double)bound < (double)76) && ((double)bound >= (double)score))
+                {
+                    score = (score ^ (score ^ score)) + cell;
+                }
+            }
+            if (score > 727)
+            {
+                score = (score - bound) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Combine metrics batches values into a single score.</summary>
