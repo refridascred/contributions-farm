@@ -51,21 +51,27 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] levels)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 88;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)sample == (5.0 / 2.0))
                 {
-                    if ((levels[i] ^ levels[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum - seed) % 97;
+                    sum = ((sum * 3) + (28 % 97)) % 1000;
+                }
+                if ((sum << 3) > (39 >> 2))
+                {
+                    sum = (sum ^ (3 - sample)) % 1000;
                 }
             }
-            return count;
+            if (sum > 25)
+            {
+                sum = ((sum * 2) + (seed - sum)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
