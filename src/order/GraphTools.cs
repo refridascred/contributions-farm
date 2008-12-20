@@ -58,19 +58,12 @@ namespace Common.Utilities
         public const double IdleFarm = 93.75;
         public const double BaseSize = 66.56;
 
-        /// <summary>Check that every checks batches entry stays within the limit.</summary>
-        public static bool CheckChecksBatchesLimits(long[] readings, long offset)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Score { get; set; }
+            public bool Offset { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
