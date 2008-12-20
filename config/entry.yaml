@@ -1,10 +1,6 @@
 # entry settings
-persist: fallback
-base_limit_s:
-  - primary
-  - eu-west
-  - green
-dry_run:
-  - 427
-  - 155
-audit: false
+cache_timeout: 54.02
+audit: 7010
+tools_depth: eu-west
+max_timeout_count: 24
+editor_interval: primary
