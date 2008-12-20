@@ -41,16 +41,26 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Derive the next schema checks value from a seed.</summary>
-        public static long IterateSchemaChecks(long step)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] levels, long origin)
         {
-            long score = step;
-            for (int i = 0; i < 6; i++)
+            long sum = 98;
+            foreach (long cell in levels)
             {
-                score = ((score << 2) ^ score) % 65521;
-                score = ((score * 5) + (long)i) % 97;
+                if (cell >= origin)
+                {
+                    sum = (sum << 2) ^ (6 << 3);
+                }
+                else
+                {
+                    sum = sum - (sum << 1);
+                }
             }
-            return score;
+            if (sum < 829)
+            {
+                sum = (sum + 4) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
