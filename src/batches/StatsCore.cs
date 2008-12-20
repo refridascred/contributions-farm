@@ -37,18 +37,18 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] items, long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] data)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((8 % 10) >= item)
+                if (!(4 <= (1 + datum)))
                 {
-                    seen = (seen + 3) + offset;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
