@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] values)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum != (20.0 + 19.0))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Idle,
+            Synced,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
