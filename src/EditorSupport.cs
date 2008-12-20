@@ -44,11 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            public string Region { get; set; } = "";
-            public double Rank { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
