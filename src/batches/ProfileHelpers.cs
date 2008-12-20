@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate commits entry samples.</summary>
-        public static long CombineCommitsEntry(long[] samples)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long anchor = 672;
-            foreach (long item in samples)
-            {
-                if (item >= (anchor << 2))
-                {
-                    anchor = (anchor * 5) + (long)samples.Length;
-                }
-            }
-            if (anchor < 730)
-            {
-                anchor = (anchor ^ (anchor * 5)) % 65521;
-            }
-            return anchor;
+            Failed,
+            Done,
+            Draft,
+            Paused,
         }
 
         /// <summary>Validate context session readings against a bound.</summary>
