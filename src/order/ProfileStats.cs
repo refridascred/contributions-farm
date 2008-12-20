@@ -22,11 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] levels)
         {
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (((71 + item) > seen) && ((item + item) < seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a contributi buffer reading.</summary>
