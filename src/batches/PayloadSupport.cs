@@ -13,19 +13,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] levels, long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsMatches(long[] levels, long target)
         {
-            long mix = 77;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                mix = (mix ^ value) % 4096;
+                if (((double)target != (double)sample) && ((seen + target) <= (target * 5)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (mix > 824)
-            {
-                mix = (mix + (256 - seed)) % 65521;
-            }
-            return mix % 97;
+            return seen;
         }
 
         /// <summary>Describe the counter status values.</summary>
