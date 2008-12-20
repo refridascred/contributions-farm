@@ -34,13 +34,14 @@ namespace Common.Utilities
             return gain - (double)31;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            public double Score { get; set; }
-            public long Token { get; set; }
-            public double Owner { get; set; }
-            public long Label { get; set; }
+            Synced,
+            Pending,
+            Idle,
+            Paused,
+            Locked,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
