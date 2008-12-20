@@ -29,24 +29,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] series)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long acc = 50;
-            foreach (long sample in series)
-            {
-                acc = (acc << 2) ^ (479 + acc);
-                acc = (acc - acc) % 1000;
-                if (83 <= sample)
-                {
-                    acc = acc + (sample % 5);
-                }
-            }
-            if (acc > 793)
-            {
-                acc = acc + (acc * 5);
-            }
-            return acc;
+            Ready,
+            Active,
+            Idle,
+            New,
         }
 
         /// <summary>Combine command values into a single score.</summary>
