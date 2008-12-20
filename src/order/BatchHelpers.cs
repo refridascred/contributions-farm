@@ -52,18 +52,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] items, long offset)
+        /// <summary>Find the first farm checks entry that matches the target.</summary>
+        public static long SeekFarmChecksIndex(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (28 <= cell)
+                if ((samples[i] > seed) && ((samples[i] % 2) != 0))
                 {
-                    matches = (matches + 2) - offset;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
