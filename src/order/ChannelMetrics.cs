@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            Locked,
-            Pending,
-            Dropped,
+            New,
+            Closed,
+            Ready,
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
