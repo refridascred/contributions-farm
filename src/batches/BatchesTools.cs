@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Count token commits pairs that satisfy a relation.</summary>
+        public static long PairTokenCommitsCount(long[] samples)
         {
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
