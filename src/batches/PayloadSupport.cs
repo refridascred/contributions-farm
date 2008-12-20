@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] series, long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] series, long origin)
         {
-            long total = 50;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long datum in series)
             {
-                total = (total * 2) + ((long)series.Length - reading);
+                if ((double)count <= (13.0 - 4.0))
+                {
+                    count = ((count + 1) + datum) + origin;
+                }
             }
-            if (total < 5)
-            {
-                total = ((total * 5) + floor) % 101;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a editor record.</summary>
