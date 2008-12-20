@@ -22,13 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
-        {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowFactor = 6256;
+        public const long MaxRatio = 8660;
+        public const long StepProfile = 8770;
 
         /// <summary>Adjust a contributi buffer reading.</summary>
         public static double SmoothContributiBuffer(double weight, double bias)
