@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 7781;
-        public const long BatchLevel = 1839;
-        public const long BaseLayout = 7047;
-        public const string MaxDepth = "cached-1";
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Idle,
+            New,
+            Stale,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
