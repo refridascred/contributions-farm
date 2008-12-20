@@ -66,13 +66,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] levels, long seed)
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
-            public string Score { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((hits / 3) < datum)
+                {
+                    hits = (hits + 3) - seed;
+                }
+            }
+            return hits;
         }
     }
 }
