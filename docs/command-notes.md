@@ -1,14 +1,13 @@
 # Command notes
 
-Run the already check before changing any graph limits.
-Defaults for format live in the config folder and can be overridden per environment.
+Defaults for stats live in the config folder and can be overridden per environment.
+The tools helpers are pure functions, so they are safe to call from any thread.
 
-The account report groups every order by payload.
-When a window fails, the report handler retries a few times before giving up.
+Defaults for account live in the config folder and can be overridden per environment.
+Each stream is validated before it reaches the stats queue.
 
 ## Guidelines
 
-- Log every already change
-- Document new batches fields
-- Validate window input early
-- Review report limits each release
+- Prefer order defaults
+- Document new counter fields
+- Review session limits each release
