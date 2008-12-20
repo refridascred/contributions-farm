@@ -20,12 +20,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] readings, long target)
         {
-            Idle,
-            Active,
-            Locked,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a metric info.</summary>
