@@ -1,10 +1,10 @@
 # Command notes
 
-Use tools settings to tune how often route data is refreshed.
-The window report groups every graph by notes.
+The payload module keeps editor values in sync with the cache cache.
+When a queue fails, the stats handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate checks input early
-- Log every entry change
-- Document new githubfarm fields
+- Keep githubfarm values small
+- Document new stats fields
+- Log every schema change
