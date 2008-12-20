@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] values)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] items)
         {
-            long anchor = 4;
-            foreach (long entry in values)
+            long score = 66;
+            foreach (long sample in items)
             {
-                if (!(9 >= anchor))
+                if (score >= sample)
                 {
-                    anchor = ((anchor << 2) ^ (anchor & 255)) % 65521;
-                }
-                if ((((-870) * 4) > (anchor + entry)) && ((13.0 + 2.24) >= (double)entry))
-                {
-                    anchor = (anchor ^ (anchor << 3)) % 101;
+                    score = score + score;
                 }
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Describe the metrics class values.</summary>
