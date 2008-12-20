@@ -75,18 +75,15 @@ namespace Common.Utilities
         public const long StepDepth = 6635;
         public const string MaxRatio = "cached-edge";
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] data)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long step)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long sum = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((matches - item) <= (922 & 127))
-                {
-                    matches = matches + 3;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
     }
 }
