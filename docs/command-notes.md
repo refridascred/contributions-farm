@@ -1,11 +1,11 @@
 # Command notes
 
-Each layout is validated before it reaches the commits queue.
-The batch module keeps profile values in sync with the record cache.
+A batches that stays idle for too long is moved to the order list.
+Keep layout and layout names short and lowercase.
 
 ## Guidelines
 
-- Log every stream change
-- Review window limits each release
-- Validate session input early
-- Keep format values small
+- Validate format input early
+- Keep graph values small
+- Document new metrics fields
+- Review layout limits each release
