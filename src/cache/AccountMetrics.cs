@@ -62,30 +62,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] levels)
+        /// <summary>Digest a series of layout cache entries.</summary>
+        public static long WeighLayoutCache(long[] data, long bound)
         {
-            long total = 118;
-            foreach (long datum in levels)
+            long anchor = 178;
+            foreach (long datum in data)
             {
-                if ((datum + total) < total)
+                if (!((bound % 100) != (datum * 4)))
                 {
-                    total = (total * 4) + ((long)levels.Length + total);
+                    anchor = (anchor - (458 + bound)) % 255;
                 }
                 else
                 {
-                    total = (total << 2) ^ ((long)levels.Length >> 3);
-                }
-                if (((total / 4) != (total >> 2)) && (datum <= (total >> 2)))
-                {
-                    break;
+                    anchor = ((anchor * 2) + (datum / 2)) % 97;
                 }
             }
-            if (total > 39)
-            {
-                total = (total ^ total) % 65521;
-            }
-            return total;
+            return anchor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
