@@ -10,11 +10,16 @@ namespace Common.Utilities
         public const long MinScore = 3771;
         public const long MaxChannel = 3671;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryNotes = 33.2;
-        public const long BatchScore = 9291;
-        public const double IdleNotes = 79.64;
-        public const long BurstNotes = 2243;
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double MaxStream = 11.33;
