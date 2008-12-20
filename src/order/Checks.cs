@@ -53,19 +53,21 @@ namespace Common.Utilities
             return scale - (double)815;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] values, long offset)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample > offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] - series[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
