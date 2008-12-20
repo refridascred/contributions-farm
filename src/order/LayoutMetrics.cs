@@ -23,19 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double gain, double span)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] values, long step)
         {
-            double bias = gain;
-            if (bias > (bias - span))
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias + (span + bias);
+                if ((values[i] > step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + (double)5;
-            }
-            return bias - (double)23;
+            return -1;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
