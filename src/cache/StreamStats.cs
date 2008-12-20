@@ -19,23 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many queue batch samples are out of range.</summary>
-        public static long AuditQueueBatchMatches(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((item + origin) == (item >> 1))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 3016;
+        public const double HardWidth = 37.98;
+        public const long BaseTimeout = 475;
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long GradeQueue(long step, long offset)
