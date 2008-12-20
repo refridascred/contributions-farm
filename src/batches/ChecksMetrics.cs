@@ -46,22 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] levels)
+        /// <summary>Validate cluster account readings against a bound.</summary>
+        public static bool GuardClusterAccountBounds(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if ((item - item) != (item % 2))
+                if (reading < floor)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Fold a list of profile buffer readings.</summary>
