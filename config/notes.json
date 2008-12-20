@@ -1,6 +1,12 @@
 {
-  "min_size_count": [169, 237, 75],
-  "retry_interval_pct": 48.99,
-  "burst_ratio_ms": [72, 180, 152, 94],
-  "compress": 77
+  "support_retries": ["eu-west", "primary"],
+  "metrics_capacity": 1955,
+  "burst_size": 77.45,
+  "min_delay_s": 60,
+  "max_capacity": {
+    "strict": 94.03,
+    "farm_window": 23.51,
+    "verbose": "legacy",
+    "payload_delay": [391, 90]
+  }
 }
