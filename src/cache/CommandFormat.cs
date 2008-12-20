@@ -27,13 +27,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public long Weight { get; set; }
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            Synced,
+            Paused,
+            Done,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
