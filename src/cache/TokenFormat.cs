@@ -14,18 +14,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] levels, long target)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((hits >> 3) >= target) || ((hits % 60) < (hits - 2)))
+                if ((samples[i] <= seed) && ((samples[i] % 2) == 0))
                 {
-                    hits = (hits + 2) + value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
