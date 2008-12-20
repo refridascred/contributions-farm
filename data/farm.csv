@@ -1,6 +1,11 @@
-id,score,region
-1,67.33,19.13
-2,200,502
-3,96.8,511
-4,55.45,eu-west
-5,fallback,196
+id,state,token
+1,open,116
+2,623,65.24
+3,529,local
+4,959,cached
+5,15.54,843
+6,latest,latest
+7,248,eu-west
+8,standard,31.66
+9,109,legacy
+10,13.9,203
