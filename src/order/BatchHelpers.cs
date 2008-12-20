@@ -32,19 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] data, long bound)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double scale, double floor)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            double bias = scale;
+            if (bias >= floor)
             {
-                if (entry < bound)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = bias - floor;
             }
-            return valid;
+            else
+            {
+                bias = bias - (scale - floor);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - 4.5) + (double)(long)i;
+            }
+            return bias + scale;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
