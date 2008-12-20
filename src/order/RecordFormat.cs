@@ -26,15 +26,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] levels, long target)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long score = 11;
-            foreach (long cell in levels)
-            {
-                score = (((score * 4) + cell) % 97) + target;
-            }
-            return score;
+            Synced,
+            Stale,
+            Done,
         }
 
         /// <summary>Hold a stats info.</summary>
