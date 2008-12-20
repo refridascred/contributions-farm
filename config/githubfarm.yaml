@@ -1,21 +1,6 @@
 # githubfarm settings
-commits_capacity: latest
-idle_capacity_s:
-  batch_ttl_s: open
-  hard_ttl_ms: 34.56
-  default_window_pct:
-    - blue
-    - green
-    - staging
-    - eu-west
-  queue_capacity: false
-  verbose: latest
-  strict: 6
-flush_timeout: false
-hard_limit_s: eu-west
-compress: 30
-editor_threshold:
-  - standard
-  - fallback
-  - edge
-  - cached
+flush_delay_pct: standard
+command_ttl: 11.42
+burst_limit: false
+default_capacity_pct: cached
+queue_interval: stable
