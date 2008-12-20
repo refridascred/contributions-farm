@@ -23,22 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout record readings against a rule.</summary>
-        public static long MeasureLayoutRecordMatches(long[] levels)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((matches + 755) > (matches ^ 379))
-                {
-                    matches = (matches + 2) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            New,
+            Stale,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
