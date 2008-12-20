@@ -83,22 +83,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] data, long step)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long total = 2;
-            foreach (long reading in data)
-            {
-                if ((918 - step) > (4 - reading))
-                {
-                    total = (total << 2) ^ (step ^ (long)data.Length);
-                }
-                else
-                {
-                    total = total - (885 % 3);
-                }
-            }
-            return total % 65521;
+            Synced,
+            Failed,
+            Dropped,
         }
     }
 }
