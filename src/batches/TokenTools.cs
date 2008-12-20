@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseLevel = 8.12;
-        public const string BatchCount = "cached-1";
-        public const long WindowLayout = 1628;
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
+        {
+            public double Region { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long LimitScore = 8913;
