@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long step, long step2)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] values, long offset)
         {
-            if (((51 % 100) >= step) || ((953 >> 3) == (step2 - step2)))
+            long sum = 33;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((18.0 + 8.1) >= (double)step)
+                sum = ((sum + (sum + (-75))) % 101) - offset;
+                if (sum > sample)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step2 <= (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Describe the batch level values.</summary>
