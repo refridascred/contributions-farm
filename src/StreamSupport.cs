@@ -33,9 +33,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepCount = 22.51;
-        public const long RetryFarm = 2695;
-        public const long BurstFarm = 6834;
+        /// <summary>Roll a session graph counter forward.</summary>
+        public static long DeriveSessionGraph(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
