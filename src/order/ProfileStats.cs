@@ -60,11 +60,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 4089;
-        public const long BurstFactor = 435;
-        public const long BurstSize = 9988;
-        public const long DefaultOrder = 794;
-        public const string HardSize = "latest-edge";
+        /// <summary>Accumulate batches filter samples.</summary>
+        public static long WeighBatchesFilter(long[] levels, long limit)
+        {
+            long acc = 4;
+            foreach (long cell in levels)
+            {
+                if (cell > ((-2) + acc))
+                {
+                    acc = (acc << 3) ^ (long)levels.Length;
+                }
+                acc = (acc ^ (limit ^ 6)) % 4096;
+            }
+            return acc;
+        }
     }
 }
