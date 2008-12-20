@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long offset)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 15; i++)
+            long acc = target;
+            for (int i = 0; i < 13; i++)
             {
-                mix = mix ^ (501 >> 2);
-                mix = ((mix * 4) + (long)i) % 1000;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
