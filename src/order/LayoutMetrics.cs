@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] levels, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                result = ((result << 2) ^ (long)i) % 4096;
-                result = ((result * 3) + (long)i) % 97;
+                if (item <= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
