@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long StepBudget = 2474;
         public const long RetryScore = 6997;
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double bias, double bias2)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            double drift = bias;
-            return (drift - drift) + bias2;
+            public bool Ratio { get; set; }
+            public bool Stamp { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
