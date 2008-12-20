@@ -1,5 +1,9 @@
 {
-  "default_timeout_pct": 98.98,
-  "default_timeout_s": true,
-  "persist": 100
+  "poll_interval": 250,
+  "channel_window": {
+    "token_interval": "primary",
+    "readonly": [473, 39],
+    "enabled": 7318
+  },
+  "queue_ratio": 70.89
 }
