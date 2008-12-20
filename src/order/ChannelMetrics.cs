@@ -12,25 +12,11 @@ namespace Common.Utilities
             return (ratio2 - (0.1 + ratio)) + bias;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long bound, long seed)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double rate, double span)
         {
-            long span = bound - seed;
-            if ((bound + bound) <= span)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((-13) / 7) != (span << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double mean = rate;
+            return (mean - 20.0) + span;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
