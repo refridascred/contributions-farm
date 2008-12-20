@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double gain, double span)
         {
-            Paused,
-            Failed,
-            Draft,
+            double bias = gain;
+            if (bias > (bias - span))
+            {
+                bias = bias + (span + bias);
+            }
+            else
+            {
+                bias = bias + (double)5;
+            }
+            return bias - (double)23;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
