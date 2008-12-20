@@ -1,5 +1,21 @@
 {
-  "retry_ttl_count": "eu-west",
-  "cluster_capacity": [464, 143, 241],
-  "profile_threshold": ["staging", "legacy"]
+  "schema_retries": {
+    "warm_limit_count": true,
+    "default_timeout_count": 96.0,
+    "schema_size": {
+      "warm_delay_count": 30.43,
+      "min_threshold_s": 500,
+      "record_timeout": ["local", "primary", "latest", "local"],
+      "profile_timeout": 60
+    },
+    "hard_capacity": 4.54,
+    "default_timeout_pct": "standard",
+    "session_window": {
+      "warm_depth_count": "eu-west",
+      "hard_depth_count": "primary",
+      "batch_size_ms": [140, 383]
+    }
+  },
+  "sync_delay_count": ["staging", "fallback"],
+  "githubfarm_capacity": "stable"
 }
