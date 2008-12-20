@@ -55,9 +55,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftScore = 89.02;
-        public const string StepWindow = "strict-v2";
-        public const long IdleWindow = 6295;
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Failed,
+            Closed,
+            New,
+        }
     }
 }
