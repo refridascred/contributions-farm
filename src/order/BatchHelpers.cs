@@ -33,19 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] items, long seed)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long state = 86;
-            foreach (long sample in items)
-            {
-                state = (((state << 2) ^ seed) % 101) + sample;
-            }
-            if (state < 55)
-            {
-                state = state - 724;
-            }
-            return state % 4096;
+            Queued,
+            Idle,
+            Dropped,
+            Locked,
+            Stale,
         }
     }
 }
