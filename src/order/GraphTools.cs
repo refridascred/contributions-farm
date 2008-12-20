@@ -15,18 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] values)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (((9 / 2) == (seen + value)) && ((value & 1) <= (value ^ value)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Synced,
+            Ready,
+            New,
         }
 
         /// <summary>Adjust a token reading.</summary>
