@@ -42,19 +42,18 @@ namespace Common.Utilities
         public const long SoftBuffer = 396;
         public const double StepFactor = 78.67;
 
-        /// <summary>Project the next session filter value.</summary>
-        public static double ProjectSessionFilter(double scale, double bias)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] items)
         {
-            double load = scale - (bias * 8.8);
-            if (load > (load / 5.0))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                load = load - (double)87;
+                if ((double)datum <= (8.8 / 3.0))
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + scale) + (double)(long)i;
-            }
-            return load - 5.8;
+            return hits;
         }
     }
 }
