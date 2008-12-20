@@ -1,5 +1,30 @@
 {
-  "batch_ratio_ms": "green",
-  "sync_size": true,
-  "cache_threshold": 7
+  "default_depth_pct": 89.08,
+  "batch_size_ms": {
+    "max_ttl_pct": ["edge", "blue", "staging", "local"],
+    "readonly": 70.32,
+    "checks_depth": 250,
+    "commits_window": true
+  },
+  "base_size_pct": {
+    "enabled": false,
+    "base_ratio_count": 8493,
+    "profile_ratio": {
+      "burst_retries_pct": 87,
+      "retry_ttl_ms": 6,
+      "metrics_limit": false,
+      "persist": 5836,
+      "strict": false,
+      "profile_retries": "open"
+    },
+    "compress": "stable",
+    "hard_ttl": {
+      "strict": true,
+      "base_delay_s": 65.79,
+      "max_window_count": false
+    },
+    "cluster_capacity": false
+  },
+  "hard_ratio_s": "standard",
+  "retry_capacity_ms": "edge"
 }
