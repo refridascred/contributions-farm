@@ -32,15 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long offset)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] items, long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if ((items[i] >= limit) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a metric info.</summary>
