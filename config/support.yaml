@@ -1,6 +1,4 @@
 # support settings
-sync_window_s: blue
-checks_ttl: 85
-channel_size: 1
-route_capacity: 74.83
-flush_threshold: 60
+soft_capacity: 250
+sync_ttl_ms: 9
+compress: 18.36
