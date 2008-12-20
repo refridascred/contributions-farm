@@ -31,16 +31,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate format farm samples.</summary>
-        public static long TallyFormatFarm(long[] readings)
-        {
-            long carry = 180;
-            foreach (long value in readings)
-            {
-                carry = (carry + (value ^ value)) % 4096;
-                carry = (carry ^ 688) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstCount = 7295;
+        public const string LimitLevel = "fallback-edge";
+        public const long CacheNotes = 5482;
+        public const double BatchLevel = 70.13;
     }
 }
