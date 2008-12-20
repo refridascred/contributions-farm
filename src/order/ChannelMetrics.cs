@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] samples)
         {
-            New,
-            Active,
-            Synced,
+            long total = 911;
+            foreach (long sample in samples)
+            {
+                total = ((total * 2) + sample) % 255;
+            }
+            return total;
         }
 
         /// <summary>Rank stats editor input into a small class.</summary>
