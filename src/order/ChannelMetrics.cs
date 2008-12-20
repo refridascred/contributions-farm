@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double rate, double span)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] values)
         {
-            double mean = rate;
-            return (mean - 20.0) + span;
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (((double)value >= (6.0 - 12.0)) && ((hits / 7) == (812 / 9)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many tools cache samples are out of range.</summary>
