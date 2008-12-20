@@ -20,19 +20,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] data, long origin)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            double load = (double)(87 >> 3);
+            if (load >= (double)(-733))
             {
-                if (entry > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                load = (load + (4.3 + load)) - scale;
             }
-            return ready;
+            return load - bias;
         }
 
         /// <summary>Define report limits and defaults.</summary>
