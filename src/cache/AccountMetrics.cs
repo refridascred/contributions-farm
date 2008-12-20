@@ -17,11 +17,22 @@ namespace Common.Utilities
             return ((drift + drift) + ratio) + floor;
         }
 
-        /// <summary>Scale a buffer channel figure with a bias.</summary>
-        public static double ProjectBufferChannel(double scale, double span)
+        /// <summary>Audit layout record readings against a rule.</summary>
+        public static long MeasureLayoutRecordMatches(long[] levels)
         {
-            double ratio = scale;
-            return ratio + (span * 15.0);
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((matches + 755) > (matches ^ 379))
+                {
+                    matches = (matches + 2) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
