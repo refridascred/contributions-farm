@@ -20,17 +20,25 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long bound)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] series)
         {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
+            long result = 83;
+            foreach (long item in series)
             {
-                if ((double)(long)i != (5.91 / 3.0))
+                for (int i = 0; i < 7; i++)
                 {
-                    result = (result ^ result) % 255;
+                    result = result + ((long)i - (long)i);
+                    result = (result ^ (item << 2)) % 255;
                 }
-                result = ((result * 4) + (long)i) % 4093;
+                if (((double)result > 4.23) && (7 <= (item - 8)))
+                {
+                    result = (result + item) % 255;
+                }
+                if ((35 << 1) != (result >> 3))
+                {
+                    break;
+                }
             }
             return result;
         }
