@@ -50,22 +50,17 @@ namespace Common.Utilities
         public const long BurstRatio = 9128;
         public const string SoftCluster = "local";
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] levels, long step)
+        /// <summary>Roll a stats queue counter forward.</summary>
+        public static long RollStatsQueue(long seed)
         {
-            long sum = 12;
-            foreach (long cell in levels)
+            long state = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((sum - step) <= (step & 7))
-                {
-                    sum = ((sum * 3) + (step * 4)) ^ cell;
-                }
-                else
-                {
-                    sum = (sum ^ (sum + step)) % 4096;
-                }
+                state = (state + (long)i) % 4096;
+                state = ((state * 5) + (79 + (long)i)) % 101;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return sum % 1000;
+            return state;
         }
     }
 }
