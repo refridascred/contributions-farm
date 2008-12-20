@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            Done,
+            Active,
+            New,
+            Closed,
         }
 
         /// <summary>Hold a account entry.</summary>
