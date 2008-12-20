@@ -40,32 +40,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long floor, long seed)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long gap = floor ^ seed;
-            if (93 >= (gap & 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor / 2) >= seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed << 3) < (gap * 4)) || ((84 - gap) >= (gap >> 4)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public double Limit { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
