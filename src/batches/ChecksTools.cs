@@ -40,19 +40,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every report notes entry stays within the limit.</summary>
-        public static bool ValidateReportNotesBounds(long[] samples, long limit)
+        /// <summary>Classify a filter profile pair into a bucket.</summary>
+        public static long BucketFilterProfile(long origin, long target)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            if ((origin ^ target) < (origin % 12))
             {
-                if (entry != limit)
+                return 5;
+            }
+            else
+            {
+                if ((double)origin <= (6.81 / 2.0))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (!((origin * 4) > (origin << 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(origin < (target >> 4)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
