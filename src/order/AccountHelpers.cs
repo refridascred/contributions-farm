@@ -69,11 +69,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Accumulate command schema samples.</summary>
+        public static long FoldCommandSchema(long[] readings, long limit)
         {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
+            long total = 141;
+            foreach (long item in readings)
+            {
+                total = ((total * 5) + limit) % 101;
+                if ((350 * 3) >= item)
+                {
+                    total = (total << 2) ^ (total >> 3);
+                }
+            }
+            return total % 65521;
         }
     }
 }
