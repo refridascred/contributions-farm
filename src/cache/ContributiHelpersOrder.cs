@@ -24,22 +24,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] samples)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (((double)matches > (6.24 + 7.5)) && !((double)value == (7.6 / 8.0)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
