@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long bound, long step)
-        {
-            if ((162 > (step >> 2)) && ((104 + step) <= (bound << 1)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step >> 2) < step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BaseLevel = 8.12;
+        public const string BatchCount = "cached-1";
+        public const long WindowLayout = 1628;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long LimitScore = 8913;
