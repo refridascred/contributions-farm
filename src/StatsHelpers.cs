@@ -16,12 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            Done,
-            Paused,
-            Failed,
+            public long Count { get; set; }
+            public double Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a window info.</summary>
