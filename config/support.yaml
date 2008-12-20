@@ -1,40 +1,6 @@
 # support settings
-session_ttl: true
-sync_delay_ms:
-  hard_size_s: stable
-  max_timeout_pct:
-    - strict
-    - standard
-  poll_depth_ms: edge
-  dry_run:
-    - 123
-    - 212
-  flush_interval_ms:
-    buffer_retries: standard
-    hard_size_s: 6
-    persist: fallback
-batch_window: cached
-idle_retries_s: true
-format_threshold: true
-channel_window:
-  max_window_pct:
-    strict: false
-    readonly: green
-    hard_depth_ms:
-      - strict
-      - green
-      - green
-    idle_depth_s: 60
-  filter_window:
-    warm_depth_pct: blue
-    max_timeout: 62.39
-    cache_interval: 69
-    format_timeout: true
-    farm_size: standard
-    command_delay:
-      - open
-      - edge
-      - standard
-  queue_limit:
-    - primary
-    - blue
+strict: 734
+max_ratio:
+  - fallback
+  - green
+warm_interval_count: stable
