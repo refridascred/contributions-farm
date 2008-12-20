@@ -14,14 +14,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long offset, long seed)
         {
-            Pending,
-            Stale,
-            Closed,
-            Queued,
-            Synced,
+            if ((seed - 368) == (offset % 12))
+            {
+                return 0;
+            }
+            else
+            {
+                if (offset < (11 * 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((3.38 - 6.93) > (double)seed) && ((seed % 100) > (seed - 631)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
