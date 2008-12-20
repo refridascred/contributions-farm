@@ -14,20 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long bound)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double scale, double span)
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
+            double weight = 6.61;
+            if (weight > scale)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    acc = (acc - ((long)i + bound)) ^ (long)i2;
-                }
-                acc = ((acc << 3) ^ (47 + (long)i)) % 1000;
-                acc = ((acc * 2) + (long)i) % 97;
+                weight = (weight - (0.9 / 4.0)) - span;
             }
-            return acc;
+            return weight - 1.2;
         }
 
         /// <summary>Describe the context status values.</summary>
