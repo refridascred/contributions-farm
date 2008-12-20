@@ -32,18 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of checks route readings.</summary>
-        public static long FoldChecksRoute(long[] series, long offset)
+        /// <summary>Find the first filter already entry that matches the target.</summary>
+        public static long LookupFilterAlreadyIndex(long[] samples, long limit)
         {
-            long result = 54;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)result > 12.0)
+                if (samples[i] < limit)
                 {
-                    result = (result + item) - offset;
+                    return (long)i;
                 }
             }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
