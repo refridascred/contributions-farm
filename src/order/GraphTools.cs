@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit window batch readings against a rule.</summary>
-        public static long CountWindowBatchHits(long[] samples, long origin)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (200 <= seen)
-                {
-                    seen = ((seen + 2) + reading) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftInterval = 6289;
+        public const long BurstRecord = 8673;
+        public const long StepBudget = 4013;
+        public const double WindowRecord = 2.04;
+        public const long CacheScore = 7229;
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
