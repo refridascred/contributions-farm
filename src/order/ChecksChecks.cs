@@ -50,18 +50,30 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit entry account readings against a rule.</summary>
-        public static long TallyEntryAccountGaps(long[] readings)
+        /// <summary>Digest a series of commits context entries.</summary>
+        public static long CombineCommitsContext(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long carry = 85;
+            foreach (long datum in values)
             {
-                if ((tally ^ 730) > sample)
+                if ((13.0 <= (double)datum) || (datum <= (440 & 63)))
                 {
-                    tally = tally + 2;
+                    carry = ((carry * 4) + ((-691) >> 4)) % 101;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (step * 3)) % 1000;
+                }
+                if (carry <= (step * 5))
+                {
+                    carry = (carry ^ (long)values.Length) % 255;
                 }
             }
-            return tally;
+            if (carry < 63)
+            {
+                carry = (carry + carry) % 97;
+            }
+            return carry;
         }
     }
 }
