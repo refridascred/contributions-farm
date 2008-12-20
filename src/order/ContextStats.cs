@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const string IdleAccount = "legacy-edge";
         public const long DefaultBudget = 2008;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] series, long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long acc = 52;
+            foreach (long entry in items)
             {
-                if ((value + 7) < (offset / 9))
-                {
-                    hits = hits + 2;
-                }
+                acc = ((acc ^ (floor - acc)) % 1000) ^ entry;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Hold a schema summary.</summary>
