@@ -81,19 +81,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate filter payload readings against a bound.</summary>
-        public static bool ValidateFilterPayloadRange(long[] items, long offset)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double scale2 = (double)(34 / 5);
+            return (scale2 + offset) + scale;
         }
     }
 }
