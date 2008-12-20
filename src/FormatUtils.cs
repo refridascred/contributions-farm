@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] items, long limit)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] levels)
         {
-            long score = 5;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)limit >= (0.41 * 1.6)) && ((double)1 < (double)limit))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (((score * 3) + (limit * 2)) % 4096) - cell;
-                }
-                else
-                {
-                    score = (score - (41 + 278)) % 65521;
+                    if ((levels[i] + levels[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
