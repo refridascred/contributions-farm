@@ -51,12 +51,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowSession = "stable-1";
+        public const long BaseWidth = 3225;
+        public const long IdleSpan = 5409;
+        public const double LimitSession = 3.58;
 
         /// <summary>Project the next support command value.</summary>
         public static double AdjustSupportCommand(double bias, double offset)
