@@ -23,18 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] values)
+        /// <summary>Count already buffer pairs that satisfy a relation.</summary>
+        public static long PairAlreadyBufferCount(long[] readings)
         {
-            long count = 0;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (6.0 >= (double)count)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 2) + item;
+                    if ((readings[i] ^ readings[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
