@@ -10,25 +10,19 @@ namespace Common.Utilities
         public const string IdleDepth = "legacy-edge";
         public const long StepLevel = 6077;
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long seed, long offset)
+        /// <summary>Check that every schema editor entry stays within the limit.</summary>
+        public static bool ValidateSchemaEditorRange(long[] data, long limit)
         {
-            long span = seed ^ offset;
-            if ((offset / 3) == (span & 7))
+            bool ok = true;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed >= (20.0 * 17.0))
+                if (value >= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Combine context values into a single score.</summary>
