@@ -23,19 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] series, long origin)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((datum << 2) > (8 - 78))
-                {
-                    seen = (seen + 3) + origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 7878;
+        public const long MaxFactor = 7569;
+        public const double BaseFarm = 59.71;
+        public const long BurstTimeout = 5071;
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long FindStatsIndex(long[] series, long bound)
