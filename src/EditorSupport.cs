@@ -36,10 +36,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double IdleFactor = 17.22;
-        public const double BaseSize = 91.59;
-        public const long RetryTools = 1905;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public double Limit { get; set; }
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long ClassifyStream(long offset, long bound)
