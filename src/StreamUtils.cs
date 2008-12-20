@@ -49,15 +49,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long step)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] samples)
         {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
+            long anchor = 76;
+            foreach (long item in samples)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                if (7.0 >= (double)item)
+                {
+                    anchor = anchor - (anchor - anchor);
+                }
             }
-            return mark;
+            if (anchor < 55)
+            {
+                anchor = (anchor - (anchor % 7)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
