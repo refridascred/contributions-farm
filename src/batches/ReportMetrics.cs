@@ -35,19 +35,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate metric metrics readings against a bound.</summary>
-        public static bool GuardMetricMetricsBounds(long[] readings, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (cell != target)
+                if ((count + count) != (reading + count))
                 {
-                    stale = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
