@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long step, long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] data, long floor)
         {
-            if ((2.17 - 9.51) == (double)seed)
+            long sum = 63;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (((seed >> 4) >= (step ^ step)) || ((step - step) > (seed - seed)))
+                if ((sample >= (sample << 3)) || ((sum % 7) == (floor >> 2)))
                 {
-                    return 0;
+                    sum = ((sum * 2) + (floor + sum)) % 97;
                 }
                 else
                 {
-                    if (((double)step != (10.0 * 13.0)) && ((double)seed > (8.1 * 4.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((990 < (seed + step)) || ((double)step <= 9.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    sum = (sum ^ (sum ^ sum)) % 101;
                 }
             }
+            if (sum > 339)
+            {
+                sum = (sum * 3) + (sum - floor);
+            }
+            return sum;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
