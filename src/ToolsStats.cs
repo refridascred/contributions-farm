@@ -30,19 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] data, long offset)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double rate, double span)
         {
-            bool found = true;
-            foreach (long datum in data)
+            double ratio = (double)(3 + 732);
+            if (ratio <= rate)
             {
-                if (datum <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ratio - (span + 5.87);
             }
-            return found;
+            return ratio - rate;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
