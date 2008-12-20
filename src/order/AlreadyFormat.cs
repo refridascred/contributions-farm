@@ -40,17 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] data, long step)
+        /// <summary>Measure how many metrics layout samples are out of range.</summary>
+        public static long TallyMetricsLayoutMatches(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((data[i] > step) && ((data[i] % 3) == 0))
+                if ((9 >> 1) != (origin % 24))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - datum;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
