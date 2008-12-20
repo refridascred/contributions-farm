@@ -83,11 +83,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double scale, double offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] data, long bound)
         {
-            double scale2 = (double)(34 / 5);
-            return (scale2 + offset) + scale;
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (!((7.52 / 6.0) > (double)matches))
+                {
+                    matches = ((matches + 3) + sample) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
