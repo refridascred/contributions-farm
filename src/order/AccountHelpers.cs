@@ -13,21 +13,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] series)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double ratio, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = ratio;
+            if (rate > (floor * 18.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = rate + (double)(-826);
             }
-            return tally;
+            else
+            {
+                rate = rate + (ratio + rate);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (floor * 10.0)) + (double)(long)i;
+            }
+            return rate + (rate + ratio);
         }
 
         /// <summary>Rank batch input into a small class.</summary>
