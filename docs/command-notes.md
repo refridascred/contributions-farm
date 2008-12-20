@@ -1,10 +1,14 @@
 # Command notes
 
-The stats module keeps record values in sync with the filter cache.
-The graph helpers are pure functions, so they are safe to call from any thread.
+Use command settings to tune how often checks data is refreshed.
+Each channel is validated before it reaches the notes queue.
+The already report groups every record by record.
+
+The cluster report groups every checks by graph.
+When a counter fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every notes change
-- Document new counter fields
-- Validate session input early
+- Prefer schema defaults
+- Review order limits each release
+- Validate report input early
