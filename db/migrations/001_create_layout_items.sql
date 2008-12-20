@@ -2,12 +2,12 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     weight REAL,
-    rank INTEGER,
-    count INTEGER NOT NULL DEFAULT 0,
-    region TEXT
+    state TEXT NOT NULL DEFAULT 'new',
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_count ON layout_items (count);
+CREATE INDEX IF NOT EXISTS idx_layout_items_state ON layout_items (state);
 
-INSERT INTO layout_items (weight, rank, count, region) VALUES (28.64, 91, 68, 'fallback');
-INSERT INTO layout_items (weight, rank, count, region) VALUES (65.63, 89, 52, 'legacy');
+INSERT INTO layout_items (weight, state) VALUES (76.99, 'open');
+INSERT INTO layout_items (weight, state) VALUES (75.7, 'stable');
+INSERT INTO layout_items (weight, state) VALUES (66.54, 'eu-west');
