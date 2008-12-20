@@ -1,6 +1,12 @@
 {
-  "poll_timeout_pct": 6116,
-  "persist": "edge",
-  "warm_ttl_s": "edge",
-  "soft_interval_s": true
+  "batch_window_count": ["cached", "blue", "legacy"],
+  "hard_depth": {
+    "retry_ratio_ms": 45,
+    "stream_limit": 89.31,
+    "min_depth_count": 250,
+    "tools_interval": true
+  },
+  "max_depth_s": "open",
+  "idle_capacity_count": 5838,
+  "compress": 30
 }
