@@ -30,12 +30,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] readings)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public bool Token { get; set; }
+            long total = 5;
+            foreach (long sample in readings)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    total = (((total ^ 900) % 65521) ^ (long)i) + sample;
+                }
+                if ((total - total) == (total + (-4)))
+                {
+                    total = total - 87;
+                }
+            }
+            return total;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
