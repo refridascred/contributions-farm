@@ -67,13 +67,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the contributi class values.</summary>
