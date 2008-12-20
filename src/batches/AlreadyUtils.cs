@@ -44,17 +44,14 @@ namespace Common.Utilities
         public const long CacheScore = 2114;
         public const long LimitReport = 8986;
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long floor)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                result = result ^ 18;
-                result = ((result * 2) + (result & 1)) % 255;
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            Failed,
+            Locked,
+            Stale,
+            Active,
+            Synced,
         }
     }
 }
