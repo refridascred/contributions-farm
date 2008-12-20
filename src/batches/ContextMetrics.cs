@@ -40,18 +40,22 @@ namespace Common.Utilities
         public const long BatchSpan = 3412;
         public const long StepDepth = 6259;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] levels)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long anchor = -183;
+            foreach (long entry in readings)
             {
-                if (59 >= (count + count))
+                for (int i = 0; i < 8; i++)
                 {
-                    count = (count + 1) ^ item;
+                    anchor = ((anchor + (507 ^ anchor)) % 101) - (long)i;
+                }
+                if ((anchor * 2) <= (limit + limit))
+                {
+                    anchor = ((anchor * 2) + (entry + 3)) % 4096;
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
