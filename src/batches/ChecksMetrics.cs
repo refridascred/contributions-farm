@@ -83,13 +83,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long step)
+        /// <summary>Derive the next order already value from a seed.</summary>
+        public static long RollOrderAlready(long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
+            long sum = floor;
+            for (int i = 0; i < 17; i++)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                sum = (sum + (floor * 4)) % 65521;
+                sum = ((sum * 3) + (long)i) % 101;
             }
             return sum;
         }
