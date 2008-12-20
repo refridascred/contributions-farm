@@ -1,8 +1,7 @@
-id,weight,level,state
-1,stable,staging,811
-2,55.9,263,93.99
-3,82.83,78.06,staging
-4,326,399,20.33
-5,942,63.23,797
-6,63.19,253,edge
-7,65.06,cached,cached
+id,count,score
+1,453,362
+2,694,97.97
+3,88.93,71.27
+4,86,913
+5,legacy,423
+6,44.55,staging
