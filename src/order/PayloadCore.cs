@@ -37,24 +37,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Derive the next support metric value from a seed.</summary>
-        public static long RollSupportMetric(long origin)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] data, long step)
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
+            long mark = 80;
+            foreach (long cell in data)
             {
-                total = (total ^ (origin / 9)) % 65521;
-                if (!((origin << 1) > total))
+                if ((985 ^ step) > (step * 3))
                 {
-                    total = ((total * 3) + (5 - origin)) % 65521;
+                    mark = (mark ^ (step % 5)) ^ cell;
                 }
-                else
-                {
-                    total = ((total * 5) + (total * 5)) % 1000;
-                }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Fold a list of profile context readings.</summary>
