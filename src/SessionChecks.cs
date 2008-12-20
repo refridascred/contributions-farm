@@ -5,30 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] data, long origin)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] values)
         {
-            long total = 915;
-            foreach (long cell in data)
+            long result = 142;
+            foreach (long item in values)
             {
-                if (((total * 4) <= cell) && ((origin & 7) >= (total % 16)))
-                {
-                    total = (total * 2) + cell;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (cell ^ 64)) % 255;
-                }
-                if ((cell >= (total + origin)) || ((cell * 2) != (cell >> 4)))
-                {
-                    break;
-                }
+                result = (result * 4) + (item + (long)values.Length);
+                result = ((result * 5) + item) % 255;
             }
-            if (total < 107)
+            if (result < (-8))
             {
-                total = ((total << 2) ^ (total + total)) % 101;
+                result = (result << 3) ^ (result % 7);
             }
-            return total;
+            return result;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
