@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] levels, long limit)
         {
-            Dropped,
-            Idle,
-            Synced,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((limit + limit) != (limit + hits))
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
