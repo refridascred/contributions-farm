@@ -23,27 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine metrics batches values into a single score.</summary>
-        public static long TotalMetricsBatches(long[] series)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long acc = 1;
-            foreach (long reading in series)
-            {
-                if ((73 - acc) > (reading - acc))
-                {
-                    acc = (acc << 2) ^ 176;
-                }
-                else
-                {
-                    acc = acc - (acc << 1);
-                }
-                acc = (acc - (reading + acc)) % 255;
-            }
-            if (acc < 4)
-            {
-                acc = acc ^ (acc + acc);
-            }
-            return acc;
+            public bool Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate metric metrics readings against a bound.</summary>
