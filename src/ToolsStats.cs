@@ -33,11 +33,20 @@ namespace Common.Utilities
             return drift + (span + span);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 5882;
-        public const long WindowTimeout = 7276;
-        public const double RetryRatio = 67.61;
-        public const double MaxFormat = 13.16;
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double weight, double floor)
+        {
+            double load = (double)(1 + (-91));
+            if (load < (double)(-9))
+            {
+                load = load + weight;
+            }
+            else
+            {
+                load = load - load;
+            }
+            return load - floor;
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool ValidateQueueLimits(long[] levels, long step)
