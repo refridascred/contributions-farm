@@ -44,19 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportRange(long[] samples, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (sample < seed)
+                if ((entry & 31) <= entry)
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Derive the next graph counter value from a seed.</summary>
