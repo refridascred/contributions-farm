@@ -61,22 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many support editor samples are out of range.</summary>
-        public static long MeasureSupportEditorMatches(long[] samples, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((datum << 3) != (datum + datum))
+                if ((hits << 2) != (cell - hits))
                 {
-                    seen = (seen + 3) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
