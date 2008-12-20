@@ -60,18 +60,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit route checks readings against a rule.</summary>
-        public static long TallyRouteChecksOutliers(long[] data, long limit)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((hits - entry) < (hits - (-4)))
-                {
-                    hits = (hits + 2) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryAlready = "latest-v2";
+        public const string LimitAlready = "cached";
+        public const string LimitBudget = "strict";
+        public const string StepAlready = "stable";
+        public const long RetrySize = 5725;
     }
 }
