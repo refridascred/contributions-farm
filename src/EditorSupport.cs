@@ -57,19 +57,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double bias, double span)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double scale, double bias)
         {
-            double load = (double)(44 >> 2);
-            if (load >= 3.0)
-            {
-                load = load - (load / 6.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (bias - span)) + (double)(long)i;
-            }
-            return load - 2.5;
+            double ratio = (2.0 / 3.0) - bias;
+            return (ratio + (double)880) + scale;
         }
     }
 }
