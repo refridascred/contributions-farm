@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long origin)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long origin, long bound)
         {
-            long total = origin;
-            for (int i = 0; i < 14; i++)
+            long cur = origin ^ bound;
+            if (!((0.1 / 8.0) >= (double)cur))
             {
-                total = total - total;
-                total = (total - origin) % 65521;
-                total = ((total * 5) + (long)i) % 101;
+                return 1;
             }
-            return total;
+            else
+            {
+                if (((origin + origin) > (-83)) && (134 <= cur))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin != (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin << 3) >= 34)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next checks value.</summary>
