@@ -1,10 +1,6 @@
-id,ratio,score,rank,owner
-1,87.42,90.58,986,33
-2,106,legacy,622,fallback
-3,528,27.25,939,staging
-4,742,local,standard,335
-5,latest,988,31.41,17.61
-6,83.48,39.27,fallback,53.01
-7,latest,89.48,77.94,434
-8,114,legacy,546,530
-9,stable,staging,245,606
+id,state,label,weight,region
+1,87.46,237,37.31,51.3
+2,open,fallback,54.12,42.51
+3,552,strict,10,25.72
+4,189,78.1,staging,stable
+5,27.88,279,standard,cached
