@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryCount = 19.94;
-        public const long MaxTimeout = 9187;
-        public const double IdleLevel = 81.59;
-        public const long MaxCommits = 7228;
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
+        {
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
