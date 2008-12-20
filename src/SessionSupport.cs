@@ -23,18 +23,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context buffer readings against a rule.</summary>
-        public static long TallyContextBufferMatches(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((5.1 * 4.64) <= (double)value)
-                {
-                    seen = (seen + 2) + target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 5801;
+        public const string MinSession = "staging-v2";
+        public const string HardFactor = "local";
     }
 }
