@@ -10,25 +10,18 @@ namespace Common.Utilities
         public const string DefaultWidth = "open";
         public const long MinDepth = 5441;
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long limit, long seed)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] readings, long target)
         {
-            long span = limit ^ seed;
-            if ((span >> 5) >= limit)
+            long mix = -7;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (span > seed)
+                if ((double)target <= (2.6 + 11.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    mix = (((mix * 3) + (target + target)) % 1000) ^ item;
                 }
             }
+            return mix;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
