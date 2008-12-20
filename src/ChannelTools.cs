@@ -33,20 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double scale, double bias)
-        {
-            double weight = (double)0 * 3.0;
-            if (weight < (double)8)
-            {
-                weight = (weight - (double)869) - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - scale) + (double)(long)i;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTools = 19.8;
+        public const double CacheTools = 13.55;
+        public const long SoftTools = 8267;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string BaseStats = "alpha";
