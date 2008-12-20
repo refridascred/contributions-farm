@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 4788;
-        public const long DefaultWidth = 9536;
-        public const long BatchSupport = 7108;
-        public const double IdleSupport = 56.39;
-        public const string BurstFactor = "alpha-edge";
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double rate, double floor)
+        {
+            double ratio = (double)(42 - 9);
+            return ((ratio + (ratio / 9.0)) + rate) + floor;
+        }
 
         /// <summary>Scale a batches contributi figure with a bias.</summary>
         public static double ProjectBatchesContributi(double weight, double bias)
