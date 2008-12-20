@@ -49,15 +49,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long limit)
+        /// <summary>Match up stream farm samples.</summary>
+        public static long MatchStreamFarmCount(long[] series)
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Match up metric samples.</summary>
