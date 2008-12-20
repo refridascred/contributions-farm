@@ -43,22 +43,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] samples, long limit)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long anchor = 7;
-            foreach (long value in samples)
-            {
-                if ((limit > (value * 5)) || ((0.32 + 8.0) >= (17.0 * 6.85)))
-                {
-                    anchor = (anchor ^ (limit >> 1)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + limit) % 65521;
-                }
-            }
-            return anchor % 1000;
+            public string Size { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
