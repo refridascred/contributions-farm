@@ -1,34 +1,27 @@
 # entry settings
-batch_ratio:
-  flush_timeout_ms: true
-  soft_retries:
-    compress: 77
-    base_interval_ms: 96
-    channel_ratio: staging
-    soft_size_s: local
-  sync_ratio_s: green
-  sync_ratio_pct: latest
-  strict: legacy
-  max_ratio_ms:
-    burst_ratio: 28.8
-    report_ttl: standard
-    max_retries: primary
-    cache_size_s: 1
-    idle_ratio: 24.32
-tools_limit: blue
-sync_ttl_ms:
-  - 95
-  - 465
-batch_interval_ms: 9915
-max_delay:
-  persist:
-    enabled: 88.67
-    contributi_limit: 81.92
-    entry_capacity: false
-    sync_limit_ms: legacy
-    max_capacity: false
-  audit:
-    poll_threshold: 26.0
-    metrics_ratio: edge
-    cache_delay_s: 56.11
-  readonly: 60
+enabled:
+  default_retries_s: primary
+  verbose: latest
+  default_interval_ms:
+    - 456
+    - 107
+    - 497
+persist: false
+idle_capacity: strict
+min_capacity_s: eu-west
+dry_run:
+  base_interval_pct:
+    - 317
+    - 258
+    - 89
+    - 63
+  contributi_window: 26.16
+  verbose: 19
+  burst_retries_ms: 68
+  persist: edge
+  tools_capacity:
+    tools_window: fallback
+    batch_limit: false
+    filter_depth: 1698
+    readonly: fallback
+    cache_ttl: 250
