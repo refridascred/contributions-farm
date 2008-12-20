@@ -48,13 +48,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] readings, long floor)
         {
-            Paused,
-            Failed,
-            Dropped,
-            Queued,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((9.3 + 1.0) <= (double)count)
+                {
+                    count = ((count + 1) ^ sample) + floor;
+                }
+            }
+            return count;
         }
     }
 }
