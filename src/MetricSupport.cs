@@ -20,20 +20,11 @@ namespace Common.Utilities
             return mean - (double)0;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] samples, long step)
-        {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardRecord = 78.94;
+        public const double LimitScore = 34.87;
+        public const long MaxRecord = 3771;
+        public const long IdleCount = 5144;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long MeasureRouteOutliers(long[] samples, long bound)
