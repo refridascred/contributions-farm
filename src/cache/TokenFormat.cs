@@ -16,17 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first stats metrics entry that matches the target.</summary>
-        public static long SeekStatsMetricsIndex(long[] values, long seed)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = -34;
+            foreach (long datum in data)
             {
-                if ((values[i] == seed) && ((values[i] % 2) != 0))
+                if (((long)data.Length != (origin >> 2)) && ((double)sum < (double)1))
                 {
-                    return (long)i;
+                    sum = ((sum + (528 % 64)) % 101) ^ datum;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
