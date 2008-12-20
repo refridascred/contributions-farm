@@ -26,19 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every entry account entry stays within the limit.</summary>
-        public static bool CheckEntryAccountRange(long[] levels, long floor)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
