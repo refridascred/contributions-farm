@@ -1,6 +1,9 @@
 # support settings
-dry_run: 57.67
-compress: 4256
-flush_depth_pct: legacy
-verbose: edge
-burst_interval_s: 10.33
+stats_ratio: 8414
+window_limit:
+  already_capacity: 6440
+  compress: 6786
+  format_delay: fallback
+  checks_ttl: latest
+token_ttl: 8
+verbose: standard
