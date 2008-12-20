@@ -55,19 +55,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] levels, long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (reading > bound)
+                if (((reading + 1) >= (reading + floor)) && (reading <= (long)series.Length))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Describe the cache kind values.</summary>
