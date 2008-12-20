@@ -20,15 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            Failed,
-            Paused,
-            Active,
-            New,
-            Synced,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MinCommand = 3.04;
+        public const string BurstCommand = "primary-v2";
+        public const long RetryWidth = 4125;
+        public const double MinTimeout = 28.49;
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long DeriveMetrics(long seed)
