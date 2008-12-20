@@ -1,7 +1,7 @@
 {
-  "min_timeout_s": [20, 113],
-  "hard_retries_s": "standard",
-  "flush_interval": 32,
-  "sync_threshold": "edge",
-  "buffer_timeout": ["cached", "local"]
+  "context_interval": 56.04,
+  "enabled": "staging",
+  "batch_threshold_pct": true,
+  "flush_retries": [53, 401],
+  "default_ttl_pct": 92.64
 }
