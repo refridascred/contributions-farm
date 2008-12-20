@@ -5,21 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up batch metrics samples.</summary>
-        public static long OverlapBatchMetricsCount(long[] series)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 83;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                acc = ((acc << 3) ^ (271 + datum)) % 1000;
+                if (datum >= (datum & 3))
                 {
-                    if ((series[i] ^ series[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc << 2) ^ (limit - 819)) % 4096;
+                    break;
+                }
+                if ((5 - acc) == ((long)values.Length & 255))
+                {
+                    acc = (acc << 3) ^ (limit + limit);
                 }
             }
-            return tally;
+            if (acc > 361)
+            {
+                acc = ((acc * 3) + (acc % 100)) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
