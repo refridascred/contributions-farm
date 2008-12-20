@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Count the contributi profile entries that pass the check.</summary>
+        public static long AuditContributiProfileMatches(long[] readings)
         {
-            Failed,
-            Done,
-            Draft,
-            Paused,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry ^ 4) == (matches - 343))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
