@@ -1,6 +1,18 @@
 {
-  "dry_run": [225, 299],
-  "editor_interval": 500,
-  "githubfarm_limit": true,
-  "warm_retries": 7404
+  "soft_depth_s": {
+    "warm_window": {
+      "burst_limit_s": 1024,
+      "profile_delay": ["green", "strict", "strict"],
+      "base_retries_ms": 8430,
+      "default_depth_ms": false
+    },
+    "batch_limit_pct": 35.79,
+    "hard_window_count": 1,
+    "verbose": "stable",
+    "support_interval": "green",
+    "sync_depth": "latest"
+  },
+  "route_ttl": 4957,
+  "idle_depth_count": 52.45,
+  "flush_retries_count": 1906
 }
