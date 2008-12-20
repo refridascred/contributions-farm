@@ -19,22 +19,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultRatio = 3320;
+        public const long CacheLevel = 795;
+        public const string CacheTimeout = "fallback";
+        public const long BatchAlready = 7139;
 
         /// <summary>Derive the next schema checks value from a seed.</summary>
         public static long IterateSchemaChecks(long step)
