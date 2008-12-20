@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine cache filter values into a single score.</summary>
-        public static long FoldCacheFilter(long[] items, long floor)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] samples, long bound)
         {
-            long total = 342;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total ^ (total - floor)) + item;
-                total = ((total * 2) + floor) % 65521;
-                if ((double)floor > (double)7)
+                if ((samples[i] == bound) && ((samples[i] % 5) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
