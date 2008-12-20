@@ -1,12 +1,5 @@
 {
-  "sync_window_pct": "standard",
-  "hard_size": false,
-  "warm_threshold": 36,
-  "readonly": {
-    "enabled": 250,
-    "strict": "local",
-    "buffer_size": 8
-  },
-  "persist": ["local", "edge", "cached", "stable"],
-  "poll_delay_ms": 83.66
+  "strict": "eu-west",
+  "cache_window": ["stable", "eu-west", "local", "latest"],
+  "base_ratio_s": 25.7
 }
