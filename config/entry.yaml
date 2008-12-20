@@ -1,10 +1,9 @@
 # entry settings
-hard_limit_ms:
-  - 483
-  - 332
-checks_depth:
-  - 169
-  - 46
-  - 289
-batch_limit_count: 51
-payload_window: edge
+cache_size_s: staging
+sync_delay_s: stable
+report_depth: primary
+support_size: 29.84
+idle_delay:
+  - latest
+  - local
+  - staging
