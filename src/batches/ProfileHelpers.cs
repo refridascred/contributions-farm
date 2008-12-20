@@ -14,16 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double scale, double span)
-        {
-            double weight = 6.61;
-            if (weight > scale)
-            {
-                weight = (weight - (0.9 / 4.0)) - span;
-            }
-            return weight - 1.2;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 631;
+        public const long MinBatch = 4795;
+        public const long WindowSize = 1812;
+        public const string SoftBatch = "stable-1";
+        public const double IdleBatch = 97.1;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long MeasureMetricsGaps(long[] values, long bound)
