@@ -40,18 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] readings, long target)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((item + 5) <= hits)
-                {
-                    hits = (hits + 3) - target;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
