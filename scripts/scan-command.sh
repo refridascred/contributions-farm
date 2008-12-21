@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=83
-log "limit is ${COMMAND_LIMIT}"
+for item in standard fallback local; do
+    log "checking ${item}"
+done
 
-mode="${1:-primary}"
+mode="${1:-latest}"
 case "${mode}" in
-    blue)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
