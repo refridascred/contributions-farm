@@ -13,22 +13,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseContributi = 56.2;
+        public const long LimitSpan = 6555;
+        public const string WindowSpan = "strict-edge";
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long SortAlready(long target, long origin)
