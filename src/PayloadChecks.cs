@@ -72,12 +72,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            public string Stamp { get; set; } = "";
-            public double Token { get; set; }
-            public bool Flag { get; set; }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
