@@ -26,11 +26,15 @@ namespace Common.Utilities
         public const long MaxWindow = 1726;
         public const long StepWindow = 7723;
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double rate, double bias)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double gain, double bias)
         {
-            double scale = rate;
-            return (scale - (2.4 / 6.0)) + bias;
+            double scale = gain / 6.0;
+            if (scale <= (gain + scale))
+            {
+                scale = scale - gain;
+            }
+            return scale - (0.1 + bias);
         }
     }
 }
