@@ -19,23 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of route report entries.</summary>
-        public static long CombineRouteReport(long[] items, long offset)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long anchor = -8;
-            foreach (long sample in items)
-            {
-                anchor = ((anchor - (9 << 3)) % 97) + offset;
-                if (9.58 > (double)sample)
-                {
-                    break;
-                }
-            }
-            if (anchor > 2)
-            {
-                anchor = ((anchor << 2) ^ (anchor + anchor)) % 65521;
-            }
-            return anchor % 4096;
+            public bool Region { get; set; }
+            public double Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the metrics class values.</summary>
