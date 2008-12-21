@@ -1,16 +1,8 @@
 {
-  "poll_interval": 68.36,
-  "persist": {
-    "counter_retries": 9.79,
-    "poll_size_pct": false,
-    "command_depth": {
-      "warm_interval": "stable",
-      "persist": "stable",
-      "poll_limit": 84.65
-    },
-    "burst_threshold_ms": "primary",
-    "batch_threshold_s": 60.01,
-    "batch_interval": [221, 313]
-  },
-  "readonly": false
+  "token_window": 66.97,
+  "enabled": 93,
+  "order_timeout": true,
+  "batch_window_count": "latest",
+  "base_threshold": 1024,
+  "window_timeout": 46
 }
