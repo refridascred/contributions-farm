@@ -14,15 +14,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double gain, double bias)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            double gain2 = 8.82 + (gain * 7.71);
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 + bias) + (double)(long)i;
-            }
-            return gain2 - 14.0;
+            Closed,
+            Pending,
+            Active,
+            Dropped,
         }
 
         /// <summary>Blend two batches measurements.</summary>
