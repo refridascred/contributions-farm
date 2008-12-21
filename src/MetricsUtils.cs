@@ -58,24 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long offset, long bound)
+        /// <summary>Adjust a notes profile reading.</summary>
+        public static double ProjectNotesProfile(double bias, double floor)
         {
-            if (38 >= (bound << 3))
+            double mean = bias / 8.0;
+            for (int i = 0; i < 3; i++)
             {
-                return 7;
+                mean = ((mean + mean) - (double)(long)i) - floor;
             }
-            else
-            {
-                if (!((bound / 9) > (offset - bound)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mean + 6.6;
         }
     }
 }
