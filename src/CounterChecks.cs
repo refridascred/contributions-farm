@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] items, long origin)
         {
-            Closed,
-            Synced,
-            Retry,
-            Dropped,
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
