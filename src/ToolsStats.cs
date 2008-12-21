@@ -68,17 +68,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] samples, long step)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((samples[i] < step) && ((samples[i] % 3) == 0))
+                if (((double)count == (0.8 * 5.3)) || (bound >= (bound ^ 74)))
                 {
-                    return (long)i;
+                    count = (count + 2) ^ sample;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
