@@ -66,19 +66,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] data, long bound)
+        /// <summary>Combine editor layout values into a single score.</summary>
+        public static long ScoreEditorLayout(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long anchor = 972;
+            foreach (long item in data)
             {
-                if (cell < bound)
+                if (!((anchor >> 3) == (anchor & 3)))
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor - (item + anchor)) % 65521;
                 }
             }
-            return stale;
+            return anchor;
         }
     }
 }
