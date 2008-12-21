@@ -14,12 +14,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Compare every pair of command profile readings.</summary>
+        public static long PairCommandProfileCount(long[] values)
         {
-            Done,
-            Idle,
-            Active,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
