@@ -14,23 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] series)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] items, long target)
         {
-            long state = -99;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                state = (state - (cell - cell)) % 101;
-                if (!((cell / 8) <= (state * 3)))
+                if (reading > target)
                 {
-                    state = ((state << 3) ^ cell) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            if (state > 971)
-            {
-                state = ((state * 3) + 35) % 255;
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
