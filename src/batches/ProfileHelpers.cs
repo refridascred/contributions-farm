@@ -63,12 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Count the support editor entries that pass the check.</summary>
+        public static long TallySupportEditorMatches(long[] samples, long origin)
         {
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((origin << 3) < (value << 2))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a contributi account reading by value.</summary>
