@@ -1,13 +1,11 @@
 # githubfarm settings
-retry_ratio_count:
-  - eu-west
-  - fallback
-strict:
-  dry_run: true
-  idle_threshold: false
-  tools_ratio: stable
-  default_interval_ms: 74.39
-  poll_retries: 83.83
-  flush_interval_s: 7600
-hard_interval_pct: 30
-base_timeout_count: legacy
+batch_interval: 29.38
+default_retries_pct: open
+editor_capacity: strict
+min_interval_s: 88.37
+retry_threshold_s:
+  - 392
+  - 167
+  - 492
+  - 494
+base_delay_ms: edge
