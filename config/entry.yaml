@@ -1,5 +1,8 @@
 # entry settings
-default_ttl: local
-sync_delay_count: false
-soft_size: 56.11
-persist: strict
+max_threshold_count:
+  - 157
+  - 237
+  - 232
+hard_limit_pct: 4958
+min_capacity: 9769
+buffer_interval: open
