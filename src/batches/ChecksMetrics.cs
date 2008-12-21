@@ -46,17 +46,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] series, long bound)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((series[i] <= bound) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                result = (result ^ (long)i) % 65521;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
