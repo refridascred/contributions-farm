@@ -26,14 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            New,
-            Synced,
+            Locked,
             Stale,
-            Closed,
-            Ready,
+            Retry,
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
