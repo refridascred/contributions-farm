@@ -42,17 +42,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] readings, long bound)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
+                total = total ^ (total << 1);
+                total = ((total * 4) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
