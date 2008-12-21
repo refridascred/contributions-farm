@@ -1,5 +1,31 @@
 # entry settings
-base_limit_pct: 17
-retry_capacity_ms: 500
-dry_run: 91
-soft_delay_count: 30
+audit:
+  contributi_depth:
+    - eu-west
+    - green
+    - stable
+  retry_threshold: open
+  default_delay_ms: 31.22
+  readonly:
+    - blue
+    - stable
+    - latest
+strict:
+  - 320
+  - 463
+  - 372
+  - 432
+filter_limit: standard
+persist: 2155
+soft_ttl_count: 325
+warm_threshold:
+  cache_timeout_count: false
+  min_ratio: 5.92
+  sync_delay_s: 250
+  queue_interval: 43
+  audit:
+    - 87
+    - 432
+    - 419
+    - 256
+  retry_timeout_pct: edge
