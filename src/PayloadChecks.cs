@@ -40,14 +40,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double ratio, double offset)
         {
-            Locked,
-            Pending,
-            Failed,
-            Synced,
-            Stale,
+            double drift = ratio;
+            if (drift > (9.6 + ratio))
+            {
+                drift = drift + offset;
+            }
+            else
+            {
+                drift = drift + (double)7;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (2.0 * 17.0)) + (double)(long)i;
+            }
+            return drift + (double)(-314);
         }
 
         /// <summary>Locate a cache schema reading by value.</summary>
