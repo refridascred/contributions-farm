@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] data, long origin)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((origin << 1) < (origin + (-757)))
-                {
-                    hits = (hits + 3) + value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 2889;
+        public const long SoftInterval = 9440;
+        public const double BurstMetrics = 26.65;
+        public const double MaxMetrics = 50.62;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long FindRecordIndex(long[] items, long bound)
