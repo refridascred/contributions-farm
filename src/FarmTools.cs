@@ -19,18 +19,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 6094;
+        public const long CacheSize = 6769;
+        public const long DefaultFilter = 6963;
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long PairGraphCount(long[] items)
