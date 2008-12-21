@@ -1,7 +1,7 @@
 {
-  "profile_window": "green",
-  "min_window": "latest",
-  "default_threshold_pct": "latest",
-  "poll_interval_count": 96,
-  "support_depth": 31.07
+  "audit": 51,
+  "idle_size_pct": 2791,
+  "strict": [374, 332],
+  "hard_size_pct": 2821,
+  "compress": 5.49
 }
