@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] series, long target)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double bias, double span)
         {
-            long anchor = -9;
-            foreach (long value in series)
+            double drift = span;
+            if (drift >= (double)9)
             {
-                if ((7 + anchor) > anchor)
-                {
-                    anchor = ((anchor << 3) ^ (anchor ^ value)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor ^ (target << 3)) % 65521;
-                }
+                drift = (drift + span) - bias;
             }
-            return anchor;
+            else
+            {
+                drift = drift - 2.6;
+            }
+            return drift - span;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
