@@ -13,18 +13,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] readings)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long item in readings)
+            double scale = bias2 * 5.0;
+            if (scale < bias)
             {
-                if (49 <= (item % 64))
-                {
-                    count = count + 2;
-                }
+                scale = scale - bias2;
             }
-            return count;
+            return scale - (bias2 / 4.0);
         }
 
         /// <summary>Measure how many record layout samples are out of range.</summary>
