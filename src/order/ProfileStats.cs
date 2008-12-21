@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] readings, long bound)
+        /// <summary>Check that every format tools entry stays within the limit.</summary>
+        public static bool CheckFormatToolsLimits(long[] levels, long offset)
         {
-            long sum = 91;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                sum = ((sum + (bound + 0)) % 1000) ^ cell;
+                if (sample != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum % 4096;
+            return stale;
         }
 
         /// <summary>Describe the report state values.</summary>
