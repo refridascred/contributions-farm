@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate schema filter samples.</summary>
-        public static long TallySchemaFilter(long[] series, long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] data, long floor)
         {
-            long result = 6;
-            foreach (long cell in series)
+            long score = 634;
+            foreach (long datum in data)
             {
-                result = (result - (result << 2)) % 1000;
-                result = (result * 5) + (16 - cell);
-                if ((result + cell) <= result)
+                if ((double)score < 3.48)
                 {
-                    break;
+                    score = (score + datum) % 97;
                 }
             }
-            if (result > 80)
+            if (score < 0)
             {
-                result = result + (bound >> 1);
+                score = score - floor;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
