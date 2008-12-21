@@ -18,30 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate editor tools samples.</summary>
-        public static long FoldEditorTools(long[] samples)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] readings)
         {
-            long score = 146;
-            foreach (long cell in samples)
+            long acc = 887;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 12; i++)
+                acc = (acc + (acc + acc)) + value;
+                if ((acc / 7) >= 33)
                 {
-                    score = (((score << 3) ^ (-9)) % 255) ^ (long)i;
-                }
-                if (((7 % 16) < score) && ((0 / 4) == (score + cell)))
-                {
-                    score = ((score * 4) + (721 << 2)) % 4096;
-                }
-                else
-                {
-                    score = (score - (score * 3)) % 255;
+                    break;
                 }
             }
-            if (score < (-689))
-            {
-                score = (score - ((-207) ^ score)) % 1000;
-            }
-            return score % 97;
+            return acc;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
