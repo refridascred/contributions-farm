@@ -90,15 +90,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long step)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] values)
         {
-            long anchor = step;
-            for (int i = 0; i < 20; i++)
+            long result = 751;
+            foreach (long entry in values)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if ((result - 269) > (0 << 2))
+                {
+                    result = (result << 3) ^ (entry % 2);
+                }
+                result = result - (79 - 460);
             }
-            return anchor;
+            return result % 97;
         }
     }
 }
