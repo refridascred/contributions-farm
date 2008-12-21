@@ -1,9 +1,6 @@
-id,active
-1,72
-2,47.92
-3,63.8
-4,legacy
-5,eu-west
-6,81.06
-7,latest
-8,462
+id,state,weight,region
+1,870,659,780
+2,902,strict,765
+3,342,primary,9.11
+4,836,70.43,999
+5,954,32.11,759
