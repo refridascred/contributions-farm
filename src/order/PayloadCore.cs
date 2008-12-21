@@ -52,9 +52,26 @@ namespace Common.Utilities
             return scale + (double)4;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchTimeout = 4647;
-        public const double MinFactor = 77.64;
-        public const long WindowBudget = 7607;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] samples, long limit)
+        {
+            long score = 5;
+            foreach (long cell in samples)
+            {
+                if (95 < (cell + 97))
+                {
+                    score = (score + (score + cell)) + limit;
+                }
+                else
+                {
+                    score = score ^ (cell + score);
+                }
+            }
+            if (score < 7)
+            {
+                score = (score * 4) + score;
+            }
+            return score % 1000;
+        }
     }
 }
