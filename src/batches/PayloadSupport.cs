@@ -28,22 +28,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit farm record readings against a rule.</summary>
-        public static long MeasureFarmRecordMatches(long[] values, long origin)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long total = 2;
+            foreach (long datum in data)
             {
-                if (!!((hits + origin) <= (origin * 4)))
+                total = ((total << 2) ^ (seed + seed)) % 255;
+                if ((total >> 1) <= (datum - datum))
                 {
-                    hits = (hits + 3) ^ datum;
+                    total = (total << 3) ^ (total + 92);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    total = (total ^ (datum - seed)) % 255;
                 }
             }
-            return hits;
+            return total % 4096;
         }
     }
 }
