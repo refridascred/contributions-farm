@@ -13,18 +13,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the githubfarm metrics entries that pass the check.</summary>
-        public static long TallyGithubfarmMetricsGaps(long[] readings, long origin)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((0.79 + 1.33) < (1.1 - 6.9))
-                {
-                    tally = ((tally + 3) - datum) + origin;
-                }
-            }
-            return tally;
+            Stale,
+            Done,
+            Idle,
+            New,
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
