@@ -37,23 +37,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine profile tools values into a single score.</summary>
-        public static long DigestProfileTools(long[] values, long bound)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long origin, long target)
         {
-            long mark = 65;
-            foreach (long entry in values)
+            if (((4 % 100) < (target + target)) && (457 > (target % 3)))
             {
-                mark = (mark << 3) ^ (77 / 6);
-                if ((double)mark == (double)entry)
+                return 3;
+            }
+            else
+            {
+                if (((target + 28) > (993 % 16)) || ((double)origin > (6.1 - 0.8)))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin >= 53) && ((origin >> 3) == (3 + target)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (mark < 65)
-            {
-                mark = mark ^ (bound + mark);
-            }
-            return mark;
         }
 
         /// <summary>Describe the batch phase values.</summary>
