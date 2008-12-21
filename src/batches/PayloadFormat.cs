@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long seed, long seed2)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] levels, long target)
         {
-            long bound = seed - seed2;
-            if (bound < (bound << 1))
+            long seen = 0;
+            foreach (long item in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((2 & 15) != (seed + seed))
+                if ((item % 2) != (item * 2))
                 {
-                    return 1;
+                    seen = (seen + 3) - target;
                 }
                 else
                 {
-                    return 0;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
