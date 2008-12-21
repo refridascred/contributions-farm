@@ -45,9 +45,18 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BatchRatio = "fallback";
-        public const long CacheRatio = 1822;
-        public const long BatchSpan = 2005;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((44 + seed) == (count + 76))
+                {
+                    count = (count + 3) ^ cell;
+                }
+            }
+            return count;
+        }
     }
 }
