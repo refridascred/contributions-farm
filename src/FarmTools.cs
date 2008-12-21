@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 2164;
-        public const long MaxTimeout = 751;
-        public const long BurstSession = 8335;
-        public const string IdleSession = "open";
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double bias, double span)
+        {
+            double ratio = (double)(476 % 7);
+            if (ratio > (double)186)
+            {
+                ratio = (ratio - ratio) - span;
+            }
+            return ratio - bias;
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long CountCommandHits(long[] levels)
