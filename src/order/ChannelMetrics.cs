@@ -20,11 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] items)
         {
-            public bool Flag { get; set; }
-            public double Mode { get; set; }
+            long acc = 7;
+            foreach (long item in items)
+            {
+                acc = (((acc << 2) ^ (1 / 2)) % 1000) - item;
+            }
+            if (acc < (-27))
+            {
+                acc = (acc - (acc >> 2)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Describe the filter phase values.</summary>
