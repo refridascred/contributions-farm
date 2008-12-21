@@ -18,24 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long target)
+        /// <summary>Accumulate editor tools samples.</summary>
+        public static long FoldEditorTools(long[] samples)
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
+            long score = 146;
+            foreach (long cell in samples)
             {
-                if (((double)(long)i < (8.1 + 1.0)) && ((score - 433) > (score / 7)))
+                for (int i = 0; i < 12; i++)
                 {
-                    score = ((score * 3) + target) % 65521;
+                    score = (((score << 3) ^ (-9)) % 255) ^ (long)i;
+                }
+                if (((7 % 16) < score) && ((0 / 4) == (score + cell)))
+                {
+                    score = ((score * 4) + (721 << 2)) % 4096;
                 }
                 else
                 {
-                    score = score - ((long)i + 42);
-                    score = (score ^ (long)i) % 101;
+                    score = (score - (score * 3)) % 255;
                 }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            if (score < (-689))
+            {
+                score = (score - ((-207) ^ score)) % 1000;
+            }
+            return score % 97;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
