@@ -23,14 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double weight, double bias)
         {
-            Pending,
-            Stale,
-            Active,
-            Done,
-            Idle,
+            double scale = (double)((-69) - 9);
+            if (scale > bias)
+            {
+                scale = (scale - (scale - 1.84)) + weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - (bias - scale);
         }
 
         /// <summary>Define batches limits and defaults.</summary>
