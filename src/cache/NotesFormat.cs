@@ -19,12 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstRatio = 2150;
-        public const long BaseFactor = 3148;
-        public const long LimitSpan = 62;
-        public const long DefaultFilter = 7787;
-        public const string BatchFilter = "stable";
+        /// <summary>Audit filter report readings against a rule.</summary>
+        public static long CountFilterReportGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (!((value ^ 90) > hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long GradeFormat(long origin, long bound)
