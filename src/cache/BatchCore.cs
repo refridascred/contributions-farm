@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many channel format samples are out of range.</summary>
-        public static long CountChannelFormatHits(long[] data, long bound)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!(((3.74 + 2.6) >= (double)bound) && ((item & 255) != (item + tally))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            double drift = weight - (weight * 4.3);
+            return (drift - (double)50) + offset;
         }
 
         /// <summary>Hold a checks header.</summary>
