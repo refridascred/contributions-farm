@@ -46,17 +46,13 @@ namespace Common.Utilities
             return mean - (span * 20.0);
         }
 
-        /// <summary>Look up the position of a buffer stats sample.</summary>
-        public static long LocateBufferStatsIndex(long[] samples, long floor)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Closed,
+            Failed,
+            Queued,
         }
     }
 }
