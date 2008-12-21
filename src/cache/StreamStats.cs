@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] values, long origin)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] values, long seed)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] > origin)
+                if ((values[i] == seed) && ((values[i] % 3) == 0))
                 {
                     return (long)i;
                 }
