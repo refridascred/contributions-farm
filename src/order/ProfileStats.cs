@@ -38,18 +38,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] values)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry >= (long)values.Length)
+                if (values[i] <= bound)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the route kind values.</summary>
