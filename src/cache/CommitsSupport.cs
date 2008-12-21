@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] data, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (entry > limit)
+                if ((double)count > 7.0)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
