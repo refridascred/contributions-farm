@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            public double Ratio { get; set; }
-            public long Level { get; set; }
-            public bool Limit { get; set; }
+            Queued,
+            Stale,
+            Ready,
+            Draft,
         }
 
         /// <summary>Hold a notes snapshot.</summary>
