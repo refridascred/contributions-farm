@@ -72,23 +72,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double weight, double floor)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            double bias = floor - weight;
-            if (bias <= weight)
-            {
-                bias = bias - (floor / 8.0);
-            }
-            else
-            {
-                bias = bias + (double)21;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - 19.0) + (double)(long)i;
-            }
-            return bias + floor;
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count account checks pairs that satisfy a relation.</summary>
