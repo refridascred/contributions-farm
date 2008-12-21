@@ -89,18 +89,26 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] series)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] items)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long anchor = 13;
+            foreach (long value in items)
             {
-                if (((seen - seen) >= (395 << 3)) && ((item - item) < (53 << 2)))
+                if ((value - 1) == (value + anchor))
                 {
-                    seen = seen + 1;
+                    anchor = ((anchor << 2) ^ (anchor ^ value)) % 97;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + value) % 65521;
                 }
             }
-            return seen;
+            if (anchor > 643)
+            {
+                anchor = (anchor + (757 + (-93))) % 65521;
+            }
+            return anchor % 4096;
         }
     }
 }
