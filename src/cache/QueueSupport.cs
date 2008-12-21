@@ -19,12 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
-            public long Limit { get; set; }
+            Paused,
+            Active,
+            Dropped,
+            Failed,
+            Idle,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
