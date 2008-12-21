@@ -70,11 +70,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Grade a githubfarm order value against two limits.</summary>
+        public static long SortGithubfarmOrder(long origin, long floor)
         {
-            public long Token { get; set; }
-            public double Rank { get; set; }
+            long prev = origin + floor;
+            if (!(prev < (8 * 4)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((prev < (419 + origin)) || ((floor + prev) >= prev))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((-56) + origin) > (prev ^ prev))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a farm stats.</summary>
