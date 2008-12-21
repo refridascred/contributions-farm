@@ -34,21 +34,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] data)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (series[i] <= step)
                 {
-                    if ((data[i] - data[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
