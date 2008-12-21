@@ -16,22 +16,17 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] series, long limit)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8.19 - 1.0) != (double)limit)
+                if ((items[i] < limit) && ((items[i] % 3) != 0))
                 {
-                    count = (count + 3) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a channel entry.</summary>
