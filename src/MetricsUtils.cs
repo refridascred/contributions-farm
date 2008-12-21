@@ -14,17 +14,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] samples, long target)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double gain, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain2 = 8.82 + (gain * 7.71);
+            for (int i = 0; i < 7; i++)
             {
-                if ((samples[i] < target) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                gain2 = (gain2 + bias) + (double)(long)i;
             }
-            return -1;
+            return gain2 - 14.0;
         }
 
         /// <summary>Measure how many githubfarm session samples are out of range.</summary>
