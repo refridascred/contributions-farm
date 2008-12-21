@@ -40,9 +40,18 @@ namespace Common.Utilities
         public const long WindowLevel = 6381;
         public const long MaxSpan = 3540;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 439;
-        public const long HardDepth = 9879;
-        public const long RetryScore = 2186;
+        /// <summary>Audit record tools readings against a rule.</summary>
+        public static long CountRecordToolsMatches(long[] readings, long limit)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((item << 1) <= item)
+                {
+                    matches = (matches + 3) + limit;
+                }
+            }
+            return matches;
+        }
     }
 }
