@@ -22,11 +22,29 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long bound)
         {
-            public double Score { get; set; }
-            public long Weight { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = (mix * 3) + (mix >> 1);
+                if (bound >= (mix % 8))
+                {
+                    mix = mix + mix;
+                }
+                else
+                {
+                    mix = mix ^ (mix ^ mix);
+                }
+                if (mix > (bound >> 1))
+                {
+                    mix = ((mix << 3) ^ (bound / 3)) % 1000;
+                    mix = ((mix << 2) ^ (mix + mix)) % 65521;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
