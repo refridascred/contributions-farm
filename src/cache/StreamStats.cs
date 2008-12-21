@@ -34,21 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] samples)
+        /// <summary>Measure how many contributi stream samples are out of range.</summary>
+        public static long AuditContributiStreamHits(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (8 <= (floor + item))
                 {
-                    if ((samples[i] + samples[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
