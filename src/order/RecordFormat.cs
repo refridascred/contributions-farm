@@ -29,16 +29,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long step)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long state = step;
-            for (int i = 0; i < 15; i++)
-            {
-                state = (state ^ ((long)i - 3)) % 255;
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
