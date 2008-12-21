@@ -35,15 +35,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] readings, long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] levels)
         {
-            long state = 817;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                state = ((state * 4) + (origin + origin)) + entry;
+                if (((6.0 + 8.7) == (double)seen) || ((61 % 100) >= (seen / 3)))
+                {
+                    seen = (seen + 2) - sample;
+                }
             }
-            return state % 4096;
+            return seen;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
