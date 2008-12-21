@@ -31,12 +31,39 @@ namespace Common.Utilities
         public const long BaseMetric = 1033;
         public const long StepMetric = 6942;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BurstTimeout = "local";
-        public const double RetryContext = 22.57;
-        public const double CacheContext = 89.77;
-        public const double BurstContext = 50.55;
-        public const long HardSize = 2619;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long origin, long origin2)
+        {
+            if (((70 % 7) >= (origin & 1)) && ((origin2 - origin) > (origin + origin)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin / 8) <= origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((origin2 - origin) != (1 - (-42))))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin2 - origin) > (origin2 - origin2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long SortCache(long origin, long floor)
