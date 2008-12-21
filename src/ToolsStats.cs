@@ -55,20 +55,23 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long origin)
+        /// <summary>Scale a batch stats figure with a bias.</summary>
+        public static double AdjustBatchStats(double scale, double floor)
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
+            double drift = scale;
+            if (drift < scale)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    total = (total - origin) - (long)i2;
-                }
-                total = total - ((long)i & 63);
-                total = ((total * 5) + (long)i) % 65521;
+                drift = drift + (double)9;
             }
-            return total;
+            else
+            {
+                drift = drift + (drift - floor);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (scale * 9.0)) - (double)(long)i;
+            }
+            return drift + (double)0;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
