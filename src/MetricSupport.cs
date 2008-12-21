@@ -14,38 +14,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long floor, long step)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] samples, long origin)
         {
-            if (((72 >> 4) <= step) && ((double)step == (3.0 + 4.8)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step << 1) >= (85 & 7))
+                if (samples[i] <= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((5.8 / 4.0) > (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (447 < (floor & 15))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
