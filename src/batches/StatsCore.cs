@@ -10,24 +10,18 @@ namespace Common.Utilities
         public const long BatchTimeout = 1055;
         public const string BaseGithubfarm = "fallback-1";
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] items, long bound)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long offset)
         {
-            long sum = 2;
-            foreach (long entry in items)
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((22 * 2) >= (entry - sum))
+                if (!((53 << 1) > (499 + sum)))
                 {
-                    sum = sum ^ sum;
+                    sum = ((sum << 2) ^ (long)i) % 4096;
+                    sum = sum + ((long)i << 1);
                 }
-                else
-                {
-                    sum = sum - (632 / 8);
-                }
-            }
-            if (sum > 257)
-            {
-                sum = sum + (67 - bound);
+                sum = ((sum * 2) + (long)i) % 1000;
             }
             return sum;
         }
