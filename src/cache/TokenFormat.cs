@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BatchFarm = 2.56;
-        public const long WindowFarm = 9777;
-        public const double SoftRatio = 93.37;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 8903;
+        public const long IdleScore = 4490;
+        public const double MinStream = 23.76;
+        public const long BaseCount = 1445;
+        public const long HardBudget = 5877;
 
         /// <summary>Project the next buffer metrics value.</summary>
         public static double ProjectBufferMetrics(double gain, double floor)
