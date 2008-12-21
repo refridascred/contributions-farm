@@ -22,12 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] readings, long floor)
         {
-            New,
-            Queued,
-            Failed,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (!((floor % 60) >= (565 / 7)) || !(item > count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
