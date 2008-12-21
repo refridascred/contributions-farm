@@ -18,12 +18,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseDepth = "primary";
-        public const string HardBuffer = "strict-v2";
-        public const double BatchBuffer = 40.12;
-        public const double BaseInterval = 18.1;
-        public const string LimitRatio = "stable-v2";
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Idle,
+            Failed,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long RankSupport(long offset, long origin)
