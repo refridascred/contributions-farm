@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double scale, double bias)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] readings, long target)
         {
-            double weight = bias - (double)27;
-            if (weight > (bias * 9.9))
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight + (double)573;
+                if ((readings[i] <= target) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight + (scale - scale);
+            return -1;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
