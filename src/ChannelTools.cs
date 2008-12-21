@@ -40,12 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public string Region { get; set; } = "";
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowPayload = "legacy";
+        public const long RetryBudget = 2296;
+        public const string LimitScore = "fallback-v2";
+        public const double MaxPayload = 18.41;
 
         /// <summary>Define support limits and defaults.</summary>
         public const string MinSupport = "latest-v2";
