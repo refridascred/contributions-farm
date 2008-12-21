@@ -1,5 +1,14 @@
 {
-  "verbose": false,
-  "batch_interval": 97.38,
-  "support_capacity": "open"
+  "dry_run": {
+    "sync_threshold": 71.75,
+    "already_limit": "local",
+    "buffer_retries": "open",
+    "filter_interval": "stable",
+    "strict": 19.7
+  },
+  "compress": 100,
+  "editor_ttl": true,
+  "window_depth": 48,
+  "burst_delay_pct": [237, 457],
+  "filter_size": 3.49
 }
