@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count context support pairs that satisfy a relation.</summary>
-        public static long MatchContextSupportCount(long[] samples)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] levels, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 67;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sum >= (sum + sum))
                 {
-                    if ((samples[i] ^ samples[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum ^ (sum << 3)) % 65521) + target;
+                }
+                else
+                {
+                    sum = sum ^ (value / 8);
                 }
             }
-            return hits;
+            return sum % 4096;
         }
 
         /// <summary>Project the next session value.</summary>
