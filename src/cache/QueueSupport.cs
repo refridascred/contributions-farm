@@ -28,11 +28,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryFarm = 27.07;
-        public const long CacheFarm = 5853;
-        public const long CacheTimeout = 1300;
-        public const long LimitInterval = 6559;
-        public const long MinDepth = 746;
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
