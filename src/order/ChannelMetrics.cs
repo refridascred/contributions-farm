@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double weight, double offset)
         {
-            Queued,
-            Draft,
-            Closed,
-            Dropped,
-            Stale,
+            double scale = (weight + offset) - offset;
+            if (scale <= offset)
+            {
+                scale = scale - weight;
+            }
+            return scale + offset;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
