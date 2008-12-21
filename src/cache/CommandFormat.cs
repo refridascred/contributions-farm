@@ -14,12 +14,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitInterval = 2533;
-        public const double DefaultScore = 86.15;
-        public const long CacheOrder = 7006;
-        public const string MaxOrder = "open";
-        public const long BatchInterval = 4577;
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double MinFormat = 85.32;
