@@ -36,20 +36,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long limit)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = ((anchor + (80 % 12)) % 255) - (long)i2;
-                    anchor = (anchor ^ (limit % 60)) % 101;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
