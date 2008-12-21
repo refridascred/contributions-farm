@@ -40,11 +40,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowPayload = "legacy";
-        public const long RetryBudget = 2296;
-        public const string LimitScore = "fallback-v2";
-        public const double MaxPayload = 18.41;
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long bound, long target)
+        {
+            long slot = bound ^ target;
+            if ((double)slot >= (double)bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target % 64) < (49 << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string MinSupport = "latest-v2";
