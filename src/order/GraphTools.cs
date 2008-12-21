@@ -14,38 +14,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long target, long limit)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            if (!((target & 3) > target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit >> 2) != (target << 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target >> 5) == (target >> 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (target >= (limit + target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the filter phase values.</summary>
