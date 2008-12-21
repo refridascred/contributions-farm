@@ -36,31 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long target, long offset)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            if ((double)offset <= (8.63 / 6.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (target < offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((target + target) == (target + offset)) && (target > (target << 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public double Token { get; set; }
+            public double Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
