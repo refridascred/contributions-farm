@@ -46,19 +46,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] series)
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((double)mark == (7.5 / 2.0))
+                if (reading < (reading >> 4))
                 {
-                    mark = mark - 60;
+                    hits = hits + 2;
                 }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
