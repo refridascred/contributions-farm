@@ -50,22 +50,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of order notes readings.</summary>
-        public static long WeighOrderNotes(long[] data)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long origin, long bound)
         {
-            long total = -4;
-            foreach (long value in data)
+            long gap = origin ^ bound;
+            if ((double)bound > (1.5 + 7.0))
             {
-                if (((-92) + total) < (value - total))
+                return 5;
+            }
+            else
+            {
+                if (gap > (61 - gap))
                 {
-                    total = ((total * 2) + total) % 255;
+                    return 6;
                 }
-                if ((value * 5) < (total ^ total))
+                else
                 {
-                    break;
+                    if (!((origin >> 5) < (bound * 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
