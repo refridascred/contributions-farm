@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double ratio, double floor)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            double bias = ratio;
-            if (bias > floor)
-            {
-                bias = bias - bias;
-            }
-            else
-            {
-                bias = bias + (double)43;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + (floor + floor)) + (double)(long)i;
-            }
-            return bias + (20.0 * 5.4);
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
