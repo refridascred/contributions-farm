@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] values, long limit)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long bound)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long score = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)tally >= (8.5 / 8.0))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    tally = ((tally + 2) + datum) - limit;
+                    score = ((score * 3) + ((long)i + 0)) ^ (long)i2;
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
