@@ -1,34 +1,7 @@
 # support settings
-base_window:
-  burst_retries_ms:
-    burst_depth_count: 81
-    readonly: 28.27
-    flush_limit:
-      - 455
-      - 261
-      - 145
-      - 171
-    batch_timeout_ms: 13.62
-    dry_run: 59.84
-    batch_capacity:
-      - 451
-      - 370
-  report_window: 55.94
-  enabled: 5239
-  hard_delay_count: edge
-  persist: false
-  audit:
-    - local
-    - eu-west
-retry_ratio_pct: 38.26
-readonly: false
-burst_ttl:
-  batches_window: 50.76
-  min_interval:
-    - 28
-    - 290
-  max_size_count:
-    readonly: 18
-    tools_capacity: cached
-    buffer_delay: true
-stats_retries: 30
+default_ttl_count: 69
+idle_window: edge
+cache_timeout: false
+sync_threshold_count: eu-west
+audit: true
+poll_delay: standard
