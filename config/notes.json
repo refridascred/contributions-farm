@@ -1,6 +1,5 @@
 {
-  "soft_retries_count": 500,
-  "burst_limit": [251, 19, 231, 96],
-  "idle_retries": "green",
-  "order_ratio": "cached"
+  "max_interval_count": "local",
+  "verbose": "stable",
+  "context_window": 50.67
 }
