@@ -32,11 +32,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public bool Stamp { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 6691;
+        public const long BurstScore = 3039;
+        public const long BurstCount = 4899;
+        public const string LimitWindow = "strict";
     }
 }
