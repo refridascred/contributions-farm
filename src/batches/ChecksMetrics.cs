@@ -28,26 +28,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of filter entry readings.</summary>
-        public static long CombineFilterEntry(long[] samples)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long mix = 63;
-            foreach (long value in samples)
-            {
-                if (((6.0 - 6.96) == (double)mix) && (mix < (value ^ value)))
-                {
-                    mix = (mix - (mix % 8)) % 255;
-                }
-                if ((8 % 8) < (mix / 4))
-                {
-                    mix = ((mix * 2) + (8 - (-300))) % 101;
-                }
-                else
-                {
-                    mix = mix - mix;
-                }
-            }
-            return mix;
+            Draft,
+            Synced,
+            Closed,
         }
 
         /// <summary>Check that every checks entry entry stays within the limit.</summary>
