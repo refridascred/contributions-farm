@@ -1,10 +1,11 @@
 {
-  "readonly": 16,
-  "compress": {
-    "cache_ttl": "local",
-    "audit": 58.21,
-    "min_ratio_pct": 11
+  "payload_ttl": {
+    "soft_timeout": 60,
+    "retry_size_ms": "legacy",
+    "readonly": "blue"
   },
-  "verbose": 70,
-  "queue_ratio": "primary"
+  "batch_depth": ["blue", "strict", "staging", "strict"],
+  "strict": 0.4,
+  "commits_retries": false,
+  "default_capacity": "cached"
 }
