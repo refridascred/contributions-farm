@@ -24,14 +24,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Measure how many githubfarm session samples are out of range.</summary>
+        public static long AuditGithubfarmSessionOutliers(long[] values)
         {
-            Closed,
-            Pending,
-            Stale,
-            Idle,
-            Draft,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (!((value % 100) >= tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank report input into a small class.</summary>
