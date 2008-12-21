@@ -56,26 +56,13 @@ namespace Common.Utilities
         public const long MaxFactor = 2688;
         public const long BatchBudget = 9737;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] readings)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long mix = 4;
-            foreach (long sample in readings)
-            {
-                if ((sample - sample) >= mix)
-                {
-                    mix = ((mix * 4) + 5) % 97;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (sample + mix);
-                }
-            }
-            if (mix > 261)
-            {
-                mix = (mix - (mix ^ mix)) % 97;
-            }
-            return mix % 65521;
+            Draft,
+            Idle,
+            Stale,
+            Paused,
         }
 
         /// <summary>Combine format values into a single score.</summary>
