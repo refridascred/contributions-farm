@@ -55,11 +55,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardCluster = 55.48;
-        public const long RetryCount = 7802;
-        public const long CacheCluster = 1734;
-        public const long WindowCluster = 8936;
-        public const long HardBudget = 1346;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((221 / 7) > (matches + entry))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
