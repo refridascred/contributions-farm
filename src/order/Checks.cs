@@ -67,22 +67,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] data)
+        /// <summary>Combine notes window values into a single score.</summary>
+        public static long TallyNotesWindow(long[] readings, long limit)
         {
-            long acc = 3;
-            foreach (long entry in data)
+            long score = 386;
+            foreach (long datum in readings)
             {
-                if ((0 >= (entry + 51)) && ((acc << 3) >= acc))
+                if (!(((-783) - score) < (score % 97)))
                 {
-                    acc = (acc ^ (entry - acc)) % 255;
+                    score = (((score - (0 + 31)) % 101) + datum) - limit;
                 }
-                else
-                {
-                    acc = (acc << 3) ^ (long)data.Length;
-                }
+                score = ((score * 3) + (758 - score)) % 4096;
             }
-            return acc;
+            return score;
         }
     }
 }
