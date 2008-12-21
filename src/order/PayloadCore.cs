@@ -41,12 +41,16 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleSchema = "cached";
-        public const long HardScore = 5466;
-        public const long WindowSchema = 526;
-        public const string BaseSchema = "stable";
-        public const string SoftSchema = "stable-1";
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double rate, double floor)
+        {
+            double scale = rate;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = ((scale - scale) + (double)(long)i) + floor;
+            }
+            return scale + (double)4;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BatchTimeout = 4647;
