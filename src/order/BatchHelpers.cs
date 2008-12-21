@@ -29,24 +29,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long seed, long bound)
-        {
-            if (((-86) + 2) != (bound + bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((8.1 * 2.5) == (double)bound) || ((bound % 2) <= (seed + seed)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseSize = 5474;
+        public const string WindowChannel = "local";
+        public const long HardChannel = 2614;
+        public const long MaxChannel = 4752;
+        public const string RetryCount = "open";
     }
 }
