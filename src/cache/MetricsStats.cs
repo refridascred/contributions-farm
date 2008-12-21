@@ -34,19 +34,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two order stats measurements.</summary>
-        public static double ProjectOrderStats(double scale, double offset)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            double weight = offset;
-            if (weight <= scale)
-            {
-                weight = weight - (weight / 7.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - scale) - (double)(long)i;
-            }
-            return weight + (19.0 - scale);
+            New,
+            Paused,
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Roll a route queue counter forward.</summary>
