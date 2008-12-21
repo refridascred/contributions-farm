@@ -1,17 +1,7 @@
 # entry settings
-cache_interval_count: open
-tools_capacity: open
-verbose:
-  - 90
-  - 4
-  - 405
-  - 326
-cache_size: 55
-command_limit:
-  farm_window: primary
-  idle_size_count:
-    - blue
-    - stable
-    - strict
-    - standard
-  persist: 45
+persist: 30
+command_delay: false
+sync_threshold_pct:
+  - local
+  - cached
+  - edge
