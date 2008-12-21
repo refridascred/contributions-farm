@@ -50,24 +50,30 @@ namespace Common.Utilities
         public const long SoftRatio = 3781;
         public const long MinChannel = 8731;
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long seed, long origin)
+        /// <summary>Accumulate stats report samples.</summary>
+        public static long TotalStatsReport(long[] readings)
         {
-            if (((seed >> 4) > (origin ^ origin)) && ((origin & 1) > seed))
+            long anchor = 5;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed * 3) <= origin)
+                if (datum > 339)
                 {
-                    return 4;
+                    anchor = ((anchor * 5) + (datum % 100)) % 101;
                 }
                 else
                 {
-                    return 5;
+                    anchor = (anchor - (anchor << 3)) % 4096;
+                }
+                if ((anchor >> 3) <= datum)
+                {
+                    break;
                 }
             }
+            if (anchor > 309)
+            {
+                anchor = (anchor + (anchor - anchor)) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
