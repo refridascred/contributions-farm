@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many schema stats samples are out of range.</summary>
-        public static long CountSchemaStatsHits(long[] readings)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count <= (506 * 4)) && (count > (750 % 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 1) - entry;
+                    if ((samples[i] + samples[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
