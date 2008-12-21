@@ -79,19 +79,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] series, long target)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] data, long bound)
         {
-            long state = 425;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                state = ((state - (datum - 5)) % 4096) - target;
-                if ((735 + state) != (datum - state))
+                if (cell < bound)
                 {
-                    state = state + (state - 84);
+                    stale = false;
+                    break;
                 }
             }
-            return state;
+            return stale;
         }
     }
 }
