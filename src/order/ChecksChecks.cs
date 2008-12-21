@@ -40,18 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((seen % 64) >= (cell & 31))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 485;
+        public const long StepMetrics = 6043;
+        public const string CacheMetrics = "stable-1";
+        public const double SoftMetrics = 57.57;
     }
 }
