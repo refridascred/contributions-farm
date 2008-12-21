@@ -1,5 +1,17 @@
 {
-  "compress": "standard",
-  "sync_threshold_pct": 5144,
-  "sync_ratio_pct": 1024
+  "context_ttl": 100,
+  "contributi_capacity": {
+    "batch_depth_ms": "eu-west",
+    "poll_size_s": 500,
+    "base_size": {
+      "warm_threshold": 19.88,
+      "base_delay_s": 7245,
+      "base_timeout": "fallback",
+      "soft_interval_s": ["eu-west", "eu-west", "blue"],
+      "cache_capacity_count": 1480,
+      "payload_timeout": 771
+    }
+  },
+  "verbose": 47,
+  "default_size_ms": "blue"
 }
