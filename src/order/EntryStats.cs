@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardInterval = 7584;
-        public const long DefaultFilter = 4676;
-        public const long BurstLevel = 4235;
+        /// <summary>Count the payload channel entries that pass the check.</summary>
+        public static long TallyPayloadChannelOutliers(long[] data, long bound)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (sample < (bound + 46))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
