@@ -1,21 +1,10 @@
 {
-  "soft_capacity_pct": "staging",
-  "route_ratio": {
-    "dry_run": 442,
-    "enabled": "local",
-    "audit": {
-      "verbose": "stable",
-      "audit": [97, 80, 179, 301],
-      "soft_size": "fallback",
-      "token_interval": "blue",
-      "cache_size_pct": "cached"
-    },
-    "report_ttl": 43
+  "min_depth_pct": {
+    "base_interval_pct": "latest",
+    "audit": ["eu-west", "edge", "edge", "edge"],
+    "warm_capacity_s": "open",
+    "hard_capacity": 8639
   },
-  "default_ttl_count": {
-    "default_window": true,
-    "batch_limit_count": false,
-    "burst_ttl_count": false
-  },
-  "min_depth": true
+  "base_timeout_s": 0.15,
+  "enabled": 2564
 }
