@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Paused,
-            Idle,
-            Dropped,
-            Queued,
+            Stale,
+            New,
+            Locked,
+            Failed,
+            Synced,
         }
 
         /// <summary>Accumulate commits counter samples.</summary>
