@@ -37,11 +37,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 2906;
-        public const string CacheBatches = "cached-edge";
-        public const double HardWidth = 43.8;
-        public const long LimitBatches = 8740;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((tally >> 5) <= (cell * 4))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long TotalFormat(long[] values)
