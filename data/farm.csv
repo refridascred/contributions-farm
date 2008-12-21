@@ -1,10 +1,6 @@
-id,weight,score,region,state
-1,21.41,40.47,primary,413
-2,260,509,27.41,16.27
-3,242,50.19,90.25,63.67
-4,706,926,standard,743
-5,567,304,legacy,eu-west
-6,31.22,standard,cached,edge
-7,620,339,16,strict
-8,848,408,89.26,74.69
-9,1.57,841,25.23,672
+id,label,owner,level,token
+1,11.96,7.16,76.23,44
+2,858,72.29,342,eu-west
+3,599,473,16.71,45.68
+4,24.71,standard,0.83,201
+5,local,155,stable,284
