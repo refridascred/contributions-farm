@@ -16,12 +16,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 2239;
-        public const long MaxEntry = 1674;
-        public const long BatchScore = 5337;
-        public const long BaseEntry = 9295;
-        public const long WindowDepth = 6873;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (((-4) + (-862)) == (42 - count))
+                {
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool VerifyContributiRange(long[] readings, long offset)
