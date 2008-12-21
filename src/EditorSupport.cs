@@ -63,22 +63,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many queue checks samples are out of range.</summary>
-        public static long MeasureQueueChecksHits(long[] levels)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterRange(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if ((double)tally != (4.72 / 9.0))
+                if (item < limit)
                 {
-                    tally = (tally + 2) - value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
