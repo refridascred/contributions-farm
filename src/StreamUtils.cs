@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Blend two contributi queue measurements.</summary>
-        public static double ScaleContributiQueue(double gain, double floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] series)
         {
-            double rate = (floor - floor) * 1.47;
-            if (rate >= (rate / 9.0))
+            long sum = 11;
+            foreach (long value in series)
             {
-                rate = rate + (rate + floor);
+                long offset = (913 ^ value) & 3;
+                if (!((double)value > (8.5 - 7.3)))
+                {
+                    offset = (offset * 4) + (offset + sum);
+                    sum = sum - offset;
+                }
+                if ((sum ^ sum) == ((long)series.Length - (long)series.Length))
+                {
+                    sum = ((sum * 5) + sum) % 97;
+                }
+                else
+                {
+                    sum = sum + (92 - value);
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (double)3) + (double)(long)i;
-            }
-            return rate - gain;
+            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
