@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const double RetryAccount = 56.08;
         public const long StepLevel = 4717;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] samples, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] samples)
         {
-            long hits = 0;
+            long matches = 0;
             foreach (long entry in samples)
             {
-                if ((seed / 8) >= (hits % 100))
+                if ((947 - matches) > (matches + matches))
                 {
-                    hits = (hits + 2) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
