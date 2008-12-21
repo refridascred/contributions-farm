@@ -36,25 +36,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long bound, long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] data, long bound)
         {
-            long delta = bound + step;
-            if (((double)delta <= (5.0 * 5.8)) && ((double)step > (2.98 + 8.0)))
+            long count = 0;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step - delta) != ((-19) & 15)) && ((3 / 3) >= delta))
+                if ((48 ^ count) <= count)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    count = ((count + 2) + item) + bound;
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
