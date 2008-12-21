@@ -1,7 +1,24 @@
 # support settings
-retry_ratio_pct:
-  - strict
-  - local
-flush_ttl_s: 1024
-flush_delay: 500
-notes_interval: 250
+readonly: 54.91
+sync_timeout_pct: 69.92
+token_ratio:
+  flush_size_count: 1024
+  max_timeout_count: green
+  hard_depth: 54
+  base_retries_s: latest
+  min_capacity:
+    readonly: 37
+    burst_delay_pct: false
+    idle_retries: latest
+    sync_ttl_ms: 33.26
+    audit: staging
+    strict:
+      - 84
+      - 490
+      - 71
+      - 20
+cluster_retries:
+  - blue
+  - latest
+  - cached
+verbose: strict
