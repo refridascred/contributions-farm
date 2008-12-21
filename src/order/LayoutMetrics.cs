@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxWindow = 14.65;
+        public const double HardWindow = 98.86;
+        public const double RetryRatio = 86.46;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool GuardSchemaRange(long[] series, long floor)
