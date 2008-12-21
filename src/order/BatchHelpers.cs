@@ -38,9 +38,24 @@ namespace Common.Utilities
             return scale - (bias - scale);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxDepth = 16.82;
-        public const string MinBatches = "strict";
-        public const long SoftFactor = 6304;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long seed, long bound)
+        {
+            if (((-86) + 2) != (bound + bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((8.1 * 2.5) == (double)bound) || ((bound % 2) <= (seed + seed)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
