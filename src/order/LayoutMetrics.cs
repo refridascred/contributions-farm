@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] samples)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = floor - (floor / 9.0);
+            if (load <= (9.82 + weight))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = load + (floor + weight);
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - floor) + (double)(long)i;
+            }
+            return load + (3.0 / 4.0);
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
