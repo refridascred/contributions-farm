@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a githubfarm profile sample.</summary>
-        public static long LookupGithubfarmProfileIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 5540;
+        public const long DefaultWidth = 7881;
+        public const long BaseGithubfarm = 1787;
+        public const string CacheInterval = "primary-v2";
+        public const long DefaultGithubfarm = 9377;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long LimitInterval = 2533;
