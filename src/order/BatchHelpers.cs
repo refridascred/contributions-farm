@@ -31,22 +31,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] samples, long target)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)hits < (double)entry)
-                {
-                    hits = (hits + 3) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
     }
 }
