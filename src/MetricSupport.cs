@@ -30,13 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] series, long offset)
         {
-            Failed,
-            New,
-            Paused,
-            Locked,
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
