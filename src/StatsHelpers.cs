@@ -28,11 +28,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Look up the position of a channel report sample.</summary>
+        public static long FindChannelReportIndex(long[] levels, long origin)
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
