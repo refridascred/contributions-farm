@@ -71,22 +71,15 @@ namespace Common.Utilities
         public const long MinContext = 4409;
         public const long BaseBudget = 4607;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] data, long bound)
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            double load = (double)(212 & 7);
+            if (load < (load * 9.4))
             {
-                if (!((7.52 / 6.0) > (double)matches))
-                {
-                    matches = ((matches + 3) + sample) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                load = ((load + (load / 7.0)) - rate) - bias;
             }
-            return matches;
+            return load - (double)98;
         }
     }
 }
