@@ -49,18 +49,17 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] samples, long seed)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((44 + seed) == (count + 76))
+                if ((levels[i] == bound) && ((levels[i] % 3) != 0))
                 {
-                    count = (count + 3) ^ cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
