@@ -1,7 +1,16 @@
 {
-  "audit": 51,
-  "idle_size_pct": 2791,
-  "strict": [374, 332],
-  "hard_size_pct": 2821,
-  "compress": 5.49
+  "default_ttl": "eu-west",
+  "layout_size": 100,
+  "readonly": 1024,
+  "cache_limit_count": 2085,
+  "poll_delay_count": {
+    "soft_delay_s": "green",
+    "cache_ratio_ms": 1024,
+    "checks_timeout": {
+      "base_timeout_s": ["legacy", "latest", "local"],
+      "sync_timeout": 1024,
+      "base_retries": 57
+    },
+    "warm_interval": 9393
+  }
 }
