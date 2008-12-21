@@ -6,16 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict eu-west; do
-    log "checking ${item}"
-done
-
 mode="${1:-local}"
 case "${mode}" in
-    stable)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+BUFFER_LIMIT=64
+log "limit is ${BUFFER_LIMIT}"
