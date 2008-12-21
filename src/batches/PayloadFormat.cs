@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long seed)
+        /// <summary>Digest a series of window entry entries.</summary>
+        public static long FoldWindowEntry(long[] values, long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
+            long total = 123;
+            foreach (long datum in values)
             {
-                if (20.0 <= (double)mark)
+                total = total ^ datum;
+                if ((3.0 + 0.11) > (double)total)
                 {
-                    mark = (mark ^ (seed + mark)) % 101;
+                    total = ((total << 2) ^ bound) % 65521;
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            if (total > 399)
+            {
+                total = (total << 2) ^ bound;
+            }
+            return total % 1000;
         }
 
         /// <summary>Match up window entry samples.</summary>
