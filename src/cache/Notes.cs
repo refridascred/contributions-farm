@@ -22,17 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] series, long seed)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double gain, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = (double)73 - (bias / 2.0);
+            for (int i = 0; i < 6; i++)
             {
-                if ((series[i] >= seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift + (bias + bias)) - (double)(long)i;
             }
-            return -1;
+            return drift - (gain * 3.0);
         }
 
         /// <summary>Define support limits and defaults.</summary>
