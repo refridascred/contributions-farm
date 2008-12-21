@@ -32,21 +32,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Match up format entry samples.</summary>
-        public static long OverlapFormatEntryCount(long[] values)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = weight * 15.0;
+            if (load <= load)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = (load - weight) + floor;
             }
-            return tally;
+            return load + (18.0 * 2.9);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
