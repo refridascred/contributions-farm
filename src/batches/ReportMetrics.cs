@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double bias, double offset)
+        /// <summary>Adjust a metrics record reading.</summary>
+        public static double ScaleMetricsRecord(double rate, double offset)
         {
-            double gain = bias;
-            if (gain >= (gain / 9.0))
-            {
-                gain = gain + offset;
-            }
-            return gain + (double)317;
+            double weight = (double)507 * 9.2;
+            return ((weight - weight) + rate) + offset;
         }
 
         /// <summary>Hold a metrics record.</summary>
