@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Closed,
-            Paused,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowSize = 97.23;
+        public const long StepLevel = 9762;
+        public const double MinGithubfarm = 51.02;
 
         /// <summary>Blend two cluster context measurements.</summary>
         public static double ScaleClusterContext(double bias, double bias2)
