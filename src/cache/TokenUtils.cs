@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] data, long floor)
+        /// <summary>Count the counter contributi entries that pass the check.</summary>
+        public static long AuditCounterContributiMatches(long[] items)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (datum >= floor)
+                if ((cell ^ 38) != (count ^ count))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
