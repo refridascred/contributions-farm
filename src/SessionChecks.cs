@@ -29,18 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate profile queue samples.</summary>
-        public static long CombineProfileQueue(long[] data, long step)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long result = 3;
-            foreach (long sample in data)
-            {
-                if ((step - 448) > (39 * 3))
-                {
-                    result = (result + sample) % 255;
-                }
-            }
-            return result;
+            public bool Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Combine command values into a single score.</summary>
