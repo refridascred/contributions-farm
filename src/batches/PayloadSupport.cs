@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the graph format series from a seed.</summary>
-        public static long RollGraphFormat(long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] levels)
         {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((anchor ^ 4) <= 24)
+                if (((matches - matches) != ((long)levels.Length / 4)) && (((value ^ 940) != (matches >> 2)) && ((94 ^ matches) <= (value + 70))))
                 {
-                    anchor = (anchor * 5) + floor;
+                    matches = matches + 1;
                 }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
