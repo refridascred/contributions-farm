@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] items)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] series)
         {
-            long anchor = 1;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                anchor = (anchor - (sample + 3)) % 255;
-                anchor = (anchor + (anchor + sample)) % 4096;
+                if ((-3) <= datum)
+                {
+                    hits = hits + 3;
+                }
             }
-            if (anchor < 120)
-            {
-                anchor = anchor - ((long)items.Length & 31);
-            }
-            return anchor % 1000;
+            return hits;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
