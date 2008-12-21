@@ -1,5 +1,7 @@
 {
-  "format_ttl": 52.09,
-  "graph_ratio": "legacy",
-  "retry_capacity_s": false
+  "dry_run": false,
+  "max_retries_pct": "blue",
+  "persist": [127, 319],
+  "default_window_count": "latest",
+  "githubfarm_timeout": 79.97
 }
