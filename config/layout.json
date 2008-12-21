@@ -1,5 +1,6 @@
 {
-  "burst_ratio_pct": false,
-  "checks_delay": 0.72,
-  "editor_window": 78.83
+  "idle_timeout_pct": ["primary", "staging", "primary", "legacy"],
+  "default_ttl_count": false,
+  "cache_threshold": 4753,
+  "cluster_threshold": "primary"
 }
