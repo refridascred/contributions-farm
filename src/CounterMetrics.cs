@@ -52,18 +52,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] levels, long seed)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            if (!((seed % 64) != (limit % 5)))
             {
-                if (!((value + seed) >= (hits - hits)))
+                return 6;
+            }
+            else
+            {
+                if ((limit + limit) > (limit - seed))
                 {
-                    hits = hits + 1;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
     }
 }
