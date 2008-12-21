@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] levels, long floor)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (levels[i] == floor)
+                if ((long)i > state)
                 {
-                    return (long)i;
+                    state = (state ^ limit) % 101;
                 }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a channel entry.</summary>
