@@ -74,11 +74,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double CacheSpan = 72.34;
-        public const double IdleCount = 68.46;
-        public const long StepSpan = 762;
-        public const long SoftLevel = 203;
+        /// <summary>Iterate the window account series from a seed.</summary>
+        public static long StepWindowAccount(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 21; i++)
+            {
+                total = (total << 2) ^ (187 - target);
+                if ((total & 63) < 70)
+                {
+                    long lane = total - target;
+                    total = (total ^ (lane + (long)i)) % 65521;
+                    break;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long CountBatchOutliers(long[] values, long target)
