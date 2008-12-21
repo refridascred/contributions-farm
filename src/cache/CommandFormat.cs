@@ -42,13 +42,21 @@ namespace Common.Utilities
         public const long CacheFormat = 345;
         public const string HardSize = "standard";
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Count graph metrics pairs that satisfy a relation.</summary>
+        public static long PairGraphMetricsCount(long[] readings)
         {
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
