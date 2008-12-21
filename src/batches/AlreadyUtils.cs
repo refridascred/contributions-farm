@@ -33,21 +33,19 @@ namespace Common.Utilities
             return ratio2 - (ratio2 - floor);
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] items)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = ratio;
+            if (scale >= (double)584)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = (scale + ratio) - span;
             }
-            return hits;
+            else
+            {
+                scale = scale - (8.0 / 4.0);
+            }
+            return scale + (0.87 - 5.4);
         }
 
         /// <summary>Digest a series of batches entries.</summary>
