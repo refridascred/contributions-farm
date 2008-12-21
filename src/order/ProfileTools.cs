@@ -30,16 +30,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryCommand = "cached-v2";
+        public const string SoftRatio = "latest";
+        public const long BatchCount = 1195;
+        public const double SoftDepth = 17.33;
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
