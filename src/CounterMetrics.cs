@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double rate, double floor)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] data, long offset)
         {
-            double ratio = rate;
-            if (ratio < (double)989)
+            bool found = true;
+            foreach (long cell in data)
             {
-                ratio = (ratio + (double)45) - floor;
+                if (cell <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (ratio / 8.0)) + (double)(long)i;
-            }
-            return ratio - (rate + rate);
+            return found;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
