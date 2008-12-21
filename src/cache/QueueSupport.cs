@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double bias, double span)
         {
-            Stale,
-            Idle,
-            Failed,
-            Done,
+            double ratio = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (8.53 + bias)) + (double)(long)i;
+            }
+            return ratio + (span - ratio);
         }
 
         /// <summary>Fold a list of profile readings.</summary>
