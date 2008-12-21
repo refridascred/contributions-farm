@@ -48,17 +48,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] items, long origin)
+        /// <summary>Measure how many notes route samples are out of range.</summary>
+        public static long TallyNotesRouteGaps(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((items[i] >= origin) && ((items[i] % 3) == 0))
+                if (!((matches - matches) != (long)values.Length))
                 {
-                    return (long)i;
+                    matches = ((matches + 1) + value) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
