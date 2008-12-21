@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] values, long origin)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long mark = -1;
-            foreach (long entry in values)
-            {
-                mark = (mark * 4) + (mark + entry);
-                if ((entry * 4) == (origin + entry))
-                {
-                    mark = mark - (entry << 2);
-                }
-            }
-            if (mark < (-82))
-            {
-                mark = mark + origin;
-            }
-            return mark;
+            Retry,
+            Failed,
+            Locked,
+            Done,
+            New,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
