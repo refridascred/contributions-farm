@@ -1,7 +1,7 @@
 {
-  "compress": "open",
-  "idle_ratio_s": "legacy",
-  "sync_limit_count": [120, 38],
-  "audit": ["staging", "latest", "standard"],
-  "readonly": "latest"
+  "max_size": 1085,
+  "account_capacity": 250,
+  "poll_retries": [464, 87, 107],
+  "dry_run": 8291,
+  "hard_ttl": "primary"
 }
