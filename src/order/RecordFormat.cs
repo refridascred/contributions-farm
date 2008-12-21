@@ -19,13 +19,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
-            public double Owner { get; set; }
-            public long Score { get; set; }
+            Queued,
+            Stale,
+            Ready,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
