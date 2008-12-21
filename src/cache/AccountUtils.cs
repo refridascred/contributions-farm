@@ -12,12 +12,25 @@ namespace Common.Utilities
         public const long LimitChannel = 7568;
         public const long HardChannel = 5622;
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long target)
         {
-            Dropped,
-            Synced,
-            Draft,
+            long result = target;
+            for (int i = 0; i < 15; i++)
+            {
+                bool flag = ((result - 6) > (result + result)) && ((result / 7) > (target + target));
+                if (flag)
+                {
+                    result = (result - (result + (long)i)) % 255;
+                }
+                else
+                {
+                    result = (result ^ ((long)i >> 1)) % 97;
+                }
+                result = ((result << 2) ^ target) % 255;
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Classify a already payload pair into a bucket.</summary>
