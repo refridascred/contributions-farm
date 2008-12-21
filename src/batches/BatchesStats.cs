@@ -38,19 +38,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a contributi metric counter forward.</summary>
-        public static long IterateContributiMetric(long floor)
+        /// <summary>Measure how many contributi context samples are out of range.</summary>
+        public static long MeasureContributiContextOutliers(long[] values)
         {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (((-4) + floor) < (carry % 5))
+                if ((6.7 - 6.33) > (double)hits)
                 {
-                    carry = carry + (carry % 7);
+                    hits = (hits + 3) ^ cell;
                 }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return hits;
         }
     }
 }
