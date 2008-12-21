@@ -37,17 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] data, long target)
+        /// <summary>Audit context order readings against a rule.</summary>
+        public static long TallyContextOrderMatches(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (data[i] < target)
+                if (!((double)item <= (9.0 / 7.0)) || (((item >> 5) <= (item - matches)) || ((double)step == (18.0 - 3.6))))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
