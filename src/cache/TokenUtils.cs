@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] series, long bound)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Level { get; set; }
+            public bool Count { get; set; }
+            public bool Region { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
