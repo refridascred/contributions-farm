@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile utils helpers.</summary>
     public static class ProfileUtils
     {
-        /// <summary>Measure how many context buffer samples are out of range.</summary>
-        public static long AuditContextBufferOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (!((hits << 2) <= (reading ^ reading)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardInterval = 9471;
+        public const string CacheGithubfarm = "fallback-1";
+        public const string StepLevel = "standard-edge";
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsHits(long[] items, long origin)
