@@ -41,10 +41,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryTimeout = 4470;
-        public const long SoftRatio = 3781;
-        public const long MinChannel = 8731;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchInterval = 4331;
+        public const long SoftLevel = 5951;
+        public const long CacheDepth = 2761;
+        public const long BurstMetrics = 8544;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long CacheSchema = 4774;
