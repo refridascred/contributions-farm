@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue local; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-mode="${1:-stable}"
+mode="${1:-cached}"
 case "${mode}" in
-    local)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -20,8 +22,5 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+BUFFER_LIMIT=43
+log "limit is ${BUFFER_LIMIT}"
