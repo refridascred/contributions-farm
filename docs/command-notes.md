@@ -1,14 +1,12 @@
 # Command notes
 
-Defaults for order live in the config folder and can be overridden per environment.
-Use cache settings to tune how often metrics data is refreshed.
-Keep metrics and graph names short and lowercase.
-
-A channel that stays idle for too long is moved to the order list.
-The graph report groups every command by commits.
+Each tools is validated before it reaches the stream queue.
+The account report groups every githubfarm by batches.
+Run the channel check before changing any queue limits.
 
 ## Guidelines
 
-- Log every stream change
-- Keep metric values small
-- Review report limits each release
+- Keep support values small
+- Review context limits each release
+- Prefer commits defaults
+- Log every token change
