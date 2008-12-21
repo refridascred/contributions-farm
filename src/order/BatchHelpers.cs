@@ -23,10 +23,33 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitRatio = 6722;
-        public const long BurstLevel = 6458;
-        public const long MaxSize = 588;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long bound, long origin)
+        {
+            long gap = bound ^ origin;
+            if (((double)bound < 8.5) && ((gap + gap) == (gap ^ bound)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((-12) % 7) > bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (8 > (bound * 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long TallyChannelHits(long[] samples, long target)
