@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the graph cache entries that pass the check.</summary>
-        public static long TallyGraphCacheHits(long[] samples, long limit)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long step, long seed)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long lane = step - seed;
+            if ((seed - seed) >= (lane ^ lane))
             {
-                if ((((double)limit <= (7.7 + 4.92)) && ((matches << 2) == (limit + matches))) && (3.29 >= (double)matches))
+                return 2;
+            }
+            else
+            {
+                if (lane <= (seed - step))
                 {
-                    matches = (matches + 3) ^ item;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (!(step < (9 >> 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (4.0 >= (double)seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a commits graph counter forward.</summary>
