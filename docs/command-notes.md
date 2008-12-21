@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for checks live in the config folder and can be overridden per environment.
-Defaults for token live in the config folder and can be overridden per environment.
-The graph module keeps window values in sync with the support cache.
+A stats that stays idle for too long is moved to the graph list.
+Each report is validated before it reaches the report queue.
 
-Use buffer settings to tune how often commits data is refreshed.
-When a support fails, the report handler retries a few times before giving up.
+Defaults for filter live in the config folder and can be overridden per environment.
+The record helpers are pure functions, so they are safe to call from any thread.
+Use editor settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Keep tools values small
-- Validate order input early
-- Document new cluster fields
+- Log every stats change
+- Keep cache values small
+- Document new account fields
