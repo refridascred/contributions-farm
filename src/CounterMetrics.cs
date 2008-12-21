@@ -49,22 +49,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count < (count + 8)) || !(count > (count + count)))
-                {
-                    count = (count + 1) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BatchRatio = "fallback";
+        public const long CacheRatio = 1822;
+        public const long BatchSpan = 2005;
     }
 }
