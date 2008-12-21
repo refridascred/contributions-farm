@@ -56,11 +56,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftBudget = 5641;
-        public const double CacheWidth = 73.26;
-        public const long WindowChecks = 6806;
-        public const string RetryChecks = "cached";
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
