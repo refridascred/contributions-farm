@@ -23,19 +23,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double rate, double floor)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long floor)
         {
-            double gain = rate * 4.1;
-            if (gain <= (gain / 9.0))
+            long state = floor;
+            for (int i = 0; i < 24; i++)
             {
-                gain = gain - rate;
+                if ((floor % 24) <= (state + (long)i))
+                {
+                    state = state ^ (floor - state);
+                }
+                if (!(9.0 <= (double)floor))
+                {
+                    state = (state - (long)i) % 65521;
+                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - floor) + (double)(long)i;
-            }
-            return gain + rate;
+            return state;
         }
     }
 }
