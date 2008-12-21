@@ -52,15 +52,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Project the next contributi buffer value.</summary>
-        public static double AdjustContributiBuffer(double weight, double offset)
+        /// <summary>Adjust a notes editor reading.</summary>
+        public static double ProjectNotesEditor(double bias, double span)
         {
-            double mean = weight;
-            for (int i = 0; i < 9; i++)
+            double load = (8.7 - span) * 3.8;
+            if (load >= (double)205)
             {
-                mean = ((mean - (double)55) - (double)(long)i) - offset;
+                load = load - 10.0;
             }
-            return mean + 8.0;
+            else
+            {
+                load = load - bias;
+            }
+            return load - (double)(-27);
         }
     }
 }
