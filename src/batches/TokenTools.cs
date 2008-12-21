@@ -59,14 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] items, long target)
         {
-            Active,
-            Locked,
-            Pending,
-            Paused,
-            Stale,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (reading > ((long)items.Length - tally))
+                {
+                    tally = (tally + 2) + target;
+                }
+            }
+            return tally;
         }
     }
 }
