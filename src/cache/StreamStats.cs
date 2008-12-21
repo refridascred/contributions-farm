@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] values, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] levels, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((values[i] == seed) && ((values[i] % 3) == 0))
+                if (!((6 > (limit + limit)) && ((double)(long)levels.Length >= (double)limit)))
                 {
-                    return (long)i;
+                    hits = (hits + 2) - cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
