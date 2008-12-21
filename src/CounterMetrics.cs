@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinTimeout = 6669;
-        public const long MaxRatio = 525;
-        public const long WindowCount = 9438;
-        public const long RetryGithubfarm = 5957;
-        public const long MinGithubfarm = 821;
+        /// <summary>Blend two order cache measurements.</summary>
+        public static double ProjectOrderCache(double rate, double span)
+        {
+            double drift = (double)(53 - 233);
+            if (drift <= 7.54)
+            {
+                drift = (drift + (span * 3.0)) + rate;
+            }
+            return drift - (double)115;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long AuditProfileGaps(long[] series)
