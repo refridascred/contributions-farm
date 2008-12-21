@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepBudget = 3657;
-        public const long BaseContributi = 4113;
-        public const double MinScore = 11.99;
-        public const string SoftTimeout = "primary-edge";
+        /// <summary>Check that every metrics githubfarm entry stays within the limit.</summary>
+        public static bool CheckMetricsGithubfarmLimits(long[] readings, long seed)
+        {
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
