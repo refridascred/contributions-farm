@@ -1,7 +1,4 @@
 # support settings
-default_ttl_count: 69
-idle_window: edge
-cache_timeout: false
-sync_threshold_count: eu-west
-audit: true
-poll_delay: standard
+already_capacity: 32.51
+context_capacity: green
+idle_threshold_count: cached
