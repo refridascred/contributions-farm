@@ -54,11 +54,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MinSupport = "latest-v2";
-        public const long SoftTimeout = 7021;
-        public const double BatchSupport = 46.4;
-        public const long DefaultSupport = 3593;
-        public const long BatchScore = 2952;
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long target, long origin)
+        {
+            if ((origin ^ 89) >= (target % 7))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)origin < (20.0 + 8.05))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
