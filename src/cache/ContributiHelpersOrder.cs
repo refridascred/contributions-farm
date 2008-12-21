@@ -24,16 +24,17 @@ namespace Common.Utilities
         public const long BatchWindow = 9724;
         public const string MinWindow = "staging-v2";
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long floor)
+        /// <summary>Look up the position of a notes payload sample.</summary>
+        public static long LocateNotesPayloadIndex(long[] data, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor << 2) ^ 456;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
