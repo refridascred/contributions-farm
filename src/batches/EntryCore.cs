@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 7753;
-        public const long BurstMetrics = 8255;
-        public const string BatchCount = "primary-1";
-        public const long DefaultMetrics = 3272;
-        public const double RetryMetrics = 29.76;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Stale,
+            New,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long MatchContributiCount(long[] data)
