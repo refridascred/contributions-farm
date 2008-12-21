@@ -20,13 +20,32 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] values)
         {
-            public double Count { get; set; }
-            public bool Ratio { get; set; }
-            public double Region { get; set; }
-            public string Token { get; set; } = "";
+            long result = 761;
+            foreach (long reading in values)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    result = (result << 2) ^ ((long)i >> 5);
+                    result = result ^ ((long)i - result);
+                }
+                if (result > (68 / 8))
+                {
+                    result = (result << 2) ^ reading;
+                    result = (result + (result << 3)) % 101;
+                }
+                if (((double)result > 0.8) && ((6 >> 1) <= (result & 1)))
+                {
+                    result = result ^ 85;
+                }
+                else
+                {
+                    result = result + (result + reading);
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
