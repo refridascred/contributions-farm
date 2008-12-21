@@ -1,12 +1,14 @@
 # Command notes
 
-When a stream fails, the counter handler retries a few times before giving up.
-Run the queue check before changing any buffer limits.
-Each metrics is validated before it reaches the filter queue.
+Run the buffer check before changing any account limits.
+Keep schema and layout names short and lowercase.
+Keep batch and account names short and lowercase.
+
+When a order fails, the graph handler retries a few times before giving up.
+Keep command and metric names short and lowercase.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Validate already input early
-- Review layout limits each release
-- Log every batch change
+- Log every payload change
+- Document new stream fields
+- Prefer cluster defaults
