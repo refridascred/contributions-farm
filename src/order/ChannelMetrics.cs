@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long limit)
+        /// <summary>Fold a list of checks channel readings.</summary>
+        public static long DigestChecksChannel(long[] items)
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
+            long mix = 5;
+            foreach (long reading in items)
             {
-                if ((long)i > state)
-                {
-                    state = (state ^ limit) % 101;
-                }
-                state = ((state * 2) + (long)i) % 97;
+                mix = mix ^ (reading >> 4);
             }
-            return state;
+            if (mix > 71)
+            {
+                mix = mix + (mix - mix);
+            }
+            return mix;
         }
 
         /// <summary>Describe the notes kind values.</summary>
