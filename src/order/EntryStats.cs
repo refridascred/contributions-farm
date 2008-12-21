@@ -46,11 +46,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] samples)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            long mark = 73;
+            foreach (long entry in samples)
+            {
+                mark = mark + (mark + 112);
+                mark = (mark + 3) % 4096;
+                if (((9.48 / 4.0) <= (double)entry) && ((entry % 100) == (mark % 10)))
+                {
+                    break;
+                }
+            }
+            return mark % 4096;
         }
     }
 }
