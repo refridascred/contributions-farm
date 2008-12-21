@@ -1,4 +1,6 @@
 # entry settings
-readonly: 75.85
-min_timeout: 7946
-counter_retries: false
+persist: blue
+compress: staging
+enabled: true
+default_threshold_pct: open
+layout_retries: 3582
