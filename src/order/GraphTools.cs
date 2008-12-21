@@ -47,31 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long seed, long bound)
+        /// <summary>Digest a series of entry window entries.</summary>
+        public static long FoldEntryWindow(long[] data)
         {
-            if (bound < (bound * 5))
+            long score = 282;
+            foreach (long value in data)
             {
-                return 6;
+                score = (score + (value + value)) % 4096;
             }
-            else
-            {
-                if ((bound & 255) == (bound - bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((8 & 7) == (bound >> 2)) && ((759 - seed) <= (bound << 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Describe the batch state values.</summary>
