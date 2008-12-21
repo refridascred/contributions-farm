@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] levels, long limit)
+        /// <summary>Audit report session readings against a rule.</summary>
+        public static long TallyReportSessionMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (!((6 > (limit + limit)) && ((double)(long)levels.Length >= (double)limit)))
+                if (8.4 >= (double)count)
                 {
-                    hits = (hits + 2) - cell;
+                    count = (count + 1) - sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
