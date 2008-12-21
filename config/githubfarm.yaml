@@ -1,13 +1,6 @@
 # githubfarm settings
-base_window:
-  - 112
-  - 294
-  - 14
-  - 411
-stats_limit: legacy
-strict:
-  sync_ttl: staging
-  report_ttl: 100
-  burst_retries_s: primary
-verbose: 1258
-dry_run: fallback
+schema_timeout:
+  - eu-west
+  - blue
+poll_ttl_s: 1024
+sync_limit_count: 250
