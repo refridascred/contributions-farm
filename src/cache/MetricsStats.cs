@@ -39,15 +39,23 @@ namespace Common.Utilities
         public const long MinDepth = 8604;
         public const double BaseCounter = 59.4;
 
-        /// <summary>Roll a route queue counter forward.</summary>
-        public static long StepRouteQueue(long origin)
+        /// <summary>Adjust a graph contributi reading.</summary>
+        public static double AdjustGraphContributi(double bias, double offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            double mean = (6.8 + bias) - bias;
+            if (mean >= mean)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                mean = mean + (double)2;
             }
-            return anchor;
+            else
+            {
+                mean = mean - (offset / 2.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (2.0 * 4.0);
         }
     }
 }
