@@ -1,5 +1,22 @@
 # support settings
-verbose: 28
-cache_limit_ms: 95.03
-sync_delay_pct: 86.99
-default_threshold_count: green
+already_limit: 53.23
+min_ttl:
+  readonly: false
+  warm_size: 1851
+  burst_ttl_s: 5.21
+  max_limit_ms:
+    flush_capacity_pct:
+      - 265
+      - 128
+      - 369
+      - 463
+    compress: blue
+    cache_delay_count: edge
+    command_capacity: edge
+  farm_limit: 3654
+  filter_window: 60.58
+retry_timeout:
+  - latest
+  - green
+  - primary
+retry_interval_pct: open
