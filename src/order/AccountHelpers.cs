@@ -45,39 +45,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long bound, long target)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long slot = bound - target;
-            if ((double)target >= (5.84 / 2.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((1.29 * 8.2) < (double)slot)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound * 3) < (target / 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((slot << 3) < (target % 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public double Score { get; set; }
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
