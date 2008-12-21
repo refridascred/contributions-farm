@@ -34,15 +34,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            New,
-            Paused,
-            Dropped,
-            Done,
-            Queued,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 7039;
+        public const long MinDepth = 8604;
+        public const double BaseCounter = 59.4;
 
         /// <summary>Roll a route queue counter forward.</summary>
         public static long StepRouteQueue(long origin)
