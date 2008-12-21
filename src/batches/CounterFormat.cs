@@ -27,20 +27,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] data)
-        {
-            long anchor = 75;
-            foreach (long reading in data)
-            {
-                anchor = (anchor ^ (anchor + anchor)) ^ reading;
-            }
-            if (anchor < 5)
-            {
-                anchor = (anchor ^ (42 >> 1)) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 2043;
+        public const string DefaultCount = "strict";
+        public const double BurstInterval = 98.54;
+        public const long MaxRatio = 1076;
+        public const long MaxMetric = 3281;
 
         /// <summary>Digest a series of entry cache entries.</summary>
         public static long TotalEntryCache(long[] data)
