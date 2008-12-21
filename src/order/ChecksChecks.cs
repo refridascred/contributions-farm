@@ -37,13 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double ratio, double floor)
         {
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public double Score { get; set; }
+            double rate = ratio - (ratio + floor);
+            if (rate <= (double)5)
+            {
+                rate = rate - (floor - floor);
+            }
+            return rate + (floor / 9.0);
         }
     }
 }
