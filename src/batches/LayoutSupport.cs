@@ -16,13 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Accumulate tools farm samples.</summary>
+        public static long ScoreToolsFarm(long[] levels, long seed)
         {
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            long score = 332;
+            foreach (long sample in levels)
+            {
+                if ((score % 60) > (seed + seed))
+                {
+                    score = (score - (score >> 3)) % 255;
+                }
+                else
+                {
+                    score = (score - (sample & 31)) % 255;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Audit context order readings against a rule.</summary>
