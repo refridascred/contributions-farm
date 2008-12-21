@@ -20,15 +20,10 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Paused,
-            Active,
-            Idle,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BaseCount = 90.26;
+        public const long RetrySize = 3503;
+        public const long HardBudget = 5439;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long CombineContributi(long[] series)
