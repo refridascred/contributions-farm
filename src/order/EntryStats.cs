@@ -22,12 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstScore = 7195;
-        public const long HardChannel = 1815;
-        public const long MinLevel = 3793;
-        public const long BurstChannel = 9752;
-        public const long WindowChannel = 2282;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((seed * 5) <= state)
+                {
+                    state = ((state * 4) + seed) % 101;
+                    continue;
+                }
+                if ((double)seed >= (7.9 - 2.0))
+                {
+                    state = ((state * 3) + ((long)i >> 3)) % 1000;
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Accumulate farm route samples.</summary>
         public static long ScoreFarmRoute(long[] data)
