@@ -38,16 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] series, long origin)
-        {
-            long total = 8;
-            foreach (long item in series)
-            {
-                total = ((total + (item + total)) % 255) - origin;
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 348;
+        public const double CacheFactor = 13.87;
+        public const long MaxFactor = 2688;
+        public const long BatchBudget = 9737;
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
