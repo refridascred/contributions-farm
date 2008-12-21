@@ -28,39 +28,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long target, long seed)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] readings)
         {
-            long next = target + seed;
-            if (next >= (next / 8))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed % 64) >= target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((-6) & 127) != (target * 3))
+                    if ((readings[i] - readings[j]) == 19)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((0.03 - 3.1) < (double)seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
