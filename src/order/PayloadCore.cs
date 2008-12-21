@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit profile farm readings against a rule.</summary>
-        public static long CountProfileFarmOutliers(long[] series, long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long mix = 678;
+            foreach (long value in readings)
             {
-                if (offset < ((long)series.Length & 63))
+                if (value <= (mix - mix))
                 {
-                    tally = (tally + 1) + item;
+                    mix = mix + mix;
                 }
             }
-            return tally;
+            return mix % 65521;
         }
 
         /// <summary>Accumulate stream samples.</summary>
