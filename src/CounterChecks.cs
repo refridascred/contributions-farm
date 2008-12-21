@@ -24,18 +24,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] samples)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double weight, double span)
         {
-            long anchor = 5;
-            foreach (long entry in samples)
+            double load = (double)((-551) >> 2);
+            if (load >= weight)
             {
-                if ((entry - anchor) < entry)
-                {
-                    anchor = ((anchor << 3) ^ entry) % 101;
-                }
+                load = (load + weight) - span;
             }
-            return anchor % 65521;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (double)36) + (double)(long)i;
+            }
+            return load - (load + load);
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
