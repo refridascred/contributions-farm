@@ -53,12 +53,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Fold a list of entry command readings.</summary>
+        public static long DigestEntryCommand(long[] series)
         {
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            long anchor = 18;
+            foreach (long entry in series)
+            {
+                anchor = (anchor + (entry + anchor)) % 101;
+                if ((7 % 24) != (entry >> 2))
+                {
+                    anchor = (anchor << 3) ^ (entry % 3);
+                }
+                if ((entry + 0) >= anchor)
+                {
+                    anchor = (anchor - (anchor >> 5)) % 1000;
+                }
+            }
+            if (anchor < 450)
+            {
+                anchor = (anchor + anchor) % 65521;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
