@@ -13,10 +13,20 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string LimitBudget = "cached-v2";
-        public const double CacheRatio = 40.95;
-        public const double BaseSpan = 63.58;
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double ratio, double bias)
+        {
+            double mean = bias / 7.0;
+            if (mean >= (bias + bias))
+            {
+                mean = mean - (double)85;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (double)918) + (double)(long)i;
+            }
+            return mean - (9.13 - ratio);
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long ScorePayload(long[] values, long bound)
