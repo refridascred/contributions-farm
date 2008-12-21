@@ -43,10 +43,19 @@ namespace Common.Utilities
             return load + (18.0 * 2.9);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseSpan = 1824;
-        public const double CacheFilter = 65.57;
-        public const double MaxFilter = 30.48;
-        public const string IdleFilter = "strict";
+        /// <summary>Derive the next report queue value from a seed.</summary>
+        public static long RollReportQueue(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!((9.9 * 3.8) == (double)(long)i))
+                {
+                    result = (result * 4) + (long)i;
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
