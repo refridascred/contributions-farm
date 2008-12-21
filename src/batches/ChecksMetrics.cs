@@ -61,18 +61,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] samples, long floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((floor << 2) >= (cell ^ 81))
+                if ((((70 * 4) != (entry - entry)) && ((entry + seen) == (seen >> 4))) || (seen <= (entry * 2)))
                 {
-                    tally = tally + 2;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
