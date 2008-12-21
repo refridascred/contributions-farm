@@ -71,19 +71,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every payload record entry stays within the limit.</summary>
-        public static bool VerifyPayloadRecordBounds(long[] samples, long floor)
-        {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryFactor = 3158;
+        public const long DefaultRatio = 6386;
+        public const long StepChecks = 2016;
+        public const string LimitChecks = "legacy";
     }
 }
