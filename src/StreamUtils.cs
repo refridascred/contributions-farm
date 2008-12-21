@@ -52,12 +52,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Idle,
-            Active,
-            Draft,
+            public long Region { get; set; }
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
