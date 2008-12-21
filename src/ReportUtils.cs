@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 1652;
-        public const long BurstScore = 6517;
-        public const long LimitCount = 1131;
-        public const long SoftWidth = 9082;
-        public const long RetryCommand = 687;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] series, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((sample ^ tally) <= (404 >> 5))
+                {
+                    tally = (tally + 1) - floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
