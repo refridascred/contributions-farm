@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of cache entry readings.</summary>
-        public static long CombineCacheEntry(long[] readings, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] data, long bound)
         {
-            long result = 1;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long value in data)
             {
-                result = ((result + (target + target)) % 65521) ^ entry;
+                if (((double)bound <= 4.75) && (((double)(long)data.Length != (double)bound) && (count > ((-639) - 28))))
+                {
+                    count = (count + 2) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (result < 46)
-            {
-                result = ((result * 5) + (result << 3)) % 101;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Fold a list of command readings.</summary>
