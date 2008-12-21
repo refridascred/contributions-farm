@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest primary standard fallback; do
+for item in staging primary standard; do
     log "checking ${item}"
 done
 
-mode="${1:-standard}"
+mode="${1:-stable}"
 case "${mode}" in
-    stable)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=186
-log "limit is ${RECORD_LIMIT}"
