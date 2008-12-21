@@ -1,5 +1,7 @@
 {
-  "readonly": 73.91,
-  "already_limit": "cached",
-  "min_retries": "latest"
+  "soft_depth": 38,
+  "readonly": "legacy",
+  "cache_depth": 75.3,
+  "retry_depth_s": true,
+  "hard_limit": true
 }
