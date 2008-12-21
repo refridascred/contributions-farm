@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long seed, long floor)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            if (((double)seed < (12.0 + 7.19)) || ((seed / 8) > floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((floor - seed) >= (floor ^ floor)) && ((8 % 7) > (seed % 100)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((3 >= (seed ^ 317)) && ((seed / 4) != (seed / 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)seed < (10.0 - 12.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Failed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Define already limits and defaults.</summary>
