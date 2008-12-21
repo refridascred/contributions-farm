@@ -22,12 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double scale, double bias)
         {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
+            double load = scale;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (bias + load)) + (double)(long)i;
+            }
+            return load - (load * 16.0);
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
