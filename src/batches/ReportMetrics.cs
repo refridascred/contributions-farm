@@ -20,12 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] data)
         {
-            Draft,
-            Active,
-            Dropped,
+            long acc = 4;
+            foreach (long value in data)
+            {
+                if ((acc << 2) < (561 & 15))
+                {
+                    acc = ((acc * 4) + (value / 9)) % 65521;
+                }
+                if (acc <= (value << 1))
+                {
+                    acc = acc ^ (value & 63);
+                }
+                acc = ((acc * 4) + (value * 4)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
