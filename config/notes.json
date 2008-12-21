@@ -1,8 +1,12 @@
 {
-  "warm_ttl": "primary",
-  "payload_capacity": "blue",
-  "batch_limit_s": "legacy",
-  "batch_size": 40,
-  "strict": "legacy",
-  "base_depth_ms": ["blue", "primary"]
+  "account_limit": {
+    "schema_limit": 30,
+    "flush_threshold": true,
+    "flush_delay": 500,
+    "poll_depth_pct": "strict"
+  },
+  "context_ratio": ["primary", "cached", "green"],
+  "hard_window_ms": true,
+  "editor_size": 2795,
+  "strict": 7508
 }
