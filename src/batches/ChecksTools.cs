@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchBudget = 9748;
+        public const long BurstBudget = 3379;
+        public const long SoftWidth = 6556;
+        public const double MaxLevel = 4.88;
+        public const long MaxScore = 7767;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long TallyFilterMatches(long[] readings, long floor)
