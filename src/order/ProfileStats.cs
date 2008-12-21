@@ -52,14 +52,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
+            Stale,
+            Closed,
             Retry,
-            Paused,
-            New,
-            Active,
-            Pending,
+            Idle,
         }
     }
 }
