@@ -39,18 +39,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] values)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long step)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long score = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((seen - value) >= (seen << 2)))
-                {
-                    seen = seen + 3;
-                }
+                score = (score - (step ^ 96)) % 101;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Scale a route metric figure with a bias.</summary>
