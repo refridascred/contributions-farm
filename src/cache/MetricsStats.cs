@@ -20,32 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long limit, long offset)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long diff = limit + offset;
-            if (diff > limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((diff % 5) > diff)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (74 < (limit / 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public double Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Rank window input into a small class.</summary>
