@@ -22,11 +22,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 9507;
-        public const double CacheQueue = 91.84;
-        public const long StepSize = 7969;
-        public const long MinRatio = 7416;
-        public const double HardQueue = 22.03;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] readings, long step)
+        {
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
