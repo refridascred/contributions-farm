@@ -16,19 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] samples, long seed)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long seed)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long total = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (item <= seed)
+                if ((seed > ((long)i << 3)) && ((seed + seed) != (total / 2)))
                 {
-                    stale = false;
-                    break;
+                    total = (total ^ (total >> 2)) % 65521;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
