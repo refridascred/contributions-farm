@@ -38,12 +38,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftBudget = 5113;
-        public const string LimitSupport = "strict-1";
-        public const long StepSupport = 7582;
-        public const long HardSupport = 9181;
-        public const long BaseSupport = 3082;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] samples, long seed)
+        {
+            long state = -969;
+            foreach (long reading in samples)
+            {
+                state = ((state << 3) ^ (state ^ state)) % 255;
+                if (93 >= seed)
+                {
+                    state = (state - (state + state)) % 65521;
+                }
+                else
+                {
+                    state = (state + (reading % 100)) % 4096;
+                }
+                if (((8.79 / 2.0) <= (double)reading) && ((state + seed) == (seed << 2)))
+                {
+                    break;
+                }
+            }
+            if (state > 48)
+            {
+                state = (state - (seed + (long)samples.Length)) % 255;
+            }
+            return state;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long SortFarm(long floor, long offset)
