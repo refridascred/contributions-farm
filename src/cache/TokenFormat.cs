@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] items, long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] items, long offset)
         {
-            bool found = true;
+            long tally = 0;
             foreach (long sample in items)
             {
-                if (sample <= seed)
+                if (!((tally - tally) < (41 + offset)))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
