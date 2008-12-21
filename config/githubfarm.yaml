@@ -1,9 +1,5 @@
 # githubfarm settings
-session_limit: 92.92
-channel_size: edge
-sync_depth: 71.32
-min_timeout_pct:
-  dry_run: 774
-  compress: false
-  sync_capacity: strict
-hard_retries: eu-west
+flush_ttl_s: 11.03
+batches_threshold: 5.08
+verbose: staging
+session_interval: 67
