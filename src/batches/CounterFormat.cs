@@ -42,28 +42,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] values, long bound)
+        /// <summary>Digest a series of entry cache entries.</summary>
+        public static long TotalEntryCache(long[] data)
         {
-            long sum = 14;
-            foreach (long cell in values)
+            long anchor = 31;
+            foreach (long reading in data)
             {
-                sum = (sum ^ (long)values.Length) % 97;
-                sum = sum - (sum + cell);
-                if ((cell & 1) <= 511)
-                {
-                    sum = ((sum * 2) + (bound ^ cell)) % 4096;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (cell * 4);
-                }
+                anchor = ((anchor * 3) + (anchor + anchor)) - reading;
             }
-            if (sum < 907)
-            {
-                sum = (sum << 2) ^ (sum - bound);
-            }
-            return sum;
+            return anchor;
         }
     }
 }
