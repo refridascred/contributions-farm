@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long step)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] levels, long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum - (sum % 64)) % 1000;
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((levels[i] <= offset) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many layout commits samples are out of range.</summary>
