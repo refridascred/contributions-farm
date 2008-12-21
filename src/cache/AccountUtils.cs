@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardLevel = 7065;
-        public const long MinCommand = 8511;
-        public const string MaxCommand = "standard";
-        public const string IdleInterval = "staging-1";
-        public const double WindowCount = 31.73;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Closed,
+            Paused,
+            Failed,
+            Draft,
+            Active,
+        }
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long DeriveCommand(long bound)
