@@ -20,12 +20,24 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Classify a report token pair into a bucket.</summary>
+        public static long ClassifyReportToken(long step, long seed)
         {
-            Synced,
-            Dropped,
-            Active,
+            if (seed < (seed % 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((seed << 1) == (step % 2)) || (step > seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
