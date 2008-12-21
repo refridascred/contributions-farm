@@ -12,25 +12,21 @@ namespace Common.Utilities
         public const long DefaultMetrics = 3272;
         public const double RetryMetrics = 29.76;
 
-        /// <summary>Rank channel stats input into a small class.</summary>
-        public static long SortChannelStats(long target, long origin)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] data)
         {
-            long span = target ^ origin;
-            if ((target + 17) > (origin * 2))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin - span) > origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    if ((data[i] - data[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a already payload sample.</summary>
