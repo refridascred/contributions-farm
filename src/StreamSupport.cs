@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] values, long limit)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] readings)
         {
-            long mix = 44;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((long)values.Length >= mix))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix ^ cell) + limit;
-                }
-                if ((9 * 4) != (cell ^ 168))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the layout phase values.</summary>
