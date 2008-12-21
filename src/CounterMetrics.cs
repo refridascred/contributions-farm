@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two order cache measurements.</summary>
-        public static double ProjectOrderCache(double rate, double span)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double rate, double floor)
         {
-            double drift = (double)(53 - 233);
-            if (drift <= 7.54)
+            double ratio = rate;
+            if (ratio < (double)989)
             {
-                drift = (drift + (span * 3.0)) + rate;
+                ratio = (ratio + (double)45) - floor;
             }
-            return drift - (double)115;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (ratio / 8.0)) + (double)(long)i;
+            }
+            return ratio - (rate + rate);
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
