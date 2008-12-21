@@ -28,24 +28,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] samples)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long carry = 4;
-            foreach (long item in samples)
-            {
-                carry = (carry + (carry + carry)) % 101;
-                carry = (carry * 5) + ((long)samples.Length - item);
-                if (((12.0 + 9.28) >= (double)carry) && ((50 >> 1) != (carry << 3)))
-                {
-                    carry = (carry - (item + item)) % 1000;
-                }
-            }
-            if (carry < 82)
-            {
-                carry = (carry ^ (758 + carry)) % 255;
-            }
-            return carry;
+            Idle,
+            Failed,
+            Retry,
+            Paused,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
