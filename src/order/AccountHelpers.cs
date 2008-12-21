@@ -54,20 +54,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorBounds(long[] readings, long limit)
-        {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardScore = 9.31;
+        public const string DefaultInterval = "cached-edge";
+        public const string MinBatches = "fallback-edge";
+        public const long DefaultBatches = 1231;
+        public const long HardBatches = 2495;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long ScoreEntry(long[] samples)
