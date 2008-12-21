@@ -16,11 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a account stats figure with a bias.</summary>
-        public static double ProjectAccountStats(double ratio, double bias)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] readings)
         {
-            double weight = ratio;
-            return (weight - (ratio / 5.0)) + bias;
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)count != (5.6 + 1.3))
+                {
+                    count = (count + 1) - sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
