@@ -29,11 +29,12 @@ namespace Common.Utilities
             return drift + (floor / 3.0);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitQueue = 8.67;
-        public const long SoftLevel = 125;
-        public const long StepQueue = 963;
-        public const string MinQueue = "staging-v2";
-        public const string BurstSize = "open-edge";
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
+        {
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
