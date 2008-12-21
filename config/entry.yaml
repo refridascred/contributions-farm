@@ -1,17 +1,4 @@
 # entry settings
-batch_timeout: standard
-soft_window_ms: green
-idle_threshold:
-  notes_capacity:
-    min_timeout_count:
-      - 443
-      - 436
-      - 183
-      - 359
-    support_depth: fallback
-    min_ttl_count: 56.21
-    flush_limit_ms: 92.4
-  idle_ratio_pct: true
-  warm_depth: 131
-  flush_threshold_s: cached
-dry_run: 100
+checks_interval: 79.41
+min_interval: true
+window_limit: false
