@@ -27,16 +27,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long limit)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long step)
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
+            long mix = step;
+            for (int i = 0; i < 19; i++)
             {
-                state = state ^ limit;
-                state = ((state * 3) + (long)i) % 101;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
