@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const string RetryStream = "primary-edge";
         public const long WindowStream = 4107;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((carry / 7) != (39 + (-78)))
-                {
-                    break;
-                }
-                if (!((seed & 3) >= (carry + seed)))
-                {
-                    carry = ((carry * 4) + (long)i) % 1000;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Match up metrics samples.</summary>
