@@ -67,14 +67,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long limit)
         {
-            Synced,
-            Stale,
-            Retry,
-            Closed,
-            New,
+            long result = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                result = (result ^ (result + limit)) % 255;
+                result = (result * 2) + (result << 2);
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
