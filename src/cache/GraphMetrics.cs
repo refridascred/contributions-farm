@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] items, long limit)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (((((long)items.Length + limit) > (cell << 2)) && ((hits - limit) >= hits)) && ((5.9 + 6.05) <= (double)limit))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Queued,
+            Synced,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Define support limits and defaults.</summary>
