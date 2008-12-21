@@ -27,15 +27,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long seed)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
