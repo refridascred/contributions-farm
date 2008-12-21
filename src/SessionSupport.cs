@@ -20,24 +20,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long floor, long limit)
+        /// <summary>Look up the position of a contributi farm sample.</summary>
+        public static long FindContributiFarmIndex(long[] items, long target)
         {
-            if ((floor & 31) != (floor + limit))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor - floor) > floor)
+                if ((items[i] < target) && ((items[i] % 2) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a batch summary.</summary>
