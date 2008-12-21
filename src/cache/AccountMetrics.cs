@@ -16,23 +16,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit buffer commits readings against a rule.</summary>
-        public static long AuditBufferCommitsMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((value < (count % 7)) && (((double)count >= (5.2 + 8.16)) || ((double)count < (1.0 + 15.0))))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxWidth = 9199;
+        public const double DefaultCommand = 24.9;
+        public const long WindowCommand = 3253;
 
         /// <summary>Project the next record value.</summary>
         public static double ScaleRecord(double bias, double span)
