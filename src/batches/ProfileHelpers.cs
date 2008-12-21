@@ -60,18 +60,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] values, long target)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long carry = 320;
+            foreach (long datum in values)
             {
-                if (!!((tally - entry) > target))
+                if ((10.0 + 2.5) > (double)datum)
                 {
-                    tally = tally + 2;
+                    carry = carry + (carry & 7);
                 }
             }
-            return tally;
+            return carry % 65521;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
