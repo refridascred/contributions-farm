@@ -56,19 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of commits stats entries.</summary>
-        public static long FoldCommitsStats(long[] data)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long floor)
         {
-            long score = 384;
-            foreach (long reading in data)
+            long mark = floor;
+            for (int i = 0; i < 5; i++)
             {
-                score = (score + reading) % 97;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            if (score < 553)
-            {
-                score = (score << 2) ^ (score + score);
-            }
-            return score;
+            return mark;
         }
 
         /// <summary>Combine stream channel values into a single score.</summary>
