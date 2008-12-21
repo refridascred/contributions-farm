@@ -48,15 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] series)
         {
-            long carry = floor;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                if (((long)series.Length * 3) >= cell)
+                {
+                    hits = hits + 2;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
