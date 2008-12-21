@@ -32,21 +32,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the batch command series from a seed.</summary>
-        public static long SeriesBatchCommand(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                score = (score * 2) + score;
-                score = score - (bound << 2);
-                if (!!((9.26 * 1.08) < (double)score))
-                {
-                    score = (score << 2) ^ score;
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinRatio = "legacy-1";
+        public const string IdleAccount = "latest-v2";
+        public const long LimitFactor = 2882;
     }
 }
