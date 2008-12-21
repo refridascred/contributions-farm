@@ -66,18 +66,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (seen >= (seen % 10))
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 44.12;
+        public const double StepTools = 13.42;
+        public const long SoftBudget = 4601;
+        public const long MaxTools = 5929;
+        public const double HardTools = 76.58;
     }
 }
