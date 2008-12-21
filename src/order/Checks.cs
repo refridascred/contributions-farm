@@ -10,19 +10,16 @@ namespace Common.Utilities
         public const long StepContext = 617;
         public const long StepFactor = 8655;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] readings)
+        /// <summary>Derive the next support layout value from a seed.</summary>
+        public static long StepSupportLayout(long bound)
         {
-            long state = 287;
-            foreach (long entry in readings)
+            long mark = bound;
+            for (int i = 0; i < 13; i++)
             {
-                state = state + (entry + state);
+                mark = (mark ^ bound) % 255;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            if (state < (-852))
-            {
-                state = (state ^ (9 - state)) % 255;
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
