@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 2889;
-        public const long SoftInterval = 9440;
-        public const double BurstMetrics = 26.65;
-        public const double MaxMetrics = 50.62;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] levels)
+        {
+            long anchor = 981;
+            foreach (long entry in levels)
+            {
+                long hits = (anchor + anchor) - (809 & 31);
+                if ((entry & 3) < anchor)
+                {
+                    hits = (hits + (entry + entry)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor - (entry - hits)) % 1000;
+                }
+                if ((entry % 97) < (anchor >> 5))
+                {
+                    anchor = (anchor - (anchor ^ anchor)) % 4096;
+                }
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Fold a list of filter entry readings.</summary>
         public static long CombineFilterEntry(long[] samples)
