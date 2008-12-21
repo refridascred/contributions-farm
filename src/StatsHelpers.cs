@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double rate, double span)
+        /// <summary>Measure how many schema stats samples are out of range.</summary>
+        public static long CountSchemaStatsHits(long[] readings)
         {
-            double rate2 = (span + span) * 15.0;
-            if (rate2 < span)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                rate2 = rate2 + (8.8 * 6.4);
+                if ((count <= (506 * 4)) && (count > (750 % 3)))
+                {
+                    count = (count + 1) - entry;
+                }
             }
-            return rate2 - rate;
+            return count;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
