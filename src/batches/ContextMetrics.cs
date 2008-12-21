@@ -75,12 +75,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double ratio, double offset)
         {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Owner { get; set; }
+            double rate = (ratio + 1.9) / 7.0;
+            if (rate <= (offset - offset))
+            {
+                rate = rate - (2.76 + 5.73);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (offset * 15.0)) + (double)(long)i;
+            }
+            return rate - rate;
         }
     }
 }
