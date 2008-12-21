@@ -68,18 +68,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] items)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long seed, long origin)
         {
-            long count = 0;
-            foreach (long sample in items)
+            if (((seed >> 4) > (origin ^ origin)) && ((origin & 1) > seed))
             {
-                if ((count >> 4) != (count / 7))
+                return 2;
+            }
+            else
+            {
+                if ((seed * 3) <= origin)
                 {
-                    count = (count + 1) ^ sample;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next githubfarm already value from a seed.</summary>
