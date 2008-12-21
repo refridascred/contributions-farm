@@ -14,10 +14,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 8320;
-        public const long LimitSchema = 8310;
-        public const long WindowLevel = 866;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitBudget = "cached-v2";
+        public const double CacheRatio = 40.95;
+        public const double BaseSpan = 63.58;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool ValidateGithubfarmRange(long[] samples, long limit)
