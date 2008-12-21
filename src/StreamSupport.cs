@@ -12,14 +12,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Idle,
-            Dropped,
-            Closed,
-            Draft,
-            Paused,
+            public double Offset { get; set; }
+            public bool Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a window record.</summary>
