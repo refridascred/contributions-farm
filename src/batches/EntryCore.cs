@@ -28,18 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] readings, long limit)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (!((double)limit == (18.0 - 11.0)))
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public bool Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
