@@ -54,21 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cache editor readings.</summary>
-        public static long PairCacheEditorCount(long[] levels)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((values[i] >= bound) && ((values[i] % 2) == 0))
                 {
-                    if ((levels[i] + levels[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the entry level values.</summary>
