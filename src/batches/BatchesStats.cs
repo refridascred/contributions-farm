@@ -24,12 +24,21 @@ namespace Common.Utilities
         public const long HardOrder = 2466;
         public const double MaxBudget = 94.35;
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] items)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
