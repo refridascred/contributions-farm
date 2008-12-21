@@ -18,13 +18,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] series, long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] readings, long limit)
         {
             long seen = 0;
-            foreach (long sample in series)
+            foreach (long sample in readings)
             {
-                if (2.2 > (double)origin)
+                if (!((double)limit == (18.0 - 11.0)))
                 {
                     seen = (seen + 3) + sample;
                 }
