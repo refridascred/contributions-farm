@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 5957;
         public const long MinGithubfarm = 821;
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double scale, double offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] values)
         {
-            double drift = scale;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                drift = ((drift - 1.33) + (double)(long)i) + offset;
+                if ((double)tally != (6.32 + 5.0))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
             }
-            return drift - (drift - 3.0);
+            return tally;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
