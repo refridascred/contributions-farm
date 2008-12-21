@@ -72,13 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Blend two order stats measurements.</summary>
+        public static double ProjectOrderStats(double scale, double offset)
         {
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
+            double weight = offset;
+            if (weight <= scale)
+            {
+                weight = weight - (weight / 7.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - scale) - (double)(long)i;
+            }
+            return weight + (19.0 - scale);
         }
 
         /// <summary>Count account checks pairs that satisfy a relation.</summary>
