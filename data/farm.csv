@@ -1,11 +1,6 @@
-id,token,label
-1,161,34.56
-2,902,548
-3,816,primary
-4,44.0,84
-5,892,879
-6,406,eu-west
-7,63.86,stable
-8,blue,stable
-9,42.46,blue
-10,607,57.17
+id,score,count
+1,642,86.57
+2,190,44.88
+3,green,932
+4,legacy,5.16
+5,79.16,stable
