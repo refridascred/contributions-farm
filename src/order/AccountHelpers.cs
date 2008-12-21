@@ -22,21 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a support metric counter forward.</summary>
-        public static long RollSupportMetric(long limit)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long anchor = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((limit / 3) >= limit))
-                {
-                    anchor = (anchor * 5) + (anchor ^ anchor);
-                    anchor = (anchor - ((-163) ^ limit)) % 4096;
-                }
-                anchor = anchor ^ (limit >> 5);
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
