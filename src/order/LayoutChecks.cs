@@ -99,21 +99,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = bias;
+            if (ratio >= (double)7)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio - 8.52;
             }
-            return matches;
+            return ratio - weight;
         }
     }
 }
