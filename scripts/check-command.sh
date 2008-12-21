@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge latest staging; do
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in cached staging stable; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=380
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-stable}"
+mode="${1:-open}"
 case "${mode}" in
-    local)
+    staging)
         log "fast path"
         ;;
     *)
