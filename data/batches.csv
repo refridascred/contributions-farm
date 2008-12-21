@@ -1,7 +1,9 @@
-id,level,owner,active,label
-1,48.39,238,10.11,stable
-2,65.47,primary,190,919
-3,72.85,legacy,58,primary
-4,fallback,primary,162,255
-5,eu-west,20.35,open,430
-6,63.36,cached,green,69
+id,label,score,token,region
+1,35.16,645,staging,strict
+2,green,480,cached,latest
+3,164,141,39.16,505
+4,486,96.46,blue,531
+5,508,blue,602,77.5
+6,846,968,11,79.42
+7,standard,26.03,staging,919
+8,24.54,686,primary,42.63
