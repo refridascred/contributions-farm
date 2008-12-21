@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
+            public double Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Match up route samples.</summary>
