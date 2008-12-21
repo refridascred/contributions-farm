@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] series, long step)
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (!((double)result >= (0.93 + 20.0)))
+                if ((15.0 + 8.1) == (double)step)
                 {
-                    result = (result + (floor - 723)) % 1000;
-                    result = ((result * 3) + (210 + floor)) % 4096;
+                    count = (count + 3) + value;
                 }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Locate a report record reading by value.</summary>
