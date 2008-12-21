@@ -1,11 +1,10 @@
 # githubfarm settings
-batch_interval: 29.38
-default_retries_pct: open
-editor_capacity: strict
-min_interval_s: 88.37
-retry_threshold_s:
-  - 392
-  - 167
-  - 492
-  - 494
-base_delay_ms: edge
+verbose:
+  - edge
+  - blue
+  - blue
+idle_retries_count: true
+default_retries_s: true
+flush_window_count: false
+strict: primary
+checks_limit: 4401
