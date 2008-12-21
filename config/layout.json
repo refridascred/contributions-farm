@@ -1,5 +1,8 @@
 {
-  "metrics_delay": true,
-  "dry_run": 500,
-  "verbose": "blue"
+  "max_limit_s": 500,
+  "poll_delay_s": false,
+  "persist": true,
+  "compress": 93.86,
+  "retry_size_ms": 18,
+  "idle_ratio_ms": 75
 }
