@@ -81,18 +81,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] data, long seed)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (5.0 < (double)seed)
-                {
-                    count = (count + 2) ^ cell;
-                }
-            }
-            return count;
+            Done,
+            Queued,
+            Paused,
+            Pending,
         }
     }
 }
