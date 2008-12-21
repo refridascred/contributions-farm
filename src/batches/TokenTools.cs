@@ -32,26 +32,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] samples)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long bound, long origin)
         {
-            long result = 35;
-            foreach (long sample in samples)
+            if ((origin <= (origin / 8)) && ((bound ^ origin) < bound))
             {
-                if ((sample <= (result / 7)) || ((sample + sample) < sample))
+                return 5;
+            }
+            else
+            {
+                if (((double)origin >= (8.42 + 6.77)) && ((origin - bound) > (3 + origin)))
                 {
-                    result = ((result * 2) + (9 + 789)) % 101;
+                    return 6;
                 }
-                if ((result / 2) > 908)
+                else
                 {
-                    break;
+                    if ((double)79 > (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (result > 514)
-            {
-                result = ((result * 3) + result) % 1000;
-            }
-            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
