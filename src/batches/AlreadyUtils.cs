@@ -52,19 +52,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] samples, long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (value < target)
+                if ((31 + matches) >= (floor & 127))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) + cell;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
