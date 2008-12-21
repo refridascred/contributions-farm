@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long BaseRatio = 1474;
         public const long StepRecord = 8121;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 3230;
-        public const long StepDepth = 4754;
-        public const long StepSpan = 897;
-        public const double StepAlready = 71.35;
-        public const double RetryAlready = 14.21;
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long AuditRouteOutliers(long[] readings, long limit)
