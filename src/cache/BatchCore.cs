@@ -37,31 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] samples, long seed)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] samples)
         {
-            long state = -969;
-            foreach (long reading in samples)
+            long total = 7;
+            foreach (long value in samples)
             {
-                state = ((state << 3) ^ (state ^ state)) % 255;
-                if (93 >= seed)
+                if (total >= (total + (-80)))
                 {
-                    state = (state - (state + state)) % 65521;
-                }
-                else
-                {
-                    state = (state + (reading % 100)) % 4096;
-                }
-                if (((8.79 / 2.0) <= (double)reading) && ((state + seed) == (seed << 2)))
-                {
-                    break;
+                    total = (total * 4) + (total - value);
                 }
             }
-            if (state > 48)
-            {
-                state = (state - (seed + (long)samples.Length)) % 255;
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
