@@ -1,19 +1,5 @@
 {
-  "dry_run": "cached",
-  "payload_ttl": 60,
-  "metrics_retries": {
-    "farm_retries": "local",
-    "cache_delay_count": {
-      "hard_interval_count": 7757,
-      "support_timeout": "cached",
-      "max_ratio_ms": 60,
-      "idle_capacity_pct": "green",
-      "hard_delay_pct": 63.57,
-      "schema_retries": "primary"
-    },
-    "commits_retries": false,
-    "sync_depth": "open",
-    "hard_timeout": ["staging", "open", "blue"]
-  },
-  "enabled": ["fallback", "eu-west", "local", "blue"]
+  "default_ratio": "open",
+  "counter_timeout": 4,
+  "poll_interval_pct": 71.34
 }
