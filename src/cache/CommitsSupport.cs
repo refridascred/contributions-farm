@@ -58,18 +58,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] items, long offset)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long anchor = 971;
-            foreach (long sample in items)
-            {
-                if (!((double)anchor != (8.49 + 8.2)))
-                {
-                    anchor = ((anchor + (sample / 5)) % 65521) - offset;
-                }
-            }
-            return anchor % 97;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Look up the position of a account sample.</summary>
