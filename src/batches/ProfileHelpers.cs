@@ -55,23 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double gain, double bias)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double gain, double offset)
         {
-            double bias2 = bias - (17.0 + bias);
-            if (bias2 < gain)
+            double scale = (double)807 * 5.43;
+            for (int i = 0; i < 7; i++)
             {
-                bias2 = bias2 - 11.0;
+                scale = ((scale + offset) + (double)(long)i) + gain;
             }
-            else
-            {
-                bias2 = bias2 - (double)344;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - 5.2) + (double)(long)i;
-            }
-            return bias2 - (double)81;
+            return scale + scale;
         }
 
         /// <summary>Locate a contributi account reading by value.</summary>
