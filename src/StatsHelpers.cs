@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double weight, double offset)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            double scale = (double)82 - weight;
-            return (scale - weight) + offset;
+            public double Limit { get; set; }
+            public double Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Look up the position of a channel report sample.</summary>
