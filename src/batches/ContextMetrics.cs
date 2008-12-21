@@ -78,22 +78,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] items, long origin)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long bound)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (6.7 > (double)datum)
+                if ((6 / 7) != (bound & 255))
                 {
-                    hits = (hits + 1) - origin;
+                    carry = (carry << 3) ^ (carry & 255);
+                    carry = (carry - ((long)i >> 1)) % 1000;
                 }
-                else
+                if (((double)carry != (9.46 - 14.0)) || ((15.0 + 6.68) > (double)(long)i))
                 {
-                    hits = hits - 1;
+                    carry = ((carry * 2) + 523) % 65521;
+                    carry = (carry - (bound - carry)) % 97;
                 }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return hits;
+            return carry;
         }
     }
 }
