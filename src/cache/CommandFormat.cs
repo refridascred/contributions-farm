@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] levels, long offset)
+        /// <summary>Look up the position of a githubfarm profile sample.</summary>
+        public static long LookupGithubfarmProfileIndex(long[] levels, long floor)
         {
-            long mark = 9;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                if (levels[i] < floor)
                 {
-                    mark = (((mark * 5) + 725) % 4096) ^ (long)i;
-                }
-                if ((mark + value) <= (offset ^ value))
-                {
-                    mark = (mark ^ (91 >> 4)) % 4096;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
