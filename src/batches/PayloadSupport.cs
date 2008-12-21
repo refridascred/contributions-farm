@@ -34,13 +34,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Audit farm record readings against a rule.</summary>
+        public static long MeasureFarmRecordMatches(long[] values, long origin)
         {
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public bool Rank { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (!!((hits + origin) <= (origin * 4)))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
