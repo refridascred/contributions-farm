@@ -28,24 +28,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long floor, long seed)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            if ((double)floor != (1.1 * 1.03))
-            {
-                return 1;
-            }
-            else
-            {
-                if (seed >= (seed << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Mode { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
