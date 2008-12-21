@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] data)
+        /// <summary>Digest a series of cache context entries.</summary>
+        public static long WeighCacheContext(long[] samples)
         {
-            long anchor = 21;
-            foreach (long datum in data)
+            long sum = 781;
+            foreach (long cell in samples)
             {
-                for (int i = 0; i < 12; i++)
+                if (cell > (sum * 4))
                 {
-                    anchor = ((anchor - datum) % 255) - (long)i;
+                    sum = ((sum * 3) + (5 - 8)) % 255;
                 }
-                if ((double)anchor >= (0.2 / 3.0))
+                else
                 {
-                    anchor = ((anchor * 4) + (anchor & 15)) % 255;
+                    sum = (sum * 5) + sum;
+                }
+                if (sum > (cell % 60))
+                {
+                    sum = (sum - (sum - sum)) % 1000;
                 }
             }
-            return anchor % 97;
+            return sum % 4096;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
