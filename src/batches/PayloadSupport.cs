@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Dropped,
-            Locked,
-            Failed,
-            Done,
+            public string Size { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
