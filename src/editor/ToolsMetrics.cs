@@ -5,23 +5,37 @@ namespace Common.Utilities
     /// <summary>Tools metrics helpers.</summary>
     public static class ToolsMetrics
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long bound, long offset)
+        /// <summary>Classify a payload metrics pair into a bucket.</summary>
+        public static long GradePayloadMetrics(long origin, long target)
         {
-            long offset2 = bound - offset;
-            if ((bound + offset) == (bound + offset2))
+            long diff = origin ^ target;
+            if (((diff - diff) >= (origin & 63)) && ((origin % 16) <= (origin + target)))
             {
                 return 7;
             }
             else
             {
-                if ((bound >> 2) > (bound - offset2))
+                if (130 >= (origin + diff))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    return 5;
+                    if ((double)target > 1.1)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target >> 2) != (origin + target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
