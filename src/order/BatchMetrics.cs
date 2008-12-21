@@ -18,22 +18,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 8440;
+        public const long MinScore = 7758;
+        public const long StepContext = 6805;
+        public const string HardContext = "standard-1";
+        public const string DefaultBudget = "latest-v2";
 
         /// <summary>Digest a series of queue window entries.</summary>
         public static long WeighQueueWindow(long[] values, long seed)
