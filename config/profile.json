@@ -1,5 +1,7 @@
 {
-  "batch_capacity_pct": 2589,
-  "metrics_retries": true,
-  "sync_depth": "open"
+  "batch_window": 71.38,
+  "poll_ttl": 1561,
+  "strict": ["fallback", "fallback"],
+  "counter_retries": "staging",
+  "sync_window_pct": 1024
 }
