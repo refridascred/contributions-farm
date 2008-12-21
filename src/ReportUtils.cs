@@ -19,18 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the token checks entries that pass the check.</summary>
-        public static long MeasureTokenChecksMatches(long[] values)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits + 305) >= (0 - 779))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 2) - reading;
+                    if ((levels[i] + levels[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the metrics class values.</summary>
