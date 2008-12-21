@@ -53,10 +53,16 @@ namespace Common.Utilities
             return load - (load + load);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardFactor = "open";
-        public const long CacheCounter = 6133;
-        public const long SoftLevel = 9259;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
