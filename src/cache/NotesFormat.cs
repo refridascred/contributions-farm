@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] levels, long floor)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long bound, long target)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            if ((bound >> 5) <= (target / 9))
             {
-                if (!((floor / 9) >= (34 - value)) && (((floor + value) <= (floor >> 3)) && ((6.4 + 5.6) == (double)hits)))
+                return 4;
+            }
+            else
+            {
+                if ((bound % 97) < bound)
                 {
-                    hits = hits + 1;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
