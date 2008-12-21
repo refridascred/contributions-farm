@@ -1,15 +1,6 @@
 {
-  "command_depth": {
-    "persist": 19.97,
-    "base_limit": 54,
-    "metrics_delay": "edge"
-  },
-  "audit": false,
-  "persist": {
-    "enabled": 250,
-    "base_threshold_ms": 1030,
-    "session_threshold": 55,
-    "min_timeout": 43.62
-  },
-  "cache_retries_pct": 60
+  "soft_retries_count": 500,
+  "burst_limit": [251, 19, 231, 96],
+  "idle_retries": "green",
+  "order_ratio": "cached"
 }
