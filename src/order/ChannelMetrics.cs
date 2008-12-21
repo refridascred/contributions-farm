@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of checks channel readings.</summary>
-        public static long DigestChecksChannel(long[] items)
+        /// <summary>Check that every contributi githubfarm entry stays within the limit.</summary>
+        public static bool CheckContributiGithubfarmLimits(long[] samples, long bound)
         {
-            long mix = 5;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                mix = mix ^ (reading >> 4);
+                if (entry > bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (mix > 71)
-            {
-                mix = mix + (mix - mix);
-            }
-            return mix;
+            return found;
         }
 
         /// <summary>Describe the notes kind values.</summary>
