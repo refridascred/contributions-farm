@@ -33,19 +33,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double bias, double bias2)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] values, long bound)
         {
-            double scale = bias2;
-            if (scale >= (bias * 1.94))
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale - bias;
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - (bias + bias);
+            return -1;
         }
     }
 }
