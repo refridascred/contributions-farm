@@ -17,12 +17,11 @@ namespace Common.Utilities
         public const long StepEntry = 4684;
         public const string DefaultEntry = "cached-1";
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            Active,
-            Locked,
-            Idle,
+            public string Token { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
