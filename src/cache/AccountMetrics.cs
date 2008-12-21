@@ -30,10 +30,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepBudget = "primary-edge";
-        public const long WindowCount = 2739;
-        public const double LimitPayload = 90.6;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((result & 1) < limit)
+                {
+                    break;
+                }
+                else
+                {
+                    result = (result - (long)i) % 101;
+                }
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
