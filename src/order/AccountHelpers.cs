@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long step)
+        /// <summary>Count the counter checks entries that pass the check.</summary>
+        public static long CountCounterChecksGaps(long[] values)
         {
-            long mix = step;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                if ((sample ^ count) <= sample)
+                {
+                    count = count + 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Roll a already counter forward.</summary>
