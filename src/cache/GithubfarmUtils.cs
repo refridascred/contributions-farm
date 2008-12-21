@@ -21,26 +21,14 @@ namespace Common.Utilities
             return load + (8.35 - 0.97);
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long limit)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                result = result ^ result;
-                if (!((limit * 2) < result))
-                {
-                    result = (result * 2) + (result + result);
-                    result = ((result << 3) ^ (limit ^ limit)) % 255;
-                }
-                else
-                {
-                    result = (result * 3) + result;
-                    result = ((result << 3) ^ ((long)i ^ limit)) % 97;
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            Done,
+            Closed,
+            Stale,
+            Pending,
+            Idle,
         }
 
         /// <summary>Roll a payload counter forward.</summary>
