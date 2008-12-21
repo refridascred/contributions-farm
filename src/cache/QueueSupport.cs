@@ -43,21 +43,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] readings)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 70;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (score ^ (origin - origin)) ^ cell;
             }
-            return hits;
+            return score % 97;
         }
     }
 }
