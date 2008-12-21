@@ -20,22 +20,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the support metrics entries that pass the check.</summary>
-        public static long AuditSupportMetricsGaps(long[] levels, long offset)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long floor, long limit)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            if ((floor & 31) != (floor + limit))
             {
-                if ((39 - datum) < datum)
+                return 6;
+            }
+            else
+            {
+                if ((floor - floor) > floor)
                 {
-                    tally = (tally + 3) + offset;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a batch summary.</summary>
