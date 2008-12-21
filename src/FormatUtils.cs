@@ -52,11 +52,15 @@ namespace Common.Utilities
         public const string BatchSchema = "cached";
         public const long LimitDepth = 8106;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardSize = "local";
-        public const long DefaultScore = 6211;
-        public const string DefaultInterval = "staging-1";
-        public const long MaxTimeout = 8042;
-        public const long StepFactor = 2746;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] samples)
+        {
+            long anchor = 0;
+            foreach (long sample in samples)
+            {
+                anchor = (anchor - anchor) + sample;
+            }
+            return anchor % 1000;
+        }
     }
 }
