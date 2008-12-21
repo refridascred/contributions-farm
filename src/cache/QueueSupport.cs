@@ -23,13 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] readings)
         {
-            Idle,
-            Ready,
-            Failed,
-            Draft,
+            long score = 31;
+            foreach (long sample in readings)
+            {
+                if ((double)sample < 3.54)
+                {
+                    score = score ^ (score - score);
+                }
+            }
+            if (score < 598)
+            {
+                score = score ^ score;
+            }
+            return score;
         }
 
         /// <summary>Grade a entry already value against two limits.</summary>
