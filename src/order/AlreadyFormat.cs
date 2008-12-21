@@ -70,11 +70,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public string Size { get; set; } = "";
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double StepBudget = 44.72;
+        public const long BaseBudget = 6548;
+        public const string CacheSpan = "local-v2";
+        public const long BurstScore = 7988;
     }
 }
