@@ -1,8 +1,7 @@
-id,active,score
-1,53,583
-2,34.0,53.81
-3,primary,240
-4,edge,501
-5,746,320
-6,eu-west,473
-7,147,711
+id,state,region,ratio
+1,legacy,27.85,145
+2,52.65,open,932
+3,732,38.56,stable
+4,511,3,61.76
+5,73.81,13.55,latest
+6,local,198,primary
