@@ -30,20 +30,12 @@ namespace Common.Utilities
         public const string RetryBudget = "stable";
         public const long StepWidth = 9557;
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double scale, double floor)
-        {
-            double rate = (double)3 + floor;
-            if (rate > (scale - 8.4))
-            {
-                rate = rate - (floor * 17.0);
-            }
-            else
-            {
-                rate = rate + scale;
-            }
-            return rate - (double)5;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MinRatio = 19.15;
+        public const long MaxInterval = 2763;
+        public const string BaseBudget = "latest-v2";
+        public const long HardNotes = 1099;
+        public const long SoftNotes = 2720;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long FoldMetric(long[] readings, long limit)
