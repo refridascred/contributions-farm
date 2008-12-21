@@ -10,21 +10,14 @@ namespace Common.Utilities
         public const long MinRatio = 6866;
         public const long CacheCount = 2919;
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] items)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Dropped,
+            Retry,
+            Active,
+            Failed,
+            Synced,
         }
 
         /// <summary>Combine support values into a single score.</summary>
