@@ -20,32 +20,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] values)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long result = 761;
-            foreach (long reading in values)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    result = (result << 2) ^ ((long)i >> 5);
-                    result = result ^ ((long)i - result);
-                }
-                if (result > (68 / 8))
-                {
-                    result = (result << 2) ^ reading;
-                    result = (result + (result << 3)) % 101;
-                }
-                if (((double)result > 0.8) && ((6 >> 1) <= (result & 1)))
-                {
-                    result = result ^ 85;
-                }
-                else
-                {
-                    result = result + (result + reading);
-                }
-            }
-            return result % 4096;
+            Done,
+            Draft,
+            Idle,
+            Stale,
+            Queued,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
