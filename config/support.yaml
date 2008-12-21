@@ -1,21 +1,11 @@
 # support settings
-commits_window:
-  - 214
-  - 258
-  - 117
-  - 189
-retry_ttl: false
-warm_window: false
-default_size:
-  default_threshold_s:
-    - 277
-    - 20
-    - 117
-  warm_size_count: 9642
-  idle_delay:
-    - legacy
-    - local
-    - local
-    - cached
-readonly: fallback
-stats_interval: 250
+cache_ratio_pct:
+  max_retries: true
+  channel_size: 98.66
+  base_depth_pct: 42.07
+  max_delay_count: false
+  poll_timeout_count: primary
+cache_retries_count: green
+retry_limit_s: 60
+base_ratio_count: fallback
+default_capacity_ms: standard
