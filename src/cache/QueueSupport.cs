@@ -21,15 +21,39 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Iterate the counter token series from a seed.</summary>
-        public static long RollCounterToken(long limit)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long target, long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
+            long next = target + seed;
+            if (next >= (next / 8))
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if ((seed % 64) >= target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((-6) & 127) != (target * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((0.03 - 3.1) < (double)seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
