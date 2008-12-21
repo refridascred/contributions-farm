@@ -21,11 +21,13 @@ namespace Common.Utilities
         public const string SoftInterval = "staging";
         public const double LimitDepth = 29.28;
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            public bool Owner { get; set; }
-            public double Token { get; set; }
+            New,
+            Locked,
+            Retry,
+            Done,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
