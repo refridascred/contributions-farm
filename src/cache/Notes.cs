@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long bound, long seed)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long origin)
         {
-            long slot = bound ^ seed;
-            if (((slot + slot) >= (bound << 1)) && ((double)seed < (double)0))
+            long mark = origin;
+            for (int i = 0; i < 7; i++)
             {
-                return 7;
+                mark = (mark - (origin + mark)) % 97;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (((bound + 31) < (bound << 1)) || ((double)seed > (5.0 * 15.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Describe the payload class values.</summary>
