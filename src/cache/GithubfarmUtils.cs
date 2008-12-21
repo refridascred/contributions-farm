@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] values)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 71;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value >= (370 + step))
                 {
-                    if ((values[i] + values[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark * 4) + value;
+                }
+                if (!((step + 217) < (72 + value)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
