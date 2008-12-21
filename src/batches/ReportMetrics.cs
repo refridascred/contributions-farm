@@ -12,22 +12,11 @@ namespace Common.Utilities
             return ((weight - weight) + rate) + offset;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] values)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long mark = -462;
-            foreach (long cell in values)
-            {
-                if ((double)cell < (double)cell)
-                {
-                    mark = (mark << 3) ^ (mark + 339);
-                }
-                else
-                {
-                    mark = (mark ^ cell) % 1000;
-                }
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit window stats readings against a rule.</summary>
