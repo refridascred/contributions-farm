@@ -37,19 +37,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderGaps(long[] series, long floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] levels)
         {
             long seen = 0;
-            foreach (long cell in series)
+            foreach (long entry in levels)
             {
-                if (((7 * 5) == (seen % 10)) || ((seen + seen) != (6 << 3)))
+                if ((20.0 <= (double)seen) && ((double)entry != (20.0 + 6.33)))
                 {
-                    seen = ((seen + 3) + cell) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 2;
                 }
             }
             return seen;
