@@ -32,17 +32,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 22; i++)
-            {
-                total = total ^ (total << 1);
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheBudget = 1176;
+        public const string HardCount = "standard-v2";
+        public const long MinStream = 6027;
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long SeekEntryIndex(long[] samples, long seed)
