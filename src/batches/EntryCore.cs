@@ -22,12 +22,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            public double Owner { get; set; }
-            public bool Count { get; set; }
-            public bool Stamp { get; set; }
+            public double Token { get; set; }
+            public long Count { get; set; }
+            public double Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
