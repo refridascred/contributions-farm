@@ -1,9 +1,7 @@
 # support settings
-default_threshold_count: local
-idle_ratio_count: local
-retry_threshold: false
-verbose:
-  - 278
-  - 393
-  - 460
-default_ttl_ms: false
+idle_ratio_pct: green
+editor_depth: true
+idle_threshold_ms: blue
+min_limit_count: cached
+warm_ttl: 100
+audit: open
