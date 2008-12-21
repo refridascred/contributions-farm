@@ -16,25 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a schema account value against two limits.</summary>
-        public static long BucketSchemaAccount(long limit, long step)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long delta = limit + step;
-            if (limit < (step - delta))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((delta + step) >= (delta + limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit context order readings against a rule.</summary>
