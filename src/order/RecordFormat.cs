@@ -37,19 +37,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] series, long origin)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != origin)
+                if ((items[i] >= origin) && ((items[i] % 3) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
