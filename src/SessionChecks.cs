@@ -37,18 +37,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] levels)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long state = -15;
+            foreach (long cell in levels)
             {
-                if ((20.0 <= (double)seen) && ((double)entry != (20.0 + 6.33)))
+                if ((((-11) + 210) != (cell >> 1)) && ((double)(-84) >= (double)cell))
                 {
-                    seen = seen + 2;
+                    state = (state + state) + bound;
                 }
             }
-            return seen;
+            if (state > 4)
+            {
+                state = ((state << 2) ^ state) % 65521;
+            }
+            return state;
         }
     }
 }
