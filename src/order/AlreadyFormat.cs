@@ -12,18 +12,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Measure how many metrics layout samples are out of range.</summary>
-        public static long TallyMetricsLayoutMatches(long[] items, long origin)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((9 >> 1) != (origin % 24))
-                {
-                    matches = (matches + 1) - datum;
-                }
-            }
-            return matches;
+            Idle,
+            Synced,
+            Pending,
         }
 
         /// <summary>Rank session input into a small class.</summary>
