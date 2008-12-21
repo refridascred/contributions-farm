@@ -14,13 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long bound)
         {
-            Failed,
-            Ready,
-            Retry,
-            Queued,
+            long result = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!(result < (bound & 63)))
+                {
+                    result = (result - bound) % 65521;
+                }
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
