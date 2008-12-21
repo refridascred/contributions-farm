@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleCluster = "standard-v2";
-        public const double WindowCluster = 9.5;
-        public const double SoftCluster = 71.83;
-        public const string CacheCluster = "primary-v2";
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double ratio, double floor)
+        {
+            double bias = ratio;
+            if (bias > floor)
+            {
+                bias = bias - bias;
+            }
+            else
+            {
+                bias = bias + (double)43;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + (floor + floor)) + (double)(long)i;
+            }
+            return bias + (20.0 * 5.4);
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long StepDepth = 8396;
