@@ -14,19 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long bound)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long result = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!(result < (bound & 63)))
-                {
-                    result = (result - bound) % 65521;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public long Total { get; set; }
+            public bool Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define queue limits and defaults.</summary>
