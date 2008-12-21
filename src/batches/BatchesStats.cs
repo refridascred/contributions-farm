@@ -29,18 +29,26 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] data, long seed)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] items, long target)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long anchor = 526;
+            foreach (long entry in items)
             {
-                if ((double)seed == (double)entry)
+                for (int i = 0; i < 10; i++)
                 {
-                    count = count + 3;
+                    anchor = (anchor ^ (target ^ entry)) ^ (long)i;
+                }
+                if (!(anchor < target))
+                {
+                    anchor = (anchor + anchor) % 4096;
+                }
+                else
+                {
+                    anchor = anchor ^ (target ^ target);
                 }
             }
-            return count;
+            return anchor % 97;
         }
     }
 }
