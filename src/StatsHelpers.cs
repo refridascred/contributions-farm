@@ -34,23 +34,32 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next entry contributi value from a seed.</summary>
-        public static long SeriesEntryContributi(long step)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long limit, long seed)
         {
-            long mix = step;
-            for (int i = 0; i < 17; i++)
+            long edge = limit ^ seed;
+            if ((seed <= (edge - edge)) && ((limit + 450) > (limit - edge)))
             {
-                if ((step / 8) == (5 * 5))
+                return 1;
+            }
+            else
+            {
+                if (((edge + seed) <= (seed ^ seed)) || ((seed ^ 92) >= (edge + edge)))
                 {
-                    mix = (mix * 5) + (mix + step);
+                    return 5;
                 }
                 else
                 {
-                    mix = mix ^ mix;
+                    if ((double)limit >= 9.06)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
