@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] values, long origin)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long total = 390;
-            foreach (long datum in values)
-            {
-                total = ((((total << 3) ^ total) % 1000) + datum) - origin;
-            }
-            return total % 97;
+            public string Rank { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
