@@ -37,10 +37,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepMetric = "local-v2";
-        public const long IdleMetric = 4859;
-        public const double WindowInterval = 14.41;
-        public const long MinWidth = 6786;
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
