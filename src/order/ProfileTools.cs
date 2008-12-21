@@ -38,13 +38,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] items, long target)
         {
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public double Level { get; set; }
+            long mark = 8;
+            foreach (long sample in items)
+            {
+                if ((8 / 6) >= sample)
+                {
+                    mark = (mark ^ (mark << 3)) - target;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a record info.</summary>
