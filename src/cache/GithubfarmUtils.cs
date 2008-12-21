@@ -38,18 +38,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] readings)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long total = 5;
-            foreach (long entry in readings)
-            {
-                if ((entry - 35) == ((long)readings.Length << 3))
-                {
-                    total = ((total * 4) + (total + entry)) % 255;
-                }
-            }
-            return total % 65521;
+            public long Limit { get; set; }
+            public double Region { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
     }
 }
