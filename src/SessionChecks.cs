@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Validate buffer batch readings against a bound.</summary>
+        public static bool VerifyBufferBatchBounds(long[] levels, long floor)
         {
-            Paused,
-            Failed,
-            Pending,
-            Locked,
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a window reading by value.</summary>
