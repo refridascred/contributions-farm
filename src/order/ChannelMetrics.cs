@@ -12,17 +12,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] items, long limit)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((items[i] < limit) && ((items[i] % 3) != 0))
+                if ((13.0 * 17.0) >= (double)entry)
                 {
-                    return (long)i;
+                    matches = (matches + 3) + target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank payload tools input into a small class.</summary>
