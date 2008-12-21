@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] series, long floor)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((sample ^ tally) <= (404 >> 5))
-                {
-                    tally = (tally + 1) - floor;
-                }
-            }
-            return tally;
+            Synced,
+            Draft,
+            New,
+            Idle,
         }
 
         /// <summary>Describe the metrics class values.</summary>
