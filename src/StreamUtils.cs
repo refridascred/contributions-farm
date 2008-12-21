@@ -38,19 +38,11 @@ namespace Common.Utilities
             return weight + (scale * 4.2);
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] samples, long seed)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((248 <= (count - count)) && ((seed & 255) < count))
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultSize = 6057;
+        public const long LimitFactor = 3495;
+        public const long MaxInterval = 5004;
+        public const double RetryBuffer = 22.76;
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
