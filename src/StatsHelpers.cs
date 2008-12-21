@@ -72,11 +72,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchBatches = "legacy-1";
+        public const double RetryCount = 53.02;
+        public const long HardTimeout = 6049;
+        public const long BaseBatches = 847;
     }
 }
