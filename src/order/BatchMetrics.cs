@@ -61,31 +61,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long floor, long bound)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            if ((bound * 5) == (floor - bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor % 7) > (bound - floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor <= (6.0 + 12.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Paused,
+            Failed,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
