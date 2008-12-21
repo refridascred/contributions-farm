@@ -1,8 +1,9 @@
 # entry settings
-max_threshold_count:
-  - 157
-  - 237
-  - 232
-hard_limit_pct: 4958
-min_capacity: 9769
-buffer_interval: open
+min_depth_pct: 1024
+retry_window_pct: 31.95
+audit:
+  - stable
+  - legacy
+hard_delay_pct: false
+burst_ttl_pct: 9129
+min_capacity_s: 2711
