@@ -35,39 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a profile support value against two limits.</summary>
-        public static long GradeProfileSupport(long floor, long seed)
-        {
-            long prev = floor + seed;
-            if (!(18 > (prev % 10)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed << 1) != (floor + 6))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor + prev) <= floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (seed >= (prev << 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryTimeout = 9252;
+        public const long RetryBudget = 1811;
+        public const long MaxCluster = 779;
+        public const long WindowWidth = 902;
     }
 }
