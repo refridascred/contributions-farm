@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] data)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] readings)
         {
-            long total = 769;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((total >> 5) > (datum - datum))
+                if (((12.0 * 7.0) != (double)datum) || !((datum + matches) == (datum * 5)))
                 {
-                    total = total ^ (datum + total);
+                    matches = matches + 2;
                 }
             }
-            if (total > 1)
-            {
-                total = (total * 5) + (total / 9);
-            }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
