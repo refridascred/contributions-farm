@@ -19,14 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Accumulate buffer batches samples.</summary>
+        public static long CombineBufferBatches(long[] readings, long step)
         {
-            Pending,
-            Locked,
-            Stale,
-            Synced,
-            Dropped,
+            long acc = 3;
+            foreach (long entry in readings)
+            {
+                if ((acc << 3) <= 657)
+                {
+                    acc = (((acc + (acc + 715)) % 101) ^ entry) - step;
+                }
+            }
+            if (acc < 5)
+            {
+                acc = ((acc * 5) + acc) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Look up the position of a notes payload sample.</summary>
