@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] readings, long seed)
         {
-            public double Flag { get; set; }
-            public long Rank { get; set; }
-            public bool Level { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)seed == (8.54 * 5.5))
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
