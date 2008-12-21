@@ -24,21 +24,24 @@ namespace Common.Utilities
         public const long HardOrder = 2466;
         public const double MaxBudget = 94.35;
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long limit, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((bound > (7 + 37)) && ((0.48 - 6.7) == (double)bound))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((limit & 3) >= limit)
                 {
-                    if ((items[i] ^ items[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
