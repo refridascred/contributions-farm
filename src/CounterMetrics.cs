@@ -19,19 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] data, long floor)
+        /// <summary>Count cluster record pairs that satisfy a relation.</summary>
+        public static long OverlapClusterRecordCount(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] - items[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
