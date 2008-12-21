@@ -17,19 +17,19 @@ namespace Common.Utilities
         public const string CacheWidth = "primary-1";
         public const double StepSize = 26.05;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] data, long offset)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double rate, double span)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            double bias = rate / 9.0;
+            if (bias <= (bias * 8.29))
             {
-                if (datum < offset)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = (bias - rate) + span;
             }
-            return stale;
+            else
+            {
+                bias = bias - bias;
+            }
+            return bias + rate;
         }
     }
 }
