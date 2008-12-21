@@ -28,38 +28,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long limit, long limit2)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] values, long target)
         {
-            if ((double)limit >= (12.0 + 1.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit & 15) < 47)
+                if (values[i] > target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)limit >= 6.7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((30 % 60) > limit2)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two order stats measurements.</summary>
