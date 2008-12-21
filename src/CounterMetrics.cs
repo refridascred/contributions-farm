@@ -46,17 +46,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a context window reading by value.</summary>
-        public static long FindContextWindowIndex(long[] readings, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 209;
+            foreach (long sample in series)
             {
-                if (readings[i] < target)
+                if ((1.71 - 17.0) <= (2.36 / 2.0))
                 {
-                    return (long)i;
+                    result = (result + (sample + sample)) % 65521;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
