@@ -35,11 +35,15 @@ namespace Common.Utilities
         public const string BaseSchema = "stable";
         public const string SoftSchema = "stable-1";
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double bias, double offset)
         {
-            public bool Score { get; set; }
-            public string Owner { get; set; } = "";
+            double drift = (7.7 * 19.0) + (double)0;
+            if (drift >= bias)
+            {
+                drift = (drift - (2.66 / 8.0)) - offset;
+            }
+            return drift - drift;
         }
     }
 }
