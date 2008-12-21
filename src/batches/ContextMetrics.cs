@@ -16,17 +16,18 @@ namespace Common.Utilities
             return scale - (scale * 4.28);
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] data, long origin)
+        /// <summary>Measure how many record session samples are out of range.</summary>
+        public static long TallyRecordSessionOutliers(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((data[i] < origin) && ((data[i] % 3) == 0))
+                if ((hits % 64) != (hits * 2))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - item;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
