@@ -35,14 +35,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Find the first contributi profile entry that matches the target.</summary>
+        public static long SeekContributiProfileIndex(long[] series, long seed)
         {
-            Idle,
-            Locked,
-            Draft,
-            Queued,
-            Retry,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= seed) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
