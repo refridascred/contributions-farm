@@ -46,14 +46,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long target, long offset)
         {
-            Synced,
-            Locked,
-            Dropped,
-            Idle,
-            Active,
+            long prev = target - offset;
+            if ((889 + offset) < (target * 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((prev + prev) <= (offset & 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Digest a series of context entries.</summary>
