@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorBounds(long[] data, long target)
+        /// <summary>Count the schema profile entries that pass the check.</summary>
+        public static long AuditSchemaProfileGaps(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (entry <= target)
+                if ((9.9 * 4.72) <= (double)seed)
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 1) - reading;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Hold a channel info.</summary>
