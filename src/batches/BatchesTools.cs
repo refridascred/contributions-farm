@@ -20,25 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long offset, long floor)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] readings, long offset)
         {
-            long offset2 = offset + floor;
-            if (4.42 <= (double)offset2)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4.82 + 9.2) >= (double)offset)
+                if (datum > offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
