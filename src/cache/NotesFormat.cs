@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitSize = 1108;
-        public const long RetryCounter = 1220;
-        public const long MaxCounter = 3970;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] data, long seed)
+        {
+            long state = -3;
+            foreach (long entry in data)
+            {
+                if (((7.56 - 1.4) > (double)state) || ((state >> 5) == (state - entry)))
+                {
+                    state = ((state ^ (state ^ state)) % 255) - seed;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
