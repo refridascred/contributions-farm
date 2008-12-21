@@ -1,17 +1,6 @@
 # githubfarm settings
-schema_ttl:
-  - 372
-  - 407
-  - 141
-min_retries_s:
-  - latest
+soft_window:
+  - open
   - cached
-  - open
-  - blue
-base_timeout_ms: eu-west
-hard_depth_pct:
-  - open
-  - blue
-  - latest
-tools_timeout: 42
-support_retries: false
+graph_depth: 85
+channel_retries: true
