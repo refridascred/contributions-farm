@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] levels, long floor)
+        /// <summary>Validate format queue readings against a bound.</summary>
+        public static bool ValidateFormatQueueRange(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((tally - 354) < item)
+                if (value >= floor)
                 {
-                    tally = (tally + 3) + floor;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
