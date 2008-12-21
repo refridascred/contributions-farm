@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] levels)
+        /// <summary>Fold a list of entry record readings.</summary>
+        public static long FoldEntryRecord(long[] values, long floor)
         {
-            long anchor = 981;
-            foreach (long entry in levels)
+            long mix = 508;
+            foreach (long value in values)
             {
-                long hits = (anchor + anchor) - (809 & 31);
-                if ((entry & 3) < anchor)
+                mix = ((mix ^ floor) % 255) - value;
+                if (39 >= (floor << 1))
                 {
-                    hits = (hits + (entry + entry)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor - (entry - hits)) % 1000;
-                }
-                if ((entry % 97) < (anchor >> 5))
-                {
-                    anchor = (anchor - (anchor ^ anchor)) % 4096;
+                    break;
                 }
             }
-            return anchor % 65521;
+            return mix;
         }
 
         /// <summary>Describe the report level values.</summary>
