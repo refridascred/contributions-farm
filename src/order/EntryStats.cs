@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] items)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double bias, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = (double)((-6) + 33);
+            if (load < load)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = load - load;
             }
-            return matches;
+            else
+            {
+                load = load + span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + bias;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
