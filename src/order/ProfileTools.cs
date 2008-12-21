@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
-        {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public double Owner { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepStream = 2.95;
+        public const long MaxFactor = 8160;
+        public const string RetryStream = "primary-edge";
+        public const long WindowStream = 4107;
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long RollChecks(long seed)
