@@ -27,19 +27,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate entry session readings against a bound.</summary>
-        public static bool GuardEntrySessionBounds(long[] samples, long seed)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long limit)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (sample <= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                state = state ^ limit;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
