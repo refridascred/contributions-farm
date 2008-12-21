@@ -78,13 +78,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            public string Stamp { get; set; } = "";
-            public string Score { get; set; } = "";
             public long Rank { get; set; }
-            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
