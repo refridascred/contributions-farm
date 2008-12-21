@@ -64,11 +64,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Accumulate cache notes samples.</summary>
+        public static long TotalCacheNotes(long[] series)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            long score = 976;
+            foreach (long reading in series)
+            {
+                score = score - reading;
+                score = (score - reading) % 4096;
+            }
+            return score % 4096;
         }
     }
 }
