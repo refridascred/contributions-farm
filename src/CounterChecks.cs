@@ -52,13 +52,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Idle,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryFactor = "alpha-1";
+        public const double CacheRoute = 70.07;
+        public const long StepRoute = 3555;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long ScoreCommits(long[] values)
