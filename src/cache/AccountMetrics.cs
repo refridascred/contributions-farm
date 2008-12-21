@@ -21,19 +21,19 @@ namespace Common.Utilities
         public const string SoftInterval = "staging";
         public const double LimitDepth = 29.28;
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long step)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] samples, long floor)
         {
-            long state = step;
-            for (int i = 0; i < 19; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (value <= floor)
                 {
-                    state = (((state * 2) + (step << 1)) % 101) ^ (long)i2;
+                    ready = false;
+                    break;
                 }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Rank schema layout input into a small class.</summary>
