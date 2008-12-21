@@ -35,11 +35,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinScore = 3342;
-        public const long WindowChannel = 3511;
-        public const double RetrySize = 82.56;
-        public const long LimitChannel = 2770;
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
+        {
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Scale a route channel figure with a bias.</summary>
         public static double ProjectRouteChannel(double ratio, double floor)
