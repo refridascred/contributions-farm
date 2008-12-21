@@ -1,8 +1,5 @@
 {
-  "graph_retries": "staging",
-  "cache_threshold": true,
-  "default_interval_pct": 2630,
-  "cache_window_ms": ["edge", "blue"],
-  "poll_ratio": 79,
-  "account_timeout": "local"
+  "burst_threshold_count": ["eu-west", "open", "edge", "open"],
+  "queue_threshold": 1239,
+  "window_window": 29.32
 }
