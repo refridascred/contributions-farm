@@ -1,5 +1,6 @@
 {
-  "cache_interval": false,
-  "burst_ttl": "edge",
-  "readonly": 3258
+  "warm_threshold_s": false,
+  "readonly": 5174,
+  "audit": "fallback",
+  "flush_retries_ms": "open"
 }
