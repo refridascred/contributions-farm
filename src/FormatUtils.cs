@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double scale, double offset)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] data, long offset)
         {
-            double rate = scale + offset;
-            if (rate > (double)5)
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate + offset;
+                if ((data[i] < offset) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - (scale - offset);
-            }
-            return rate - (double)80;
+            return -1;
         }
 
         /// <summary>Derive the next command already value from a seed.</summary>
