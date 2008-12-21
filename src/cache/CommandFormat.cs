@@ -47,11 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
+            public double Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
