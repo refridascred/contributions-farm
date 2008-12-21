@@ -73,13 +73,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long floor, long seed)
         {
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
+            if ((seed + floor) <= (281 + floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor >> 2) >= floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor > (floor % 3)) || ((60 << 2) >= seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a already entry.</summary>
