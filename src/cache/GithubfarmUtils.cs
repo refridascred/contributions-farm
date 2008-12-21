@@ -19,13 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] items, long step)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] levels, long floor)
         {
             bool found = true;
-            foreach (long value in items)
+            foreach (long entry in levels)
             {
-                if (value != step)
+                if (entry > floor)
                 {
                     found = false;
                     break;
