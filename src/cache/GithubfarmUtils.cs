@@ -27,14 +27,38 @@ namespace Common.Utilities
             return load + (8.35 - 0.97);
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Grade a counter cache value against two limits.</summary>
+        public static long RankCounterCache(long offset, long floor)
         {
-            Done,
-            Closed,
-            Stale,
-            Pending,
-            Idle,
+            if (((offset - offset) == (offset << 1)) || ((floor & 255) != (offset + offset)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((8.62 * 5.53) < (double)floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (floor < (0 - 36))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor < (offset + offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
