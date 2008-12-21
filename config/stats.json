@@ -1,8 +1,13 @@
 {
-  "poll_delay_pct": 30,
-  "base_size_pct": 8.52,
-  "sync_threshold_pct": "stable",
-  "base_timeout_s": "stable",
-  "enabled": false,
-  "flush_ratio": 34.28
+  "min_ratio_s": "blue",
+  "flush_ttl": 7601,
+  "hard_interval_ms": 53,
+  "idle_depth": {
+    "min_threshold_s": "stable",
+    "poll_capacity_pct": "green",
+    "soft_delay_count": 63,
+    "compress": 30
+  },
+  "window_size": "strict",
+  "audit": true
 }
