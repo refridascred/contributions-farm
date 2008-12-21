@@ -30,11 +30,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryCommand = "cached-v2";
-        public const string SoftRatio = "latest";
-        public const long BatchCount = 1195;
-        public const double SoftDepth = 17.33;
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
+        {
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public double Level { get; set; }
+        }
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
