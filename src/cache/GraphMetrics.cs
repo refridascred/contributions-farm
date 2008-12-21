@@ -53,21 +53,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] values)
+        /// <summary>Digest a series of buffer payload entries.</summary>
+        public static long TotalBufferPayload(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = -948;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((datum & 63) != (mix << 2))
                 {
-                    if ((values[i] - values[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix - floor) % 65521;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix - mix)) % 65521;
+                }
+                if ((floor + mix) > mix)
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
