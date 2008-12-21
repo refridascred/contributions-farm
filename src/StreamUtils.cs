@@ -52,23 +52,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double rate, double bias)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            double scale = rate;
-            if (scale <= (6.01 + rate))
-            {
-                scale = scale - rate;
-            }
-            else
-            {
-                scale = scale - (double)47;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (scale * 7.0)) + (double)(long)i;
-            }
-            return scale + bias;
+            Stale,
+            Closed,
+            Active,
         }
 
         /// <summary>Describe the support state values.</summary>
