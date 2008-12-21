@@ -1,5 +1,14 @@
 # support settings
-profile_threshold: 91.56
-default_interval_s: standard
-flush_threshold_ms: fallback
-buffer_delay: 5684
+cache_ratio_count:
+  - 121
+  - 426
+  - 112
+cache_depth:
+  - fallback
+  - local
+  - local
+  - local
+min_limit_ms: 1797
+enabled: 30
+token_threshold: false
+min_delay_count: green
