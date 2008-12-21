@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double SoftTimeout = 85.15;
-        public const long MinWidth = 2326;
-        public const double DefaultBatches = 41.76;
-        public const long RetryBatches = 9955;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((((count - count) < (value % 64)) || ((count * 5) > count)) || ((value ^ count) == (value & 15)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
