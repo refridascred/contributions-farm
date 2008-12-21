@@ -34,19 +34,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] values, long target)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] series, long seed)
         {
-            long acc = 324;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((54 < (acc / 5)) || ((1 & 127) < (target >> 1)))
+                if ((series[i] > seed) && ((series[i] % 2) == 0))
                 {
-                    acc = ((acc ^ (1 << 3)) % 101) - value;
+                    return (long)i;
                 }
-                acc = acc ^ (acc * 3);
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the batch level values.</summary>
