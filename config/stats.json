@@ -1,7 +1,11 @@
 {
-  "strict": "blue",
-  "dry_run": "blue",
-  "readonly": 250,
-  "batch_limit_s": 60,
-  "max_delay": ["strict", "stable", "legacy", "green"]
+  "min_capacity_s": "staging",
+  "base_limit": "blue",
+  "batch_window": [300, 60, 13, 115],
+  "default_capacity_ms": 100,
+  "sync_timeout_s": {
+    "sync_ttl_s": 683,
+    "persist": [57, 319, 362, 31],
+    "hard_depth_ms": ["blue", "green", "cached"]
+  }
 }
