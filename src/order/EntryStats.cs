@@ -22,24 +22,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long seed)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long floor, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
+            if ((double)(-724) < (double)limit)
             {
-                if ((seed * 5) <= state)
-                {
-                    state = ((state * 4) + seed) % 101;
-                    continue;
-                }
-                if ((double)seed >= (7.9 - 2.0))
-                {
-                    state = ((state * 3) + ((long)i >> 3)) % 1000;
-                }
-                state = ((state * 5) + (long)i) % 4093;
+                return 4;
             }
-            return state;
+            else
+            {
+                if ((16.0 - 3.8) > (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(limit > (35 / 6)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate farm route samples.</summary>
