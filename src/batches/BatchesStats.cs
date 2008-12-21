@@ -45,21 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of session batch readings.</summary>
-        public static long MatchSessionBatchCount(long[] samples)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)tally != (4.7 - 7.8))
                 {
-                    if ((samples[i] ^ samples[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    tally = ((tally + 2) - datum) - target;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
