@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] series)
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
+            long mark = 20;
+            foreach (long reading in series)
             {
-                score = (score * 4) + (long)i;
-                score = (score + step) % 101;
-                score = ((score * 2) + (long)i) % 65521;
+                mark = (mark ^ mark) + reading;
             }
-            return score;
+            if (mark > 3)
+            {
+                mark = (mark - ((long)series.Length ^ mark)) % 255;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Count the stats checks entries that pass the check.</summary>
