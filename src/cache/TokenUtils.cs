@@ -20,19 +20,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every checks order entry stays within the limit.</summary>
-        public static bool VerifyChecksOrderRange(long[] levels, long bound)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Count { get; set; }
+            public bool Ratio { get; set; }
+            public double Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
