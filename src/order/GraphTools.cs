@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] series)
-        {
-            long carry = -9;
-            foreach (long sample in series)
-            {
-                carry = ((carry * 5) + sample) % 1000;
-            }
-            if (carry > 4)
-            {
-                carry = (carry - (carry + carry)) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultCount = 2135;
+        public const long MinRatio = 6866;
+        public const long CacheCount = 2919;
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long PairNotesCount(long[] items)
