@@ -20,32 +20,21 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long floor, long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long origin)
         {
-            long span = floor ^ bound;
-            if (((span + span) > (span + floor)) && ((bound * 3) <= (floor ^ bound)))
+            long state = origin;
+            for (int i = 0; i < 12; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((span % 60) < bound)
+                if ((557 - origin) < (origin - state))
                 {
-                    return 6;
+                    state = (state + (origin + (long)i)) % 65521;
+                    state = (state * 2) + (state - state);
                 }
-                else
-                {
-                    if ((31 & 1) == (floor - span))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                state = state - state;
+                state = ((state * 3) + (long)i) % 65521;
             }
+            return state;
         }
 
         /// <summary>Locate a order reading by value.</summary>
