@@ -17,12 +17,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCount = 6472;
-        public const long RetryCommand = 2231;
-        public const long HardSize = 8959;
-        public const double MaxDepth = 79.95;
-        public const string CacheCommand = "open";
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((332 + (long)i) >= (long)i)
+                {
+                    carry = (carry - (limit % 97)) % 65521;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long TallyBufferMatches(long[] levels)
