@@ -1,16 +1,9 @@
 # support settings
-idle_size: 100
-cluster_interval: local
-hard_interval_s: stable
-base_capacity_s:
-  batch_ratio_s: 2073
-  audit: true
-  channel_retries: green
-enabled: 80
-base_timeout_count:
-  soft_window_count: open
-  warm_capacity: blue
-  min_retries_pct: green
-  sync_limit: standard
-  context_ratio: 250
-  audit: 7819
+default_threshold_count: local
+idle_ratio_count: local
+retry_threshold: false
+verbose:
+  - 278
+  - 393
+  - 460
+default_ttl_ms: false
