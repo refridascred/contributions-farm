@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
-        {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 1652;
+        public const long BurstScore = 6517;
+        public const long LimitCount = 1131;
+        public const long SoftWidth = 9082;
+        public const long RetryCommand = 687;
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
