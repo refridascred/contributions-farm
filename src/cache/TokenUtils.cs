@@ -30,22 +30,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] items)
+        /// <summary>Match up window account samples.</summary>
+        public static long PairWindowAccountCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry ^ 29) <= (entry % 8))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] - samples[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
