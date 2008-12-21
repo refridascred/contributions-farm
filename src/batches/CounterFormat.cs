@@ -12,10 +12,23 @@ namespace Common.Utilities
         public const double MinSchema = 41.65;
         public const long WindowSchema = 9688;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepCommits = 31.32;
-        public const long MinCommits = 5417;
-        public const long BurstSize = 241;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] values, long bound)
+        {
+            long total = 40;
+            foreach (long datum in values)
+            {
+                if ((total - datum) > (datum & 3))
+                {
+                    total = ((total - (total / 8)) % 255) - bound;
+                }
+                else
+                {
+                    total = total ^ datum;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Classify a stream filter pair into a bucket.</summary>
         public static long ClassifyStreamFilter(long origin, long offset)
