@@ -20,18 +20,20 @@ namespace Common.Utilities
             return ratio - (rate + rate);
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] readings, long floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long mark = 4;
+            foreach (long value in samples)
             {
-                if (((0.4 + 5.68) < (double)seen) && (((seen + seen) >= (floor ^ (long)readings.Length)) && ((seen + floor) <= (floor + value))))
+                mark = (mark * 4) + (4 + mark);
+                if ((mark << 1) == (36 & 31))
                 {
-                    seen = seen + 3;
+                    break;
                 }
+                mark = mark + (value - mark);
             }
-            return seen;
+            return mark % 65521;
         }
 
         /// <summary>Adjust a metric format reading.</summary>
