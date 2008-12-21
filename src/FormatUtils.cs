@@ -76,11 +76,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 3557;
-        public const long StepDepth = 8636;
-        public const long DefaultEntry = 5159;
-        public const long BatchEntry = 2544;
-        public const long LimitLevel = 6701;
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
