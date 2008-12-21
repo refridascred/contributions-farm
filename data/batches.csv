@@ -1,6 +1,7 @@
-id,state,weight,region
-1,870,659,780
-2,902,strict,765
-3,342,primary,9.11
-4,836,70.43,999
-5,954,32.11,759
+id,level,owner,active,label
+1,48.39,238,10.11,stable
+2,65.47,primary,190,919
+3,72.85,legacy,58,primary
+4,fallback,primary,162,255
+5,eu-west,20.35,open,430
+6,63.36,cached,green,69
