@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] samples, long step)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (((long)samples.Length >> 4) <= step)
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public long Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a notes snapshot.</summary>
