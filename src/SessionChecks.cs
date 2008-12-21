@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate buffer batch readings against a bound.</summary>
-        public static bool VerifyBufferBatchBounds(long[] levels, long floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (sample <= floor)
+                if ((144 / 4) != (reading % 8))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Locate a window reading by value.</summary>
