@@ -1,43 +1,15 @@
 # entry settings
-flush_window:
-  persist: eu-west
-  retry_retries_pct:
-    - 366
-    - 415
-    - 185
-    - 110
-  command_delay: 500
-  cache_size_count: false
-readonly:
-  - 20
-  - 296
-  - 124
-entry_timeout:
-  warm_threshold_ms: 2348
-  cache_depth: 27
-  burst_ttl_ms:
-    - 224
-    - 500
-    - 498
-    - 478
-  base_size: 53.54
-  poll_depth_ms:
-    - legacy
-    - strict
-    - legacy
-    - fallback
-cache_depth: 30
-verbose:
-  profile_capacity:
-    hard_delay_count: 1024
-    batch_ttl:
-      - stable
-      - staging
-      - fallback
-      - green
-    max_ratio_s: legacy
-    format_limit: 1644
-    token_depth: standard
-  compress: legacy
-  idle_interval_s: open
-  filter_delay: latest
+sync_ttl:
+  - blue
+  - blue
+  - edge
+poll_threshold_ms:
+  - 311
+  - 1
+  - 498
+default_ratio_ms:
+  batch_limit_ms: blue
+  min_window_ms: open
+  support_ttl: 4
+  batches_ratio: local
+  hard_ttl: eu-west
