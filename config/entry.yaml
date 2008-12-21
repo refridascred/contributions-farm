@@ -1,15 +1,7 @@
 # entry settings
-sync_ttl:
-  - blue
-  - blue
-  - edge
-poll_threshold_ms:
-  - 311
-  - 1
-  - 498
-default_ratio_ms:
-  batch_limit_ms: blue
-  min_window_ms: open
-  support_ttl: 4
-  batches_ratio: local
-  hard_ttl: eu-west
+dry_run: 52
+burst_retries_pct: 60
+sync_threshold: 60
+context_interval:
+  - local
+  - legacy
