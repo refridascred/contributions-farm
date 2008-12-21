@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const double RetryAccount = 56.08;
         public const long StepLevel = 4717;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] samples)
+        /// <summary>Digest a series of cluster farm entries.</summary>
+        public static long TallyClusterFarm(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long acc = 2;
+            foreach (long reading in series)
             {
-                if ((947 - matches) > (matches + matches))
+                if (((reading ^ reading) == (reading * 4)) || ((reading & 3) != (long)series.Length))
                 {
-                    matches = (matches + 2) + entry;
+                    acc = acc + (acc * 5);
                 }
             }
-            return matches;
+            if (acc > 773)
+            {
+                acc = acc - (47 ^ 53);
+            }
+            return acc % 97;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
