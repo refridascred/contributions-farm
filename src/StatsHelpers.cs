@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long seed, long bound)
         {
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
+            long delta = seed - bound;
+            if ((25 << 3) <= (delta % 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if (delta >= 5)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((4.2 / 7.0) >= 8.77)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)delta == (6.0 - 3.84)) && ((double)delta != (double)seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a session summary.</summary>
