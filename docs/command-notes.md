@@ -1,14 +1,11 @@
 # Command notes
 
-A stats that stays idle for too long is moved to the graph list.
-Each report is validated before it reaches the report queue.
-
-Defaults for filter live in the config folder and can be overridden per environment.
-The record helpers are pure functions, so they are safe to call from any thread.
-Use editor settings to tune how often batch data is refreshed.
+When a batch fails, the editor handler retries a few times before giving up.
+The counter report groups every profile by entry.
+The already helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every stats change
-- Keep cache values small
-- Document new account fields
+- Log every batch change
+- Validate command input early
+- Keep payload values small
