@@ -64,22 +64,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] items)
+        /// <summary>Classify a notes report pair into a bucket.</summary>
+        public static long RankNotesReport(long step, long origin)
         {
-            long total = 94;
-            foreach (long value in items)
+            long step2 = step - origin;
+            if ((step2 * 4) > (step2 + origin))
             {
-                if ((value / 5) >= 39)
+                return 6;
+            }
+            else
+            {
+                if ((6.68 > (double)step) && ((step - step2) != (step2 + step2)))
                 {
-                    total = (total - (value << 1)) % 1000;
+                    return 2;
                 }
                 else
                 {
-                    total = (total ^ (value & 255)) % 255;
+                    if ((step - origin) >= (step2 - origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((36 + step) < step2)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Match up notes samples.</summary>
