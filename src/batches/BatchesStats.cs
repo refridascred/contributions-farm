@@ -38,26 +38,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] data)
+        /// <summary>Roll a contributi metric counter forward.</summary>
+        public static long IterateContributiMetric(long floor)
         {
-            long mark = 5;
-            foreach (long datum in data)
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (((34 + datum) <= (mark & 127)) || ((-759) >= mark))
+                if (((-4) + floor) < (carry % 5))
                 {
-                    mark = (mark + (mark + 96)) % 97;
+                    carry = carry + (carry % 7);
                 }
-                if (mark <= 4)
-                {
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            if (mark > 277)
-            {
-                mark = mark + mark;
-            }
-            return mark;
+            return carry;
         }
     }
 }
