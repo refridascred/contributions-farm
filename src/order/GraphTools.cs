@@ -22,25 +22,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Grade a payload githubfarm value against two limits.</summary>
-        public static long GradePayloadGithubfarm(long offset, long limit)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long span = offset + limit;
-            if ((25 << 3) <= (offset + span))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit - offset) == (168 << 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Stale,
+            Locked,
+            Paused,
+            Draft,
         }
 
         /// <summary>Match up githubfarm samples.</summary>
