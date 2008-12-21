@@ -19,22 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 8146;
+        public const string LimitWindow = "fallback-1";
+        public const double SoftWindow = 25.25;
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
