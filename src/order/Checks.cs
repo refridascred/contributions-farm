@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long limit)
         {
-            Draft,
-            Retry,
-            New,
-            Idle,
-            Pending,
+            long score = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((double)score <= (double)limit))
+                {
+                    score = ((score * 4) + ((long)i - score)) % 65521;
+                    score = (score ^ (long)i) % 101;
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of session readings.</summary>
