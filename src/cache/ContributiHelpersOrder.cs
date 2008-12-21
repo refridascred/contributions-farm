@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of graph stats readings.</summary>
-        public static long MatchGraphStatsCount(long[] readings)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Roll a profile counter forward.</summary>
