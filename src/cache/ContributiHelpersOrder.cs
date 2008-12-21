@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const double RetryAccount = 56.08;
         public const long StepLevel = 4717;
 
-        /// <summary>Digest a series of cluster farm entries.</summary>
-        public static long TallyClusterFarm(long[] series)
-        {
-            long acc = 2;
-            foreach (long reading in series)
-            {
-                if (((reading ^ reading) == (reading * 4)) || ((reading & 3) != (long)series.Length))
-                {
-                    acc = acc + (acc * 5);
-                }
-            }
-            if (acc > 773)
-            {
-                acc = acc - (47 ^ 53);
-            }
-            return acc % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 2239;
+        public const long MaxEntry = 1674;
+        public const long BatchScore = 5337;
+        public const long BaseEntry = 9295;
+        public const long WindowDepth = 6873;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool VerifyContributiRange(long[] readings, long offset)
