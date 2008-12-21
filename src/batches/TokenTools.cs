@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] series, long origin)
+        /// <summary>Grade a profile stats value against two limits.</summary>
+        public static long GradeProfileStats(long bound, long step)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long slot = bound - step;
+            if ((slot ^ step) >= (step / 7))
             {
-                if (entry >= origin)
+                return 7;
+            }
+            else
+            {
+                if ((slot >> 1) >= (bound % 16))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the contributi level values.</summary>
