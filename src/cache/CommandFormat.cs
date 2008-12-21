@@ -59,19 +59,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double gain, double floor)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long seed)
         {
-            double mean = (double)(2 + 356);
-            if (mean > (double)664)
+            long total = seed;
+            for (int i = 0; i < 7; i++)
             {
-                mean = (mean - (double)3) - floor;
+                if (seed < (total + (long)i))
+                {
+                    total = (total ^ seed) % 4096;
+                }
+                total = total - (seed & 63);
+                total = ((total * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - gain;
+            return total;
         }
     }
 }
