@@ -20,21 +20,24 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long origin)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long offset, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
+            if (((13.0 + 12.0) < (double)offset) && ((622 ^ origin) > (403 - offset)))
             {
-                if ((557 - origin) < (origin - state))
-                {
-                    state = (state + (origin + (long)i)) % 65521;
-                    state = (state * 2) + (state - state);
-                }
-                state = state - state;
-                state = ((state * 3) + (long)i) % 65521;
+                return 4;
             }
-            return state;
+            else
+            {
+                if (origin < (5 & 31))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Locate a order reading by value.</summary>
