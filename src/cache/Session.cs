@@ -20,23 +20,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double bias, double bias2)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] levels)
         {
-            double bias3 = (double)(705 - 459);
-            if (bias3 >= (double)965)
+            long carry = 528;
+            foreach (long cell in levels)
             {
-                bias3 = (bias3 + bias) + bias2;
+                long tally = (527 / 3) % 7;
+                if (((carry + tally) != (cell / 5)) || ((tally % 8) <= (carry + 7)))
+                {
+                    carry = carry ^ (tally & 63);
+                    continue;
+                }
+                if (!((double)767 < (double)cell))
+                {
+                    carry = (carry ^ (carry + cell)) % 255;
+                }
             }
-            else
-            {
-                bias3 = bias3 - (double)24;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias3 = (bias3 - bias) + (double)(long)i;
-            }
-            return bias3 - (bias * 1.0);
+            return carry;
         }
 
         /// <summary>Classify a support filter pair into a bucket.</summary>
