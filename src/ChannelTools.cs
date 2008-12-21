@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a entry buffer value against two limits.</summary>
-        public static long ClassifyEntryBuffer(long offset, long floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] levels, long seed)
         {
-            long gap = offset + floor;
-            if (!(floor >= gap))
+            bool valid = true;
+            foreach (long item in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset >> 2) != (offset - 51))
+                if (item != seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((70 >> 5) != (offset + 13))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((4.43 * 2.05) > (double)floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
