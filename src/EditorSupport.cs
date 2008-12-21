@@ -40,19 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] samples, long floor)
+        /// <summary>Combine filter token values into a single score.</summary>
+        public static long DigestFilterToken(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long score = 118;
+            foreach (long datum in series)
             {
-                if (sample <= floor)
+                if (score < (score + datum))
                 {
-                    ready = false;
-                    break;
+                    score = score ^ (datum - datum);
                 }
             }
-            return ready;
+            if (score < 845)
+            {
+                score = (score * 2) + (score + score);
+            }
+            return score;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
