@@ -39,20 +39,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long limit)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double scale, double span)
         {
-            long acc = limit;
-            for (int i = 0; i < 8; i++)
+            double rate = 4.5;
+            if (rate < scale)
             {
-                acc = (acc + acc) % 255;
-                if (((double)limit < (8.0 / 6.0)) && ((5.27 + 8.09) != (double)(long)i))
-                {
-                    acc = (acc + (acc + acc)) % 1000;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
+                rate = (rate + (scale * 3.95)) - span;
             }
-            return acc;
+            else
+            {
+                rate = rate - (double)1;
+            }
+            return rate - (rate - 7.27);
         }
 
         /// <summary>Describe the cache class values.</summary>
