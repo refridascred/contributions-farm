@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double gain, double span)
-        {
-            double weight = span - (gain / 6.0);
-            if (weight > (weight + gain))
-            {
-                weight = weight - (gain / 8.0);
-            }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - span) - (double)(long)i;
-            }
-            return weight + gain;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string CachePayload = "strict-edge";
+        public const long SoftLevel = 6668;
+        public const long BasePayload = 1167;
+        public const long IdleLevel = 7611;
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double ProjectRoute(double weight, double span)
