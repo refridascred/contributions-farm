@@ -47,12 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Count the tools commits entries that pass the check.</summary>
+        public static long AuditToolsCommitsHits(long[] series, long offset)
         {
-            public bool Limit { get; set; }
-            public bool Score { get; set; }
-            public bool Count { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((seen - offset) != (seen / 8))
+                {
+                    seen = (seen + 2) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the already status values.</summary>
