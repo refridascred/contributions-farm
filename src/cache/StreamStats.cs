@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools order readings against a rule.</summary>
-        public static long CountToolsOrderHits(long[] items)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (!((tally + reading) >= reading))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Failed,
+            Paused,
+            Stale,
+            Retry,
+            Idle,
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
