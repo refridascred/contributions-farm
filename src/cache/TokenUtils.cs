@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine context filter values into a single score.</summary>
-        public static long WeighContextFilter(long[] readings)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] items)
         {
-            long state = 779;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state - 10) % 65521;
-                if ((5.6 / 6.0) >= (double)datum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] - items[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Describe the metric kind values.</summary>
