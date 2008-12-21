@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double ratio, double offset)
         {
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-            public double Owner { get; set; }
+            double ratio2 = offset;
+            if (ratio2 <= (ratio * 13.0))
+            {
+                ratio2 = ratio2 + ratio;
+            }
+            return ratio2 + (ratio + ratio);
         }
 
         /// <summary>Audit buffer commits readings against a rule.</summary>
