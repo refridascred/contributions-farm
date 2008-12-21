@@ -55,11 +55,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
-        {
-            public double Ratio { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseSpan = 1824;
+        public const double CacheFilter = 65.57;
+        public const double MaxFilter = 30.48;
+        public const string IdleFilter = "strict";
     }
 }
