@@ -35,10 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryTimeout = 9252;
-        public const long RetryBudget = 1811;
-        public const long MaxCluster = 779;
-        public const long WindowWidth = 902;
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
+        }
     }
 }
