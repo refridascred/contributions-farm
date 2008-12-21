@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long bound, long limit)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] items)
         {
-            if ((double)bound >= (double)limit)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit << 3) <= (bound / 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((13.0 - 4.43) == (double)bound)
+                    if ((items[i] - items[j]) < 0)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the metric level values.</summary>
