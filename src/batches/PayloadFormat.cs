@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] values, long seed)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((values[i] == seed) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = (state << 2) ^ ((long)i / 9);
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Digest a series of window entry entries.</summary>
