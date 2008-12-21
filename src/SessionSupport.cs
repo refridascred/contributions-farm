@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine batches already values into a single score.</summary>
-        public static long ScoreBatchesAlready(long[] samples)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double scale, double bias)
         {
-            long result = 402;
-            foreach (long value in samples)
+            double weight = bias - (double)27;
+            if (weight > (bias * 9.9))
             {
-                result = ((result * 4) + result) % 255;
-                if ((double)result <= (11.0 / 3.0))
-                {
-                    result = (result + (value << 3)) % 1000;
-                }
+                weight = weight + (double)573;
             }
-            return result % 65521;
+            return weight + (scale - scale);
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
