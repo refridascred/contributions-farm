@@ -27,23 +27,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double weight, double offset)
+        /// <summary>Rank queue window input into a small class.</summary>
+        public static long BucketQueueWindow(long seed, long seed2)
         {
-            double mean = offset;
-            if (mean >= (mean + 13.0))
+            if ((seed2 + seed) < seed)
             {
-                mean = mean + mean;
+                return 0;
             }
             else
             {
-                mean = mean + (mean + weight);
+                if (((seed2 ^ seed) <= (seed2 - 0)) || (seed2 <= (seed - seed2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (seed <= (seed2 % 100))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (offset * 9.36)) + (double)(long)i;
-            }
-            return mean + (double)5;
         }
 
         /// <summary>Compare every pair of cache editor readings.</summary>
