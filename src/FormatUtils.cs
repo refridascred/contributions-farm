@@ -71,11 +71,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 4025;
+        public const double HardBudget = 31.8;
+        public const long BaseInterval = 3289;
     }
 }
