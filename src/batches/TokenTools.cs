@@ -5,23 +5,29 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a profile stats value against two limits.</summary>
-        public static long GradeProfileStats(long bound, long step)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long seed, long offset)
         {
-            long slot = bound - step;
-            if ((slot ^ step) >= (step / 7))
+            if (((offset % 5) >= (offset << 1)) && ((double)seed > 1.93))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((slot >> 1) >= (bound % 16))
+                if (((double)offset > (4.8 * 5.7)) && ((double)offset > (double)26))
                 {
                     return 3;
                 }
                 else
                 {
-                    return 1;
+                    if (!((offset + offset) <= 229))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
