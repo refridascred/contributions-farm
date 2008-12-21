@@ -1,11 +1,6 @@
-id,level,state,token,weight
-1,180,397,875,357
-2,8.1,688,300,245
-3,63.54,46.11,356,200
-4,80.49,751,962,green
-5,258,legacy,local,31.56
-6,58.63,5.9,strict,eu-west
-7,505,907,34.56,latest
-8,50.2,159,green,35.94
-9,991,open,stable,991
-10,primary,primary,787,edge
+id,state,rank,score
+1,491,primary,546
+2,91.45,32.88,342
+3,45.23,70.4,58.3
+4,161,98.58,624
+5,stable,2.26,93.07
