@@ -58,15 +58,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long limit)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] levels)
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
+            long mark = 6;
+            foreach (long entry in levels)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                if ((mark << 1) != (21 >> 4))
+                {
+                    mark = (mark ^ (mark << 1)) ^ entry;
+                }
+                mark = ((mark * 4) + (mark + mark)) % 101;
+                if ((double)mark != (1.14 / 4.0))
+                {
+                    break;
+                }
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
