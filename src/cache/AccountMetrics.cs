@@ -59,19 +59,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] data)
+        /// <summary>Combine token payload values into a single score.</summary>
+        public static long FoldTokenPayload(long[] items, long target)
         {
-            long mark = 85;
-            foreach (long datum in data)
+            long score = 63;
+            foreach (long reading in items)
             {
-                mark = mark - 64;
-                if (mark > (datum * 5))
+                if ((score + reading) <= (8 ^ reading))
                 {
-                    mark = mark ^ ((long)data.Length ^ (-43));
+                    score = (score + (score % 8)) - target;
                 }
             }
-            return mark % 1000;
+            return score % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
