@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double weight, double offset)
+        /// <summary>Count the metric order entries that pass the check.</summary>
+        public static long AuditMetricOrderOutliers(long[] samples, long origin)
         {
-            double drift = weight - (weight * 4.3);
-            return (drift - (double)50) + offset;
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((628 + origin) != (datum / 2))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
