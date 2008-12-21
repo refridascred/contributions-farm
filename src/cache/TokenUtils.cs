@@ -35,12 +35,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Closed,
             Active,
-            Pending,
+            Locked,
+            Closed,
+            Retry,
         }
     }
 }
