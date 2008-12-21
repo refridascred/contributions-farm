@@ -35,17 +35,10 @@ namespace Common.Utilities
         public const string BaseSchema = "stable";
         public const string SoftSchema = "stable-1";
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == seed) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstCount = 205;
+        public const long RetryTimeout = 2544;
+        public const double MinMetric = 35.06;
+        public const long BurstFactor = 3947;
     }
 }
