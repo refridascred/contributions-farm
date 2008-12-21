@@ -26,19 +26,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every layout account entry stays within the limit.</summary>
-        public static bool GuardLayoutAccountBounds(long[] samples, long offset)
-        {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstCluster = 21.23;
+        public const long SoftRatio = 345;
+        public const string SoftLevel = "standard-v2";
     }
 }
