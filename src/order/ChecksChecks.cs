@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            Draft,
-            Pending,
-            Queued,
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
