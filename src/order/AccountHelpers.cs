@@ -31,10 +31,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 9687;
-        public const long MaxCount = 2622;
-        public const double HardWidth = 58.97;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] values, long bound)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (!((tally + datum) < bound))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long RankCluster(long bound, long target)
