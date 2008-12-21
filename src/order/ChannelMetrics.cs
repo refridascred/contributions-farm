@@ -25,29 +25,36 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank farm batches input into a small class.</summary>
-        public static long ClassifyFarmBatches(long target, long target2)
+        /// <summary>Rank payload tools input into a small class.</summary>
+        public static long GradePayloadTools(long floor, long seed)
         {
-            long diff = target ^ target2;
-            if ((double)target < (1.4 * 6.1))
+            long lane = floor + seed;
+            if ((seed + lane) <= seed)
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if (target2 < ((-491) % 97))
+                if ((37 % 10) < (lane / 9))
                 {
                     return 0;
                 }
                 else
                 {
-                    if ((diff - target2) != (diff / 3))
+                    if ((3.3 + 2.1) != (double)floor)
                     {
-                        return 7;
+                        return 3;
                     }
                     else
                     {
-                        return 6;
+                        if ((5.06 + 7.5) > (double)seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
