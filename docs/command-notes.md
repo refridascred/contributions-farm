@@ -1,10 +1,10 @@
 # Command notes
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-Run the window check before changing any githubfarm limits.
+When a cluster fails, the window handler retries a few times before giving up.
+Run the metrics check before changing any payload limits.
 
 ## Guidelines
 
-- Document new payload fields
-- Validate record input early
-- Review graph limits each release
+- Prefer report defaults
+- Review route limits each release
+- Keep metrics values small
