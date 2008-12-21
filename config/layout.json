@@ -1,5 +1,5 @@
 {
-  "enabled": 250,
-  "hard_limit_count": 4565,
-  "batch_threshold_count": 8
+  "sync_capacity_pct": 33,
+  "hard_retries_ms": 57,
+  "flush_window": "fallback"
 }
