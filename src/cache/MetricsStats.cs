@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long target, long limit)
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public bool Region { get; set; }
+            if (((double)588 >= (double)target) || (limit < (target - limit)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((8.77 + 9.0) == (double)target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((10 % 8) < target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
