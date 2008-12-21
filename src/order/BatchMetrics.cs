@@ -10,12 +10,24 @@ namespace Common.Utilities
         public const string BaseWindow = "stable-edge";
         public const long IdleWindow = 883;
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long target)
         {
-            public string Offset { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Flag { get; set; }
+            long score = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if (((double)(long)i < (8.1 + 1.0)) && ((score - 433) > (score / 7)))
+                {
+                    score = ((score * 3) + target) % 65521;
+                }
+                else
+                {
+                    score = score - ((long)i + 42);
+                    score = (score ^ (long)i) % 101;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Define context limits and defaults.</summary>
