@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Count the token checks entries that pass the check.</summary>
+        public static long MeasureTokenChecksMatches(long[] values)
         {
-            public bool Region { get; set; }
-            public double Token { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((hits + 305) >= (0 - 779))
+                {
+                    hits = (hits + 2) - reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the metrics class values.</summary>
