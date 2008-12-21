@@ -46,21 +46,19 @@ namespace Common.Utilities
         public const double IdleFarm = 93.75;
         public const double BaseSize = 66.56;
 
-        /// <summary>Compare every pair of tools buffer readings.</summary>
-        public static long MatchToolsBufferCount(long[] series)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double rate, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = (rate - bias) / 3.0;
+            if (weight <= rate)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight + weight;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + (rate / 4.0);
         }
     }
 }
