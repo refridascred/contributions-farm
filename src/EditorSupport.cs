@@ -40,22 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine filter token values into a single score.</summary>
-        public static long DigestFilterToken(long[] series)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double bias, double offset)
         {
-            long score = 118;
-            foreach (long datum in series)
+            double load = (double)(6 << 1);
+            if (load <= load)
             {
-                if (score < (score + datum))
-                {
-                    score = score ^ (datum - datum);
-                }
+                load = ((load - (double)(-486)) - bias) + offset;
             }
-            if (score < 845)
-            {
-                score = (score * 2) + (score + score);
-            }
-            return score;
+            return load + (double)457;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
