@@ -38,22 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] levels)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (!(((count + count) <= count) || (79 < (count / 8))))
-                {
-                    count = (count + 1) - entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Total { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
