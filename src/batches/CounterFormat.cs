@@ -22,21 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up account notes samples.</summary>
-        public static long MatchAccountNotesCount(long[] series)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long floor, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long span = floor ^ offset;
+            if ((span >= (0 % 10)) && (floor > (6 >> 4)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((floor / 2) > (offset ^ floor))
                 {
-                    if ((series[i] + series[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the notes kind values.</summary>
