@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] values)
+        /// <summary>Check that every order token entry stays within the limit.</summary>
+        public static bool VerifyOrderTokenRange(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry >= seed)
                 {
-                    if ((values[i] ^ values[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Describe the profile state values.</summary>
