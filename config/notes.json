@@ -1,11 +1,8 @@
 {
-  "persist": "eu-west",
-  "enabled": false,
-  "verbose": {
-    "strict": "primary",
-    "counter_depth": "edge",
-    "compress": false
-  },
-  "cache_delay_ms": [96, 417, 217],
-  "editor_retries": 37.1
+  "window_depth": 8609,
+  "sync_window": "fallback",
+  "default_capacity_count": 38.26,
+  "base_depth_pct": [37, 42, 311],
+  "strict": 0.47,
+  "hard_window_pct": 83.62
 }
