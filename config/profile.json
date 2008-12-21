@@ -1,19 +1,16 @@
 {
-  "cache_limit": "latest",
-  "window_window": {
-    "persist": {
-      "dry_run": 3989,
-      "soft_window": 44.32,
-      "support_threshold": "standard",
-      "cluster_threshold": ["green", "green", "standard"],
-      "sync_ratio_s": 17.95,
-      "retry_interval_pct": 325
-    },
-    "farm_capacity": 79,
-    "layout_interval": ["cached", "green", "local", "standard"],
-    "cache_depth": 90.9
+  "queue_size": {
+    "retry_capacity_s": 7942,
+    "sync_window_count": 52.76,
+    "default_interval": 2986
   },
-  "hard_retries": "blue",
-  "command_delay": ["primary", "open", "stable"],
-  "commits_interval": 100
+  "min_interval": {
+    "token_limit": "open",
+    "min_limit": "blue",
+    "base_delay_s": 5413
+  },
+  "hard_ttl_s": 5935,
+  "hard_ttl_pct": 1024,
+  "verbose": "standard",
+  "batch_depth_ms": 34
 }
