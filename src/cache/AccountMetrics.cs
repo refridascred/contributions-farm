@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double ratio, double offset)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long floor)
         {
-            double ratio2 = offset;
-            if (ratio2 <= (ratio * 13.0))
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
             {
-                ratio2 = ratio2 + ratio;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return ratio2 + (ratio + ratio);
+            return mix;
         }
 
         /// <summary>Audit buffer commits readings against a rule.</summary>
