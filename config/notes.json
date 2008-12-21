@@ -1,5 +1,14 @@
 {
-  "compress": ["staging", "legacy", "staging"],
-  "payload_depth": 5137,
-  "retry_depth": "stable"
+  "poll_depth": "edge",
+  "hard_ttl": ["fallback", "stable"],
+  "metrics_interval": {
+    "soft_retries_ms": 15,
+    "max_limit_count": "eu-west",
+    "audit": 250,
+    "strict": [347, 345],
+    "persist": "cached",
+    "verbose": 24
+  },
+  "warm_ttl": 8070,
+  "hard_size": 93.6
 }
