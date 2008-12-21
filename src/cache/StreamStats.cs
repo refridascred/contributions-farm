@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] data, long offset)
+        /// <summary>Check that every route token entry stays within the limit.</summary>
+        public static bool GuardRouteTokenBounds(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if (item < offset)
+                if (datum != origin)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
