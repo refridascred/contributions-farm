@@ -52,11 +52,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] items)
         {
-            public bool Offset { get; set; }
-            public double Level { get; set; }
+            long total = 94;
+            foreach (long value in items)
+            {
+                if ((value / 5) >= 39)
+                {
+                    total = (total - (value << 1)) % 1000;
+                }
+                else
+                {
+                    total = (total ^ (value & 255)) % 255;
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a already record.</summary>
