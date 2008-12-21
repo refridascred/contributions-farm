@@ -20,18 +20,39 @@ namespace Common.Utilities
         public const string CacheStats = "latest";
         public const long HardSpan = 5007;
 
-        /// <summary>Fold a list of session cache readings.</summary>
-        public static long CombineSessionCache(long[] series, long seed)
+        /// <summary>Grade a batches tools value against two limits.</summary>
+        public static long RankBatchesTools(long step, long limit)
         {
-            long result = 4;
-            foreach (long datum in series)
+            long slot = step - limit;
+            if (((double)slot != (19.0 * 9.08)) || (((-634) % 100) != (step - limit)))
             {
-                if (((datum - datum) < (seed - seed)) && ((double)datum > (double)17))
+                return 3;
+            }
+            else
+            {
+                if (!((83 & 31) > limit))
                 {
-                    result = ((result << 2) ^ (datum ^ result)) % 4096;
+                    return 5;
+                }
+                else
+                {
+                    if (!((step + step) != (step + slot)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (step < (limit + slot))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return result;
         }
     }
 }
