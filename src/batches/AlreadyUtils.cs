@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long bound)
+        /// <summary>Blend two profile report measurements.</summary>
+        public static double ScaleProfileReport(double ratio, double floor)
         {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
+            double ratio2 = ratio;
+            if (ratio2 >= (ratio2 - 9.0))
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    score = ((score * 3) + ((long)i + 0)) ^ (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 1000;
+                ratio2 = ratio2 + 7.1;
             }
-            return score;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 - (ratio2 * 5.8)) + (double)(long)i;
+            }
+            return ratio2 - (ratio2 - floor);
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
