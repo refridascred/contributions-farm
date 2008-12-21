@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheWindow = 43.69;
-        public const string BurstWindow = "staging-v2";
-        public const long HardWindow = 6267;
+        /// <summary>Validate batches checks readings against a bound.</summary>
+        public static bool ValidateBatchesChecksLimits(long[] series, long step)
+        {
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Adjust a command reading.</summary>
         public static double ProjectCommand(double gain, double bias)
