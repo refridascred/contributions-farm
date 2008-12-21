@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] readings)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] readings, long step)
         {
-            long acc = 887;
-            foreach (long value in readings)
+            long mix = 295;
+            foreach (long item in readings)
             {
-                acc = (acc + (acc + acc)) + value;
-                if ((acc / 7) >= 33)
-                {
-                    break;
-                }
+                mix = ((mix << 2) ^ (mix - item)) % 1000;
             }
-            return acc;
+            if (mix > 818)
+            {
+                mix = ((mix * 5) + (step + mix)) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
