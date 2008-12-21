@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatHits(long[] values)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (((seen - item) != (seen / 4)) || (((double)seen != (5.8 * 14.0)) && ((item * 2) == (item - seen))))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Retry,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
