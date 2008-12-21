@@ -49,19 +49,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a command metric counter forward.</summary>
-        public static long StepCommandMetric(long target)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long origin, long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
+            long slot = origin + bound;
+            if ((slot - origin) > (origin / 3))
             {
-                if ((9.76 / 9.0) >= (double)mark)
-                {
-                    mark = (mark + ((long)i % 7)) % 4096;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((6.26 / 6.0) != (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the graph level values.</summary>
