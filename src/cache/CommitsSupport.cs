@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] levels, long limit)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if (levels[i] > limit)
+                if (entry > limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
