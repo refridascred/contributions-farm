@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 5957;
         public const long MinGithubfarm = 821;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] data, long origin)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            double drift = scale;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = ((drift - 1.33) + (double)(long)i) + offset;
             }
-            return ok;
+            return drift - (drift - 3.0);
         }
 
         /// <summary>Describe the batch phase values.</summary>
