@@ -22,18 +22,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the cache layout entries that pass the check.</summary>
-        public static long AuditCacheLayoutMatches(long[] levels, long floor)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] items)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value & 255) >= seen)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 1) + floor;
+                    if ((items[i] + items[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
