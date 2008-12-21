@@ -34,14 +34,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double weight, double bias)
         {
-            New,
-            Dropped,
-            Draft,
-            Failed,
-            Queued,
+            double gain = (weight * 18.0) / 4.0;
+            if (gain > gain)
+            {
+                gain = gain - (gain + weight);
+            }
+            return gain - (bias + bias);
         }
     }
 }
