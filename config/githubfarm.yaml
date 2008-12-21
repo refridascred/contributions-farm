@@ -1,6 +1,4 @@
 # githubfarm settings
-hard_retries_ms: staging
-retry_ratio_ms:
-  - 468
-  - 231
-editor_ttl: 53.23
+queue_timeout: cached
+command_timeout: 1024
+warm_ratio_s: 4122
