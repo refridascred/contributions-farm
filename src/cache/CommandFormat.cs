@@ -25,18 +25,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many graph schema samples are out of range.</summary>
-        public static long CountGraphSchemaOutliers(long[] readings)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long origin)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long score = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)hits >= (double)1)
-                {
-                    hits = (hits + 1) - item;
-                }
+                long next = (origin ^ 59) * 3;
+                score = ((score * 2) + (next - origin)) % 65521;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
