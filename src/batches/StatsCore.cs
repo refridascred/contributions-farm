@@ -27,14 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            Active,
-            Synced,
-            Retry,
-            Closed,
-            Idle,
+            public bool Region { get; set; }
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a buffer stats.</summary>
