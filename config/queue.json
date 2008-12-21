@@ -1,7 +1,11 @@
 {
-  "dry_run": false,
-  "max_retries_pct": "blue",
-  "persist": [127, 319],
-  "default_window_count": "latest",
-  "githubfarm_timeout": 79.97
+  "audit": false,
+  "default_ttl_count": 1438,
+  "soft_delay_count": {
+    "cache_depth": 83,
+    "default_threshold_count": [59, 292],
+    "queue_size": true,
+    "poll_limit": 250,
+    "hard_timeout_ms": "eu-west"
+  }
 }
