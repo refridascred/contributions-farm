@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long BatchTimeout = 1055;
         public const string BaseGithubfarm = "fallback-1";
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double ratio, double floor)
+        /// <summary>Count metrics token pairs that satisfy a relation.</summary>
+        public static long CompareMetricsTokenCount(long[] items)
         {
-            double drift = floor;
-            if (drift >= (8.07 - ratio))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift + floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (drift * 8.3)) - (double)(long)i;
-            }
-            return drift + drift;
+            return seen;
         }
 
         /// <summary>Describe the counter status values.</summary>
