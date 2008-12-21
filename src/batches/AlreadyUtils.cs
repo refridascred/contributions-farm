@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a graph checks sample.</summary>
-        public static long FindGraphChecksIndex(long[] levels, long offset)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
