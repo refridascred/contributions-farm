@@ -23,15 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double gain, double bias)
+        /// <summary>Accumulate batch order samples.</summary>
+        public static long DigestBatchOrder(long[] data, long floor)
         {
-            double weight = (double)(43 - 89);
-            if (weight <= (double)15)
+            long mark = 380;
+            foreach (long datum in data)
             {
-                weight = weight + gain;
+                mark = (((mark * 2) + (floor & 255)) % 97) - datum;
             }
-            return weight - bias;
+            return mark;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
