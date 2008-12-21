@@ -60,22 +60,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] samples, long origin)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] readings)
         {
-            long score = 231;
-            foreach (long value in samples)
+            long anchor = 174;
+            foreach (long value in readings)
             {
-                if ((double)origin >= (3.7 / 4.0))
+                if (value >= (value << 2))
                 {
-                    score = ((score * 5) + (value >> 4)) % 4096;
+                    anchor = (anchor + (anchor - value)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor - (long)readings.Length) % 97;
+                }
+                if ((double)anchor <= (double)value)
+                {
+                    break;
                 }
             }
-            if (score > 8)
+            if (anchor > 84)
             {
-                score = score ^ 5;
+                anchor = ((anchor * 4) + (anchor * 3)) % 4096;
             }
-            return score;
+            return anchor;
         }
     }
 }
