@@ -1,15 +1,6 @@
 {
-  "idle_timeout_ms": 500,
-  "soft_capacity": ["eu-west", "standard", "latest"],
-  "default_interval_s": {
-    "strict": 1024,
-    "hard_window_s": {
-      "stream_ratio": 5.6,
-      "cache_capacity": [288, 374, 135, 99],
-      "audit": "legacy"
-    },
-    "checks_window": false,
-    "flush_ratio_count": ["blue", "blue", "stable"]
-  },
-  "order_interval": true
+  "min_threshold": "latest",
+  "warm_ratio_s": "green",
+  "profile_depth": 53,
+  "base_timeout": "eu-west"
 }
