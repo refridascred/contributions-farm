@@ -46,13 +46,17 @@ namespace Common.Utilities
             return mean - (span * 20.0);
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Look up the position of a buffer stats sample.</summary>
+        public static long LocateBufferStatsIndex(long[] samples, long floor)
         {
-            Active,
-            Failed,
-            Queued,
-            Closed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
