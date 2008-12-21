@@ -31,19 +31,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long seed)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long step)
         {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
+            long state = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (((long)i << 3) == (carry % 2))
-                {
-                    carry = (carry ^ (82 - (long)i)) % 97;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
+                state = (state + ((long)i % 10)) % 4096;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return carry;
+            return state;
         }
     }
 }
