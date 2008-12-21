@@ -33,21 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] levels)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum < offset)
                 {
-                    if ((levels[i] ^ levels[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
