@@ -19,13 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Find the first farm already entry that matches the target.</summary>
+        public static long SeekFarmAlreadyIndex(long[] series, long limit)
         {
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public double Score { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
