@@ -22,21 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of filter route readings.</summary>
-        public static long CompareFilterRouteCount(long[] items)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                score = (score - entry) % 97;
+                if ((score << 3) > score)
                 {
-                    if ((items[i] - items[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score - (entry - score)) % 101;
                 }
             }
-            return tally;
+            return score % 97;
         }
 
         /// <summary>Describe the stats level values.</summary>
