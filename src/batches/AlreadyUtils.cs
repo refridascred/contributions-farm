@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two profile report measurements.</summary>
-        public static double ScaleProfileReport(double ratio, double floor)
+        /// <summary>Count the format tools entries that pass the check.</summary>
+        public static long TallyFormatToolsOutliers(long[] series)
         {
-            double ratio2 = ratio;
-            if (ratio2 >= (ratio2 - 9.0))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                ratio2 = ratio2 + 7.1;
+                if ((double)matches < (3.1 / 6.0))
+                {
+                    matches = (matches + 3) - datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 - (ratio2 * 5.8)) + (double)(long)i;
-            }
-            return ratio2 - (ratio2 - floor);
+            return matches;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
