@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] samples, long seed)
+        /// <summary>Digest a series of already window entries.</summary>
+        public static long DigestAlreadyWindow(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long mark = -92;
+            foreach (long item in data)
             {
-                if (value != seed)
+                double drift = (double)(mark << 1);
+                if ((double)seed == (drift / 4.0))
                 {
-                    found = false;
+                    mark = (mark << 2) ^ (seed & 3);
                     break;
                 }
+                mark = mark - item;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Hold a report info.</summary>
