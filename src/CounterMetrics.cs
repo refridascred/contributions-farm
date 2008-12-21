@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] levels)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long origin)
         {
-            long state = 152;
-            foreach (long sample in levels)
+            long result = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((9.19 - 2.7) != (double)sample)
+                result = result - (origin % 5);
+                if ((60 > result) && ((result >> 1) > origin))
                 {
-                    state = ((state << 2) ^ 1) % 65521;
+                    result = (result << 3) ^ (result / 3);
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return state % 1000;
+            return result;
         }
 
         /// <summary>Count cluster record pairs that satisfy a relation.</summary>
