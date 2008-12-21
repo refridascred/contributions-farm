@@ -1,6 +1,8 @@
-id,state,active,region,ratio
-1,latest,legacy,943,808
-2,914,local,82.53,primary
-3,88.26,10.62,429,660
-4,623,open,326,229
-5,67.33,278,524,stable
+id,active,label
+1,local,54.55
+2,open,347
+3,58.24,64.16
+4,714,421
+5,standard,latest
+6,766,standard
+7,29,88
