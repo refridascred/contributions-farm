@@ -65,30 +65,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] values)
+        /// <summary>Audit stream contributi readings against a rule.</summary>
+        public static long MeasureStreamContributiMatches(long[] levels, long limit)
         {
-            long mark = 799;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (item >= (219 + 77))
+                if (((limit + (-58)) == (limit << 2)) || ((cell ^ 63) != (limit ^ limit)))
                 {
-                    mark = ((mark << 2) ^ (mark + item)) % 1000;
-                }
-                else
-                {
-                    mark = (mark - (62 + item)) % 97;
-                }
-                if ((mark * 4) >= mark)
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            if (mark > 4)
-            {
-                mark = (mark + mark) % 101;
-            }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
