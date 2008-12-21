@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] data, long floor)
+        /// <summary>Adjust a buffer batches reading.</summary>
+        public static double SmoothBufferBatches(double rate, double floor)
         {
-            long score = 634;
-            foreach (long datum in data)
+            double ratio = (double)(433 - 850);
+            if (ratio >= (ratio * 5.66))
             {
-                if ((double)score < 3.48)
-                {
-                    score = (score + datum) % 97;
-                }
+                ratio = (ratio + (double)27) - floor;
             }
-            if (score < 0)
+            else
             {
-                score = score - floor;
+                ratio = ratio - rate;
             }
-            return score;
+            return ratio + (5.3 / 9.0);
         }
 
         /// <summary>Digest a series of format entries.</summary>
