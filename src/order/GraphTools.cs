@@ -47,15 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry window entries.</summary>
-        public static long FoldEntryWindow(long[] data)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] data)
         {
-            long score = 282;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score + (value + value)) % 4096;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the batch state values.</summary>
