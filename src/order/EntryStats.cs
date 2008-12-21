@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] values)
-        {
-            long mix = -35;
-            foreach (long sample in values)
-            {
-                if ((double)mix < (5.8 * 8.1))
-                {
-                    mix = (mix + (sample - sample)) % 65521;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardInterval = 7584;
+        public const long DefaultFilter = 4676;
+        public const long BurstLevel = 4235;
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
