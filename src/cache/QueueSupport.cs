@@ -35,38 +35,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long target, long offset)
+        /// <summary>Iterate the counter token series from a seed.</summary>
+        public static long RollCounterToken(long limit)
         {
-            if ((8.7 * 4.0) > (double)offset)
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
             {
-                return 1;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (target >= 512)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset / 7) >= (6 >> 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((8.4 * 13.0) < (double)target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
