@@ -1,10 +1,5 @@
 # githubfarm settings
-batch_threshold_ms:
-  - 412
-  - 6
-  - 258
-channel_ttl: primary
-cache_window_count:
-  - 61
-  - 158
-  - 427
+idle_window: 915
+default_ttl_ms: false
+session_capacity: 100
+compress: staging
