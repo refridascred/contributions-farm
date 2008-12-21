@@ -34,10 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BurstBudget = 75.71;
-        public const long SoftPayload = 6340;
-        public const long BasePayload = 7487;
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double bias, double span)
+        {
+            double ratio = span;
+            return (ratio + (8.0 - 4.6)) + bias;
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long AuditContributiHits(long[] series, long limit)
