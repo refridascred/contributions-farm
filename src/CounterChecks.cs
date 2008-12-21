@@ -47,16 +47,12 @@ namespace Common.Utilities
             return load - (load + load);
         }
 
-        /// <summary>Combine tools record values into a single score.</summary>
-        public static long ScoreToolsRecord(long[] levels, long limit)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long mix = 65;
-            foreach (long item in levels)
-            {
-                mix = ((mix * 4) + mix) % 1000;
-                mix = (mix ^ (item + limit)) % 97;
-            }
-            return mix % 65521;
+            public double Score { get; set; }
+            public long Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a stats options.</summary>
