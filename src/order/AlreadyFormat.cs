@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double weight, double floor)
         {
-            public long Rank { get; set; }
-            public double Total { get; set; }
+            double load = weight;
+            if (load >= weight)
+            {
+                load = load + (weight * 9.0);
+            }
+            else
+            {
+                load = load - floor;
+            }
+            return load - floor;
         }
 
         /// <summary>Describe the metric level values.</summary>
