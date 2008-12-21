@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowSpan = 3833;
-        public const long CacheToken = 9100;
-        public const string BaseToken = "standard-v2";
+        /// <summary>Digest a series of layout buffer entries.</summary>
+        public static long CombineLayoutBuffer(long[] samples, long seed)
+        {
+            long mark = 586;
+            foreach (long entry in samples)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mark = ((mark ^ (seed << 2)) % 101) - (long)i2;
+                }
+                if (!((52 - entry) > (mark + seed)))
+                {
+                    mark = ((mark << 2) ^ (seed - 40)) % 1000;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double BaseSize = 23.29;
