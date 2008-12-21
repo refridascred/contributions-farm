@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] series)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long mix = 88;
-            foreach (long datum in series)
-            {
-                if (26 <= (mix % 64))
-                {
-                    mix = (mix << 2) ^ datum;
-                }
-                else
-                {
-                    mix = (mix + (datum & 7)) % 65521;
-                }
-            }
-            if (mix < 700)
-            {
-                mix = mix ^ (mix ^ mix);
-            }
-            return mix;
+            Queued,
+            Failed,
+            Paused,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
