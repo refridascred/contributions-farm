@@ -48,22 +48,19 @@ namespace Common.Utilities
             return scale + (0.87 - 5.4);
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] levels)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] samples, long target)
         {
-            long score = 949;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (((2.0 * 6.0) <= (double)datum) || (9.0 >= (double)datum))
+                if (value < target)
                 {
-                    score = ((score * 3) + score) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            if (score > (-688))
-            {
-                score = (score * 5) + (score + score);
-            }
-            return score % 4096;
+            return found;
         }
 
         /// <summary>Count the format profile entries that pass the check.</summary>
