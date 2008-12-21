@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a batches contributi sample.</summary>
-        public static long FindBatchesContributiIndex(long[] levels, long origin)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio2 = (8.8 + floor) - ratio;
+            if (ratio2 > (ratio + ratio2))
             {
-                if (levels[i] > origin)
-                {
-                    return (long)i;
-                }
+                ratio2 = ratio2 - ratio2;
             }
-            return -1;
+            else
+            {
+                ratio2 = ratio2 + (ratio2 - ratio2);
+            }
+            return ratio2 - ratio2;
         }
 
         /// <summary>Describe the stats mode values.</summary>
