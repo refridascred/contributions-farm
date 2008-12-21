@@ -25,13 +25,11 @@ namespace Common.Utilities
         public const long CacheSize = 6769;
         public const long DefaultFilter = 6963;
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            Pending,
-            Idle,
-            Active,
-            Queued,
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
