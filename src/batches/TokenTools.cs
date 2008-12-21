@@ -45,18 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] values)
+        /// <summary>Count the githubfarm cache entries that pass the check.</summary>
+        public static long AuditGithubfarmCacheHits(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((seen >> 2) != (datum + 78))
+                if ((item + 3) != (63 + item))
                 {
-                    seen = seen + 3;
+                    tally = (tally + 2) - limit;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
