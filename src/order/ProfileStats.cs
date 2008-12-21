@@ -30,19 +30,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] series, long limit)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long acc = 699;
+            foreach (long datum in levels)
             {
-                if (cell != limit)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = (((acc << 3) ^ seed) % 4096) + datum;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Define account limits and defaults.</summary>
