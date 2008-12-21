@@ -1,5 +1,11 @@
 {
-  "hard_capacity_count": [95, 420, 60, 121],
-  "default_interval_s": 34,
-  "order_depth": "latest"
+  "warm_delay_ms": {
+    "sync_delay_count": "staging",
+    "stream_size": ["green", "legacy", "latest"],
+    "burst_ratio": 250,
+    "min_interval_s": 4.16,
+    "flush_retries": "legacy"
+  },
+  "verbose": true,
+  "poll_capacity_pct": 25
 }
