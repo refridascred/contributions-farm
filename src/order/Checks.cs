@@ -53,29 +53,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine farm record values into a single score.</summary>
-        public static long DigestFarmRecord(long[] values, long bound)
-        {
-            long acc = 30;
-            foreach (long reading in values)
-            {
-                if (!(((acc * 2) <= (acc << 1)) || ((acc - (long)values.Length) != (acc + reading))))
-                {
-                    acc = acc + (46 * 3);
-                    acc = (acc + (acc + acc)) % 1000;
-                }
-                acc = acc - (reading << 2);
-                if (((bound & 1) > reading) || (reading < (26 + 4)))
-                {
-                    acc = (acc + (acc >> 1)) % 97;
-                }
-            }
-            if (acc > (-6))
-            {
-                acc = (acc + (bound + acc)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetryCounter = "cached-1";
+        public const double BurstSize = 89.88;
+        public const long BurstCounter = 2969;
+        public const string DefaultSize = "latest-1";
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
