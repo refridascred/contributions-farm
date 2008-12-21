@@ -27,18 +27,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] data, long origin)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((double)matches != (8.8 + 16.0))
-                {
-                    matches = ((matches + 3) ^ sample) + origin;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public double Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
