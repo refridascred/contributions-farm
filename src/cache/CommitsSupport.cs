@@ -23,18 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] levels)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum >> 5) != (long)levels.Length)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Stale,
+            Done,
+            Locked,
+            Failed,
+            Idle,
         }
 
         /// <summary>Roll a command farm counter forward.</summary>
