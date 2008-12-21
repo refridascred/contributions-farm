@@ -27,17 +27,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a editor tools sample.</summary>
-        public static long LocateEditorToolsIndex(long[] samples, long origin)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public double Score { get; set; }
         }
     }
 }
