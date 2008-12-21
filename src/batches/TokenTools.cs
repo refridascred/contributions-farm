@@ -47,19 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] readings, long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (entry < seed)
+                if ((value * 4) > (value % 8))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
