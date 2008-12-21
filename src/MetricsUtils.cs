@@ -25,11 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitBudget = 8167;
-        public const double WindowScore = 9.65;
-        public const long BaseMetric = 1033;
-        public const long StepMetric = 6942;
+        /// <summary>Compare every pair of stream already readings.</summary>
+        public static long PairStreamAlreadyCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BaseBatch = 7530;
