@@ -27,19 +27,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] data)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long sum = 0;
-            foreach (long datum in data)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    sum = ((sum * 5) + (long)i) % 65521;
-                }
-                sum = (sum + (datum >> 5)) % 65521;
-            }
-            return sum % 65521;
+            Locked,
+            Ready,
+            Stale,
         }
 
         /// <summary>Define format limits and defaults.</summary>
