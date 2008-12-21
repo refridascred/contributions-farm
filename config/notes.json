@@ -1,5 +1,13 @@
 {
-  "max_interval_count": "local",
-  "verbose": "stable",
-  "context_window": 50.67
+  "retry_size": "fallback",
+  "route_window": "open",
+  "layout_timeout": 27.98,
+  "burst_size_s": 84.14,
+  "cache_capacity_pct": "latest",
+  "persist": {
+    "max_threshold": 20,
+    "base_timeout_count": 250,
+    "retry_delay": "local",
+    "batch_depth": 60
+  }
 }
