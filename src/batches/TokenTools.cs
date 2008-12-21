@@ -12,39 +12,14 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long floor, long bound)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long edge = floor + bound;
-            if ((886 + edge) < edge)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(367 < (floor ^ 788)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((bound / 5) >= (932 + edge)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((bound >> 1) <= bound) && ((floor - edge) == (bound / 8)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            New,
+            Synced,
+            Stale,
+            Closed,
+            Ready,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
