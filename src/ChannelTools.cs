@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double ratio, double floor)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] data, long bound)
         {
-            double ratio2 = (8.8 + floor) - ratio;
-            if (ratio2 > (ratio + ratio2))
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio2 = ratio2 - ratio2;
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + (ratio2 - ratio2);
-            }
-            return ratio2 - ratio2;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
