@@ -33,10 +33,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 6691;
-        public const long BurstScore = 3039;
-        public const long BurstCount = 4899;
-        public const string LimitWindow = "strict";
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((744 % 7) < (matches >> 5))
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
+        }
     }
 }
