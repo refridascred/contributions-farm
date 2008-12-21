@@ -49,27 +49,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry command readings.</summary>
-        public static long DigestEntryCommand(long[] series)
+        /// <summary>Compare every pair of cache editor readings.</summary>
+        public static long PairCacheEditorCount(long[] levels)
         {
-            long anchor = 18;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor + (entry + anchor)) % 101;
-                if ((7 % 24) != (entry >> 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor << 3) ^ (entry % 3);
-                }
-                if ((entry + 0) >= anchor)
-                {
-                    anchor = (anchor - (anchor >> 5)) % 1000;
+                    if ((levels[i] + levels[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor < 450)
-            {
-                anchor = (anchor + anchor) % 65521;
-            }
-            return anchor % 97;
+            return matches;
         }
 
         /// <summary>Describe the entry level values.</summary>
