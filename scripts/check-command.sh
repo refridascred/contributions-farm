@@ -12,6 +12,9 @@ for i in $(seq 1 7); do
 done
 log "total ${total}"
 
-for item in latest strict open stable; do
+for item in open strict; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=488
+log "limit is ${COMMAND_LIMIT}"
