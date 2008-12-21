@@ -46,21 +46,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] values)
+        /// <summary>Locate a cache record reading by value.</summary>
+        public static long SeekCacheRecordIndex(long[] data, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((data[i] == step) && ((data[i] % 3) == 0))
                 {
-                    if ((values[i] - values[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many queue checks samples are out of range.</summary>
