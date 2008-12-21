@@ -22,25 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long floor, long offset)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] series, long step)
         {
-            long span = floor ^ offset;
-            if ((span >= (0 % 10)) && (floor > (6 >> 4)))
+            bool found = true;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor / 2) > (offset ^ floor))
+                if (reading < step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the notes kind values.</summary>
