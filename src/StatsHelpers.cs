@@ -53,18 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] readings, long target)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long seed)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((20.0 + 19.0) > (double)target)
-                {
-                    tally = (tally + 3) + sample;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
