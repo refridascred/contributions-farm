@@ -1,7 +1,30 @@
 # githubfarm settings
-support_capacity: 28.43
-poll_interval_count: 7592
-metrics_size:
-  - 196
-  - 1
-  - 76
+soft_ratio:
+  - 38
+  - 193
+  - 202
+  - 338
+burst_depth_s:
+  - eu-west
+  - open
+  - open
+  - strict
+base_delay_count:
+  notes_ratio: 89
+  report_retries: local
+  hard_ratio_ms:
+    - staging
+    - standard
+    - green
+    - fallback
+  enabled: false
+  session_depth:
+    command_timeout: 250
+    enabled: strict
+    base_retries_ms: 500
+    retry_retries_count: blue
+    audit:
+      - green
+      - edge
+      - primary
+default_timeout_s: 6252
