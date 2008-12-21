@@ -28,15 +28,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] levels, long seed)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] items, long offset)
         {
-            long acc = 699;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (((acc << 3) ^ seed) % 4096) + datum;
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
