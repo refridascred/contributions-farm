@@ -75,19 +75,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long bound)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] values)
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum ^ (715 ^ sum)) % 4096) + (long)i2;
+                    if ((values[i] ^ values[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return count;
         }
     }
 }
