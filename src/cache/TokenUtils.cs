@@ -22,14 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double bias, double span)
         {
-            Done,
-            Draft,
-            Idle,
-            Stale,
-            Queued,
+            double scale = span;
+            if (scale <= (17.0 * 8.0))
+            {
+                scale = scale + (double)58;
+            }
+            return scale + (bias * 6.44);
         }
 
         /// <summary>Match up window account samples.</summary>
