@@ -36,22 +36,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] samples, long floor)
+        /// <summary>Match up graph stats samples.</summary>
+        public static long CompareGraphStatsCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally % 64) >= floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 2) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] ^ levels[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
