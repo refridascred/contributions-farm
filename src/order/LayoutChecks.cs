@@ -66,13 +66,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
+            Locked,
+            Closed,
+            New,
             Draft,
-            Idle,
-            Stale,
-            Paused,
+            Ready,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
