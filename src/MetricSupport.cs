@@ -17,17 +17,15 @@ namespace Common.Utilities
         public const string CacheStats = "latest";
         public const long HardSpan = 5007;
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] data, long seed)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double rate, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = (double)(2 ^ 4);
+            for (int i = 0; i < 5; i++)
             {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
+                weight = (weight - rate) + (double)(long)i;
             }
-            return -1;
+            return weight - (offset - weight);
         }
     }
 }
