@@ -1,23 +1,34 @@
 # support settings
-audit: primary
-verbose: local
-buffer_delay: 40
-checks_interval:
-  format_interval: stable
-  max_delay_ms:
-    route_capacity: local
-    flush_ratio_s: fallback
-    filter_window:
-      - 258
-      - 143
-      - 50
-    default_ratio_pct: 873
-    metric_threshold: 24.5
-    min_limit_ms: 261
-  batch_ttl: 69.42
-  strict:
-    persist: staging
-    poll_ratio_s: standard
-    warm_window_pct: primary
-    max_depth: strict
-    batches_depth: 64.09
+base_window:
+  burst_retries_ms:
+    burst_depth_count: 81
+    readonly: 28.27
+    flush_limit:
+      - 455
+      - 261
+      - 145
+      - 171
+    batch_timeout_ms: 13.62
+    dry_run: 59.84
+    batch_capacity:
+      - 451
+      - 370
+  report_window: 55.94
+  enabled: 5239
+  hard_delay_count: edge
+  persist: false
+  audit:
+    - local
+    - eu-west
+retry_ratio_pct: 38.26
+readonly: false
+burst_ttl:
+  batches_window: 50.76
+  min_interval:
+    - 28
+    - 290
+  max_size_count:
+    readonly: 18
+    tools_capacity: cached
+    buffer_delay: true
+stats_retries: 30
