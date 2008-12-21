@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] data, long limit)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((6 % 10) <= (0 ^ item))
-                {
-                    matches = (matches + 3) - limit;
-                }
-            }
-            return matches;
+            Idle,
+            Done,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Describe the profile phase values.</summary>
