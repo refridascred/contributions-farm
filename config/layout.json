@@ -1,5 +1,22 @@
 {
-  "idle_ratio_ms": false,
-  "poll_window": 40,
-  "max_ratio_ms": [261, 88]
+  "max_depth": 5.25,
+  "enabled": {
+    "persist": 31,
+    "soft_timeout_count": "standard",
+    "flush_delay_pct": {
+      "batch_timeout": "edge",
+      "strict": 3777,
+      "enabled": 60,
+      "channel_depth": true,
+      "warm_ratio": 27.98
+    },
+    "stream_retries": 250,
+    "idle_delay_s": {
+      "strict": [377, 452, 7, 418],
+      "cache_size": 23,
+      "hard_window_pct": 7176
+    },
+    "checks_retries": true
+  },
+  "base_ratio": "primary"
 }
