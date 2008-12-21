@@ -37,18 +37,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] data)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((tally >> 5) <= (cell * 4))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Stale,
+            Queued,
+            Active,
+            Failed,
+            Pending,
         }
 
         /// <summary>Fold a list of format readings.</summary>
