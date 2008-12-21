@@ -33,18 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi context samples are out of range.</summary>
-        public static long MeasureContributiContextOutliers(long[] values)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((6.7 - 6.33) > (double)hits)
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-            }
-            return hits;
+            Ready,
+            Queued,
+            Stale,
         }
     }
 }
