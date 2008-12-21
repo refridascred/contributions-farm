@@ -27,19 +27,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] series, long offset)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Token { get; set; }
+            public double Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
