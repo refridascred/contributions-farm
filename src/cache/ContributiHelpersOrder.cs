@@ -19,10 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 5638;
-        public const long BatchWindow = 9724;
-        public const string MinWindow = "staging-v2";
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a notes payload sample.</summary>
         public static long LocateNotesPayloadIndex(long[] data, long bound)
