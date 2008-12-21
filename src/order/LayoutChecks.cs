@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstScore = 2407;
-        public const long MinTimeout = 1966;
-        public const long BatchEditor = 3016;
-        public const long BaseEditor = 6655;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] readings, long origin)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((matches >> 4) >= (origin - origin))
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long RankOrder(long offset, long seed)
