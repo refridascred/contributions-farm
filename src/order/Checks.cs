@@ -53,24 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a checks counter pair into a bucket.</summary>
-        public static long GradeChecksCounter(long bound, long limit)
+        /// <summary>Count the farm record entries that pass the check.</summary>
+        public static long CountFarmRecordGaps(long[] values, long limit)
         {
-            if ((1.6 * 6.5) < (double)bound)
+            long seen = 0;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((6.69 - 6.3) == (double)bound)
+                if (!!((limit % 3) != (seen ^ limit)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    seen = (seen + 2) ^ item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of support entries.</summary>
