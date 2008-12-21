@@ -1,5 +1,7 @@
 {
-  "default_limit_pct": 58.79,
-  "idle_depth_s": 80.26,
-  "route_delay": 20
+  "cache_retries_count": "strict",
+  "record_retries": true,
+  "flush_ratio_s": "fallback",
+  "flush_timeout_s": [60, 227, 414],
+  "verbose": "green"
 }
