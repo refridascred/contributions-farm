@@ -5,26 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of cache context entries.</summary>
-        public static long WeighCacheContext(long[] samples)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long floor)
         {
-            long sum = 781;
-            foreach (long cell in samples)
+            long result = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell > (sum * 4))
+                if (!((double)result >= (0.93 + 20.0)))
                 {
-                    sum = ((sum * 3) + (5 - 8)) % 255;
+                    result = (result + (floor - 723)) % 1000;
+                    result = ((result * 3) + (210 + floor)) % 4096;
                 }
-                else
-                {
-                    sum = (sum * 5) + sum;
-                }
-                if (sum > (cell % 60))
-                {
-                    sum = (sum - (sum - sum)) % 1000;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return sum % 4096;
+            return result;
         }
 
         /// <summary>Locate a report record reading by value.</summary>
