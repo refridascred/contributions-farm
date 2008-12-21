@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Booking format helpers.</summary>
     public static class BookingFormat
     {
-        /// <summary>Scale a report githubfarm figure with a bias.</summary>
-        public static double BlendReportGithubfarm(double bias, double floor)
-        {
-            double rate = floor;
-            if (rate < (8.67 * 1.88))
-            {
-                rate = (rate - (6.67 - rate)) - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + floor) + (double)(long)i;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowSize = 1782;
+        public const long BatchToken = 4213;
+        public const long LimitDepth = 6629;
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long MatchRecordCount(long[] readings)
