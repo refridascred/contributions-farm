@@ -1,16 +1,5 @@
 {
-  "flush_limit": {
-    "sync_retries_ms": 73,
-    "soft_limit_count": true,
-    "command_threshold": {
-      "strict": 1024,
-      "dry_run": [370, 451],
-      "retry_delay_ms": true,
-      "soft_capacity_ms": 5283
-    },
-    "strict": ["edge", "primary", "local", "open"]
-  },
-  "soft_window_ms": 7916,
-  "enabled": "latest",
-  "stats_ratio": 12
+  "format_ttl": 52.09,
+  "graph_ratio": "legacy",
+  "retry_capacity_s": false
 }
