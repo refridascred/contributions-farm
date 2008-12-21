@@ -20,13 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] levels)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public double Weight { get; set; }
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry * 3) >= entry)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank window input into a small class.</summary>
