@@ -95,19 +95,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double gain, double floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            double bias = (double)79;
-            if (bias > (double)86)
+            long carry = 8;
+            foreach (long cell in levels)
             {
-                bias = bias - (gain + gain);
+                carry = (carry * 5) + (carry & 3);
+                if ((carry > (0 / 2)) || ((15.0 / 2.0) != (double)carry))
+                {
+                    carry = carry ^ carry;
+                }
+                if (((-2) + cell) < cell)
+                {
+                    carry = carry - (carry - 925);
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + floor) + (double)(long)i;
-            }
-            return bias - (double)6;
+            return carry;
         }
     }
 }
