@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] levels, long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long result = 128;
+            foreach (long reading in samples)
             {
-                if (item <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (result ^ origin) ^ reading;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Accumulate tools farm samples.</summary>
