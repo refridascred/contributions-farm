@@ -52,19 +52,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((double)target < (4.2 * 1.2))
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 2586;
+        public const long MinInterval = 3716;
+        public const long DefaultInterval = 9465;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long DigestBuffer(long[] readings, long offset)
