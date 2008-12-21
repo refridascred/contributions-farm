@@ -29,19 +29,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] readings, long step)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Size { get; set; }
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
