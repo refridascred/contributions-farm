@@ -20,14 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Failed,
-            Pending,
-            Draft,
-            Done,
-            Queued,
+            public string Offset { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Match up stream samples.</summary>
