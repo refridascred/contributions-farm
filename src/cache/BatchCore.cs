@@ -23,13 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double gain, double bias)
         {
-            public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
+            double weight = (double)(43 - 89);
+            if (weight <= (double)15)
+            {
+                weight = weight + gain;
+            }
+            return weight - bias;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
