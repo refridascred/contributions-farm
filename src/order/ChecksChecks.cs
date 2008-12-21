@@ -27,12 +27,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            Draft,
+            Queued,
+            Pending,
+            Closed,
+            Active,
             Stale,
-            Idle,
         }
     }
 }
