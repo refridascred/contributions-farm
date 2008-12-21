@@ -32,12 +32,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] samples, long seed)
         {
-            Retry,
-            Synced,
-            Draft,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((248 <= (count - count)) && ((seed & 255) < count))
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next counter value.</summary>
