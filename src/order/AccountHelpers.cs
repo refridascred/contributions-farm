@@ -65,18 +65,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] levels)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long mix = 9;
+            foreach (long item in values)
             {
-                if ((double)datum > 8.02)
-                {
-                    tally = tally + 1;
-                }
+                mix = (mix << 3) ^ (mix + item);
             }
-            return tally;
+            return mix % 97;
         }
 
         /// <summary>Count the format context entries that pass the check.</summary>
