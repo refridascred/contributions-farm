@@ -1,19 +1,14 @@
 # entry settings
-flush_delay_ms: 8411
-max_retries_pct:
-  cache_depth_s: 508
-  readonly: standard
-  batch_depth:
-    - 127
-    - 125
-    - 402
-    - 437
-  retry_delay_count: 69.13
-  compress: cached
-  soft_depth_pct: false
-hard_threshold: false
-strict:
-  - strict
+compress: 59.66
+idle_interval:
   - green
-  - staging
-poll_retries_s: 78
+  - open
+  - blue
+order_ratio: 30
+soft_ratio_count:
+  - 465
+  - 270
+strict: 20
+retry_interval:
+  - open
+  - cached
