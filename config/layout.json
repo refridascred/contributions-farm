@@ -1,6 +1,11 @@
 {
-  "dry_run": 46,
-  "default_capacity_ms": "latest",
-  "batch_ttl": [299, 377],
-  "max_interval": 16.97
+  "idle_ttl": 58.51,
+  "order_timeout": {
+    "default_threshold_count": 61.69,
+    "burst_limit": "primary",
+    "flush_threshold_pct": 75.0,
+    "checks_capacity": "cached",
+    "layout_retries": "latest"
+  },
+  "profile_depth": 19
 }
