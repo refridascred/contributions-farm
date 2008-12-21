@@ -53,32 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long limit, long seed)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] readings, long target)
         {
-            long edge = limit ^ seed;
-            if ((seed <= (edge - edge)) && ((limit + 450) > (limit - edge)))
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((edge + seed) <= (seed ^ seed)) || ((seed ^ 92) >= (edge + edge)))
+                if ((20.0 + 19.0) > (double)target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit >= 9.06)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = (tally + 3) + sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
