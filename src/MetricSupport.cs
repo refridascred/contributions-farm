@@ -14,12 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long step)
         {
-            public long Total { get; set; }
-            public bool Label { get; set; }
-            public string Score { get; set; } = "";
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!((step >> 5) < step))
+                {
+                    anchor = anchor - (anchor >> 2);
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
