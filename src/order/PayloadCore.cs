@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            Done,
-            Queued,
-            Dropped,
+            Stale,
+            Synced,
+            Paused,
+            Failed,
+            Pending,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
