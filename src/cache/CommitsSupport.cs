@@ -58,22 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] series, long bound)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] items, long offset)
         {
-            long score = 440;
-            foreach (long datum in series)
+            long anchor = 971;
+            foreach (long sample in items)
             {
-                if (((double)datum < (double)bound) || ((bound + bound) <= datum))
+                if (!((double)anchor != (8.49 + 8.2)))
                 {
-                    score = score ^ (bound + 0);
-                }
-                else
-                {
-                    score = score ^ (bound + datum);
+                    anchor = ((anchor + (sample / 5)) % 65521) - offset;
                 }
             }
-            return score % 1000;
+            return anchor % 97;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
