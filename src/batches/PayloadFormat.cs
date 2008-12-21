@@ -26,12 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheSpan = 3976;
-        public const double LimitAlready = 11.08;
-        public const long CacheAlready = 7942;
-        public const long CacheScore = 8624;
-        public const long BatchAlready = 3648;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] levels, long floor)
+        {
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
