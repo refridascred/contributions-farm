@@ -25,15 +25,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double scale, double offset)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            double bias = scale;
-            for (int i = 0; i < 5; i++)
-            {
-                bias = ((bias - 7.2) + (double)(long)i) + offset;
-            }
-            return bias + scale;
+            Active,
+            Paused,
+            Stale,
+            Synced,
         }
     }
 }
