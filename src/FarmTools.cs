@@ -16,22 +16,17 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] levels)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (672 <= (hits - hits))
+                if (values[i] <= bound)
                 {
-                    hits = (hits + 2) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
