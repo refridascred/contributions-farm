@@ -12,15 +12,22 @@ namespace Common.Utilities
             return gain + ratio;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double rate, double floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] items, long offset)
         {
-            double weight = (rate - rate) + (rate - rate);
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                weight = ((weight - (weight * 9.17)) + (double)(long)i) + floor;
+                if ((470 + 897) <= (offset << 2))
+                {
+                    hits = (hits + 2) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return weight + rate;
+            return hits;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
