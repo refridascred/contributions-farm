@@ -1,6 +1,5 @@
 {
-  "poll_depth_pct": false,
-  "layout_ratio": "standard",
-  "base_delay_ms": "legacy",
-  "min_delay_s": true
+  "cache_interval": false,
+  "burst_ttl": "edge",
+  "readonly": 3258
 }
