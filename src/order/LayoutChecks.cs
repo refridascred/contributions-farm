@@ -69,13 +69,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            public double Token { get; set; }
-            public long Mode { get; set; }
+            public bool Size { get; set; }
             public double Rank { get; set; }
-            public long Offset { get; set; }
+            public double Total { get; set; }
         }
     }
 }
