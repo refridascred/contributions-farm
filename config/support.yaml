@@ -1,4 +1,7 @@
 # support settings
-strict: true
-poll_capacity_count: blue
-cache_capacity_pct: false
+support_timeout: fallback
+profile_ratio:
+  - latest
+  - staging
+  - staging
+warm_timeout_count: 94
