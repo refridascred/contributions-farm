@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardTimeout = 1294;
-        public const double MaxSpan = 43.88;
-        public const long MinContext = 4395;
-        public const long LimitScore = 3413;
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Closed,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long AuditClusterMatches(long[] readings)
