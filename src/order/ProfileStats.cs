@@ -43,11 +43,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string StepAccount = "staging-1";
-        public const double BaseAccount = 12.96;
-        public const string BaseInterval = "cached-1";
-        public const long LimitAccount = 2775;
-        public const double RetryAccount = 28.13;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long bound, long floor)
+        {
+            long slot = bound - floor;
+            if (((floor / 3) < ((-994) ^ bound)) || ((double)slot < 2.3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)floor != (10.0 / 5.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)slot <= (1.1 / 4.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((19.0 * 20.0) < (double)floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
