@@ -73,14 +73,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Failed,
-            Ready,
-            Locked,
-            New,
-            Paused,
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Digest a series of support entries.</summary>
