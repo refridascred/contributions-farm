@@ -48,11 +48,19 @@ namespace Common.Utilities
             return gain - (floor * 8.0);
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] series, long step)
         {
-            public bool Total { get; set; }
-            public long Count { get; set; }
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many queue checks samples are out of range.</summary>
