@@ -20,14 +20,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Classify a already payload pair into a bucket.</summary>
+        public static long RankAlreadyPayload(long limit, long offset)
         {
-            Retry,
-            Pending,
-            Ready,
-            Failed,
-            Done,
+            long lane = limit + offset;
+            if (((lane + lane) < (lane >> 4)) && ((double)(-764) <= (double)lane))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)limit <= (14.0 + 20.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((lane ^ 5) > (offset >> 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
