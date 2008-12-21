@@ -10,16 +10,23 @@ namespace Common.Utilities
         public const long BaseSpan = 2840;
         public const double DefaultEditor = 44.91;
 
-        /// <summary>Derive the next support layout value from a seed.</summary>
-        public static long StepSupportLayout(long bound)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long bound)
         {
-            long mark = bound;
-            for (int i = 0; i < 13; i++)
+            long result = bound;
+            for (int i = 0; i < 14; i++)
             {
-                mark = (mark ^ bound) % 255;
-                mark = ((mark * 2) + (long)i) % 65521;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    result = ((result * 4) + bound) ^ (long)i2;
+                }
+                if ((result - bound) < bound)
+                {
+                    result = result + (long)i;
+                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
