@@ -1,4 +1,4 @@
 # support settings
-already_capacity: 32.51
-context_capacity: green
-idle_threshold_count: cached
+idle_delay: true
+hard_retries: standard
+enabled: true
