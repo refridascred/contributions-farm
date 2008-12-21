@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] samples, long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] items)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((item + floor) >= floor)
+                if (!((reading / 3) > reading))
                 {
-                    count = count + 2;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a already options.</summary>
