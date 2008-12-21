@@ -20,20 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a commits graph counter forward.</summary>
-        public static long StepCommitsGraph(long origin)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 15; i++)
+            long mix = step;
+            for (int i = 0; i < 23; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mark = (mark ^ (mark - mark)) - (long)i2;
-                }
-                mark = mark + (0 >> 2);
-                mark = ((mark * 2) + (long)i) % 1000;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Hold a channel summary.</summary>
