@@ -27,19 +27,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] data, long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (datum > step)
+                if ((count ^ offset) <= (datum + offset))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
