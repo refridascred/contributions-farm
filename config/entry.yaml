@@ -1,14 +1,9 @@
 # entry settings
-compress: 59.66
-idle_interval:
-  - green
-  - open
-  - blue
-order_ratio: 30
-soft_ratio_count:
-  - 465
-  - 270
-strict: 20
-retry_interval:
-  - open
-  - cached
+queue_limit: blue
+route_delay:
+  - 67
+  - 83
+  - 276
+  - 47
+dry_run: blue
+window_capacity: 53
