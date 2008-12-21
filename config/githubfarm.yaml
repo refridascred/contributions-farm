@@ -1,5 +1,13 @@
 # githubfarm settings
-readonly: eu-west
-poll_retries: 8546
-max_interval: true
-counter_limit: strict
+base_window:
+  - 112
+  - 294
+  - 14
+  - 411
+stats_limit: legacy
+strict:
+  sync_ttl: staging
+  report_ttl: 100
+  burst_retries_s: primary
+verbose: 1258
+dry_run: fallback
