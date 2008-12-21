@@ -36,14 +36,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Locked,
-            Active,
-            Ready,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BaseWidth = "standard";
+        public const long WindowFactor = 2668;
+        public const long DefaultContributi = 3560;
     }
 }
