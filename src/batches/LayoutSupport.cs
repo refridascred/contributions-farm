@@ -21,12 +21,38 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long limit, long floor)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
+            if ((double)limit != (6.0 * 2.42))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((4.9 * 7.0) >= (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((((-49) - floor) <= limit) || ((floor / 4) < (limit << 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor >> 5) >= (7 - limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
