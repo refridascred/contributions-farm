@@ -23,19 +23,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the stats checks entries that pass the check.</summary>
-        public static long TallyStatsChecksHits(long[] series, long floor)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((double)value >= 5.64)
-                {
-                    seen = (seen + 2) + floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitInterval = 2533;
+        public const double DefaultScore = 86.15;
+        public const long CacheOrder = 7006;
+        public const string MaxOrder = "open";
+        public const long BatchInterval = 4577;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double MinFormat = 85.32;
