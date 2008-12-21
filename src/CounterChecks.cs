@@ -38,16 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the channel session series from a seed.</summary>
-        public static long StepChannelSession(long bound)
+        /// <summary>Audit entry buffer readings against a rule.</summary>
+        public static long CountEntryBufferMatches(long[] levels)
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                total = (total ^ ((-259) * 5)) % 97;
-                total = ((total * 3) + (long)i) % 4093;
+                if (!(((double)hits != (1.0 - 7.1)) && ((double)298 != (double)hits)))
+                {
+                    hits = (hits + 1) + reading;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the account kind values.</summary>
