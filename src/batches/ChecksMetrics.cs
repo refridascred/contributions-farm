@@ -65,10 +65,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowSpan = 1638;
-        public const long MinCount = 5565;
-        public const long WindowCache = 3434;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] readings, long limit)
+        {
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionGaps(long[] series)
