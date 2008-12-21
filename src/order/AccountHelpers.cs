@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] series, long limit)
+        /// <summary>Match up filter format samples.</summary>
+        public static long CompareFilterFormatCount(long[] values)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits + value) > (value - limit))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((values[i] + values[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
