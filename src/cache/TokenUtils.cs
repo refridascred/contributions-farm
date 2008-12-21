@@ -20,19 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long offset)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] readings)
         {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((total * 3) != (total ^ (-917))) && ((1.92 / 9.0) > (6.6 * 4.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = total + total;
+                    if ((readings[i] ^ readings[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the layout mode values.</summary>
