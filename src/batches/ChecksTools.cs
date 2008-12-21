@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
-            public long Limit { get; set; }
+            Closed,
+            Idle,
+            Ready,
+            Active,
+            Locked,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
