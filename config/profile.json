@@ -1,11 +1,19 @@
 {
-  "record_ttl": true,
-  "token_ttl": "eu-west",
-  "readonly": false,
-  "max_ratio": {
-    "poll_ratio_s": 500,
-    "cache_capacity_pct": "legacy",
-    "base_timeout_s": ["local", "standard"],
-    "max_retries_s": 30
-  }
+  "cache_limit": "latest",
+  "window_window": {
+    "persist": {
+      "dry_run": 3989,
+      "soft_window": 44.32,
+      "support_threshold": "standard",
+      "cluster_threshold": ["green", "green", "standard"],
+      "sync_ratio_s": 17.95,
+      "retry_interval_pct": 325
+    },
+    "farm_capacity": 79,
+    "layout_interval": ["cached", "green", "local", "standard"],
+    "cache_depth": 90.9
+  },
+  "hard_retries": "blue",
+  "command_delay": ["primary", "open", "stable"],
+  "commits_interval": 100
 }
