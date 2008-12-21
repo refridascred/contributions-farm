@@ -14,25 +14,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long limit, long target)
+        /// <summary>Blend two cluster context measurements.</summary>
+        public static double ScaleClusterContext(double bias, double bias2)
         {
-            long bound = limit - target;
-            if ((double)bound == (7.2 / 5.0))
+            double scale = bias2;
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
+                scale = (scale - 2.18) - (double)(long)i;
             }
-            else
-            {
-                if (1.0 > (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return scale + bias;
         }
 
         /// <summary>Iterate the counter token series from a seed.</summary>
