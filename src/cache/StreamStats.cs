@@ -23,13 +23,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Roll a entry route counter forward.</summary>
+        public static long RollEntryRoute(long limit)
         {
-            Done,
-            Ready,
-            Closed,
-            Draft,
+            long sum = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((702 + sum) >= limit)
+                {
+                    sum = ((sum * 3) + ((long)i + (long)i)) % 4096;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
