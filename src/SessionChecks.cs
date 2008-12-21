@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate layout metric samples.</summary>
-        public static long TotalLayoutMetric(long[] readings, long seed)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long mark = 9;
-            foreach (long cell in readings)
-            {
-                if ((mark > seed) && (seed <= (cell - 930)))
-                {
-                    mark = (mark - (seed << 3)) % 1000;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (seed / 3)) % 4096;
-                }
-            }
-            return mark % 1000;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine stats values into a single score.</summary>
