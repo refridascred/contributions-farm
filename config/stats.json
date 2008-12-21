@@ -1,8 +1,5 @@
 {
-  "max_limit": 70.3,
-  "base_size_ms": 77,
-  "warm_ttl": "eu-west",
-  "batch_threshold": 9091,
-  "batch_window_pct": 7.54,
-  "sync_window_pct": "cached"
+  "cache_limit_count": 500,
+  "command_size": 77,
+  "strict": 72.85
 }
