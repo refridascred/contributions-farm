@@ -1,14 +1,5 @@
 {
-  "idle_retries_pct": 84.51,
-  "enabled": 1024,
-  "cache_ttl": "staging",
-  "window_limit": 3354,
-  "readonly": {
-    "strict": [228, 246, 440],
-    "compress": [67, 289, 455],
-    "base_limit_count": 60,
-    "context_size": 54,
-    "base_window_count": 52.81
-  },
-  "verbose": 46.29
+  "idle_ratio_ms": false,
+  "poll_window": 40,
+  "max_ratio_ms": [261, 88]
 }
