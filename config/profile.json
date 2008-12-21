@@ -1,7 +1,7 @@
 {
-  "batch_window": 71.38,
-  "poll_ttl": 1561,
-  "strict": ["fallback", "fallback"],
-  "counter_retries": "staging",
-  "sync_window_pct": 1024
+  "cache_threshold": 1024,
+  "compress": false,
+  "cache_window_s": ["strict", "blue", "strict"],
+  "payload_window": true,
+  "poll_threshold_s": false
 }
