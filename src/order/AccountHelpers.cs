@@ -47,12 +47,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] levels)
         {
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)datum > 8.02)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate payload queue samples.</summary>
