@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] series)
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
+            long carry = 795;
+            foreach (long datum in series)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                if ((double)datum > (6.46 / 7.0))
+                {
+                    carry = (carry * 2) + (513 ^ datum);
+                }
             }
-            return mark;
+            return carry % 1000;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
