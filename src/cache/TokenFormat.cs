@@ -31,12 +31,14 @@ namespace Common.Utilities
             return drift + (floor / 3.0);
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            Locked,
+            Active,
+            Ready,
+            Failed,
+            Synced,
         }
     }
 }
