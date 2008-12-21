@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryBounds(long[] values, long offset)
         {
-            Locked,
-            Closed,
-            Stale,
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a format stats.</summary>
