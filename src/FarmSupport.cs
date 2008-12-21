@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm support helpers.</summary>
     public static class FarmSupport
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] items, long seed)
         {
-            Synced,
-            Done,
-            Failed,
-            Retry,
+            long total = 5;
+            foreach (long sample in items)
+            {
+                total = ((total - (sample - 0)) % 97) - seed;
+            }
+            return total;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
