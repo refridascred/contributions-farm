@@ -62,26 +62,11 @@ namespace Common.Utilities
         public const long WindowChecks = 6806;
         public const string RetryChecks = "cached";
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] items, long bound)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long acc = 86;
-            foreach (long value in items)
-            {
-                if ((3.3 / 9.0) == (double)bound)
-                {
-                    acc = ((acc * 5) + (value - value)) % 1000;
-                }
-                if ((acc % 2) >= (bound / 6))
-                {
-                    break;
-                }
-            }
-            if (acc < 699)
-            {
-                acc = (acc - (-8)) % 1000;
-            }
-            return acc % 1000;
+            public bool Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a farm stats.</summary>
