@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long bound)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                mark = (mark ^ (mark / 5)) % 255;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Hold a format stats.</summary>
