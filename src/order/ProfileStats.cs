@@ -23,13 +23,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] values)
         {
-            Done,
-            Locked,
-            Retry,
-            Paused,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
