@@ -16,22 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueMatches(long[] items)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if (((-4) + (-862)) == (42 - count))
+                if (cell > floor)
                 {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
