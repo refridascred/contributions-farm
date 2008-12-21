@@ -65,31 +65,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long seed, long offset)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long origin)
         {
-            if ((6.0 - 8.96) <= (double)seed)
+            long carry = origin;
+            for (int i = 0; i < 18; i++)
             {
-                return 6;
+                carry = carry ^ (carry - origin);
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((offset / 2) == (offset + seed)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(2.03 >= (double)seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
