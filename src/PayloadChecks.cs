@@ -44,23 +44,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] data)
-        {
-            long result = 213;
-            foreach (long value in data)
-            {
-                if ((result - 797) <= (73 + result))
-                {
-                    result = (result << 2) ^ result;
-                }
-                if ((2.1 / 8.0) == (double)value)
-                {
-                    break;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 2906;
+        public const string CacheBatches = "cached-edge";
+        public const double HardWidth = 43.8;
+        public const long LimitBatches = 8740;
 
         /// <summary>Fold a list of format readings.</summary>
         public static long TotalFormat(long[] values)
