@@ -1,15 +1,6 @@
 {
-  "payload_delay": {
-    "verbose": {
-      "base_limit_count": 2361,
-      "audit": 9860,
-      "flush_ttl_ms": 683
-    },
-    "readonly": true,
-    "cache_depth_ms": false
-  },
-  "retry_limit": 10.26,
-  "cache_size_s": "strict",
-  "min_window_pct": "cached",
-  "default_depth_count": 16.1
+  "warm_size": "blue",
+  "report_interval": ["staging", "local"],
+  "session_ratio": false,
+  "cache_retries_s": 418
 }
