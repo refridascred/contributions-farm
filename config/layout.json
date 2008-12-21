@@ -1,6 +1,5 @@
 {
-  "cache_delay_count": 60.75,
-  "hard_interval_pct": "staging",
-  "soft_limit_pct": "legacy",
-  "poll_timeout_pct": 44.06
+  "queue_limit": ["open", "fallback", "cached"],
+  "retry_limit_pct": "stable",
+  "tools_ratio": 500
 }
