@@ -35,18 +35,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamMatches(long[] data, long limit)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (12.0 >= (double)(long)data.Length)
-                {
-                    seen = ((seen + 1) - cell) - limit;
-                }
-            }
-            return seen;
+            Failed,
+            Done,
+            Ready,
         }
 
         /// <summary>Describe the batch state values.</summary>
