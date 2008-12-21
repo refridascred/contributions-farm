@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportGaps(long[] series)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double rate = scale + offset;
+            if (rate > (double)5)
             {
-                if ((matches % 64) > (sample >> 2))
-                {
-                    matches = matches + 3;
-                }
+                rate = rate + offset;
             }
-            return matches;
+            else
+            {
+                rate = rate - (scale - offset);
+            }
+            return rate - (double)80;
         }
 
         /// <summary>Derive the next command already value from a seed.</summary>
