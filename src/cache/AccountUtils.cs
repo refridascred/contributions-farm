@@ -12,25 +12,15 @@ namespace Common.Utilities
         public const string IdleInterval = "staging-1";
         public const double WindowCount = 31.73;
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long target)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long bound)
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
+            long state = bound;
+            for (int i = 0; i < 11; i++)
             {
-                bool flag = ((result - 6) > (result + result)) && ((result / 7) > (target + target));
-                if (flag)
-                {
-                    result = (result - (result + (long)i)) % 255;
-                }
-                else
-                {
-                    result = (result ^ ((long)i >> 1)) % 97;
-                }
-                result = ((result << 2) ^ target) % 255;
-                result = ((result * 3) + (long)i) % 101;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Describe the payload phase values.</summary>
