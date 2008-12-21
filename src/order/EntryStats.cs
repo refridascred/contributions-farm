@@ -65,22 +65,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] series)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (!(((6.2 / 2.0) != (double)tally) && (entry > (tally + entry))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            Queued,
+            Pending,
+            Retry,
         }
 
         /// <summary>Digest a series of support entries.</summary>
