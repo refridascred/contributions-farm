@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] samples, long bound)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
+                sum = sum ^ (sum + 478);
+                if (!(47 >= (target % 60)))
                 {
-                    return (long)i;
+                    sum = (sum ^ (target << 1)) % 101;
                 }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define order limits and defaults.</summary>
