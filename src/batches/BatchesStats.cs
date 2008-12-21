@@ -19,18 +19,25 @@ namespace Common.Utilities
         public const long HardOrder = 2466;
         public const double MaxBudget = 94.35;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] data, long step)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long floor, long origin)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long cur = floor - origin;
+            if (((double)cur != (8.0 * 0.7)) || ((double)cur == (8.53 - 8.1)))
             {
-                if ((969 >> 1) < (matches + matches))
+                return 4;
+            }
+            else
+            {
+                if (((double)origin > (8.2 - 4.74)) && (floor < (origin - cur)))
                 {
-                    matches = ((matches + 3) + entry) + step;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the account status values.</summary>
