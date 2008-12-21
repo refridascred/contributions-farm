@@ -60,39 +60,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long offset, long origin)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] data)
         {
-            long delta = offset ^ origin;
-            if (((origin & 31) <= (531 << 1)) || ((origin / 2) > (delta - origin)))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (delta <= (8 / 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (origin <= (origin & 1))
+                    if ((data[i] ^ data[j]) == 14)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((origin / 7) <= (delta + origin)) || (origin < (74 << 1)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
