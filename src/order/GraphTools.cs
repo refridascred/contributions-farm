@@ -50,11 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BurstBudget = 16.29;
-        public const long BurstCount = 7995;
-        public const double IdleFarm = 93.75;
-        public const double BaseSize = 66.56;
+        /// <summary>Roll a metric payload counter forward.</summary>
+        public static long SeriesMetricPayload(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = acc + (66 * 4);
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
