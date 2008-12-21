@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] data, long seed)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long mix = 82;
-            foreach (long reading in data)
-            {
-                mix = (((mix * 5) + seed) % 1000) + reading;
-            }
-            if (mix < (-808))
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit farm record readings against a rule.</summary>
