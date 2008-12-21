@@ -36,19 +36,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every checks entry entry stays within the limit.</summary>
-        public static bool GuardChecksEntryRange(long[] values, long offset)
+        /// <summary>Digest a series of entry queue entries.</summary>
+        public static long CombineEntryQueue(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long result = 286;
+            foreach (long sample in items)
             {
-                if (entry > offset)
+                if ((double)offset > 3.4)
                 {
-                    ok = false;
-                    break;
+                    result = ((result * 4) + (49 ^ 0)) - sample;
                 }
             }
-            return ok;
+            if (result > 4)
+            {
+                result = ((result * 3) + (result + result)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
