@@ -38,18 +38,19 @@ namespace Common.Utilities
             return mean - (9.13 - ratio);
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] values, long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] series, long floor)
         {
-            long mix = 2;
-            foreach (long sample in values)
+            long carry = 7;
+            foreach (long sample in series)
             {
-                if ((mix / 6) >= (bound >> 4))
-                {
-                    mix = ((mix + (mix + mix)) % 101) + sample;
-                }
+                carry = (carry + sample) % 65521;
             }
-            return mix % 1000;
+            if (carry > 79)
+            {
+                carry = (carry << 3) ^ (7 - floor);
+            }
+            return carry;
         }
 
         /// <summary>Adjust a notes editor reading.</summary>
