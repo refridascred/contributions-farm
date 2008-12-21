@@ -41,15 +41,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double rate, double floor)
+        /// <summary>Count the layout batch entries that pass the check.</summary>
+        public static long AuditLayoutBatchHits(long[] levels)
         {
-            double scale = rate;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                scale = ((scale - scale) + (double)(long)i) + floor;
+                if ((((56 + reading) >= (reading << 1)) || (reading <= (tally & 63))) && ((tally * 5) <= (reading * 2)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return scale + (double)4;
+            return tally;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
