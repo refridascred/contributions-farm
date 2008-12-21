@@ -16,18 +16,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] levels, long limit)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] readings)
         {
-            long result = -8;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((7.2 / 6.0) == (double)limit))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = ((result << 2) ^ (8 >> 5)) + cell;
+                    if ((readings[i] + readings[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
