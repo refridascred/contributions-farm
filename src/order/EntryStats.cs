@@ -51,24 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long origin, long origin2)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamMatches(long[] data, long limit)
         {
-            if (((double)origin != (double)origin2) && ((origin + origin2) <= (origin2 ^ origin)))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (677 > (6 + origin))
+                if (12.0 >= (double)(long)data.Length)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    seen = ((seen + 1) - cell) - limit;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
