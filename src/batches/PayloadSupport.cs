@@ -29,17 +29,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 4673;
+        public const string LimitStream = "strict-edge";
+        public const long SoftCount = 9626;
+        public const long BaseStream = 5734;
+        public const double MaxStream = 5.95;
     }
 }
