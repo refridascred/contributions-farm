@@ -16,18 +16,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] readings, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (!((floor % 60) >= (565 / 7)) || !(item > count))
+                if (((cell - bound) > (bound + cell)) || (((-9) ^ bound) >= (matches + matches)))
                 {
-                    count = count + 3;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
