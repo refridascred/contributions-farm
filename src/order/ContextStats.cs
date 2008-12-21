@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many githubfarm filter samples are out of range.</summary>
-        public static long CountGithubfarmFilterOutliers(long[] levels)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (!((double)entry <= 2.34) && ((tally - tally) > (tally >> 2)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a route snapshot.</summary>
