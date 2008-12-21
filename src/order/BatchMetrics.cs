@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] samples, long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (cell >= step)
+                if (((seen % 60) >= item) || ((double)seen <= 5.0))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Describe the record mode values.</summary>
