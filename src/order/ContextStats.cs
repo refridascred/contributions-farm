@@ -37,18 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] values, long limit)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((double)seen < 1.0)
-                {
-                    seen = ((seen + 3) + sample) + limit;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the format graph entries that pass the check.</summary>
