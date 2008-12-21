@@ -32,10 +32,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinCount = "alpha-1";
-        public const long BaseRoute = 2688;
-        public const long BaseWidth = 7827;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] values, long bound)
+        {
+            long result = 9;
+            foreach (long sample in values)
+            {
+                if ((992 <= sample) || ((sample & 15) == (13 + result)))
+                {
+                    result = (((result << 2) ^ (long)values.Length) % 97) - bound;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BatchCount = 6505;
