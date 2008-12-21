@@ -1,11 +1,11 @@
 # Command notes
 
-Each editor is validated before it reaches the schema queue.
-A graph that stays idle for too long is moved to the checks list.
-A support that stays idle for too long is moved to the support list.
+The stream module keeps stats values in sync with the stats cache.
+The tools report groups every window by stream.
 
 ## Guidelines
 
-- Document new batches fields
-- Keep account values small
-- Validate cluster input early
+- Log every channel change
+- Prefer order defaults
+- Review entry limits each release
+- Keep filter values small
