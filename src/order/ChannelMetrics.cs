@@ -15,24 +15,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long seed)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long score = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((70 + score) <= (seed + seed))
-                {
-                    score = score + (seed * 5);
-                }
-                else
-                {
-                    score = ((score << 2) ^ score) % 101;
-                    score = (score + seed) % 65521;
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            public bool Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
