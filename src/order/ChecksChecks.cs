@@ -30,17 +30,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] readings, long offset)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long target, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long next = target - origin;
+            if (!((9.82 + 16.0) == (double)origin))
             {
-                if (readings[i] >= offset)
+                return 2;
+            }
+            else
+            {
+                if ((8.8 >= (double)next) || ((70 * 5) == (next % 3)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (958 >= (origin % 60))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)origin > (2.0 * 0.8))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
