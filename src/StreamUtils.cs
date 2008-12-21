@@ -34,12 +34,15 @@ namespace Common.Utilities
         public const long RetrySize = 3503;
         public const long HardBudget = 5439;
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Scale a profile channel figure with a bias.</summary>
+        public static double BlendProfileChannel(double scale, double span)
         {
-            Paused,
-            Done,
-            Locked,
+            double weight = 6.65 + 16.0;
+            if (weight > span)
+            {
+                weight = weight - (scale / 6.0);
+            }
+            return weight + (scale * 4.2);
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
