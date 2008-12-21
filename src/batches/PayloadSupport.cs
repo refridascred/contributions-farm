@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] samples, long floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long mix = 82;
+            foreach (long reading in data)
             {
-                if (cell != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = (((mix * 5) + seed) % 1000) + reading;
             }
-            return flag;
+            if (mix < (-808))
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
 
         /// <summary>Hold a command record.</summary>
