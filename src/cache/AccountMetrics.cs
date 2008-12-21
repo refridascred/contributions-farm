@@ -21,19 +21,11 @@ namespace Common.Utilities
         public const string SoftInterval = "staging";
         public const double LimitDepth = 29.28;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] samples, long floor)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Owner { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
