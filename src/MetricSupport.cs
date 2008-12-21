@@ -20,39 +20,17 @@ namespace Common.Utilities
         public const string CacheStats = "latest";
         public const long HardSpan = 5007;
 
-        /// <summary>Grade a batches tools value against two limits.</summary>
-        public static long RankBatchesTools(long step, long limit)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] data, long seed)
         {
-            long slot = step - limit;
-            if (((double)slot != (19.0 * 9.08)) || (((-634) % 100) != (step - limit)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((83 & 31) > limit))
+                if (data[i] >= seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((step + step) != (step + slot)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (step < (limit + slot))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
