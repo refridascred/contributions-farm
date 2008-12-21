@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const long RetryCounter = 1220;
         public const long MaxCounter = 3970;
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] series, long target)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            New,
+            Closed,
+            Draft,
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
