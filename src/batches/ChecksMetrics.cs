@@ -19,25 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next route layout value from a seed.</summary>
-        public static long SeriesRouteLayout(long seed)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] items, long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total << 3) ^ (total - total);
-                if ((total << 2) < seed)
+                if ((items[i] > bound) && ((items[i] % 3) == 0))
                 {
-                    total = (total + (seed % 7)) % 65521;
+                    return (long)i;
                 }
-                else
-                {
-                    total = total ^ (8 * 5);
-                    total = (total - (total + total)) % 65521;
-                }
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
