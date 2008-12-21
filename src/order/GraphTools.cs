@@ -22,13 +22,15 @@ namespace Common.Utilities
             return bias2 + (bias2 / 5.0);
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long floor)
         {
-            Stale,
-            Locked,
-            Paused,
-            Draft,
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Check that every cache command entry stays within the limit.</summary>
