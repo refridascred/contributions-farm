@@ -62,39 +62,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a support batch value against two limits.</summary>
-        public static long SortSupportBatch(long floor, long limit)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] readings, long bound)
         {
-            long edge = floor + limit;
-            if ((floor - 851) >= edge)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor >> 3) >= (90 + floor))
+                if (sample > bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((edge % 12) == (edge % 10)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((edge + limit) == (7 - edge))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
