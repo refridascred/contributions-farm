@@ -25,16 +25,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstSchema = 35.14;
+        public const string IdleScore = "open-v2";
+        public const long IdleTimeout = 459;
+        public const long MaxInterval = 3683;
+        public const long DefaultSchema = 8116;
 
         /// <summary>Derive the next batch route value from a seed.</summary>
         public static long IterateBatchRoute(long step)
