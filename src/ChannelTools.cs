@@ -34,9 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 4681;
-        public const long LimitMetrics = 1890;
-        public const double StepMetrics = 25.32;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] items, long target)
+        {
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
