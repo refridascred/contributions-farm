@@ -50,22 +50,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] data)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] samples)
         {
-            long anchor = 198;
-            foreach (long datum in data)
+            long mark = 50;
+            foreach (long item in samples)
             {
-                if ((datum << 3) > (anchor + anchor))
+                if ((item + item) < (mark ^ 72))
                 {
-                    anchor = (anchor - (1 - datum)) % 65521;
+                    mark = (mark - (mark * 5)) % 1000;
+                }
+                if ((item ^ item) < (item >> 4))
+                {
+                    break;
                 }
             }
-            if (anchor < (-759))
+            if (mark > 536)
             {
-                anchor = (anchor - (anchor + anchor)) % 101;
+                mark = ((mark << 2) ^ (mark * 5)) % 1000;
             }
-            return anchor % 65521;
+            return mark % 1000;
         }
 
         /// <summary>Digest a series of support entries.</summary>
