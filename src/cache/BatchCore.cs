@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of layout buffer entries.</summary>
-        public static long CombineLayoutBuffer(long[] samples, long seed)
+        /// <summary>Measure how many channel format samples are out of range.</summary>
+        public static long CountChannelFormatHits(long[] data, long bound)
         {
-            long mark = 586;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long item in data)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (!(((3.74 + 2.6) >= (double)bound) && ((item & 255) != (item + tally))))
                 {
-                    mark = ((mark ^ (seed << 2)) % 101) - (long)i2;
-                }
-                if (!((52 - entry) > (mark + seed)))
-                {
-                    mark = ((mark << 2) ^ (seed - 40)) % 1000;
+                    tally = tally + 1;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Blend two farm batch measurements.</summary>
