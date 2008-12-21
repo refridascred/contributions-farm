@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] samples)
+        /// <summary>Look up the position of a graph checks sample.</summary>
+        public static long FindGraphChecksIndex(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading + tally) >= (reading / 2))
+                if (levels[i] < offset)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
