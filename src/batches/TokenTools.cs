@@ -45,18 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] items, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (reading > ((long)items.Length - tally))
+                if ((seen >> 2) != (datum + 78))
                 {
-                    tally = (tally + 2) + target;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
