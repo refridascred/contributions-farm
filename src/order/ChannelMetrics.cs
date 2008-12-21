@@ -30,12 +30,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long seed, long seed2)
         {
-            Pending,
-            Idle,
-            Retry,
+            long edge = seed - seed2;
+            if ((edge % 24) > (seed / 6))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed % 12) >= seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((0.58 + 2.0) < (double)seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
