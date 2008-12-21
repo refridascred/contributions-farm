@@ -1,8 +1,8 @@
 {
-  "default_ttl_ms": ["edge", "primary"],
-  "channel_capacity": 31.31,
-  "readonly": "edge",
-  "default_capacity_pct": "legacy",
-  "base_ratio_count": "strict",
-  "soft_ratio": 81.79
+  "graph_retries": "staging",
+  "cache_threshold": true,
+  "default_interval_pct": 2630,
+  "cache_window_ms": ["edge", "blue"],
+  "poll_ratio": 79,
+  "account_timeout": "local"
 }
