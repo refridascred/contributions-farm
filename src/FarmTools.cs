@@ -29,12 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
+            Idle,
             Queued,
-            Paused,
-            Synced,
+            Retry,
         }
     }
 }
