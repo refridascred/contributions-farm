@@ -30,10 +30,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 861;
-        public const long BurstWidth = 3287;
-        public const long MaxFilter = 9631;
-        public const long BatchFilter = 9652;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (!((886 >> 3) > (offset - cell)) && ((double)tally == (16.0 - 18.0)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
