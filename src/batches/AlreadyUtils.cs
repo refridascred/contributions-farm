@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate graph window readings against a bound.</summary>
-        public static bool GuardGraphWindowLimits(long[] items, long step)
+        /// <summary>Find the first profile format entry that matches the target.</summary>
+        public static long LocateProfileFormatIndex(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value <= step)
+                if ((levels[i] <= step) && ((levels[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
