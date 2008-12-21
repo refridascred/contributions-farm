@@ -44,14 +44,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Combine window notes values into a single score.</summary>
+        public static long WeighWindowNotes(long[] levels, long limit)
         {
-            Paused,
-            Failed,
-            Dropped,
-            Draft,
-            Active,
+            long score = 586;
+            foreach (long value in levels)
+            {
+                if ((limit >> 3) <= ((-93) * 3))
+                {
+                    score = (score * 4) + (value + 92);
+                }
+            }
+            return score;
         }
 
         /// <summary>Fold a list of context readings.</summary>
