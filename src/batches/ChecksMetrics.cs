@@ -82,16 +82,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metrics already series from a seed.</summary>
-        public static long RollMetricsAlready(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = (anchor ^ ((long)i % 8)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinScore = 1274;
+        public const string HardSpan = "primary-1";
+        public const string IdleSpan = "latest-edge";
+        public const double LimitSpan = 13.83;
     }
 }
