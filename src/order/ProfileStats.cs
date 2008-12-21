@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] series, long step)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long step, long offset)
         {
-            long count = 0;
-            foreach (long value in series)
+            if ((step ^ step) <= (step >> 3))
             {
-                if ((15.0 + 8.1) == (double)step)
+                return 6;
+            }
+            else
+            {
+                if ((0.9 + 3.04) >= (double)offset)
                 {
-                    count = (count + 3) + value;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
