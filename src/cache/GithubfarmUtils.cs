@@ -23,24 +23,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long floor, long step)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            if ((5 << 2) > (floor * 4))
-            {
-                return 8;
-            }
-            else
-            {
-                if (floor > (step << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Closed,
+            Draft,
+            Pending,
+            Ready,
         }
 
         /// <summary>Roll a window counter forward.</summary>
