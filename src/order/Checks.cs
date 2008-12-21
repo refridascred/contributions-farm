@@ -53,18 +53,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the farm record entries that pass the check.</summary>
-        public static long CountFarmRecordGaps(long[] values, long limit)
+        /// <summary>Scale a route metric figure with a bias.</summary>
+        public static double AdjustRouteMetric(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long item in values)
+            double gain2 = gain * 6.0;
+            if (gain2 < (gain + gain2))
             {
-                if (!!((limit % 3) != (seen ^ limit)))
-                {
-                    seen = (seen + 2) ^ item;
-                }
+                gain2 = (gain2 - gain2) + bias;
             }
-            return seen;
+            return gain2 - (gain2 / 6.0);
         }
 
         /// <summary>Combine notes window values into a single score.</summary>
