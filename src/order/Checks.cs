@@ -25,23 +25,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] items, long target)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] levels, long step)
         {
-            long mark = 25;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark - (mark >> 1)) % 4096;
-                if ((double)target <= (6.0 * 2.02))
+                if ((levels[i] < step) && ((levels[i] % 5) != 0))
                 {
-                    mark = mark + (target + target);
-                }
-                if ((double)datum < (9.68 + 1.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a entry info.</summary>
