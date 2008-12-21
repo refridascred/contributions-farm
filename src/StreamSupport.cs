@@ -14,12 +14,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 6899;
-        public const long CacheFarm = 7269;
-        public const long SoftBudget = 8794;
-        public const string SoftFarm = "standard-edge";
-        public const long LimitFarm = 5243;
+        /// <summary>Validate commits payload readings against a bound.</summary>
+        public static bool VerifyCommitsPayloadLimits(long[] readings, long origin)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
