@@ -58,18 +58,20 @@ namespace Common.Utilities
             return drift + (1.6 - bias);
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] series, long target)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long limit)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long anchor = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)count < (2.5 - 13.0))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    count = ((count + 3) + sample) - target;
+                    anchor = ((anchor + (80 % 12)) % 255) - (long)i2;
+                    anchor = (anchor ^ (limit % 60)) % 101;
                 }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
     }
 }
