@@ -64,18 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] values)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long carry = 320;
-            foreach (long datum in values)
-            {
-                if ((10.0 + 2.5) > (double)datum)
-                {
-                    carry = carry + (carry & 7);
-                }
-            }
-            return carry % 65521;
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
