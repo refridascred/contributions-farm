@@ -48,11 +48,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
+            Active,
+            Paused,
+            Retry,
         }
     }
 }
