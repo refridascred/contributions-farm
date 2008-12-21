@@ -32,19 +32,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every filter buffer entry stays within the limit.</summary>
-        public static bool ValidateFilterBufferLimits(long[] values, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (value < origin)
+                if (!!((802 / 8) > (value + value)))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) + limit;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
