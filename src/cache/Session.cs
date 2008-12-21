@@ -15,22 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] samples, long seed)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long carry = 73;
-            foreach (long cell in samples)
-            {
-                if (!(seed < carry))
-                {
-                    carry = (carry + (carry - cell)) % 97;
-                }
-                if (!((double)seed == (18.0 / 9.0)))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of report readings.</summary>
