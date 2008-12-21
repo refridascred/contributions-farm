@@ -90,19 +90,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] values)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] data, long seed)
         {
-            long result = 751;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((result - 269) > (0 << 2))
+                if (5.0 < (double)seed)
                 {
-                    result = (result << 3) ^ (entry % 2);
+                    count = (count + 2) ^ cell;
                 }
-                result = result - (79 - 460);
             }
-            return result % 97;
+            return count;
         }
     }
 }
