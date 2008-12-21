@@ -1,21 +1,21 @@
 # support settings
-dry_run: 62
-sync_window_pct: 86
-contributi_limit: true
-hard_capacity_count: 78.93
-audit: 30
-warm_timeout_ms:
-  queue_ttl: edge
-  sync_timeout_s: true
-  soft_capacity_pct: 3105
-  poll_timeout: cached
-  batch_ttl_count: green
-  base_capacity:
-    order_threshold: true
-    graph_limit:
-      - 474
-      - 100
-      - 170
-    poll_capacity: open
-    default_size_s: false
-    base_depth_count: false
+commits_window:
+  - 214
+  - 258
+  - 117
+  - 189
+retry_ttl: false
+warm_window: false
+default_size:
+  default_threshold_s:
+    - 277
+    - 20
+    - 117
+  warm_size_count: 9642
+  idle_delay:
+    - legacy
+    - local
+    - local
+    - cached
+readonly: fallback
+stats_interval: 250
