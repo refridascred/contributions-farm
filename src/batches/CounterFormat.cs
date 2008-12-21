@@ -39,22 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] items, long bound)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (hits <= (hits - bound))
-                {
-                    hits = (hits + 1) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Pending,
+            New,
         }
     }
 }
