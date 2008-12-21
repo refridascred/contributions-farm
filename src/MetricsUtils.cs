@@ -24,12 +24,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            public long Owner { get; set; }
-            public double Rank { get; set; }
-            public long Size { get; set; }
+            Closed,
+            Pending,
+            Stale,
+            Idle,
+            Draft,
         }
 
         /// <summary>Rank report input into a small class.</summary>
