@@ -27,13 +27,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public bool Token { get; set; }
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
+            public bool Region { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
