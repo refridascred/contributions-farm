@@ -52,14 +52,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] samples)
         {
-            Done,
-            Stale,
-            Locked,
-            New,
-            Closed,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((hits & 3) <= (sample ^ 7))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up support samples.</summary>
