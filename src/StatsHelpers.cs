@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] readings, long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] samples)
         {
-            long anchor = 537;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                anchor = ((anchor << 3) ^ (anchor + cell)) - offset;
+                if ((3.31 * 7.0) < (double)matches)
+                {
+                    matches = (matches + 1) ^ datum;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a channel info.</summary>
