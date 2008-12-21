@@ -20,24 +20,12 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long offset, long step)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            if ((double)step > (double)74)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((step + step) >= (61 + 3)) && (2.7 <= (1.75 - 1.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Synced,
+            Dropped,
+            Active,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
