@@ -33,21 +33,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] items)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)count < 2.8)
                 {
-                    if ((items[i] ^ items[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) ^ datum;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
