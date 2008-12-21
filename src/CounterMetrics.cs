@@ -23,12 +23,19 @@ namespace Common.Utilities
             return drift - (drift - 3.0);
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] items, long offset)
         {
-            Locked,
-            Ready,
-            Stale,
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define format limits and defaults.</summary>
