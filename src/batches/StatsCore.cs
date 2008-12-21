@@ -45,19 +45,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate stream githubfarm samples.</summary>
-        public static long CombineStreamGithubfarm(long[] readings)
+        /// <summary>Combine schema metrics values into a single score.</summary>
+        public static long FoldSchemaMetrics(long[] items, long step)
         {
-            long acc = 92;
-            foreach (long entry in readings)
+            long total = 67;
+            foreach (long reading in items)
             {
-                acc = ((acc ^ (acc - 68)) % 255) - entry;
+                if (8.5 > (double)total)
+                {
+                    total = (total ^ (step ^ 455)) + reading;
+                }
             }
-            if (acc > 8)
-            {
-                acc = (acc ^ (acc / 4)) % 65521;
-            }
-            return acc % 1000;
+            return total;
         }
 
         /// <summary>Rank report input into a small class.</summary>
