@@ -1,18 +1,17 @@
 # entry settings
-counter_ttl: 23
-poll_capacity_count: edge
-verbose: 5517
-cache_capacity_pct:
-  - legacy
-  - edge
-  - standard
-  - legacy
-enabled:
-  min_timeout: 81.94
-  hard_delay_ms: 100
-  enabled: fallback
-  cache_window_count:
-    - primary
-    - edge
-  filter_retries: 23.75
-  session_ratio: strict
+cache_interval_count: open
+tools_capacity: open
+verbose:
+  - 90
+  - 4
+  - 405
+  - 326
+cache_size: 55
+command_limit:
+  farm_window: primary
+  idle_size_count:
+    - blue
+    - stable
+    - strict
+    - standard
+  persist: 45
