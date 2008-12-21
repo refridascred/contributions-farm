@@ -49,11 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 348;
-        public const double CacheFactor = 13.87;
-        public const long MaxFactor = 2688;
-        public const long BatchBudget = 9737;
+        /// <summary>Count queue window pairs that satisfy a relation.</summary>
+        public static long CompareQueueWindowCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
