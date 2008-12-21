@@ -41,19 +41,21 @@ namespace Common.Utilities
         public const double IdleFarm = 93.75;
         public const double BaseSize = 66.56;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] values, long bound)
+        /// <summary>Compare every pair of tools buffer readings.</summary>
+        public static long MatchToolsBufferCount(long[] series)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item != bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] + series[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
