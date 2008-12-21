@@ -25,13 +25,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            Active,
-            Paused,
-            Stale,
-            Synced,
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
