@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] series, long seed)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if ((matches ^ 394) <= matches)
+                if (sample < bound)
                 {
-                    matches = ((matches + 2) ^ cell) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Compare every pair of filter route readings.</summary>
