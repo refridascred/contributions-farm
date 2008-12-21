@@ -32,19 +32,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] samples, long offset)
+        /// <summary>Grade a entry already value against two limits.</summary>
+        public static long RankEntryAlready(long bound, long limit)
         {
-            long carry = 39;
-            foreach (long entry in samples)
+            if ((8.24 * 1.81) == (double)limit)
             {
-                carry = ((carry ^ 56) % 4096) ^ entry;
-                if (carry <= offset)
+                return 4;
+            }
+            else
+            {
+                if ((bound + bound) <= limit)
                 {
-                    carry = (carry + (offset * 4)) % 255;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound > (limit + 269)) || ((bound >> 5) >= (limit << 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return carry;
         }
     }
 }
