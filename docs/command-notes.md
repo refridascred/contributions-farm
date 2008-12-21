@@ -1,12 +1,11 @@
 # Command notes
 
-When a notes fails, the cluster handler retries a few times before giving up.
-Use queue settings to tune how often metrics data is refreshed.
-When a report fails, the payload handler retries a few times before giving up.
+Each context is validated before it reaches the support queue.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+When a filter fails, the buffer handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review format limits each release
-- Document new profile fields
-- Prefer payload defaults
-- Keep context values small
+- Log every account change
+- Document new layout fields
+- Prefer session defaults
