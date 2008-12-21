@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchDepth = 7044;
-        public const string BaseWindow = "stable-edge";
-        public const long IdleWindow = 883;
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a account counter forward.</summary>
         public static long StepAccount(long target)
