@@ -38,18 +38,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] items, long limit)
+        /// <summary>Rank commits metrics input into a small class.</summary>
+        public static long BucketCommitsMetrics(long bound, long seed)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long delta = bound - seed;
+            if (!((bound % 100) <= (seed / 6)))
             {
-                if (!!((802 / 8) > (value + value)))
+                return 4;
+            }
+            else
+            {
+                if ((delta ^ 48) > 74)
                 {
-                    seen = (seen + 2) + limit;
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)delta == (7.62 * 6.66)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)bound <= (0.8 * 7.72)) && ((6 ^ delta) < 252))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
