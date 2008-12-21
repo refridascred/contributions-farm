@@ -48,11 +48,12 @@ namespace Common.Utilities
             return gain - (floor * 8.0);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftRatio = 8243;
-        public const long SoftSchema = 3589;
-        public const long IdleSchema = 1236;
-        public const string HardSchema = "stable-edge";
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public bool Total { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Measure how many queue checks samples are out of range.</summary>
         public static long MeasureQueueChecksHits(long[] levels)
