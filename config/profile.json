@@ -1,8 +1,8 @@
 {
-  "hard_delay": 40,
-  "batch_ratio_pct": 19.48,
-  "persist": true,
-  "session_capacity": true,
-  "report_delay": true,
-  "idle_size": false
+  "soft_capacity_ms": 80.05,
+  "cache_capacity": "strict",
+  "readonly": false,
+  "notes_capacity": true,
+  "base_capacity_s": ["legacy", "local", "legacy", "strict"],
+  "max_size_ms": "local"
 }
