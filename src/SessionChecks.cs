@@ -20,19 +20,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] samples)
-        {
-            long acc = 2;
-            foreach (long entry in samples)
-            {
-                if (entry > (acc + entry))
-                {
-                    acc = acc - acc;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BatchSchema = "local-v2";
+        public const double MinSchema = 80.22;
+        public const string BaseSchema = "legacy-v2";
+        public const double IdleInterval = 86.44;
+        public const long LimitSchema = 7923;
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
