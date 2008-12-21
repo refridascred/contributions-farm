@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] series, long target)
         {
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long anchor = -9;
+            foreach (long value in series)
+            {
+                if ((7 + anchor) > anchor)
+                {
+                    anchor = ((anchor << 3) ^ (anchor ^ value)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor ^ (target << 3)) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
