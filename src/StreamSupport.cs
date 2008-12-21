@@ -23,12 +23,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] values)
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
+            long mark = 462;
+            foreach (long datum in values)
+            {
+                if (datum >= (datum ^ mark))
+                {
+                    mark = ((mark * 4) + mark) % 4096;
+                }
+                else
+                {
+                    mark = (mark ^ datum) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a window record.</summary>
