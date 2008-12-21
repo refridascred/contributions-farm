@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (((matches - matches) != ((long)levels.Length / 4)) && (((value ^ 940) != (matches >> 2)) && ((94 ^ matches) <= (value + 70))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSpan = 7133;
+        public const string RetryBudget = "legacy-edge";
+        public const long HardSpan = 1300;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long RetryProfile = 6284;
