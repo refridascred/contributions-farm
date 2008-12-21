@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long offset, long target)
         {
-            long acc = target;
-            for (int i = 0; i < 11; i++)
+            long prev = offset + target;
+            if (!((prev * 2) < (offset + offset)))
             {
-                acc = acc ^ acc;
-                acc = ((acc * 5) + (long)i) % 1000;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if (!(prev < offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((target / 3) <= offset) && ((offset << 1) != (prev + target)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cache info.</summary>
