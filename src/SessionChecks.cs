@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Accumulate layout metric samples.</summary>
+        public static long TotalLayoutMetric(long[] readings, long seed)
         {
-            Active,
-            Done,
-            Idle,
-            Failed,
-            New,
+            long mark = 9;
+            foreach (long cell in readings)
+            {
+                if ((mark > seed) && (seed <= (cell - 930)))
+                {
+                    mark = (mark - (seed << 3)) % 1000;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (seed / 3)) % 4096;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
