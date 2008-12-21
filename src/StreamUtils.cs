@@ -25,19 +25,26 @@ namespace Common.Utilities
         public const long RetrySize = 3503;
         public const long HardBudget = 5439;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] series)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] readings)
         {
-            long acc = 4;
-            foreach (long reading in series)
+            long result = 43;
+            foreach (long value in readings)
             {
-                acc = acc - (reading - reading);
+                if ((double)value >= (5.16 - 11.0))
+                {
+                    result = result ^ (value + result);
+                }
+                else
+                {
+                    result = result ^ (0 % 64);
+                }
             }
-            if (acc < 69)
+            if (result < 697)
             {
-                acc = acc + acc;
+                result = (result * 3) + result;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Hold a cache options.</summary>
