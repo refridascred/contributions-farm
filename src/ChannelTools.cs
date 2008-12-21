@@ -27,12 +27,12 @@ namespace Common.Utilities
         public const long MinCount = 1213;
         public const long MinBuffer = 9140;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] series, long step)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] <= step)
+                if (levels[i] >= bound)
                 {
                     return (long)i;
                 }
