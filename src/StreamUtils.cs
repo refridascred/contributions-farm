@@ -40,19 +40,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountBounds(long[] samples, long seed)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next counter value.</summary>
