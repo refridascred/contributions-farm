@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Audit stats graph readings against a rule.</summary>
+        public static long CountStatsGraphGaps(long[] levels, long limit)
         {
-            Failed,
-            Synced,
-            Locked,
-            Dropped,
-            Pending,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!((limit / 9) == (entry - seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
