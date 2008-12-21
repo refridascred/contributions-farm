@@ -48,19 +48,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next report queue value from a seed.</summary>
-        public static long RollReportQueue(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!((9.9 * 3.8) == (double)(long)i))
-                {
-                    result = (result * 4) + (long)i;
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryStats = 69.11;
+        public const string BurstStats = "strict-v2";
+        public const long IdleStats = 2182;
+        public const string IdleSize = "open-edge";
+        public const string BaseStats = "staging-edge";
     }
 }
