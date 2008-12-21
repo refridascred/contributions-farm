@@ -27,19 +27,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] samples, long target)
+        /// <summary>Locate a report record reading by value.</summary>
+        public static long LocateReportRecordIndex(long[] items, long floor)
         {
-            long mark = 11;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)datum == (7.2 - 5.4))
+                if (items[i] < floor)
                 {
-                    mark = mark ^ (target - target);
+                    return (long)i;
                 }
-                mark = ((mark * 5) + datum) % 255;
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
