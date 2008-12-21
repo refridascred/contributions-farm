@@ -71,19 +71,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] readings, long limit)
+        /// <summary>Check that every payload record entry stays within the limit.</summary>
+        public static bool VerifyPayloadRecordBounds(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if (sample >= limit)
+                if (reading <= floor)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
