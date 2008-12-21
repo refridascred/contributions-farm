@@ -18,14 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] samples)
         {
-            Failed,
-            Paused,
-            Stale,
-            Retry,
-            Idle,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (cell < (439 - hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a record snapshot.</summary>
