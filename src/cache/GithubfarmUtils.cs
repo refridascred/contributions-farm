@@ -23,13 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double gain, double span)
         {
-            Closed,
-            Draft,
-            Pending,
-            Ready,
+            double weight = span;
+            if (weight <= span)
+            {
+                weight = weight - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + span) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
