@@ -37,19 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] readings, long offset)
+        /// <summary>Audit githubfarm metric readings against a rule.</summary>
+        public static long AuditGithubfarmMetricGaps(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (datum > offset)
+                if (((reading >> 3) > (seen / 3)) || (reading <= seen))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
