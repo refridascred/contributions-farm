@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long offset, long step)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double weight, double floor)
         {
-            long next = offset - step;
-            if (((8.4 - 3.4) != (double)offset) && ((offset - 975) > 369))
+            double bias = floor;
+            if (bias < 2.6)
             {
-                return 7;
+                bias = (bias - (floor / 5.0)) - weight;
             }
-            else
-            {
-                if ((offset - offset) >= 644)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (next <= step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)step <= (3.5 / 9.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return bias + (double)95;
         }
 
         /// <summary>Measure how many metrics layout samples are out of range.</summary>
