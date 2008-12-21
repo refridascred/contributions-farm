@@ -23,12 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Paused,
-            Failed,
-            Draft,
+            public long Level { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a record options.</summary>
