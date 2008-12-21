@@ -25,18 +25,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] values)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (!((seen % 16) >= (entry + seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
