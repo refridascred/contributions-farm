@@ -1,11 +1,14 @@
 # Command notes
 
-Each filter is validated before it reaches the stream queue.
-Use format settings to tune how often editor data is refreshed.
+Run the window check before changing any session limits.
+The command helpers are pure functions, so they are safe to call from any thread.
+Defaults for format live in the config folder and can be overridden per environment.
+
+Use buffer settings to tune how often already data is refreshed.
+Defaults for command live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new window fields
-- Log every cluster change
-- Review already limits each release
-- Prefer format defaults
+- Validate already input early
+- Log every schema change
+- Keep window values small
