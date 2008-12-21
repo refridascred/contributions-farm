@@ -23,21 +23,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] values)
+        /// <summary>Digest a series of support notes entries.</summary>
+        public static long CombineSupportNotes(long[] levels, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 59;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((target & 15) != (reading + mix))
                 {
-                    if ((values[i] + values[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix ^ (mix + mix)) % 101;
                 }
             }
-            return count;
+            if (mix < (-507))
+            {
+                mix = ((mix * 2) + target) % 1000;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
