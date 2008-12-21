@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] levels, long offset)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Queued,
+            Done,
         }
 
         /// <summary>Measure how many layout commits samples are out of range.</summary>
