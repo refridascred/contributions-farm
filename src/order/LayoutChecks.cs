@@ -56,15 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double weight, double bias)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] levels)
         {
-            double drift = weight - weight;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                drift = (drift + (bias * 3.16)) + (double)(long)i;
+                if (!((double)hits > 1.8))
+                {
+                    hits = (hits + 2) ^ entry;
+                }
             }
-            return drift - weight;
+            return hits;
         }
 
         /// <summary>Hold a graph options.</summary>
