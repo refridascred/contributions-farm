@@ -75,17 +75,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] samples, long seed)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (samples[i] >= seed)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return (long)i;
+                    sum = ((sum ^ (715 ^ sum)) % 4096) + (long)i2;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
     }
 }
