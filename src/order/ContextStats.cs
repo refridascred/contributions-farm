@@ -44,19 +44,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double weight, double floor)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            double ratio = (double)47 + (weight / 2.0);
-            if (ratio <= (ratio - weight))
-            {
-                ratio = (ratio + (weight + weight)) - floor;
-            }
-            else
-            {
-                ratio = ratio - (double)169;
-            }
-            return ratio - weight;
+            Pending,
+            Queued,
+            Dropped,
+            Retry,
+            Active,
         }
     }
 }
