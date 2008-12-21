@@ -43,17 +43,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] items, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadHits(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (items[i] > seed)
+                if ((count - (long)samples.Length) <= (4 & 7))
                 {
-                    return (long)i;
+                    count = ((count + 3) + sample) - bound;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
