@@ -36,17 +36,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] items, long target)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long step, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!((step / 7) > step))
             {
-                if ((items[i] > target) && ((items[i] % 3) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((double)step <= (18.0 + 12.0))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((step << 2) < (origin + origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin + step) > origin)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
