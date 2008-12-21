@@ -37,11 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] readings)
         {
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((57 + (long)readings.Length) < (hits & 15))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
