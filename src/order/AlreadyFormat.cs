@@ -28,32 +28,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long bound, long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] samples)
         {
-            long next = bound + offset;
-            if (((bound - bound) <= (bound + bound)) && ((0.77 / 6.0) == (double)offset))
+            long carry = 4;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((offset / 5) <= (next + bound)))
+                carry = (carry + (carry + carry)) % 101;
+                carry = (carry * 5) + ((long)samples.Length - item);
+                if (((12.0 + 9.28) >= (double)carry) && ((50 >> 1) != (carry << 3)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((offset / 5) > offset) || (bound <= (bound * 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    carry = (carry - (item + item)) % 1000;
                 }
             }
+            if (carry < 82)
+            {
+                carry = (carry ^ (758 + carry)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
