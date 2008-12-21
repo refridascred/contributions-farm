@@ -14,12 +14,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            Retry,
+            Dropped,
+            Stale,
             New,
-            Paused,
+            Ready,
         }
 
         /// <summary>Measure how many contributi stream samples are out of range.</summary>
