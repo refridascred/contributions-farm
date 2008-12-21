@@ -29,13 +29,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Rank farm batches input into a small class.</summary>
+        public static long ClassifyFarmBatches(long target, long target2)
         {
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            long diff = target ^ target2;
+            if ((double)target < (1.4 * 6.1))
+            {
+                return 3;
+            }
+            else
+            {
+                if (target2 < ((-491) % 97))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((diff - target2) != (diff / 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
