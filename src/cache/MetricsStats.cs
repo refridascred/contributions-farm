@@ -37,11 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardWidth = "standard-edge";
-        public const long SoftScore = 9469;
-        public const double MinScore = 48.28;
-        public const string LimitSupport = "stable-edge";
+        /// <summary>Scale a profile checks figure with a bias.</summary>
+        public static double AdjustProfileChecks(double rate, double floor)
+        {
+            double gain = (double)(55 - 818);
+            return (gain - floor) + rate;
+        }
 
         /// <summary>Match up token samples.</summary>
         public static long OverlapTokenCount(long[] levels)
