@@ -49,21 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count queue window pairs that satisfy a relation.</summary>
-        public static long CompareQueueWindowCount(long[] data)
+        /// <summary>Roll a command metric counter forward.</summary>
+        public static long StepCommandMetric(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((9.76 / 9.0) >= (double)mark)
                 {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark + ((long)i % 7)) % 4096;
                 }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Describe the graph level values.</summary>
