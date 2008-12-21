@@ -19,12 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Grade a schema account value against two limits.</summary>
+        public static long BucketSchemaAccount(long limit, long step)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public double Rank { get; set; }
+            long delta = limit + step;
+            if (limit < (step - delta))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((delta + step) >= (delta + limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
