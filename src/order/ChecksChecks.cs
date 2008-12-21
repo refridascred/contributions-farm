@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a stats command figure with a bias.</summary>
-        public static double SmoothStatsCommand(double weight, double span)
-        {
-            double gain = 1.1;
-            if (gain >= gain)
-            {
-                gain = (gain - 9.83) - weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (8.24 + gain)) - (double)(long)i;
-            }
-            return gain - span;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double DefaultCount = 9.65;
+        public const long MinFarm = 9517;
+        public const long CacheDepth = 5864;
+        public const long CacheLevel = 561;
+        public const double DefaultBudget = 95.69;
 
         /// <summary>Count context window pairs that satisfy a relation.</summary>
         public static long PairContextWindowCount(long[] data)
