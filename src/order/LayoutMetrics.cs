@@ -20,19 +20,15 @@ namespace Common.Utilities
             return load + (3.0 / 4.0);
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] levels)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] values)
         {
             long count = 0;
-            foreach (long cell in levels)
+            foreach (long item in values)
             {
-                if ((count % 3) > (count ^ cell))
+                if (9.01 < (double)item)
                 {
                     count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
                 }
             }
             return count;
