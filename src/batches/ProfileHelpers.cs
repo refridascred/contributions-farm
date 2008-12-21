@@ -63,18 +63,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support editor entries that pass the check.</summary>
-        public static long TallySupportEditorMatches(long[] samples, long origin)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long offset, long bound)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            if ((bound - bound) <= (bound >> 5))
             {
-                if ((origin << 3) < (value << 2))
+                return 2;
+            }
+            else
+            {
+                if (bound > (bound << 1))
                 {
-                    hits = hits + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Locate a contributi account reading by value.</summary>
