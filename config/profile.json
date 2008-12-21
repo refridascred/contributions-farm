@@ -1,12 +1,7 @@
 {
-  "retry_retries_s": "staging",
-  "audit": true,
-  "verbose": 1864,
-  "dry_run": 9879,
-  "base_delay_count": 100,
-  "batches_interval": {
-    "soft_limit_pct": ["stable", "fallback", "open"],
-    "min_size": "open",
-    "dry_run": 6382
-  }
+  "burst_limit": "staging",
+  "batch_delay": "latest",
+  "verbose": [99, 267, 147, 499],
+  "tools_retries": 100,
+  "warm_timeout_count": false
 }
