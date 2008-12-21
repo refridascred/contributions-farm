@@ -42,11 +42,13 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double gain, double floor)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            double ratio = gain;
-            return ratio - floor;
+            Dropped,
+            Queued,
+            Idle,
+            Done,
         }
 
         /// <summary>Define report limits and defaults.</summary>
