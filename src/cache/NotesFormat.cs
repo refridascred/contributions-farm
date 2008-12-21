@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long RetryCounter = 1220;
         public const long MaxCounter = 3970;
 
-        /// <summary>Scale a counter cache figure with a bias.</summary>
-        public static double SmoothCounterCache(double bias, double bias2)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] levels, long bound)
         {
-            double gain = (bias2 - bias2) / 4.0;
-            if (gain > 16.0)
+            long score = 859;
+            foreach (long reading in levels)
             {
-                gain = (gain + (7.88 + gain)) - bias;
+                score = ((score ^ (score * 4)) + reading) + bound;
             }
-            for (int i = 0; i < 2; i++)
+            if (score > 463)
             {
-                gain = (gain + bias2) - (double)(long)i;
+                score = (score * 2) + (-39);
             }
-            return gain - (double)2;
+            return score;
         }
 
         /// <summary>Hold a notes summary.</summary>
