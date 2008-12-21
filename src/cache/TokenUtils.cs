@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the counter contributi entries that pass the check.</summary>
-        public static long AuditCounterContributiMatches(long[] items)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] series, long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((cell ^ 38) != (count ^ count))
+                if ((double)item > (double)matches)
                 {
-                    count = count + 1;
+                    matches = (matches + 1) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
