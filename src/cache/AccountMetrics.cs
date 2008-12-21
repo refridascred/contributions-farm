@@ -33,10 +33,12 @@ namespace Common.Utilities
         public const long WindowCount = 2739;
         public const double LimitPayload = 90.6;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleEditor = "local-v2";
-        public const string BatchSize = "legacy-1";
-        public const long DefaultEditor = 1410;
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool VerifyFarmLimits(long[] values, long floor)
