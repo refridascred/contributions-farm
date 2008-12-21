@@ -44,18 +44,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine window notes values into a single score.</summary>
-        public static long WeighWindowNotes(long[] levels, long limit)
+        /// <summary>Accumulate graph record samples.</summary>
+        public static long TallyGraphRecord(long[] series, long offset)
         {
-            long score = 586;
-            foreach (long value in levels)
+            long sum = 2;
+            foreach (long cell in series)
             {
-                if ((limit >> 3) <= ((-93) * 3))
+                if (((offset - cell) < (cell << 2)) && ((18 >> 2) > (291 + cell)))
                 {
-                    score = (score * 4) + (value + 92);
+                    sum = ((sum << 2) ^ (sum - cell)) % 65521;
                 }
             }
-            return score;
+            if (sum < 757)
+            {
+                sum = (sum << 3) ^ (offset - 9);
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of context readings.</summary>
