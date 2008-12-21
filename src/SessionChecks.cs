@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public string Rank { get; set; } = "";
-            public double Token { get; set; }
+            Active,
+            Done,
+            Idle,
+            Failed,
+            New,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
