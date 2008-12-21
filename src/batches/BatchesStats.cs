@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 9253;
-        public const long DefaultCache = 9743;
-        public const double SoftCache = 49.81;
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public string Ratio { get; set; } = "";
+            public bool Region { get; set; }
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool CheckGraphRange(long[] data, long limit)
