@@ -1,6 +1,6 @@
 {
-  "base_depth_count": 7690,
-  "metrics_interval": "open",
-  "flush_threshold_pct": 51.26,
-  "default_limit": ["primary", "blue"]
+  "cache_delay_count": [405, 373, 39, 485],
+  "dry_run": "green",
+  "warm_retries": ["stable", "edge", "green", "standard"],
+  "verbose": false
 }
