@@ -44,13 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsRange(long[] data, long seed)
         {
-            Closed,
-            Synced,
-            Dropped,
-            Pending,
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
