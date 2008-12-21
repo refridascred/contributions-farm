@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a entry session reading.</summary>
-        public static double ProjectEntrySession(double ratio, double floor)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            double mean = (double)(9 - 39);
-            if (mean < (double)(-973))
-            {
-                mean = (mean - ratio) + floor;
-            }
-            return mean + (double)13;
+            Stale,
+            Done,
+            Failed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
