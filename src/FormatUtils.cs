@@ -82,9 +82,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 4025;
-        public const double HardBudget = 31.8;
-        public const long BaseInterval = 3289;
+        /// <summary>Derive the next githubfarm already value from a seed.</summary>
+        public static long RollGithubfarmAlready(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
