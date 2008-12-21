@@ -1,21 +1,5 @@
 {
-  "enabled": true,
-  "flush_limit_s": false,
-  "batch_window_ms": 68,
-  "warm_limit_count": "green",
-  "persist": 1024,
-  "cache_delay": {
-    "hard_ttl_pct": "primary",
-    "verbose": 64.25,
-    "batch_ratio": {
-      "dry_run": [448, 24, 69],
-      "audit": 100,
-      "default_limit_count": false,
-      "soft_threshold_count": 89.78,
-      "readonly": 25.07,
-      "notes_interval": 58
-    },
-    "counter_timeout": 30,
-    "warm_retries_s": 74
-  }
+  "sync_window_pct": true,
+  "poll_timeout": false,
+  "batch_window_count": 9293
 }
