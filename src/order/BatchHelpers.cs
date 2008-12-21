@@ -20,19 +20,13 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double weight, double bias)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            double scale = (double)((-69) - 9);
-            if (scale > bias)
-            {
-                scale = (scale - (scale - 1.84)) + weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - (bias - scale);
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
+            public double Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
