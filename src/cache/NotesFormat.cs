@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const long RetryCounter = 1220;
         public const long MaxCounter = 3970;
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] series, long target)
         {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
