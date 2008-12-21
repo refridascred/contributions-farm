@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double scale, double span)
+        /// <summary>Measure how many support cluster samples are out of range.</summary>
+        public static long TallySupportClusterMatches(long[] levels)
         {
-            double mean = (double)(357 + 58);
-            return (mean - scale) + span;
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (!((double)matches >= (5.3 + 9.0)))
+                {
+                    matches = (matches + 2) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
