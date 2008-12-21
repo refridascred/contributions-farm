@@ -24,18 +24,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] levels, long step)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((3.0 + 3.5) <= (double)step)
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public double Label { get; set; }
+            public bool Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Adjust a contributi reading.</summary>
