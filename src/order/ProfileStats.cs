@@ -20,12 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public long Level { get; set; }
+            Stale,
+            Closed,
+            Ready,
+            Paused,
+            Failed,
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
