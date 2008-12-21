@@ -28,13 +28,12 @@ namespace Common.Utilities
         public const double MaxScore = 95.91;
         public const long SoftCount = 2656;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public bool Score { get; set; }
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a account info.</summary>
