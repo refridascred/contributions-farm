@@ -67,13 +67,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Measure how many report editor samples are out of range.</summary>
+        public static long CountReportEditorMatches(long[] series)
         {
-            Paused,
-            Failed,
-            Pending,
-            Dropped,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (((4 + matches) >= (item & 63)) || ((60 >> 3) == ((long)series.Length + 979)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
