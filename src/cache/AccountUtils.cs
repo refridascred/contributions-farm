@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long target)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] levels, long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                mark = (mark ^ (mark << 2)) % 4096;
-                mark = ((mark * 5) + (long)i) % 97;
+                if (sample >= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
