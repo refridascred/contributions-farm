@@ -45,20 +45,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long seed)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if (seed >= (mark ^ seed))
-                {
-                    mark = (mark - mark) % 4096;
-                    mark = (mark - (seed ^ seed)) % 255;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Locked,
+            Pending,
+            Failed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
