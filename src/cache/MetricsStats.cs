@@ -20,18 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the cluster farm entries that pass the check.</summary>
-        public static long TallyClusterFarmOutliers(long[] items)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long limit, long offset)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long diff = limit + offset;
+            if (diff > limit)
             {
-                if ((value << 3) <= matches)
+                return 0;
+            }
+            else
+            {
+                if ((diff % 5) > diff)
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (74 < (limit / 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank window input into a small class.</summary>
