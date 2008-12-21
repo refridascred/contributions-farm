@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((4.65 * 8.0) == (double)value)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 9154;
+        public const double WindowDepth = 60.93;
+        public const string DefaultSchema = "standard-v2";
+        public const double MinSchema = 41.65;
+        public const long WindowSchema = 9688;
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long SeriesEditor(long offset)
