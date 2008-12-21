@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public long Flag { get; set; }
-            public bool Total { get; set; }
+            Done,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
