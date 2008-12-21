@@ -24,21 +24,11 @@ namespace Common.Utilities
         public const long CacheFormat = 345;
         public const string HardSize = "standard";
 
-        /// <summary>Count graph metrics pairs that satisfy a relation.</summary>
-        public static long PairGraphMetricsCount(long[] readings)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
