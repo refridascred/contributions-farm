@@ -14,19 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (matches >= (551 + matches))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 6899;
+        public const long CacheFarm = 7269;
+        public const long SoftBudget = 8794;
+        public const string SoftFarm = "standard-edge";
+        public const long LimitFarm = 5243;
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
