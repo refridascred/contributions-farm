@@ -1,15 +1,12 @@
 # support settings
-soft_timeout_pct: false
-sync_window_count:
-  base_capacity: true
-  enabled: 30
-  idle_timeout_s: primary
-  readonly: 15.23
-  hard_delay_ms: 2937
-checks_depth: 18.83
-graph_delay: 6245
-githubfarm_threshold:
-  - stable
-  - staging
-  - cached
-profile_capacity: 21.49
+strict: cached
+max_size_ms: false
+entry_timeout: open
+soft_retries:
+  poll_ttl_count: 92.14
+  stream_ttl: 609
+  persist: 63
+  sync_window: 52
+  compress: true
+burst_threshold_count: local
+soft_timeout_ms: 10.01
