@@ -54,24 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long target, long origin)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterLimits(long[] series, long limit)
         {
-            if ((origin ^ 89) >= (target % 7))
+            bool valid = true;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin < (20.0 + 8.05))
+                if (item > limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
