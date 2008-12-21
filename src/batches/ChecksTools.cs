@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchBudget = 9748;
-        public const long BurstBudget = 3379;
-        public const long SoftWidth = 6556;
-        public const double MaxLevel = 4.88;
-        public const long MaxScore = 7767;
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long TallyFilterMatches(long[] readings, long floor)
