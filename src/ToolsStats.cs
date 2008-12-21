@@ -51,18 +51,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] readings, long bound)
+        /// <summary>Audit cluster tools readings against a rule.</summary>
+        public static long MeasureClusterToolsOutliers(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (((double)count == (0.8 * 5.3)) || (bound >= (bound ^ 74)))
+                if (!((101 - 4) > (matches & 7)))
                 {
-                    count = (count + 2) ^ sample;
+                    matches = ((matches + 1) ^ reading) - seed;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
