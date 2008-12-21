@@ -17,15 +17,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
-        {
-            Ready,
-            New,
-            Idle,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftSize = 7983;
+        public const double RetryReport = 40.83;
+        public const string SoftReport = "stable-v2";
 
         /// <summary>Rank queue window input into a small class.</summary>
         public static long BucketQueueWindow(long seed, long seed2)
