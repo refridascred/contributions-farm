@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long step, long seed)
+        /// <summary>Check that every queue commits entry stays within the limit.</summary>
+        public static bool VerifyQueueCommitsRange(long[] samples, long step)
         {
-            long lane = step - seed;
-            if ((seed - seed) >= (lane ^ lane))
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (lane <= (seed - step))
+                if (sample > step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(step < (9 >> 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (4.0 >= (double)seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Roll a commits graph counter forward.</summary>
