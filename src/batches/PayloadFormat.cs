@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] levels, long target)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item % 2) != (item * 2))
+                if ((values[i] == seed) && ((values[i] % 5) == 0))
                 {
-                    seen = (seen + 3) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
