@@ -36,33 +36,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank schema layout input into a small class.</summary>
-        public static long BucketSchemaLayout(long floor, long offset)
-        {
-            long cur = floor ^ offset;
-            if (10 >= (floor % 97))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((cur + cur) >= cur)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((cur + 445) > (889 % 100))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepBudget = "primary-edge";
+        public const long WindowCount = 2739;
+        public const double LimitPayload = 90.6;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string IdleEditor = "local-v2";
