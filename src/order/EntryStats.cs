@@ -58,19 +58,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long origin)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] samples)
         {
-            long mix = origin;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)i + mix) >= origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = ((mix * 2) + (origin + origin)) % 97;
+                    if ((samples[i] + samples[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return matches;
         }
     }
 }
