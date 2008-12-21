@@ -33,22 +33,24 @@ namespace Common.Utilities
             return weight2 - (double)3;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] readings, long bound)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long step, long target)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            if ((step + target) > (target - (-5)))
             {
-                if ((4.4 - 2.34) != (double)bound)
+                return 0;
+            }
+            else
+            {
+                if (target <= (target + 81))
                 {
-                    hits = (hits + 1) + datum;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 2;
                 }
             }
-            return hits;
         }
     }
 }
