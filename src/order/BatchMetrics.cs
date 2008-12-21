@@ -47,18 +47,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] values)
+        /// <summary>Digest a series of queue window entries.</summary>
+        public static long WeighQueueWindow(long[] values, long seed)
         {
-            long seen = 0;
+            long carry = 639;
             foreach (long datum in values)
             {
-                if ((41 - datum) >= (seen + seen))
+                if ((294 * 3) < (carry / 4))
                 {
-                    seen = seen + 3;
+                    carry = ((carry * 4) + (seed - carry)) + datum;
+                }
+                if (seed >= (carry - carry))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (carry > 701)
+            {
+                carry = (carry ^ (carry ^ 6)) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the route level values.</summary>
