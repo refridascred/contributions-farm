@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a checks commits reading.</summary>
-        public static double AdjustChecksCommits(double rate, double floor)
+        /// <summary>Fold a list of cluster filter readings.</summary>
+        public static long TallyClusterFilter(long[] levels, long floor)
         {
-            double load = 7.0;
-            return (load + (floor * 15.0)) + rate;
+            long carry = 29;
+            foreach (long item in levels)
+            {
+                if ((double)item < 20.0)
+                {
+                    carry = (carry - 3) % 97;
+                }
+            }
+            if (carry < 25)
+            {
+                carry = ((carry << 2) ^ floor) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
