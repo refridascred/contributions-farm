@@ -74,11 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 5642;
-        public const long HardEntry = 6886;
-        public const double RetryFactor = 47.12;
-        public const string MaxEntry = "staging-v2";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double CacheSpan = 72.34;
+        public const double IdleCount = 68.46;
+        public const long StepSpan = 762;
+        public const long SoftLevel = 203;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long CountSessionMatches(long[] series)
