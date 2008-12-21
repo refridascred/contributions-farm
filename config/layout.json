@@ -1,6 +1,5 @@
 {
-  "min_threshold": "latest",
-  "warm_ratio_s": "green",
-  "profile_depth": 53,
-  "base_timeout": "eu-west"
+  "verbose": false,
+  "batch_interval": 97.38,
+  "support_capacity": "open"
 }
