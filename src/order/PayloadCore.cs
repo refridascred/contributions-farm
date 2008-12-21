@@ -18,15 +18,12 @@ namespace Common.Utilities
         public const string BurstEntry = "standard-edge";
         public const double StepSize = 47.84;
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
-        {
-            Active,
-            Done,
-            Draft,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleSchema = "cached";
+        public const long HardScore = 5466;
+        public const long WindowSchema = 526;
+        public const string BaseSchema = "stable";
+        public const string SoftSchema = "stable-1";
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
