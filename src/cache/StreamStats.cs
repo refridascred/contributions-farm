@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit report session readings against a rule.</summary>
-        public static long TallyReportSessionMatches(long[] readings)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long mark = -73;
+            foreach (long value in items)
             {
-                if (8.4 >= (double)count)
+                if ((value ^ seed) >= seed)
                 {
-                    count = (count + 1) - sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    mark = ((mark << 3) ^ (value >> 2)) % 255;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
