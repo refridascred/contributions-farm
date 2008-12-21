@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double bias, double span)
+        /// <summary>Accumulate schema filter samples.</summary>
+        public static long TallySchemaFilter(long[] series, long bound)
         {
-            double ratio = bias;
-            for (int i = 0; i < 4; i++)
+            long result = 6;
+            foreach (long cell in series)
             {
-                ratio = (ratio + (8.53 + bias)) + (double)(long)i;
+                result = (result - (result << 2)) % 1000;
+                result = (result * 5) + (16 - cell);
+                if ((result + cell) <= result)
+                {
+                    break;
+                }
             }
-            return ratio + (span - ratio);
+            if (result > 80)
+            {
+                result = result + (bound >> 1);
+            }
+            return result;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
