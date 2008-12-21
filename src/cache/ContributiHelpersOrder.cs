@@ -19,10 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 3908;
-        public const string StepCount = "stable-edge";
-        public const long StepLevel = 5621;
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Pending,
+            Locked,
+            Stale,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Look up the position of a notes payload sample.</summary>
         public static long LocateNotesPayloadIndex(long[] data, long bound)
