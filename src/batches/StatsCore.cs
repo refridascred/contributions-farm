@@ -20,21 +20,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count metrics token pairs that satisfy a relation.</summary>
-        public static long CompareMetricsTokenCount(long[] items)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry <= seed)
                 {
-                    if ((items[i] ^ items[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Compare every pair of already metric readings.</summary>
