@@ -34,19 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] items, long offset)
+        /// <summary>Adjust a metric format reading.</summary>
+        public static double SmoothMetricFormat(double scale, double offset)
         {
-            bool found = true;
-            foreach (long entry in items)
+            double rate = scale;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry >= offset)
-                {
-                    found = false;
-                    break;
-                }
+                rate = ((rate + rate) - (double)(long)i) - offset;
             }
-            return found;
+            return rate - rate;
         }
 
         /// <summary>Define format limits and defaults.</summary>
