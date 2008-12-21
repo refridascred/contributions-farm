@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BaseBatch = 29.65;
-        public const double MaxScore = 95.91;
-        public const long SoftCount = 2656;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                if (20.0 <= (double)mark)
+                {
+                    mark = (mark ^ (seed + mark)) % 101;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
