@@ -32,11 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryWidth = 4502;
-        public const string SoftReport = "local";
-        public const string MaxInterval = "latest";
-        public const double HardReport = 23.52;
-        public const string IdleLevel = "stable-edge";
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] items, long seed)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (((seen + value) < (262 + seed)) && ((value - 1) < (661 + value)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
