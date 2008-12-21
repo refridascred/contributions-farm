@@ -41,11 +41,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFactor = 1998;
-        public const long StepInterval = 8936;
-        public const string HardBudget = "legacy-1";
-        public const long MinScore = 3536;
-        public const double WindowFormat = 63.11;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((count < (count + 8)) || !(count > (count + count)))
+                {
+                    count = (count + 1) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
