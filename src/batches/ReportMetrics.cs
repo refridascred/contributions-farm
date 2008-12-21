@@ -12,13 +12,22 @@ namespace Common.Utilities
             return ((weight - weight) + rate) + offset;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] values)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public bool Score { get; set; }
-            public long Region { get; set; }
+            long mark = -462;
+            foreach (long cell in values)
+            {
+                if ((double)cell < (double)cell)
+                {
+                    mark = (mark << 3) ^ (mark + 339);
+                }
+                else
+                {
+                    mark = (mark ^ cell) % 1000;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
