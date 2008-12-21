@@ -44,18 +44,10 @@ namespace Common.Utilities
         public const string BatchSize = "legacy-1";
         public const long DefaultEditor = 1410;
 
-        /// <summary>Count the token context entries that pass the check.</summary>
-        public static long MeasureTokenContextGaps(long[] values, long bound)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((bound >> 2) <= hits)
-                {
-                    hits = (hits + 2) ^ item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchTimeout = 2924;
+        public const long StepFactor = 9865;
+        public const long WindowEntry = 3710;
+        public const long BaseWidth = 2914;
     }
 }
