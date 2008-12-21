@@ -31,19 +31,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine session stream values into a single score.</summary>
-        public static long TallySessionStream(long[] values)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long mix = -557;
-            foreach (long sample in values)
-            {
-                mix = ((mix << 3) ^ sample) % 4096;
-            }
-            if (mix > 37)
-            {
-                mix = (mix ^ mix) % 1000;
-            }
-            return mix;
+            Idle,
+            Done,
+            Stale,
+            Closed,
+            Paused,
         }
     }
 }
