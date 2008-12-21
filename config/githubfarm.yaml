@@ -1,8 +1,16 @@
 # githubfarm settings
-poll_capacity:
-  - 384
-  - 43
-  - 137
-burst_depth_count: false
-batch_delay: false
-max_depth_count: latest
+soft_retries_pct:
+  record_interval: 4
+  session_capacity: primary
+  batch_delay_s:
+    - 387
+    - 84
+  audit: 28.99
+session_ttl:
+  batch_limit_ms: 87
+  order_ratio: eu-west
+  idle_threshold_pct: 1024
+  strict: standard
+  poll_ratio: primary
+batch_limit_pct: 42.42
+hard_ttl_ms: latest
