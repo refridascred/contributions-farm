@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double weight, double floor)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            double bias = floor;
-            if (bias < 2.6)
-            {
-                bias = (bias - (floor / 5.0)) - weight;
-            }
-            return bias + (double)95;
+            public long Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Measure how many metrics layout samples are out of range.</summary>
