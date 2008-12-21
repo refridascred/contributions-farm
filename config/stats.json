@@ -1,5 +1,5 @@
 {
-  "report_size": "primary",
-  "batch_interval_count": "open",
-  "enabled": "blue"
+  "burst_ratio": true,
+  "cache_timeout_ms": "green",
+  "strict": "eu-west"
 }
