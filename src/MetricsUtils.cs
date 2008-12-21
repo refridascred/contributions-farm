@@ -51,18 +51,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] items)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((221 / 7) > (matches + entry))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Paused,
+            Ready,
+            Active,
+            Closed,
+            Locked,
         }
     }
 }
