@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 3745;
-        public const string HardMetrics = "stable-1";
-        public const long CacheMetrics = 3854;
-        public const long MinMetrics = 6201;
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
