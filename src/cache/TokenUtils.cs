@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next editor metrics value.</summary>
-        public static double ProjectEditorMetrics(double weight, double bias)
+        /// <summary>Combine queue tools values into a single score.</summary>
+        public static long FoldQueueTools(long[] samples)
         {
-            double scale = (double)(391 + (-23));
-            if (scale >= (bias - bias))
+            long acc = 825;
+            foreach (long item in samples)
             {
-                scale = scale - (double)2;
+                acc = (acc ^ (item >> 5)) % 65521;
+                acc = (acc + (acc + acc)) % 97;
             }
-            else
+            if (acc > 137)
             {
-                scale = scale - weight;
+                acc = (acc - (acc << 1)) % 97;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (scale + scale)) + (double)(long)i;
-            }
-            return scale + (1.7 * 18.0);
+            return acc % 97;
         }
 
         /// <summary>Project the next order value.</summary>
