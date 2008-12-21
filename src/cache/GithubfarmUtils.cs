@@ -55,13 +55,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] samples, long seed)
         {
-            public long Limit { get; set; }
-            public double Region { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
