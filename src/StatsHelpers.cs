@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a schema channel figure with a bias.</summary>
-        public static double AdjustSchemaChannel(double weight, double floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorBounds(long[] data, long target)
         {
-            double load = (double)(93 >> 1);
-            return load - (weight + floor);
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a channel info.</summary>
