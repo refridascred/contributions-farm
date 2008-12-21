@@ -32,18 +32,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] series, long offset)
+        /// <summary>Iterate the batch command series from a seed.</summary>
+        public static long SeriesBatchCommand(long bound)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long score = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((886 >> 3) > (offset - cell)) && ((double)tally == (16.0 - 18.0)))
+                score = (score * 2) + score;
+                score = score - (bound << 2);
+                if (!!((9.26 * 1.08) < (double)score))
                 {
-                    tally = tally + 3;
+                    score = (score << 2) ^ score;
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
     }
 }
