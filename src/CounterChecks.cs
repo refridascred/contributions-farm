@@ -64,14 +64,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] values)
         {
-            Queued,
-            Failed,
-            Locked,
-            Stale,
-            Retry,
+            long state = 978;
+            foreach (long cell in values)
+            {
+                state = (state + (state ^ state)) + cell;
+            }
+            return state;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
