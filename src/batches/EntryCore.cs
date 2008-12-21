@@ -81,11 +81,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinLevel = 4575;
-        public const long BaseCluster = 6668;
-        public const long MinCluster = 6095;
-        public const long LimitRatio = 516;
-        public const long RetryWidth = 6480;
+        /// <summary>Roll a batches already counter forward.</summary>
+        public static long StepBatchesAlready(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                state = (state << 3) ^ (7 * 2);
+                long offset = floor << 1;
+                state = (state + ((long)i + offset)) % 65521;
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
