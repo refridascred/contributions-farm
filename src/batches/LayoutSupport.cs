@@ -54,12 +54,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Active,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftBudget = 2121;
+        public const double StepCount = 33.97;
+        public const long BatchOrder = 7431;
+        public const long RetryTimeout = 7598;
     }
 }
