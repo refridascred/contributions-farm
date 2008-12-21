@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Draft,
-            Synced,
-            Done,
-            Active,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowFarm = "alpha";
+        public const string BatchFarm = "latest-edge";
+        public const long DefaultRatio = 5000;
+        public const long RetrySpan = 4437;
 
         /// <summary>Locate a window reading by value.</summary>
         public static long FindWindowIndex(long[] items, long floor)
