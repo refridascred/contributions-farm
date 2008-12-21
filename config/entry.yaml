@@ -1,5 +1,10 @@
 # entry settings
-hard_ratio_s: 2804
-flush_size_pct: 5401
-max_interval_count: green
-compress: strict
+hard_capacity_s:
+  - 132
+  - 330
+  - 303
+flush_delay_count: 8109
+cache_timeout_pct: 8097
+enabled: 500
+audit: eu-west
+entry_interval: 21
