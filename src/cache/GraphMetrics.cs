@@ -27,12 +27,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long limit, long step)
         {
-            Failed,
-            Closed,
-            Paused,
+            if ((limit % 5) != (limit << 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step - 593) <= step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit + step) <= (step + limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit payload notes readings against a rule.</summary>
