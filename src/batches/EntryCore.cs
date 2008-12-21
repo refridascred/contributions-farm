@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Closed,
-            Failed,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowRecord = "fallback-v2";
+        public const string MaxCount = "stable";
+        public const long BaseRatio = 1474;
+        public const long StepRecord = 8121;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BatchAlready = 3230;
