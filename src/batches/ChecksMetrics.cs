@@ -82,9 +82,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitTimeout = "legacy-edge";
-        public const string CacheInterval = "alpha-1";
-        public const long SoftScore = 3056;
+        /// <summary>Iterate the metrics already series from a seed.</summary>
+        public static long RollMetricsAlready(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = (anchor ^ ((long)i % 8)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
