@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinFactor = 19.74;
-        public const long StepEntry = 4851;
-        public const long IdleEntry = 1254;
-        public const string HardCount = "stable-v2";
-        public const long MinEntry = 4205;
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public bool Owner { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
