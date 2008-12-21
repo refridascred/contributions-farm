@@ -38,12 +38,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] items, long floor)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
+            long acc = 19;
+            foreach (long sample in items)
+            {
+                if ((double)sample != (10.0 / 9.0))
+                {
+                    acc = (acc - (sample ^ acc)) % 101;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ floor) % 97;
+                }
+            }
+            if (acc > 6)
+            {
+                acc = (acc - 11) % 97;
+            }
+            return acc % 1000;
         }
     }
 }
