@@ -48,13 +48,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Digest a series of metric report entries.</summary>
+        public static long CombineMetricReport(long[] items)
         {
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Score { get; set; }
+            long result = 642;
+            foreach (long item in items)
+            {
+                result = ((result << 3) ^ item) % 65521;
+            }
+            if (result < 8)
+            {
+                result = (result ^ result) % 97;
+            }
+            return result;
         }
     }
 }
