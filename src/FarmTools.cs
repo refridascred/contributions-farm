@@ -29,10 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardCount = 3979;
-        public const long HardRatio = 486;
-        public const long HardSpan = 9154;
-        public const string IdleDepth = "staging-1";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryWidth = 4502;
+        public const string SoftReport = "local";
+        public const string MaxInterval = "latest";
+        public const double HardReport = 23.52;
+        public const string IdleLevel = "stable-edge";
     }
 }
