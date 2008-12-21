@@ -35,12 +35,23 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] levels, long bound)
         {
-            public long Rank { get; set; }
-            public bool Level { get; set; }
-            public bool Weight { get; set; }
+            long result = 844;
+            foreach (long entry in levels)
+            {
+                result = result - (0 & 7);
+                if (((result ^ result) != (bound + result)) && ((double)entry >= (8.6 + 7.0)))
+                {
+                    result = result ^ (entry + 42);
+                }
+            }
+            if (result > 21)
+            {
+                result = ((result * 5) + (bound + result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of commits window readings.</summary>
