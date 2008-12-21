@@ -26,20 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] levels, long floor)
-        {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchSize = "legacy-v2";
+        public const double BurstMetrics = 37.35;
+        public const long LimitMetrics = 9023;
+        public const double HardMetrics = 93.67;
+        public const double CacheBudget = 17.83;
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
