@@ -46,17 +46,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] readings, long limit)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] values)
         {
-            long state = 8;
-            foreach (long datum in readings)
+            long state = 78;
+            foreach (long item in values)
             {
-                if ((66 - 120) >= limit)
+                if (((item % 97) < item) && (state <= (state - state)))
                 {
-                    state = (state << 2) ^ (datum + datum);
+                    state = (state * 3) + state;
                 }
-                if ((limit % 60) != (state + datum))
+                if ((186 % 16) > (item % 64))
                 {
                     break;
                 }
