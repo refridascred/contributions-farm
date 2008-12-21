@@ -22,17 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first batches session entry that matches the target.</summary>
-        public static long SeekBatchesSessionIndex(long[] readings, long offset)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] < offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
