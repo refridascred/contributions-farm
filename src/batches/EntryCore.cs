@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Draft,
-            Synced,
-            Idle,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MaxTools = "alpha";
+        public const long LimitTools = 2623;
+        public const long CacheBudget = 2247;
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long LookupProfileIndex(long[] readings, long offset)
