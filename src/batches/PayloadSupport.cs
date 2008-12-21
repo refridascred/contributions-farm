@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Iterate the graph format series from a seed.</summary>
+        public static long RollGraphFormat(long floor)
         {
-            Draft,
-            Pending,
-            Closed,
-            Retry,
-            Locked,
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((anchor ^ 4) <= 24)
+                {
+                    anchor = (anchor * 5) + floor;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
