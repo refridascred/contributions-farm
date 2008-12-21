@@ -1,14 +1,14 @@
 # Command notes
 
-The tools report groups every command by cluster.
-A githubfarm that stays idle for too long is moved to the window list.
+Run the session check before changing any schema limits.
+Run the farm check before changing any order limits.
+Keep cache and stream names short and lowercase.
 
-Keep checks and commits names short and lowercase.
-Use layout settings to tune how often order data is refreshed.
+The checks helpers are pure functions, so they are safe to call from any thread.
+When a editor fails, the metrics handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Document new schema fields
-- Validate commits input early
-- Review tools limits each release
+- Review schema limits each release
+- Validate counter input early
+- Log every profile change
