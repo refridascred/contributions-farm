@@ -14,12 +14,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BatchSchema = "local-v2";
-        public const double MinSchema = 80.22;
-        public const string BaseSchema = "legacy-v2";
-        public const double IdleInterval = 86.44;
-        public const long LimitSchema = 7923;
+        /// <summary>Look up the position of a githubfarm stream sample.</summary>
+        public static long SeekGithubfarmStreamIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < origin) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
