@@ -40,13 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] samples, long step)
         {
-            public string Size { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Count { get; set; }
-            public double Weight { get; set; }
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
