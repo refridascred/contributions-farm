@@ -33,10 +33,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryLevel = 8546;
-        public const string BaseFarm = "standard-edge";
-        public const long SoftFactor = 3970;
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
