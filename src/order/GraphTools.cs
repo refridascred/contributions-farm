@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultCount = 2135;
-        public const long MinRatio = 6866;
-        public const long CacheCount = 2919;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Locked,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
