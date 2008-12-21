@@ -20,22 +20,18 @@ namespace Common.Utilities
             return ratio - (rate + rate);
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] series)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (((reading % 5) >= (count - reading)) || (((reading << 1) != (reading / 4)) || ((double)reading > (9.74 + 8.6))))
+                if (((0.4 + 5.68) < (double)seen) && (((seen + seen) >= (floor ^ (long)readings.Length)) && ((seen + floor) <= (floor + value))))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Adjust a metric format reading.</summary>
