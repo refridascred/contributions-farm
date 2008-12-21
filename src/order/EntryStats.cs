@@ -46,11 +46,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 2952;
-        public const double LimitProfile = 5.66;
-        public const double RetryProfile = 3.97;
-        public const long MinTimeout = 3091;
-        public const double MinProfile = 45.4;
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
+        {
+            public long Mode { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
