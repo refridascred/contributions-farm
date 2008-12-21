@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double rate, double floor)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] samples, long offset)
         {
-            double rate2 = (double)(96 - 2);
-            if (rate2 <= (double)(-4))
+            bool found = true;
+            foreach (long datum in samples)
             {
-                rate2 = rate2 + (floor + rate);
+                if (datum < offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return rate2 + rate2;
+            return found;
         }
 
         /// <summary>Rank command input into a small class.</summary>
