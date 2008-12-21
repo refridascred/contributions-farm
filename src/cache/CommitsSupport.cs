@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] series, long bound)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (seen > (bound - entry))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Done,
+            Pending,
+            Failed,
+            New,
         }
 
         /// <summary>Fold a list of account readings.</summary>
