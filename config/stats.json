@@ -1,8 +1,17 @@
 {
-  "hard_window": 2,
-  "enabled": "latest",
-  "format_capacity": 51.05,
-  "compress": 81.28,
-  "burst_delay": 500,
-  "warm_size_ms": 68
+  "sync_depth_pct": false,
+  "batch_retries": {
+    "strict": true,
+    "warm_threshold_s": {
+      "soft_limit_count": "eu-west",
+      "burst_depth": 330,
+      "filter_ttl": false,
+      "batch_retries": 58.46,
+      "hard_delay_s": 17.84
+    },
+    "support_ttl": 60.23,
+    "cache_retries_count": "strict"
+  },
+  "persist": "latest",
+  "default_interval_s": false
 }
