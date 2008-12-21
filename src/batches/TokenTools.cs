@@ -23,12 +23,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double rate, double floor)
         {
-            public bool Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
+            double gain = rate * 4.1;
+            if (gain <= (gain / 9.0))
+            {
+                gain = gain - rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - floor) + (double)(long)i;
+            }
+            return gain + rate;
         }
     }
 }
