@@ -14,18 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] values, long bound)
+        /// <summary>Fold a list of channel stream readings.</summary>
+        public static long WeighChannelStream(long[] values)
         {
-            long anchor = 455;
-            foreach (long datum in values)
+            long carry = 38;
+            foreach (long entry in values)
             {
-                if (((anchor + bound) == (anchor + anchor)) && (5.9 > (double)bound))
+                if (((carry / 2) < carry) && ((double)carry < 10.0))
                 {
-                    anchor = (anchor - bound) + datum;
+                    carry = (carry ^ (carry / 8)) % 97;
+                }
+                if (((double)entry == (3.43 * 4.58)) || (((-695) % 2) <= (carry / 9)))
+                {
+                    break;
                 }
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Describe the commits level values.</summary>
