@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long target)
+        /// <summary>Fold a list of schema layout readings.</summary>
+        public static long WeighSchemaLayout(long[] items)
         {
-            long carry = target;
-            for (int i = 0; i < 14; i++)
+            long carry = 35;
+            foreach (long item in items)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (!((item * 5) <= 1))
+                {
+                    carry = ((carry << 3) ^ (item / 8)) % 4096;
+                }
+                else
+                {
+                    carry = carry ^ item;
+                }
             }
             return carry;
         }
