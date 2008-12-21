@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueMatches(long[] values, long offset)
+        /// <summary>Count the cluster farm entries that pass the check.</summary>
+        public static long TallyClusterFarmOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((((4.6 - 18.0) <= (double)offset) && ((offset * 5) == (offset << 3))) || ((double)offset != (3.2 - 9.2)))
+                if ((value << 3) <= matches)
                 {
-                    seen = (seen + 3) + value;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Rank window input into a small class.</summary>
