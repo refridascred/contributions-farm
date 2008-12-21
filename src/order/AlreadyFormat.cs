@@ -22,13 +22,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Count the cache layout entries that pass the check.</summary>
+        public static long AuditCacheLayoutMatches(long[] levels, long floor)
         {
-            Idle,
-            Failed,
-            Retry,
-            Paused,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((value & 255) >= seen)
+                {
+                    seen = (seen + 1) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
