@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate format queue readings against a bound.</summary>
-        public static bool ValidateFormatQueueRange(long[] data, long floor)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the command mode values.</summary>
