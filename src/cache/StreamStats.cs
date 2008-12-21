@@ -28,22 +28,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of batches githubfarm readings.</summary>
-        public static long CombineBatchesGithubfarm(long[] levels, long target)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] data)
         {
-            long total = -160;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((total <= (total - target)) && ((target / 5) >= cell))
+                if ((((double)matches == (0.85 + 3.6)) || (sample < (matches % 64))) || ((sample % 10) > (sample * 3)))
                 {
-                    total = (total ^ (total >> 3)) % 65521;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    total = (total * 5) + total;
+                    matches = matches - 1;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a already info.</summary>
