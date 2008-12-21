@@ -43,14 +43,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] series)
         {
-            Idle,
-            New,
-            Active,
-            Closed,
-            Locked,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (!(((6.2 / 2.0) != (double)tally) && (entry > (tally + entry))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
