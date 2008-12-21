@@ -21,15 +21,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] items)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] readings)
         {
-            long state = 1;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state << 2) ^ (value - state);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
