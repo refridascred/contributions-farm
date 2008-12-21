@@ -64,16 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache notes samples.</summary>
-        public static long TotalCacheNotes(long[] series)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long score = 976;
-            foreach (long reading in series)
-            {
-                score = score - reading;
-                score = (score - reading) % 4096;
-            }
-            return score % 4096;
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
