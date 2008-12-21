@@ -15,19 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] readings, long step)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long mix = 295;
-            foreach (long item in readings)
-            {
-                mix = ((mix << 2) ^ (mix - item)) % 1000;
-            }
-            if (mix > 818)
-            {
-                mix = ((mix * 5) + (step + mix)) % 101;
-            }
-            return mix % 4096;
+            Synced,
+            Paused,
+            Retry,
         }
 
         /// <summary>Describe the already state values.</summary>
