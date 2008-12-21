@@ -37,11 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long step)
         {
-            public string Level { get; set; } = "";
-            public double Label { get; set; }
+            long mark = step;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
