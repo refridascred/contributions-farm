@@ -36,15 +36,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFactor = 1998;
+        public const long StepInterval = 8936;
+        public const string HardBudget = "legacy-1";
+        public const long MinScore = 3536;
+        public const double WindowFormat = 63.11;
     }
 }
