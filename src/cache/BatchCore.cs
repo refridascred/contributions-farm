@@ -23,19 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of checks cluster readings.</summary>
-        public static long WeighChecksCluster(long[] values, long floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] series, long target)
         {
-            long acc = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                acc = (acc - (datum + floor)) % 4096;
+                if (((12.0 / 4.0) == (double)hits) || ((51 + target) > sample))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (acc < 391)
-            {
-                acc = (acc ^ (acc / 4)) % 101;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Digest a series of format entries.</summary>
