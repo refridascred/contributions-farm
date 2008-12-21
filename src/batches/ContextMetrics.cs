@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double ratio, double span)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] levels)
         {
-            double scale = span;
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = ((scale + (span - span)) + (double)(long)i) - ratio;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale - (scale * 4.28);
+            return seen;
         }
 
         /// <summary>Measure how many record session samples are out of range.</summary>
