@@ -73,12 +73,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstContext = 3524;
-        public const double WindowTimeout = 65.02;
-        public const double RetryContext = 59.13;
-        public const long MinContext = 4409;
-        public const long BaseBudget = 4607;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long limit, long floor)
+        {
+            long bound = limit ^ floor;
+            if ((double)bound == (1.83 - 12.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((floor + floor) != (bound + floor)) || ((double)bound <= (19.0 - 19.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound >= (6.95 / 9.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a support reading.</summary>
         public static double BlendSupport(double rate, double bias)
