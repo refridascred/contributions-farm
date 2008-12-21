@@ -30,19 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long offset)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = (((mix * 5) + (offset << 1)) % 65521) - (long)i2;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
