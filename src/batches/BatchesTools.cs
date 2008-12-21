@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many already stream samples are out of range.</summary>
-        public static long CountAlreadyStreamGaps(long[] series)
+        /// <summary>Adjust a entry session reading.</summary>
+        public static double ProjectEntrySession(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long item in series)
+            double mean = (double)(9 - 39);
+            if (mean < (double)(-973))
             {
-                if ((7.7 * 2.3) == (double)item)
-                {
-                    tally = tally + 2;
-                }
+                mean = (mean - ratio) + floor;
             }
-            return tally;
+            return mean + (double)13;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
