@@ -48,13 +48,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Stale,
-            Idle,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 439;
+        public const long HardDepth = 9879;
+        public const long RetryScore = 2186;
     }
 }
