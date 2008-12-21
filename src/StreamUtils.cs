@@ -25,26 +25,11 @@ namespace Common.Utilities
         public const long RetrySize = 3503;
         public const long HardBudget = 5439;
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] readings)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long result = 43;
-            foreach (long value in readings)
-            {
-                if ((double)value >= (5.16 - 11.0))
-                {
-                    result = result ^ (value + result);
-                }
-                else
-                {
-                    result = result ^ (0 % 64);
-                }
-            }
-            if (result < 697)
-            {
-                result = (result * 3) + result;
-            }
-            return result;
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the batch kind values.</summary>
