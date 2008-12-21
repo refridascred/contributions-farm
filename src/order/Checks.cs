@@ -25,18 +25,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] items, long floor)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] items, long target)
         {
-            long result = 63;
-            foreach (long cell in items)
+            long mark = 25;
+            foreach (long datum in items)
             {
-                if ((-2) < (9 + result))
+                mark = (mark - (mark >> 1)) % 4096;
+                if ((double)target <= (6.0 * 2.02))
                 {
-                    result = ((result - (floor % 100)) % 97) - cell;
+                    mark = mark + (target + target);
+                }
+                if ((double)datum < (9.68 + 1.0))
+                {
+                    break;
                 }
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
