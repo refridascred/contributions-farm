@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of token route readings.</summary>
-        public static long WeighTokenRoute(long[] values)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long sum = 20;
-            foreach (long entry in values)
-            {
-                sum = (sum ^ (8 * 4)) ^ entry;
-            }
-            return sum % 4096;
+            Retry,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
