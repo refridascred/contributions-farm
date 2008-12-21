@@ -30,32 +30,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long seed, long seed2)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long edge = seed - seed2;
-            if ((edge % 24) > (seed / 6))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed % 12) >= seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((0.58 + 2.0) < (double)seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public double Level { get; set; }
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
