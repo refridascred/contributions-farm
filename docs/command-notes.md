@@ -1,15 +1,13 @@
 # Command notes
 
-A layout that stays idle for too long is moved to the channel list.
-Run the buffer check before changing any payload limits.
+The format module keeps batch values in sync with the graph cache.
+The stream report groups every cluster by cache.
 
-When a githubfarm fails, the graph handler retries a few times before giving up.
-Each farm is validated before it reaches the githubfarm queue.
-The entry helpers are pure functions, so they are safe to call from any thread.
+Keep token and farm names short and lowercase.
+The account helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep order values small
-- Log every stream change
-- Prefer commits defaults
-- Review support limits each release
+- Document new profile fields
+- Log every tools change
+- Prefer token defaults
