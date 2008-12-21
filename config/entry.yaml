@@ -1,21 +1,27 @@
 # entry settings
-sync_timeout:
-  dry_run:
-    sync_ttl_s: 1910
-    readonly:
-      - cached
-      - open
-      - legacy
-      - local
-    sync_ratio:
-      - 251
-      - 245
-    sync_ttl_count: 8691
-  report_limit: 16.2
-  min_interval_s:
-    - 95
-    - 363
-    - 218
-    - 267
-burst_timeout_pct: blue
-cache_ratio: 500
+compress: fallback
+sync_threshold:
+  - fallback
+  - primary
+  - strict
+persist: primary
+min_size_ms: 78
+window_window:
+  audit: standard
+  min_ratio:
+    cache_depth_pct: false
+    strict: 23
+    commits_depth: fallback
+  idle_depth_pct: 3680
+  sync_delay_s:
+    strict: 6.56
+    hard_capacity: 52.33
+    verbose: true
+buffer_capacity:
+  default_delay:
+    - 438
+    - 478
+    - 489
+    - 439
+  compress: standard
+  flush_capacity_pct: true
