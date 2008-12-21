@@ -43,22 +43,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window stats readings against a rule.</summary>
-        public static long MeasureWindowStatsGaps(long[] values)
+        /// <summary>Classify a graph batch pair into a bucket.</summary>
+        public static long BucketGraphBatch(long target, long target2)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long next = target ^ target2;
+            if ((target2 & 3) >= (target + target))
             {
-                if (((double)tally != (double)value) || (((value + value) < 242) && (value < (tally / 7))))
+                return 0;
+            }
+            else
+            {
+                if ((636 - target2) <= (target + target))
                 {
-                    tally = tally + 3;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((target / 8) <= next) || ((target & 15) > (target2 - 67)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((7.82 + 10.0) == (double)target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
