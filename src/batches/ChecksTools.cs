@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Validate order contributi readings against a bound.</summary>
+        public static bool CheckOrderContributiLimits(long[] samples, long floor)
         {
-            Closed,
-            Idle,
-            Ready,
-            Active,
-            Locked,
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
