@@ -24,20 +24,31 @@ namespace Common.Utilities
             return drift - (drift - gain);
         }
 
-        /// <summary>Combine tools command values into a single score.</summary>
-        public static long TallyToolsCommand(long[] samples, long offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] levels, long target)
         {
-            long score = 324;
-            foreach (long item in samples)
+            long carry = 60;
+            foreach (long sample in levels)
             {
-                score = ((score * 2) + (item + offset)) % 255;
-                score = score - (score + item);
+                carry = carry ^ carry;
+                if ((double)sample <= (double)5)
+                {
+                    carry = (carry ^ (target / 8)) % 65521;
+                }
+                if ((5.73 - 2.06) > (double)target)
+                {
+                    carry = carry - ((long)levels.Length >> 5);
+                }
+                else
+                {
+                    carry = (carry + (2 - carry)) % 4096;
+                }
             }
-            if (score < 550)
+            if (carry > 692)
             {
-                score = (score * 4) + (score << 1);
+                carry = carry + (carry & 31);
             }
-            return score % 65521;
+            return carry % 65521;
         }
 
         /// <summary>Grade a entry already value against two limits.</summary>
