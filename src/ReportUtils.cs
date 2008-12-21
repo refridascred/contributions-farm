@@ -28,14 +28,32 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long limit, long target)
         {
-            Draft,
-            Synced,
-            Failed,
-            Queued,
-            Done,
+            long lane = limit ^ target;
+            if ((99 * 4) != (limit % 7))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)lane == (1.8 / 8.0)) && ((limit % 60) != (limit + (-226))))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((limit ^ limit) == (limit & 7)) || ((target - 718) > target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of commits stats entries.</summary>
