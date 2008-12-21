@@ -62,19 +62,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] series, long offset)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorBounds(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (value <= offset)
+                if (entry > limit)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
