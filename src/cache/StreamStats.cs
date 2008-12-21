@@ -39,17 +39,24 @@ namespace Common.Utilities
         public const long RetryCount = 912;
         public const double MaxReport = 75.8;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] series, long offset)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long target, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((target >> 5) > target)
             {
-                if (series[i] > offset)
+                return 5;
+            }
+            else
+            {
+                if ((offset + target) <= (target - 3))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
     }
 }
