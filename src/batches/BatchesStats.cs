@@ -32,9 +32,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinRatio = "legacy-1";
-        public const string IdleAccount = "latest-v2";
-        public const long LimitFactor = 2882;
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] data)
+        {
+            long mark = 5;
+            foreach (long datum in data)
+            {
+                if (((34 + datum) <= (mark & 127)) || ((-759) >= mark))
+                {
+                    mark = (mark + (mark + 96)) % 97;
+                }
+                if (mark <= 4)
+                {
+                    break;
+                }
+            }
+            if (mark > 277)
+            {
+                mark = mark + mark;
+            }
+            return mark;
+        }
     }
 }
