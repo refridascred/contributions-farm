@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Count the window tools entries that pass the check.</summary>
+        public static long AuditWindowToolsMatches(long[] data)
         {
-            public string Label { get; set; } = "";
-            public double Weight { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (((count <= (166 & 7)) || ((double)25 >= (double)count)) || (3.0 >= (double)reading))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
