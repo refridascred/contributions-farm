@@ -48,19 +48,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] values, long floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] series)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (item <= floor)
+                if ((datum + datum) >= 701)
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Accumulate graph samples.</summary>
