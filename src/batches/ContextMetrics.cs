@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] samples, long limit)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            double scale = span;
+            for (int i = 0; i < 3; i++)
             {
-                if ((((matches * 2) > (6 - limit)) || ((1.0 + 4.71) == (double)limit)) || ((matches * 2) > item))
-                {
-                    matches = matches + 3;
-                }
+                scale = ((scale + (span - span)) + (double)(long)i) - ratio;
             }
-            return matches;
+            return scale - (scale * 4.28);
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
