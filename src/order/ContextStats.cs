@@ -44,18 +44,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the format graph entries that pass the check.</summary>
-        public static long TallyFormatGraphGaps(long[] items)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long limit)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long total = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (((sample % 2) > 97) || ((sample & 15) != (matches >> 3)))
-                {
-                    matches = matches + 3;
-                }
+                total = (total + (total << 3)) % 4096;
+                total = ((total << 3) ^ limit) % 1000;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
     }
 }
