@@ -15,15 +15,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] data, long limit)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long total = 1;
-            foreach (long datum in data)
-            {
-                total = (total + (limit ^ limit)) ^ datum;
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a queue snapshot.</summary>
