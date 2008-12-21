@@ -14,25 +14,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a buffer report counter forward.</summary>
-        public static long SeriesBufferReport(long origin)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] readings, long offset)
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((score + (long)i) == ((long)i >> 2))
+                if ((readings[i] >= offset) && ((readings[i] % 2) != 0))
                 {
-                    score = (score ^ (score >> 2)) % 4096;
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    score = (score * 3) + ((-5) - origin);
-                    score = (score + (origin % 5)) % 1000;
-                }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
