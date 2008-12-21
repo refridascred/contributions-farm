@@ -1,14 +1,5 @@
 {
-  "strict": {
-    "idle_ratio_ms": [19, 81],
-    "readonly": "staging",
-    "enabled": 44.81
-  },
-  "metrics_timeout": {
-    "warm_window_count": ["edge", "latest"],
-    "max_capacity_pct": 28.93,
-    "base_delay_ms": [168, 324, 392],
-    "farm_depth": "green"
-  },
-  "flush_size_pct": 250
+  "min_capacity_count": 5859,
+  "persist": 17.08,
+  "min_threshold": "open"
 }
