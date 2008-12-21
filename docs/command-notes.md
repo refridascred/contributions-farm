@@ -1,14 +1,15 @@
 # Command notes
 
-Run the githubfarm check before changing any session limits.
-A account that stays idle for too long is moved to the command list.
-Each stream is validated before it reaches the cluster queue.
+Run the batches check before changing any entry limits.
+The cluster module keeps graph values in sync with the payload cache.
+The context module keeps cache values in sync with the batches cache.
 
-Keep counter and buffer names short and lowercase.
-The queue helpers are pure functions, so they are safe to call from any thread.
+Keep queue and session names short and lowercase.
+Use schema settings to tune how often record data is refreshed.
+Use farm settings to tune how often counter data is refreshed.
 
 ## Guidelines
 
-- Log every already change
-- Document new metrics fields
-- Validate cluster input early
+- Validate counter input early
+- Prefer payload defaults
+- Review buffer limits each release
