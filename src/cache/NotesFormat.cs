@@ -19,14 +19,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstRatio = 2150;
+        public const long BaseFactor = 3148;
+        public const long LimitSpan = 62;
+        public const long DefaultFilter = 7787;
+        public const string BatchFilter = "stable";
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long GradeFormat(long origin, long bound)
