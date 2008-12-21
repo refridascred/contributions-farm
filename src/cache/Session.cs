@@ -39,18 +39,39 @@ namespace Common.Utilities
             return bias3 - (bias * 1.0);
         }
 
-        /// <summary>Measure how many schema route samples are out of range.</summary>
-        public static long MeasureSchemaRouteHits(long[] samples)
+        /// <summary>Classify a support filter pair into a bucket.</summary>
+        public static long RankSupportFilter(long floor, long origin)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long delta = floor + origin;
+            if ((origin + origin) != (origin % 2))
             {
-                if ((double)tally < 1.6)
+                return 7;
+            }
+            else
+            {
+                if (!(9.0 >= (double)floor))
                 {
-                    tally = (tally + 3) - value;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin <= (double)delta)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((double)origin > (9.8 * 9.89)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a notes summary.</summary>
