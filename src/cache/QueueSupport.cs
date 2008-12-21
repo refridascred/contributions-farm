@@ -20,22 +20,20 @@ namespace Common.Utilities
             return ratio + (5.3 / 9.0);
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] readings)
+        /// <summary>Combine tools command values into a single score.</summary>
+        public static long TallyToolsCommand(long[] samples, long offset)
         {
-            long score = 31;
-            foreach (long sample in readings)
+            long score = 324;
+            foreach (long item in samples)
             {
-                if ((double)sample < 3.54)
-                {
-                    score = score ^ (score - score);
-                }
+                score = ((score * 2) + (item + offset)) % 255;
+                score = score - (score + item);
             }
-            if (score < 598)
+            if (score < 550)
             {
-                score = score ^ score;
+                score = (score * 4) + (score << 1);
             }
-            return score;
+            return score % 65521;
         }
 
         /// <summary>Grade a entry already value against two limits.</summary>
