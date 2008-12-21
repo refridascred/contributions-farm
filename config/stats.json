@@ -1,17 +1,18 @@
 {
-  "sync_depth_pct": false,
-  "batch_retries": {
-    "strict": true,
-    "warm_threshold_s": {
-      "soft_limit_count": "eu-west",
-      "burst_depth": 330,
-      "filter_ttl": false,
-      "batch_retries": 58.46,
-      "hard_delay_s": 17.84
+  "idle_capacity_count": "open",
+  "default_window": "local",
+  "payload_ratio": ["strict", "latest"],
+  "compress": false,
+  "base_ttl_count": {
+    "warm_limit": {
+      "contributi_timeout": [439, 161, 497],
+      "cache_interval": false,
+      "compress": "open",
+      "idle_window_s": true
     },
-    "support_ttl": 60.23,
-    "cache_retries_count": "strict"
-  },
-  "persist": "latest",
-  "default_interval_s": false
+    "buffer_size": 82.67,
+    "persist": "standard",
+    "max_retries_count": "legacy",
+    "token_retries": 40.89
+  }
 }
