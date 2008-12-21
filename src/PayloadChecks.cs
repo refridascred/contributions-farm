@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] samples, long bound)
         {
-            Closed,
-            Ready,
-            Retry,
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
