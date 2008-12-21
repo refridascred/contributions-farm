@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] readings, long bound)
+        /// <summary>Measure how many farm filter samples are out of range.</summary>
+        public static long CountFarmFilterMatches(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (datum >= bound)
+                if (matches > (step << 1))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) + datum;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
