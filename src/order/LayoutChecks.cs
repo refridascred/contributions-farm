@@ -95,15 +95,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double weight, double bias)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double gain, double floor)
         {
-            double ratio = bias;
-            if (ratio >= (double)7)
+            double bias = (double)79;
+            if (bias > (double)86)
             {
-                ratio = ratio - 8.52;
+                bias = bias - (gain + gain);
             }
-            return ratio - weight;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + floor) + (double)(long)i;
+            }
+            return bias - (double)6;
         }
     }
 }
