@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] levels, long origin)
+        /// <summary>Compare every pair of graph stats readings.</summary>
+        public static long MatchGraphStatsCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((10.0 / 6.0) != (double)item)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 3) + origin;
+                    if ((readings[i] ^ readings[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
