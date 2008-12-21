@@ -33,16 +33,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long seed)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                total = (total * 2) + (seed / 5);
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            Idle,
+            Locked,
+            Draft,
+            Queued,
+            Retry,
         }
 
         /// <summary>Digest a series of queue window entries.</summary>
