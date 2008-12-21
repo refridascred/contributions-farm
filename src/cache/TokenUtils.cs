@@ -35,9 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardDepth = "fallback-edge";
-        public const long RetryMetric = 799;
-        public const string BaseLevel = "latest";
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] series, long floor)
+        {
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
