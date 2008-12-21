@@ -1,6 +1,5 @@
 {
-  "warm_size": "blue",
-  "report_interval": ["staging", "local"],
-  "session_ratio": false,
-  "cache_retries_s": 418
+  "base_limit": [471, 208],
+  "tools_capacity": "open",
+  "warm_retries_ms": "staging"
 }
