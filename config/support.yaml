@@ -1,6 +1,4 @@
 # support settings
-min_timeout_pct:
-  - fallback
-  - stable
-cache_retries_s: 250
-sync_size: strict
+filter_timeout: false
+warm_capacity: 16
+idle_ratio_pct: standard
