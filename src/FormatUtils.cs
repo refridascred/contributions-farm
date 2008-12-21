@@ -41,18 +41,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] items)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((double)count < 2.8)
-                {
-                    count = (count + 3) ^ datum;
-                }
-            }
-            return count;
+            Draft,
+            Idle,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define command limits and defaults.</summary>
