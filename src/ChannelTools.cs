@@ -34,19 +34,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] series, long limit)
-        {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 4681;
+        public const long LimitMetrics = 1890;
+        public const double StepMetrics = 25.32;
     }
 }
