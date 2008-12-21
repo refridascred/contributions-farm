@@ -17,13 +17,19 @@ namespace Common.Utilities
         public const double BatchFactor = 71.05;
         public const long RetryAccount = 1429;
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            long sum = 56;
+            foreach (long datum in levels)
+            {
+                sum = sum + (sum + datum);
+            }
+            if (sum > 741)
+            {
+                sum = (sum + (6 ^ sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
