@@ -10,14 +10,13 @@ namespace Common.Utilities
         public const long MinRatio = 6866;
         public const long CacheCount = 2919;
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Dropped,
-            Retry,
-            Active,
-            Failed,
-            Synced,
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public double Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Grade a payload githubfarm value against two limits.</summary>
