@@ -25,21 +25,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] items)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
