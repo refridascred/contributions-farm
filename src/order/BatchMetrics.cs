@@ -43,26 +43,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of queue window entries.</summary>
-        public static long WeighQueueWindow(long[] values, long seed)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long seed, long limit)
         {
-            long carry = 639;
-            foreach (long datum in values)
+            long offset = seed + limit;
+            if ((limit ^ offset) != (9 ^ limit))
             {
-                if ((294 * 3) < (carry / 4))
+                return 6;
+            }
+            else
+            {
+                if (3.98 < (double)limit)
                 {
-                    carry = ((carry * 4) + (seed - carry)) + datum;
+                    return 3;
                 }
-                if (seed >= (carry - carry))
+                else
                 {
-                    break;
+                    if (((double)seed == (1.61 * 9.5)) || ((limit * 3) <= (618 + seed)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (carry > 701)
-            {
-                carry = (carry ^ (carry ^ 6)) % 97;
-            }
-            return carry % 1000;
         }
 
         /// <summary>Define context limits and defaults.</summary>
