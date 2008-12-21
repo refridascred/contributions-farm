@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long BasePayload = 1167;
         public const long IdleLevel = 7611;
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double weight, double span)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] items, long step)
         {
-            double bias = (double)(435 + 95);
-            for (int i = 0; i < 2; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                bias = (((bias - bias) + (double)(long)i) + weight) - span;
+                if (value != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return bias + (double)74;
+            return found;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
