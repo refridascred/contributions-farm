@@ -82,17 +82,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepWidth = 89.61;
+        public const double BaseGithubfarm = 41.39;
+        public const string HardGithubfarm = "cached";
+        public const long IdleGithubfarm = 8033;
     }
 }
