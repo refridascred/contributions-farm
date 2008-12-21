@@ -19,19 +19,18 @@ namespace Common.Utilities
         public const double CacheRatio = 40.95;
         public const double BaseSpan = 63.58;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] samples, long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] values, long bound)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long mix = 2;
+            foreach (long sample in values)
             {
-                if (reading <= limit)
+                if ((mix / 6) >= (bound >> 4))
                 {
-                    flag = false;
-                    break;
+                    mix = ((mix + (mix + mix)) % 101) + sample;
                 }
             }
-            return flag;
+            return mix % 1000;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
