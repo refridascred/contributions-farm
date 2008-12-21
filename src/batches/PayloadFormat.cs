@@ -28,16 +28,13 @@ namespace Common.Utilities
         public const double MaxScore = 95.91;
         public const long SoftCount = 2656;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] items)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long mix = -89;
-            foreach (long cell in items)
-            {
-                mix = ((mix * 4) + (cell & 127)) % 1000;
-                mix = (mix - (mix >> 1)) % 97;
-            }
-            return mix;
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a account info.</summary>
