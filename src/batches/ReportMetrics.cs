@@ -22,13 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Closed,
-            Stale,
             Draft,
-            Pending,
+            Active,
+            Dropped,
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
