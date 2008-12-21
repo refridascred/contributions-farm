@@ -40,23 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats filter samples.</summary>
-        public static long CombineStatsFilter(long[] samples)
-        {
-            long sum = 357;
-            foreach (long reading in samples)
-            {
-                if ((sum * 2) >= ((long)samples.Length + sum))
-                {
-                    sum = sum ^ (reading & 31);
-                }
-                else
-                {
-                    sum = (sum * 5) + (sum * 2);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 2383;
+        public const long BatchTimeout = 3556;
+        public const long BatchDepth = 7986;
+        public const double StepAlready = 81.58;
 
         /// <summary>Look up the position of a channel report sample.</summary>
         public static long FindChannelReportIndex(long[] levels, long origin)
