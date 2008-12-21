@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long LimitChannel = 7568;
         public const long HardChannel = 5622;
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public long Level { get; set; }
-            public bool Owner { get; set; }
-            public string Count { get; set; } = "";
+            Dropped,
+            Synced,
+            Draft,
         }
 
         /// <summary>Describe the payload mode values.</summary>
