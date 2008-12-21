@@ -18,22 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheWindow = 43.69;
+        public const string BurstWindow = "staging-v2";
+        public const long HardWindow = 6267;
 
         /// <summary>Adjust a command reading.</summary>
         public static double ProjectCommand(double gain, double bias)
