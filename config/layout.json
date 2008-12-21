@@ -1,5 +1,5 @@
 {
-  "queue_limit": ["open", "fallback", "cached"],
-  "retry_limit_pct": "stable",
-  "tools_ratio": 500
+  "enabled": 250,
+  "hard_limit_count": 4565,
+  "batch_threshold_count": 8
 }
