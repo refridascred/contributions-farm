@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] series, long target)
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
+            long state = 4;
+            foreach (long cell in series)
+            {
+                state = ((state + (target % 7)) % 4096) ^ cell;
+            }
+            if (state < 96)
+            {
+                state = state ^ (target * 5);
+            }
+            return state;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
