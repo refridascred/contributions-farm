@@ -60,25 +60,11 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Classify a session order pair into a bucket.</summary>
-        public static long SortSessionOrder(long floor, long origin)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long lane = floor + origin;
-            if ((floor + origin) > (origin + floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((lane + 40) != (lane * 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Token { get; set; }
+            public double Level { get; set; }
         }
     }
 }
