@@ -49,22 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] values)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((496 + matches) > matches)
+                if ((long)items.Length > (cell >> 4))
                 {
-                    matches = (matches + 3) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 3) + step;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
