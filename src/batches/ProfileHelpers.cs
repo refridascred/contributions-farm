@@ -35,14 +35,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            Failed,
-            Done,
-            Closed,
-            Active,
-            Pending,
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
