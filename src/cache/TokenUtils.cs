@@ -33,21 +33,12 @@ namespace Common.Utilities
             return scale + (bias * 6.44);
         }
 
-        /// <summary>Match up window account samples.</summary>
-        public static long PairWindowAccountCount(long[] samples)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Active,
+            Pending,
         }
     }
 }
