@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every order token entry stays within the limit.</summary>
-        public static bool VerifyOrderTokenRange(long[] samples, long seed)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (entry >= seed)
+                if ((tally - 354) < item)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) + floor;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
