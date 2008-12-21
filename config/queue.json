@@ -1,10 +1,17 @@
 {
-  "base_retries": 9572,
-  "burst_timeout_count": {
-    "readonly": "legacy",
-    "verbose": false,
-    "audit": "primary",
-    "tools_retries": 30
+  "enabled": {
+    "min_window_pct": 8528,
+    "idle_capacity_count": {
+      "batch_delay_ms": 93,
+      "min_retries_pct": 18.51,
+      "account_retries": 12.59,
+      "audit": [220, 489, 421, 289],
+      "warm_ttl_ms": 9757,
+      "poll_timeout_count": true
+    },
+    "token_interval": 26
   },
-  "flush_retries_ms": [113, 166]
+  "report_ttl": 13.9,
+  "stats_size": 250,
+  "idle_size_s": "cached"
 }
