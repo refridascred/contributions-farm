@@ -40,14 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            Stale,
-            Pending,
-            Retry,
-            Dropped,
-            Draft,
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
