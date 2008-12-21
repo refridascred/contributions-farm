@@ -73,13 +73,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            Synced,
-            Draft,
-            Dropped,
-            Active,
+            Done,
+            Retry,
+            Closed,
+            Paused,
         }
     }
 }
