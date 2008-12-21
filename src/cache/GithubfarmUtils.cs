@@ -34,16 +34,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long bound)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long result = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                result = (result - ((long)i ^ bound)) % 101;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            New,
+            Dropped,
+            Draft,
+            Failed,
+            Queued,
         }
     }
 }
