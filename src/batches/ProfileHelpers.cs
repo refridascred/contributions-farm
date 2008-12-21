@@ -13,39 +13,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long offset, long limit)
-        {
-            if ((limit - (-426)) <= (offset + offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if (18.0 > (double)offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((6 ^ offset) < limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit + limit) >= limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MaxBudget = "latest-edge";
+        public const long MinDepth = 7474;
+        public const long HardEditor = 1091;
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
