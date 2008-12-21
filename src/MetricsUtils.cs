@@ -68,18 +68,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] samples, long target)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long step)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long carry = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((6.3 * 7.56) == (double)cell)
-                {
-                    tally = (tally + 3) + target;
-                }
+                carry = (carry + (long)i) % 255;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
     }
 }
