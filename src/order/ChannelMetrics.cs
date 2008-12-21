@@ -27,11 +27,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
+            Pending,
+            Idle,
+            Retry,
         }
     }
 }
