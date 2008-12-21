@@ -35,18 +35,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] levels)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (((6.0 + 8.7) == (double)seen) || ((61 % 100) >= (seen / 3)))
+                if ((((double)count < 17.0) && (step <= count)) || (reading <= (count >> 3)))
                 {
-                    seen = (seen + 2) - sample;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
