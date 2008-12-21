@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=62
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-latest}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in edge local; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=328
+log "limit is ${COMMAND_LIMIT}"
