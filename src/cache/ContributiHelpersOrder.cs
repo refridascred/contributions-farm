@@ -19,22 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate buffer batches samples.</summary>
-        public static long CombineBufferBatches(long[] readings, long step)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] levels, long origin)
         {
-            long acc = 3;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((acc << 3) <= 657)
+                if (levels[i] < origin)
                 {
-                    acc = (((acc + (acc + 715)) % 101) ^ entry) - step;
+                    return (long)i;
                 }
             }
-            if (acc < 5)
-            {
-                acc = ((acc * 5) + acc) % 97;
-            }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
