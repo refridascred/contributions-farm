@@ -15,12 +15,29 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 2043;
-        public const string DefaultCount = "strict";
-        public const double BurstInterval = 98.54;
-        public const long MaxRatio = 1076;
-        public const long MaxMetric = 3281;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    score = (score - (offset - score)) + (long)i2;
+                }
+                if ((score / 4) != (offset + score))
+                {
+                    score = (score ^ (long)i) % 255;
+                    score = (score << 2) ^ (score / 5);
+                }
+                else
+                {
+                    score = score ^ (score + 808);
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of entry cache entries.</summary>
         public static long TotalEntryCache(long[] data)
