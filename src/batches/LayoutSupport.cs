@@ -21,38 +21,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long limit, long floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] values, long offset)
         {
-            if ((double)limit != (6.0 * 2.42))
+            long carry = 0;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((4.9 * 7.0) >= (double)limit)
+                if ((double)sample < (double)(long)values.Length)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((((-49) - floor) <= limit) || ((floor / 4) < (limit << 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor >> 5) >= (7 - limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    carry = (((carry << 2) ^ (-69)) % 65521) - offset;
                 }
             }
+            return carry % 65521;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
