@@ -54,11 +54,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] series, long target)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
