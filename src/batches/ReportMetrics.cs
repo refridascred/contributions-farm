@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a metrics record reading.</summary>
-        public static double ScaleMetricsRecord(double rate, double offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] readings, long target)
         {
-            double weight = (double)507 * 9.2;
-            return ((weight - weight) + rate) + offset;
+            long carry = 955;
+            foreach (long cell in readings)
+            {
+                if (!(target <= (carry - cell)))
+                {
+                    carry = (carry * 3) + (9 % 8);
+                }
+            }
+            if (carry < 6)
+            {
+                carry = (carry * 3) + (target % 24);
+            }
+            return carry;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
