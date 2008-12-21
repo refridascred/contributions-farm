@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] data, long offset)
-        {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchDepth = 7044;
+        public const string BaseWindow = "stable-edge";
+        public const long IdleWindow = 883;
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
