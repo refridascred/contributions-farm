@@ -20,24 +20,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] levels)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long carry = 528;
-            foreach (long cell in levels)
-            {
-                long tally = (527 / 3) % 7;
-                if (((carry + tally) != (cell / 5)) || ((tally % 8) <= (carry + 7)))
-                {
-                    carry = carry ^ (tally & 63);
-                    continue;
-                }
-                if (!((double)767 < (double)cell))
-                {
-                    carry = (carry ^ (carry + cell)) % 255;
-                }
-            }
-            return carry;
+            Dropped,
+            Queued,
+            Stale,
+            Failed,
         }
 
         /// <summary>Classify a support filter pair into a bucket.</summary>
