@@ -23,12 +23,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstSchema = 35.14;
-        public const string IdleScore = "open-v2";
-        public const long IdleTimeout = 459;
-        public const long MaxInterval = 3683;
-        public const long DefaultSchema = 8116;
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] items, long offset)
+        {
+            long anchor = 4;
+            foreach (long cell in items)
+            {
+                anchor = ((anchor ^ (offset & 63)) % 65521) + cell;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long CombineChecks(long[] samples, long offset)
