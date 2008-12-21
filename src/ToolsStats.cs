@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long bound)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long result = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            public bool Flag { get; set; }
+            public string Score { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
