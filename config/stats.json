@@ -1,13 +1,9 @@
 {
-  "audit": {
-    "soft_delay_s": ["cached", "standard"],
-    "channel_capacity": ["latest", "edge"],
-    "poll_retries_ms": "primary",
-    "poll_timeout_ms": [15, 311, 483],
-    "audit": ["staging", "strict"],
-    "metric_ttl": 6387
+  "default_limit_pct": 81.38,
+  "record_ratio": {
+    "farm_timeout": 44,
+    "editor_ttl": false,
+    "default_window_ms": 7758
   },
-  "min_timeout_s": 45.24,
-  "contributi_threshold": "strict",
-  "poll_delay": 95.77
+  "base_retries_count": ["edge", "legacy", "staging", "latest"]
 }
