@@ -71,12 +71,12 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
+            Idle,
+            Active,
+            Draft,
         }
     }
 }
