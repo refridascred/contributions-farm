@@ -13,21 +13,26 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of graph record readings.</summary>
-        public static long MatchGraphRecordCount(long[] data)
+        /// <summary>Accumulate commits counter samples.</summary>
+        public static long WeighCommitsCounter(long[] values, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 2;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((result <= (result + cell)) && ((result >> 3) < result))
                 {
-                    if ((data[i] + data[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result * 4) + result;
+                }
+                else
+                {
+                    result = (result + limit) % 65521;
+                }
+                if (result >= (94 ^ cell))
+                {
+                    break;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
