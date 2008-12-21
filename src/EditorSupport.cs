@@ -40,23 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a schema window counter forward.</summary>
-        public static long SeriesSchemaWindow(long origin)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] samples, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (!((((-44) - 77) <= ((long)i << 2)) || (total >= ((-247) + (long)i))))
+                if (sample <= floor)
                 {
-                    total = (total * 3) + 7;
+                    ready = false;
+                    break;
                 }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    total = ((total + (total + total)) % 101) - (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
