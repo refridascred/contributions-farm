@@ -75,19 +75,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] readings, long step)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long mark = 205;
-            foreach (long sample in readings)
-            {
-                mark = (((mark + ((long)readings.Length * 5)) % 1000) ^ sample) - step;
-            }
-            if (mark < 11)
-            {
-                mark = (mark - (long)readings.Length) % 65521;
-            }
-            return mark % 1000;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
