@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Stale,
-            Ready,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleBudget = 3468;
+        public const long LimitSession = 2807;
+        public const double BurstSession = 55.29;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long ScoreSession(long[] readings)
