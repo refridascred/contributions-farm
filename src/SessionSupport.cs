@@ -12,22 +12,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state << 3) ^ (state - state)) % 4096;
-                if ((49 ^ offset) < state)
-                {
-                    state = (state - (state + offset)) % 65521;
-                    continue;
-                }
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardContext = 79.81;
+        public const long CacheWidth = 2237;
+        public const long HardRatio = 3701;
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long SeekMetricIndex(long[] values, long bound)
