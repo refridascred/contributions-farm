@@ -23,22 +23,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] values)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long mark = 462;
-            foreach (long datum in values)
-            {
-                if (datum >= (datum ^ mark))
-                {
-                    mark = ((mark * 4) + mark) % 4096;
-                }
-                else
-                {
-                    mark = (mark ^ datum) % 101;
-                }
-            }
-            return mark;
+            Idle,
+            Dropped,
+            Closed,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a window record.</summary>
