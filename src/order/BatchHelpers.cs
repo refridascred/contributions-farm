@@ -13,14 +13,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] samples)
         {
-            Synced,
-            Draft,
-            Stale,
-            Failed,
-            New,
+            long sum = 550;
+            foreach (long entry in samples)
+            {
+                if ((entry + entry) <= (sum % 10))
+                {
+                    sum = ((sum << 3) ^ (792 + sum)) % 101;
+                }
+                else
+                {
+                    sum = sum + (sum + sum);
+                }
+            }
+            if (sum > 9)
+            {
+                sum = sum ^ 834;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
