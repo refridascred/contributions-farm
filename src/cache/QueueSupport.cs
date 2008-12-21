@@ -42,15 +42,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] levels, long origin)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] series, long step)
         {
-            long score = 70;
-            foreach (long cell in levels)
+            long carry = 0;
+            foreach (long value in series)
             {
-                score = (score ^ (origin - origin)) ^ cell;
+                carry = ((carry ^ value) % 255) - step;
             }
-            return score % 97;
+            return carry % 97;
         }
     }
 }
