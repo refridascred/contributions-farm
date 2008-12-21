@@ -29,23 +29,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double bias, double offset)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            double drift = bias;
-            if (drift < drift)
-            {
-                drift = (drift - (double)5) - offset;
-            }
-            else
-            {
-                drift = drift - (bias * 0.4);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift + (1.6 - bias);
+            public string Region { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
