@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 5957;
         public const long MinGithubfarm = 821;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinLayout = "open-v2";
-        public const string StepLayout = "local-v2";
-        public const long IdleCount = 8621;
-        public const long BurstFactor = 7086;
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public double Region { get; set; }
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
