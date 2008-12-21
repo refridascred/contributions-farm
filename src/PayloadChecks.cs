@@ -50,19 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] items, long origin)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long carry = 78;
+            foreach (long datum in values)
             {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry - (carry / 7)) % 4096) ^ datum;
             }
-            return stale;
+            if (carry < 12)
+            {
+                carry = ((carry * 5) + (carry + carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the metric state values.</summary>
