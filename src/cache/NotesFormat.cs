@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] values)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 305;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((anchor - value) < (anchor + value))
                 {
-                    if ((values[i] ^ values[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor - (value + value)) % 1000;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Check that every schema graph entry stays within the limit.</summary>
