@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] series, long seed)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long mix = 44;
+            foreach (long cell in values)
             {
-                if (reading <= seed)
+                if (!((long)values.Length >= mix))
                 {
-                    found = false;
+                    mix = (mix ^ cell) + limit;
+                }
+                if ((9 * 4) != (cell ^ 168))
+                {
                     break;
                 }
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Hold a session snapshot.</summary>
