@@ -18,13 +18,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] series, long origin)
         {
-            Idle,
-            Failed,
-            Queued,
-            Ready,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (2.2 > (double)origin)
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
