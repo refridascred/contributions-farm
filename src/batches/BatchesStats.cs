@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
-        {
-            Pending,
-            New,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 9253;
+        public const long DefaultCache = 9743;
+        public const double SoftCache = 49.81;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool CheckGraphRange(long[] data, long limit)
