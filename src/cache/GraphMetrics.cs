@@ -20,11 +20,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepWidth = 3874;
-        public const long SoftSupport = 9247;
-        public const string BatchRatio = "local-1";
-        public const long RetryCount = 5398;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] samples, long origin)
+        {
+            long score = -8;
+            foreach (long sample in samples)
+            {
+                score = ((score << 3) ^ origin) + sample;
+            }
+            if (score > 1)
+            {
+                score = (score + (19 & 1)) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool CheckOrderBounds(long[] items, long target)
