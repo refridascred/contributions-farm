@@ -12,10 +12,16 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryScore = 41.94;
-        public const double BatchFactor = 71.05;
-        public const long RetryAccount = 1429;
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long FoldBuffer(long[] levels)
