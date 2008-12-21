@@ -22,11 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double rate, double bias)
+        /// <summary>Find the first batches session entry that matches the target.</summary>
+        public static long SeekBatchesSessionIndex(long[] readings, long offset)
         {
-            double scale = bias;
-            return scale + rate;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a profile support value against two limits.</summary>
