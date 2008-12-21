@@ -65,39 +65,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long target, long limit)
-        {
-            long bound = target + limit;
-            if ((bound << 1) < target)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((bound - bound) != (bound << 2)) && ((limit ^ bound) != (bound ^ target)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((13.0 / 2.0) < (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound - target) < (bound >> 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitPayload = 15.65;
+        public const long MaxPayload = 5963;
+        public const long SoftCount = 607;
     }
 }
