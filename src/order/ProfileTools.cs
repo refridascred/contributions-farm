@@ -21,11 +21,21 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long step)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            long mark = step;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark * 4) + mark) % 1000;
+                if (((6 + 899) <= (step % 100)) || (((long)i ^ mark) == (mark & 7)))
+                {
+                    mark = ((mark * 5) + (3 >> 4)) % 65521;
+                }
+                mark = (mark << 2) ^ (mark ^ step);
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
