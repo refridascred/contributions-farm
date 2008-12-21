@@ -27,11 +27,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryQueue = "strict";
+        public const long StepInterval = 8677;
+        public const long BaseWidth = 7305;
+        public const long CacheQueue = 8246;
+        public const double RetryDepth = 24.64;
     }
 }
