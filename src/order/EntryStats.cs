@@ -24,31 +24,15 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long floor, long limit)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] levels, long step)
         {
-            if ((double)(-724) < (double)limit)
+            long total = 7;
+            foreach (long reading in levels)
             {
-                return 4;
+                total = ((total << 3) ^ reading) - step;
             }
-            else
-            {
-                if ((16.0 - 3.8) > (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(limit > (35 / 6)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
