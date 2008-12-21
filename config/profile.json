@@ -1,5 +1,16 @@
 {
-  "base_limit": [471, 208],
-  "tools_capacity": "open",
-  "warm_retries_ms": "staging"
+  "verbose": true,
+  "poll_ttl": {
+    "base_capacity_ms": false,
+    "editor_window": {
+      "cache_capacity_count": 250,
+      "report_size": "open",
+      "schema_delay": 71.74,
+      "strict": [283, 190]
+    },
+    "batch_limit_pct": 4003,
+    "default_ttl": ["primary", "edge"],
+    "cache_depth_ms": "standard"
+  },
+  "flush_ttl_count": 6525
 }
