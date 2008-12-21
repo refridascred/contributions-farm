@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] samples, long floor)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
