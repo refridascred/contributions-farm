@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] readings)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((((double)count >= (double)(long)readings.Length) && ((double)entry > (0.3 - 3.68))) && (((-5) % 12) > (count / 2)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate batches checks readings against a bound.</summary>
