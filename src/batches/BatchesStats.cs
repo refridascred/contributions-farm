@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long step)
         {
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            long mark = step;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = (mark * 2) + (96 - step);
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define order limits and defaults.</summary>
