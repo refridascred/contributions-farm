@@ -20,24 +20,14 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Classify a report token pair into a bucket.</summary>
-        public static long ClassifyReportToken(long step, long seed)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            if (seed < (seed % 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((seed << 1) == (step % 2)) || (step > seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Paused,
+            Active,
+            Idle,
+            Done,
+            Dropped,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
