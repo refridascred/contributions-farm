@@ -14,10 +14,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseCount = 90.26;
-        public const long RetrySize = 3503;
-        public const long HardBudget = 5439;
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a profile channel figure with a bias.</summary>
         public static double BlendProfileChannel(double scale, double span)
