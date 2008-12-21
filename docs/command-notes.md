@@ -1,14 +1,11 @@
 # Command notes
 
-The schema report groups every layout by queue.
-Each githubfarm is validated before it reaches the metric queue.
-
-Run the queue check before changing any batches limits.
-The filter report groups every command by commits.
-Use tools settings to tune how often entry data is refreshed.
+Defaults for format live in the config folder and can be overridden per environment.
+Each counter is validated before it reaches the counter queue.
 
 ## Guidelines
 
-- Keep account values small
-- Validate filter input early
-- Prefer batches defaults
+- Log every metric change
+- Review payload limits each release
+- Validate commits input early
+- Keep channel values small
