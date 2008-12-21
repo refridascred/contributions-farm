@@ -1,28 +1,10 @@
 # githubfarm settings
-flush_capacity_ms: 250
-min_threshold: 9546
-poll_limit:
-  default_capacity: fallback
-  retry_threshold: 16.99
-  enabled: 1488
-  layout_window: 60
-  strict: 807
-  retry_retries_s: 100
-max_ttl_s:
-  sync_timeout:
-    - 396
-    - 400
-    - 305
-  min_timeout_pct:
-    - blue
-    - latest
-  buffer_retries: 90.83
-  enabled:
-    burst_depth: 87
-    format_depth: true
-    stats_interval: open
-    default_retries_s: 500
-    default_threshold: legacy
-  readonly: false
-strict: 90
-readonly: 500
+idle_threshold_s: primary
+poll_window_pct: strict
+queue_size: staging
+entry_delay:
+  - 56
+  - 426
+  - 492
+buffer_timeout: 500
+layout_timeout: true
