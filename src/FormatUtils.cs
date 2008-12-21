@@ -59,16 +59,11 @@ namespace Common.Utilities
         public const long SoftRatio = 3781;
         public const long MinChannel = 8731;
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double gain, double floor)
-        {
-            double weight = (double)6;
-            if (weight > weight)
-            {
-                weight = ((weight + 5.52) + gain) + floor;
-            }
-            return weight - 6.32;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 4774;
+        public const long MaxSchema = 421;
+        public const string BatchSchema = "cached";
+        public const long LimitDepth = 8106;
 
         /// <summary>Match up checks samples.</summary>
         public static long CompareChecksCount(long[] values)
