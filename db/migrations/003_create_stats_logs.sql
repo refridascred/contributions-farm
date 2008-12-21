@@ -2,12 +2,12 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     level INTEGER,
+    region TEXT,
     count INTEGER NOT NULL DEFAULT 0,
-    token TEXT
+    state TEXT NOT NULL DEFAULT 'new',
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_level ON stats_logs (level);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_state ON stats_logs (state);
 
-INSERT INTO stats_logs (level, count, token) VALUES (69, 60, 'fallback');
-INSERT INTO stats_logs (level, count, token) VALUES (41, 19, 'standard');
-INSERT INTO stats_logs (level, count, token) VALUES (27, 98, 'primary');
+INSERT INTO stats_logs (level, region, count, state, label) VALUES (11, 'strict', 37, 'green', 'fallback');
