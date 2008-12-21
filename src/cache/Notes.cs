@@ -35,15 +35,13 @@ namespace Common.Utilities
         public const double IdleWidth = 67.24;
         public const long IdleSupport = 7197;
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double ratio, double span)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            double mean = ratio;
-            if (mean < (ratio * 9.0))
-            {
-                mean = mean + 0.6;
-            }
-            return mean - (span * 20.0);
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the account state values.</summary>
