@@ -20,20 +20,19 @@ namespace Common.Utilities
         public const string BatchRatio = "local-1";
         public const long RetryCount = 5398;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] values)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] items, long seed)
         {
-            long mark = 4;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                long bound = mark * 4;
-                mark = (mark + (bound << 1)) % 97;
-                if (96 < value)
+                if (entry <= seed)
                 {
-                    mark = ((mark << 3) ^ mark) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return mark % 65521;
+            return stale;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
