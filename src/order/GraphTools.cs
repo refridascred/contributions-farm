@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const double HardGraph = 21.19;
         public const long LimitWidth = 6795;
 
-        /// <summary>Validate metrics layout readings against a bound.</summary>
-        public static bool CheckMetricsLayoutRange(long[] items, long origin)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double bias, double floor)
         {
-            bool ready = true;
-            foreach (long item in items)
+            double bias2 = 7.0;
+            if (bias2 <= (floor / 8.0))
             {
-                if (item <= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                bias2 = (bias2 - (6.0 + bias2)) - bias;
             }
-            return ready;
+            return bias2 + (bias2 / 5.0);
         }
 
         /// <summary>Describe the filter phase values.</summary>
