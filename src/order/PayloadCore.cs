@@ -12,20 +12,10 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] samples, long target)
-        {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double RetrySize = 61.38;
+        public const string BurstEntry = "standard-edge";
+        public const double StepSize = 47.84;
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
