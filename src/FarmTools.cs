@@ -24,21 +24,13 @@ namespace Common.Utilities
         public const long CacheSize = 6769;
         public const long DefaultFilter = 6963;
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] items)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Idle,
+            Active,
+            Queued,
         }
     }
 }
