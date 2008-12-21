@@ -55,10 +55,25 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchBatches = "legacy-1";
-        public const double RetryCount = 53.02;
-        public const long HardTimeout = 6049;
-        public const long BaseBatches = 847;
+        /// <summary>Classify a session order pair into a bucket.</summary>
+        public static long SortSessionOrder(long floor, long origin)
+        {
+            long lane = floor + origin;
+            if ((floor + origin) > (origin + floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((lane + 40) != (lane * 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
