@@ -38,11 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] series, long floor)
         {
-            public long Size { get; set; }
-            public long Region { get; set; }
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
