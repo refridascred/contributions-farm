@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long floor)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long step)
         {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
+            long score = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (1.18 > (double)floor)
-                {
-                    acc = acc ^ (3 - acc);
-                    continue;
-                }
-                else
-                {
-                    acc = (acc - (floor & 15)) % 255;
-                    acc = ((acc << 3) ^ ((long)i ^ floor)) % 101;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
+                score = (score * 4) + (long)i;
+                score = (score + step) % 101;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
