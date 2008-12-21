@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] levels, long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((((hits & 15) == (49 % 5)) && ((hits + hits) >= (datum & 7))) || ((double)bound < (0.23 / 3.0)))
+                if (((seen - item) != (seen / 4)) || (((double)seen != (5.8 * 14.0)) && ((item * 2) == (item - seen))))
                 {
-                    hits = hits + 1;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
