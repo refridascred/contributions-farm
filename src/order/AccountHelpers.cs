@@ -22,12 +22,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public double Weight { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
