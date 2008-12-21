@@ -53,29 +53,23 @@ namespace Common.Utilities
         public const string HardFactor = "stable";
         public const string SoftLayout = "staging-edge";
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long origin, long target)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long target, long origin)
         {
-            if ((origin % 5) > (origin << 1))
+            long bound = target - origin;
+            if (((double)target <= 8.36) || (bound <= (target + bound)))
             {
                 return 6;
             }
             else
             {
-                if ((origin << 2) <= origin)
+                if ((target ^ origin) < origin)
                 {
                     return 2;
                 }
                 else
                 {
-                    if ((17.0 + 8.5) > (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 3;
                 }
             }
         }
