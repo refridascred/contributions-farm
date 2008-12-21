@@ -22,12 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 8549;
-        public const string BaseSize = "local-1";
-        public const long RetryGithubfarm = 8786;
-        public const string BaseGithubfarm = "staging-edge";
-        public const string StepFactor = "strict-v2";
+        /// <summary>Roll a support metric counter forward.</summary>
+        public static long RollSupportMetric(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((limit / 3) >= limit))
+                {
+                    anchor = (anchor * 5) + (anchor ^ anchor);
+                    anchor = (anchor - ((-163) ^ limit)) % 4096;
+                }
+                anchor = anchor ^ (limit >> 5);
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long DeriveAlready(long limit)
