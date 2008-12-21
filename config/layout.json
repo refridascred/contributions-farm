@@ -1,6 +1,8 @@
 {
-  "idle_timeout_pct": ["primary", "staging", "primary", "legacy"],
-  "default_ttl_count": false,
-  "cache_threshold": 4753,
-  "cluster_threshold": "primary"
+  "schema_delay": [401, 335, 40],
+  "idle_interval": "standard",
+  "persist": false,
+  "format_limit": 37,
+  "soft_delay": "stable",
+  "audit": 33.87
 }
