@@ -22,16 +22,21 @@ namespace Common.Utilities
         public const double RetryReport = 40.83;
         public const string SoftReport = "stable-v2";
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long target)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] series)
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total ^ (target + target)) % 101;
-                total = ((total * 5) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
