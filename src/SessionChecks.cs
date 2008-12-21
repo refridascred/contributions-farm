@@ -36,21 +36,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Match up graph stats samples.</summary>
-        public static long CompareGraphStatsCount(long[] levels)
+        /// <summary>Digest a series of entry batch entries.</summary>
+        public static long FoldEntryBatch(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 1;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((53 * 3) < (carry - value))
                 {
-                    if ((levels[i] ^ levels[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry << 3) ^ (value << 3)) % 4096;
+                }
+                if (76 < (carry + carry))
+                {
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
     }
 }
