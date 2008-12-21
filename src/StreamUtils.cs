@@ -14,18 +14,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] levels, long seed)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long acc = -3;
-            foreach (long value in levels)
-            {
-                if (value >= acc)
-                {
-                    acc = ((acc << 3) ^ (value >> 5)) - seed;
-                }
-            }
-            return acc % 1000;
+            Retry,
+            Idle,
+            Stale,
+            Ready,
+            Done,
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
