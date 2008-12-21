@@ -23,13 +23,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long origin, long target)
         {
-            public long Level { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            if (!(target < (origin + target)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((target * 4) > (target << 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((target ^ origin) < target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (98 < (target + origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record options.</summary>
