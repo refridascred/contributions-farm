@@ -45,14 +45,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Grade a batches payload value against two limits.</summary>
+        public static long RankBatchesPayload(long bound, long seed)
         {
-            Closed,
-            Failed,
-            Synced,
-            Pending,
-            New,
+            long diff = bound + seed;
+            if ((double)diff != (2.26 - 3.1))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((diff << 1) > seed) || ((3 % 7) >= (bound + diff)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed != (5.8 - 7.3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed - bound) > (seed << 1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
