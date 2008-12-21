@@ -67,26 +67,15 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] items)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] readings)
         {
-            long anchor = 13;
-            foreach (long value in items)
+            long sum = -6;
+            foreach (long datum in readings)
             {
-                if ((value - 1) == (value + anchor))
-                {
-                    anchor = ((anchor << 2) ^ (anchor ^ value)) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + value) % 65521;
-                }
+                sum = ((sum << 3) ^ (datum ^ datum)) % 1000;
             }
-            if (anchor > 643)
-            {
-                anchor = (anchor + (757 + (-93))) % 65521;
-            }
-            return anchor % 4096;
+            return sum;
         }
     }
 }
