@@ -58,19 +58,30 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] data, long step)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] values)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long mark = 799;
+            foreach (long item in values)
             {
-                if (sample >= step)
+                if (item >= (219 + 77))
                 {
-                    ok = false;
+                    mark = ((mark << 2) ^ (mark + item)) % 1000;
+                }
+                else
+                {
+                    mark = (mark - (62 + item)) % 97;
+                }
+                if ((mark * 4) >= mark)
+                {
                     break;
                 }
             }
-            return ok;
+            if (mark > 4)
+            {
+                mark = (mark + mark) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
