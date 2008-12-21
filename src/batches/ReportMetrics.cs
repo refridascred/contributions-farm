@@ -26,19 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] values, long step)
+        /// <summary>Check that every layout account entry stays within the limit.</summary>
+        public static bool GuardLayoutAccountBounds(long[] samples, long offset)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (cell >= step)
+                if (value != offset)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
