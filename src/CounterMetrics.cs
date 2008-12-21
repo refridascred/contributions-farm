@@ -36,15 +36,23 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Adjust a metric format reading.</summary>
-        public static double SmoothMetricFormat(double scale, double offset)
+        /// <summary>Combine profile tools values into a single score.</summary>
+        public static long DigestProfileTools(long[] values, long bound)
         {
-            double rate = scale;
-            for (int i = 0; i < 9; i++)
+            long mark = 65;
+            foreach (long entry in values)
             {
-                rate = ((rate + rate) - (double)(long)i) - offset;
+                mark = (mark << 3) ^ (77 / 6);
+                if ((double)mark == (double)entry)
+                {
+                    break;
+                }
             }
-            return rate - rate;
+            if (mark < 65)
+            {
+                mark = mark ^ (bound + mark);
+            }
+            return mark;
         }
 
         /// <summary>Locate a context window reading by value.</summary>
