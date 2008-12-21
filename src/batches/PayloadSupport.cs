@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string RetryBudget = "legacy-edge";
         public const long HardSpan = 1300;
 
-        /// <summary>Audit channel session readings against a rule.</summary>
-        public static long TallyChannelSessionHits(long[] values)
+        /// <summary>Fold a list of order stats readings.</summary>
+        public static long CombineOrderStats(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long state = 92;
+            foreach (long cell in values)
             {
-                if ((sample & 127) > (sample + matches))
+                state = (state << 3) ^ (state + cell);
+                if ((double)cell >= (6.3 * 9.7))
                 {
-                    matches = matches + 3;
+                    break;
                 }
             }
-            return matches;
+            return state % 65521;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
