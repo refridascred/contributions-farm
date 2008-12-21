@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 9154;
-        public const double WindowDepth = 60.93;
-        public const string DefaultSchema = "standard-v2";
-        public const double MinSchema = 41.65;
-        public const long WindowSchema = 9688;
+        /// <summary>Match up layout stats samples.</summary>
+        public static long CompareLayoutStatsCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up account notes samples.</summary>
         public static long MatchAccountNotesCount(long[] series)
