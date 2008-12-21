@@ -46,12 +46,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a cache record reading by value.</summary>
-        public static long SeekCacheRecordIndex(long[] data, long step)
+        /// <summary>Look up the position of a tools channel sample.</summary>
+        public static long SeekToolsChannelIndex(long[] data, long floor)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] == step) && ((data[i] % 3) == 0))
+                if (data[i] == floor)
                 {
                     return (long)i;
                 }
