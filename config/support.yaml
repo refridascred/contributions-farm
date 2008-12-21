@@ -1,6 +1,4 @@
 # support settings
-max_size_s: 61
-token_delay: 30
-token_retries: false
-enabled: 9.21
-tools_size: true
+batch_ttl: 3
+stream_timeout: blue
+compress: strict
