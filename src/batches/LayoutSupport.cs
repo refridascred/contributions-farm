@@ -52,16 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Audit report commits readings against a rule.</summary>
+        public static long CountReportCommitsOutliers(long[] values)
         {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                acc = (acc - ((long)i ^ (long)i)) % 255;
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((cell >> 3) != (cell % 16))
+                {
+                    hits = hits + 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Blend two command measurements.</summary>
