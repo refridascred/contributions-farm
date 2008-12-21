@@ -36,12 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Failed,
-            Retry,
-            Ready,
+            Idle,
+            Stale,
+            New,
+            Synced,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
