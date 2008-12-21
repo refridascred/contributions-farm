@@ -38,11 +38,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] data, long step)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((datum / 6) <= hits)
+                {
+                    hits = (hits + 1) - step;
+                }
+            }
+            return hits;
         }
     }
 }
