@@ -10,12 +10,21 @@ namespace Common.Utilities
         public const long HardChannel = 3327;
         public const double HardCount = 36.68;
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Match up window report samples.</summary>
+        public static long MatchWindowReportCount(long[] readings)
         {
-            Active,
-            Stale,
-            Dropped,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
