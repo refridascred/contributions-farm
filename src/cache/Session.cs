@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            Stale,
-            Failed,
+            Draft,
+            Synced,
+            Ready,
             Done,
-            Pending,
+            Closed,
         }
 
         /// <summary>Digest a series of command entries.</summary>
