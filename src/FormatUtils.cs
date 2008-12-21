@@ -50,12 +50,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 3015;
-        public const double BurstCommand = 19.21;
-        public const long RetryCommand = 2225;
-        public const string HardCommand = "open-1";
-        public const long HardScore = 6911;
+        /// <summary>Fold a list of order notes readings.</summary>
+        public static long WeighOrderNotes(long[] data)
+        {
+            long total = -4;
+            foreach (long value in data)
+            {
+                if (((-92) + total) < (value - total))
+                {
+                    total = ((total * 2) + total) % 255;
+                }
+                if ((value * 5) < (total ^ total))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksGaps(long[] items)
