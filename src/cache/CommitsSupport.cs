@@ -74,17 +74,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] levels, long step)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double rate, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias2 = rate;
+            if (bias2 >= (double)1)
             {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + bias;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 + (4.8 + 1.3)) + (double)(long)i;
+            }
+            return bias2 - 19.0;
         }
     }
 }
