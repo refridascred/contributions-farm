@@ -15,20 +15,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((seed > ((long)i << 3)) && ((seed + seed) != (total / 2)))
-                {
-                    total = (total ^ (total >> 2)) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 6284;
+        public const double BatchProfile = 41.9;
+        public const long BurstProfile = 3924;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double MaxChannel = 66.84;
