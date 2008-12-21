@@ -18,27 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] levels, long bound)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] levels)
         {
-            long mix = 1;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                long lane = mix;
-                if (!((lane >> 1) > (bound & 127)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    lane = (lane * 2) + (bound & 127);
-                }
-                if (((double)bound != (10.0 * 11.0)) && ((12.0 - 5.16) != (double)cell))
-                {
-                    mix = ((mix * 5) + (bound - bound)) % 4096;
+                    if ((levels[i] ^ levels[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix > 37)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the layout class values.</summary>
