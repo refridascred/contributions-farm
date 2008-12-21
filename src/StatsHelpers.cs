@@ -69,11 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxFactor = 3932;
-        public const long WindowSchema = 2789;
-        public const string HardSchema = "alpha-edge";
-        public const double WindowTimeout = 53.17;
-        public const long IdleCount = 3174;
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = (anchor - ((long)i / 9)) % 97;
+                long diff = (target + (long)i) + target;
+                anchor = anchor - (target + diff);
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
