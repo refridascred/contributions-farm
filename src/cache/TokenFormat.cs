@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] series, long target)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if ((sample & 31) > (tally % 24))
+                if (sample <= seed)
                 {
-                    tally = (tally + 1) + target;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Define window limits and defaults.</summary>
