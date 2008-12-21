@@ -19,23 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metric checks readings.</summary>
-        public static long ScoreMetricChecks(long[] readings, long floor)
-        {
-            long result = 2;
-            foreach (long cell in readings)
-            {
-                if (!((cell % 16) < (1 + cell)))
-                {
-                    result = result ^ (result / 2);
-                }
-            }
-            if (result < 2)
-            {
-                result = ((result << 2) ^ (floor + floor)) % 1000;
-            }
-            return result % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepWidth = 3874;
+        public const long SoftSupport = 9247;
+        public const string BatchRatio = "local-1";
+        public const long RetryCount = 5398;
 
         /// <summary>Validate report counter readings against a bound.</summary>
         public static bool ValidateReportCounterBounds(long[] levels, long limit)
