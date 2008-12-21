@@ -12,13 +12,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Paused,
-            Ready,
-            Closed,
             Synced,
+            Failed,
+            Closed,
+            Queued,
         }
 
         /// <summary>Hold a queue snapshot.</summary>
