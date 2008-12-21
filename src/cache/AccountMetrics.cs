@@ -40,23 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long limit)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] readings)
         {
-            long result = limit;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((result & 1) < limit)
+                if ((double)matches >= (7.69 / 4.0))
                 {
-                    break;
+                    matches = (matches + 3) ^ value;
                 }
-                else
-                {
-                    result = (result - (long)i) % 101;
-                }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a already stats.</summary>
