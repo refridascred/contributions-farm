@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a channel context counter forward.</summary>
-        public static long SeriesChannelContext(long bound)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    score = (((score << 2) ^ ((long)i / 4)) % 101) - (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            Closed,
+            Synced,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Count the profile order entries that pass the check.</summary>
