@@ -38,13 +38,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Retry,
-            Failed,
-            Synced,
-            Draft,
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
     }
 }
