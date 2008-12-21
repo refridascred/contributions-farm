@@ -45,18 +45,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine schema metrics values into a single score.</summary>
-        public static long FoldSchemaMetrics(long[] items, long step)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] data)
         {
-            long total = 67;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (8.5 > (double)total)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total ^ (step ^ 455)) + reading;
+                    if ((data[i] + data[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Rank report input into a small class.</summary>
