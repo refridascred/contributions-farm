@@ -40,14 +40,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long limit, long bound)
         {
-            Ready,
-            Dropped,
-            Paused,
-            Locked,
-            Synced,
+            if ((856 * 2) < (bound % 64))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)bound < (7.3 * 6.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((limit + limit) > (limit - (-44))) && ((limit / 6) == (469 - 115)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
