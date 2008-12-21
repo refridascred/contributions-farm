@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] samples, long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] series)
         {
             long seen = 0;
-            foreach (long entry in samples)
+            foreach (long reading in series)
             {
-                if ((double)bound < (4.2 + 15.0))
+                if ((double)seen != (8.4 + 17.0))
                 {
-                    seen = (seen + 2) ^ entry;
+                    seen = (seen + 2) - reading;
                 }
             }
             return seen;
