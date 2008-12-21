@@ -36,38 +36,14 @@ namespace Common.Utilities
         public const long RetryBatch = 7642;
         public const long HardCount = 8548;
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long origin, long floor)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            if (floor >= (origin & 7))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((origin % 10) <= (origin - origin)) || ((double)30 <= (double)origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((0 + origin) < floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((1.0 * 8.64) > (double)origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Ready,
+            Synced,
+            Queued,
+            Done,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
