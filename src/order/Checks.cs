@@ -44,11 +44,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryCounter = "cached-1";
-        public const double BurstSize = 89.88;
-        public const long BurstCounter = 2969;
-        public const string DefaultSize = "latest-1";
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
