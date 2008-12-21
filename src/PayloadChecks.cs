@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] samples, long floor)
         {
-            Idle,
-            New,
-            Stale,
-            Closed,
-            Draft,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (hits < (floor - hits))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
