@@ -16,10 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxWidth = 9199;
-        public const double DefaultCommand = 24.9;
-        public const long WindowCommand = 3253;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 6271;
+        public const long IdleToken = 7627;
+        public const long BurstToken = 2690;
+        public const long BatchDepth = 4383;
+        public const long DefaultWidth = 7646;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long RollSession(long step)
