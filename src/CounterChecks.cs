@@ -38,19 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] series, long floor)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long anchor = 5;
+            foreach (long entry in samples)
             {
-                if (datum >= floor)
+                if ((entry - anchor) < entry)
                 {
-                    ok = false;
-                    break;
+                    anchor = ((anchor << 3) ^ entry) % 101;
                 }
             }
-            return ok;
+            return anchor % 65521;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
