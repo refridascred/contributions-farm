@@ -31,19 +31,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] series)
+        /// <summary>Compare every pair of already filter readings.</summary>
+        public static long MatchAlreadyFilterCount(long[] samples)
         {
-            long anchor = 29;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor + (sample / 6)) % 255;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (anchor < 256)
-            {
-                anchor = ((anchor << 3) ^ (anchor * 2)) % 1000;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the layout state values.</summary>
