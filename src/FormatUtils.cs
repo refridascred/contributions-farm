@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] levels)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] data, long floor)
         {
-            long acc = 37;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((double)acc < 7.95)
+                if (value < floor)
                 {
-                    acc = (((acc * 3) + acc) % 97) + cell;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc >> 2)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (acc < 9)
-            {
-                acc = (acc + (acc % 10)) % 1000;
-            }
-            return acc;
+            return ok;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
