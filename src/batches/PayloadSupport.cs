@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const string RetryBudget = "legacy-edge";
         public const long HardSpan = 1300;
 
-        /// <summary>Fold a list of order stats readings.</summary>
-        public static long CombineOrderStats(long[] values)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] samples, long floor)
         {
-            long state = 92;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                state = (state << 3) ^ (state + cell);
-                if ((double)cell >= (6.3 * 9.7))
+                if (cell != floor)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return state % 65521;
+            return flag;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
