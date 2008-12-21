@@ -34,23 +34,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long limit)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((double)limit < (double)82)
-                {
-                    total = total + (limit / 6);
-                }
-                else
-                {
-                    total = (total + total) % 255;
-                }
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public bool Ratio { get; set; }
+            public double Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
