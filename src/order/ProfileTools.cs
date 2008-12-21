@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            Queued,
-            Stale,
-            Ready,
-            Draft,
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public double Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a notes snapshot.</summary>
