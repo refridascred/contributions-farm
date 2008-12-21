@@ -1,17 +1,12 @@
 {
-  "context_ttl": 100,
-  "contributi_capacity": {
-    "batch_depth_ms": "eu-west",
-    "poll_size_s": 500,
-    "base_size": {
-      "warm_threshold": 19.88,
-      "base_delay_s": 7245,
-      "base_timeout": "fallback",
-      "soft_interval_s": ["eu-west", "eu-west", "blue"],
-      "cache_capacity_count": 1480,
-      "payload_timeout": 771
-    }
-  },
-  "verbose": 47,
-  "default_size_ms": "blue"
+  "retry_retries_s": "staging",
+  "audit": true,
+  "verbose": 1864,
+  "dry_run": 9879,
+  "base_delay_count": 100,
+  "batches_interval": {
+    "soft_limit_pct": ["stable", "fallback", "open"],
+    "min_size": "open",
+    "dry_run": 6382
+  }
 }
