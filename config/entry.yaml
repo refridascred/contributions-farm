@@ -1,6 +1,5 @@
 # entry settings
-flush_interval_count: edge
-batch_ttl: 500
-poll_ttl_ms: staging
-enabled: latest
-min_limit_ms: cached
+base_limit_pct: 17
+retry_capacity_ms: 500
+dry_run: 91
+soft_delay_count: 30
