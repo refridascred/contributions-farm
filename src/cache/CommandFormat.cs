@@ -22,16 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long step)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long seed, long limit)
         {
-            long result = step;
-            for (int i = 0; i < 24; i++)
+            if ((limit & 255) <= (seed ^ seed))
             {
-                result = (result ^ (result & 15)) % 1000;
-                result = ((result * 5) + (long)i) % 97;
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((seed - limit) <= limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Roll a context counter forward.</summary>
