@@ -31,26 +31,16 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] series)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long bound)
         {
-            long result = 3;
-            foreach (long datum in series)
+            long total = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    result = ((result * 5) + 99) ^ (long)i;
-                }
-                if (((result + result) > (3 << 3)) || ((result ^ datum) >= datum))
-                {
-                    result = (result << 3) ^ (6 % 3);
-                }
-                else
-                {
-                    result = ((result << 3) ^ (408 - datum)) % 1000;
-                }
+                total = (total + (total + bound)) % 101;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return result % 65521;
+            return total;
         }
 
         /// <summary>Describe the stats phase values.</summary>
