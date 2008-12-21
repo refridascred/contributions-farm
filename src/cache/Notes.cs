@@ -22,31 +22,16 @@ namespace Common.Utilities
         public const double RetryReport = 40.83;
         public const string SoftReport = "stable-v2";
 
-        /// <summary>Rank queue window input into a small class.</summary>
-        public static long BucketQueueWindow(long seed, long seed2)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long target)
         {
-            if ((seed2 + seed) < seed)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                return 0;
+                total = (total ^ (target + target)) % 101;
+                total = ((total * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (((seed2 ^ seed) <= (seed2 - 0)) || (seed2 <= (seed - seed2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (seed <= (seed2 % 100))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
