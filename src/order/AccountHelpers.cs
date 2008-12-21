@@ -95,13 +95,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] samples)
         {
-            Queued,
-            Dropped,
-            Draft,
-            Idle,
+            long sum = 115;
+            foreach (long entry in samples)
+            {
+                long gap = entry;
+                if (((sum + gap) == ((long)samples.Length << 1)) || (gap > (gap >> 4)))
+                {
+                    sum = sum + gap;
+                }
+                else
+                {
+                    sum = sum - (sum % 12);
+                }
+                sum = (sum - (sum + entry)) % 101;
+            }
+            return sum;
         }
     }
 }
