@@ -51,10 +51,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 7787;
-        public const double StepLevel = 26.02;
-        public const long BaseRatio = 1834;
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    total = (total - origin) - (long)i2;
+                }
+                total = total - ((long)i & 63);
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long LocateEntryIndex(long[] samples, long step)
