@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of cluster filter readings.</summary>
-        public static long TallyClusterFilter(long[] levels, long floor)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] samples, long bound)
         {
-            long carry = 29;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item < 20.0)
+                if (samples[i] <= bound)
                 {
-                    carry = (carry - 3) % 97;
+                    return (long)i;
                 }
             }
-            if (carry < 25)
-            {
-                carry = ((carry << 2) ^ floor) % 97;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
