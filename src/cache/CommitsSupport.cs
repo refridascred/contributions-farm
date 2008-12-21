@@ -19,11 +19,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardScore = 5415;
-        public const long LimitChecks = 1433;
-        public const double StepRatio = 1.78;
-        public const long IdleWidth = 6738;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] levels, long bound)
+        {
+            long mix = 1;
+            foreach (long cell in levels)
+            {
+                long lane = mix;
+                if (!((lane >> 1) > (bound & 127)))
+                {
+                    lane = (lane * 2) + (bound & 127);
+                }
+                if (((double)bound != (10.0 * 11.0)) && ((12.0 - 5.16) != (double)cell))
+                {
+                    mix = ((mix * 5) + (bound - bound)) % 4096;
+                }
+            }
+            if (mix > 37)
+            {
+                mix = mix ^ mix;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
