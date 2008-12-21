@@ -31,23 +31,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double bias, double bias2)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            double bias3 = bias;
-            if (bias3 < (double)421)
-            {
-                bias3 = bias3 + bias2;
-            }
-            else
-            {
-                bias3 = bias3 + (16.0 * 2.7);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias3 = (bias3 + (bias2 * 17.0)) + (double)(long)i;
-            }
-            return bias3 - 3.0;
+            Retry,
+            Pending,
+            Ready,
+            Failed,
+            Done,
         }
     }
 }
