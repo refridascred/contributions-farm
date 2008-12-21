@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultFormat = "latest-edge";
-        public const long LimitFormat = 3741;
-        public const string CacheFormat = "legacy-v2";
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] data, long seed)
+        {
+            long anchor = 882;
+            foreach (long value in data)
+            {
+                anchor = (((anchor * 3) + (seed - seed)) % 1000) + value;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Adjust a tools reading.</summary>
         public static double BlendTools(double ratio, double bias)
