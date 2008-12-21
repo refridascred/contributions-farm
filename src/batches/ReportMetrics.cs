@@ -22,17 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a window record reading by value.</summary>
-        public static long FindWindowRecordIndex(long[] items, long step)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = -71;
+            foreach (long entry in values)
             {
-                if ((items[i] <= step) && ((items[i] % 5) != 0))
+                if ((39 >> 2) < (result << 2))
                 {
-                    return (long)i;
+                    result = (result ^ bound) + entry;
                 }
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
