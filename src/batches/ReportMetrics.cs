@@ -36,13 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long seed)
         {
-            Active,
-            Synced,
-            Stale,
-            Paused,
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((long)i << 3) == (carry % 2))
+                {
+                    carry = (carry ^ (82 - (long)i)) % 97;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
