@@ -14,22 +14,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the profile order entries that pass the check.</summary>
-        public static long AuditProfileOrderOutliers(long[] series)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (((252 + tally) >= (tally ^ tally)) || (tally >= sample))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Active,
+            Draft,
+            Retry,
+            Paused,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
