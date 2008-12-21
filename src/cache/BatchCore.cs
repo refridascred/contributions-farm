@@ -37,21 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up commits schema samples.</summary>
-        public static long PairCommitsSchemaCount(long[] levels)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -527;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)mark != (6.66 / 9.0)))
                 {
-                    if ((levels[i] + levels[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark << 3) ^ (mark + entry);
+                }
+                if ((entry - entry) > (entry & 31))
+                {
+                    mark = (mark - (mark << 1)) % 101;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
