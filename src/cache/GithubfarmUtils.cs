@@ -19,19 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferLimits(long[] levels, long floor)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long floor, long step)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            if ((5 << 2) > (floor * 4))
             {
-                if (entry > floor)
+                return 8;
+            }
+            else
+            {
+                if (floor > (step << 2))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return found;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
