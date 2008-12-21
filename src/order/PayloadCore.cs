@@ -19,13 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] items)
         {
-            Closed,
-            Dropped,
-            Failed,
-            Retry,
+            long acc = -2;
+            foreach (long datum in items)
+            {
+                if (((double)acc < (5.0 / 9.0)) && (acc <= (99 + 825)))
+                {
+                    break;
+                }
+                if ((acc ^ acc) < (acc + datum))
+                {
+                    acc = (acc + datum) % 97;
+                }
+                if (!((datum >> 4) < (acc / 6)))
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
