@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] items)
+        /// <summary>Project the next editor metrics value.</summary>
+        public static double ProjectEditorMetrics(double weight, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = (double)(391 + (-23));
+            if (scale >= (bias - bias))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale - (double)2;
             }
-            return hits;
+            else
+            {
+                scale = scale - weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (scale + scale)) + (double)(long)i;
+            }
+            return scale + (1.7 * 18.0);
         }
 
         /// <summary>Project the next order value.</summary>
