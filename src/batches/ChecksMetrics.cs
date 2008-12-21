@@ -92,13 +92,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Count cluster window pairs that satisfy a relation.</summary>
+        public static long OverlapClusterWindowCount(long[] readings)
         {
-            public double Region { get; set; }
-            public string Label { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
