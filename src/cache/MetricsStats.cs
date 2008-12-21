@@ -31,10 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 7039;
-        public const long MinDepth = 8604;
-        public const double BaseCounter = 59.4;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardWidth = "standard-edge";
+        public const long SoftScore = 9469;
+        public const double MinScore = 48.28;
+        public const string LimitSupport = "stable-edge";
 
         /// <summary>Adjust a graph contributi reading.</summary>
         public static double AdjustGraphContributi(double bias, double offset)
