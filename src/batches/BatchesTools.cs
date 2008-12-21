@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            Stale,
-            Done,
-            Failed,
-            Dropped,
-            Pending,
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
