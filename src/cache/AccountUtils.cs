@@ -20,16 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 7623;
+        public const long MinEntry = 4080;
+        public const long BatchEntry = 392;
+        public const long BaseEntry = 2060;
+        public const long BatchBudget = 3405;
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
