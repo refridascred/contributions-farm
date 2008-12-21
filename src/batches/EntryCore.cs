@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] levels, long target)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target - datum) <= target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((readings[i] - readings[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many command token samples are out of range.</summary>
