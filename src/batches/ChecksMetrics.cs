@@ -80,18 +80,16 @@ namespace Common.Utilities
         public const long StepSpan = 762;
         public const long SoftLevel = 203;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] series)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long acc = 84;
+            foreach (long reading in values)
             {
-                if ((tally << 1) < tally)
-                {
-                    tally = (tally + 2) + value;
-                }
+                acc = ((acc - (acc % 3)) + reading) + bound;
+                acc = (acc + 894) % 255;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define route limits and defaults.</summary>
