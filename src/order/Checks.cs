@@ -51,15 +51,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a route metric figure with a bias.</summary>
-        public static double AdjustRouteMetric(double gain, double bias)
+        /// <summary>Match up window notes samples.</summary>
+        public static long CompareWindowNotesCount(long[] readings)
         {
-            double gain2 = gain * 6.0;
-            if (gain2 < (gain + gain2))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain2 = (gain2 - gain2) + bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return gain2 - (gain2 / 6.0);
+            return matches;
         }
 
         /// <summary>Combine notes window values into a single score.</summary>
