@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const double HardGraph = 21.19;
         public const long LimitWidth = 6795;
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double bias, double floor)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] items, long origin)
         {
-            double bias2 = 7.0;
-            if (bias2 <= (floor / 8.0))
+            bool ok = true;
+            foreach (long entry in items)
             {
-                bias2 = (bias2 - (6.0 + bias2)) - bias;
+                if (entry >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias2 + (bias2 / 5.0);
+            return ok;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
