@@ -1,6 +1,17 @@
 # entry settings
-persist: blue
-compress: staging
-enabled: true
-default_threshold_pct: open
-layout_retries: 3582
+default_delay_s: 30
+dry_run: false
+flush_timeout_ms:
+  base_timeout_pct:
+    graph_window: blue
+    idle_delay: cached
+    soft_threshold_pct: standard
+    farm_retries: 94.39
+    poll_limit_count: true
+  dry_run: primary
+  idle_capacity_count: 60
+max_ttl: local
+batches_limit: eu-west
+verbose:
+  - edge
+  - fallback
