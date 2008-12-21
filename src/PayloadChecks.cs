@@ -45,23 +45,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double bias, double span)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long seed)
         {
-            double drift = span * 9.6;
-            if (drift < (double)211)
+            long mark = seed;
+            for (int i = 0; i < 17; i++)
             {
-                drift = drift + bias;
+                if (seed >= (mark ^ seed))
+                {
+                    mark = (mark - mark) % 4096;
+                    mark = (mark - (seed ^ seed)) % 255;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (1.0 / 7.0)) + (double)(long)i;
-            }
-            return drift + span;
+            return mark;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
