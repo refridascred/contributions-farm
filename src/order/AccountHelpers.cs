@@ -39,20 +39,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double scale, double span)
-        {
-            double rate = 4.5;
-            if (rate < scale)
-            {
-                rate = (rate + (scale * 3.95)) - span;
-            }
-            else
-            {
-                rate = rate - (double)1;
-            }
-            return rate - (rate - 7.27);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 9687;
+        public const long MaxCount = 2622;
+        public const double HardWidth = 58.97;
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
