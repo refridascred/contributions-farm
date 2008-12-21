@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west cached; do
+for item in edge latest staging; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+COMMAND_LIMIT=380
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-stable}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
