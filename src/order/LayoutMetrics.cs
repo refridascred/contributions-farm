@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] levels, long floor)
         {
-            Pending,
-            Closed,
-            Synced,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (!((floor - 7) != (item << 3)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a notes options.</summary>
