@@ -67,10 +67,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinLevel = 98.23;
-        public const long CacheWidth = 1811;
-        public const string MinSchema = "local-edge";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 3524;
+        public const double WindowTimeout = 65.02;
+        public const double RetryContext = 59.13;
+        public const long MinContext = 4409;
+        public const long BaseBudget = 4607;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyOutliers(long[] data, long bound)
