@@ -19,19 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double rate, double floor)
+        /// <summary>Derive the next metric graph value from a seed.</summary>
+        public static long IterateMetricGraph(long offset)
         {
-            double scale = rate;
-            if (scale >= (double)(-246))
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
             {
-                scale = (scale + (double)30) + floor;
+                sum = (sum * 4) + sum;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (scale - 3.33)) + (double)(long)i;
-            }
-            return scale - (scale * 7.7);
+            return sum;
         }
 
         /// <summary>Describe the batch class values.</summary>
