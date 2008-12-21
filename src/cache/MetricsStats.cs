@@ -87,21 +87,15 @@ namespace Common.Utilities
             return weight + (19.0 - scale);
         }
 
-        /// <summary>Count account checks pairs that satisfy a relation.</summary>
-        public static long MatchAccountChecksCount(long[] series)
+        /// <summary>Roll a route queue counter forward.</summary>
+        public static long StepRouteQueue(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
     }
 }
