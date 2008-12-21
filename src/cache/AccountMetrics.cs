@@ -61,32 +61,19 @@ namespace Common.Utilities
         public const string BatchSize = "legacy-1";
         public const long DefaultEditor = 1410;
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long limit, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] values, long floor)
         {
-            long slot = limit ^ seed;
-            if (seed < (limit + slot))
+            bool valid = true;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((4 & 15) <= limit)
+                if (entry > floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (limit < (seed ^ slot))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
