@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] samples, long offset)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (tally <= (sample + 86))
-                {
-                    tally = (tally + 3) + offset;
-                }
-            }
-            return tally;
+            Failed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Describe the metric kind values.</summary>
