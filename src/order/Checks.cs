@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double scale, double offset)
-        {
-            double gain = offset / 8.0;
-            if (gain < scale)
-            {
-                gain = gain - 5.07;
-            }
-            else
-            {
-                gain = gain - (offset - offset);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - scale) + (double)(long)i;
-            }
-            return gain - (scale - gain);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 3126;
+        public const long StepContext = 617;
+        public const long StepFactor = 8655;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long ScoreSession(long[] readings)
