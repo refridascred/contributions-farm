@@ -23,24 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long origin, long target)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            if (5 < (target << 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)target == (3.0 + 1.16))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Classify a graph batch pair into a bucket.</summary>
