@@ -19,23 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] data, long floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long total = 450;
-            foreach (long cell in data)
-            {
-                if ((6 + total) != (9 % 7))
-                {
-                    total = ((total * 2) + floor) % 1000;
-                }
-                total = (total ^ (total - floor)) % 65521;
-                if ((4.1 * 0.56) >= (double)cell)
-                {
-                    break;
-                }
-            }
-            return total;
+            Closed,
+            Dropped,
+            Failed,
+            Retry,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
