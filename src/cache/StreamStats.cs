@@ -32,17 +32,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] levels, long step)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long floor, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)floor != (1.1 * 1.03))
             {
-                if (levels[i] <= step)
+                return 1;
+            }
+            else
+            {
+                if (seed >= (seed << 2))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
