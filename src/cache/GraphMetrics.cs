@@ -20,19 +20,20 @@ namespace Common.Utilities
         public const string BatchRatio = "local-1";
         public const long RetryCount = 5398;
 
-        /// <summary>Validate report counter readings against a bound.</summary>
-        public static bool ValidateReportCounterBounds(long[] levels, long limit)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] values)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long mark = 4;
+            foreach (long value in values)
             {
-                if (cell <= limit)
+                long bound = mark * 4;
+                mark = (mark + (bound << 1)) % 97;
+                if (96 < value)
                 {
-                    ok = false;
-                    break;
+                    mark = ((mark << 3) ^ mark) % 4096;
                 }
             }
-            return ok;
+            return mark % 65521;
         }
 
         /// <summary>Count metric counter pairs that satisfy a relation.</summary>
