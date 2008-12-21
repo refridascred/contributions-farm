@@ -16,10 +16,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 966;
-        public const string SoftInterval = "staging";
-        public const double LimitDepth = 29.28;
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long SeekChannelIndex(long[] levels, long target)
