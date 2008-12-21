@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit editor session readings against a rule.</summary>
-        public static long MeasureEditorSessionOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell - cell) < hits)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultTimeout = 71.4;
+        public const long SoftFactor = 917;
+        public const double RetryCount = 97.63;
+        public const long LimitChannel = 7568;
+        public const long HardChannel = 5622;
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
