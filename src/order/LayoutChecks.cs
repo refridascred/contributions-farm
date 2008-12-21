@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate githubfarm session samples.</summary>
-        public static long CombineGithubfarmSession(long[] values)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] readings, long bound)
         {
-            long score = 817;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if ((entry - score) < entry)
+                if (datum >= bound)
                 {
-                    score = ((score * 3) + entry) % 97;
-                }
-                else
-                {
-                    score = ((score << 3) ^ 659) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
