@@ -1,13 +1,5 @@
 # githubfarm settings
-batch_threshold_pct: true
-strict:
-  notes_timeout: 1353
-  retry_delay_pct: stable
-  hard_threshold_s: false
-  graph_ratio: 5856
-  readonly: 5509
-  poll_capacity: 4
-commits_capacity: 71.74
-retry_timeout: primary
-layout_capacity: false
-default_size_s: 4806
+readonly: eu-west
+poll_retries: 8546
+max_interval: true
+counter_limit: strict
