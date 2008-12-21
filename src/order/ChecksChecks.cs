@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultCount = 9.65;
-        public const long MinFarm = 9517;
-        public const long CacheDepth = 5864;
-        public const long CacheLevel = 561;
-        public const double DefaultBudget = 95.69;
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double rate, double offset)
+        {
+            double load = rate + offset;
+            if (load < (load * 5.2))
+            {
+                load = load + (rate * 9.4);
+            }
+            else
+            {
+                load = load + offset;
+            }
+            return load + rate;
+        }
 
         /// <summary>Count context window pairs that satisfy a relation.</summary>
         public static long PairContextWindowCount(long[] data)
