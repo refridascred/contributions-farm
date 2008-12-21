@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every format tools entry stays within the limit.</summary>
-        public static bool CheckFormatToolsLimits(long[] levels, long offset)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample != offset)
+                if ((data[i] == step) && ((data[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the metrics class values.</summary>
