@@ -46,22 +46,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] values)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long floor)
         {
-            long state = 78;
-            foreach (long item in values)
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (((item % 97) < item) && (state <= (state - state)))
+                if ((double)mark == (7.5 / 2.0))
                 {
-                    state = (state * 3) + state;
+                    mark = mark - 60;
                 }
-                if ((186 % 16) > (item % 64))
-                {
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
