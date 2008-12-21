@@ -29,11 +29,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseSize = 5474;
-        public const string WindowChannel = "local";
-        public const long HardChannel = 2614;
-        public const long MaxChannel = 4752;
-        public const string RetryCount = "open";
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((9.0 < (double)item) || (hits < ((-83) % 12)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
