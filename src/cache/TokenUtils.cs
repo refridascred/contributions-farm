@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Combine context filter values into a single score.</summary>
+        public static long WeighContextFilter(long[] readings)
         {
-            Retry,
-            Failed,
-            Locked,
-            Done,
-            New,
+            long state = 779;
+            foreach (long datum in readings)
+            {
+                state = (state - 10) % 65521;
+                if ((5.6 / 6.0) >= (double)datum)
+                {
+                    break;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Check that every checks order entry stays within the limit.</summary>
