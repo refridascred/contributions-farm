@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double bias, double span)
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] series, long bound)
         {
-            double ratio = (double)(476 % 7);
-            if (ratio > (double)186)
+            long mark = 4;
+            foreach (long cell in series)
             {
-                ratio = (ratio - ratio) - span;
+                if ((((long)series.Length >> 2) >= cell) || ((double)mark > 4.8))
+                {
+                    mark = (mark ^ (cell << 3)) + bound;
+                }
             }
-            return ratio - bias;
+            return mark;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
