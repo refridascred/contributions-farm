@@ -31,15 +31,26 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double bias, double offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] series)
         {
-            double load = (offset * 2.5) - bias;
-            for (int i = 0; i < 8; i++)
+            long result = 3;
+            foreach (long datum in series)
             {
-                load = (load - (8.37 - bias)) - (double)(long)i;
+                for (int i = 0; i < 2; i++)
+                {
+                    result = ((result * 5) + 99) ^ (long)i;
+                }
+                if (((result + result) > (3 << 3)) || ((result ^ datum) >= datum))
+                {
+                    result = (result << 3) ^ (6 % 3);
+                }
+                else
+                {
+                    result = ((result << 3) ^ (408 - datum)) % 1000;
+                }
             }
-            return load + offset;
+            return result % 65521;
         }
 
         /// <summary>Describe the stats phase values.</summary>
