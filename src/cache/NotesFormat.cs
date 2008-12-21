@@ -19,19 +19,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every schema graph entry stays within the limit.</summary>
-        public static bool VerifySchemaGraphBounds(long[] series, long step)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Grade a format value against two limits.</summary>
