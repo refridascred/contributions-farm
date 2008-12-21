@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinBudget = 8253;
-        public const long CacheTools = 4938;
-        public const long DefaultInterval = 8252;
-        public const string MinWidth = "cached-v2";
-        public const long DefaultLevel = 7678;
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public string Ratio { get; set; } = "";
+            public double Rank { get; set; }
+            public long Region { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long MatchToolsCount(long[] samples)
