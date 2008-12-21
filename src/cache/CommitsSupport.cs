@@ -25,17 +25,13 @@ namespace Common.Utilities
         public const double StepRatio = 1.78;
         public const long IdleWidth = 6738;
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] series, long seed)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > seed) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Locked,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the batch level values.</summary>
