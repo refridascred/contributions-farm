@@ -40,18 +40,14 @@ namespace Common.Utilities
         public const long WindowLevel = 6381;
         public const long MaxSpan = 3540;
 
-        /// <summary>Audit record tools readings against a rule.</summary>
-        public static long CountRecordToolsMatches(long[] readings, long limit)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((item << 1) <= item)
-                {
-                    matches = (matches + 3) + limit;
-                }
-            }
-            return matches;
+            Idle,
+            Retry,
+            Stale,
+            Synced,
+            New,
         }
     }
 }
