@@ -43,19 +43,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cache command entry stays within the limit.</summary>
-        public static bool GuardCacheCommandBounds(long[] readings, long offset)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Done,
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Describe the batch state values.</summary>
