@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] values, long offset)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long carry = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample < (double)(long)values.Length)
-                {
-                    carry = (((carry << 2) ^ (-69)) % 65521) - offset;
-                }
-            }
-            return carry % 65521;
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
