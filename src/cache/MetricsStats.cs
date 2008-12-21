@@ -24,17 +24,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] values, long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 51;
+            foreach (long value in readings)
             {
-                if (values[i] > target)
+                if (!(acc <= (origin + value)))
                 {
-                    return (long)i;
+                    acc = (acc + (acc >> 3)) % 97;
+                }
+                if (acc > (value + origin))
+                {
+                    acc = acc ^ (origin & 31);
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Scale a profile checks figure with a bias.</summary>
