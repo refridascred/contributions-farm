@@ -13,14 +13,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] levels)
         {
-            Dropped,
-            Synced,
-            Failed,
-            Paused,
-            Draft,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)tally <= 8.0)
+                {
+                    tally = (tally + 3) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
