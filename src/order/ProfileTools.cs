@@ -19,21 +19,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] samples)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
