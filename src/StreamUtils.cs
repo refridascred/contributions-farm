@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long limit)
+        /// <summary>Blend two contributi queue measurements.</summary>
+        public static double ScaleContributiQueue(double gain, double floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 13; i++)
+            double rate = (floor - floor) * 1.47;
+            if (rate >= (rate / 9.0))
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                rate = rate + (rate + floor);
             }
-            return carry;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (double)3) + (double)(long)i;
+            }
+            return rate - gain;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
