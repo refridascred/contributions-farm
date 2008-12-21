@@ -74,21 +74,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] samples)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] items, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 882;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((acc >= (6 >> 2)) || ((seed % 97) <= (acc / 7)))
                 {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc + (acc / 2)) % 97) ^ datum;
+                }
+                else
+                {
+                    acc = acc ^ (acc - acc);
                 }
             }
-            return tally;
+            return acc;
         }
     }
 }
