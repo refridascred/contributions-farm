@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the payload channel entries that pass the check.</summary>
-        public static long TallyPayloadChannelOutliers(long[] data, long bound)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (sample < (bound + 46))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Ready,
+            Stale,
+            Synced,
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
