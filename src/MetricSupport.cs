@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Paused,
-            Pending,
-            Idle,
-            Done,
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
