@@ -36,12 +36,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] items, long bound)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] <= bound) && ((items[i] % 2) != 0))
+                if ((levels[i] <= target) && ((levels[i] % 5) == 0))
                 {
                     return (long)i;
                 }
