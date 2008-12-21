@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] series, long floor)
+        /// <summary>Scale a commits counter figure with a bias.</summary>
+        public static double SmoothCommitsCounter(double scale, double bias)
         {
-            bool found = true;
-            foreach (long cell in series)
+            double mean = (bias - scale) * 9.95;
+            if (mean > (mean * 3.0))
             {
-                if (cell <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                mean = mean - (mean * 9.7);
             }
-            return found;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean - (scale / 9.0);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
