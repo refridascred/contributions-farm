@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long DefaultInterval = 8539;
         public const long MaxLevel = 1315;
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public bool Offset { get; set; }
-            public double Token { get; set; }
+            Done,
+            Idle,
+            Active,
         }
 
         /// <summary>Describe the graph kind values.</summary>
