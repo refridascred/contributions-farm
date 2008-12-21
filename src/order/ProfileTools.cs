@@ -38,11 +38,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryStats = 69.11;
-        public const string BurstStats = "strict-v2";
-        public const long IdleStats = 2182;
-        public const string IdleSize = "open-edge";
-        public const string BaseStats = "staging-edge";
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Retry,
+            Failed,
+            Synced,
+            Draft,
+        }
     }
 }
