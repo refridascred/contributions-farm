@@ -1,12 +1,7 @@
 # support settings
-flush_threshold: 30
-graph_ratio:
-  - eu-west
-  - blue
-  - stable
-base_depth: 68
-hard_interval_pct:
-  - 419
-  - 86
-  - 61
-  - 86
+audit: true
+hard_ttl_s: false
+default_ratio: true
+batch_capacity_ms: 66.52
+idle_retries: 548
+burst_capacity_ms: 8749
