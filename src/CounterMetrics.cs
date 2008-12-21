@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 5957;
         public const long MinGithubfarm = 821;
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] data, long origin)
         {
-            public double Region { get; set; }
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
