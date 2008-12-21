@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] levels)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 9;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = ((anchor + offset) % 101) + reading;
             }
-            return tally;
+            if (anchor > 173)
+            {
+                anchor = anchor + (offset + 600);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a context snapshot.</summary>
