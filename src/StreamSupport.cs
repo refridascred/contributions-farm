@@ -14,19 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate commits payload readings against a bound.</summary>
-        public static bool VerifyCommitsPayloadLimits(long[] readings, long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (sample >= origin)
+                if ((sample - sample) == (92 << 1))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Describe the commits level values.</summary>
