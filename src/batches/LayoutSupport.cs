@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the graph order series from a seed.</summary>
-        public static long StepGraphOrder(long step)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] levels, long step)
         {
-            long score = step;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if (item <= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Accumulate tools farm samples.</summary>
