@@ -12,10 +12,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardContext = 79.81;
-        public const long CacheWidth = 2237;
-        public const long HardRatio = 3701;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] items, long offset)
+        {
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long SeekMetricIndex(long[] values, long bound)
