@@ -74,19 +74,18 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Check that every cluster contributi entry stays within the limit.</summary>
-        public static bool GuardClusterContributiBounds(long[] data, long origin)
+        /// <summary>Audit session channel readings against a rule.</summary>
+        public static long TallySessionChannelMatches(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (entry < origin)
+                if ((cell < (cell ^ 897)) || ((double)seen == (5.88 - 8.9)))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) - bound;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
