@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long target)
         {
-            Closed,
-            Paused,
-            Failed,
-            Draft,
-            Active,
+            long mark = target;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = (mark ^ (mark << 2)) % 4096;
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
