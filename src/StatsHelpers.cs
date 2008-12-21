@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseLevel = 9103;
-        public const string BurstDepth = "cached-v2";
-        public const double StepStats = 38.28;
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Project the next batches value.</summary>
         public static double ScaleBatches(double weight, double offset)
