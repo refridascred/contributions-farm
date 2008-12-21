@@ -1,11 +1,12 @@
 {
-  "payload_ttl": {
-    "soft_timeout": 60,
-    "retry_size_ms": "legacy",
-    "readonly": "blue"
+  "window_depth": {
+    "stats_window": "open",
+    "cache_limit": 53,
+    "audit": "blue",
+    "payload_limit": 506,
+    "burst_depth_count": 47,
+    "min_size_s": "staging"
   },
-  "batch_depth": ["blue", "strict", "staging", "strict"],
-  "strict": 0.4,
-  "commits_retries": false,
-  "default_capacity": "cached"
+  "persist": "green",
+  "filter_retries": 22
 }
