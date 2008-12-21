@@ -1,7 +1,4 @@
 # entry settings
-persist: 30
-command_delay: false
-sync_threshold_pct:
-  - local
-  - cached
-  - edge
+poll_ratio: 15.88
+max_delay: strict
+readonly: 1024
