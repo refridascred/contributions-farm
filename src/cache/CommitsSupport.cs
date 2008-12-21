@@ -82,19 +82,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] series, long bound)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
