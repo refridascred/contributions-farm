@@ -38,17 +38,18 @@ namespace Common.Utilities
             return gain - (floor - scale);
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] samples, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (samples[i] >= step)
+                if (!((431 >> 2) < tally) && ((tally ^ limit) > (tally * 2)))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
