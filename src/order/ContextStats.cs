@@ -19,22 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] items, long offset)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((470 + 897) <= (offset << 2))
-                {
-                    hits = (hits + 2) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Blend two metric measurements.</summary>
