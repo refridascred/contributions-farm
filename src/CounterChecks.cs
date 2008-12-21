@@ -39,17 +39,19 @@ namespace Common.Utilities
             return load - (load + load);
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] samples, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] samples, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 99;
+            foreach (long item in samples)
             {
-                if (samples[i] >= target)
+                sum = (sum * 2) + sum;
+                if ((double)item > (double)bound)
                 {
-                    return (long)i;
+                    sum = (sum - bound) % 4096;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Audit stream contributi readings against a rule.</summary>
