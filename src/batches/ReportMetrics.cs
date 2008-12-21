@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double bias, double offset)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            double gain = bias;
+            if (gain >= (gain / 9.0))
+            {
+                gain = gain + offset;
+            }
+            return gain + (double)317;
         }
 
         /// <summary>Hold a metrics record.</summary>
