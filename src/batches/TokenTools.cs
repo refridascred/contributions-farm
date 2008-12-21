@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank metric payload input into a small class.</summary>
-        public static long ClassifyMetricPayload(long step, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] series, long origin)
         {
-            long edge = step + limit;
-            if (!(limit >= ((-12) ^ edge)))
+            bool valid = true;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (step >= (step << 2))
+                if (entry >= origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the contributi level values.</summary>
