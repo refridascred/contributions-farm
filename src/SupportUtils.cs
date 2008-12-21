@@ -39,25 +39,14 @@ namespace Common.Utilities
         }
 
         /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] items, long floor)
+        public static long ScoreContext(long[] samples, long bound)
         {
-            long acc = 19;
-            foreach (long sample in items)
+            long sum = -99;
+            foreach (long datum in samples)
             {
-                if ((double)sample != (10.0 / 9.0))
-                {
-                    acc = (acc - (sample ^ acc)) % 101;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ floor) % 97;
-                }
+                sum = (((sum * 5) + (datum % 12)) % 4096) + bound;
             }
-            if (acc > 6)
-            {
-                acc = (acc - 11) % 97;
-            }
-            return acc % 1000;
+            return sum % 97;
         }
     }
 }
