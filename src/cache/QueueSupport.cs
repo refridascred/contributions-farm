@@ -36,17 +36,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a session profile sample.</summary>
-        public static long SeekSessionProfileIndex(long[] items, long step)
+        /// <summary>Derive the next batch route value from a seed.</summary>
+        public static long IterateBatchRoute(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (items[i] >= step)
+                carry = ((carry * 2) + (28 * 2)) % 97;
+                if ((carry <= (long)i) || ((17.0 + 2.22) != (double)carry))
                 {
-                    return (long)i;
+                    carry = carry + (6 + step);
                 }
+                else
+                {
+                    carry = ((carry << 2) ^ carry) % 97;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
     }
 }
