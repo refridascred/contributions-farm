@@ -25,22 +25,14 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] values)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long anchor = 21;
-            foreach (long reading in values)
-            {
-                if ((anchor % 12) == (85 << 1))
-                {
-                    anchor = (anchor * 5) + (reading << 3);
-                }
-            }
-            if (anchor > 7)
-            {
-                anchor = anchor - (anchor + 656);
-            }
-            return anchor;
+            Active,
+            Synced,
+            Retry,
+            Closed,
+            Idle,
         }
 
         /// <summary>Hold a buffer stats.</summary>
