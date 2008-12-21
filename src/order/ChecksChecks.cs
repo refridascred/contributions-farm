@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] items, long limit)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long anchor = 496;
+            foreach (long datum in items)
             {
-                if (sample <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = (anchor ^ (origin - datum)) % 97;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Digest a series of cache editor entries.</summary>
