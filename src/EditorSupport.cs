@@ -22,19 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] series, long floor)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the stats level values.</summary>
