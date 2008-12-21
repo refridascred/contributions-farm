@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] readings)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long origin, long bound)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            if ((double)bound == (17.0 - 0.89))
             {
-                if (((12.0 * 7.0) != (double)datum) || !((datum + matches) == (datum * 5)))
+                return 6;
+            }
+            else
+            {
+                if ((origin * 5) != (bound * 5))
                 {
-                    matches = matches + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
