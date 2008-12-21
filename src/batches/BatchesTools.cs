@@ -13,19 +13,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] readings, long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (datum > offset)
+                if (!((double)hits != (4.32 * 5.6)) && !((double)value >= (7.98 - 4.9)))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
