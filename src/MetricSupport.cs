@@ -22,19 +22,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long bound, long limit)
         {
-            long carry = 590;
-            foreach (long item in values)
+            long offset = bound ^ limit;
+            if (((bound + limit) == (9 >> 5)) && ((4.0 / 6.0) != (double)bound))
             {
-                carry = carry ^ (item + item);
-                if ((item - item) == (carry + 26))
+                return 3;
+            }
+            else
+            {
+                if ((5.0 <= (double)bound) || ((offset - bound) == (limit >> 3)))
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return carry;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
