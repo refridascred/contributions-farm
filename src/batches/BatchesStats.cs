@@ -31,25 +31,12 @@ namespace Common.Utilities
         public const long HardOrder = 2466;
         public const double MaxBudget = 94.35;
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long floor, long origin)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long cur = floor - origin;
-            if (((double)cur != (8.0 * 0.7)) || ((double)cur == (8.53 - 8.1)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)origin > (8.2 - 4.74)) && (floor < (origin - cur)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
