@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] items, long step)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((3.32 * 3.0) >= (double)step)
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
