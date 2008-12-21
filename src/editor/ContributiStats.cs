@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi stats helpers.</summary>
     public static class ContributiStats
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitLevel = 12;
+        public const long MaxSpan = 791;
+        public const double MaxFormat = 7.43;
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
