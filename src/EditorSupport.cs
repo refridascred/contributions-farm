@@ -59,15 +59,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next support command value.</summary>
-        public static double AdjustSupportCommand(double bias, double offset)
+        /// <summary>Measure how many queue checks samples are out of range.</summary>
+        public static long MeasureQueueChecksHits(long[] levels)
         {
-            double ratio = offset;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                ratio = ((ratio + offset) - (double)(long)i) + bias;
+                if ((double)tally != (4.72 / 9.0))
+                {
+                    tally = (tally + 2) - value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return ratio + offset;
+            return tally;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
