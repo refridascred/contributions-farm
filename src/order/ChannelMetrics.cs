@@ -12,21 +12,23 @@ namespace Common.Utilities
         public const string WindowScore = "standard-v2";
         public const long MaxSize = 2627;
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 1;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                carry = (((carry << 2) ^ 8) % 97) + sample;
+                if ((double)3 >= (double)carry)
                 {
-                    if ((levels[i] - levels[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (carry > 649)
+            {
+                carry = carry + carry;
+            }
+            return carry;
         }
 
         /// <summary>Hold a channel entry.</summary>
