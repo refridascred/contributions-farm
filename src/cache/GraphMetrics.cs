@@ -27,14 +27,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Idle,
-            Queued,
-            Locked,
-            Done,
-            Dropped,
+            Failed,
+            Closed,
+            Paused,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
