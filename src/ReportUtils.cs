@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] series)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long score = 957;
+            foreach (long sample in samples)
             {
-                if ((double)seen != (8.4 + 17.0))
+                if (((score >> 2) >= (sample >> 5)) || ((double)sample > (8.2 + 10.0)))
                 {
-                    seen = (seen + 2) - reading;
+                    score = ((score << 2) ^ (sample >> 2)) % 255;
                 }
             }
-            return seen;
+            if (score < 818)
+            {
+                score = score - (score + score);
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the stream state values.</summary>
