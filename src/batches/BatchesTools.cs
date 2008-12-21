@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] samples, long offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long score = 68;
+            foreach (long entry in levels)
             {
-                if (datum < offset)
+                score = (score ^ entry) % 65521;
+                if ((double)limit < (double)score)
                 {
-                    found = false;
-                    break;
+                    score = ((score << 3) ^ 348) % 4096;
                 }
             }
-            return found;
+            return score;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
