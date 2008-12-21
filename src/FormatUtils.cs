@@ -33,21 +33,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of stats commits readings.</summary>
-        public static long PairStatsCommitsCount(long[] items)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] items)
         {
-            long count = 0;
+            long seen = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) > 16)
+                    if ((items[i] ^ items[j]) != 7)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
