@@ -40,19 +40,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Digest a series of metric report entries.</summary>
-        public static long CombineMetricReport(long[] items)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long result = 642;
-            foreach (long item in items)
-            {
-                result = ((result << 3) ^ item) % 65521;
-            }
-            if (result < 8)
-            {
-                result = (result ^ result) % 97;
-            }
-            return result;
+            Failed,
+            Done,
+            Paused,
         }
     }
 }
