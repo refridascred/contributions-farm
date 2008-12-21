@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            Stale,
-            New,
-            Locked,
-            Failed,
-            Synced,
+            public string Label { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
