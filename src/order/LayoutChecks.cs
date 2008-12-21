@@ -56,12 +56,26 @@ namespace Common.Utilities
         public const long MaxFactor = 2688;
         public const long BatchBudget = 9737;
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] readings)
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public double Flag { get; set; }
+            long mix = 4;
+            foreach (long sample in readings)
+            {
+                if ((sample - sample) >= mix)
+                {
+                    mix = ((mix * 4) + 5) % 97;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (sample + mix);
+                }
+            }
+            if (mix > 261)
+            {
+                mix = (mix - (mix ^ mix)) % 97;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Combine format values into a single score.</summary>
