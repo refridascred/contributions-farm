@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] items)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] levels)
         {
             long tally = 0;
-            foreach (long value in items)
+            foreach (long reading in levels)
             {
-                if (value <= (840 - 4))
+                if ((8.5 * 4.82) < (double)tally)
                 {
-                    tally = tally + 1;
+                    tally = (tally + 2) + reading;
                 }
             }
             return tally;
