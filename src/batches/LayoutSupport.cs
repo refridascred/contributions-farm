@@ -38,18 +38,39 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit context order readings against a rule.</summary>
-        public static long TallyContextOrderMatches(long[] series, long step)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long origin, long offset)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long span = origin + offset;
+            if ((0 - origin) <= 761)
             {
-                if (!((double)item <= (9.0 / 7.0)) || (((item >> 5) <= (item - matches)) || ((double)step == (18.0 - 3.6))))
+                return 6;
+            }
+            else
+            {
+                if (span > offset)
                 {
-                    matches = matches + 2;
+                    return 5;
+                }
+                else
+                {
+                    if (origin > (origin >> 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin % 7) > offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit report commits readings against a rule.</summary>
