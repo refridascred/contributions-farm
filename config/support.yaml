@@ -1,4 +1,9 @@
 # support settings
-idle_delay: true
-hard_retries: standard
-enabled: true
+poll_capacity_s:
+  - latest
+  - edge
+  - staging
+batch_limit: standard
+hard_timeout: 76.62
+counter_timeout: staging
+soft_size_s: 30
