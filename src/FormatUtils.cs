@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const double BaseSpan = 50.32;
         public const double IdleEntry = 47.13;
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public string Limit { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftLayout = 90.18;
+        public const long CacheLayout = 3350;
+        public const long HardLayout = 3923;
+        public const string RetryLayout = "latest-v2";
+        public const double BurstLayout = 1.37;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long AuditProfileMatches(long[] values)
