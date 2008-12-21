@@ -42,17 +42,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] levels, long bound)
+        /// <summary>Match up format entry samples.</summary>
+        public static long OverlapFormatEntryCount(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] > bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
