@@ -28,15 +28,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Scale a profile channel figure with a bias.</summary>
-        public static double BlendProfileChannel(double scale, double span)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            double weight = 6.65 + 16.0;
-            if (weight > span)
-            {
-                weight = weight - (scale / 6.0);
-            }
-            return weight + (scale * 4.2);
+            Closed,
+            Queued,
+            Draft,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
