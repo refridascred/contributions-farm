@@ -52,13 +52,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Stale,
-            Closed,
-            Retry,
-            Idle,
+            Synced,
+            Done,
+            Active,
         }
     }
 }
