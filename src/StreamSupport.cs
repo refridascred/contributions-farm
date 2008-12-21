@@ -14,15 +14,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the cluster entry series from a seed.</summary>
-        public static long DeriveClusterEntry(long step)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long target)
         {
-            long state = step;
-            for (int i = 0; i < 11; i++)
+            long mark = target;
+            for (int i = 0; i < 22; i++)
             {
-                state = ((state * 4) + (long)i) % 101;
+                mark = (mark * 2) + mark;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Hold a contributi stats.</summary>
