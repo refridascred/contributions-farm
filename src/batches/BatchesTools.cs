@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the window tools entries that pass the check.</summary>
-        public static long AuditWindowToolsMatches(long[] data)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (((count <= (166 & 7)) || ((double)25 >= (double)count)) || (3.0 >= (double)reading))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Paused,
+            Ready,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a queue snapshot.</summary>
