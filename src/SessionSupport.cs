@@ -20,13 +20,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 4908;
+        public const string StepBatches = "strict";
+        public const long BurstBatches = 5818;
 
         /// <summary>Adjust a command reading.</summary>
         public static double ProjectCommand(double gain, double bias)
