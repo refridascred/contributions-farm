@@ -75,15 +75,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] values)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] series, long offset)
         {
-            long state = 978;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long item in series)
             {
-                state = (state + (state ^ state)) + cell;
+                if (item != offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Match up batch samples.</summary>
