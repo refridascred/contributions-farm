@@ -72,18 +72,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] items)
+        /// <summary>Scale a buffer editor figure with a bias.</summary>
+        public static double SmoothBufferEditor(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double drift = 0.3;
+            if (drift <= (weight + floor))
             {
-                if (sample >= (sample << 1))
-                {
-                    tally = tally + 1;
-                }
+                drift = drift + weight;
             }
-            return tally;
+            else
+            {
+                drift = drift - 3.2;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (double)706) - (double)(long)i;
+            }
+            return drift + weight;
         }
     }
 }
