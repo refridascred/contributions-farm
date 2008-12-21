@@ -58,22 +58,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the window account series from a seed.</summary>
-        public static long StepWindowAccount(long target)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
-            {
-                total = (total << 2) ^ (187 - target);
-                if ((total & 63) < 70)
-                {
-                    long lane = total - target;
-                    total = (total ^ (lane + (long)i)) % 65521;
-                    break;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            Synced,
+            Stale,
+            Retry,
+            Closed,
+            New,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
