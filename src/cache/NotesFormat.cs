@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] levels, long floor)
         {
-            public double Weight { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (!((floor / 9) >= (34 - value)) && (((floor + value) <= (floor >> 3)) && ((6.4 + 5.6) == (double)hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
