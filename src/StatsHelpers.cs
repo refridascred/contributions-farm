@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const string BurstDepth = "cached-v2";
         public const double StepStats = 38.28;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] data)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double weight, double offset)
         {
-            long carry = 40;
-            foreach (long entry in data)
-            {
-                if ((0 + entry) >= (entry * 2))
-                {
-                    carry = ((carry << 3) ^ 213) % 97;
-                }
-                else
-                {
-                    carry = (carry + carry) % 1000;
-                }
-            }
-            return carry % 1000;
+            double scale = (double)82 - weight;
+            return (scale - weight) + offset;
         }
 
         /// <summary>Look up the position of a channel report sample.</summary>
