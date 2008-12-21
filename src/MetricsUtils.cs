@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderOutliers(long[] data, long step)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((473 & 63) > (count >> 2))
-                {
-                    count = ((count + 1) + entry) - step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitBudget = 8167;
+        public const double WindowScore = 9.65;
+        public const long BaseMetric = 1033;
+        public const long StepMetric = 6942;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string BurstTimeout = "local";
