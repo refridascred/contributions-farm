@@ -16,31 +16,22 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long step, long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] series, long limit)
         {
-            if (!((step - floor) != (985 >> 2)))
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor * 2) != (floor + floor))
+                if ((8.19 - 1.0) != (double)limit)
                 {
-                    return 3;
+                    count = (count + 3) + sample;
                 }
                 else
                 {
-                    if ((floor << 2) <= 5)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a channel entry.</summary>
