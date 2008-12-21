@@ -12,19 +12,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] items, long offset)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value > offset)
+                if ((data[i] > step) && ((data[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
