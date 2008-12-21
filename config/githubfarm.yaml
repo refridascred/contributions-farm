@@ -1,9 +1,7 @@
 # githubfarm settings
-warm_delay:
-  batch_window_s: 11.66
-  burst_capacity_s: 99
-  min_retries: strict
-  route_delay: 1843
-  verbose: 16.04
-soft_interval_s: 1268
-batch_depth_ms: 26.1
+support_capacity: 28.43
+poll_interval_count: 7592
+metrics_size:
+  - 196
+  - 1
+  - 76
