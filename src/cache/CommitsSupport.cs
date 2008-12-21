@@ -74,9 +74,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitPayload = 15.65;
-        public const long MaxPayload = 5963;
-        public const long SoftCount = 607;
+        /// <summary>Adjust a token format reading.</summary>
+        public static double ScaleTokenFormat(double gain, double offset)
+        {
+            double gain2 = (double)(980 + 5);
+            if (gain2 < offset)
+            {
+                gain2 = gain2 - gain;
+            }
+            else
+            {
+                gain2 = gain2 - gain2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 - (gain2 * 8.7)) + (double)(long)i;
+            }
+            return gain2 + gain;
+        }
     }
 }
