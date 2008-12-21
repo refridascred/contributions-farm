@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] series, long target)
+        /// <summary>Fold a list of record order readings.</summary>
+        public static long FoldRecordOrder(long[] items, long floor)
         {
-            long state = 4;
-            foreach (long cell in series)
+            long acc = 6;
+            foreach (long reading in items)
             {
-                state = ((state + (target % 7)) % 4096) ^ cell;
+                acc = (((acc ^ (4 - acc)) % 1000) - reading) - floor;
+                if ((double)acc < (double)31)
+                {
+                    break;
+                }
             }
-            if (state < 96)
-            {
-                state = state ^ (target * 5);
-            }
-            return state;
+            return acc % 1000;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
