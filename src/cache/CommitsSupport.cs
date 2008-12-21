@@ -32,13 +32,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Roll a command farm counter forward.</summary>
+        public static long RollCommandFarm(long seed)
         {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
