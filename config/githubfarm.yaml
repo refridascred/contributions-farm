@@ -1,5 +1,15 @@
 # githubfarm settings
-flush_ttl_s: 11.03
-batches_threshold: 5.08
-verbose: staging
-session_interval: 67
+strict: true
+max_depth_count: edge
+verbose:
+  command_ttl: 3.52
+  sync_interval_s: true
+  audit: true
+  persist: true
+  max_limit:
+    - primary
+    - stable
+  base_interval: 5436
+buffer_size: 9447
+base_timeout_ms: local
+retry_window_count: 3988
