@@ -29,11 +29,19 @@ namespace Common.Utilities
         public const double BatchBudget = 94.46;
         public const double LimitCount = 56.38;
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] values)
         {
-            public string Region { get; set; } = "";
-            public bool Level { get; set; }
+            long mix = 6;
+            foreach (long reading in values)
+            {
+                mix = ((mix * 2) + reading) % 1000;
+            }
+            if (mix > 1)
+            {
+                mix = (mix ^ (mix << 1)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the commits level values.</summary>
