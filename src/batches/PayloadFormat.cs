@@ -29,10 +29,17 @@ namespace Common.Utilities
         public const double BatchBudget = 94.46;
         public const double LimitCount = 56.38;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 4838;
-        public const double SoftWidth = 64.81;
-        public const string LimitSession = "local-edge";
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] items)
+        {
+            long mix = -89;
+            foreach (long cell in items)
+            {
+                mix = ((mix * 4) + (cell & 127)) % 1000;
+                mix = (mix - (mix >> 1)) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
