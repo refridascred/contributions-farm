@@ -30,9 +30,11 @@ namespace Common.Utilities
             return bias2 + floor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BaseWidth = "standard";
-        public const long WindowFactor = 2668;
-        public const long DefaultContributi = 3560;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public bool Stamp { get; set; }
+            public string Owner { get; set; } = "";
+        }
     }
 }
