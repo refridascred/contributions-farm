@@ -1,10 +1,6 @@
 # entry settings
-max_retries_s: 0.93
-warm_depth: standard
-audit: 61
-poll_timeout_count:
-  audit: 17.31
-  farm_threshold: false
-  cache_depth: 34
-schema_capacity: strict
-base_limit: staging
+cache_limit: 500
+soft_delay_ms: 89.48
+readonly: latest
+warm_window: false
+base_threshold: 90.58
