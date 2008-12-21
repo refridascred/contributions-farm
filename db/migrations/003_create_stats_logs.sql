@@ -1,13 +1,14 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    ratio REAL,
-    score REAL NOT NULL DEFAULT 0,
-    count INTEGER NOT NULL DEFAULT 0,
+    state TEXT NOT NULL DEFAULT 'new',
     created_at TIMESTAMP,
+    token TEXT,
     active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_active ON stats_logs (active);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_state ON stats_logs (state);
 
-INSERT INTO stats_logs (ratio, score, count, active) VALUES (51.54, 66.68, 52, 77);
+INSERT INTO stats_logs (state, token, active) VALUES ('open', 'local', 58);
+INSERT INTO stats_logs (state, token, active) VALUES ('fallback', 'legacy', 30);
+INSERT INTO stats_logs (state, token, active) VALUES ('local', 'fallback', 70);
