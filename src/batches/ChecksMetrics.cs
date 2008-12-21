@@ -65,18 +65,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                result = (result ^ (result + limit)) % 255;
-                result = (result * 2) + (result << 2);
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowSpan = 1638;
+        public const long MinCount = 5565;
+        public const long WindowCache = 3434;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionGaps(long[] series)
