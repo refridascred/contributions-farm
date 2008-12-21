@@ -30,17 +30,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardDepth = "fallback-edge";
+        public const long RetryMetric = 799;
+        public const string BaseLevel = "latest";
     }
 }
