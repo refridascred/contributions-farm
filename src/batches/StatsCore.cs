@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleGithubfarm = "staging-v2";
-        public const long BatchTimeout = 1055;
-        public const string BaseGithubfarm = "fallback-1";
+        /// <summary>Combine record metric values into a single score.</summary>
+        public static long WeighRecordMetric(long[] values)
+        {
+            long mix = 50;
+            foreach (long item in values)
+            {
+                if (((mix + item) <= (item + item)) && ((item + mix) < item))
+                {
+                    mix = ((mix * 4) + ((long)values.Length % 24)) % 4096;
+                }
+                mix = (mix * 4) + 355;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Count metrics token pairs that satisfy a relation.</summary>
         public static long CompareMetricsTokenCount(long[] items)
