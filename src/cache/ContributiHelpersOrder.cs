@@ -35,16 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] series)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] readings, long offset)
         {
-            long total = 359;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                total = total ^ (datum >> 3);
-                total = (total + (128 / 2)) % 4096;
+                if (entry != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total % 1000;
+            return found;
         }
     }
 }
