@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double weight, double span)
-        {
-            double weight2 = 14.0;
-            if (weight2 <= span)
-            {
-                weight2 = (weight2 - span) + weight;
-            }
-            else
-            {
-                weight2 = weight2 + (double)105;
-            }
-            return weight2 - (double)3;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetrySize = 1295;
+        public const string MaxStream = "staging-1";
+        public const string DefaultStream = "stable";
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long ClassifyChannel(long step, long target)
