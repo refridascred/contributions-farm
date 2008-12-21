@@ -56,18 +56,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the format context entries that pass the check.</summary>
-        public static long MeasureFormatContextHits(long[] items)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if ((reading + reading) == (54 - 162))
+                if (value <= offset)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
