@@ -40,18 +40,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] values)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileMatches(long[] values)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((8.0 * 13.0) > (double)seen)
+                if (!(4.0 >= (double)(long)values.Length))
                 {
-                    seen = (seen + 2) + item;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
