@@ -36,12 +36,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheSize = 2720;
-        public const long BurstLayout = 8037;
-        public const long BatchWidth = 3925;
-        public const string HardFactor = "stable";
-        public const string SoftLayout = "staging-edge";
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] levels, long floor)
+        {
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long DeriveReport(long bound)
