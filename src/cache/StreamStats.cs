@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every route token entry stays within the limit.</summary>
-        public static bool GuardRouteTokenBounds(long[] items, long origin)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public bool Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the account kind values.</summary>
