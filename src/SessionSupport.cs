@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] values)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (((double)hits < (double)reading) && ((hits / 9) < 490))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Synced,
+            Ready,
+            Retry,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define window limits and defaults.</summary>
