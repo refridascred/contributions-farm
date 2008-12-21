@@ -1,6 +1,6 @@
 {
-  "cache_delay_count": [405, 373, 39, 485],
-  "dry_run": "green",
-  "warm_retries": ["stable", "edge", "green", "standard"],
-  "verbose": false
+  "hard_window": 2,
+  "burst_size_ms": [135, 14],
+  "cluster_ttl": ["green", "legacy"],
+  "max_threshold_count": ["blue", "stable"]
 }
