@@ -1,14 +1,15 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the stats list.
-The queue report groups every payload by token.
-Each entry is validated before it reaches the notes queue.
+A layout that stays idle for too long is moved to the channel list.
+Run the buffer check before changing any payload limits.
 
-The cache module keeps context values in sync with the stream cache.
-The schema module keeps payload values in sync with the stream cache.
+When a githubfarm fails, the graph handler retries a few times before giving up.
+Each farm is validated before it reaches the githubfarm queue.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new entry fields
-- Log every session change
-- Keep payload values small
+- Keep order values small
+- Log every stream change
+- Prefer commits defaults
+- Review support limits each release
