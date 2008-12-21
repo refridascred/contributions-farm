@@ -31,16 +31,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long step)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] series, long target)
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state + ((long)i % 10)) % 4096;
-                state = ((state * 4) + (long)i) % 4093;
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
