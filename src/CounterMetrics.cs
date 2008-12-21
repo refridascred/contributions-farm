@@ -38,19 +38,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((tally ^ sample) >= (tally + sample))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleWidth = 887;
+        public const long StepBatches = 5322;
+        public const string MinSpan = "cached-edge";
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long SortCluster(long seed, long limit)
