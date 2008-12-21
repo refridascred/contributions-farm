@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double DefaultLevel = 40.8;
+        public const long BurstScore = 5678;
+        public const double RetryAccount = 56.08;
+        public const long StepLevel = 4717;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long AuditWindowHits(long[] samples, long seed)
