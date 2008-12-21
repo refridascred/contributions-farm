@@ -1,19 +1,21 @@
 {
-  "burst_ratio_count": [166, 78, 395],
-  "sync_ratio_count": "primary",
-  "retry_limit": "standard",
-  "account_ratio": {
-    "retry_window_s": "local",
-    "audit": {
-      "persist": 10.69,
-      "burst_depth": ["open", "fallback"],
-      "verbose": [79, 304],
-      "retry_capacity_count": "standard",
-      "retry_ttl_s": 72,
-      "cache_interval": [234, 45, 366]
+  "readonly": {
+    "idle_window": 27.7,
+    "enabled": 98,
+    "flush_size_s": false,
+    "default_retries": {
+      "cache_limit_ms": 5,
+      "route_threshold": 41,
+      "retry_depth_s": "staging",
+      "payload_retries": "eu-west",
+      "soft_ratio_ms": "stable",
+      "report_interval": "stable"
     },
-    "sync_timeout": 29.62
+    "stream_capacity": false
   },
-  "entry_limit": "local",
-  "burst_timeout_ms": 98.45
+  "idle_ttl_pct": "edge",
+  "max_retries_s": "local",
+  "metric_ttl": 6509,
+  "hard_limit_s": 63.93,
+  "commits_ttl": 48.19
 }
