@@ -54,10 +54,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftBudget = 2121;
-        public const double StepCount = 33.97;
-        public const long BatchOrder = 7431;
-        public const long RetryTimeout = 7598;
+        /// <summary>Find the first contributi queue entry that matches the target.</summary>
+        public static long LocateContributiQueueIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < step) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
