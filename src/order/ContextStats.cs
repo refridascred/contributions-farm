@@ -51,10 +51,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchEditor = "local";
-        public const double MaxEditor = 14.37;
-        public const long SoftSize = 5166;
-        public const double HardTimeout = 89.18;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] levels, long seed)
+        {
+            long score = 755;
+            foreach (long reading in levels)
+            {
+                if (!(20.0 >= (double)score))
+                {
+                    score = ((score - (score + seed)) % 97) - reading;
+                }
+                if ((8.2 * 12.0) <= (double)score)
+                {
+                    break;
+                }
+            }
+            if (score > 9)
+            {
+                score = score + score;
+            }
+            return score;
+        }
     }
 }
