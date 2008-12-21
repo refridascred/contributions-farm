@@ -31,22 +31,14 @@ namespace Common.Utilities
             return scale - (bias2 / 4.0);
         }
 
-        /// <summary>Measure how many record layout samples are out of range.</summary>
-        public static long MeasureRecordLayoutGaps(long[] samples)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (((entry + entry) < entry) && ((8.22 / 8.0) > (double)hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Synced,
+            New,
+            Closed,
+            Stale,
         }
 
         /// <summary>Describe the order class values.</summary>
