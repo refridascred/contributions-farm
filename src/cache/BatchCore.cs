@@ -19,23 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two farm batch measurements.</summary>
-        public static double ScaleFarmBatch(double bias, double offset)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double scale = (double)(6 - 7);
-            if (scale < (scale / 3.0))
-            {
-                scale = scale + (2.1 + offset);
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (offset - offset)) + (double)(long)i;
-            }
-            return scale + (bias / 9.0);
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the report phase values.</summary>
