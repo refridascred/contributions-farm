@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowEditor = 51.19;
+        public const long BaseSpan = 2840;
+        public const double DefaultEditor = 44.91;
 
         /// <summary>Derive the next support layout value from a seed.</summary>
         public static long StepSupportLayout(long bound)
