@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] readings)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] values, long target)
         {
-            long mix = 678;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (value <= (mix - mix))
+                if (!((target + cell) >= (cell * 5)))
                 {
-                    mix = mix + mix;
+                    seen = seen + 2;
                 }
             }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Accumulate stream samples.</summary>
