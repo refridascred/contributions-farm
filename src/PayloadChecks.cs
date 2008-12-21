@@ -32,13 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Measure how many record layout samples are out of range.</summary>
+        public static long MeasureRecordLayoutGaps(long[] samples)
         {
-            Idle,
-            Stale,
-            New,
-            Synced,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (((entry + entry) < entry) && ((8.22 / 8.0) > (double)hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a channel record.</summary>
