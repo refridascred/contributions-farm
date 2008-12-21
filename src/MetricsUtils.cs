@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 5540;
-        public const long DefaultCount = 8074;
-        public const long HardLevel = 5616;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((8 <= (count + entry)) && ((double)count > (double)entry))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TallyQueue(long[] series)
