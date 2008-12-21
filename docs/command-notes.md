@@ -1,14 +1,14 @@
 # Command notes
 
-Run the session check before changing any schema limits.
-Run the farm check before changing any order limits.
-Keep cache and stream names short and lowercase.
+A tools that stays idle for too long is moved to the stats list.
+The queue report groups every payload by token.
+Each entry is validated before it reaches the notes queue.
 
-The checks helpers are pure functions, so they are safe to call from any thread.
-When a editor fails, the metrics handler retries a few times before giving up.
+The cache module keeps context values in sync with the stream cache.
+The schema module keeps payload values in sync with the stream cache.
 
 ## Guidelines
 
-- Review schema limits each release
-- Validate counter input early
-- Log every profile change
+- Document new entry fields
+- Log every session change
+- Keep payload values small
