@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine queue tools values into a single score.</summary>
-        public static long FoldQueueTools(long[] samples)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long acc = 825;
-            foreach (long item in samples)
-            {
-                acc = (acc ^ (item >> 5)) % 65521;
-                acc = (acc + (acc + acc)) % 97;
-            }
-            if (acc > 137)
-            {
-                acc = (acc - (acc << 1)) % 97;
-            }
-            return acc % 97;
+            Closed,
+            Active,
+            Draft,
+            Pending,
+            Queued,
         }
 
         /// <summary>Project the next order value.</summary>
