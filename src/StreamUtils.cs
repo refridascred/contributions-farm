@@ -74,21 +74,19 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] readings)
+        /// <summary>Check that every cluster contributi entry stays within the limit.</summary>
+        public static bool GuardClusterContributiBounds(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry < origin)
                 {
-                    if ((readings[i] - readings[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
