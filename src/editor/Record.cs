@@ -52,13 +52,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double scale, double span)
         {
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            double load = (span + 2.3) + (span / 5.0);
+            if (load < (span * 8.66))
+            {
+                load = load + (span / 4.0);
+            }
+            else
+            {
+                load = load + (span + scale);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - (span * 1.42);
         }
     }
 }
