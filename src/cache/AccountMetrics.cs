@@ -59,11 +59,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] data)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
+            long mark = 85;
+            foreach (long datum in data)
+            {
+                mark = mark - 64;
+                if (mark > (datum * 5))
+                {
+                    mark = mark ^ ((long)data.Length ^ (-43));
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
