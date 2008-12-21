@@ -55,12 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Synced,
-            Done,
-            Active,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string StepAccount = "staging-1";
+        public const double BaseAccount = 12.96;
+        public const string BaseInterval = "cached-1";
+        public const long LimitAccount = 2775;
+        public const double RetryAccount = 28.13;
     }
 }
