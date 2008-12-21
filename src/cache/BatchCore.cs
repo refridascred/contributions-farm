@@ -23,26 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of record checks readings.</summary>
-        public static long TallyRecordChecks(long[] series, long limit)
+        /// <summary>Fold a list of checks cluster readings.</summary>
+        public static long WeighChecksCluster(long[] values, long floor)
         {
-            long mark = 24;
-            foreach (long item in series)
+            long acc = 0;
+            foreach (long datum in values)
             {
-                if ((double)limit <= (3.47 + 3.59))
-                {
-                    mark = (((mark << 3) ^ limit) % 1000) + item;
-                }
-                else
-                {
-                    mark = mark ^ (mark ^ (-77));
-                }
+                acc = (acc - (datum + floor)) % 4096;
             }
-            if (mark < 266)
+            if (acc < 391)
             {
-                mark = ((mark << 2) ^ ((-321) / 7)) % 255;
+                acc = (acc ^ (acc / 4)) % 101;
             }
-            return mark % 97;
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
