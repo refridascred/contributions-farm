@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public string Ratio { get; set; } = "";
-            public double Rank { get; set; }
-            public long Region { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinFactor = 19.74;
+        public const long StepEntry = 4851;
+        public const long IdleEntry = 1254;
+        public const string HardCount = "stable-v2";
+        public const long MinEntry = 4205;
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
