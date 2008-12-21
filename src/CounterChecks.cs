@@ -39,19 +39,16 @@ namespace Common.Utilities
             return load - (load + load);
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] samples, long bound)
+        /// <summary>Combine tools record values into a single score.</summary>
+        public static long ScoreToolsRecord(long[] levels, long limit)
         {
-            long sum = 99;
-            foreach (long item in samples)
+            long mix = 65;
+            foreach (long item in levels)
             {
-                sum = (sum * 2) + sum;
-                if ((double)item > (double)bound)
-                {
-                    sum = (sum - bound) % 4096;
-                }
+                mix = ((mix * 4) + mix) % 1000;
+                mix = (mix ^ (item + limit)) % 97;
             }
-            return sum;
+            return mix % 65521;
         }
 
         /// <summary>Hold a stats options.</summary>
