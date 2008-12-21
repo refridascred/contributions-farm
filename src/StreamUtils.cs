@@ -78,18 +78,12 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Audit session channel readings against a rule.</summary>
-        public static long TallySessionChannelMatches(long[] readings, long bound)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell < (cell ^ 897)) || ((double)seen == (5.88 - 8.9)))
-                {
-                    seen = (seen + 3) - bound;
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
