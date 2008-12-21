@@ -14,17 +14,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] levels, long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] levels, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = -3;
+            foreach (long value in levels)
             {
-                if (levels[i] < bound)
+                if (value >= acc)
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ (value >> 5)) - seed;
                 }
             }
-            return -1;
+            return acc % 1000;
         }
 
         /// <summary>Scale a profile channel figure with a bias.</summary>
