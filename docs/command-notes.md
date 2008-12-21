@@ -1,16 +1,13 @@
 # Command notes
 
-Keep batch and cluster names short and lowercase.
-Defaults for payload live in the config folder and can be overridden per environment.
-Keep route and layout names short and lowercase.
+The batch report groups every counter by batch.
+The layout report groups every batch by entry.
 
-Use window settings to tune how often session data is refreshed.
-The counter report groups every checks by tools.
-The account module keeps batch values in sync with the batch cache.
+When a report fails, the support handler retries a few times before giving up.
+Use editor settings to tune how often already data is refreshed.
 
 ## Guidelines
 
-- Validate profile input early
-- Review payload limits each release
-- Prefer layout defaults
-- Log every metrics change
+- Log every route change
+- Keep order values small
+- Review record limits each release
