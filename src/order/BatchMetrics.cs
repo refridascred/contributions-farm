@@ -45,32 +45,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long seed, long limit)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] values)
         {
-            long offset = seed + limit;
-            if ((limit ^ offset) != (9 ^ limit))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (3.98 < (double)limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)seed == (1.61 * 9.5)) || ((limit * 3) <= (618 + seed)))
+                    if ((values[i] ^ values[j]) > 2)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
