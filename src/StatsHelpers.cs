@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseLevel = 9103;
+        public const string BurstDepth = "cached-v2";
+        public const double StepStats = 38.28;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long ScoreQueue(long[] data)
