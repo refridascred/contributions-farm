@@ -23,11 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowCache = 31.26;
-        public const double SoftCache = 1.31;
-        public const double BatchBudget = 94.46;
-        public const double LimitCount = 56.38;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BaseBatch = 29.65;
+        public const double MaxScore = 95.91;
+        public const long SoftCount = 2656;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TotalReport(long[] items)
