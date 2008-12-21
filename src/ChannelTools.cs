@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] levels, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] levels, long offset)
         {
             bool valid = true;
-            foreach (long item in levels)
+            foreach (long cell in levels)
             {
-                if (item != seed)
+                if (cell < offset)
                 {
                     valid = false;
                     break;
