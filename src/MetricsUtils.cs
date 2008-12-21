@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderOutliers(long[] data, long step)
         {
-            Pending,
-            Failed,
-            Done,
-            Active,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((473 & 63) > (count >> 2))
+                {
+                    count = ((count + 1) + entry) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
