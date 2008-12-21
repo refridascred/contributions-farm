@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] readings)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 7;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((long)samples.Length + (long)samples.Length) >= (mark + 0)))
                 {
-                    if ((readings[i] + readings[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = mark ^ (sample * 3);
+                }
+                if ((mark - mark) == ((long)samples.Length + sample))
+                {
+                    mark = ((mark << 2) ^ (step / 8)) % 4096;
+                }
+                else
+                {
+                    mark = mark ^ step;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a session header.</summary>
