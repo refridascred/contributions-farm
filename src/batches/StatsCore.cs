@@ -19,22 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] items, long limit)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] items, long bound)
         {
-            long tally = 0;
+            long sum = 2;
             foreach (long entry in items)
             {
-                if ((tally ^ 137) < (limit & 7))
+                if ((22 * 2) >= (entry - sum))
                 {
-                    tally = (tally + 2) + entry;
+                    sum = sum ^ sum;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    sum = sum - (632 / 8);
                 }
             }
-            return tally;
+            if (sum > 257)
+            {
+                sum = sum + (67 - bound);
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of context readings.</summary>
