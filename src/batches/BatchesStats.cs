@@ -12,19 +12,24 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] data, long limit)
+        /// <summary>Classify a batches cache pair into a bucket.</summary>
+        public static long RankBatchesCache(long target, long step)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            if ((target % 64) <= (target * 2))
             {
-                if (entry > limit)
+                return 8;
+            }
+            else
+            {
+                if ((double)step >= (double)497)
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a route info.</summary>
