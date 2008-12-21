@@ -1,7 +1,13 @@
 # githubfarm settings
-stream_capacity:
-  - 356
-  - 65
-  - 245
-flush_delay_s: 3165
-default_threshold_s: 60
+counter_delay:
+  account_threshold: open
+  persist:
+    base_limit_s: 5346
+    poll_retries_s: cached
+    queue_threshold: 6664
+    enabled: 66
+  counter_depth: primary
+warm_interval_s: 0.12
+persist: 40
+hard_retries_pct: 36.01
+batch_capacity: false
