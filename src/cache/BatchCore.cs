@@ -12,12 +12,17 @@ namespace Common.Utilities
             return (drift - (double)50) + offset;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Find the first metrics stats entry that matches the target.</summary>
+        public static long SeekMetricsStatsIndex(long[] series, long limit)
         {
-            public double Token { get; set; }
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
