@@ -27,31 +27,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long limit, long step)
+        /// <summary>Validate report counter readings against a bound.</summary>
+        public static bool ValidateReportCounterBounds(long[] levels, long limit)
         {
-            if ((limit % 5) != (limit << 1))
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step - 593) <= step)
+                if (cell <= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit + step) <= (step + limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Audit payload notes readings against a rule.</summary>
