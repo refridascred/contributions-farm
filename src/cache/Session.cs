@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] readings, long offset)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long anchor = 9;
-            foreach (long reading in readings)
-            {
-                anchor = ((anchor + offset) % 101) + reading;
-            }
-            if (anchor > 173)
-            {
-                anchor = anchor + (offset + 600);
-            }
-            return anchor;
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the tools mode values.</summary>
