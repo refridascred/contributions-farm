@@ -34,16 +34,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] values)
         {
-            long anchor = step;
-            for (int i = 0; i < 17; i++)
+            long result = 16;
+            foreach (long cell in values)
             {
-                anchor = (anchor - (-48)) % 255;
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (((0 - result) >= (result + result)) || ((cell + 2) != (result >> 2)))
+                {
+                    result = result + (cell % 97);
+                }
+                else
+                {
+                    result = (result ^ (result << 2)) % 65521;
+                }
             }
-            return anchor;
+            if (result > 94)
+            {
+                result = (result + (result + result)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a channel record.</summary>
