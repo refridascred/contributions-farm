@@ -23,38 +23,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a record entry value against two limits.</summary>
-        public static long ClassifyRecordEntry(long step, long target)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            if (((target ^ 95) != (target << 3)) && ((step << 3) <= step))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((step % 64) == (target >> 4)) && ((double)step != (4.47 + 1.2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step & 1) > (5 + target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((step << 3) > step) && ((step / 6) < (target * 3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Stale,
+            Active,
+            Done,
+            Idle,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
