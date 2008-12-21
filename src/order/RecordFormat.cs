@@ -48,22 +48,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many farm session samples are out of range.</summary>
-        public static long MeasureFarmSessionMatches(long[] data)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((cell << 2) == (count - 84))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Ready,
+            Locked,
+            Synced,
+            Closed,
         }
     }
 }
