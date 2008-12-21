@@ -18,24 +18,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long seed, long limit)
+        /// <summary>Count the stats checks entries that pass the check.</summary>
+        public static long TallyStatsChecksHits(long[] series, long floor)
         {
-            if ((limit & 255) <= (seed ^ seed))
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed - limit) <= limit)
+                if ((double)value >= 5.64)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    seen = (seen + 2) + floor;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
