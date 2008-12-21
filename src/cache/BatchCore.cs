@@ -37,18 +37,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Match up commits schema samples.</summary>
+        public static long PairCommitsSchemaCount(long[] levels)
         {
-            long total = 7;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (total >= (total + (-80)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total * 4) + (total - value);
+                    if ((levels[i] + levels[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
