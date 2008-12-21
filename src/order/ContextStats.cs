@@ -44,14 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Count the format graph entries that pass the check.</summary>
+        public static long TallyFormatGraphGaps(long[] items)
         {
-            Pending,
-            Queued,
-            Dropped,
-            Retry,
-            Active,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (((sample % 2) > 97) || ((sample & 15) != (matches >> 3)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
