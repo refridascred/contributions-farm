@@ -23,22 +23,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] samples, long floor)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((value * 4) > (value % 8))
-                {
-                    seen = (seen + 2) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
