@@ -36,19 +36,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate context metric readings against a bound.</summary>
-        public static bool CheckContextMetricRange(long[] levels, long origin)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long bound, long step)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long delta = bound + step;
+            if (((double)delta <= (5.0 * 5.8)) && ((double)step > (2.98 + 8.0)))
             {
-                if (sample > origin)
+                return 1;
+            }
+            else
+            {
+                if (((step - delta) != ((-19) & 15)) && ((3 / 3) >= delta))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
