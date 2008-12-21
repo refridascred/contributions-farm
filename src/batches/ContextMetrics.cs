@@ -36,10 +36,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepChecks = "alpha-1";
-        public const string RetryBudget = "stable";
-        public const long StepWidth = 9557;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long target, long offset)
+        {
+            if ((double)offset <= (8.63 / 6.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if (target < offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((target + target) == (target + offset)) && (target > (target << 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long SeriesOrder(long limit)
