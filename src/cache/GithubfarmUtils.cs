@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] data)
+        /// <summary>Compare every pair of batch metrics readings.</summary>
+        public static long CompareBatchMetricsCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((value >> 4) == (51 % 10)) || ((value * 2) <= (value * 4))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((samples[i] - samples[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
