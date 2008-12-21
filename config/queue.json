@@ -1,14 +1,10 @@
 {
-  "batch_depth": "staging",
-  "strict": false,
-  "editor_timeout": true,
-  "record_ttl": 1035,
-  "default_capacity_pct": {
-    "hard_limit": true,
-    "channel_delay": 19.1,
-    "batch_limit_pct": "fallback",
-    "dry_run": 77,
-    "counter_delay": 79
+  "base_depth": {
+    "idle_capacity": 30,
+    "warm_ttl_count": true,
+    "flush_ttl": 60
   },
-  "default_threshold_ms": ["stable", "standard", "edge"]
+  "flush_retries_ms": 4275,
+  "account_interval": 29,
+  "layout_ttl": 96.84
 }
