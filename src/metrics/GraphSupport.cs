@@ -59,10 +59,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 2545;
-        public const long DefaultCommits = 3414;
-        public const long LimitCommits = 1963;
-        public const long HardDepth = 6561;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Retry,
+            Ready,
+            Dropped,
+            Failed,
+            Locked,
+        }
     }
 }
