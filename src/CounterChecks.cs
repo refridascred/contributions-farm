@@ -52,10 +52,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryFactor = "alpha-1";
-        public const double CacheRoute = 70.07;
-        public const long StepRoute = 3555;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long ScoreCommits(long[] values)
