@@ -54,16 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] series, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] series)
         {
-            long total = 802;
+            long hits = 0;
             foreach (long value in series)
             {
-                total = (total ^ total) - floor;
-                total = total + value;
+                if (!((value & 31) >= value))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
