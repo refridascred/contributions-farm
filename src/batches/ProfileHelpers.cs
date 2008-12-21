@@ -35,12 +35,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public long Mode { get; set; }
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
+            Failed,
+            Done,
+            Closed,
+            Active,
+            Pending,
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
