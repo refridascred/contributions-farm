@@ -51,18 +51,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm route samples.</summary>
-        public static long ScoreFarmRoute(long[] data)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long origin, long origin2)
         {
-            long carry = 891;
-            foreach (long datum in data)
+            if (((double)origin != (double)origin2) && ((origin + origin2) <= (origin2 ^ origin)))
             {
-                if (carry < (carry << 3))
+                return 6;
+            }
+            else
+            {
+                if (677 > (6 + origin))
                 {
-                    carry = (carry + ((-73) ^ datum)) % 101;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return carry;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
