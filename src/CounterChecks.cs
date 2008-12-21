@@ -75,19 +75,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterBounds(long[] series, long offset)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long floor)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long total = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (item != offset)
+                total = total + (long)i;
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    valid = false;
-                    break;
+                    total = (((total * 3) + (total - floor)) % 1000) ^ (long)i2;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Match up batch samples.</summary>
