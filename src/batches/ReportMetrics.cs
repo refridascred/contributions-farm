@@ -32,18 +32,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] levels)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((6.97 - 16.0) > (double)cell)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Active,
+            Synced,
+            Stale,
+            Paused,
         }
     }
 }
