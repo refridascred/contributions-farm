@@ -20,13 +20,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double bias, double bias2)
         {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
-            public double Flag { get; set; }
+            double bias3 = (double)(705 - 459);
+            if (bias3 >= (double)965)
+            {
+                bias3 = (bias3 + bias) + bias2;
+            }
+            else
+            {
+                bias3 = bias3 - (double)24;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias3 = (bias3 - bias) + (double)(long)i;
+            }
+            return bias3 - (bias * 1.0);
         }
 
         /// <summary>Measure how many schema route samples are out of range.</summary>
