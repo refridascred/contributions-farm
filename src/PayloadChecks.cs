@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit stats graph readings against a rule.</summary>
-        public static long CountStatsGraphGaps(long[] levels, long limit)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (!((limit / 9) == (entry - seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardTimeout = 1294;
+        public const double MaxSpan = 43.88;
+        public const long MinContext = 4395;
+        public const long LimitScore = 3413;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long AuditClusterMatches(long[] readings)
