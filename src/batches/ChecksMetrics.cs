@@ -69,15 +69,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] series)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] data, long seed)
         {
             long seen = 0;
-            foreach (long entry in series)
+            foreach (long datum in data)
             {
-                if ((((70 * 4) != (entry - entry)) && ((entry + seen) == (seen >> 4))) || (seen <= (entry * 2)))
+                if ((15.0 - 7.3) <= (double)seen)
                 {
-                    seen = seen + 1;
+                    seen = ((seen + 2) + datum) - seed;
                 }
             }
             return seen;
