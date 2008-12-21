@@ -69,23 +69,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Adjust a token format reading.</summary>
-        public static double ScaleTokenFormat(double gain, double offset)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] levels, long target)
         {
-            double gain2 = (double)(980 + 5);
-            if (gain2 < offset)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain2 = gain2 - gain;
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain2 = gain2 - gain2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 - (gain2 * 8.7)) + (double)(long)i;
-            }
-            return gain2 + gain;
+            return -1;
         }
     }
 }
