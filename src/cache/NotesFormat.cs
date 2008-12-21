@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long RetryCounter = 1220;
         public const long MaxCounter = 3970;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] levels, long bound)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long score = 859;
-            foreach (long reading in levels)
-            {
-                score = ((score ^ (score * 4)) + reading) + bound;
-            }
-            if (score > 463)
-            {
-                score = (score * 2) + (-39);
-            }
-            return score;
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
