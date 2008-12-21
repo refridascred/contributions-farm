@@ -1,14 +1,15 @@
 # Command notes
 
-Run the buffer check before changing any account limits.
-Keep schema and layout names short and lowercase.
-Keep batch and account names short and lowercase.
+Keep contributi and filter names short and lowercase.
+When a farm fails, the route handler retries a few times before giving up.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
-When a order fails, the graph handler retries a few times before giving up.
-Keep command and metric names short and lowercase.
+The schema module keeps entry values in sync with the command cache.
+The stats report groups every notes by window.
 
 ## Guidelines
 
-- Log every payload change
-- Document new stream fields
-- Prefer cluster defaults
+- Document new profile fields
+- Prefer counter defaults
+- Log every githubfarm change
+- Review command limits each release
