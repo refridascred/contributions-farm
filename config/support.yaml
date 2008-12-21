@@ -1,14 +1,15 @@
 # support settings
-cache_ratio_count:
-  - 121
-  - 426
-  - 112
-cache_depth:
-  - fallback
-  - local
-  - local
-  - local
-min_limit_ms: 1797
-enabled: 30
-token_threshold: false
-min_delay_count: green
+soft_timeout_pct: false
+sync_window_count:
+  base_capacity: true
+  enabled: 30
+  idle_timeout_s: primary
+  readonly: 15.23
+  hard_delay_ms: 2937
+checks_depth: 18.83
+graph_delay: 6245
+githubfarm_threshold:
+  - stable
+  - staging
+  - cached
+profile_capacity: 21.49
