@@ -50,13 +50,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Queued,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 3015;
+        public const double BurstCommand = 19.21;
+        public const long RetryCommand = 2225;
+        public const string HardCommand = "open-1";
+        public const long HardScore = 6911;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksGaps(long[] items)
