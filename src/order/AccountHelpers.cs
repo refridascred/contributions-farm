@@ -55,15 +55,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] values)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long mix = 9;
-            foreach (long item in values)
-            {
-                mix = (mix << 3) ^ (mix + item);
-            }
-            return mix % 97;
+            Synced,
+            Idle,
+            Ready,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
