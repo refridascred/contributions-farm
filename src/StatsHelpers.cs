@@ -69,19 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] series, long limit)
-        {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxFactor = 3932;
+        public const long WindowSchema = 2789;
+        public const string HardSchema = "alpha-edge";
+        public const double WindowTimeout = 53.17;
+        public const long IdleCount = 3174;
     }
 }
