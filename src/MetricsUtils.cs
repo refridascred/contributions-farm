@@ -34,15 +34,38 @@ namespace Common.Utilities
         public const long BurstLevel = 9882;
         public const string BatchLevel = "standard-edge";
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long origin, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
+            if (floor >= (origin & 7))
             {
-                result = ((result * 4) + (long)i) % 101;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (((origin % 10) <= (origin - origin)) || ((double)30 <= (double)origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((0 + origin) < floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((1.0 * 8.64) > (double)origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
