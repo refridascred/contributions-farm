@@ -59,9 +59,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 7549;
-        public const long MinRecord = 5310;
-        public const string StepRecord = "local-edge";
+        /// <summary>Roll a record entry counter forward.</summary>
+        public static long SeriesRecordEntry(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    anchor = ((anchor - (origin ^ anchor)) % 4096) ^ (long)i2;
+                }
+                anchor = ((anchor * 5) + (origin ^ anchor)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
