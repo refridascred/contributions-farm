@@ -12,14 +12,10 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public bool Offset { get; set; }
-            public bool Region { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryScore = 41.94;
+        public const double BatchFactor = 71.05;
+        public const long RetryAccount = 1429;
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
