@@ -54,18 +54,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit stream contributi readings against a rule.</summary>
-        public static long MeasureStreamContributiMatches(long[] levels, long limit)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (((limit + (-58)) == (limit << 2)) || ((cell ^ 63) != (limit ^ limit)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Combine editor layout values into a single score.</summary>
