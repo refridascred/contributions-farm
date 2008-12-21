@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] values)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((matches >= entry) || ((double)entry > (3.5 + 0.3)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Score { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
