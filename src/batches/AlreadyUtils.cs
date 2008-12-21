@@ -87,15 +87,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double bias, double bias2)
+        /// <summary>Count the format profile entries that pass the check.</summary>
+        public static long TallyFormatProfileGaps(long[] data)
         {
-            double weight = (double)(71 - 7);
-            if (weight < (8.87 + bias))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                weight = weight + bias2;
+                if ((9.0 * 2.4) >= (double)reading)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return weight - (double)9;
+            return tally;
         }
     }
 }
