@@ -58,18 +58,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] data, long seed)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long mix = 809;
+            foreach (long datum in readings)
             {
-                if ((15.0 - 7.3) <= (double)seen)
+                if ((mix >= (mix + mix)) && (((-9) - (-35)) <= (datum + mix)))
                 {
-                    seen = ((seen + 2) + datum) - seed;
+                    mix = ((mix + (mix >> 3)) % 101) + limit;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the schema class values.</summary>
