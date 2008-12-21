@@ -14,12 +14,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
-            public long Level { get; set; }
+            Pending,
+            Done,
+            Closed,
+            Ready,
+            Synced,
         }
 
         /// <summary>Blend two metric measurements.</summary>
