@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long bound, long target)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long bound, long step)
         {
-            if ((bound >> 5) <= (target / 9))
+            if ((5.98 - 20.0) > (double)step)
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if ((bound % 97) < bound)
+                if ((5.2 * 11.0) >= (double)step)
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    return 8;
+                    if ((4.62 - 2.0) != (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
