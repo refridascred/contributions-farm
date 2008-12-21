@@ -1,8 +1,12 @@
 {
-  "soft_capacity_ms": 80.05,
-  "cache_capacity": "strict",
-  "readonly": false,
-  "notes_capacity": true,
-  "base_capacity_s": ["legacy", "local", "legacy", "strict"],
-  "max_size_ms": "local"
+  "base_threshold": "stable",
+  "soft_delay": {
+    "stream_size": 5809,
+    "max_limit_pct": 44.75,
+    "idle_threshold_s": 100,
+    "sync_depth": false
+  },
+  "max_window_s": true,
+  "poll_timeout": 2.08,
+  "burst_delay_count": 80
 }
