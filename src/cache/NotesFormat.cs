@@ -30,19 +30,17 @@ namespace Common.Utilities
         public const string CacheWidth = "primary-1";
         public const double StepSize = 26.05;
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double rate, double span)
+        /// <summary>Locate a window metric reading by value.</summary>
+        public static long FindWindowMetricIndex(long[] series, long origin)
         {
-            double bias = rate / 9.0;
-            if (bias <= (bias * 8.29))
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = (bias - rate) + span;
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            return bias + rate;
+            return -1;
         }
     }
 }
