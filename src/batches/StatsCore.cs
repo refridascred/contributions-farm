@@ -27,12 +27,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public bool Region { get; set; }
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
+            Closed,
+            Draft,
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Describe the tools kind values.</summary>
