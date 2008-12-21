@@ -44,18 +44,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] series)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((datum + datum) >= 701)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Paused,
+            Failed,
+            Dropped,
+            Draft,
+            Active,
         }
 
         /// <summary>Hold a channel options.</summary>
