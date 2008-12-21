@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] items)
+        /// <summary>Accumulate githubfarm session samples.</summary>
+        public static long CombineGithubfarmSession(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 817;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry - score) < entry)
                 {
-                    if ((items[i] ^ items[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score * 3) + entry) % 97;
+                }
+                else
+                {
+                    score = ((score << 3) ^ 659) % 255;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
