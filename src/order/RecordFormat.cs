@@ -37,13 +37,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            New,
-            Done,
-            Active,
+            Stale,
             Draft,
+            Pending,
         }
 
         /// <summary>Describe the report status values.</summary>
