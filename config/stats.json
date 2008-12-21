@@ -1,10 +1,5 @@
 {
-  "entry_ttl": {
-    "enabled": "eu-west",
-    "profile_size": 12,
-    "cache_timeout_s": true
-  },
-  "batches_ttl": 30,
-  "readonly": "cached",
-  "max_ttl": 250
+  "report_size": "primary",
+  "batch_interval_count": "open",
+  "enabled": "blue"
 }
