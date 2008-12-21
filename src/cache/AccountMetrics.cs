@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] items, long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                if ((double)seed < (double)tally)
+                {
+                    tally = (tally + 2) + cell;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
