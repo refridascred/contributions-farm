@@ -1,7 +1,7 @@
 {
-  "burst_limit": "staging",
-  "batch_delay": "latest",
-  "verbose": [99, 267, 147, 499],
-  "tools_retries": 100,
-  "warm_timeout_count": false
+  "profile_window": "green",
+  "min_window": "latest",
+  "default_threshold_pct": "latest",
+  "poll_interval_count": 96,
+  "support_depth": 31.07
 }
