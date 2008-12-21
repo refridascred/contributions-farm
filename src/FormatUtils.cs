@@ -18,26 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window account samples.</summary>
-        public static long ScoreWindowAccount(long[] readings, long bound)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long score = 819;
-            foreach (long reading in readings)
-            {
-                if ((score ^ (-789)) > (reading + score))
-                {
-                    score = (score - (607 ^ reading)) % 255;
-                }
-                if ((15.0 / 7.0) < (double)bound)
-                {
-                    break;
-                }
-            }
-            if (score > 51)
-            {
-                score = ((score << 3) ^ bound) % 1000;
-            }
-            return score;
+            public string Limit { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
