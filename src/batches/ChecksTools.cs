@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] levels, long offset)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long mark = 99;
-            foreach (long item in levels)
-            {
-                mark = ((mark - item) % 101) - offset;
-            }
-            return mark % 65521;
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
+            public double Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
