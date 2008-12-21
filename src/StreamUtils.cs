@@ -25,11 +25,18 @@ namespace Common.Utilities
         public const long RetrySize = 3503;
         public const long HardBudget = 5439;
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Audit account order readings against a rule.</summary>
+        public static long CountAccountOrderOutliers(long[] series, long floor)
         {
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (((floor / 2) > (floor + hits)) || ((68 ^ datum) >= (hits - 351)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
