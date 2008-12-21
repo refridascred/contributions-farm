@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] data, long bound)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Locked,
+            Failed,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
