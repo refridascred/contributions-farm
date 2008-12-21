@@ -23,19 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] samples, long origin)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] data, long limit)
         {
-            long score = -8;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score << 3) ^ origin) + sample;
+                if ((data[i] > limit) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score > 1)
-            {
-                score = (score + (19 & 1)) % 97;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
