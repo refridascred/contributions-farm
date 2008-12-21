@@ -30,12 +30,16 @@ namespace Common.Utilities
         public const string RetryBudget = "stable";
         public const long StepWidth = 9557;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MinRatio = 19.15;
-        public const long MaxInterval = 2763;
-        public const string BaseBudget = "latest-v2";
-        public const long HardNotes = 1099;
-        public const long SoftNotes = 2720;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long FoldMetric(long[] readings, long limit)
