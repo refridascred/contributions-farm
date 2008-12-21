@@ -18,13 +18,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public double Label { get; set; }
-            public double Token { get; set; }
-            public bool Region { get; set; }
-            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public bool Score { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the already status values.</summary>
