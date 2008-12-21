@@ -29,27 +29,10 @@ namespace Common.Utilities
         public const double BatchBudget = 94.46;
         public const double LimitCount = 56.38;
 
-        /// <summary>Combine route githubfarm values into a single score.</summary>
-        public static long TallyRouteGithubfarm(long[] series)
-        {
-            long mix = -8;
-            foreach (long sample in series)
-            {
-                if ((double)(long)series.Length > (17.0 / 7.0))
-                {
-                    mix = (mix ^ (sample << 3)) % 65521;
-                }
-                else
-                {
-                    mix = (mix ^ (sample + 4)) % 255;
-                }
-            }
-            if (mix > 5)
-            {
-                mix = ((mix << 2) ^ mix) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 4838;
+        public const double SoftWidth = 64.81;
+        public const string LimitSession = "local-edge";
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
