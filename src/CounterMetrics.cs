@@ -20,11 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (!((value + value) > (hits + hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine profile tools values into a single score.</summary>
