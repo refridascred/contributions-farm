@@ -22,13 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public double Owner { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
