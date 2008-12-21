@@ -1,14 +1,14 @@
 # Command notes
 
-The filter helpers are pure functions, so they are safe to call from any thread.
-A layout that stays idle for too long is moved to the checks list.
-A layout that stays idle for too long is moved to the githubfarm list.
+The schema report groups every layout by queue.
+Each githubfarm is validated before it reaches the metric queue.
 
-The route report groups every editor by token.
-The report helpers are pure functions, so they are safe to call from any thread.
+Run the queue check before changing any batches limits.
+The filter report groups every command by commits.
+Use tools settings to tune how often entry data is refreshed.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Validate metrics input early
-- Log every notes change
+- Keep account values small
+- Validate filter input early
+- Prefer batches defaults
