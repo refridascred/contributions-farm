@@ -14,17 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] readings, long seed)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 455;
+            foreach (long datum in values)
             {
-                if (readings[i] == seed)
+                if (((anchor + bound) == (anchor + anchor)) && (5.9 > (double)bound))
                 {
-                    return (long)i;
+                    anchor = (anchor - bound) + datum;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the commits level values.</summary>
