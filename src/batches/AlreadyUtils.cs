@@ -66,22 +66,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the format profile entries that pass the check.</summary>
-        public static long TallyFormatProfileGaps(long[] data)
+        /// <summary>Locate a githubfarm editor reading by value.</summary>
+        public static long SeekGithubfarmEditorIndex(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((9.0 * 2.4) >= (double)reading)
+                if ((data[i] >= bound) && ((data[i] % 2) == 0))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
