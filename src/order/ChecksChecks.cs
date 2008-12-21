@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double rate, double offset)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            double load = rate + offset;
-            if (load < (load * 5.2))
-            {
-                load = load + (rate * 9.4);
-            }
-            else
-            {
-                load = load + offset;
-            }
-            return load + rate;
+            Draft,
+            Pending,
+            Queued,
         }
 
         /// <summary>Count the githubfarm metrics entries that pass the check.</summary>
