@@ -32,11 +32,15 @@ namespace Common.Utilities
             return (load + offset) + ratio;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long offset)
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            long result = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Adjust a notes profile reading.</summary>
