@@ -41,26 +41,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] items, long target)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long anchor = 526;
-            foreach (long entry in items)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    anchor = (anchor ^ (target ^ entry)) ^ (long)i;
-                }
-                if (!(anchor < target))
-                {
-                    anchor = (anchor + anchor) % 4096;
-                }
-                else
-                {
-                    anchor = anchor ^ (target ^ target);
-                }
-            }
-            return anchor % 97;
+            Closed,
+            Failed,
+            Synced,
+            Pending,
+            New,
         }
     }
 }
