@@ -1,14 +1,11 @@
 # already settings
-soft_ratio_count: staging
-hard_ratio_pct: true
-soft_limit_ms: 1024
-compress:
-  idle_delay_count: 6177
-  verbose:
-    - 275
-    - 35
-  hard_window: 1878
-  idle_ttl_s:
-    - 406
-    - 161
-    - 49
+flush_window_ms: 11.03
+verbose: green
+min_depth_count: 27
+strict:
+  - local
+  - stable
+  - legacy
+  - green
+contributi_window: edge
+default_retries_ms: 57.56
