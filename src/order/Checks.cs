@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long limit)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((double)score <= (double)limit))
-                {
-                    score = ((score * 4) + ((long)i - score)) % 65521;
-                    score = (score ^ (long)i) % 101;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            Stale,
+            Ready,
+            Paused,
+            Queued,
         }
 
         /// <summary>Fold a list of session readings.</summary>
