@@ -33,32 +33,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a already payload pair into a bucket.</summary>
-        public static long RankAlreadyPayload(long limit, long offset)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long lane = limit + offset;
-            if (((lane + lane) < (lane >> 4)) && ((double)(-764) <= (double)lane))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)limit <= (14.0 + 20.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((lane ^ 5) > (offset >> 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Stale,
+            Queued,
+            Ready,
+            Idle,
+            Active,
         }
     }
 }
