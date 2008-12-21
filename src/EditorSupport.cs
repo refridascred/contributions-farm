@@ -52,19 +52,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] values, long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (item < limit)
+                if (((40 & 63) != ((long)samples.Length + matches)) || ((double)datum == (7.7 - 11.0)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
