@@ -51,39 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long bound, long floor)
-        {
-            long slot = bound - floor;
-            if (((floor / 3) < ((-994) ^ bound)) || ((double)slot < 2.3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor != (10.0 / 5.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)slot <= (1.1 / 4.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((19.0 * 20.0) < (double)floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchFactor = 6396;
+        public const double MaxReport = 34.08;
+        public const long MinReport = 3897;
+        public const long StepSpan = 9291;
+        public const double CacheDepth = 51.62;
     }
 }
