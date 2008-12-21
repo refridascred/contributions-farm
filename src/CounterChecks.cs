@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] items, long origin)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Locked,
+            Closed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
