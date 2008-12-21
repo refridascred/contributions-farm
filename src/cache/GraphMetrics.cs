@@ -26,12 +26,19 @@ namespace Common.Utilities
         public const string BatchRatio = "local-1";
         public const long RetryCount = 5398;
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] items, long target)
         {
-            public double Flag { get; set; }
-            public bool Owner { get; set; }
-            public double Limit { get; set; }
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
