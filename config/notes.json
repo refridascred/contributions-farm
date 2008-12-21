@@ -1,6 +1,9 @@
 {
-  "verbose": "staging",
-  "soft_delay": "eu-west",
-  "profile_depth": 60,
-  "retry_depth_count": 77.55
+  "buffer_size": 6.47,
+  "min_window": "stable",
+  "enabled": {
+    "warm_size_count": 24.35,
+    "stream_threshold": false,
+    "batch_window_s": "strict"
+  }
 }
