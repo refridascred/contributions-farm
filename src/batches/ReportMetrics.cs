@@ -22,18 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] values, long bound)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long result = -71;
-            foreach (long entry in values)
-            {
-                if ((39 >> 2) < (result << 2))
-                {
-                    result = (result ^ bound) + entry;
-                }
-            }
-            return result % 4096;
+            Closed,
+            Stale,
+            Draft,
+            Pending,
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
