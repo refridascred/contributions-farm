@@ -16,19 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] values, long floor)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Region { get; set; }
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
