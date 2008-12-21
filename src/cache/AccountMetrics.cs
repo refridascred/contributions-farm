@@ -21,13 +21,17 @@ namespace Common.Utilities
         public const string SoftInterval = "staging";
         public const double LimitDepth = 29.28;
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] levels, long target)
         {
-            New,
-            Locked,
-            Retry,
-            Done,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
