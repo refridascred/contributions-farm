@@ -1,6 +1,7 @@
-id,active,region
-1,102,standard
-2,green,staging
-3,741,staging
-4,fallback,82.15
-5,66,stable
+id,token,count,owner
+1,245,green,70.26
+2,27.21,cached,29.18
+3,open,533,610
+4,36.23,edge,480
+5,82.27,610,44
+6,289,49.58,standard
