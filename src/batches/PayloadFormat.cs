@@ -33,12 +33,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Match up window entry samples.</summary>
+        public static long PairWindowEntryCount(long[] series)
         {
-            Ready,
-            Locked,
-            Dropped,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a account info.</summary>
