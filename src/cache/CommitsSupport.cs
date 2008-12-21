@@ -76,19 +76,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double rate, double bias)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] items, long seed)
         {
-            double bias2 = rate;
-            if (bias2 >= (double)1)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = bias2 + bias;
+                if ((items[i] == seed) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 + (4.8 + 1.3)) + (double)(long)i;
-            }
-            return bias2 - 19.0;
+            return -1;
         }
     }
 }
