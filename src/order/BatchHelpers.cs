@@ -57,18 +57,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch stats samples are out of range.</summary>
-        public static long TallyBatchStatsHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((184 + tally) >= (tally >> 5))
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxDepth = 16.82;
+        public const string MinBatches = "strict";
+        public const long SoftFactor = 6304;
     }
 }
