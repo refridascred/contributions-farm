@@ -31,14 +31,20 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long bound)
         {
-            Idle,
-            Done,
-            Stale,
-            Closed,
-            Paused,
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((bound >> 4) < (965 - carry))
+                {
+                    carry = (carry ^ (carry % 3)) % 255;
+                    carry = carry - carry;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
