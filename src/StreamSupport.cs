@@ -28,9 +28,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 3634;
-        public const long StepInterval = 7512;
-        public const double SoftContext = 40.43;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
