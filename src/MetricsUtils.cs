@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long origin, long bound)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] data, long offset)
         {
-            if ((double)bound == (17.0 - 0.89))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin * 5) != (bound * 5))
+                if (data[i] == offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
