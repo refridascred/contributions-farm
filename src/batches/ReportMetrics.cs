@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the checks token series from a seed.</summary>
-        public static long SeriesChecksToken(long seed)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] values)
         {
-            long result = seed;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result << 3) ^ seed) % 101;
-                result = ((result * 3) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
