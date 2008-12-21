@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long target)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = (mark ^ (mark / 5)) % 255;
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a format stats.</summary>
