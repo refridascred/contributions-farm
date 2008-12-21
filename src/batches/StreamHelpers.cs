@@ -48,15 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long origin)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 12; i++)
+            long carry = floor;
+            for (int i = 0; i < 22; i++)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
