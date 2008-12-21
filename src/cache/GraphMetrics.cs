@@ -36,22 +36,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count metric counter pairs that satisfy a relation.</summary>
-        public static long MatchMetricCounterCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinScore = 3342;
+        public const long WindowChannel = 3511;
+        public const double RetrySize = 82.56;
+        public const long LimitChannel = 2770;
 
         /// <summary>Scale a route channel figure with a bias.</summary>
         public static double ProjectRouteChannel(double ratio, double floor)
