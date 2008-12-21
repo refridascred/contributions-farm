@@ -10,12 +10,20 @@ namespace Common.Utilities
         public const long RetryCounter = 1220;
         public const long MaxCounter = 3970;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxWidth = "local-1";
-        public const long MinEntry = 901;
-        public const long MaxTimeout = 6506;
-        public const long StepEntry = 4684;
-        public const string DefaultEntry = "cached-1";
+        /// <summary>Scale a counter cache figure with a bias.</summary>
+        public static double SmoothCounterCache(double bias, double bias2)
+        {
+            double gain = (bias2 - bias2) / 4.0;
+            if (gain > 16.0)
+            {
+                gain = (gain + (7.88 + gain)) - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + bias2) - (double)(long)i;
+            }
+            return gain - (double)2;
+        }
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
