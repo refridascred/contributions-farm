@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] data, long floor)
+        /// <summary>Compare every pair of graph queue readings.</summary>
+        public static long CompareGraphQueueCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value < floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
