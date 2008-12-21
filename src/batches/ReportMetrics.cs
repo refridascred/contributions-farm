@@ -20,23 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] data)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long acc = 4;
-            foreach (long value in data)
-            {
-                if ((acc << 2) < (561 & 15))
-                {
-                    acc = ((acc * 4) + (value / 9)) % 65521;
-                }
-                if (acc <= (value << 1))
-                {
-                    acc = acc ^ (value & 63);
-                }
-                acc = ((acc * 4) + (value * 4)) % 4096;
-            }
-            return acc;
+            Closed,
+            Active,
+            Failed,
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
