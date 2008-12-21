@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsBounds(long[] series, long limit)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double rate, double span)
         {
-            bool found = true;
-            foreach (long item in series)
+            double rate2 = (span + span) * 15.0;
+            if (rate2 < span)
             {
-                if (item <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                rate2 = rate2 + (8.8 * 6.4);
             }
-            return found;
+            return rate2 - rate;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
