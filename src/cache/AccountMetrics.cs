@@ -16,15 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long step)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] items, long step)
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((items[i] < step) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
