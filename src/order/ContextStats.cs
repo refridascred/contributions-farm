@@ -51,17 +51,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                total = (total + (total << 3)) % 4096;
-                total = ((total << 3) ^ limit) % 1000;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchEditor = "local";
+        public const double MaxEditor = 14.37;
+        public const long SoftSize = 5166;
+        public const double HardTimeout = 89.18;
     }
 }
