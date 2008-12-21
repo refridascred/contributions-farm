@@ -19,14 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Paused,
-            Active,
-            Dropped,
-            Failed,
-            Idle,
+            Stale,
+            Locked,
+            Done,
+            Closed,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
