@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 2284;
-        public const long BatchCount = 4581;
-        public const long StepLevel = 8193;
-        public const long RetryFactor = 6704;
-        public const double BurstBatch = 80.67;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Pending,
+            New,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool CheckGraphRange(long[] data, long limit)
