@@ -47,12 +47,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public bool Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            Retry,
+            Synced,
+            Draft,
         }
 
         /// <summary>Project the next counter value.</summary>
