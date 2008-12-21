@@ -20,10 +20,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 4908;
-        public const string StepBatches = "strict";
-        public const long BurstBatches = 5818;
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a command reading.</summary>
         public static double ProjectCommand(double gain, double bias)
