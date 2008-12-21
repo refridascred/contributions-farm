@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] samples)
         {
-            public string Size { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
+            long anchor = -679;
+            foreach (long sample in samples)
+            {
+                anchor = (anchor ^ (anchor * 2)) - sample;
+            }
+            return anchor;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
