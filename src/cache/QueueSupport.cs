@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowSize = 97.23;
-        public const long StepLevel = 9762;
-        public const double MinGithubfarm = 51.02;
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
+        {
+            Stale,
+            Idle,
+            Failed,
+            Done,
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long WeighProfile(long[] series)
