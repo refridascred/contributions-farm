@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] readings, long step)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= step) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
