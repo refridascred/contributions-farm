@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] items)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] items, long step)
         {
-            long anchor = 305;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((anchor - value) < (anchor + value))
+                if ((3.32 * 3.0) >= (double)step)
                 {
-                    anchor = (anchor - (value + value)) % 1000;
+                    count = (count + 1) ^ item;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Audit filter report readings against a rule.</summary>
