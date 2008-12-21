@@ -31,17 +31,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] items, long floor)
+        /// <summary>Combine session stream values into a single score.</summary>
+        public static long TallySessionStream(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = -557;
+            foreach (long sample in values)
             {
-                if ((items[i] < floor) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 3) ^ sample) % 4096;
             }
-            return -1;
+            if (mix > 37)
+            {
+                mix = (mix ^ mix) % 1000;
+            }
+            return mix;
         }
     }
 }
