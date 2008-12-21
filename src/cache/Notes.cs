@@ -31,10 +31,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseCount = 4387;
-        public const double LimitRecord = 70.08;
-        public const long CacheRecord = 106;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowDepth = 6419;
+        public const string HardSupport = "legacy-v2";
+        public const long RetryWidth = 2940;
+        public const double IdleWidth = 67.24;
+        public const long IdleSupport = 7197;
 
         /// <summary>Blend two format measurements.</summary>
         public static double BlendFormat(double ratio, double span)
