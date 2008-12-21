@@ -1,13 +1,14 @@
 # Command notes
 
-Use buffer settings to tune how often order data is refreshed.
-When a contributi fails, the filter handler retries a few times before giving up.
+Defaults for checks live in the config folder and can be overridden per environment.
+Defaults for token live in the config folder and can be overridden per environment.
+The graph module keeps window values in sync with the support cache.
 
-The session helpers are pure functions, so they are safe to call from any thread.
-Use stats settings to tune how often farm data is refreshed.
+Use buffer settings to tune how often commits data is refreshed.
+When a support fails, the report handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review cache limits each release
-- Prefer schema defaults
-- Keep context values small
+- Keep tools values small
+- Validate order input early
+- Document new cluster fields
