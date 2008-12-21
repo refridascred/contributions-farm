@@ -19,21 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up editor account samples.</summary>
-        public static long PairEditorAccountCount(long[] samples)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double bias, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = (bias + floor) - (bias - bias);
+            if (bias2 < (floor * 8.9))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = bias2 - 7.09;
             }
-            return tally;
+            return bias2 + floor;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
