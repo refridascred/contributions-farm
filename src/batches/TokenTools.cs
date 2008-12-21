@@ -59,10 +59,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 6123;
-        public const long BaseBudget = 2938;
-        public const long BatchSpan = 5735;
-        public const long DefaultRatio = 3824;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 7549;
+        public const long MinRecord = 5310;
+        public const string StepRecord = "local-edge";
     }
 }
