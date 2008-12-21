@@ -15,22 +15,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] series, long seed)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long seed)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long score = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (sample < (seed + sample))
+                if ((70 + score) <= (seed + seed))
                 {
-                    tally = tally + 3;
+                    score = score + (seed * 5);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = ((score << 2) ^ score) % 101;
+                    score = (score + seed) % 65521;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
