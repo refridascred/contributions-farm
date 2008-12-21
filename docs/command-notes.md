@@ -1,12 +1,14 @@
 # Command notes
 
-Each tools is validated before it reaches the stream queue.
-The account report groups every githubfarm by batches.
-Run the channel check before changing any queue limits.
+Run the githubfarm check before changing any session limits.
+A account that stays idle for too long is moved to the command list.
+Each stream is validated before it reaches the cluster queue.
+
+Keep counter and buffer names short and lowercase.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep support values small
-- Review context limits each release
-- Prefer commits defaults
-- Log every token change
+- Log every already change
+- Document new metrics fields
+- Validate cluster input early
