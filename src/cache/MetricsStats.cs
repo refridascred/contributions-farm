@@ -43,23 +43,21 @@ namespace Common.Utilities
         public const double MinScore = 48.28;
         public const string LimitSupport = "stable-edge";
 
-        /// <summary>Adjust a graph contributi reading.</summary>
-        public static double AdjustGraphContributi(double bias, double offset)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] levels)
         {
-            double mean = (6.8 + bias) - bias;
-            if (mean >= mean)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + (double)2;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (offset / 2.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + (2.0 * 4.0);
+            return hits;
         }
     }
 }
