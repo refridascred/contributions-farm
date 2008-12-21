@@ -53,25 +53,16 @@ namespace Common.Utilities
         public const string HardFactor = "stable";
         public const string SoftLayout = "staging-edge";
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long target, long origin)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long bound)
         {
-            long bound = target - origin;
-            if (((double)target <= 8.36) || (bound <= (target + bound)))
+            long mix = bound;
+            for (int i = 0; i < 24; i++)
             {
-                return 6;
+                mix = (mix - (mix ^ (long)i)) % 97;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((target ^ origin) < origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mix;
         }
     }
 }
