@@ -13,12 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxSize = 24.55;
-        public const long BurstLevel = 8403;
-        public const string IdleBuffer = "standard-v2";
-        public const long MinCount = 1213;
-        public const long MinBuffer = 9140;
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
+        {
+            public string Region { get; set; } = "";
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string MinSupport = "latest-v2";
