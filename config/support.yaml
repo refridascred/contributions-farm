@@ -1,10 +1,24 @@
 # support settings
-compress: 6105
-soft_limit_s: 250
-max_retries:
-  default_delay: 54.43
-  retry_delay_s: 250
-  base_interval_ms: 500
-  batch_ratio_pct: 2
-  retry_timeout: 83
-context_threshold: false
+persist: latest
+filter_timeout:
+  soft_window: 88
+  profile_ratio: 48
+  burst_limit_ms:
+    default_threshold_pct:
+      - primary
+      - fallback
+      - open
+      - cached
+    idle_depth_count: 60
+    enabled:
+      - 261
+      - 296
+      - 298
+      - 351
+    base_timeout: 34.25
+  compress: blue
+  editor_size: false
+strict: false
+compress: legacy
+min_window_count: edge
+max_size: 57.94
