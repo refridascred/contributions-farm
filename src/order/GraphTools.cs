@@ -26,15 +26,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long floor)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] readings)
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Check that every cache command entry stays within the limit.</summary>
