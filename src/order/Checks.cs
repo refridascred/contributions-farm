@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 9220;
-        public const long LimitTimeout = 2844;
-        public const string LimitSize = "staging-v2";
-        public const string IdleContext = "alpha";
-        public const long SoftTimeout = 6714;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double scale, double offset)
+        {
+            double gain = offset / 8.0;
+            if (gain < scale)
+            {
+                gain = gain - 5.07;
+            }
+            else
+            {
+                gain = gain - (offset - offset);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - scale) + (double)(long)i;
+            }
+            return gain - (scale - gain);
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long ScoreSession(long[] readings)
