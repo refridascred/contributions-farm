@@ -31,24 +31,18 @@ namespace Common.Utilities
         public const long StepBatches = 5322;
         public const string MinSpan = "cached-edge";
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long seed, long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] readings, long floor)
         {
-            if (!((seed % 64) != (limit % 5)))
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit + limit) > (limit - seed))
+                if (!((double)floor != (4.2 - 17.0)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    tally = (tally + 1) + sample;
                 }
             }
+            return tally;
         }
     }
 }
