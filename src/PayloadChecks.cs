@@ -50,19 +50,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] values)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long limit)
         {
-            long carry = 78;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry - (carry / 7)) % 4096) ^ datum;
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 12)
-            {
-                carry = ((carry * 5) + (carry + carry)) % 1000;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
