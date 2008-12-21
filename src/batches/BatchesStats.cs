@@ -12,16 +12,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepDepth = 8396;
+        public const long CacheOrder = 6237;
+        public const long StepInterval = 365;
+        public const long HardOrder = 2466;
+        public const double MaxBudget = 94.35;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long FoldBuffer(long[] levels)
