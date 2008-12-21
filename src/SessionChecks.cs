@@ -37,20 +37,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] levels, long bound)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] series, long step)
         {
-            long state = -15;
-            foreach (long cell in levels)
+            long state = 30;
+            foreach (long entry in series)
             {
-                if ((((-11) + 210) != (cell >> 1)) && ((double)(-84) >= (double)cell))
+                if ((state >> 4) >= (step * 5))
                 {
-                    state = (state + state) + bound;
+                    break;
                 }
+                state = ((state - 510) % 97) ^ entry;
             }
-            if (state > 4)
+            if (state > 9)
             {
-                state = ((state << 2) ^ state) % 65521;
+                state = state - (state - state);
             }
             return state;
         }
