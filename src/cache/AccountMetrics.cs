@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] items, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((double)seed < (double)tally)
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 3690;
+        public const long MinGraph = 152;
+        public const string WindowGraph = "standard-v2";
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long FindWindowIndex(long[] items, long step)
