@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of profile schema readings.</summary>
-        public static long CombineProfileSchema(long[] levels)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long offset)
         {
-            long mark = 30;
-            foreach (long cell in levels)
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
             {
-                mark = (mark - ((-62) & 127)) - cell;
-            }
-            if (mark < 8)
-            {
-                mark = ((mark << 3) ^ mark) % 1000;
+                mark = ((mark * 3) + (long)i) % 97;
             }
             return mark;
         }
