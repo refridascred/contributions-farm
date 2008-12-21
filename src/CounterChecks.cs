@@ -38,18 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit entry buffer readings against a rule.</summary>
-        public static long CountEntryBufferMatches(long[] levels)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (!(((double)hits != (1.0 - 7.1)) && ((double)298 != (double)hits)))
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
