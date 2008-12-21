@@ -77,19 +77,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine notes window values into a single score.</summary>
-        public static long TallyNotesWindow(long[] readings, long limit)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long score = 386;
-            foreach (long datum in readings)
-            {
-                if (!(((-783) - score) < (score % 97)))
-                {
-                    score = (((score - (0 + 31)) % 101) + datum) - limit;
-                }
-                score = ((score * 3) + (758 - score)) % 4096;
-            }
-            return score;
+            Synced,
+            Failed,
+            Queued,
+            Done,
         }
     }
 }
