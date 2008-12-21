@@ -27,25 +27,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long floor, long bound)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double weight, double offset)
         {
-            long span = floor + bound;
-            if (((bound - 407) < (floor - span)) && ((floor & 7) <= (bound / 6)))
+            double mean = offset;
+            if (mean >= (mean + 13.0))
             {
-                return 0;
+                mean = mean + mean;
             }
             else
             {
-                if ((double)bound <= (double)22)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
+                mean = mean + (mean + weight);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (offset * 9.36)) + (double)(long)i;
+            }
+            return mean + (double)5;
         }
 
         /// <summary>Compare every pair of cache editor readings.</summary>
