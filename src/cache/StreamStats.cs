@@ -46,39 +46,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank commits metrics input into a small class.</summary>
-        public static long BucketCommitsMetrics(long bound, long seed)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long delta = bound - seed;
-            if (!((bound % 100) <= (seed / 6)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((delta ^ 48) > 74)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)delta == (7.62 * 6.66)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)bound <= (0.8 * 7.72)) && ((6 ^ delta) < 252))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Count { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
