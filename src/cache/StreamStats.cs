@@ -23,11 +23,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] items, long origin)
         {
-            public double Owner { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (!((matches - 82) > entry))
+                {
+                    matches = (matches + 1) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many metric payload samples are out of range.</summary>
