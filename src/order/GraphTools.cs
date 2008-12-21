@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowWidth = 7126;
+        public const double IdleGraph = 75.96;
+        public const double HardGraph = 21.19;
+        public const long LimitWidth = 6795;
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
