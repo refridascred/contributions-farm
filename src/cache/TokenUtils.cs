@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] data, long floor)
         {
-            public bool Level { get; set; }
-            public bool Count { get; set; }
-            public bool Region { get; set; }
-            public double Score { get; set; }
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
