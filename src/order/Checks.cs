@@ -39,16 +39,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long step)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] items, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 15; i++)
+            long result = 63;
+            foreach (long cell in items)
             {
-                score = (score - (step ^ 96)) % 101;
-                score = ((score * 2) + (long)i) % 65521;
+                if ((-2) < (9 + result))
+                {
+                    result = ((result - (floor % 100)) % 97) - cell;
+                }
             }
-            return score;
+            return result;
         }
 
         /// <summary>Grade a format tools value against two limits.</summary>
