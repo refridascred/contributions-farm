@@ -57,19 +57,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] series, long target)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] levels, long origin)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry <= target)
+                if ((levels[i] <= origin) && ((levels[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
