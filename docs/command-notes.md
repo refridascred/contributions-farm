@@ -1,11 +1,11 @@
 # Command notes
 
-The contributi module keeps metrics values in sync with the contributi cache.
-Each account is validated before it reaches the report queue.
+Each record is validated before it reaches the githubfarm queue.
+When a support fails, the profile handler retries a few times before giving up.
+Use payload settings to tune how often cluster data is refreshed.
 
 ## Guidelines
 
-- Review notes limits each release
-- Keep payload values small
-- Prefer metric defaults
-- Validate notes input early
+- Validate session input early
+- Document new session fields
+- Prefer graph defaults
