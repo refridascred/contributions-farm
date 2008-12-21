@@ -51,18 +51,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmHits(long[] levels)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((hits / 4) < (hits >> 1)) || ((double)hits <= (10.0 + 7.8)))
+                if (readings[i] < step)
                 {
-                    hits = (hits + 1) - reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Blend two command measurements.</summary>
