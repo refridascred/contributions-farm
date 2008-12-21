@@ -1,12 +1,12 @@
 # Command notes
 
-A support that stays idle for too long is moved to the payload list.
-Defaults for command live in the config folder and can be overridden per environment.
-The report module keeps record values in sync with the channel cache.
+When a stream fails, the counter handler retries a few times before giving up.
+Run the queue check before changing any buffer limits.
+Each metrics is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Validate profile input early
-- Keep notes values small
-- Document new counter fields
-- Review stats limits each release
+- Prefer payload defaults
+- Validate already input early
+- Review layout limits each release
+- Log every batch change
