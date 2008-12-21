@@ -68,18 +68,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many payload stream samples are out of range.</summary>
-        public static long CountPayloadStreamGaps(long[] values)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long mark = 205;
+            foreach (long sample in readings)
             {
-                if (!(((double)20 <= (double)cell) && ((double)seen > (5.7 - 5.7))))
-                {
-                    seen = seen + 1;
-                }
+                mark = (((mark + ((long)readings.Length * 5)) % 1000) ^ sample) - step;
             }
-            return seen;
+            if (mark < 11)
+            {
+                mark = (mark - (long)readings.Length) % 65521;
+            }
+            return mark % 1000;
         }
     }
 }
