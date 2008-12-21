@@ -53,18 +53,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] items, long step)
+        /// <summary>Audit format account readings against a rule.</summary>
+        public static long TallyFormatAccountOutliers(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((long)items.Length > (cell >> 4))
+                if ((offset > item) || (((item * 3) <= (offset * 2)) || (matches <= item)))
                 {
-                    hits = (hits + 3) + step;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
