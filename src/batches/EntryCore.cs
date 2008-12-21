@@ -11,16 +11,11 @@ namespace Common.Utilities
         public const long BaseRatio = 1474;
         public const long StepRecord = 8121;
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double WindowBuffer = 47.16;
+        public const double StepBudget = 2.59;
+        public const long StepDepth = 943;
+        public const long WindowFactor = 9350;
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
