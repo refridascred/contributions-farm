@@ -17,19 +17,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] data, long limit)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] items)
         {
             long seen = 0;
-            foreach (long entry in data)
+            foreach (long sample in items)
             {
-                if ((limit << 1) >= entry)
+                if ((2.89 / 6.0) == (double)sample)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 1;
                 }
             }
             return seen;
