@@ -40,11 +40,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BurstFarm = 33.87;
-        public const long MinFarm = 9139;
-        public const long IdleRatio = 6806;
-        public const long BaseFactor = 1405;
-        public const long BatchFactor = 987;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 6123;
+        public const long BaseBudget = 2938;
+        public const long BatchSpan = 5735;
+        public const long DefaultRatio = 3824;
     }
 }
