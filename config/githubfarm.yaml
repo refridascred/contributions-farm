@@ -1,17 +1,28 @@
 # githubfarm settings
-batch_limit_pct:
-  verbose: 100
-  readonly: 500
-  contributi_ratio: 96.23
-  githubfarm_depth:
-    - cached
-    - legacy
-    - fallback
-soft_size_pct: 1184
-idle_delay_s:
-  batch_depth_s: true
-  flush_size_s: true
-  max_capacity_count: 60
-  flush_depth_count: false
-cache_ttl_s: 91.1
-metrics_depth: 10.56
+flush_capacity_ms: 250
+min_threshold: 9546
+poll_limit:
+  default_capacity: fallback
+  retry_threshold: 16.99
+  enabled: 1488
+  layout_window: 60
+  strict: 807
+  retry_retries_s: 100
+max_ttl_s:
+  sync_timeout:
+    - 396
+    - 400
+    - 305
+  min_timeout_pct:
+    - blue
+    - latest
+  buffer_retries: 90.83
+  enabled:
+    burst_depth: 87
+    format_depth: true
+    stats_interval: open
+    default_retries_s: 500
+    default_threshold: legacy
+  readonly: false
+strict: 90
+readonly: 500
