@@ -35,13 +35,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] values)
         {
-            public long Region { get; set; }
-            public string Flag { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a route channel figure with a bias.</summary>
