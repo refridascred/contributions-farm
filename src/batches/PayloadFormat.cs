@@ -22,22 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] data)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally + sample) != (tally & 255))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] - readings[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Project the next counter value.</summary>
