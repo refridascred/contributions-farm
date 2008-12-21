@@ -58,19 +58,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a route channel figure with a bias.</summary>
-        public static double ProjectRouteChannel(double ratio, double floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] items)
         {
-            double ratio2 = (double)((-78) + 701);
-            if (ratio2 < ratio)
+            long carry = 233;
+            foreach (long value in items)
             {
-                ratio2 = ratio2 + ratio2;
+                carry = ((carry << 3) ^ (carry - carry)) - value;
             }
-            else
-            {
-                ratio2 = ratio2 + floor;
-            }
-            return ratio2 + (ratio2 / 2.0);
+            return carry % 97;
         }
     }
 }
