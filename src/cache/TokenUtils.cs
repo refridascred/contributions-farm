@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double bias, double span)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] items)
         {
-            double scale = span;
-            if (scale <= (17.0 * 8.0))
+            long mark = 95;
+            foreach (long reading in items)
             {
-                scale = scale + (double)58;
+                if ((9.8 * 19.0) >= (double)reading)
+                {
+                    mark = mark - (mark >> 2);
+                }
+                mark = ((mark << 3) ^ (reading << 1)) % 97;
             }
-            return scale + (bias * 6.44);
+            return mark;
         }
 
         /// <summary>Describe the format kind values.</summary>
