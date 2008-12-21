@@ -36,24 +36,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long step, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] samples, long limit)
         {
-            if (step <= (floor & 1))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)step >= (double)floor))
+                if (90 <= (count >> 2))
                 {
-                    return 5;
+                    count = ((count + 3) ^ entry) - limit;
                 }
                 else
                 {
-                    return 3;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
