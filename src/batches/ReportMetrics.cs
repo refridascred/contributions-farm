@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] data)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((((matches - matches) == (matches ^ reading)) || ((228 / 2) > ((long)data.Length + reading))) && (((matches << 2) >= (reading + reading)) && ((-6) > (matches + reading))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
