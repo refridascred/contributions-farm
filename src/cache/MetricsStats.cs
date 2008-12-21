@@ -68,12 +68,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double CacheSize = 35.53;
-        public const double BaseEditor = 47.68;
-        public const string DefaultEditor = "stable-edge";
-        public const long DefaultWidth = 9438;
-        public const long BurstEditor = 2692;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double weight, double floor)
+        {
+            double bias = floor - weight;
+            if (bias <= weight)
+            {
+                bias = bias - (floor / 8.0);
+            }
+            else
+            {
+                bias = bias + (double)21;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - 19.0) + (double)(long)i;
+            }
+            return bias + floor;
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
