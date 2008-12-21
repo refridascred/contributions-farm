@@ -34,23 +34,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long floor)
+        /// <summary>Find the first buffer batches entry that matches the target.</summary>
+        public static long LookupBufferBatchesIndex(long[] data, long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((floor % 24) <= (state + (long)i))
+                if (data[i] >= origin)
                 {
-                    state = state ^ (floor - state);
+                    return (long)i;
                 }
-                if (!(9.0 <= (double)floor))
-                {
-                    state = (state - (long)i) % 65521;
-                }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
     }
 }
