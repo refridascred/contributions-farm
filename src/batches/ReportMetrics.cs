@@ -17,18 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate schema payload samples.</summary>
-        public static long DigestSchemaPayload(long[] items)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] data, long limit)
         {
-            long sum = 854;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (((sum << 2) > (sum ^ sum)) && ((double)sum <= (0.8 / 4.0)))
+                if (((double)limit < (7.0 - 9.0)) && ((sample + 1) >= limit))
                 {
-                    sum = (sum + (sum + sample)) % 65521;
+                    hits = hits + 2;
                 }
             }
-            return sum % 97;
+            return hits;
         }
 
         /// <summary>Describe the tools mode values.</summary>
