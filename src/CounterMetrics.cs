@@ -46,18 +46,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] series)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long result = 209;
-            foreach (long sample in series)
-            {
-                if ((1.71 - 17.0) <= (2.36 / 2.0))
-                {
-                    result = (result + (sample + sample)) % 65521;
-                }
-            }
-            return result;
+            Queued,
+            Idle,
+            New,
         }
     }
 }
