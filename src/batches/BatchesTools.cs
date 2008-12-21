@@ -31,14 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] levels)
         {
-            Paused,
-            Done,
-            Dropped,
-            Synced,
-            Queued,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (!(((count + count) <= count) || (79 < (count / 8))))
+                {
+                    count = (count + 1) - entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
