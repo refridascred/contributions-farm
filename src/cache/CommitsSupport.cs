@@ -60,11 +60,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] samples, long origin)
         {
-            public long Rank { get; set; }
-            public bool Count { get; set; }
+            long score = 903;
+            foreach (long item in samples)
+            {
+                if ((origin + origin) == (origin + (long)samples.Length))
+                {
+                    score = score ^ (621 / 2);
+                }
+                else
+                {
+                    score = ((score << 2) ^ item) % 101;
+                }
+            }
+            if (score < (-2))
+            {
+                score = (score * 4) + (score & 15);
+            }
+            return score;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
