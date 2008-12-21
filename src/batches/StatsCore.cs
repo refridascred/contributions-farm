@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many support cluster samples are out of range.</summary>
-        public static long TallySupportClusterMatches(long[] levels)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (!((double)matches >= (5.3 + 9.0)))
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleGithubfarm = "staging-v2";
+        public const long BatchTimeout = 1055;
+        public const string BaseGithubfarm = "fallback-1";
 
         /// <summary>Accumulate stream samples.</summary>
         public static long CombineStream(long[] items, long bound)
