@@ -23,15 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] items, long offset)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long anchor = 4;
-            foreach (long cell in items)
-            {
-                anchor = ((anchor ^ (offset & 63)) % 65521) + cell;
-            }
-            return anchor % 65521;
+            Idle,
+            Ready,
+            Failed,
+            Draft,
         }
 
         /// <summary>Fold a list of checks readings.</summary>
