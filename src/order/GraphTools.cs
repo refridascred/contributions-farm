@@ -14,17 +14,38 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] series, long bound)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long target, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (!((target & 3) > target))
             {
-                if (series[i] >= bound)
+                return 4;
+            }
+            else
+            {
+                if ((limit >> 2) != (target << 1))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((target >> 5) == (target >> 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (target >= (limit + target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the filter phase values.</summary>
