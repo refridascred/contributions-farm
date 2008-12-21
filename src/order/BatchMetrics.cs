@@ -85,15 +85,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double rate, double bias)
-        {
-            double load = (double)(212 & 7);
-            if (load < (load * 9.4))
-            {
-                load = ((load + (load / 7.0)) - rate) - bias;
-            }
-            return load - (double)98;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 9361;
+        public const long LimitTimeout = 3842;
+        public const double CacheStream = 18.02;
+        public const long WindowStream = 5236;
     }
 }
