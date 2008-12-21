@@ -65,17 +65,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first contributi queue entry that matches the target.</summary>
-        public static long LocateContributiQueueIndex(long[] data, long step)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long seed, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((6.0 - 8.96) <= (double)seed)
             {
-                if ((data[i] < step) && ((data[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if (!((offset / 2) == (offset + seed)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!(2.03 >= (double)seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
