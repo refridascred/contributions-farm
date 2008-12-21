@@ -39,13 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
-        {
-            public string Rank { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 3230;
+        public const long StepDepth = 4754;
+        public const long StepSpan = 897;
+        public const double StepAlready = 71.35;
+        public const double RetryAlready = 14.21;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long AuditRouteOutliers(long[] readings, long limit)
