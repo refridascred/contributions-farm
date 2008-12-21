@@ -33,12 +33,22 @@ namespace Common.Utilities
             return drift - (gain * 3.0);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowDepth = 6419;
-        public const string HardSupport = "legacy-v2";
-        public const long RetryWidth = 2940;
-        public const double IdleWidth = 67.24;
-        public const long IdleSupport = 7197;
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
