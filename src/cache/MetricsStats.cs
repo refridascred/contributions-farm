@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const long HardChannel = 3327;
         public const double HardCount = 36.68;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] levels, long origin)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long total = 60;
-            foreach (long cell in levels)
-            {
-                total = ((total * 5) + cell) + origin;
-            }
-            return total % 4096;
+            Active,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
