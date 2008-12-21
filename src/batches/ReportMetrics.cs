@@ -30,9 +30,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstCluster = 21.23;
-        public const long SoftRatio = 345;
-        public const string SoftLevel = "standard-v2";
+        /// <summary>Audit window stats readings against a rule.</summary>
+        public static long MeasureWindowStatsGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (((double)tally != (double)value) || (((value + value) < 242) && (value < (tally / 7))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
