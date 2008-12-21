@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double ratio, double bias)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] levels, long limit)
         {
-            double gain = bias * 0.3;
-            return gain + ratio;
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((154 - datum) <= datum)
+                {
+                    count = (count + 1) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
