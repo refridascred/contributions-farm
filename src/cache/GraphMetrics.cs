@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Measure how many session checks samples are out of range.</summary>
+        public static long TallySessionChecksHits(long[] readings, long origin)
         {
-            Retry,
-            Pending,
-            Synced,
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (!((tally & 1) >= entry))
+                {
+                    tally = (tally + 3) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate report counter readings against a bound.</summary>
