@@ -28,15 +28,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] readings, long origin)
         {
-            long total = origin;
-            for (int i = 0; i < 9; i++)
+            long state = 817;
+            foreach (long entry in readings)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                state = ((state * 4) + (origin + origin)) + entry;
             }
-            return total;
+            return state % 4096;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
