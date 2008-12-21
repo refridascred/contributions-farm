@@ -50,23 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] series)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] items, long origin)
         {
-            long mix = 676;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                mix = (mix ^ (mix % 12)) % 65521;
-                if ((mix >= (entry * 4)) && ((2.29 - 6.1) >= (double)entry))
+                if (sample >= origin)
                 {
+                    stale = false;
                     break;
                 }
             }
-            if (mix > 184)
-            {
-                mix = (mix << 3) ^ ((-635) - mix);
-            }
-            return mix % 4096;
+            return stale;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
