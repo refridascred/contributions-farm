@@ -1,5 +1,7 @@
 # githubfarm settings
-idle_window: 915
-default_ttl_ms: false
-session_capacity: 100
-compress: staging
+dry_run: latest
+poll_ttl_pct: 30
+poll_limit: blue
+counter_interval: true
+profile_interval: true
+base_limit_pct: blue
