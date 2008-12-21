@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of schema layout readings.</summary>
-        public static long WeighSchemaLayout(long[] items)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long carry = 35;
-            foreach (long item in items)
-            {
-                if (!((item * 5) <= 1))
-                {
-                    carry = ((carry << 3) ^ (item / 8)) % 4096;
-                }
-                else
-                {
-                    carry = carry ^ item;
-                }
-            }
-            return carry;
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a batch summary.</summary>
