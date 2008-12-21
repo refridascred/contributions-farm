@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] data, long step)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long bound)
         {
-            long score = 5;
-            foreach (long datum in data)
+            long result = bound;
+            for (int i = 0; i < 5; i++)
             {
-                score = ((score + (datum ^ datum)) % 255) - step;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Hold a session header.</summary>
