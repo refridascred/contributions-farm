@@ -25,22 +25,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] series)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] items)
         {
-            long carry = 9;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((cell / 5) > 425) || ((double)cell >= 5.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry * 4) + (cell / 3);
-                }
-                if ((7.0 / 8.0) < (double)cell)
-                {
-                    break;
+                    if ((items[i] - items[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
