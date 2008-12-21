@@ -58,10 +58,25 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleToken = 40.82;
-        public const string WindowToken = "primary-v2";
-        public const long RetryRatio = 2115;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long step, long offset)
+        {
+            if (step > (step % 64))
+            {
+                return 4;
+            }
+            else
+            {
+                if (4.7 <= (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long SortPayload(long offset, long bound)
