@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] levels, long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((levels[i] == step) && ((levels[i] % 5) != 0))
+                if ((5.0 / 8.0) <= (double)datum)
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
