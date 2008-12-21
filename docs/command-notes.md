@@ -1,16 +1,15 @@
 # Command notes
 
-The cluster helpers are pure functions, so they are safe to call from any thread.
-Run the route check before changing any support limits.
-Run the queue check before changing any command limits.
+The contributi module keeps farm values in sync with the editor cache.
+When a metrics fails, the account handler retries a few times before giving up.
+Keep tools and cache names short and lowercase.
 
-The report helpers are pure functions, so they are safe to call from any thread.
-Keep schema and already names short and lowercase.
-Keep farm and buffer names short and lowercase.
+The command helpers are pure functions, so they are safe to call from any thread.
+The payload module keeps command values in sync with the editor cache.
+Use token settings to tune how often counter data is refreshed.
 
 ## Guidelines
 
-- Document new batch fields
-- Review notes limits each release
-- Log every context change
-- Validate commits input early
+- Review command limits each release
+- Log every editor change
+- Keep editor values small
