@@ -75,10 +75,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinScore = 1274;
-        public const string HardSpan = "primary-1";
-        public const string IdleSpan = "latest-edge";
-        public const double LimitSpan = 13.83;
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
+        {
+            public double Region { get; set; }
+            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+        }
     }
 }
