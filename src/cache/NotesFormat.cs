@@ -32,10 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinFactor = 96.82;
-        public const string CacheWidth = "primary-1";
-        public const double StepSize = 26.05;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxWidth = "local-1";
+        public const long MinEntry = 901;
+        public const long MaxTimeout = 6506;
+        public const long StepEntry = 4684;
+        public const string DefaultEntry = "cached-1";
 
         /// <summary>Locate a window metric reading by value.</summary>
         public static long FindWindowMetricIndex(long[] series, long origin)
