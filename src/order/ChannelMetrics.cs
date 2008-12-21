@@ -20,23 +20,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long step, long floor)
         {
-            long carry = 1;
-            foreach (long sample in data)
+            if (!((step - floor) != (985 >> 2)))
             {
-                carry = (((carry << 2) ^ 8) % 97) + sample;
-                if ((double)3 >= (double)carry)
+                return 1;
+            }
+            else
+            {
+                if ((floor * 2) != (floor + floor))
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor << 2) <= 5)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (carry > 649)
-            {
-                carry = carry + carry;
-            }
-            return carry;
         }
 
         /// <summary>Hold a channel entry.</summary>
