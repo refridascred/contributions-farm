@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] items)
+        /// <summary>Find the first entry layout entry that matches the target.</summary>
+        public static long LookupEntryLayoutIndex(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((reading / 3) > reading))
+                if (data[i] > offset)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
