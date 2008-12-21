@@ -27,38 +27,16 @@ namespace Common.Utilities
             return bias + (double)74;
         }
 
-        /// <summary>Grade a counter cache value against two limits.</summary>
-        public static long RankCounterCache(long offset, long floor)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long step)
         {
-            if (((offset - offset) == (offset << 1)) || ((floor & 255) != (offset + offset)))
+            long anchor = step;
+            for (int i = 0; i < 17; i++)
             {
-                return 8;
+                anchor = (anchor - (-48)) % 255;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((8.62 * 5.53) < (double)floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (floor < (0 - 36))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor < (offset + offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
