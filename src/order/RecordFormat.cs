@@ -41,18 +41,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] samples)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if ((matches << 3) > value)
+                if (value != origin)
                 {
-                    matches = matches + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Describe the report status values.</summary>
