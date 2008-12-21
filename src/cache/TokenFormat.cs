@@ -19,16 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next metric graph value from a seed.</summary>
-        public static long IterateMetricGraph(long offset)
+        /// <summary>Match up editor account samples.</summary>
+        public static long PairEditorAccountCount(long[] samples)
         {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum * 4) + sum;
-                sum = ((sum * 4) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the batch class values.</summary>
