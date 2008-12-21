@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long offset, long target)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] samples, long floor)
         {
-            long prev = offset + target;
-            if (!((prev * 2) < (offset + offset)))
+            bool found = true;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(prev < offset))
+                if (sample > floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((target / 3) <= offset) && ((offset << 1) != (prev + target)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
