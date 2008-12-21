@@ -1,8 +1,6 @@
 {
-  "token_window": 66.97,
-  "enabled": 93,
-  "order_timeout": true,
-  "batch_window_count": "latest",
-  "base_threshold": 1024,
-  "window_timeout": 46
+  "verbose": "staging",
+  "soft_delay": "eu-west",
+  "profile_depth": 60,
+  "retry_depth_count": 77.55
 }
