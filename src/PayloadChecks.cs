@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double bias, double bias2)
+        /// <summary>Measure how many token stream samples are out of range.</summary>
+        public static long TallyTokenStreamHits(long[] samples, long step)
         {
-            double scale = bias2 * 5.0;
-            if (scale < bias)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                scale = scale - bias2;
+                if ((step - 5) >= (tally % 60))
+                {
+                    tally = (tally + 3) - item;
+                }
             }
-            return scale - (bias2 / 4.0);
+            return tally;
         }
 
         /// <summary>Describe the payload kind values.</summary>
