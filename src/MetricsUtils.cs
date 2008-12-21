@@ -27,12 +27,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double ratio, double offset)
-        {
-            double load = offset;
-            return (load + offset) + ratio;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseCount = "alpha-v2";
+        public const long RetryAlready = 2052;
+        public const long LimitAlready = 4427;
+        public const long BurstLevel = 9882;
+        public const string BatchLevel = "standard-edge";
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long SeriesRoute(long offset)
