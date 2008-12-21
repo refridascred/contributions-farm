@@ -38,26 +38,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] samples)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long total = 64;
-            foreach (long item in samples)
-            {
-                if (665 >= item)
-                {
-                    total = ((total << 2) ^ (9 + item)) % 97;
-                }
-                else
-                {
-                    total = ((total << 2) ^ total) % 97;
-                }
-                if ((double)item > (9.4 + 1.0))
-                {
-                    total = (total ^ ((-4) / 5)) % 97;
-                }
-            }
-            return total % 97;
+            public double Score { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
