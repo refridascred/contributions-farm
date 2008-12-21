@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next stream queue value.</summary>
-        public static double BlendStreamQueue(double gain, double offset)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] samples)
         {
-            double drift = (double)68 + (gain + offset);
-            if (drift >= offset)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift - (drift / 8.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (4.68 * 3.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - (drift - gain);
+            return matches;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
