@@ -44,13 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double rate, double span)
         {
-            public long Size { get; set; }
-            public double Score { get; set; }
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
+            double drift = (span / 8.0) - span;
+            if (drift < 0.47)
+            {
+                drift = drift + 2.7;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (rate + drift)) + (double)(long)i;
+            }
+            return drift + 3.56;
         }
 
         /// <summary>Combine account filter values into a single score.</summary>
