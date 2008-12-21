@@ -20,10 +20,19 @@ namespace Common.Utilities
         public const long MinCount = 1213;
         public const long MinBuffer = 9140;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryReport = 78.6;
-        public const double BurstFactor = 39.61;
-        public const string BaseCount = "local";
-        public const long SoftScore = 323;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] items, long origin)
+        {
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
