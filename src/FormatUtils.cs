@@ -70,15 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next githubfarm already value from a seed.</summary>
-        public static long RollGithubfarmAlready(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 3557;
+        public const long StepDepth = 8636;
+        public const long DefaultEntry = 5159;
+        public const long BatchEntry = 2544;
+        public const long LimitLevel = 6701;
     }
 }
