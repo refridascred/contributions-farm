@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the counter checks entries that pass the check.</summary>
-        public static long CountCounterChecksGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((sample ^ count) <= sample)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 1390;
+        public const long BatchInterval = 2438;
+        public const long CacheTimeout = 180;
+        public const long IdlePayload = 1947;
+        public const long BurstBudget = 6056;
 
         /// <summary>Roll a already counter forward.</summary>
         public static long DeriveAlready(long limit)
