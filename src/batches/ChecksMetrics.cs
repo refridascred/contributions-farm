@@ -80,21 +80,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count cluster window pairs that satisfy a relation.</summary>
-        public static long OverlapClusterWindowCount(long[] readings)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Synced,
+            Draft,
+            Dropped,
+            Active,
         }
     }
 }
