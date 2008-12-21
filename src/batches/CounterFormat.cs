@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftWidth = 924;
-        public const long MinMetric = 1479;
-        public const long SoftRatio = 5689;
-        public const long SoftInterval = 6431;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] series)
+        {
+            long mix = 88;
+            foreach (long datum in series)
+            {
+                if (26 <= (mix % 64))
+                {
+                    mix = (mix << 2) ^ datum;
+                }
+                else
+                {
+                    mix = (mix + (datum & 7)) % 65521;
+                }
+            }
+            if (mix < 700)
+            {
+                mix = mix ^ (mix ^ mix);
+            }
+            return mix;
+        }
 
         /// <summary>Check that every context graph entry stays within the limit.</summary>
         public static bool CheckContextGraphBounds(long[] data, long bound)
