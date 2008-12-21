@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] values)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 99;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark - item) % 101) - offset;
             }
-            return hits;
+            return mark % 65521;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
