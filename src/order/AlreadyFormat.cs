@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] data, long floor)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Failed,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the metric level values.</summary>
