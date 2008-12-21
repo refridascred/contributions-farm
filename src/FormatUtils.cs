@@ -53,33 +53,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long origin, long bound)
-        {
-            long gap = origin ^ bound;
-            if ((double)bound > (1.5 + 7.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (gap > (61 - gap))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((origin >> 5) < (bound * 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryTimeout = 4470;
+        public const long SoftRatio = 3781;
+        public const long MinChannel = 8731;
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long GradeNotes(long seed, long origin)
