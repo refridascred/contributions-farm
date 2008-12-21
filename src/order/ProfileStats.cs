@@ -22,14 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] values, long bound)
         {
-            Stale,
-            Closed,
-            Ready,
-            Paused,
-            Failed,
+            long anchor = 0;
+            foreach (long item in values)
+            {
+                anchor = ((anchor * 2) + bound) ^ item;
+                anchor = ((anchor << 3) ^ anchor) % 1000;
+            }
+            if (anchor > 12)
+            {
+                anchor = anchor - (anchor * 5);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
