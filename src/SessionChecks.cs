@@ -14,31 +14,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long seed, long target)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] data, long limit)
         {
-            if ((double)seed < 13.0)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed + 4) > (2 + seed)) && ((target / 8) > seed))
+                if (sample < limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((seed ^ target) < (seed >> 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the checks phase values.</summary>
