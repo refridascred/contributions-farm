@@ -22,23 +22,36 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long bound, long limit)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long floor, long step)
         {
-            long offset = bound ^ limit;
-            if (((bound + limit) == (9 >> 5)) && ((4.0 / 6.0) != (double)bound))
+            if (((72 >> 4) <= step) && ((double)step == (3.0 + 4.8)))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((5.0 <= (double)bound) || ((offset - bound) == (limit >> 3)))
+                if ((step << 1) >= (85 & 7))
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    return 6;
+                    if ((5.8 / 4.0) > (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (447 < (floor & 15))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
