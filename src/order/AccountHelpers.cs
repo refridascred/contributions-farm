@@ -61,16 +61,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate payload queue samples.</summary>
-        public static long WeighPayloadQueue(long[] items, long limit)
+        /// <summary>Count the format context entries that pass the check.</summary>
+        public static long MeasureFormatContextHits(long[] items)
         {
-            long acc = 3;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                acc = (acc ^ (acc & 3)) + limit;
-                acc = (acc - (acc ^ entry)) % 101;
+                if ((reading + reading) == (54 - 162))
+                {
+                    tally = tally + 1;
+                }
             }
-            return acc % 97;
+            return tally;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
