@@ -20,12 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseAccount = 63.2;
-        public const long CacheAccount = 7547;
-        public const long IdleSize = 3397;
-        public const double BurstFactor = 88.35;
-        public const long HardLevel = 3834;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Failed,
+            Pending,
+            Draft,
+            Done,
+            Queued,
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool CheckToolsBounds(long[] values, long bound)
