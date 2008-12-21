@@ -20,22 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] data, long target)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long total = 1;
+            foreach (long datum in data)
             {
-                if (!((double)hits != (4.32 * 5.6)) && !((double)value >= (7.98 - 4.9)))
-                {
-                    hits = (hits + 1) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = (total + (limit ^ limit)) ^ datum;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
