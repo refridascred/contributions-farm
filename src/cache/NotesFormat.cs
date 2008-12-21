@@ -19,11 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 1316;
-        public const long HardInterval = 5315;
-        public const long HardGraph = 7632;
-        public const string StepGraph = "cached";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinFactor = 96.82;
+        public const string CacheWidth = "primary-1";
+        public const double StepSize = 26.05;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool ValidateToolsLimits(long[] data, long offset)
