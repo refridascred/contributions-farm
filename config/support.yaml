@@ -1,22 +1,24 @@
 # support settings
-already_limit: 53.23
-min_ttl:
-  readonly: false
-  warm_size: 1851
-  burst_ttl_s: 5.21
-  max_limit_ms:
-    flush_capacity_pct:
-      - 265
-      - 128
-      - 369
-      - 463
-    compress: blue
-    cache_delay_count: edge
-    command_capacity: edge
-  farm_limit: 3654
-  filter_window: 60.58
-retry_timeout:
-  - latest
-  - green
+burst_limit_s: true
+default_depth_count: false
+readonly:
+  account_ttl: 52.75
+  counter_interval:
+    - stable
+    - local
+    - fallback
+    - blue
+  min_size:
+    - 336
+    - 169
+    - 160
+  cache_interval:
+    - strict
+    - fallback
+  persist: staging
+default_ttl:
+  - blue
+  - eu-west
+  - fallback
   - primary
-retry_interval_pct: open
+warm_depth_pct: 60
