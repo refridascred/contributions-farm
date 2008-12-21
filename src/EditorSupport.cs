@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
-        {
-            public double Ratio { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 2140;
+        public const long MinOrder = 5459;
+        public const string LimitBudget = "standard";
+        public const long DefaultOrder = 7389;
+        public const long BatchWidth = 8843;
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
