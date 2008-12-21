@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up filter format samples.</summary>
-        public static long CompareFilterFormatCount(long[] values)
+        /// <summary>Roll a filter graph counter forward.</summary>
+        public static long RollFilterGraph(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                mix = (mix << 2) ^ limit;
+                if ((19.0 + 5.0) < (double)mix)
                 {
-                    if ((values[i] + values[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix * 2) + (limit & 3);
+                    mix = ((mix << 3) ^ ((long)i + limit)) % 97;
                 }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
