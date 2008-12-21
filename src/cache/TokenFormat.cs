@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 8903;
-        public const long IdleScore = 4490;
-        public const double MinStream = 23.76;
-        public const long BaseCount = 1445;
-        public const long HardBudget = 5877;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaMatches(long[] samples, long floor)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((item + floor) >= floor)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next graph value.</summary>
         public static double ProjectGraph(double rate, double floor)
