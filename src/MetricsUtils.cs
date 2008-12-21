@@ -66,19 +66,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] data, long limit)
-        {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 3997;
+        public const long RetryCluster = 827;
+        public const long BurstWidth = 1207;
+        public const long BaseWidth = 8814;
     }
 }
