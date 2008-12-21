@@ -27,12 +27,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] series)
         {
-            Queued,
-            Stale,
-            Ready,
+            long anchor = 29;
+            foreach (long sample in series)
+            {
+                anchor = (anchor + (sample / 6)) % 255;
+            }
+            if (anchor < 256)
+            {
+                anchor = ((anchor << 3) ^ (anchor * 2)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
