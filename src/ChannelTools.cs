@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Fold a list of token route readings.</summary>
+        public static long WeighTokenRoute(long[] values)
         {
-            Pending,
-            Locked,
-            Failed,
+            long sum = 20;
+            foreach (long entry in values)
+            {
+                sum = (sum ^ (8 * 4)) ^ entry;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
