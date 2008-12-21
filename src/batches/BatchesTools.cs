@@ -17,12 +17,22 @@ namespace Common.Utilities
         public const double BaseRatio = 62.89;
         public const double DefaultMetric = 30.65;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] readings, long bound)
         {
-            public double Total { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((4.4 - 2.34) != (double)bound)
+                {
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
