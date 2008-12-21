@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const double BaseTimeout = 86.85;
         public const string LimitFormat = "open";
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] items)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (672 <= (hits - hits))
                 {
-                    if ((items[i] - items[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the schema level values.</summary>
