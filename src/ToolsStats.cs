@@ -48,19 +48,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double gain, double offset)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            double gain2 = 6.1;
-            if (gain2 < (gain * 6.7))
-            {
-                gain2 = gain2 + offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 - offset) + (double)(long)i;
-            }
-            return gain2 + (15.0 * 3.2);
+            public double Count { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
