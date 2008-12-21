@@ -23,32 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long bound, long origin)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long gap = bound ^ origin;
-            if (((double)bound < 8.5) && ((gap + gap) == (gap ^ bound)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((-12) % 7) > bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (8 > (bound * 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Paused,
+            Closed,
+            Locked,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
