@@ -1,8 +1,9 @@
-id,ratio,score
-1,46.64,802
-2,open,81.11
-3,42.77,7.03
-4,eu-west,202
-5,staging,32.33
-6,657,697
-7,fallback,957
+id,label,level,active,region
+1,484,latest,standard,10.43
+2,10.99,strict,391,blue
+3,19.95,98.08,latest,281
+4,677,27,918,791
+5,773,577,728,86.2
+6,21,blue,23.34,blue
+7,edge,5.69,35.72,26.18
+8,75.57,327,33.71,strict
