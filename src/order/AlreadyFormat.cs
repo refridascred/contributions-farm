@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double weight, double floor)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            double load = weight;
-            if (load >= weight)
-            {
-                load = load + (weight * 9.0);
-            }
-            else
-            {
-                load = load - floor;
-            }
-            return load - floor;
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the metric level values.</summary>
