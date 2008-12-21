@@ -33,12 +33,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            Ready,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Hold a account info.</summary>
