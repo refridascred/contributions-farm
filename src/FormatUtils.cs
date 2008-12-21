@@ -65,21 +65,11 @@ namespace Common.Utilities
         public const string BatchSchema = "cached";
         public const long LimitDepth = 8106;
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardSize = "local";
+        public const long DefaultScore = 6211;
+        public const string DefaultInterval = "staging-1";
+        public const long MaxTimeout = 8042;
+        public const long StepFactor = 2746;
     }
 }
