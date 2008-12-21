@@ -38,10 +38,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstNotes = 48.99;
-        public const long SoftSize = 8720;
-        public const double BaseCount = 71.37;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftRatio = 8243;
+        public const long SoftSchema = 3589;
+        public const long IdleSchema = 1236;
+        public const string HardSchema = "stable-edge";
 
         /// <summary>Measure how many queue checks samples are out of range.</summary>
         public static long MeasureQueueChecksHits(long[] levels)
