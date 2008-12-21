@@ -32,18 +32,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((744 % 7) < (matches >> 5))
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string LimitCounter = "fallback-v2";
+        public const long BatchCounter = 5706;
+        public const string CacheSpan = "standard";
+        public const string DefaultCount = "fallback-v2";
+        public const long DefaultCounter = 5515;
     }
 }
