@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every contributi githubfarm entry stays within the limit.</summary>
-        public static bool CheckContributiGithubfarmLimits(long[] samples, long bound)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 1597;
+        public const long CacheSpan = 1417;
+        public const long WindowPayload = 27;
+        public const string WindowScore = "standard-v2";
+        public const long MaxSize = 2627;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long OverlapPayloadCount(long[] levels)
