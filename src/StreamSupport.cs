@@ -29,12 +29,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            Retry,
-            Synced,
-            Failed,
+            Queued,
+            Idle,
+            Done,
+            Pending,
         }
     }
 }
