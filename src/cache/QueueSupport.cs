@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a buffer batches reading.</summary>
-        public static double SmoothBufferBatches(double rate, double floor)
+        /// <summary>Project the next stream queue value.</summary>
+        public static double BlendStreamQueue(double gain, double offset)
         {
-            double ratio = (double)(433 - 850);
-            if (ratio >= (ratio * 5.66))
+            double drift = (double)68 + (gain + offset);
+            if (drift >= offset)
             {
-                ratio = (ratio + (double)27) - floor;
+                drift = drift - (drift / 8.0);
             }
             else
             {
-                ratio = ratio - rate;
+                drift = drift + (4.68 * 3.0);
             }
-            return ratio + (5.3 / 9.0);
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - (drift - gain);
         }
 
         /// <summary>Combine tools command values into a single score.</summary>
