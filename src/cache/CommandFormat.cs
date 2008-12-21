@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] series)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] levels, long offset)
         {
-            long mark = 20;
-            foreach (long reading in series)
+            long mark = 9;
+            foreach (long value in levels)
             {
-                mark = (mark ^ mark) + reading;
+                for (int i = 0; i < 5; i++)
+                {
+                    mark = (((mark * 5) + 725) % 4096) ^ (long)i;
+                }
+                if ((mark + value) <= (offset ^ value))
+                {
+                    mark = (mark ^ (91 >> 4)) % 4096;
+                }
             }
-            if (mark > 3)
-            {
-                mark = (mark - ((long)series.Length ^ mark)) % 255;
-            }
-            return mark % 4096;
+            return mark % 97;
         }
 
         /// <summary>Count the stats checks entries that pass the check.</summary>
