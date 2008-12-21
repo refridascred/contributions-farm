@@ -45,18 +45,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] data)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long result = 6;
+            foreach (long cell in samples)
             {
-                if ((7.03 - 1.2) <= (double)hits)
+                if (result <= (target >> 3))
                 {
-                    hits = (hits + 3) ^ sample;
+                    result = ((result ^ 1) % 101) ^ cell;
                 }
             }
-            return hits;
+            return result;
         }
     }
 }
