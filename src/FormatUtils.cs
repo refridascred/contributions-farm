@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of graph queue readings.</summary>
-        public static long CompareGraphQueueCount(long[] samples)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] series)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((matches % 64) > (sample >> 2))
                 {
-                    if ((samples[i] ^ samples[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
