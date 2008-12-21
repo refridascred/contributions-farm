@@ -46,16 +46,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metric payload counter forward.</summary>
-        public static long SeriesMetricPayload(long target)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long seed, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 23; i++)
+            if (bound < (bound * 5))
             {
-                acc = acc + (66 * 4);
-                acc = ((acc * 5) + (long)i) % 1000;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if ((bound & 255) == (bound - bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((8 & 7) == (bound >> 2)) && ((759 - seed) <= (bound << 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch state values.</summary>
