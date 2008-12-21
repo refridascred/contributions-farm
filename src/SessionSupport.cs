@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= target) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinBudget = 100;
+        public const long StepScore = 1727;
+        public const long DefaultFormat = 5474;
 
         /// <summary>Validate batches checks readings against a bound.</summary>
         public static bool ValidateBatchesChecksLimits(long[] series, long step)
