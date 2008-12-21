@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=29
+COMMAND_LIMIT=388
 log "limit is ${COMMAND_LIMIT}"
 
-for item in legacy strict stable fallback; do
+for item in standard staging; do
     log "checking ${item}"
 done
