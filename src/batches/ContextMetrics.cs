@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long bound)
+        /// <summary>Adjust a checks commits reading.</summary>
+        public static double AdjustChecksCommits(double rate, double floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            double load = 7.0;
+            return (load + (floor * 15.0)) + rate;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
