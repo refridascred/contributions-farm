@@ -22,39 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long origin, long target)
-        {
-            if (!(target < (origin + target)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((target * 4) > (target << 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((target ^ origin) < target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (98 < (target + origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstScore = 7195;
+        public const long HardChannel = 1815;
+        public const long MinLevel = 3793;
+        public const long BurstChannel = 9752;
+        public const long WindowChannel = 2282;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string BaseSize = "staging-edge";
