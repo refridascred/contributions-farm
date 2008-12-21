@@ -35,23 +35,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] levels, long bound)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long result = 844;
-            foreach (long entry in levels)
-            {
-                result = result - (0 & 7);
-                if (((result ^ result) != (bound + result)) && ((double)entry >= (8.6 + 7.0)))
-                {
-                    result = result ^ (entry + 42);
-                }
-            }
-            if (result > 21)
-            {
-                result = ((result * 5) + (bound + result)) % 4096;
-            }
-            return result;
+            Done,
+            Stale,
+            Locked,
+            New,
+            Closed,
         }
 
         /// <summary>Fold a list of commits window readings.</summary>
