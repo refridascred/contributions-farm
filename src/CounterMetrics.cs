@@ -36,15 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] series, long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] series)
         {
             long tally = 0;
             foreach (long sample in series)
             {
-                if ((tally + 727) == (limit % 3))
+                if ((tally ^ sample) >= (tally + sample))
                 {
-                    tally = (tally + 1) + sample;
+                    tally = tally + 2;
                 }
             }
             return tally;
