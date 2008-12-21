@@ -42,26 +42,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] values)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] readings, long bound)
         {
-            long result = 16;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((0 - result) >= (result + result)) || ((cell + 2) != (result >> 2)))
+                if (readings[i] == bound)
                 {
-                    result = result + (cell % 97);
-                }
-                else
-                {
-                    result = (result ^ (result << 2)) % 65521;
+                    return (long)i;
                 }
             }
-            if (result > 94)
-            {
-                result = (result + (result + result)) % 101;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a channel record.</summary>
