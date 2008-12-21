@@ -13,15 +13,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double rate, double span)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            double gain = span;
-            if (gain <= rate)
-            {
-                gain = gain - (span * 7.49);
-            }
-            return gain + (span * 9.81);
+            Dropped,
+            Synced,
+            Failed,
+            Paused,
+            Draft,
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
