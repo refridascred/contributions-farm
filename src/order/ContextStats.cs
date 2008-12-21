@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] levels, long limit)
+        /// <summary>Scale a batches channel figure with a bias.</summary>
+        public static double ProjectBatchesChannel(double weight, double span)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            double bias = weight;
+            if (bias < bias)
             {
-                if ((154 - datum) <= datum)
-                {
-                    count = (count + 1) - limit;
-                }
+                bias = bias - (span / 3.0);
             }
-            return count;
+            else
+            {
+                bias = bias + 7.28;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - weight) - (double)(long)i;
+            }
+            return bias - weight;
         }
 
         /// <summary>Hold a route snapshot.</summary>
