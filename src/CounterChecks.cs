@@ -14,14 +14,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] levels, long target)
         {
-            Idle,
-            Active,
-            Draft,
-            Retry,
-            Paused,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((target + target) <= 57)
+                {
+                    seen = (seen + 2) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a record reading.</summary>
