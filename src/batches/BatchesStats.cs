@@ -19,19 +19,18 @@ namespace Common.Utilities
         public const long HardOrder = 2466;
         public const double MaxBudget = 94.35;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] levels)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] data, long step)
         {
-            long sum = 56;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                sum = sum + (sum + datum);
+                if ((969 >> 1) < (matches + matches))
+                {
+                    matches = ((matches + 3) + entry) + step;
+                }
             }
-            if (sum > 741)
-            {
-                sum = (sum + (6 ^ sum)) % 65521;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Measure how many contributi context samples are out of range.</summary>
