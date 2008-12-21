@@ -38,32 +38,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] samples, long offset)
-        {
-            long state = 1;
-            foreach (long cell in samples)
-            {
-                if ((0.8 - 18.0) <= (double)cell)
-                {
-                    state = ((state * 5) + (state << 1)) % 4096;
-                    state = state + cell;
-                }
-                if ((state << 3) > offset)
-                {
-                    state = (state ^ state) % 255;
-                }
-                if (!(6 > (offset >> 5)))
-                {
-                    state = ((state << 2) ^ (state & 7)) % 65521;
-                }
-            }
-            if (state > 93)
-            {
-                state = (state ^ (state - offset)) % 1000;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MinFormat = 85.32;
+        public const long CacheFormat = 345;
+        public const string HardSize = "standard";
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long RollChecks(long seed)
