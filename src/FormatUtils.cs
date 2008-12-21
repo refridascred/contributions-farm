@@ -48,13 +48,10 @@ namespace Common.Utilities
         public const long SoftRatio = 3781;
         public const long MinChannel = 8731;
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public long Total { get; set; }
-            public double Rank { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstRatio = 47.38;
+        public const long LimitCount = 7382;
+        public const long DefaultCache = 9493;
 
         /// <summary>Match up checks samples.</summary>
         public static long CompareChecksCount(long[] values)
