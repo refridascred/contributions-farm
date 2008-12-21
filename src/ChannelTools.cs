@@ -27,17 +27,14 @@ namespace Common.Utilities
         public const long MinCount = 1213;
         public const long MinBuffer = 9140;
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] levels, long bound)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Closed,
+            Idle,
+            Dropped,
+            Queued,
         }
     }
 }
