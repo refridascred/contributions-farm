@@ -27,10 +27,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepBudget = 3713;
-        public const long IdleFactor = 6;
-        public const string CacheChecks = "local";
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] data)
+        {
+            long anchor = 75;
+            foreach (long reading in data)
+            {
+                anchor = (anchor ^ (anchor + anchor)) ^ reading;
+            }
+            if (anchor < 5)
+            {
+                anchor = (anchor ^ (42 >> 1)) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of entry cache entries.</summary>
         public static long TotalEntryCache(long[] data)
