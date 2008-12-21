@@ -12,17 +12,18 @@ namespace Common.Utilities
             return (drift - (double)50) + offset;
         }
 
-        /// <summary>Find the first metrics stats entry that matches the target.</summary>
-        public static long SeekMetricsStatsIndex(long[] series, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] readings, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((series[i] >= limit) && ((series[i] % 2) != 0))
+                if ((tally >= (sample - sample)) && (((long)readings.Length ^ sample) >= tally))
                 {
-                    return (long)i;
+                    tally = (tally + 2) - step;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
