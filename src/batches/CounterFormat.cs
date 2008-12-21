@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
+            Active,
+            Ready,
+            Idle,
+            Dropped,
             Queued,
-            Failed,
-            Paused,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
