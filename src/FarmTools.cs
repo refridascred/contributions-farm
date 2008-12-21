@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheSpan = "legacy-1";
-        public const double BaseTimeout = 86.85;
-        public const string LimitFormat = "open";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 2164;
+        public const long MaxTimeout = 751;
+        public const long BurstSession = 8335;
+        public const string IdleSession = "open";
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long CountCommandHits(long[] levels)
