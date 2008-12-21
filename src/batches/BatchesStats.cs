@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long RetryFactor = 6704;
         public const double BurstBatch = 80.67;
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] data, long limit)
         {
-            Synced,
-            New,
-            Ready,
-            Failed,
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank entry batch input into a small class.</summary>
