@@ -25,17 +25,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] samples, long origin)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double scale, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = scale;
+            for (int i = 0; i < 5; i++)
             {
-                if ((samples[i] == origin) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                bias = ((bias - 7.2) + (double)(long)i) + offset;
             }
-            return -1;
+            return bias + scale;
         }
     }
 }
