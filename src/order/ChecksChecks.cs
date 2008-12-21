@@ -12,15 +12,32 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] items, long origin)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long target, long target2)
         {
-            long anchor = 496;
-            foreach (long datum in items)
+            long cur = target + target2;
+            if (cur >= ((-912) & 15))
             {
-                anchor = (anchor ^ (origin - datum)) % 97;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if (((target2 & 63) != (target >> 3)) && (target <= (target2 & 7)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7.0 + 3.0) >= (double)target2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
