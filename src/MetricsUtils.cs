@@ -45,15 +45,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a notes profile reading.</summary>
-        public static double ProjectNotesProfile(double bias, double floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] samples, long target)
         {
-            double mean = bias / 8.0;
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                mean = ((mean + mean) - (double)(long)i) - floor;
+                if ((6.3 * 7.56) == (double)cell)
+                {
+                    tally = (tally + 3) + target;
+                }
             }
-            return mean + 6.6;
+            return tally;
         }
     }
 }
