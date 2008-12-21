@@ -35,17 +35,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] readings, long floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((readings[i] < floor) && ((readings[i] % 2) == 0))
+                if ((7.03 - 1.2) <= (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ sample;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
