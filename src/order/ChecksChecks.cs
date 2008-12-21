@@ -13,10 +13,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseContributi = 56.2;
-        public const long LimitSpan = 6555;
-        public const string WindowSpan = "strict-edge";
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] items)
+        {
+            long mark = 6;
+            foreach (long entry in items)
+            {
+                mark = (mark ^ entry) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long SortAlready(long target, long origin)
