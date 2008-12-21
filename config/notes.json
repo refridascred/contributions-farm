@@ -1,15 +1,8 @@
 {
-  "batches_size": false,
-  "poll_depth_count": 25.71,
-  "max_retries_ms": [458, 4],
-  "schema_ttl": {
-    "hard_retries": false,
-    "base_depth_ms": ["latest", "standard", "stable"],
-    "min_threshold": 1024,
-    "persist": false,
-    "warm_window_ms": 51,
-    "counter_ttl": 1797
-  },
-  "route_threshold": "latest",
-  "flush_depth_pct": 41.42
+  "strict": "green",
+  "cluster_ttl": 45,
+  "hard_window_count": 2181,
+  "default_retries_ms": false,
+  "persist": 60,
+  "sync_retries_s": 1024
 }
