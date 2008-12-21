@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] series)
+        /// <summary>Iterate the graph order series from a seed.</summary>
+        public static long StepGraphOrder(long step)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long score = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((entry / 9) > 48) && ((matches << 2) > (matches + entry)))
-                {
-                    matches = matches + 1;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Grade a schema account value against two limits.</summary>
