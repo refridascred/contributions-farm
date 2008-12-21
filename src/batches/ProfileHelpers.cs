@@ -74,18 +74,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] series)
+        /// <summary>Locate a contributi account reading by value.</summary>
+        public static long LookupContributiAccountIndex(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((170 * 3) != (matches * 3))
+                if ((readings[i] == floor) && ((readings[i] % 3) == 0))
                 {
-                    matches = (matches + 3) ^ sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
