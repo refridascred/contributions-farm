@@ -1,24 +1,29 @@
 # support settings
-persist: latest
-filter_timeout:
-  soft_window: 88
-  profile_ratio: 48
-  burst_limit_ms:
-    default_threshold_pct:
-      - primary
-      - fallback
-      - open
-      - cached
-    idle_depth_count: 60
-    enabled:
-      - 261
-      - 296
-      - 298
-      - 351
-    base_timeout: 34.25
-  compress: blue
-  editor_size: false
-strict: false
-compress: legacy
-min_window_count: edge
-max_size: 57.94
+flush_retries_ms:
+  min_threshold_ms: 100
+  max_threshold_s:
+    - 482
+    - 6
+  dry_run: 38
+  default_delay_count: false
+soft_size_s:
+  - 302
+  - 95
+  - 275
+persist: 1.04
+format_depth:
+  strict: 60
+  support_limit:
+    base_ratio_ms:
+      - green
+      - latest
+      - eu-west
+      - strict
+    batch_retries: true
+    hard_retries: cached
+    audit: 16.22
+    warm_threshold: 25.91
+  flush_retries: latest
+  support_timeout: 60
+  flush_capacity: 74
+default_delay: 94
