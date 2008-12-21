@@ -27,15 +27,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long bound)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] items)
         {
-            long sum = bound;
-            for (int i = 0; i < 21; i++)
+            long result = 539;
+            foreach (long entry in items)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                result = (result << 3) ^ (entry % 10);
             }
-            return sum;
+            return result % 65521;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
