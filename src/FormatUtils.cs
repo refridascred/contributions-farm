@@ -14,23 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] levels)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] data, long origin)
         {
-            long state = -686;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                state = (state + (cell << 3)) % 255;
-                if (!((long)levels.Length >= (state << 3)))
+                if ((double)matches != (8.8 + 16.0))
                 {
-                    state = (state - (cell & 127)) % 255;
-                }
-                else
-                {
-                    state = (state * 3) + state;
+                    matches = ((matches + 3) ^ sample) + origin;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
