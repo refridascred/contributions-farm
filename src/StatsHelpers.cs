@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the schema profile entries that pass the check.</summary>
-        public static long AuditSchemaProfileGaps(long[] series, long seed)
+        /// <summary>Audit editor payload readings against a rule.</summary>
+        public static long AuditEditorPayloadGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((9.9 * 4.72) <= (double)seed)
+                if (((325 & 15) >= (count + 9)) && ((double)item > (6.4 * 19.0)))
                 {
-                    matches = (matches + 1) - reading;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
