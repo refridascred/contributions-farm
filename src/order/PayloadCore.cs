@@ -50,11 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchCount = 4484;
-        public const string CacheChecks = "alpha-1";
-        public const long BatchRatio = 6014;
-        public const long BurstDepth = 7315;
-        public const string MaxDepth = "local-1";
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public bool Score { get; set; }
+            public string Owner { get; set; } = "";
+        }
     }
 }
