@@ -59,24 +59,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long offset, long bound)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double gain, double bias)
         {
-            if ((bound - bound) <= (bound >> 5))
+            double bias2 = bias - (17.0 + bias);
+            if (bias2 < gain)
             {
-                return 2;
+                bias2 = bias2 - 11.0;
             }
             else
             {
-                if (bound > (bound << 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
+                bias2 = bias2 - (double)344;
             }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - 5.2) + (double)(long)i;
+            }
+            return bias2 - (double)81;
         }
 
         /// <summary>Locate a contributi account reading by value.</summary>
