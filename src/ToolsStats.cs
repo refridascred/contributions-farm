@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] samples, long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] data, long step)
         {
-            long mark = 7;
-            foreach (long sample in samples)
+            long score = 5;
+            foreach (long datum in data)
             {
-                if (!(((long)samples.Length + (long)samples.Length) >= (mark + 0)))
-                {
-                    mark = mark ^ (sample * 3);
-                }
-                if ((mark - mark) == ((long)samples.Length + sample))
-                {
-                    mark = ((mark << 2) ^ (step / 8)) % 4096;
-                }
-                else
-                {
-                    mark = mark ^ step;
-                }
+                score = ((score + (datum ^ datum)) % 255) - step;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Hold a session header.</summary>
