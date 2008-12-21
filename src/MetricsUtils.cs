@@ -73,16 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long step)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] data, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long item in data)
             {
-                carry = (carry + (long)i) % 255;
-                carry = ((carry * 4) + (long)i) % 101;
+                if (item < limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
     }
 }
