@@ -1,15 +1,8 @@
 # entry settings
-tools_depth: strict
-compress: local
-max_depth_s:
-  batches_limit: 34
-  flush_retries_count: standard
-  min_interval: 40.99
-  strict: latest
-  warm_limit: blue
-  poll_size_s:
-    - 220
-    - 278
-entry_threshold: 44.0
-poll_capacity_ms: 58.06
-cache_ratio: 880
+poll_size: 2107
+readonly: latest
+flush_delay:
+  - 242
+  - 102
+  - 113
+  - 114
