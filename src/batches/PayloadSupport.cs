@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Stale,
-            Ready,
-            Queued,
-            New,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double SoftTimeout = 85.15;
+        public const long MinWidth = 2326;
+        public const double DefaultBatches = 41.76;
+        public const long RetryBatches = 9955;
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
