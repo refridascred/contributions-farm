@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] items)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] series, long floor)
         {
-            long score = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long cell in series)
             {
-                score = (score - entry) % 97;
-                if ((score << 3) > score)
+                if (cell >= floor)
                 {
-                    score = (score - (entry - score)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return score % 97;
+            return found;
         }
 
         /// <summary>Describe the stats level values.</summary>
