@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
-        {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheSpan = 3976;
+        public const double LimitAlready = 11.08;
+        public const long CacheAlready = 7942;
+        public const long CacheScore = 8624;
+        public const long BatchAlready = 3648;
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
