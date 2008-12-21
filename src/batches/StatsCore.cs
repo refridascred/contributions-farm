@@ -45,18 +45,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of commits window readings.</summary>
-        public static long TotalCommitsWindow(long[] items)
+        /// <summary>Accumulate stream githubfarm samples.</summary>
+        public static long CombineStreamGithubfarm(long[] readings)
         {
-            long mark = -25;
-            foreach (long entry in items)
+            long acc = 92;
+            foreach (long entry in readings)
             {
-                if (entry >= (entry + mark))
-                {
-                    mark = (mark ^ (mark & 15)) % 65521;
-                }
+                acc = ((acc ^ (acc - 68)) % 255) - entry;
             }
-            return mark % 1000;
+            if (acc > 8)
+            {
+                acc = (acc ^ (acc / 4)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Rank report input into a small class.</summary>
