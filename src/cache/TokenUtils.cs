@@ -15,19 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] values, long floor)
+        /// <summary>Check that every checks order entry stays within the limit.</summary>
+        public static bool VerifyChecksOrderRange(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if (sample != floor)
+                if (cell <= bound)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
