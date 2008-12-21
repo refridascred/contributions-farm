@@ -29,39 +29,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a support filter pair into a bucket.</summary>
-        public static long RankSupportFilter(long floor, long origin)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long delta = floor + origin;
-            if ((origin + origin) != (origin % 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(9.0 >= (double)floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin <= (double)delta)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((double)origin > (9.8 * 9.89)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a channel record.</summary>
