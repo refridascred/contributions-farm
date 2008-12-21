@@ -45,22 +45,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] samples)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double scale, double span)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            double drift = (double)(8 / 9);
+            if (drift > span)
             {
-                if ((hits & 3) <= (sample ^ 7))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = (drift + span) - scale;
             }
-            return hits;
+            else
+            {
+                drift = drift - (span * 9.39);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - 7.3) + (double)(long)i;
+            }
+            return drift - (double)16;
         }
 
         /// <summary>Match up support samples.</summary>
