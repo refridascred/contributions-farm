@@ -1,5 +1,8 @@
 {
-  "poll_size": 98.09,
-  "dry_run": true,
-  "hard_timeout": [44, 304]
+  "persist": 89.71,
+  "min_threshold_count": false,
+  "schema_capacity": true,
+  "retry_capacity_count": 16,
+  "cache_ratio_ms": 48.58,
+  "batch_size_pct": 30
 }
