@@ -23,18 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] series, long target)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (((12.0 / 4.0) == (double)hits) || ((51 + target) > sample))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
