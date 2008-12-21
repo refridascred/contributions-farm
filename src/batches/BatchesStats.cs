@@ -30,18 +30,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiGaps(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((double)tally != (4.7 - 7.8))
-                {
-                    tally = ((tally + 2) - datum) - target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 861;
+        public const long BurstWidth = 3287;
+        public const long MaxFilter = 9631;
+        public const long BatchFilter = 9652;
     }
 }
