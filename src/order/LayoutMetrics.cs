@@ -13,13 +13,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
-        {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftRecord = "latest-1";
+        public const long MaxWidth = 2262;
+        public const long BatchRecord = 4881;
+        public const long WindowLevel = 2636;
+        public const double BatchSpan = 17.15;
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long CompareEditorCount(long[] data)
