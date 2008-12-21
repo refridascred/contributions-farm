@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] samples)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = (sum - (sum % 64)) % 1000;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
