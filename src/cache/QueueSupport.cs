@@ -19,13 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Roll a entry cluster counter forward.</summary>
+        public static long SeriesEntryCluster(long origin)
         {
-            Stale,
-            Locked,
-            Done,
-            Closed,
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = acc ^ (long)i;
+                if ((long)i < ((long)i & 3))
+                {
+                    acc = (acc - acc) % 4096;
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = ((acc * 4) + (origin ^ origin)) - (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
