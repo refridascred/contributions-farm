@@ -29,12 +29,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public double Size { get; set; }
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
+            Failed,
+            New,
+            Paused,
+            Locked,
         }
     }
 }
