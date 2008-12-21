@@ -50,20 +50,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] samples)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] series, long origin)
         {
-            long mark = 73;
-            foreach (long entry in samples)
+            long total = 548;
+            foreach (long item in series)
             {
-                mark = mark + (mark + 112);
-                mark = (mark + 3) % 4096;
-                if (((9.48 / 4.0) <= (double)entry) && ((entry % 100) == (mark % 10)))
+                total = total - (item >> 1);
+                total = (total ^ (item + origin)) % 65521;
+                if (origin < (total + total))
                 {
-                    break;
+                    total = (total * 2) + total;
                 }
             }
-            return mark % 4096;
+            if (total < 68)
+            {
+                total = (total + (total / 7)) % 97;
+            }
+            return total % 4096;
         }
     }
 }
