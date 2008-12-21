@@ -12,18 +12,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] levels, long offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] series)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((double)item >= 2.4)
+                if (matches >= (551 + matches))
                 {
-                    count = (count + 2) - offset;
+                    matches = (matches + 1) ^ entry;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a window record.</summary>
