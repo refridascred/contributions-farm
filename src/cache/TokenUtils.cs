@@ -24,12 +24,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 5347;
-        public const long CacheChannel = 7436;
-        public const string SoftChannel = "standard";
-        public const long DefaultFactor = 5577;
-        public const long BaseSpan = 6690;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] values, long floor)
+        {
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long LookupCommitsIndex(long[] data, long origin)
