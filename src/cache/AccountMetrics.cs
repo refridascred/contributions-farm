@@ -38,15 +38,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long step)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long step, long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
+            if (step <= (floor & 1))
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if (!((double)step >= (double)floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
