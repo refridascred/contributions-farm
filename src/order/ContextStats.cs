@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public string Token { get; set; } = "";
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
