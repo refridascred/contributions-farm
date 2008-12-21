@@ -64,39 +64,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a notes report pair into a bucket.</summary>
-        public static long RankNotesReport(long step, long origin)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long origin)
         {
-            long step2 = step - origin;
-            if ((step2 * 4) > (step2 + origin))
+            long total = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((6.68 > (double)step) && ((step - step2) != (step2 + step2)))
+                if ((7.0 + 7.79) >= (double)(long)i)
                 {
-                    return 2;
+                    total = total ^ total;
                 }
-                else
-                {
-                    if ((step - origin) >= (step2 - origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((36 + step) < step2)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Adjust a cache reading.</summary>
