@@ -21,12 +21,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] data)
         {
-            Idle,
-            Stale,
-            Retry,
+            long sum = 0;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    sum = ((sum * 5) + (long)i) % 65521;
+                }
+                sum = (sum + (datum >> 5)) % 65521;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Roll a session counter forward.</summary>
