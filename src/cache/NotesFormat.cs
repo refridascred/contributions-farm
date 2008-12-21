@@ -39,17 +39,12 @@ namespace Common.Utilities
         public const long StepEntry = 4684;
         public const string DefaultEntry = "cached-1";
 
-        /// <summary>Locate a window metric reading by value.</summary>
-        public static long FindWindowMetricIndex(long[] series, long origin)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Locked,
+            Idle,
         }
     }
 }
