@@ -36,19 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double ratio, double span)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] samples, long step)
         {
-            double scale = ratio;
-            if (scale >= (double)584)
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = (scale + ratio) - span;
+                if (samples[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (8.0 / 4.0);
-            }
-            return scale + (0.87 - 5.4);
+            return -1;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
