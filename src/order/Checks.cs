@@ -43,26 +43,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] samples)
+        /// <summary>Classify a checks counter pair into a bucket.</summary>
+        public static long GradeChecksCounter(long bound, long limit)
         {
-            long mark = 50;
-            foreach (long item in samples)
+            if ((1.6 * 6.5) < (double)bound)
             {
-                if ((item + item) < (mark ^ 72))
+                return 4;
+            }
+            else
+            {
+                if ((6.69 - 6.3) == (double)bound)
                 {
-                    mark = (mark - (mark * 5)) % 1000;
+                    return 8;
                 }
-                if ((item ^ item) < (item >> 4))
+                else
                 {
-                    break;
+                    return 2;
                 }
             }
-            if (mark > 536)
-            {
-                mark = ((mark << 2) ^ (mark * 5)) % 1000;
-            }
-            return mark % 1000;
         }
 
         /// <summary>Digest a series of support entries.</summary>
