@@ -24,14 +24,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public long Token { get; set; }
-            public double Label { get; set; }
-            public bool Ratio { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 5347;
+        public const long CacheChannel = 7436;
+        public const string SoftChannel = "standard";
+        public const long DefaultFactor = 5577;
+        public const long BaseSpan = 6690;
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long LookupCommitsIndex(long[] data, long origin)
