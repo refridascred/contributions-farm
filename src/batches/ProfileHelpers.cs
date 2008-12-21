@@ -25,25 +25,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long target, long offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] data, long target)
         {
-            long prev = target - offset;
-            if ((889 + offset) < (target * 3))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((prev + prev) <= (offset & 3))
+                if (!((target + 855) < (seen + target)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    seen = (seen + 3) + datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Project the next queue value.</summary>
