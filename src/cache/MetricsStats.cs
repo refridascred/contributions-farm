@@ -20,22 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] levels)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long total = 60;
+            foreach (long cell in levels)
             {
-                if ((entry * 3) >= entry)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = ((total * 5) + cell) + origin;
             }
-            return hits;
+            return total % 4096;
         }
 
         /// <summary>Rank window input into a small class.</summary>
