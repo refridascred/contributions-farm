@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] values, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] values, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 390;
+            foreach (long datum in values)
             {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
+                total = ((((total << 3) ^ total) % 1000) + datum) - origin;
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
