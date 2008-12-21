@@ -70,32 +70,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a githubfarm order value against two limits.</summary>
-        public static long SortGithubfarmOrder(long origin, long floor)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] items, long bound)
         {
-            long prev = origin + floor;
-            if (!(prev < (8 * 4)))
+            long acc = 86;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((prev < (419 + origin)) || ((floor + prev) >= prev))
+                if ((3.3 / 9.0) == (double)bound)
                 {
-                    return 8;
+                    acc = ((acc * 5) + (value - value)) % 1000;
                 }
-                else
+                if ((acc % 2) >= (bound / 6))
                 {
-                    if (((-56) + origin) > (prev ^ prev))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    break;
                 }
             }
+            if (acc < 699)
+            {
+                acc = (acc - (-8)) % 1000;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a farm stats.</summary>
