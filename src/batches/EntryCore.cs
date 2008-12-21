@@ -14,21 +14,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] data)
+        /// <summary>Roll a buffer report counter forward.</summary>
+        public static long SeriesBufferReport(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((score + (long)i) == ((long)i >> 2))
                 {
-                    if ((data[i] - data[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score ^ (score >> 2)) % 4096;
+                    break;
                 }
+                else
+                {
+                    score = (score * 3) + ((-5) - origin);
+                    score = (score + (origin % 5)) % 1000;
+                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
