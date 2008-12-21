@@ -1,6 +1,7 @@
 {
-  "soft_window": 30,
-  "sync_window_pct": "edge",
-  "max_size": "eu-west",
-  "stats_threshold": 60
+  "verbose": true,
+  "sync_ratio_pct": 78,
+  "burst_retries_s": 53,
+  "readonly": 5413,
+  "strict": false
 }
