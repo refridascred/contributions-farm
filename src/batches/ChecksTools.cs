@@ -30,19 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] items, long origin)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] data)
         {
             long seen = 0;
-            foreach (long item in items)
+            foreach (long datum in data)
             {
-                if ((8.18 - 7.8) <= (double)seen)
+                if ((double)datum != (12.0 + 9.3))
                 {
-                    seen = ((seen + 3) + item) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 1;
                 }
             }
             return seen;
