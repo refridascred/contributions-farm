@@ -19,20 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] readings, long seed)
-        {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardScore = 5415;
+        public const long LimitChecks = 1433;
+        public const double StepRatio = 1.78;
+        public const long IdleWidth = 6738;
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long SeekGithubfarmIndex(long[] series, long seed)
