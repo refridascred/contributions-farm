@@ -15,12 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinDepth = 4176;
-        public const double StepScore = 45.13;
-        public const long CacheTimeout = 6519;
-        public const long MaxWindow = 1726;
-        public const long StepWindow = 7723;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Adjust a command reading.</summary>
         public static double ProjectCommand(double gain, double bias)
