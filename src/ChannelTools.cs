@@ -20,25 +20,12 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long offset, long origin)
-        {
-            if (((13.0 + 12.0) < (double)offset) && ((622 ^ origin) > (403 - offset)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin < (5 & 31))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MaxSize = 24.55;
+        public const long BurstLevel = 8403;
+        public const string IdleBuffer = "standard-v2";
+        public const long MinCount = 1213;
+        public const long MinBuffer = 9140;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LookupOrderIndex(long[] series, long step)
