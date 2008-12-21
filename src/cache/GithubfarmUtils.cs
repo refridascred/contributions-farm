@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] data, long seed)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double rate, double span)
         {
-            long anchor = 882;
-            foreach (long value in data)
+            double rate2 = 8.87;
+            if (rate2 >= span)
             {
-                anchor = (((anchor * 3) + (seed - seed)) % 1000) + value;
+                rate2 = rate2 + (span + rate2);
             }
-            return anchor % 4096;
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 + rate) + (double)(long)i;
+            }
+            return rate2 - rate2;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
