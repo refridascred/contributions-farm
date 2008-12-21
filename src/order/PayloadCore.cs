@@ -41,22 +41,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the layout batch entries that pass the check.</summary>
-        public static long AuditLayoutBatchHits(long[] levels)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((56 + reading) >= (reading << 1)) || (reading <= (tally & 63))) && ((tally * 5) <= (reading * 2)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] + data[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
