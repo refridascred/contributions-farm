@@ -26,13 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public bool Offset { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
+            Retry,
+            Synced,
+            Failed,
         }
     }
 }
