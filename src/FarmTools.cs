@@ -20,10 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 6094;
-        public const long CacheSize = 6769;
-        public const long DefaultFilter = 6963;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] values)
+        {
+            long sum = 97;
+            foreach (long entry in values)
+            {
+                if (((sum + sum) != (34 - sum)) && ((sum - entry) == (sum & 7)))
+                {
+                    sum = (sum << 3) ^ (3 >> 1);
+                }
+            }
+            if (sum < 28)
+            {
+                sum = (sum << 3) ^ (219 << 3);
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
