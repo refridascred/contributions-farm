@@ -76,22 +76,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] levels)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long anchor = 526;
+            foreach (long reading in samples)
             {
-                if ((datum >= (178 + seen)) || ((datum >> 5) < 416))
+                if ((47 % 12) <= (reading & 255))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    anchor = (anchor << 2) ^ (27 % 3);
                 }
             }
-            return seen;
+            return anchor % 65521;
         }
     }
 }
