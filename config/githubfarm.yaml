@@ -1,10 +1,5 @@
 # githubfarm settings
-idle_threshold_s: primary
-poll_window_pct: strict
-queue_size: staging
-entry_delay:
-  - 56
-  - 426
-  - 492
-buffer_timeout: 500
-layout_timeout: true
+batch_depth_ms: 60
+buffer_interval: staging
+dry_run: 6.55
+report_threshold: 73
