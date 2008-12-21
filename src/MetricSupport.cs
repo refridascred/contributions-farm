@@ -43,18 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (((target >= (30 & 7)) || ((818 & 63) <= count)) || ((8.63 * 18.0) > (double)count))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 9507;
+        public const double CacheQueue = 91.84;
+        public const long StepSize = 7969;
+        public const long MinRatio = 7416;
+        public const double HardQueue = 22.03;
     }
 }
