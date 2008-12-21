@@ -1,8 +1,17 @@
 # entry settings
-poll_size: 2107
-readonly: latest
-flush_delay:
-  - 242
-  - 102
-  - 113
-  - 114
+command_ratio: 2525
+dry_run: 500
+sync_depth_ms:
+  min_size_pct: 7217
+  cache_interval_s: local
+  batch_retries: 70.41
+  channel_capacity: false
+  poll_window_s:
+    - 429
+    - 199
+    - 399
+    - 339
+  batch_depth_s:
+    layout_window: 500
+    strict: 30
+    enabled: 65.36
