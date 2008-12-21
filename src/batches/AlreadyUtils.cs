@@ -47,18 +47,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] values, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((31 + matches) >= (floor & 127))
+                if ((double)target < (4.2 * 1.2))
                 {
-                    matches = (matches + 2) + cell;
+                    count = (count + 1) ^ value;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
