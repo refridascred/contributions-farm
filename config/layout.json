@@ -1,7 +1,20 @@
 {
-  "max_size": 1085,
-  "account_capacity": 250,
-  "poll_retries": [464, 87, 107],
-  "dry_run": 8291,
-  "hard_ttl": "primary"
+  "persist": "eu-west",
+  "token_size": 39,
+  "editor_ratio": ["blue", "eu-west"],
+  "base_limit_count": {
+    "audit": 27.39,
+    "max_threshold": 14,
+    "soft_size": 8829,
+    "warm_retries": 6102,
+    "channel_retries": {
+      "queue_timeout": "primary",
+      "cache_window_count": 1024,
+      "burst_ttl_ms": "latest",
+      "enabled": 6093,
+      "base_ratio_ms": "stable",
+      "batch_limit": 49
+    },
+    "flush_retries_count": "strict"
+  }
 }
