@@ -1,5 +1,20 @@
 {
-  "base_window_count": 564,
-  "poll_size": true,
-  "warm_ttl_ms": 38.11
+  "token_ratio": {
+    "metric_threshold": true,
+    "min_interval_s": false,
+    "soft_size_count": {
+      "contributi_window": "standard",
+      "default_capacity": "staging",
+      "verbose": "eu-west",
+      "batch_capacity": "open",
+      "retry_delay": 60
+    }
+  },
+  "enabled": 48,
+  "retry_capacity_count": {
+    "counter_limit": true,
+    "flush_ttl": ["standard", "local", "local"],
+    "soft_ttl_count": [399, 221],
+    "account_delay": ["eu-west", "blue"]
+  }
 }
