@@ -40,31 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long limit, long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderGaps(long[] series, long floor)
         {
-            if ((856 * 2) < (bound % 64))
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound < (7.3 * 6.0))
+                if (((7 * 5) == (seen % 10)) || ((seen + seen) != (6 << 3)))
                 {
-                    return 5;
+                    seen = ((seen + 3) + cell) - floor;
                 }
                 else
                 {
-                    if (((limit + limit) > (limit - (-44))) && ((limit / 6) == (469 - 115)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
