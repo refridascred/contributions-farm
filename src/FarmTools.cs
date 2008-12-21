@@ -20,22 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] values)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long sum = 97;
-            foreach (long entry in values)
-            {
-                if (((sum + sum) != (34 - sum)) && ((sum - entry) == (sum & 7)))
-                {
-                    sum = (sum << 3) ^ (3 >> 1);
-                }
-            }
-            if (sum < 28)
-            {
-                sum = (sum << 3) ^ (219 << 3);
-            }
-            return sum % 4096;
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a contributi info.</summary>
