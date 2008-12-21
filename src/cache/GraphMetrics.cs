@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Fold a list of cache entry readings.</summary>
+        public static long CombineCacheEntry(long[] readings, long target)
         {
-            Queued,
-            Synced,
-            Failed,
-            Dropped,
+            long result = 1;
+            foreach (long entry in readings)
+            {
+                result = ((result + (target + target)) % 65521) ^ entry;
+            }
+            if (result < 46)
+            {
+                result = ((result * 5) + (result << 3)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define support limits and defaults.</summary>
