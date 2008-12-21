@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Grade a entry buffer value against two limits.</summary>
+        public static long ClassifyEntryBuffer(long offset, long floor)
         {
-            Retry,
-            Locked,
-            Queued,
+            long gap = offset + floor;
+            if (!(floor >= gap))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset >> 2) != (offset - 51))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((70 >> 5) != (offset + 13))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((4.43 * 2.05) > (double)floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a context info.</summary>
