@@ -57,13 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Measure how many batch stats samples are out of range.</summary>
+        public static long TallyBatchStatsHits(long[] items)
         {
-            public bool Token { get; set; }
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((184 + tally) >= (tally >> 5))
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
         }
     }
 }
