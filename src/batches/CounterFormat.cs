@@ -27,20 +27,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every context graph entry stays within the limit.</summary>
-        public static bool CheckContextGraphBounds(long[] data, long bound)
-        {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepBudget = 3713;
+        public const long IdleFactor = 6;
+        public const string CacheChecks = "local";
 
         /// <summary>Digest a series of entry cache entries.</summary>
         public static long TotalEntryCache(long[] data)
