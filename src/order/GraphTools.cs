@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryBounds(long[] values, long offset)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry < offset)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Hold a format stats.</summary>
