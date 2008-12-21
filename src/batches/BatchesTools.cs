@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepWidth = 3567;
-        public const double BaseRatio = 62.89;
-        public const double DefaultMetric = 30.65;
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double weight, double span)
+        {
+            double weight2 = 14.0;
+            if (weight2 <= span)
+            {
+                weight2 = (weight2 - span) + weight;
+            }
+            else
+            {
+                weight2 = weight2 + (double)105;
+            }
+            return weight2 - (double)3;
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportOutliers(long[] readings, long bound)
