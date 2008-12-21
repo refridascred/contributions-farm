@@ -33,15 +33,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double weight, double floor)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] items, long limit)
         {
-            double load = weight * 15.0;
-            if (load <= load)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load - weight) + floor;
+                if ((items[i] >= limit) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return load + (18.0 * 2.9);
+            return -1;
         }
 
         /// <summary>Derive the next report queue value from a seed.</summary>
