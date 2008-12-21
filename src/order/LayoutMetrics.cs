@@ -20,18 +20,19 @@ namespace Common.Utilities
             return load + (3.0 / 4.0);
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] values)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] series, long step)
         {
-            long count = 0;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if (9.01 < (double)item)
+                if (sample != step)
                 {
-                    count = count + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Look up the position of a window counter sample.</summary>
