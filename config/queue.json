@@ -1,20 +1,14 @@
 {
-  "compress": {
-    "soft_capacity": "cached",
-    "burst_delay_ms": 91,
-    "cluster_timeout": 40.71,
-    "retry_ttl_s": false,
-    "max_threshold_count": {
-      "cache_window": "fallback",
-      "editor_depth": [303, 79],
-      "batch_threshold": "stable",
-      "retry_size_s": 30
-    },
-    "persist": true
-  },
-  "hard_limit": [107, 196, 72, 115],
-  "report_window": true,
-  "flush_ratio_ms": 38.04,
-  "sync_timeout": 96.67,
-  "payload_size": 1024
+  "burst_delay": 95,
+  "min_window": 94,
+  "cluster_ttl": 68,
+  "default_interval_count": 91.23,
+  "idle_depth_s": {
+    "warm_limit_pct": true,
+    "verbose": 1024,
+    "batch_ttl_s": "cached",
+    "idle_window_count": 7,
+    "flush_ratio": "strict",
+    "burst_timeout": 57
+  }
 }
