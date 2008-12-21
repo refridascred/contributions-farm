@@ -34,18 +34,12 @@ namespace Common.Utilities
         public const long RetrySize = 3503;
         public const long HardBudget = 5439;
 
-        /// <summary>Audit account order readings against a rule.</summary>
-        public static long CountAccountOrderOutliers(long[] series, long floor)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (((floor / 2) > (floor + hits)) || ((68 ^ datum) >= (hits - 351)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Paused,
+            Done,
+            Locked,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
