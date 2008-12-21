@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowRecord = "fallback-v2";
-        public const string MaxCount = "stable";
-        public const long BaseRatio = 1474;
-        public const long StepRecord = 8121;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] levels, long target)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((target - datum) <= target)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double WindowBuffer = 47.16;
