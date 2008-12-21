@@ -1,11 +1,14 @@
 # Command notes
 
-Run the stats check before changing any already limits.
-The commits helpers are pure functions, so they are safe to call from any thread.
+The tools report groups every command by cluster.
+A githubfarm that stays idle for too long is moved to the window list.
+
+Keep checks and commits names short and lowercase.
+Use layout settings to tune how often order data is refreshed.
 
 ## Guidelines
 
-- Log every editor change
-- Keep schema values small
-- Validate cluster input early
-- Review already limits each release
+- Log every githubfarm change
+- Document new schema fields
+- Validate commits input early
+- Review tools limits each release
