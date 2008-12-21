@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] values, long seed)
+        /// <summary>Locate a account already reading by value.</summary>
+        public static long FindAccountAlreadyIndex(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item & 127) >= (item & 255))
+                if ((readings[i] <= step) && ((readings[i] % 2) == 0))
                 {
-                    tally = (tally + 3) + seed;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a farm summary.</summary>
