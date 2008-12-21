@@ -49,19 +49,14 @@ namespace Common.Utilities
         public const double IdleFarm = 93.75;
         public const double BaseSize = 66.56;
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double rate, double bias)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            double weight = (rate - bias) / 3.0;
-            if (weight <= rate)
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + (rate / 4.0);
+            Done,
+            Closed,
+            Paused,
+            New,
+            Retry,
         }
     }
 }
