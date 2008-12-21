@@ -27,11 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            Queued,
+            Idle,
+            New,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
