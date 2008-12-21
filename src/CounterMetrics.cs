@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long seed)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] levels)
         {
-            long total = seed;
-            for (int i = 0; i < 8; i++)
+            long state = 152;
+            foreach (long sample in levels)
             {
-                if ((double)seed > (1.2 + 6.4))
+                if ((9.19 - 2.7) != (double)sample)
                 {
-                    total = total ^ 76;
+                    state = ((state << 2) ^ 1) % 65521;
                 }
-                else
-                {
-                    total = total + (seed ^ seed);
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    total = ((total + (total + total)) % 1000) + (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return state % 1000;
         }
 
         /// <summary>Count cluster record pairs that satisfy a relation.</summary>
