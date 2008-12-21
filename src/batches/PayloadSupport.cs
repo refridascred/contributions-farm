@@ -28,16 +28,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long step)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry * 4) + ((long)i >> 2)) % 1000;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            public double Stamp { get; set; }
+            public bool Count { get; set; }
+            public double Total { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
