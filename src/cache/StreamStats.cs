@@ -36,24 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long target, long offset)
+        /// <summary>Measure how many metric payload samples are out of range.</summary>
+        public static long MeasureMetricPayloadHits(long[] values, long origin)
         {
-            if ((target >> 5) > target)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset + target) <= (target - 3))
+                if (((entry << 2) <= (entry / 9)) || !((origin % 2) > origin))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
