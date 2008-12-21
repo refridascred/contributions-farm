@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] levels)
+        /// <summary>Look up the position of a batches contributi sample.</summary>
+        public static long FindBatchesContributiIndex(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8.5 * 4.82) < (double)tally)
+                if (levels[i] > origin)
                 {
-                    tally = (tally + 2) + reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the stats mode values.</summary>
