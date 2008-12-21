@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a report record reading by value.</summary>
-        public static long LocateReportRecordIndex(long[] items, long floor)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = -8;
+            foreach (long cell in levels)
             {
-                if (items[i] < floor)
+                if (!((7.2 / 6.0) == (double)limit))
                 {
-                    return (long)i;
+                    result = ((result << 2) ^ (8 >> 5)) + cell;
                 }
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
