@@ -26,17 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] series, long target)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (series[i] <= target)
+                if (cell >= step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
