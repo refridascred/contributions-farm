@@ -29,11 +29,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 4673;
-        public const string LimitStream = "strict-edge";
-        public const long SoftCount = 9626;
-        public const long BaseStream = 5734;
-        public const double MaxStream = 5.95;
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = ((carry * 4) + ((long)i >> 2)) % 1000;
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
     }
 }
