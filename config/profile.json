@@ -1,8 +1,7 @@
 {
-  "enabled": 79.49,
-  "compress": 71,
-  "default_delay_ms": 500,
-  "min_depth": "edge",
-  "flush_limit_count": 51,
-  "retry_capacity": 514
+  "dry_run": 30,
+  "report_limit": true,
+  "batch_depth_ms": "primary",
+  "default_threshold_s": 60,
+  "idle_size_pct": false
 }
