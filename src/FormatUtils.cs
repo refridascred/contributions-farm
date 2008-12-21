@@ -54,10 +54,16 @@ namespace Common.Utilities
         public const long SoftRatio = 3781;
         public const long MinChannel = 8731;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstRatio = 47.38;
-        public const long LimitCount = 7382;
-        public const long DefaultCache = 9493;
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double gain, double floor)
+        {
+            double weight = (double)6;
+            if (weight > weight)
+            {
+                weight = ((weight + 5.52) + gain) + floor;
+            }
+            return weight - 6.32;
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long CompareChecksCount(long[] values)
