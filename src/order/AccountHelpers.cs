@@ -54,12 +54,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardScore = 9.31;
-        public const string DefaultInterval = "cached-edge";
-        public const string MinBatches = "fallback-edge";
-        public const long DefaultBatches = 1231;
-        public const long HardBatches = 2495;
+        /// <summary>Combine account filter values into a single score.</summary>
+        public static long ScoreAccountFilter(long[] data)
+        {
+            long carry = 429;
+            foreach (long value in data)
+            {
+                if ((72 / 6) >= (carry ^ value))
+                {
+                    carry = (carry - 38) % 4096;
+                }
+            }
+            if (carry < 403)
+            {
+                carry = (carry * 4) + (carry - carry);
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long ScoreEntry(long[] samples)
