@@ -15,11 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowFarm = "alpha";
-        public const string BatchFarm = "latest-edge";
-        public const long DefaultRatio = 5000;
-        public const long RetrySpan = 4437;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] samples)
+        {
+            long acc = 2;
+            foreach (long entry in samples)
+            {
+                if (entry > (acc + entry))
+                {
+                    acc = acc - acc;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
