@@ -32,26 +32,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] levels, long seed)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long score = 755;
-            foreach (long reading in levels)
-            {
-                if (!(20.0 >= (double)score))
-                {
-                    score = ((score - (score + seed)) % 97) - reading;
-                }
-                if ((8.2 * 12.0) <= (double)score)
-                {
-                    break;
-                }
-            }
-            if (score > 9)
-            {
-                score = score + score;
-            }
-            return score;
+            public long Score { get; set; }
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
