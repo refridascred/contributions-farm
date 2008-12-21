@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 9373;
+        public const long HardContext = 5072;
+        public const double IdleContext = 21.85;
+        public const long WindowSpan = 8227;
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
