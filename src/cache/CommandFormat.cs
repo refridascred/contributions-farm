@@ -43,19 +43,13 @@ namespace Common.Utilities
         public const long CacheFormat = 345;
         public const string HardSize = "standard";
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double gain, double floor)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            double ratio = gain;
-            if (ratio < (gain - ratio))
-            {
-                ratio = ratio + 3.8;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (floor / 4.0)) + (double)(long)i;
-            }
-            return ratio + (double)(-12);
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
