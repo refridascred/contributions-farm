@@ -26,13 +26,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public bool Region { get; set; }
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
+            Retry,
+            Synced,
+            Locked,
+            Draft,
         }
     }
 }
