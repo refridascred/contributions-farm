@@ -40,19 +40,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] data, long seed)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item != seed)
+                if ((items[i] <= origin) && ((items[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
