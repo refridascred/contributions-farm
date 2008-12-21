@@ -14,21 +14,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of command profile readings.</summary>
-        public static long PairCommandProfileCount(long[] values)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = -99;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = (state - (cell - cell)) % 101;
+                if (!((cell / 8) <= (state * 3)))
                 {
-                    if ((values[i] + values[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state << 3) ^ cell) % 255;
                 }
             }
-            return count;
+            if (state > 971)
+            {
+                state = ((state * 3) + 35) % 255;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of already filter readings.</summary>
