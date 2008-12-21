@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] series, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] series, long target)
         {
-            long mark = 7;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((807 ^ mark) >= (datum / 5))
+                if (((0.3 + 0.5) > (double)reading) || ((9.56 / 9.0) > (double)target))
                 {
-                    mark = mark ^ (mark % 10);
-                }
-                else
-                {
-                    mark = (mark * 3) + (offset * 4);
+                    count = count + 2;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Accumulate editor samples.</summary>
