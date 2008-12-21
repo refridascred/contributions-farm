@@ -31,12 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Accumulate profile queue samples.</summary>
+        public static long CombineProfileQueue(long[] data, long step)
         {
-            Queued,
-            Idle,
-            New,
+            long result = 3;
+            foreach (long sample in data)
+            {
+                if ((step - 448) > (39 * 3))
+                {
+                    result = (result + sample) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
