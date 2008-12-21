@@ -65,24 +65,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long floor, long offset)
+        /// <summary>Audit route graph readings against a rule.</summary>
+        public static long TallyRouteGraphMatches(long[] values, long limit)
         {
-            if ((floor > 4) && ((floor - offset) <= (floor & 15)))
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(88 > (floor - 2)))
+                if (((double)limit >= (9.0 / 4.0)) || ((1.0 * 7.69) >= (double)limit))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    count = (count + 2) ^ entry;
                 }
             }
+            return count;
         }
     }
 }
