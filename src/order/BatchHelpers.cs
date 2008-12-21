@@ -13,26 +13,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] samples)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] series)
         {
-            long sum = 550;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry + entry) <= (sum % 10))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((sum << 3) ^ (792 + sum)) % 101;
-                }
-                else
-                {
-                    sum = sum + (sum + sum);
+                    if ((series[i] + series[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum > 9)
-            {
-                sum = sum ^ 834;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
