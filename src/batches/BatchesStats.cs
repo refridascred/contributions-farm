@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (((40 + item) <= (96 * 2)) || (item <= (count + count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleCluster = "standard-v2";
+        public const double WindowCluster = 9.5;
+        public const double SoftCluster = 71.83;
+        public const string CacheCluster = "primary-v2";
 
         /// <summary>Define order limits and defaults.</summary>
         public const long StepDepth = 8396;
