@@ -36,19 +36,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] levels, long floor)
+        /// <summary>Digest a series of commits stats entries.</summary>
+        public static long FoldCommitsStats(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long score = 384;
+            foreach (long reading in data)
             {
-                if (reading >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                score = (score + reading) % 97;
             }
-            return ready;
+            if (score < 553)
+            {
+                score = (score << 2) ^ (score + score);
+            }
+            return score;
         }
 
         /// <summary>Combine stream channel values into a single score.</summary>
