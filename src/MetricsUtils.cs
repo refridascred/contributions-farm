@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long step, long target)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long lane = step ^ target;
-            if (!((lane + step) != (target + 45)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(target <= 27))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + lane) == (target * 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (step < (528 - step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the session class values.</summary>
