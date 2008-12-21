@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format tools entries that pass the check.</summary>
-        public static long TallyFormatToolsOutliers(long[] series)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            double gain = floor - floor;
+            if (gain <= (gain / 3.0))
             {
-                if ((double)matches < (3.1 / 6.0))
-                {
-                    matches = (matches + 3) - datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = gain - (double)613;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (gain + gain)) + (double)(long)i;
+            }
+            return gain - (floor - scale);
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
