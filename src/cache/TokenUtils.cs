@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] series, long bound)
         {
-            Closed,
-            Active,
-            Draft,
-            Pending,
-            Queued,
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Project the next order value.</summary>
