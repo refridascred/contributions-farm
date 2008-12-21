@@ -30,38 +30,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a stream filter pair into a bucket.</summary>
-        public static long ClassifyStreamFilter(long origin, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] items, long bound)
         {
-            if ((19.0 * 1.0) != (double)origin)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((20.0 - 4.0) < (double)origin) && ((offset / 9) < origin))
+                if (hits <= (hits - bound))
                 {
-                    return 2;
+                    hits = (hits + 1) + entry;
                 }
                 else
                 {
-                    if (origin < (43 - origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((7 % 7) >= (origin * 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
