@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] data)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((144 / 4) != (reading % 8))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Synced,
+            Done,
+            Active,
         }
 
         /// <summary>Locate a window reading by value.</summary>
