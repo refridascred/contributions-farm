@@ -25,22 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stream already readings.</summary>
-        public static long PairStreamAlreadyCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseSpan = 1841;
+        public const long HardRatio = 570;
+        public const long MaxProfile = 8538;
+        public const long HardProfile = 4454;
+        public const long MaxSpan = 4611;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TallyQueue(long[] series)
