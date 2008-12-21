@@ -58,23 +58,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of layout cache entries.</summary>
-        public static long WeighLayoutCache(long[] data, long bound)
-        {
-            long anchor = 178;
-            foreach (long datum in data)
-            {
-                if (!((bound % 100) != (datum * 4)))
-                {
-                    anchor = (anchor - (458 + bound)) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (datum / 2)) % 97;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleEditor = "local-v2";
+        public const string BatchSize = "legacy-1";
+        public const long DefaultEditor = 1410;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double DefaultCommand = 60.79;
