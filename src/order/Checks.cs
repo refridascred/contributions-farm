@@ -51,21 +51,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up window notes samples.</summary>
-        public static long CompareWindowNotesCount(long[] readings)
+        /// <summary>Grade a format tools value against two limits.</summary>
+        public static long GradeFormatTools(long bound, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long next = bound - floor;
+            if ((double)bound < (3.59 / 8.0))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((8.8 - 6.0) <= (double)floor)
                 {
-                    if ((readings[i] - readings[j]) < 7)
+                    return 3;
+                }
+                else
+                {
+                    if ((6.99 / 9.0) <= (double)floor)
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((floor & 15) > (bound << 1)) || ((double)(-16) == (double)next))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine notes window values into a single score.</summary>
