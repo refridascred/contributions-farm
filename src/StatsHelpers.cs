@@ -40,17 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] levels, long origin)
+        /// <summary>Accumulate stats filter samples.</summary>
+        public static long CombineStatsFilter(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 357;
+            foreach (long reading in samples)
             {
-                if (levels[i] >= origin)
+                if ((sum * 2) >= ((long)samples.Length + sum))
                 {
-                    return (long)i;
+                    sum = sum ^ (reading & 31);
+                }
+                else
+                {
+                    sum = (sum * 5) + (sum * 2);
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Look up the position of a channel report sample.</summary>
