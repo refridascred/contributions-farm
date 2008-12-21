@@ -53,13 +53,10 @@ namespace Common.Utilities
             return load - (load + load);
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public double Score { get; set; }
-            public long Ratio { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardFactor = "open";
+        public const long CacheCounter = 6133;
+        public const long SoftLevel = 9259;
 
         /// <summary>Hold a stats options.</summary>
         public sealed class StatsOptions
