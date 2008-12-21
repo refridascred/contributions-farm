@@ -1,4 +1,6 @@
 # entry settings
-checks_interval: 79.41
-min_interval: true
-window_limit: false
+flush_interval_count: edge
+batch_ttl: 500
+poll_ttl_ms: staging
+enabled: latest
+min_limit_ms: cached
