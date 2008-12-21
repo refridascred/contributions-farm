@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] samples, long target)
         {
-            public double Token { get; set; }
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
+            long state = 39;
+            foreach (long sample in samples)
+            {
+                if ((target ^ sample) <= sample)
+                {
+                    state = (state * 5) + (9 + sample);
+                }
+            }
+            if (state < 705)
+            {
+                state = (state ^ state) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
