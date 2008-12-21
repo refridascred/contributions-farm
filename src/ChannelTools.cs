@@ -20,14 +20,32 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long floor, long bound)
         {
-            Draft,
-            Synced,
-            Idle,
-            Active,
-            Dropped,
+            long span = floor ^ bound;
+            if (((span + span) > (span + floor)) && ((bound * 3) <= (floor ^ bound)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((span % 60) < bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((31 & 1) == (floor - span))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a order reading by value.</summary>
