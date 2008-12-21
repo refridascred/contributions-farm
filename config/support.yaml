@@ -1,12 +1,23 @@
 # support settings
-strict: cached
-max_size_ms: false
-entry_timeout: open
-soft_retries:
-  poll_ttl_count: 92.14
-  stream_ttl: 609
-  persist: 63
-  sync_window: 52
-  compress: true
-burst_threshold_count: local
-soft_timeout_ms: 10.01
+sync_ratio_ms: 62
+max_depth_count: true
+min_ttl_count:
+  dry_run: 17.36
+  report_retries:
+    readonly: 250
+    cache_timeout: 58.2
+    min_limit_s: open
+    stream_depth: 65
+    route_window: 7429
+  metrics_retries: 37
+  default_retries_pct: false
+  hard_depth_ms: latest
+  flush_ttl: standard
+idle_limit: 46.07
+enabled: staging
+batch_depth:
+  idle_depth: cached
+  base_size_s:
+    - 402
+    - 74
+  idle_window_ms: edge
