@@ -27,22 +27,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] items, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long mark = 11;
+            foreach (long datum in samples)
             {
-                if ((count ^ offset) <= (datum + offset))
+                if ((double)datum == (7.2 - 5.4))
                 {
-                    count = count + 1;
+                    mark = mark ^ (target - target);
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark * 5) + datum) % 255;
             }
-            return count;
+            return mark % 4096;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
