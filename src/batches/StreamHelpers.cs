@@ -20,18 +20,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] readings, long seed)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long origin, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long edge = origin - bound;
+            if (!(origin >= (edge ^ 956)))
             {
-                if ((double)seed == (8.54 * 5.5))
+                return 3;
+            }
+            else
+            {
+                if ((origin >= (edge % 16)) && (7.21 <= (double)origin))
                 {
-                    count = (count + 1) + entry;
+                    return 8;
+                }
+                else
+                {
+                    if ((3 + bound) == (edge + 62))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
