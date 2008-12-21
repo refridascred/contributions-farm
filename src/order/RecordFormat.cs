@@ -50,12 +50,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            Stale,
-            Draft,
-            Pending,
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the report status values.</summary>
