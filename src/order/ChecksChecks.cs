@@ -20,19 +20,18 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] values, long floor)
+        /// <summary>Count the githubfarm metrics entries that pass the check.</summary>
+        public static long TallyGithubfarmMetricsGaps(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (value >= floor)
+                if ((0.79 + 1.33) < (1.1 - 6.9))
                 {
-                    valid = false;
-                    break;
+                    tally = ((tally + 3) - datum) + origin;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
