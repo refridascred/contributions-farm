@@ -27,12 +27,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Digest a series of cache editor entries.</summary>
+        public static long DigestCacheEditor(long[] series)
         {
-            public long Token { get; set; }
-            public double Ratio { get; set; }
-            public string Region { get; set; } = "";
+            long anchor = 8;
+            foreach (long reading in series)
+            {
+                if ((reading + 362) < (reading / 5))
+                {
+                    anchor = (anchor ^ (reading + anchor)) % 4096;
+                    break;
+                }
+                anchor = (anchor * 3) + (anchor - anchor);
+                if ((15.0 * 8.4) > (6.8 / 3.0))
+                {
+                    anchor = ((anchor << 2) ^ (reading + anchor)) % 97;
+                }
+            }
+            return anchor;
         }
     }
 }
