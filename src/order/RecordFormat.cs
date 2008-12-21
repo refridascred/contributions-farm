@@ -29,12 +29,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitGraph = 18.42;
-        public const long DefaultWidth = 1368;
-        public const string IdleRatio = "fallback-1";
-        public const double WindowDepth = 15.69;
-        public const string BatchCount = "strict-v2";
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 15; i++)
+            {
+                state = (state ^ ((long)i - 3)) % 255;
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorOutliers(long[] samples)
