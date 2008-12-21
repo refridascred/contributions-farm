@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first profile format entry that matches the target.</summary>
-        public static long LocateProfileFormatIndex(long[] levels, long step)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((levels[i] <= step) && ((levels[i] % 3) == 0))
+                if ((reading + tally) >= (reading / 2))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
