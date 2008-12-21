@@ -1,8 +1,5 @@
 {
-  "schema_delay": [401, 335, 40],
-  "idle_interval": "standard",
-  "persist": false,
-  "format_limit": 37,
-  "soft_delay": "stable",
-  "audit": 33.87
+  "max_depth_pct": [170, 10, 293, 467],
+  "burst_interval": true,
+  "window_retries": 60
 }
