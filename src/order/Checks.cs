@@ -20,21 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 287;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = state + (entry + state);
             }
-            return hits;
+            if (state < (-852))
+            {
+                state = (state ^ (9 - state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
