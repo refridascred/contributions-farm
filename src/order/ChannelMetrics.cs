@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double weight, double offset)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] samples)
         {
-            double scale = (weight + offset) - offset;
-            if (scale <= offset)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale - weight;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale + offset;
+            return hits;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
