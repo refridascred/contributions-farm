@@ -14,19 +14,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] data, long limit)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] series)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample < limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] ^ series[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the checks phase values.</summary>
