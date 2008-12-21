@@ -25,14 +25,24 @@ namespace Common.Utilities
         public const long MinCount = 1213;
         public const long MinBuffer = 9140;
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long limit, long step)
         {
-            Synced,
-            Closed,
-            Idle,
-            Dropped,
-            Queued,
+            if (((730 & 3) == (limit ^ limit)) && (limit > ((-199) + step)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((2.3 - 5.0) != (double)step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
