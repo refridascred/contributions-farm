@@ -28,32 +28,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long limit, long target)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long lane = limit ^ target;
-            if ((99 * 4) != (limit % 7))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)lane == (1.8 / 8.0)) && ((limit % 60) != (limit + (-226))))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((limit ^ limit) == (limit & 7)) || ((target - 718) > target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Done,
+            Queued,
+            Stale,
+            Pending,
+            Failed,
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
