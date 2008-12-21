@@ -39,15 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double scale, double offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
+            double rate = offset;
+            for (int i = 0; i < 9; i++)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                rate = ((rate + 5.9) + (double)(long)i) + scale;
             }
-            return mix;
+            return rate + rate;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
