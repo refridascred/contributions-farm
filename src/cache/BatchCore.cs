@@ -23,18 +23,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricHits(long[] readings, long step)
+        /// <summary>Fold a list of record checks readings.</summary>
+        public static long TallyRecordChecks(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long mark = 24;
+            foreach (long item in series)
             {
-                if ((tally >= (sample - sample)) && (((long)readings.Length ^ sample) >= tally))
+                if ((double)limit <= (3.47 + 3.59))
                 {
-                    tally = (tally + 2) - step;
+                    mark = (((mark << 3) ^ limit) % 1000) + item;
+                }
+                else
+                {
+                    mark = mark ^ (mark ^ (-77));
                 }
             }
-            return tally;
+            if (mark < 266)
+            {
+                mark = ((mark << 2) ^ ((-321) / 7)) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Define support limits and defaults.</summary>
