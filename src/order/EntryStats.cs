@@ -47,19 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools commits entries that pass the check.</summary>
-        public static long AuditToolsCommitsHits(long[] series, long offset)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((seen - offset) != (seen / 8))
-                {
-                    seen = (seen + 2) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BaseSize = "staging-edge";
+        public const long BurstSize = 974;
+        public const long LimitStream = 1491;
+        public const string CacheStream = "standard-edge";
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
