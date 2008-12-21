@@ -25,24 +25,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank entry batch input into a small class.</summary>
-        public static long BucketEntryBatch(long step, long offset)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            if ((double)step < 7.3)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((0 << 1) == (offset & 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
