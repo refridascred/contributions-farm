@@ -54,10 +54,32 @@ namespace Common.Utilities
         public const string BatchSize = "legacy-1";
         public const long DefaultEditor = 1410;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchTimeout = 2924;
-        public const long StepFactor = 9865;
-        public const long WindowEntry = 3710;
-        public const long BaseWidth = 2914;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long limit, long seed)
+        {
+            long slot = limit ^ seed;
+            if (seed < (limit + slot))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((4 & 15) <= limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (limit < (seed ^ slot))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
