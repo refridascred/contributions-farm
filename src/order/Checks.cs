@@ -53,39 +53,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a format tools value against two limits.</summary>
-        public static long GradeFormatTools(long bound, long floor)
+        /// <summary>Combine farm record values into a single score.</summary>
+        public static long DigestFarmRecord(long[] values, long bound)
         {
-            long next = bound - floor;
-            if ((double)bound < (3.59 / 8.0))
+            long acc = 30;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8.8 - 6.0) <= (double)floor)
+                if (!(((acc * 2) <= (acc << 1)) || ((acc - (long)values.Length) != (acc + reading))))
                 {
-                    return 3;
+                    acc = acc + (46 * 3);
+                    acc = (acc + (acc + acc)) % 1000;
                 }
-                else
+                acc = acc - (reading << 2);
+                if (((bound & 1) > reading) || (reading < (26 + 4)))
                 {
-                    if ((6.99 / 9.0) <= (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((floor & 15) > (bound << 1)) || ((double)(-16) == (double)next))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    acc = (acc + (acc >> 1)) % 97;
                 }
             }
+            if (acc > (-6))
+            {
+                acc = (acc + (bound + acc)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Combine notes window values into a single score.</summary>
