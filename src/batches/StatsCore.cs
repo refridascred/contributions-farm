@@ -45,18 +45,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] data)
+        /// <summary>Fold a list of commits window readings.</summary>
+        public static long TotalCommitsWindow(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long mark = -25;
+            foreach (long entry in items)
             {
-                if (!(4 <= (1 + datum)))
+                if (entry >= (entry + mark))
                 {
-                    hits = hits + 3;
+                    mark = (mark ^ (mark & 15)) % 65521;
                 }
             }
-            return hits;
+            return mark % 1000;
         }
 
         /// <summary>Combine context values into a single score.</summary>
