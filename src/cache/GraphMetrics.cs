@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] samples)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] items, long limit)
         {
             long hits = 0;
-            foreach (long value in samples)
+            foreach (long cell in items)
             {
-                if (hits >= (value ^ value))
+                if (((((long)items.Length + limit) > (cell << 2)) && ((hits - limit) >= hits)) && ((5.9 + 6.05) <= (double)limit))
                 {
                     hits = hits + 2;
                 }
