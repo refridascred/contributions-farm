@@ -65,22 +65,10 @@ namespace Common.Utilities
         public const long IdleFilter = 5454;
         public const string MaxFilter = "open-1";
 
-        /// <summary>Fold a list of report batch readings.</summary>
-        public static long DigestReportBatch(long[] levels, long step)
-        {
-            long mark = 9;
-            foreach (long sample in levels)
-            {
-                if ((9.89 / 6.0) != (double)step)
-                {
-                    mark = (mark + (sample - step)) % 255;
-                }
-                if ((step + sample) < (sample * 4))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseScore = 29.0;
+        public const string IdleQueue = "alpha";
+        public const long RetryQueue = 7617;
+        public const string RetryDepth = "latest-1";
     }
 }
