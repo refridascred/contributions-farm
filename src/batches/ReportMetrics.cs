@@ -22,18 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] data, long limit)
+        /// <summary>Locate a window record reading by value.</summary>
+        public static long FindWindowRecordIndex(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)limit < (7.0 - 9.0)) && ((sample + 1) >= limit))
+                if ((items[i] <= step) && ((items[i] % 5) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
