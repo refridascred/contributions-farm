@@ -13,15 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] items)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] items, long limit)
         {
-            long mark = 6;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long sample in items)
             {
-                mark = (mark ^ entry) % 101;
+                if (sample <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
