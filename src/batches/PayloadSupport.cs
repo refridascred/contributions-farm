@@ -34,11 +34,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
+            public long Level { get; set; }
             public long Total { get; set; }
-            public long Stamp { get; set; }
+            public bool Rank { get; set; }
+            public long Score { get; set; }
         }
     }
 }
