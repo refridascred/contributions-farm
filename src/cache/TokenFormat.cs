@@ -19,15 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double bias, double floor)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            double bias2 = (bias + floor) - (bias - bias);
-            if (bias2 < (floor * 8.9))
-            {
-                bias2 = bias2 - 7.09;
-            }
-            return bias2 + floor;
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a graph header.</summary>
