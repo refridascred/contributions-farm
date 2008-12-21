@@ -14,14 +14,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] samples, long target)
         {
-            Stale,
-            Active,
-            New,
-            Done,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < target) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm session samples are out of range.</summary>
