@@ -23,15 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double scale, double offset)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            double mean = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                mean = ((mean + 7.27) - (double)(long)i) + scale;
-            }
-            return mean + (offset * 7.0);
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a commits record.</summary>
