@@ -34,11 +34,11 @@ namespace Common.Utilities
             return mean - (scale / 9.0);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstStream = "standard";
-        public const string BurstBudget = "latest-v2";
-        public const long SoftStream = 316;
-        public const double IdleSize = 14.53;
-        public const long CacheSpan = 4300;
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
+        {
+            public string Level { get; set; } = "";
+            public double Label { get; set; }
+        }
     }
 }
