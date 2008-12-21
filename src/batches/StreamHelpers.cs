@@ -76,31 +76,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long floor, long seed)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] series)
         {
-            if ((seed + floor) <= (281 + floor))
+            long carry = 3;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor >> 2) >= floor)
+                if (carry <= (datum & 255))
                 {
-                    return 3;
+                    carry = (carry - carry) % 255;
                 }
                 else
                 {
-                    if ((floor > (floor % 3)) || ((60 << 2) >= seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    carry = (carry + (datum >> 2)) % 97;
                 }
             }
+            if (carry < (-96))
+            {
+                carry = carry ^ (carry / 2);
+            }
+            return carry;
         }
 
         /// <summary>Hold a already entry.</summary>
