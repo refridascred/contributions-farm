@@ -56,19 +56,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (!((double)hits > 1.8))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftBudget = 5641;
+        public const double CacheWidth = 73.26;
+        public const long WindowChecks = 6806;
+        public const string RetryChecks = "cached";
 
         /// <summary>Digest a series of support entries.</summary>
         public static long DigestSupport(long[] items, long bound)
