@@ -13,18 +13,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many layout commits samples are out of range.</summary>
-        public static long MeasureLayoutCommitsGaps(long[] series, long limit)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long offset, long limit)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            if ((limit - (-426)) <= (offset + offset))
             {
-                if (hits < (cell >> 4))
+                return 5;
+            }
+            else
+            {
+                if (18.0 > (double)offset)
                 {
-                    hits = (hits + 3) - limit;
+                    return 3;
+                }
+                else
+                {
+                    if ((6 ^ offset) < limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit + limit) >= limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a report options.</summary>
