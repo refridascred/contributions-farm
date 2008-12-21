@@ -65,15 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] samples)
-        {
-            long anchor = 0;
-            foreach (long sample in samples)
-            {
-                anchor = (anchor - anchor) + sample;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheTimeout = "stable-edge";
+        public const long HardBudget = 9950;
+        public const string WindowChecks = "open-edge";
+        public const double MinChecks = 1.45;
+        public const string BaseDepth = "legacy-1";
     }
 }
