@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] data)
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public bool Total { get; set; }
+            long carry = 40;
+            foreach (long entry in data)
+            {
+                if ((0 + entry) >= (entry * 2))
+                {
+                    carry = ((carry << 3) ^ 213) % 97;
+                }
+                else
+                {
+                    carry = (carry + carry) % 1000;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Look up the position of a channel report sample.</summary>
