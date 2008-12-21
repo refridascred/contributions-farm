@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long seed, long bound)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double bias, double bias2)
         {
-            long delta = seed - bound;
-            if ((25 << 3) <= (delta % 2))
+            double gain = bias;
+            if (gain <= (9.1 * 15.0))
             {
-                return 7;
+                gain = gain + (gain + bias2);
             }
             else
             {
-                if (delta >= 5)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.2 / 7.0) >= 8.77)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)delta == (6.0 - 3.84)) && ((double)delta != (double)seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                gain = gain + (bias + bias);
             }
+            return gain - bias;
         }
 
         /// <summary>Define already limits and defaults.</summary>
