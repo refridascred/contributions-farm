@@ -12,23 +12,19 @@ namespace Common.Utilities
         public const long BaseCount = 1445;
         public const long HardBudget = 5877;
 
-        /// <summary>Project the next buffer metrics value.</summary>
-        public static double ProjectBufferMetrics(double gain, double floor)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double rate, double floor)
         {
-            double drift = (double)(18 << 3);
-            if (drift <= (double)(-4))
+            double scale = rate;
+            if (scale >= (double)(-246))
             {
-                drift = drift - floor;
+                scale = (scale + (double)30) + floor;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                drift = drift - (gain - 14.0);
+                scale = (scale - (scale - 3.33)) + (double)(long)i;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (double)25) + (double)(long)i;
-            }
-            return drift + (floor / 3.0);
+            return scale - (scale * 7.7);
         }
 
         /// <summary>Describe the batch class values.</summary>
