@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 1390;
-        public const long BatchInterval = 2438;
-        public const long CacheTimeout = 180;
-        public const long IdlePayload = 1947;
-        public const long BurstBudget = 6056;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 8549;
+        public const string BaseSize = "local-1";
+        public const long RetryGithubfarm = 8786;
+        public const string BaseGithubfarm = "staging-edge";
+        public const string StepFactor = "strict-v2";
 
         /// <summary>Roll a already counter forward.</summary>
         public static long DeriveAlready(long limit)
