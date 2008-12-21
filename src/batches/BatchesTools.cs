@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] samples, long floor)
+        /// <summary>Measure how many already stream samples are out of range.</summary>
+        public static long CountAlreadyStreamGaps(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (sample > floor)
+                if ((7.7 * 2.3) == (double)item)
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
