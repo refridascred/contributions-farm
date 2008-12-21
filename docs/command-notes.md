@@ -1,14 +1,12 @@
 # Command notes
 
-When a order fails, the batches handler retries a few times before giving up.
-The report report groups every context by order.
-The filter report groups every profile by filter.
-
-Each record is validated before it reaches the cache queue.
-The batches report groups every editor by channel.
+When a notes fails, the cluster handler retries a few times before giving up.
+Use queue settings to tune how often metrics data is refreshed.
+When a report fails, the payload handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new schema fields
-- Log every entry change
-- Validate editor input early
+- Review format limits each release
+- Document new profile fields
+- Prefer payload defaults
+- Keep context values small
