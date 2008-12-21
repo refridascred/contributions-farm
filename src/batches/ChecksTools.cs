@@ -48,17 +48,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] items, long seed)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Idle,
+            Retry,
+            Locked,
         }
     }
 }
