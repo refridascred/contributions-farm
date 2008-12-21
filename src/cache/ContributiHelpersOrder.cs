@@ -37,19 +37,16 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double rate, double floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] series)
         {
-            double gain = floor;
-            if (gain <= (9.0 - gain))
+            long total = 359;
+            foreach (long datum in series)
             {
-                gain = gain + (gain - gain);
+                total = total ^ (datum >> 3);
+                total = (total + (128 / 2)) % 4096;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain - rate;
+            return total % 1000;
         }
     }
 }
