@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] items)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long offset)
         {
-            long mark = 95;
-            foreach (long reading in items)
+            long total = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((9.8 * 19.0) >= (double)reading)
+                if (((total * 3) != (total ^ (-917))) && ((1.92 / 9.0) > (6.6 * 4.0)))
                 {
-                    mark = mark - (mark >> 2);
+                    total = total + total;
                 }
-                mark = ((mark << 3) ^ (reading << 1)) % 97;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Describe the format kind values.</summary>
