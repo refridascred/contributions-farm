@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] series, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if (!((double)limit > (double)mix))
+                if (reading <= seed)
                 {
-                    mix = ((mix << 3) ^ (2 << 2)) % 101;
-                    mix = ((mix * 4) + (limit + limit)) % 101;
+                    found = false;
+                    break;
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
