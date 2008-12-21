@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] items, long offset)
         {
-            public long Count { get; set; }
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the record mode values.</summary>
