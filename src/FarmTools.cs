@@ -38,12 +38,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public double Score { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            public bool Token { get; set; }
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
