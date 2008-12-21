@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] series)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long carry = 795;
-            foreach (long datum in series)
-            {
-                if ((double)datum > (6.46 / 7.0))
-                {
-                    carry = (carry * 2) + (513 ^ datum);
-                }
-            }
-            return carry % 1000;
+            Queued,
+            Draft,
+            Closed,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
