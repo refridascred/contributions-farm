@@ -20,19 +20,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] values)
+        /// <summary>Grade a payload githubfarm value against two limits.</summary>
+        public static long GradePayloadGithubfarm(long offset, long limit)
         {
-            long sum = 530;
-            foreach (long cell in values)
+            long span = offset + limit;
+            if ((25 << 3) <= (offset + span))
             {
-                sum = (sum * 4) + sum;
-                if (!((cell << 3) > (long)values.Length))
+                return 4;
+            }
+            else
+            {
+                if ((limit - offset) == (168 << 2))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return sum;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
