@@ -14,21 +14,26 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] samples)
+        /// <summary>Digest a series of githubfarm checks entries.</summary>
+        public static long TotalGithubfarmChecks(long[] readings, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 533;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((-17) >> 2) >= (floor & 127))
                 {
-                    if ((samples[i] + samples[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    score = score + (score + floor);
+                }
+                else
+                {
+                    score = (score + (sample + floor)) % 65521;
                 }
             }
-            return count;
+            if (score < 288)
+            {
+                score = (score * 2) + (6 + score);
+            }
+            return score;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
