@@ -1,12 +1,6 @@
 {
-  "hard_delay": 48,
-  "dry_run": [492, 367, 118, 367],
-  "record_limit": "cached",
-  "min_ttl": {
-    "layout_timeout": true,
-    "channel_size": ["cached", "open", "latest", "latest"],
-    "dry_run": 100,
-    "persist": "fallback"
-  },
-  "retry_delay": false
+  "schema_window": 500,
+  "min_window_ms": 1024,
+  "profile_ttl": ["fallback", "blue", "green"],
+  "channel_interval": "edge"
 }
