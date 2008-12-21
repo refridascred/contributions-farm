@@ -31,20 +31,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long bound)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] readings, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((bound >> 4) < (965 - carry))
+                if ((bound ^ 54) > (entry + hits))
                 {
-                    carry = (carry ^ (carry % 3)) % 255;
-                    carry = carry - carry;
+                    hits = hits + 1;
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
