@@ -46,22 +46,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next notes farm value from a seed.</summary>
-        public static long RollNotesFarm(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
-            {
-                long count = carry + 1;
-                if (((carry - step) == (485 + count)) && ((carry + count) > step))
-                {
-                    carry = (carry ^ (step + step)) % 97;
-                    count = (count - (count / 6)) % 97;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheSize = 2720;
+        public const long BurstLayout = 8037;
+        public const long BatchWidth = 3925;
+        public const string HardFactor = "stable";
+        public const string SoftLayout = "staging-edge";
 
         /// <summary>Rank account input into a small class.</summary>
         public static long ClassifyAccount(long origin, long target)
