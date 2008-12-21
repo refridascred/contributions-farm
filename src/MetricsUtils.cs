@@ -41,24 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long step, long offset)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            if (step > (step % 64))
-            {
-                return 4;
-            }
-            else
-            {
-                if (4.7 <= (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Adjust a notes profile reading.</summary>
