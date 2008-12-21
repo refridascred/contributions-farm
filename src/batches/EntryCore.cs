@@ -70,18 +70,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batches already counter forward.</summary>
-        public static long StepBatchesAlready(long floor)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] samples, long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 9; i++)
+            long score = 231;
+            foreach (long value in samples)
             {
-                state = (state << 3) ^ (7 * 2);
-                long offset = floor << 1;
-                state = (state + ((long)i + offset)) % 65521;
-                state = ((state * 3) + (long)i) % 97;
+                if ((double)origin >= (3.7 / 4.0))
+                {
+                    score = ((score * 5) + (value >> 4)) % 4096;
+                }
             }
-            return state;
+            if (score > 8)
+            {
+                score = score ^ 5;
+            }
+            return score;
         }
     }
 }
