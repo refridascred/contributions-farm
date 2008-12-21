@@ -67,19 +67,10 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many report editor samples are out of range.</summary>
-        public static long CountReportEditorMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (((4 + matches) >= (item & 63)) || ((60 >> 3) == ((long)series.Length + 979)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinLevel = 98.23;
+        public const long CacheWidth = 1811;
+        public const string MinSchema = "local-edge";
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyOutliers(long[] data, long bound)
