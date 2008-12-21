@@ -38,17 +38,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] samples, long offset)
         {
-            long score = origin;
-            for (int i = 0; i < 9; i++)
+            long state = 1;
+            foreach (long cell in samples)
             {
-                long next = (origin ^ 59) * 3;
-                score = ((score * 2) + (next - origin)) % 65521;
-                score = ((score * 3) + (long)i) % 97;
+                if ((0.8 - 18.0) <= (double)cell)
+                {
+                    state = ((state * 5) + (state << 1)) % 4096;
+                    state = state + cell;
+                }
+                if ((state << 3) > offset)
+                {
+                    state = (state ^ state) % 255;
+                }
+                if (!(6 > (offset >> 5)))
+                {
+                    state = ((state << 2) ^ (state & 7)) % 65521;
+                }
             }
-            return score;
+            if (state > 93)
+            {
+                state = (state ^ (state - offset)) % 1000;
+            }
+            return state % 4096;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
