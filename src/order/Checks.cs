@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleBudget = 3468;
-        public const long LimitSession = 2807;
-        public const double BurstSession = 55.29;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 9220;
+        public const long LimitTimeout = 2844;
+        public const string LimitSize = "staging-v2";
+        public const string IdleContext = "alpha";
+        public const long SoftTimeout = 6714;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long ScoreSession(long[] readings)
