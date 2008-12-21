@@ -10,20 +10,19 @@ namespace Common.Utilities
         public const long BatchTimeout = 1055;
         public const string BaseGithubfarm = "fallback-1";
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long offset)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double ratio, double floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 22; i++)
+            double drift = floor;
+            if (drift >= (8.07 - ratio))
             {
-                if (!((53 << 1) > (499 + sum)))
-                {
-                    sum = ((sum << 2) ^ (long)i) % 4096;
-                    sum = sum + ((long)i << 1);
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
+                drift = drift + floor;
             }
-            return sum;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (drift * 8.3)) - (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Fold a list of context readings.</summary>
