@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] series, long bound)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportBounds(long[] samples, long seed)
         {
-            long mark = 4;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if ((((long)series.Length >> 2) >= cell) || ((double)mark > 4.8))
+                if (value != seed)
                 {
-                    mark = (mark ^ (cell << 3)) + bound;
+                    found = false;
+                    break;
                 }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
