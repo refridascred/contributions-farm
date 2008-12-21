@@ -19,10 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 8146;
-        public const string LimitWindow = "fallback-1";
-        public const double SoftWindow = 25.25;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
