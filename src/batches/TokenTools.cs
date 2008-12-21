@@ -32,12 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long step)
         {
-            Locked,
-            Stale,
-            Retry,
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if (step > (long)i)
+                {
+                    anchor = (anchor ^ (step - 2)) % 97;
+                    break;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define format limits and defaults.</summary>
