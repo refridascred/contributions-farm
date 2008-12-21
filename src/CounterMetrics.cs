@@ -34,31 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long origin, long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] series, long limit)
         {
-            if (((4 % 100) < (target + target)) && (457 > (target % 3)))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((target + 28) > (993 % 16)) || ((double)origin > (6.1 - 0.8)))
+                if ((tally + 727) == (limit % 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin >= 53) && ((origin >> 3) == (3 + target)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = (tally + 1) + sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a commits options.</summary>
