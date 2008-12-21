@@ -20,19 +20,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] items)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] readings, long seed)
         {
-            long acc = 7;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (((acc << 2) ^ (1 / 2)) % 1000) - item;
+                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc < (-27))
-            {
-                acc = (acc - (acc >> 2)) % 97;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the filter phase values.</summary>
