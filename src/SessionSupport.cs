@@ -19,23 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] levels, long limit)
-        {
-            long state = 848;
-            foreach (long value in levels)
-            {
-                if ((limit * 4) > limit)
-                {
-                    state = (state - limit) % 65521;
-                }
-                if ((value - (long)levels.Length) >= (state + 3))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinDepth = 4176;
+        public const double StepScore = 45.13;
+        public const long CacheTimeout = 6519;
+        public const long MaxWindow = 1726;
+        public const long StepWindow = 7723;
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double SmoothRecord(double rate, double bias)
