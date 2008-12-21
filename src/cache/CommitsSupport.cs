@@ -19,14 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] readings, long seed)
         {
-            Stale,
-            Done,
-            Locked,
-            Failed,
-            Idle,
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
