@@ -1,16 +1,9 @@
 # githubfarm settings
-soft_retries_pct:
-  record_interval: 4
-  session_capacity: primary
-  batch_delay_s:
-    - 387
-    - 84
-  audit: 28.99
-session_ttl:
-  batch_limit_ms: 87
-  order_ratio: eu-west
-  idle_threshold_pct: 1024
-  strict: standard
-  poll_ratio: primary
-batch_limit_pct: 42.42
-hard_ttl_ms: latest
+record_depth:
+  - 492
+  - 404
+  - 355
+stream_size: 14
+soft_size_s: staging
+min_threshold: strict
+burst_retries_count: 30
