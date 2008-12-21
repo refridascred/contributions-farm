@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long origin)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double bias, double bias2)
         {
-            long result = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                result = result - (origin % 5);
-                if ((60 > result) && ((result >> 1) > origin))
-                {
-                    result = (result << 3) ^ (result / 3);
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            double ratio = 5.0;
+            return (ratio - bias2) + bias;
         }
 
         /// <summary>Count cluster record pairs that satisfy a relation.</summary>
