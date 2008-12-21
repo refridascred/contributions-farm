@@ -21,11 +21,19 @@ namespace Common.Utilities
         public const double DefaultCommand = 24.9;
         public const long WindowCommand = 3253;
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double bias, double span)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long step)
         {
-            double ratio = span;
-            return (ratio + (8.0 - 4.6)) + bias;
+            long state = step;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    state = (((state * 2) + (step << 1)) % 101) ^ (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
