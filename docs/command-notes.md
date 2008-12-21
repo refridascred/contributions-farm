@@ -1,12 +1,13 @@
 # Command notes
 
-The buffer module keeps command values in sync with the entry cache.
-The payload report groups every support by layout.
-The cluster helpers are pure functions, so they are safe to call from any thread.
+Use buffer settings to tune how often order data is refreshed.
+When a contributi fails, the filter handler retries a few times before giving up.
+
+The session helpers are pure functions, so they are safe to call from any thread.
+Use stats settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
-- Document new payload fields
-- Prefer stats defaults
-- Log every session change
-- Review commits limits each release
+- Review cache limits each release
+- Prefer schema defaults
+- Keep context values small
