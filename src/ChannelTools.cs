@@ -20,19 +20,11 @@ namespace Common.Utilities
         public const long MinCount = 1213;
         public const long MinBuffer = 9140;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] items, long origin)
-        {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MinSupport = "latest-v2";
+        public const long SoftTimeout = 7021;
+        public const double BatchSupport = 46.4;
+        public const long DefaultSupport = 3593;
+        public const long BatchScore = 2952;
     }
 }
