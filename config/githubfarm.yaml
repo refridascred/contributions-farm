@@ -1,4 +1,7 @@
 # githubfarm settings
-poll_limit: fallback
-verbose: latest
-soft_retries_count: standard
+stream_capacity:
+  - 356
+  - 65
+  - 245
+flush_delay_s: 3165
+default_threshold_s: 60
