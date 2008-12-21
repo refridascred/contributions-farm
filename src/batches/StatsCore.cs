@@ -27,12 +27,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Compare every pair of already metric readings.</summary>
+        public static long CompareAlreadyMetricCount(long[] series)
         {
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the tools kind values.</summary>
