@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Rank metric payload input into a small class.</summary>
+        public static long ClassifyMetricPayload(long step, long limit)
         {
-            Done,
-            Pending,
-            Idle,
+            long edge = step + limit;
+            if (!(limit >= ((-12) ^ edge)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (step >= (step << 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the editor level values.</summary>
