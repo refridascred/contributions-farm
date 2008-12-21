@@ -1,5 +1,5 @@
 {
-  "default_capacity_ms": 3.07,
-  "graph_size": [62, 484],
-  "sync_ratio_s": "strict"
+  "hard_size": 55.92,
+  "enabled": 60,
+  "cache_size_ms": [94, 469, 305, 234]
 }
