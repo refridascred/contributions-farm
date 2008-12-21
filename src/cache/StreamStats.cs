@@ -23,18 +23,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] items, long origin)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (!((matches - 82) > entry))
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
+            Done,
+            Ready,
+            Closed,
+            Draft,
         }
 
         /// <summary>Measure how many metric payload samples are out of range.</summary>
