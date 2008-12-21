@@ -1,5 +1,5 @@
 {
-  "cache_limit_count": 500,
-  "command_size": 77,
-  "strict": 72.85
+  "sync_delay": "stable",
+  "counter_retries": 4421,
+  "base_capacity_pct": 4324
 }
