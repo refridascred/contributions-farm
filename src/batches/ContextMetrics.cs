@@ -22,18 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record session samples are out of range.</summary>
-        public static long TallyRecordSessionOutliers(long[] items)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((hits % 64) != (hits * 2))
+                if (!((double)value > (1.77 / 3.0)))
                 {
-                    hits = (hits + 1) - item;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a support summary.</summary>
