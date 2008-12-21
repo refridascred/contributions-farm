@@ -65,17 +65,38 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] items, long seed)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long origin, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (floor >= (origin & 127))
             {
-                if ((items[i] == seed) && ((items[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if (!((double)floor > (4.76 / 9.0)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor >> 5) == (30 + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)3 == (double)floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
