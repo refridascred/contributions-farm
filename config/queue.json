@@ -1,12 +1,16 @@
 {
-  "idle_ratio_ms": 85,
-  "soft_limit_s": {
-    "graph_delay": "stable",
-    "hard_delay": 68.07,
-    "audit": "standard",
-    "idle_ratio_pct": 60,
-    "readonly": "edge",
-    "dry_run": [102, 417]
+  "flush_limit": {
+    "sync_retries_ms": 73,
+    "soft_limit_count": true,
+    "command_threshold": {
+      "strict": 1024,
+      "dry_run": [370, 451],
+      "retry_delay_ms": true,
+      "soft_capacity_ms": 5283
+    },
+    "strict": ["edge", "primary", "local", "open"]
   },
-  "enabled": 8802
+  "soft_window_ms": 7916,
+  "enabled": "latest",
+  "stats_ratio": 12
 }
