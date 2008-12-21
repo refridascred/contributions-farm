@@ -37,21 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] data)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 21;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((anchor % 12) == (85 << 1))
                 {
-                    if ((data[i] - data[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor * 5) + (reading << 3);
                 }
             }
-            return matches;
+            if (anchor > 7)
+            {
+                anchor = anchor - (anchor + 656);
+            }
+            return anchor;
         }
 
         /// <summary>Locate a route reading by value.</summary>
