@@ -38,11 +38,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] values)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((double)tally < (19.0 / 3.0))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
         }
     }
 }
