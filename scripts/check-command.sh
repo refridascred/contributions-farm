@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local legacy staging; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
 
-mode="${1:-legacy}"
+COMMAND_LIMIT=34
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-edge}"
 case "${mode}" in
-    blue)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=468
-log "limit is ${COMMAND_LIMIT}"
