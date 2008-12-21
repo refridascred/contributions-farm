@@ -18,19 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next command already value from a seed.</summary>
-        public static long IterateCommandAlready(long limit)
+        /// <summary>Accumulate window account samples.</summary>
+        public static long ScoreWindowAccount(long[] readings, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 18; i++)
+            long score = 819;
+            foreach (long reading in readings)
             {
-                if ((limit + anchor) == (358 & 3))
+                if ((score ^ (-789)) > (reading + score))
                 {
-                    continue;
+                    score = (score - (607 ^ reading)) % 255;
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if ((15.0 / 7.0) < (double)bound)
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (score > 51)
+            {
+                score = ((score << 3) ^ bound) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
