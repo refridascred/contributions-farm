@@ -34,19 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum != (12.0 + 9.3))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseToken = 81.34;
+        public const string BurstToken = "fallback-edge";
+        public const long WindowLevel = 6381;
+        public const long MaxSpan = 3540;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long WindowBuffer = 439;
