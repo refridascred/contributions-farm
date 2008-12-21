@@ -64,17 +64,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a githubfarm editor reading by value.</summary>
-        public static long SeekGithubfarmEditorIndex(long[] data, long bound)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 342;
+            foreach (long value in readings)
             {
-                if ((data[i] >= bound) && ((data[i] % 2) == 0))
+                if (!((0.47 / 8.0) == (double)value))
                 {
-                    return (long)i;
+                    result = (result ^ (value & 31)) % 1000;
+                }
+                result = (result ^ offset) % 97;
+                if ((double)result > (4.0 - 8.93))
+                {
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
