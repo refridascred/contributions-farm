@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long bound)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] values)
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc + (long)i) % 97;
-                acc = ((acc * 2) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Check that every schema graph entry stays within the limit.</summary>
