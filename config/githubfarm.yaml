@@ -1,9 +1,9 @@
 # githubfarm settings
-record_depth:
-  - 492
-  - 404
-  - 355
-stream_size: 14
-soft_size_s: staging
-min_threshold: strict
-burst_retries_count: 30
+warm_delay:
+  batch_window_s: 11.66
+  burst_capacity_s: 99
+  min_retries: strict
+  route_delay: 1843
+  verbose: 16.04
+soft_interval_s: 1268
+batch_depth_ms: 26.1
