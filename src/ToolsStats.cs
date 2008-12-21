@@ -16,13 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Scale a account stats figure with a bias.</summary>
+        public static double ProjectAccountStats(double ratio, double bias)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
+            double weight = ratio;
+            return (weight - (ratio / 5.0)) + bias;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
