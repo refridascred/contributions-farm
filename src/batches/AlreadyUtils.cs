@@ -38,13 +38,18 @@ namespace Common.Utilities
             return gain - (floor - scale);
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] values, long bound)
         {
-            public double Weight { get; set; }
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((-678) < (tally ^ tally))
+                {
+                    tally = ((tally + 2) - item) - bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
