@@ -25,24 +25,10 @@ namespace Common.Utilities
         public const long MinCount = 1213;
         public const long MinBuffer = 9140;
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long limit, long step)
-        {
-            if (((730 & 3) == (limit ^ limit)) && (limit > ((-199) + step)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((2.3 - 5.0) != (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryReport = 78.6;
+        public const double BurstFactor = 39.61;
+        public const string BaseCount = "local";
+        public const long SoftScore = 323;
     }
 }
