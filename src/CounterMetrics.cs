@@ -20,20 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] samples)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long mark = 4;
-            foreach (long value in samples)
-            {
-                mark = (mark * 4) + (4 + mark);
-                if ((mark << 1) == (36 & 31))
-                {
-                    break;
-                }
-                mark = mark + (value - mark);
-            }
-            return mark % 65521;
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine profile tools values into a single score.</summary>
