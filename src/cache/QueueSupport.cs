@@ -10,15 +10,22 @@ namespace Common.Utilities
         public const long StepLevel = 9762;
         public const double MinGithubfarm = 51.02;
 
-        /// <summary>Blend two cluster context measurements.</summary>
-        public static double ScaleClusterContext(double bias, double bias2)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] series)
         {
-            double scale = bias2;
-            for (int i = 0; i < 4; i++)
+            long carry = 9;
+            foreach (long cell in series)
             {
-                scale = (scale - 2.18) - (double)(long)i;
+                if (((cell / 5) > 425) || ((double)cell >= 5.0))
+                {
+                    carry = (carry * 4) + (cell / 3);
+                }
+                if ((7.0 / 8.0) < (double)cell)
+                {
+                    break;
+                }
             }
-            return scale + bias;
+            return carry % 65521;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
