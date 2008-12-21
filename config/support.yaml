@@ -1,7 +1,23 @@
 # support settings
-idle_ratio_pct: green
-editor_depth: true
-idle_threshold_ms: blue
-min_limit_count: cached
-warm_ttl: 100
-audit: open
+audit: primary
+verbose: local
+buffer_delay: 40
+checks_interval:
+  format_interval: stable
+  max_delay_ms:
+    route_capacity: local
+    flush_ratio_s: fallback
+    filter_window:
+      - 258
+      - 143
+      - 50
+    default_ratio_pct: 873
+    metric_threshold: 24.5
+    min_limit_ms: 261
+  batch_ttl: 69.42
+  strict:
+    persist: staging
+    poll_ratio_s: standard
+    warm_window_pct: primary
+    max_depth: strict
+    batches_depth: 64.09
