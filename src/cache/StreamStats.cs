@@ -32,18 +32,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many metric payload samples are out of range.</summary>
-        public static long MeasureMetricPayloadHits(long[] values, long origin)
+        /// <summary>Check that every filter buffer entry stays within the limit.</summary>
+        public static bool ValidateFilterBufferLimits(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (((entry << 2) <= (entry / 9)) || !((origin % 2) > origin))
+                if (value < origin)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
