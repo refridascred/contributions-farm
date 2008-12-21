@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of record order readings.</summary>
-        public static long FoldRecordOrder(long[] items, long floor)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long acc = 6;
-            foreach (long reading in items)
-            {
-                acc = (((acc ^ (4 - acc)) % 1000) - reading) - floor;
-                if ((double)acc < (double)31)
-                {
-                    break;
-                }
-            }
-            return acc % 1000;
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
