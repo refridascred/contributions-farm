@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
-            public double Token { get; set; }
-            public double Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm checks entries.</summary>
