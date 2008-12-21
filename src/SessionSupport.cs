@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every metrics githubfarm entry stays within the limit.</summary>
-        public static bool CheckMetricsGithubfarmLimits(long[] readings, long seed)
+        /// <summary>Derive the next report queue value from a seed.</summary>
+        public static long DeriveReportQueue(long origin)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long state = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading >= seed)
+                if ((long)i != (origin + (long)i))
                 {
-                    stale = false;
-                    break;
+                    state = (state * 4) + (origin % 5);
                 }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Describe the support phase values.</summary>
