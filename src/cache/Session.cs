@@ -43,11 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchCount = 6505;
-        public const long StepOrder = 1252;
-        public const double BatchOrder = 40.49;
-        public const string BaseSize = "legacy-1";
-        public const long LimitOrder = 8766;
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Pending,
+            Ready,
+            Locked,
+        }
     }
 }
