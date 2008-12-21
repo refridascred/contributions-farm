@@ -1,7 +1,22 @@
 # support settings
-audit: true
-hard_ttl_s: false
-default_ratio: true
-batch_capacity_ms: 66.52
-idle_retries: 548
-burst_capacity_ms: 8749
+notes_retries: 50.79
+enabled: 90.72
+warm_depth_count:
+  window_depth: 46.25
+  compress:
+    - local
+    - staging
+    - legacy
+    - cached
+  hard_capacity_ms: 5282
+  batch_depth_count: true
+soft_interval_s: 250
+readonly:
+  sync_interval_s: 43.67
+  idle_window_count: blue
+  max_window_ms:
+    - 492
+    - 245
+    - 18
+  entry_interval: staging
+  batch_depth_pct: eu-west
