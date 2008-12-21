@@ -31,18 +31,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the order window entries that pass the check.</summary>
-        public static long MeasureOrderWindowHits(long[] items)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long state = 553;
+            foreach (long cell in items)
             {
-                if ((entry - entry) != (tally * 3))
+                if (cell < state)
                 {
-                    tally = tally + 1;
+                    state = state + (cell * 5);
                 }
+                else
+                {
+                    state = (state << 2) ^ 33;
+                }
+                state = (state - (8 & 1)) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
