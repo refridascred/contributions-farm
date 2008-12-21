@@ -26,12 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchSize = "legacy-v2";
-        public const double BurstMetrics = 37.35;
-        public const long LimitMetrics = 9023;
-        public const double HardMetrics = 93.67;
-        public const double CacheBudget = 17.83;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowCache = 31.26;
+        public const double SoftCache = 1.31;
+        public const double BatchBudget = 94.46;
+        public const double LimitCount = 56.38;
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
