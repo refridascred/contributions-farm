@@ -35,13 +35,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] values)
         {
-            Dropped,
-            Idle,
-            Ready,
-            Retry,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((8.0 * 13.0) > (double)seen)
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
