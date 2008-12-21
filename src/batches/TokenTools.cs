@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public string Owner { get; set; } = "";
-            public bool Level { get; set; }
+            Done,
+            Pending,
+            Idle,
         }
 
         /// <summary>Describe the editor level values.</summary>
