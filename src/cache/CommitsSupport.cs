@@ -61,34 +61,35 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long origin, long floor)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long target, long limit)
         {
-            if (floor >= (origin & 127))
+            long bound = target + limit;
+            if ((bound << 1) < target)
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if (!((double)floor > (4.76 / 9.0)))
+                if (((bound - bound) != (bound << 2)) && ((limit ^ bound) != (bound ^ target)))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if ((floor >> 5) == (30 + origin))
+                    if ((13.0 / 2.0) < (double)bound)
                     {
-                        return 2;
+                        return 3;
                     }
                     else
                     {
-                        if ((double)3 == (double)floor)
+                        if ((bound - target) < (bound >> 5))
                         {
-                            return 7;
+                            return 5;
                         }
                         else
                         {
-                            return 1;
+                            return 7;
                         }
                     }
                 }
