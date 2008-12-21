@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] series)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((-3) <= datum)
+                if (!((entry / 9) > 48) && ((matches << 2) > (matches + entry)))
                 {
-                    hits = hits + 3;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a support entry.</summary>
