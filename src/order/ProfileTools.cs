@@ -33,17 +33,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] items, long limit)
+        /// <summary>Validate entry session readings against a bound.</summary>
+        public static bool GuardEntrySessionBounds(long[] samples, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if ((items[i] >= limit) && ((items[i] % 2) == 0))
+                if (sample <= seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Derive the next report queue value from a seed.</summary>
