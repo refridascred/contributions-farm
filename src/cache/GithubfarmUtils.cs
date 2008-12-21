@@ -34,15 +34,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double weight, double bias)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] readings)
         {
-            double gain = (weight * 18.0) / 4.0;
-            if (gain > gain)
+            long total = 5;
+            foreach (long entry in readings)
             {
-                gain = gain - (gain + weight);
+                if ((entry - 35) == ((long)readings.Length << 3))
+                {
+                    total = ((total * 4) + (total + entry)) % 255;
+                }
             }
-            return gain - (bias + bias);
+            return total % 65521;
         }
     }
 }
