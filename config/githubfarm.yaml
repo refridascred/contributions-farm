@@ -1,11 +1,32 @@
 # githubfarm settings
-hard_timeout_ms: 15.17
-strict:
-  token_retries:
-    session_ratio: stable
-    contributi_delay: 31.18
-    base_retries_ms: 85
-  format_depth: open
-  batch_threshold_count: edge
-  strict: 1024
-layout_window: fallback
+cache_window_s: 8261
+flush_ttl: 6.91
+metrics_ttl: 8098
+poll_retries_ms:
+  commits_size: true
+  batch_ttl_ms:
+    - 281
+    - 138
+  default_depth_s:
+    default_ttl_pct: 5890
+    retry_retries_count: primary
+    order_ttl: open
+    payload_window: open
+    warm_depth_ms: 3498
+    soft_depth: true
+  soft_limit_ms:
+    batch_capacity: 1024
+    compress: stable
+    batches_depth: latest
+    audit:
+      - 441
+      - 396
+      - 209
+      - 172
+    account_delay: false
+    idle_size_count: 16
+  strict: local
+commits_depth:
+  - standard
+  - edge
+flush_ttl_s: fallback
