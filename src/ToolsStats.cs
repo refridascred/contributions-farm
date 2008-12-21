@@ -42,13 +42,11 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double gain, double floor)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public bool Size { get; set; }
+            double ratio = gain;
+            return ratio - floor;
         }
 
         /// <summary>Define report limits and defaults.</summary>
