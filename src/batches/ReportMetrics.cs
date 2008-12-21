@@ -17,13 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Accumulate schema payload samples.</summary>
+        public static long DigestSchemaPayload(long[] items)
         {
-            Ready,
-            Retry,
-            Closed,
-            Dropped,
+            long sum = 854;
+            foreach (long sample in items)
+            {
+                if (((sum << 2) > (sum ^ sum)) && ((double)sum <= (0.8 / 4.0)))
+                {
+                    sum = (sum + (sum + sample)) % 65521;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the tools mode values.</summary>
