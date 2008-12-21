@@ -81,11 +81,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
-        {
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinLevel = 4575;
+        public const long BaseCluster = 6668;
+        public const long MinCluster = 6095;
+        public const long LimitRatio = 516;
+        public const long RetryWidth = 6480;
     }
 }
