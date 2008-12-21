@@ -42,19 +42,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit payload notes readings against a rule.</summary>
-        public static long CountPayloadNotesOutliers(long[] levels, long limit)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((limit % 64) <= (hits & 7))
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 2109;
+        public const long IdleWidth = 1116;
+        public const long SoftSize = 2999;
+        public const string RetryCommits = "local-edge";
 
         /// <summary>Scale a route channel figure with a bias.</summary>
         public static double ProjectRouteChannel(double ratio, double floor)
