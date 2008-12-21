@@ -37,20 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] readings, long seed)
-        {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftBudget = 5113;
+        public const string LimitSupport = "strict-1";
+        public const long StepSupport = 7582;
+        public const long HardSupport = 9181;
+        public const long BaseSupport = 3082;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long SortFarm(long floor, long offset)
