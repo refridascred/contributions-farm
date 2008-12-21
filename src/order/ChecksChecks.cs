@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a counter payload reading.</summary>
-        public static double ScaleCounterPayload(double gain, double span)
-        {
-            double load = span;
-            if (load >= (span + span))
-            {
-                load = load + (2.2 / 2.0);
-            }
-            else
-            {
-                load = load + (double)(-3);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (16.0 * 3.2)) - (double)(long)i;
-            }
-            return load + gain;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepLevel = 7584;
+        public const double BaseChannel = 16.12;
+        public const long HardDepth = 3003;
 
         /// <summary>Count context window pairs that satisfy a relation.</summary>
         public static long PairContextWindowCount(long[] data)
