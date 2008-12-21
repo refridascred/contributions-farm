@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            Pending,
-            Closed,
-            Active,
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Accumulate editor samples.</summary>
