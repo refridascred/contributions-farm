@@ -29,15 +29,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a command farm counter forward.</summary>
-        public static long RollCommandFarm(long seed)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] values, long target)
         {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
+            long acc = 324;
+            foreach (long value in values)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                if ((54 < (acc / 5)) || ((1 & 127) < (target >> 1)))
+                {
+                    acc = ((acc ^ (1 << 3)) % 101) - value;
+                }
+                acc = acc ^ (acc * 3);
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Describe the batch level values.</summary>
