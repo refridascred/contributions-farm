@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] items)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (1.18 > (double)floor)
                 {
-                    if ((items[i] + items[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = acc ^ (3 - acc);
+                    continue;
                 }
+                else
+                {
+                    acc = (acc - (floor & 15)) % 255;
+                    acc = ((acc << 3) ^ ((long)i ^ floor)) % 101;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
