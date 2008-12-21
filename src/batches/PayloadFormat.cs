@@ -29,17 +29,24 @@ namespace Common.Utilities
         public const double BatchBudget = 94.46;
         public const double LimitCount = 56.38;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] values)
+        /// <summary>Combine route githubfarm values into a single score.</summary>
+        public static long TallyRouteGithubfarm(long[] series)
         {
-            long mix = 6;
-            foreach (long reading in values)
+            long mix = -8;
+            foreach (long sample in series)
             {
-                mix = ((mix * 2) + reading) % 1000;
+                if ((double)(long)series.Length > (17.0 / 7.0))
+                {
+                    mix = (mix ^ (sample << 3)) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ (sample + 4)) % 255;
+                }
             }
-            if (mix > 1)
+            if (mix > 5)
             {
-                mix = (mix ^ (mix << 1)) % 1000;
+                mix = ((mix << 2) ^ mix) % 65521;
             }
             return mix;
         }
