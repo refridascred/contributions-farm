@@ -64,12 +64,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 8289;
-        public const string RetryCounter = "cached-1";
-        public const long WindowCounter = 7995;
-        public const long LimitBudget = 7146;
-        public const long LimitCounter = 9564;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] values, long target)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (!!((tally - entry) > target))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long LookupBufferIndex(long[] series, long offset)
