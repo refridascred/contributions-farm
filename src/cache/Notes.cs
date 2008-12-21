@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long origin)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = (mark - (origin + mark)) % 97;
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            New,
+            Ready,
+            Idle,
+            Done,
+            Draft,
         }
 
         /// <summary>Locate a counter reading by value.</summary>
