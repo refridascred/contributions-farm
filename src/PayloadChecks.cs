@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] samples, long floor)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (hits < (floor - hits))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Synced,
+            Locked,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Locate a channel reading by value.</summary>
