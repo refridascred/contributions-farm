@@ -20,15 +20,13 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double rate, double offset)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            double drift = offset / 2.0;
-            if (drift <= drift)
-            {
-                drift = (drift + 1.82) - rate;
-            }
-            return drift - (offset / 2.0);
+            public double Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a channel report sample.</summary>
