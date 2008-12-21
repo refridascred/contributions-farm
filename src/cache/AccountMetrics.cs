@@ -42,19 +42,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] values, long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (entry > floor)
+                if (seen >= (seen % 10))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) + value;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
