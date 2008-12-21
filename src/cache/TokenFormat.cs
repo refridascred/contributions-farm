@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Stale,
-            Draft,
-            Synced,
-            Paused,
+            public long Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
