@@ -1,6 +1,15 @@
 {
-  "schema_window": 500,
-  "min_window_ms": 1024,
-  "profile_ttl": ["fallback", "blue", "green"],
-  "channel_interval": "edge"
+  "command_depth": {
+    "persist": 19.97,
+    "base_limit": 54,
+    "metrics_delay": "edge"
+  },
+  "audit": false,
+  "persist": {
+    "enabled": 250,
+    "base_threshold_ms": 1030,
+    "session_threshold": 55,
+    "min_timeout": 43.62
+  },
+  "cache_retries_pct": 60
 }
