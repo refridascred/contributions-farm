@@ -78,25 +78,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long bound)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((6 / 7) != (bound & 255))
-                {
-                    carry = (carry << 3) ^ (carry & 255);
-                    carry = (carry - ((long)i >> 1)) % 1000;
-                }
-                if (((double)carry != (9.46 - 14.0)) || ((15.0 + 6.68) > (double)(long)i))
-                {
-                    carry = ((carry * 2) + 523) % 65521;
-                    carry = (carry - (bound - carry)) % 97;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Draft,
+            Dropped,
+            Closed,
         }
     }
 }
