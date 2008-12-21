@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] items, long seed)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] data, long offset)
         {
-            long mark = -73;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if ((value ^ seed) >= seed)
+                if (item < offset)
                 {
-                    mark = ((mark << 3) ^ (value >> 2)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
