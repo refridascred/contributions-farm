@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] values, long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((values[i] == bound) && ((values[i] % 3) == 0))
+                if (((long)samples.Length >> 4) <= step)
                 {
-                    return (long)i;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
