@@ -14,14 +14,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            Retry,
-            Idle,
-            Stale,
-            Ready,
-            Done,
+            public long Label { get; set; }
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
