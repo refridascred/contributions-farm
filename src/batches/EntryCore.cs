@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Stale,
-            New,
-            Closed,
-            Paused,
+            Draft,
+            Synced,
+            Idle,
+            Queued,
+            Failed,
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
