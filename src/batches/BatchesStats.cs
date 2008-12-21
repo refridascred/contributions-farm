@@ -12,24 +12,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Classify a batches cache pair into a bucket.</summary>
-        public static long RankBatchesCache(long target, long step)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            if ((target % 64) <= (target * 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)step >= (double)497)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Offset { get; set; }
+            public bool Region { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a route info.</summary>
