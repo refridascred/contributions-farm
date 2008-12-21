@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const string RetryBudget = "legacy-edge";
         public const long HardSpan = 1300;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] samples, long offset)
+        /// <summary>Audit channel session readings against a rule.</summary>
+        public static long TallyChannelSessionHits(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (!((4.3 + 1.13) > (double)hits))
+                if ((sample & 127) > (sample + matches))
                 {
-                    hits = ((hits + 3) + datum) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
