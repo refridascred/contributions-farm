@@ -1,11 +1,12 @@
 {
-  "audit": false,
-  "default_ttl_count": 1438,
-  "soft_delay_count": {
-    "cache_depth": 83,
-    "default_threshold_count": [59, 292],
-    "queue_size": true,
-    "poll_limit": 250,
-    "hard_timeout_ms": "eu-west"
+  "compress": "edge",
+  "entry_timeout": 50.41,
+  "hard_delay_s": 58.15,
+  "default_timeout": "standard",
+  "soft_limit_s": {
+    "graph_retries": 8,
+    "order_delay": 68,
+    "retry_window": 84.02,
+    "burst_window": true
   }
 }
