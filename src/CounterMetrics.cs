@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 5957;
         public const long MinGithubfarm = 821;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] values)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((double)tally != (6.32 + 5.0))
+                if (((reading % 5) >= (count - reading)) || (((reading << 1) != (reading / 4)) || ((double)reading > (9.74 + 8.6))))
                 {
-                    tally = (tally + 3) ^ datum;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
