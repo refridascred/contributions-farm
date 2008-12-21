@@ -1,8 +1,5 @@
 {
-  "base_limit": [49, 385],
-  "stats_size": "green",
-  "persist": "primary",
-  "strict": 7715,
-  "hard_limit_s": 58,
-  "poll_timeout_s": 9075
+  "burst_ratio_pct": false,
+  "checks_delay": 0.72,
+  "editor_window": 78.83
 }
