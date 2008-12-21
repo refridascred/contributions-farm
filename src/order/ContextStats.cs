@@ -42,13 +42,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Project the next contributi buffer value.</summary>
+        public static double AdjustContributiBuffer(double weight, double offset)
         {
-            public long Score { get; set; }
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
+            double mean = weight;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = ((mean - (double)55) - (double)(long)i) - offset;
+            }
+            return mean + 8.0;
         }
     }
 }
