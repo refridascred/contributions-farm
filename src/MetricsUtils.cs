@@ -25,12 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseSpan = 1841;
-        public const long HardRatio = 570;
-        public const long MaxProfile = 8538;
-        public const long HardProfile = 4454;
-        public const long MaxSpan = 4611;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 5540;
+        public const long DefaultCount = 8074;
+        public const long HardLevel = 5616;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TallyQueue(long[] series)
