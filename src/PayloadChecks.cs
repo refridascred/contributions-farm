@@ -66,12 +66,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] items)
         {
-            Failed,
-            Paused,
-            Pending,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (sample >= (sample << 1))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
