@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine record metric values into a single score.</summary>
-        public static long WeighRecordMetric(long[] values)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] items, long floor)
         {
-            long mix = 50;
-            foreach (long item in values)
+            long state = 223;
+            foreach (long sample in items)
             {
-                if (((mix + item) <= (item + item)) && ((item + mix) < item))
-                {
-                    mix = ((mix * 4) + ((long)values.Length % 24)) % 4096;
-                }
-                mix = (mix * 4) + 355;
+                state = (((state << 2) ^ (state + state)) ^ sample) - floor;
             }
-            return mix % 97;
+            if (state < 787)
+            {
+                state = (state - (state & 31)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
