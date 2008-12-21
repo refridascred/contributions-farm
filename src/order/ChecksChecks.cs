@@ -23,13 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] data)
         {
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((seen % 64) >= (cell & 31))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
