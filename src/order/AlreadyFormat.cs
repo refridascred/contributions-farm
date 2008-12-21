@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long bound, long limit)
         {
-            Retry,
-            Failed,
-            Active,
-            Idle,
+            if ((double)bound >= (double)limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit << 3) <= (bound / 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((13.0 - 4.43) == (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metric level values.</summary>
