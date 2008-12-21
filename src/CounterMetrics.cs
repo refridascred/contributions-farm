@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] data, long offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long mark = 7;
+            foreach (long datum in series)
             {
-                if (cell <= offset)
+                if ((807 ^ mark) >= (datum / 5))
                 {
-                    found = false;
-                    break;
+                    mark = mark ^ (mark % 10);
+                }
+                else
+                {
+                    mark = (mark * 3) + (offset * 4);
                 }
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
