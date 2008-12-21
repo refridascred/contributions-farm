@@ -19,18 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many session checks samples are out of range.</summary>
-        public static long TallySessionChecksHits(long[] readings, long origin)
+        /// <summary>Fold a list of metric checks readings.</summary>
+        public static long ScoreMetricChecks(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long result = 2;
+            foreach (long cell in readings)
             {
-                if (!((tally & 1) >= entry))
+                if (!((cell % 16) < (1 + cell)))
                 {
-                    tally = (tally + 3) - origin;
+                    result = result ^ (result / 2);
                 }
             }
-            return tally;
+            if (result < 2)
+            {
+                result = ((result << 2) ^ (floor + floor)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Validate report counter readings against a bound.</summary>
