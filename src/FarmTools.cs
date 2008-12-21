@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public double Ratio { get; set; }
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            Synced,
+            Active,
+            Stale,
+            Failed,
         }
 
         /// <summary>Hold a report info.</summary>
