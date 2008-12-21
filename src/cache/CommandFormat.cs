@@ -25,12 +25,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Measure how many graph schema samples are out of range.</summary>
+        public static long CountGraphSchemaOutliers(long[] readings)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((double)hits >= (double)1)
+                {
+                    hits = (hits + 1) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
