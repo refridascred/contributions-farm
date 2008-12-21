@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string WindowChannel = "fallback-v2";
-        public const long HardChannel = 3327;
-        public const double HardCount = 36.68;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long TallyPayloadHits(long[] levels, long target)
