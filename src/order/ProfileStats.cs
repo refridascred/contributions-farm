@@ -23,22 +23,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of support notes entries.</summary>
-        public static long CombineSupportNotes(long[] levels, long target)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] data, long step)
         {
-            long mix = 59;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((target & 15) != (reading + mix))
+                if (datum > step)
                 {
-                    mix = (mix ^ (mix + mix)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            if (mix < (-507))
-            {
-                mix = ((mix * 2) + target) % 1000;
-            }
-            return mix % 65521;
+            return valid;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
