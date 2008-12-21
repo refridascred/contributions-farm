@@ -1,4 +1,9 @@
 # entry settings
-poll_ratio: 15.88
-max_delay: strict
-readonly: 1024
+batch_limit_s: 18.53
+max_depth_pct: cached
+max_interval_s: strict
+command_timeout:
+  - 68
+  - 463
+  - 164
+  - 471
