@@ -44,22 +44,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of entry batch entries.</summary>
-        public static long FoldEntryBatch(long[] items)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] readings, long floor)
         {
-            long carry = 1;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((53 * 3) < (carry - value))
+                if ((readings[i] < floor) && ((readings[i] % 2) == 0))
                 {
-                    carry = ((carry << 3) ^ (value << 3)) % 4096;
-                }
-                if (76 < (carry + carry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
