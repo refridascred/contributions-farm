@@ -37,14 +37,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            Stale,
-            Queued,
-            Active,
-            Failed,
-            Pending,
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Fold a list of format readings.</summary>
