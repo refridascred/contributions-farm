@@ -37,13 +37,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double rate, double floor)
         {
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public double Token { get; set; }
+            double gain = floor;
+            if (gain <= (9.0 - gain))
+            {
+                gain = gain + (gain - gain);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain - rate;
         }
     }
 }
