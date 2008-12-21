@@ -19,21 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long floor)
+        /// <summary>Derive the next route layout value from a seed.</summary>
+        public static long SeriesRouteLayout(long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 21; i++)
+            long total = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (((floor - (long)i) != (result >> 4)) && ((result / 7) > floor))
+                total = (total << 3) ^ (total - total);
+                if ((total << 2) < seed)
                 {
-                    result = (result << 3) ^ (result - (long)i);
-                    result = (result ^ (231 >> 5)) % 4096;
+                    total = (total + (seed % 7)) % 65521;
                 }
-                result = result + (floor * 3);
-                result = ((result * 4) + (long)i) % 4093;
+                else
+                {
+                    total = total ^ (8 * 5);
+                    total = (total - (total + total)) % 65521;
+                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
