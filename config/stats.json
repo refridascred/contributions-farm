@@ -1,5 +1,8 @@
 {
-  "sync_delay": "stable",
-  "counter_retries": 4421,
-  "base_capacity_pct": 4324
+  "hard_window": 2,
+  "enabled": "latest",
+  "format_capacity": 51.05,
+  "compress": 81.28,
+  "burst_delay": 500,
+  "warm_size_ms": 68
 }
