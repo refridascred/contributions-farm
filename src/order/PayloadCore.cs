@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Audit profile farm readings against a rule.</summary>
+        public static long CountProfileFarmOutliers(long[] series, long offset)
         {
-            Stale,
-            Synced,
-            Paused,
-            Failed,
-            Pending,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (offset < ((long)series.Length & 63))
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
