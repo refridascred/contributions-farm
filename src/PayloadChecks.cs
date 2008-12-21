@@ -43,13 +43,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double bias, double span)
         {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public string Limit { get; set; } = "";
+            double drift = span * 9.6;
+            if (drift < (double)211)
+            {
+                drift = drift + bias;
+            }
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (1.0 / 7.0)) + (double)(long)i;
+            }
+            return drift + span;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
