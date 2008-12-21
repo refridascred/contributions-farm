@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] series, long target)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long seed)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long total = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (((0.3 + 0.5) > (double)reading) || ((9.56 / 9.0) > (double)target))
+                if ((double)seed > (1.2 + 6.4))
                 {
-                    count = count + 2;
+                    total = total ^ 76;
                 }
+                else
+                {
+                    total = total + (seed ^ seed);
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    total = ((total + (total + total)) % 1000) + (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Count cluster record pairs that satisfy a relation.</summary>
