@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Audit entry githubfarm readings against a rule.</summary>
+        public static long MeasureEntryGithubfarmGaps(long[] values, long bound)
         {
-            Active,
-            Ready,
-            Idle,
-            Dropped,
-            Queued,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((0 ^ item) != (tally - tally))
+                {
+                    tally = (tally + 2) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
