@@ -1,16 +1,13 @@
 {
-  "default_ttl": "eu-west",
-  "layout_size": 100,
-  "readonly": 1024,
-  "cache_limit_count": 2085,
-  "poll_delay_count": {
-    "soft_delay_s": "green",
-    "cache_ratio_ms": 1024,
-    "checks_timeout": {
-      "base_timeout_s": ["legacy", "latest", "local"],
-      "sync_timeout": 1024,
-      "base_retries": 57
-    },
-    "warm_interval": 9393
-  }
+  "cache_ratio_s": 93,
+  "sync_depth": 30,
+  "cache_depth_ms": {
+    "batch_retries": 250,
+    "max_limit_ms": 91.07,
+    "enabled": 9244,
+    "stats_interval": "latest"
+  },
+  "flush_retries": "fallback",
+  "idle_ratio": "strict",
+  "default_ttl_s": false
 }
