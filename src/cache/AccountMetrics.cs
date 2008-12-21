@@ -34,18 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= origin) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstBudget = 75.71;
+        public const long SoftPayload = 6340;
+        public const long BasePayload = 7487;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long AuditContributiHits(long[] series, long limit)
