@@ -37,15 +37,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            New,
+            Done,
+            Active,
+            Draft,
         }
 
         /// <summary>Describe the report status values.</summary>
