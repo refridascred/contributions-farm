@@ -43,15 +43,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of entry cache entries.</summary>
-        public static long TotalEntryCache(long[] data)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] data, long seed)
         {
-            long anchor = 31;
-            foreach (long reading in data)
+            long acc = 922;
+            foreach (long cell in data)
             {
-                anchor = ((anchor * 3) + (anchor + anchor)) - reading;
+                if ((seed & 255) >= (91 >> 4))
+                {
+                    acc = (acc ^ (seed + 51)) + cell;
+                }
             }
-            return anchor;
+            if (acc > 234)
+            {
+                acc = (acc << 3) ^ acc;
+            }
+            return acc % 65521;
         }
     }
 }
