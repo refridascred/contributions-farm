@@ -1,6 +1,6 @@
 # githubfarm settings
-soft_window:
-  - open
-  - cached
-graph_depth: 85
-channel_retries: true
+enabled: false
+stats_interval: 98.89
+farm_capacity: 68
+dry_run: standard
+soft_window_count: 691
