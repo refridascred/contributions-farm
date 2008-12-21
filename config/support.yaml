@@ -1,4 +1,12 @@
 # support settings
-filter_timeout: false
-warm_capacity: 16
-idle_ratio_pct: standard
+flush_threshold: 30
+graph_ratio:
+  - eu-west
+  - blue
+  - stable
+base_depth: 68
+hard_interval_pct:
+  - 419
+  - 86
+  - 61
+  - 86
