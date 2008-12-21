@@ -44,12 +44,39 @@ namespace Common.Utilities
         public const long MaxCount = 2622;
         public const double HardWidth = 58.97;
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long bound, long target)
         {
-            Synced,
-            Idle,
-            Ready,
+            long slot = bound - target;
+            if ((double)target >= (5.84 / 2.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((1.29 * 8.2) < (double)slot)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound * 3) < (target / 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((slot << 3) < (target % 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
