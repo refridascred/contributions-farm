@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] samples, long floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (floor > (443 - 215))
+                if (item >= limit)
                 {
-                    tally = (tally + 2) ^ value;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Measure how many contributi stream samples are out of range.</summary>
