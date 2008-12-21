@@ -1,11 +1,11 @@
 # Payload notes
 
-The buffer module keeps entry values in sync with the token cache.
-Use entry settings to tune how often cluster data is refreshed.
+Each window is validated before it reaches the cache queue.
+The command report groups every stream by metrics.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Prefer session defaults
-- Keep context values small
-- Validate queue input early
+- Prefer schema defaults
+- Validate graph input early
+- Log every batches change
+- Keep counter values small
