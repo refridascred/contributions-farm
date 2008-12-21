@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleFactor = 18.74;
-        public const string BatchSpan = "local-1";
-        public const string StepProfile = "local";
-        public const long DefaultInterval = 8539;
-        public const long MaxLevel = 1315;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] data, long limit)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((6 % 10) <= (0 ^ item))
+                {
+                    matches = (matches + 3) - limit;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
