@@ -34,21 +34,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstFarm = 33.87;
+        public const long MinFarm = 9139;
+        public const long IdleRatio = 6806;
+        public const long BaseFactor = 1405;
+        public const long BatchFactor = 987;
     }
 }
