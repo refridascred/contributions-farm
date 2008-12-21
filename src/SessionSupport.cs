@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] levels)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((double)hits < (double)reading) && ((hits / 9) < 490))
                 {
-                    if ((levels[i] + levels[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
