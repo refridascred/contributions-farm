@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] samples)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (datum < (datum % 12))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a order record.</summary>
