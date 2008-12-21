@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-            public bool Limit { get; set; }
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a format stats.</summary>
