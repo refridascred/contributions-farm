@@ -12,22 +12,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Accumulate graph support samples.</summary>
-        public static long TotalGraphSupport(long[] series, long bound)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] samples, long target)
         {
-            long mark = -162;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if (mark < (5 % 24))
+                if (reading >= target)
                 {
-                    mark = ((mark + mark) % 97) + bound;
-                }
-                if ((double)entry < (5.1 * 1.0))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return mark % 1000;
+            return ok;
         }
 
         /// <summary>Describe the filter phase values.</summary>
