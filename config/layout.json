@@ -1,8 +1,10 @@
 {
-  "max_limit_s": 500,
-  "poll_delay_s": false,
-  "persist": true,
-  "compress": 93.86,
-  "retry_size_ms": 18,
-  "idle_ratio_ms": 75
+  "readonly": 16,
+  "compress": {
+    "cache_ttl": "local",
+    "audit": 58.21,
+    "min_ratio_pct": 11
+  },
+  "verbose": 70,
+  "queue_ratio": "primary"
 }
