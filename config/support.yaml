@@ -1,34 +1,29 @@
 # support settings
-order_size:
-  - fallback
-  - stable
-poll_depth: 500
-layout_ratio: 63.73
-dry_run:
-  enabled: true
-  max_timeout_count: false
-  sync_ttl: standard
-  cache_threshold:
-    compress: false
-    warm_capacity_count:
-      - 261
-      - 244
-      - 18
-    readonly: open
-    base_threshold_s:
-      - 141
-      - 71
-      - 79
-      - 112
-  commits_window:
-    batch_capacity: primary
-    min_limit_count: 1778
-    flush_limit: 30
-    stream_ratio: 618
-  window_ttl: 5195
-enabled:
-  stats_delay: 4464
-  warm_limit_s: 34
-  queue_depth: open
-  verbose: eu-west
-window_size: false
+audit: true
+flush_retries_s:
+  persist:
+    dry_run: latest
+    hard_capacity_s: 52
+    batches_delay: 13.86
+    readonly:
+      - 216
+      - 193
+    soft_capacity: 84.09
+  graph_limit: 6128
+  verbose:
+    channel_timeout: staging
+    cache_window: 60
+    farm_capacity: false
+  idle_timeout: true
+  githubfarm_limit: 100
+  hard_capacity_pct:
+    - primary
+    - blue
+    - standard
+stats_capacity:
+  burst_capacity_ms: 1.15
+  hard_delay_count:
+    - fallback
+    - legacy
+  route_threshold: standard
+persist: primary
