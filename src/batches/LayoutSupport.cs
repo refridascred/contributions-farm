@@ -65,16 +65,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long origin)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double rate, double floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 18; i++)
+            double scale = (double)(15 ^ 69);
+            if (scale > (scale + 6.1))
             {
-                carry = carry ^ (carry - origin);
-                carry = ((carry * 2) + (long)i) % 1000;
+                scale = ((scale + (18.0 + scale)) - rate) - floor;
             }
-            return carry;
+            else
+            {
+                scale = scale + (scale + scale);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - (double)0;
         }
     }
 }
