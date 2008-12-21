@@ -36,12 +36,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] samples, long floor)
         {
-            public string Limit { get; set; } = "";
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((tally % 64) >= floor)
+                {
+                    tally = (tally + 2) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
