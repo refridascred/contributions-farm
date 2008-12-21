@@ -43,17 +43,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] series, long offset)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
