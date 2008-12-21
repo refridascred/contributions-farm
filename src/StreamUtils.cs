@@ -33,11 +33,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultSize = 6057;
-        public const long LimitFactor = 3495;
-        public const long MaxInterval = 5004;
-        public const double RetryBuffer = 22.76;
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Pending,
+            Queued,
+            Synced,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
