@@ -35,21 +35,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of already metric readings.</summary>
-        public static long CompareAlreadyMetricCount(long[] series)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Locked,
+            Pending,
+            Failed,
+            Closed,
+            Done,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
