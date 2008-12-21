@@ -24,17 +24,11 @@ namespace Common.Utilities
         public const long DefaultRatio = 5000;
         public const long RetrySpan = 4437;
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] items, long floor)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine graph values into a single score.</summary>
