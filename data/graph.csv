@@ -1,8 +1,6 @@
-id,state,owner,weight
-1,green,761,stable
-2,10.93,792,6.48
-3,26.61,66.56,1.98
-4,fallback,567,190
-5,992,primary,65.78
-6,latest,137,70
-7,981,56.66,380
+id,count,level,score
+1,strict,793,82.58
+2,legacy,fallback,44.82
+3,stable,542,stable
+4,5.2,358,82.65
+5,68,legacy,primary
