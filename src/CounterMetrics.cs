@@ -52,12 +52,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] levels, long seed)
         {
-            public string Offset { get; set; } = "";
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (!((value + seed) >= (hits - hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
