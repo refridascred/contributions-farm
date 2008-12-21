@@ -33,15 +33,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double gain, double bias)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double bias, double bias2)
         {
-            double scale = gain / 6.0;
-            if (scale <= (gain + scale))
+            double scale = bias2;
+            if (scale >= (bias * 1.94))
             {
-                scale = scale - gain;
+                scale = scale - bias;
             }
-            return scale - (0.1 + bias);
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - (bias + bias);
         }
     }
 }
