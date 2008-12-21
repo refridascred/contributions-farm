@@ -38,18 +38,13 @@ namespace Common.Utilities
             return gain - (floor - scale);
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] levels, long limit)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (!((431 >> 2) < tally) && ((tally ^ limit) > (tally * 2)))
-                {
-                    tally = (tally + 3) + item;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
