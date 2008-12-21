@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double weight, double offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] values, long origin)
         {
-            double load = offset;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                load = ((load + load) + (double)(long)i) + weight;
+                if (sample > origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return load - (load / 3.0);
+            return ready;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
