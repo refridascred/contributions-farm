@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first entry layout entry that matches the target.</summary>
-        public static long LookupEntryLayoutIndex(long[] data, long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (data[i] > offset)
+                if ((item & 127) >= (item & 255))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + seed;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
