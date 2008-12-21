@@ -1,10 +1,8 @@
 {
-  "idle_threshold_ms": "staging",
-  "warm_depth_ms": false,
-  "hard_depth_count": {
-    "buffer_delay": ["staging", "strict", "standard"],
-    "strict": false,
-    "persist": 79.63,
-    "cluster_size": true
-  }
+  "enabled": 79.49,
+  "compress": 71,
+  "default_delay_ms": 500,
+  "min_depth": "edge",
+  "flush_limit_count": 51,
+  "retry_capacity": 514
 }
