@@ -1,6 +1,7 @@
-id,level,rank
-1,376,568
-2,34.59,73.03
-3,699,33.06
-4,23.23,47.51
-5,959,primary
+id,state,token
+1,252,blue
+2,505,4.28
+3,green,fallback
+4,local,primary
+5,4.84,587
+6,open,943
