@@ -65,18 +65,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit route graph readings against a rule.</summary>
-        public static long TallyRouteGraphMatches(long[] values, long limit)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long seed)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long anchor = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (((double)limit >= (9.0 / 4.0)) || ((1.0 * 7.69) >= (double)limit))
-                {
-                    count = (count + 2) ^ entry;
-                }
+                anchor = (anchor + (long)i) % 101;
+                anchor = (anchor << 3) ^ anchor;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
     }
 }
