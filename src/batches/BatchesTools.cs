@@ -12,15 +12,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
-        {
-            Pending,
-            Locked,
-            Failed,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepWidth = 3567;
+        public const double BaseRatio = 62.89;
+        public const double DefaultMetric = 30.65;
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
