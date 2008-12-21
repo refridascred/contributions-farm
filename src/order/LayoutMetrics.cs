@@ -34,15 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Look up the position of a window counter sample.</summary>
+        public static long LocateWindowCounterIndex(long[] data, long bound)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                if ((data[i] <= bound) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
