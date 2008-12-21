@@ -39,25 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long offset)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long target, long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
+            if ((8.7 * 4.0) > (double)offset)
             {
-                if (((898 + result) != ((long)i * 3)) && ((offset + (long)i) > (53 - (long)i)))
-                {
-                    result = (result ^ offset) % 1000;
-                    result = (result ^ (long)i) % 97;
-                }
-                if ((double)result <= 8.9)
-                {
-                    result = ((result << 3) ^ (long)i) % 65521;
-                    result = (result - (result % 64)) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 65521;
+                return 1;
             }
-            return result;
+            else
+            {
+                if (target >= 512)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset / 7) >= (6 >> 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((8.4 * 13.0) < (double)target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
