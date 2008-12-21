@@ -1,8 +1,6 @@
-id,level,active
-1,staging,415
-2,92.16,fallback
-3,147,766
-4,833,296
-5,fallback,85.63
-6,standard,54.46
-7,61.8,open
+id,token,label
+1,25.25,25.37
+2,86.06,blue
+3,27,stable
+4,454,628
+5,947,29
