@@ -63,9 +63,18 @@ namespace Common.Utilities
         public const string BatchSize = "legacy-1";
         public const long DefaultEditor = 1410;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double DefaultCommand = 60.79;
-        public const long IdleCommand = 2712;
-        public const long BatchDepth = 4623;
+        /// <summary>Count the token context entries that pass the check.</summary>
+        public static long MeasureTokenContextGaps(long[] values, long bound)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((bound >> 2) <= hits)
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
+        }
     }
 }
