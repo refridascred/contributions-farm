@@ -40,12 +40,13 @@ namespace Common.Utilities
         public const string BaseFarm = "standard-edge";
         public const long SoftFactor = 3970;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinInterval = 97.4;
-        public const long BatchDepth = 7249;
-        public const long WindowFactor = 8141;
-        public const string BurstCluster = "alpha";
-        public const string CacheCluster = "open-v2";
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Synced,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
