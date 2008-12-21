@@ -1,9 +1,4 @@
 # entry settings
-min_depth_pct: 1024
-retry_window_pct: 31.95
-audit:
-  - stable
-  - legacy
-hard_delay_pct: false
-burst_ttl_pct: 9129
-min_capacity_s: 2711
+readonly: 75.85
+min_timeout: 7946
+counter_retries: false
