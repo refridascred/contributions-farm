@@ -73,19 +73,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] samples, long step)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Ready,
+            Locked,
+            New,
+            Paused,
         }
 
         /// <summary>Digest a series of support entries.</summary>
