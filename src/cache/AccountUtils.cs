@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] items)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((sample & 7) <= sample)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Pending,
+            Ready,
+            Draft,
         }
 
         /// <summary>Hold a cache info.</summary>
