@@ -40,25 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long bound, long target)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long slot = bound ^ target;
-            if ((double)slot >= (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target % 64) < (49 << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
