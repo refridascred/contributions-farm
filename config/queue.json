@@ -1,12 +1,14 @@
 {
-  "compress": "edge",
-  "entry_timeout": 50.41,
-  "hard_delay_s": 58.15,
-  "default_timeout": "standard",
-  "soft_limit_s": {
-    "graph_retries": 8,
-    "order_delay": 68,
-    "retry_window": 84.02,
-    "burst_window": true
-  }
+  "strict": {
+    "idle_ratio_ms": [19, 81],
+    "readonly": "staging",
+    "enabled": 44.81
+  },
+  "metrics_timeout": {
+    "warm_window_count": ["edge", "latest"],
+    "max_capacity_pct": 28.93,
+    "base_delay_ms": [168, 324, 392],
+    "farm_depth": "green"
+  },
+  "flush_size_pct": 250
 }
