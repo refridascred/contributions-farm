@@ -1,19 +1,6 @@
 {
-  "min_ratio": 62.62,
-  "warm_ttl_pct": {
-    "compress": true,
-    "commits_interval": ["standard", "staging", "standard"],
-    "already_ttl": 9730,
-    "burst_window": 250,
-    "base_retries_ms": "latest",
-    "verbose": 1024
-  },
-  "poll_timeout_count": "eu-west",
-  "stream_depth": {
-    "idle_window": "cached",
-    "soft_limit": 52,
-    "audit": 71.04,
-    "hard_window_pct": "latest"
-  },
-  "soft_capacity_s": [58, 183]
+  "default_retries_s": "legacy",
+  "soft_ratio_pct": 71,
+  "base_ttl": 29,
+  "dry_run": 5095
 }
