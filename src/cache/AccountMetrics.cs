@@ -56,11 +56,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
