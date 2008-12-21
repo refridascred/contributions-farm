@@ -29,13 +29,23 @@ namespace Common.Utilities
         public const long DefaultOrder = 7389;
         public const long BatchWidth = 8843;
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double ratio, double floor)
         {
-            Active,
-            Pending,
-            Ready,
-            Closed,
+            double gain = floor;
+            if (gain <= (7.58 / 7.0))
+            {
+                gain = (gain + (gain + 13.0)) + ratio;
+            }
+            else
+            {
+                gain = gain - floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + floor) + (double)(long)i;
+            }
+            return gain - (floor * 8.0);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
