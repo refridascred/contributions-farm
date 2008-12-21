@@ -45,21 +45,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] data)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = target;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
