@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 1597;
-        public const long CacheSpan = 1417;
-        public const long WindowPayload = 27;
-        public const string WindowScore = "standard-v2";
-        public const long MaxSize = 2627;
+        /// <summary>Fold a list of profile schema readings.</summary>
+        public static long CombineProfileSchema(long[] levels)
+        {
+            long mark = 30;
+            foreach (long cell in levels)
+            {
+                mark = (mark - ((-62) & 127)) - cell;
+            }
+            if (mark < 8)
+            {
+                mark = ((mark << 3) ^ mark) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long TallyRecord(long[] data)
