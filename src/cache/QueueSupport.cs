@@ -36,15 +36,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] series, long step)
+        /// <summary>Look up the position of a session profile sample.</summary>
+        public static long SeekSessionProfileIndex(long[] items, long step)
         {
-            long carry = 0;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry ^ value) % 255) - step;
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return carry % 97;
+            return -1;
         }
     }
 }
