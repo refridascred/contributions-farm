@@ -31,23 +31,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] series, long step)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] values)
         {
-            long state = 30;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((state >> 4) >= (step * 5))
+                if (!((seen % 16) >= (entry + seen)))
                 {
-                    break;
+                    seen = seen + 1;
                 }
-                state = ((state - 510) % 97) ^ entry;
             }
-            if (state > 9)
-            {
-                state = state - (state - state);
-            }
-            return state;
+            return seen;
         }
     }
 }
