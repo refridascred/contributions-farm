@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every queue commits entry stays within the limit.</summary>
-        public static bool VerifyQueueCommitsRange(long[] samples, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (sample > step)
+                if ((hits + value) > (value - limit))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Roll a session counter forward.</summary>
