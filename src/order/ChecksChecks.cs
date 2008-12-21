@@ -20,21 +20,19 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Count context window pairs that satisfy a relation.</summary>
-        public static long PairContextWindowCount(long[] data)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] values, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value >= floor)
                 {
-                    if ((data[i] - data[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
