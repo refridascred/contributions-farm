@@ -1,15 +1,16 @@
 # Command notes
 
-Run the batches check before changing any entry limits.
-The cluster module keeps graph values in sync with the payload cache.
-The context module keeps cache values in sync with the batches cache.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+Run the route check before changing any support limits.
+Run the queue check before changing any command limits.
 
-Keep queue and session names short and lowercase.
-Use schema settings to tune how often record data is refreshed.
-Use farm settings to tune how often counter data is refreshed.
+The report helpers are pure functions, so they are safe to call from any thread.
+Keep schema and already names short and lowercase.
+Keep farm and buffer names short and lowercase.
 
 ## Guidelines
 
-- Validate counter input early
-- Prefer payload defaults
-- Review buffer limits each release
+- Document new batch fields
+- Review notes limits each release
+- Log every context change
+- Validate commits input early
