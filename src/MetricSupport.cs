@@ -13,19 +13,21 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long step)
+        /// <summary>Compare every pair of graph record readings.</summary>
+        public static long MatchGraphRecordCount(long[] data)
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((step >> 5) < step))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = anchor - (anchor >> 2);
+                    if ((data[i] + data[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
