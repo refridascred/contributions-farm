@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] values, long step)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum >= (double)21)
-                {
-                    tally = (tally + 2) - step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BatchFarm = 2.56;
+        public const long WindowFarm = 9777;
+        public const double SoftRatio = 93.37;
 
         /// <summary>Project the next buffer metrics value.</summary>
         public static double ProjectBufferMetrics(double gain, double floor)
