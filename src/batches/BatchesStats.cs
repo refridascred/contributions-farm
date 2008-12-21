@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit filter layout readings against a rule.</summary>
-        public static long AuditFilterLayoutOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (tally >= (long)readings.Length)
-                {
-                    tally = (tally + 3) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 2284;
+        public const long BatchCount = 4581;
+        public const long StepLevel = 8193;
+        public const long RetryFactor = 6704;
+        public const double BurstBatch = 80.67;
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
