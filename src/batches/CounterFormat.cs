@@ -12,22 +12,21 @@ namespace Common.Utilities
         public const double MinSchema = 41.65;
         public const long WindowSchema = 9688;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] values, long bound)
+        /// <summary>Match up account notes samples.</summary>
+        public static long MatchAccountNotesCount(long[] series)
         {
-            long total = 40;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((total - datum) > (datum & 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = ((total - (total / 8)) % 255) - bound;
-                }
-                else
-                {
-                    total = total ^ datum;
+                    if ((series[i] + series[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
