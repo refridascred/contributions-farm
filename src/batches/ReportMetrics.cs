@@ -12,11 +12,24 @@ namespace Common.Utilities
             return ((weight - weight) + rate) + offset;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long origin, long target)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            if (5 < (target << 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)target == (3.0 + 1.16))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Audit window stats readings against a rule.</summary>
