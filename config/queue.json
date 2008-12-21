@@ -1,6 +1,10 @@
 {
-  "strict": "edge",
-  "soft_interval_pct": false,
-  "default_delay_s": "open",
-  "retry_window": 60.88
+  "base_retries": 9572,
+  "burst_timeout_count": {
+    "readonly": "legacy",
+    "verbose": false,
+    "audit": "primary",
+    "tools_retries": 30
+  },
+  "flush_retries_ms": [113, 166]
 }
