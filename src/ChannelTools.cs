@@ -40,11 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] readings)
         {
-            public bool Ratio { get; set; }
-            public bool Size { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (((396 * 5) != (value - value)) || ((double)value == (18.0 * 6.0)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
