@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] values, long origin)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double gain, double span)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            double weight = span - (gain / 6.0);
+            if (weight > (weight + gain))
             {
-                if (sample > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = weight - (gain / 8.0);
             }
-            return ready;
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - span) - (double)(long)i;
+            }
+            return weight + gain;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
