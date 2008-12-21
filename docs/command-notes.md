@@ -1,11 +1,11 @@
 # Command notes
 
-When a batch fails, the editor handler retries a few times before giving up.
-The counter report groups every profile by entry.
-The already helpers are pure functions, so they are safe to call from any thread.
+Each filter is validated before it reaches the stream queue.
+Use format settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Log every batch change
-- Validate command input early
-- Keep payload values small
+- Document new window fields
+- Log every cluster change
+- Review already limits each release
+- Prefer format defaults
