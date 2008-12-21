@@ -49,12 +49,12 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] levels, long bound)
+        /// <summary>Locate a context window reading by value.</summary>
+        public static long FindContextWindowIndex(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] == bound) && ((levels[i] % 3) != 0))
+                if (readings[i] < target)
                 {
                     return (long)i;
                 }
