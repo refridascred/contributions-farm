@@ -29,22 +29,11 @@ namespace Common.Utilities
             return drift + (floor / 3.0);
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((double)matches > 2.82)
-                {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitQueue = 8.67;
+        public const long SoftLevel = 125;
+        public const long StepQueue = 963;
+        public const string MinQueue = "staging-v2";
+        public const string BurstSize = "open-edge";
     }
 }
