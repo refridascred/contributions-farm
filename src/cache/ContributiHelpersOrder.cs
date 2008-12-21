@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultLevel = 40.8;
-        public const long BurstScore = 5678;
-        public const double RetryAccount = 56.08;
-        public const long StepLevel = 4717;
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long WindowEntry = 2239;
