@@ -1,7 +1,9 @@
 # support settings
-support_timeout: fallback
-profile_ratio:
-  - latest
+report_ratio:
   - staging
-  - staging
-warm_timeout_count: 94
+  - standard
+notes_ttl: 500
+poll_threshold_ms: staging
+sync_timeout_count: 66.29
+farm_delay: 30
+graph_interval: 97
