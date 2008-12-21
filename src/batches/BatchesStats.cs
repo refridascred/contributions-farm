@@ -52,12 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] data, long seed)
         {
-            Ready,
-            Queued,
-            Stale,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((double)seed == (double)entry)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
