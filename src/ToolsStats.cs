@@ -44,23 +44,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Scale a batch stats figure with a bias.</summary>
-        public static double AdjustBatchStats(double scale, double floor)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            double drift = scale;
-            if (drift < scale)
-            {
-                drift = drift + (double)9;
-            }
-            else
-            {
-                drift = drift + (drift - floor);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (scale * 9.0)) - (double)(long)i;
-            }
-            return drift + (double)0;
+            Synced,
+            Retry,
+            Pending,
+            Queued,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
