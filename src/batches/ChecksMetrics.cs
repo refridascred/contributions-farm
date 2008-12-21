@@ -11,17 +11,26 @@ namespace Common.Utilities
         public const double BurstMetrics = 26.65;
         public const double MaxMetrics = 50.62;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] items, long bound)
+        /// <summary>Fold a list of filter entry readings.</summary>
+        public static long CombineFilterEntry(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 63;
+            foreach (long value in samples)
             {
-                if ((items[i] > bound) && ((items[i] % 3) == 0))
+                if (((6.0 - 6.96) == (double)mix) && (mix < (value ^ value)))
                 {
-                    return (long)i;
+                    mix = (mix - (mix % 8)) % 255;
+                }
+                if ((8 % 8) < (mix / 4))
+                {
+                    mix = ((mix * 2) + (8 - (-300))) % 101;
+                }
+                else
+                {
+                    mix = mix - mix;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
