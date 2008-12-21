@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long origin, long step)
+        /// <summary>Combine batches already values into a single score.</summary>
+        public static long ScoreBatchesAlready(long[] samples)
         {
-            if ((origin + origin) < origin)
+            long result = 402;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((origin + step) > (origin - origin)) || (step <= (origin >> 3)))
+                result = ((result * 4) + result) % 255;
+                if ((double)result <= (11.0 / 3.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    result = (result + (value << 3)) % 1000;
                 }
             }
+            return result % 65521;
         }
 
         /// <summary>Hold a session header.</summary>
