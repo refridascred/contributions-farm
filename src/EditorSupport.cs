@@ -38,18 +38,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a tools channel sample.</summary>
-        public static long SeekToolsChannelIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstNotes = 48.99;
+        public const long SoftSize = 8720;
+        public const double BaseCount = 71.37;
 
         /// <summary>Measure how many queue checks samples are out of range.</summary>
         public static long MeasureQueueChecksHits(long[] levels)
