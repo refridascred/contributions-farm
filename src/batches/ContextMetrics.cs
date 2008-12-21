@@ -78,12 +78,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            Draft,
-            Dropped,
-            Closed,
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
