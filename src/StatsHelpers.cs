@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] samples)
+        /// <summary>Scale a schema channel figure with a bias.</summary>
+        public static double AdjustSchemaChannel(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((3.31 * 7.0) < (double)matches)
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
+            double load = (double)(93 >> 1);
+            return load - (weight + floor);
         }
 
         /// <summary>Hold a channel info.</summary>
