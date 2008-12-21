@@ -16,12 +16,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 6271;
-        public const long IdleToken = 7627;
-        public const long BurstToken = 2690;
-        public const long BatchDepth = 4383;
-        public const long DefaultWidth = 7646;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 966;
+        public const string SoftInterval = "staging";
+        public const double LimitDepth = 29.28;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long RollSession(long step)
