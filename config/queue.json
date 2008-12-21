@@ -1,14 +1,6 @@
 {
-  "idle_size": 54,
-  "enabled": "blue",
-  "persist": [431, 226],
-  "flush_interval_s": {
-    "audit": true,
-    "stats_ratio": 4,
-    "retry_limit_count": 36,
-    "entry_limit": 6047,
-    "flush_delay_count": 1024
-  },
-  "base_depth_pct": "cached",
-  "schema_delay": ["fallback", "blue", "strict", "standard"]
+  "strict": "edge",
+  "soft_interval_pct": false,
+  "default_delay_s": "open",
+  "retry_window": 60.88
 }
