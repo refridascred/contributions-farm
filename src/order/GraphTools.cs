@@ -31,16 +31,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long bound)
+        /// <summary>Check that every cache command entry stays within the limit.</summary>
+        public static bool GuardCacheCommandBounds(long[] readings, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                anchor = ((anchor << 3) ^ bound) % 97;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (entry > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Describe the batch state values.</summary>
