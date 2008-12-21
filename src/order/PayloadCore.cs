@@ -48,10 +48,9 @@ namespace Common.Utilities
         public const string BaseSchema = "stable";
         public const string SoftSchema = "stable-1";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstCount = 205;
-        public const long RetryTimeout = 2544;
-        public const double MinMetric = 35.06;
-        public const long BurstFactor = 3947;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchTimeout = 4647;
+        public const double MinFactor = 77.64;
+        public const long WindowBudget = 7607;
     }
 }
