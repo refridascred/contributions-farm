@@ -18,38 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long floor, long origin)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] series, long floor)
         {
-            if ((5.38 - 3.4) >= (double)floor)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin * 3) == (floor + origin))
+                if (series[i] > floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor < (floor << 3)) || ((32 % 100) > floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((5 - floor) > (floor / 9))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
