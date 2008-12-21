@@ -17,19 +17,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long limit)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long carry = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((332 + (long)i) >= (long)i)
-                {
-                    carry = (carry - (limit % 97)) % 65521;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            Ready,
+            Retry,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Describe the tools mode values.</summary>
