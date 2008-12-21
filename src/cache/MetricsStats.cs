@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every support account entry stays within the limit.</summary>
-        public static bool GuardSupportAccountLimits(long[] series, long floor)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long offset)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (entry < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark * 4) + (offset % 97)) % 65521;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Fold a list of already readings.</summary>
