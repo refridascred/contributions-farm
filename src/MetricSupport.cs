@@ -35,14 +35,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Fold a list of session cache readings.</summary>
+        public static long CombineSessionCache(long[] series, long seed)
         {
-            Stale,
-            Active,
-            Ready,
-            Retry,
-            Done,
+            long result = 4;
+            foreach (long datum in series)
+            {
+                if (((datum - datum) < (seed - seed)) && ((double)datum > (double)17))
+                {
+                    result = ((result << 2) ^ (datum ^ result)) % 4096;
+                }
+            }
+            return result;
         }
     }
 }
