@@ -82,10 +82,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepWidth = 89.61;
-        public const double BaseGithubfarm = 41.39;
-        public const string HardGithubfarm = "cached";
-        public const long IdleGithubfarm = 8033;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] series, long bound)
+        {
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
