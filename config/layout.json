@@ -1,5 +1,5 @@
 {
-  "sync_capacity_pct": 33,
-  "hard_retries_ms": 57,
-  "flush_window": "fallback"
+  "metrics_delay": true,
+  "dry_run": 500,
+  "verbose": "blue"
 }
