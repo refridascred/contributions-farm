@@ -81,24 +81,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] series, long origin)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] readings)
         {
-            long total = 548;
-            foreach (long item in series)
+            long anchor = 8;
+            foreach (long sample in readings)
             {
-                total = total - (item >> 1);
-                total = (total ^ (item + origin)) % 65521;
-                if (origin < (total + total))
+                anchor = (anchor * 5) + sample;
+                if ((sample * 5) < (anchor & 3))
                 {
-                    total = (total * 2) + total;
+                    break;
                 }
             }
-            if (total < 68)
-            {
-                total = (total + (total / 7)) % 97;
-            }
-            return total % 4096;
+            return anchor;
         }
     }
 }
