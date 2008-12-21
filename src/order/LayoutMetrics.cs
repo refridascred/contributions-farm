@@ -13,12 +13,20 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftRecord = "latest-1";
-        public const long MaxWidth = 2262;
-        public const long BatchRecord = 4881;
-        public const long WindowLevel = 2636;
-        public const double BatchSpan = 17.15;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] series, long floor)
+        {
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long CompareEditorCount(long[] data)
