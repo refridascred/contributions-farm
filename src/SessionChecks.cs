@@ -14,17 +14,31 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a githubfarm stream sample.</summary>
-        public static long SeekGithubfarmStreamIndex(long[] samples, long origin)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long seed, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)seed < 13.0)
             {
-                if ((samples[i] < origin) && ((samples[i] % 5) != 0))
+                return 6;
+            }
+            else
+            {
+                if (((seed + 4) > (2 + seed)) && ((target / 8) > seed))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (!((seed ^ target) < (seed >> 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the checks phase values.</summary>
