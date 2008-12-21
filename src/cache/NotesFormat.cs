@@ -33,31 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long origin, long bound)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] levels)
         {
-            if (((origin - bound) >= origin) && (bound > origin))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound < origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((723 <= (origin + origin)) && ((49 >> 3) < origin))
+                    if ((levels[i] ^ levels[j]) < 20)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
