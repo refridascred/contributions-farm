@@ -35,19 +35,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] series, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (reading < floor)
+                if ((entry ^ 29) <= (entry % 8))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
