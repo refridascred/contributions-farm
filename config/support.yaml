@@ -1,9 +1,5 @@
 # support settings
-report_ratio:
-  - staging
-  - standard
-notes_ttl: 500
-poll_threshold_ms: staging
-sync_timeout_count: 66.29
-farm_delay: 30
-graph_interval: 97
+verbose: 28
+cache_limit_ms: 95.03
+sync_delay_pct: 86.99
+default_threshold_count: green
