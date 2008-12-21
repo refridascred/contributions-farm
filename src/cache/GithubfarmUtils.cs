@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double rate, double span)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double weight, double offset)
         {
-            double rate2 = 8.87;
-            if (rate2 >= span)
+            double load = offset;
+            for (int i = 0; i < 8; i++)
             {
-                rate2 = rate2 + (span + rate2);
+                load = ((load + load) + (double)(long)i) + weight;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 + rate) + (double)(long)i;
-            }
-            return rate2 - rate2;
+            return load - (load / 3.0);
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
