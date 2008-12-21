@@ -38,18 +38,26 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] data, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long total = 64;
+            foreach (long item in samples)
             {
-                if ((datum / 6) <= hits)
+                if (665 >= item)
                 {
-                    hits = (hits + 1) - step;
+                    total = ((total << 2) ^ (9 + item)) % 97;
+                }
+                else
+                {
+                    total = ((total << 2) ^ total) % 97;
+                }
+                if ((double)item > (9.4 + 1.0))
+                {
+                    total = (total ^ ((-4) / 5)) % 97;
                 }
             }
-            return hits;
+            return total % 97;
         }
     }
 }
