@@ -19,22 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] levels, long limit)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] data, long floor)
         {
-            long acc = 5;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((acc - reading) > (limit + (long)levels.Length))
+                if (reading >= floor)
                 {
-                    acc = (acc ^ reading) % 101;
-                }
-                else
-                {
-                    acc = (acc - (limit / 3)) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
