@@ -31,13 +31,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long limit)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
+            long acc = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = (acc + acc) % 255;
+                if (((double)limit < (8.0 / 6.0)) && ((5.27 + 8.09) != (double)(long)i))
+                {
+                    acc = (acc + (acc + acc)) % 1000;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
