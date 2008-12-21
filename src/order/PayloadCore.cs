@@ -30,13 +30,24 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Classify a buffer window pair into a bucket.</summary>
+        public static long GradeBufferWindow(long floor, long step)
         {
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Rank { get; set; }
-            public long Owner { get; set; }
+            if (!((double)floor == (double)step))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((-9) <= (floor << 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
