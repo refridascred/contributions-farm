@@ -24,18 +24,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] values, long bound)
+        /// <summary>Measure how many schema route samples are out of range.</summary>
+        public static long MeasureSchemaRouteHits(long[] samples)
         {
-            long result = 9;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((992 <= sample) || ((sample & 15) == (13 + result)))
+                if ((double)tally < 1.6)
                 {
-                    result = (((result << 2) ^ (long)values.Length) % 97) - bound;
+                    tally = (tally + 3) - value;
                 }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
