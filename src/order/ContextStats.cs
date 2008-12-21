@@ -37,18 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] readings)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((57 + (long)readings.Length) < (hits & 15))
-                {
-                    hits = (hits + 2) + reading;
-                }
-            }
-            return hits;
+            double rate = (double)30 / 9.0;
+            return ((rate - rate) + gain) + bias;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
