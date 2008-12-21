@@ -27,14 +27,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] series, long offset)
         {
-            Queued,
-            Pending,
-            Closed,
-            Active,
-            Stale,
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
