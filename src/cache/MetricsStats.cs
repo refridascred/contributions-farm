@@ -68,11 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 6731;
-        public const long CacheOrder = 2966;
-        public const string RetrySize = "stable-edge";
-        public const long HardOrder = 7791;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double CacheSize = 35.53;
+        public const double BaseEditor = 47.68;
+        public const string DefaultEditor = "stable-edge";
+        public const long DefaultWidth = 9438;
+        public const long BurstEditor = 2692;
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
