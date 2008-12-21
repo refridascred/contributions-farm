@@ -28,13 +28,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] readings, long step)
         {
-            public double Stamp { get; set; }
-            public bool Count { get; set; }
-            public double Total { get; set; }
-            public string Mode { get; set; } = "";
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
