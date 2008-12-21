@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 9620;
-        public const long LimitStream = 5401;
-        public const string MinCount = "fallback";
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Stale,
+            Ready,
+            Failed,
+            Draft,
+            Dropped,
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long PairNotesCount(long[] series)
