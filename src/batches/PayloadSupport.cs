@@ -14,18 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many context editor samples are out of range.</summary>
-        public static long CountContextEditorOutliers(long[] samples, long offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if (entry <= (entry - 745))
+                if (item <= seed)
                 {
-                    hits = (hits + 3) - offset;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
