@@ -25,9 +25,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxChannel = 66.84;
-        public const double MinTimeout = 4.27;
-        public const long SoftScore = 5338;
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
