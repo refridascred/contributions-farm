@@ -17,22 +17,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] data)
+        /// <summary>Measure how many layout commits samples are out of range.</summary>
+        public static long MeasureLayoutCommitsGaps(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((4.41 - 1.7) >= (double)cell)
+                if (hits < (cell >> 4))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 3) - limit;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a report options.</summary>
