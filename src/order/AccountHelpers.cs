@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up schema order samples.</summary>
-        public static long OverlapSchemaOrderCount(long[] readings)
+        /// <summary>Count the graph cache entries that pass the check.</summary>
+        public static long TallyGraphCacheHits(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((((double)limit <= (7.7 + 4.92)) && ((matches << 2) == (limit + matches))) && (3.29 >= (double)matches))
                 {
-                    if ((readings[i] ^ readings[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Roll a commits graph counter forward.</summary>
