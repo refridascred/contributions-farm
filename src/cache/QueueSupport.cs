@@ -19,24 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a entry cluster counter forward.</summary>
-        public static long SeriesEntryCluster(long origin)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long limit, long target)
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
+            long bound = limit - target;
+            if ((double)bound == (7.2 / 5.0))
             {
-                acc = acc ^ (long)i;
-                if ((long)i < ((long)i & 3))
-                {
-                    acc = (acc - acc) % 4096;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = ((acc * 4) + (origin ^ origin)) - (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if (1.0 > (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Roll a checks counter forward.</summary>
