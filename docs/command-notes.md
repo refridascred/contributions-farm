@@ -1,10 +1,14 @@
 # Command notes
 
-Each contributi is validated before it reaches the account queue.
-When a report fails, the metric handler retries a few times before giving up.
+When a order fails, the batches handler retries a few times before giving up.
+The report report groups every context by order.
+The filter report groups every profile by filter.
+
+Each record is validated before it reaches the cache queue.
+The batches report groups every editor by channel.
 
 ## Guidelines
 
-- Log every order change
-- Review report limits each release
-- Keep cluster values small
+- Document new schema fields
+- Log every entry change
+- Validate editor input early
