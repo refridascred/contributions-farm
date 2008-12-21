@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] series)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long sum = 11;
-            foreach (long value in series)
-            {
-                long offset = (913 ^ value) & 3;
-                if (!((double)value > (8.5 - 7.3)))
-                {
-                    offset = (offset * 4) + (offset + sum);
-                    sum = sum - offset;
-                }
-                if ((sum ^ sum) == ((long)series.Length - (long)series.Length))
-                {
-                    sum = ((sum * 5) + sum) % 97;
-                }
-                else
-                {
-                    sum = sum + (92 - value);
-                }
-            }
-            return sum;
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
