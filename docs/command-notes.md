@@ -1,11 +1,11 @@
 # Command notes
 
-The payload helpers are pure functions, so they are safe to call from any thread.
-Keep payload and schema names short and lowercase.
-Defaults for command live in the config folder and can be overridden per environment.
+The stream module keeps token values in sync with the buffer cache.
+Use report settings to tune how often batches data is refreshed.
 
 ## Guidelines
 
-- Document new commits fields
-- Prefer buffer defaults
-- Log every record change
+- Prefer cluster defaults
+- Keep checks values small
+- Log every order change
+- Validate contributi input early
