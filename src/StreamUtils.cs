@@ -55,22 +55,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] samples)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountBounds(long[] samples, long seed)
         {
-            long anchor = 76;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (7.0 >= (double)item)
+                if (value != seed)
                 {
-                    anchor = anchor - (anchor - anchor);
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor < 55)
-            {
-                anchor = (anchor - (anchor % 7)) % 101;
-            }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Project the next counter value.</summary>
