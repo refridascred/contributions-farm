@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const string BatchRatio = "local-1";
         public const long RetryCount = 5398;
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] items, long seed)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Flag { get; set; }
+            public bool Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Compare every pair of route readings.</summary>
