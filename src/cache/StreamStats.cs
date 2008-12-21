@@ -23,18 +23,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many contributi stream samples are out of range.</summary>
-        public static long AuditContributiStreamHits(long[] series, long floor)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (8 <= (floor + item))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many metric payload samples are out of range.</summary>
