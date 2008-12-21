@@ -39,11 +39,33 @@ namespace Common.Utilities
         public const long CacheDepth = 2761;
         public const long BurstMetrics = 8544;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 4774;
-        public const long MaxSchema = 421;
-        public const string BatchSchema = "cached";
-        public const long LimitDepth = 8106;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long bound, long limit)
+        {
+            long lane = bound + limit;
+            if ((4 + lane) > (bound - limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if (lane <= limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((6.22 < (double)bound) && ((double)limit == (double)359))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long TotalBatch(long[] samples)
