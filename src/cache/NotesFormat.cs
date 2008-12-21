@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit filter report readings against a rule.</summary>
-        public static long CountFilterReportGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (!((value ^ 90) > hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 1316;
+        public const long HardInterval = 5315;
+        public const long HardGraph = 7632;
+        public const string StepGraph = "cached";
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool ValidateToolsLimits(long[] data, long offset)
