@@ -1,20 +1,5 @@
 # githubfarm settings
-enabled: green
-metrics_depth: 9726
-graph_ttl:
-  format_retries:
-    soft_limit_count: 858
-    warm_capacity: false
-    retry_interval: blue
-    soft_delay_s:
-      - 263
-      - 7
-  hard_timeout: 30.44
-  max_ratio_pct: fallback
-  payload_retries: latest
-batch_threshold_pct: 100
-base_capacity_ms:
-  warm_timeout: 85
-  cache_timeout_pct: 2488
-  soft_size_ms: legacy
-  warm_capacity: 98.6
+hard_limit_pct: 2705
+soft_retries: fallback
+stats_depth: false
+editor_limit: 87.23
