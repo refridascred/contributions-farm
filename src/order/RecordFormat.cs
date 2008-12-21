@@ -52,13 +52,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Ready,
-            Locked,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardInterval = "standard";
+        public const long BatchRecord = 1703;
+        public const long BaseRecord = 7640;
+        public const string MaxCount = "primary-edge";
+        public const long CacheInterval = 7385;
     }
 }
