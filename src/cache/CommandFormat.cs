@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 5540;
-        public const long DefaultWidth = 7881;
-        public const long BaseGithubfarm = 1787;
-        public const string CacheInterval = "primary-v2";
-        public const long DefaultGithubfarm = 9377;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
+            public double Token { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long LimitInterval = 2533;
