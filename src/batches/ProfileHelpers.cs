@@ -46,18 +46,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] series)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (reading < (reading >> 4))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Synced,
+            Locked,
+            Dropped,
+            Idle,
+            Active,
         }
 
         /// <summary>Digest a series of context entries.</summary>
