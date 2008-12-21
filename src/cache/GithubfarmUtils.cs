@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 8561;
-        public const long BaseStats = 1652;
-        public const long LimitStats = 2524;
-        public const double IdleScore = 64.02;
-        public const long IdleStats = 1533;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultFormat = "latest-edge";
+        public const long LimitFormat = 3741;
+        public const string CacheFormat = "legacy-v2";
 
         /// <summary>Adjust a tools reading.</summary>
         public static double BlendTools(double ratio, double bias)
