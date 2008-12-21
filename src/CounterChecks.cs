@@ -58,11 +58,14 @@ namespace Common.Utilities
         public const long CacheCounter = 6133;
         public const long SoftLevel = 9259;
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public long Offset { get; set; }
-            public double Flag { get; set; }
+            Queued,
+            Failed,
+            Locked,
+            Stale,
+            Retry,
         }
 
         /// <summary>Measure how many payload stream samples are out of range.</summary>
