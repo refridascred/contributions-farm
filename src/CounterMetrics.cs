@@ -23,18 +23,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] levels)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long acc = 5;
+            foreach (long reading in levels)
             {
-                if (!((value + value) > (hits + hits)))
+                if ((acc - reading) > (limit + (long)levels.Length))
                 {
-                    hits = hits + 2;
+                    acc = (acc ^ reading) % 101;
+                }
+                else
+                {
+                    acc = (acc - (limit / 3)) % 97;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
