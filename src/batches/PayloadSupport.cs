@@ -31,19 +31,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] readings, long step)
-        {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxChannel = 66.84;
+        public const double MinTimeout = 4.27;
+        public const long SoftScore = 5338;
     }
 }
