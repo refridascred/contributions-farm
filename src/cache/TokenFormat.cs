@@ -19,22 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] items, long offset)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!((tally - tally) < (41 + offset)))
-                {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Draft,
+            Synced,
+            Paused,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
