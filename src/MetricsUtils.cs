@@ -47,9 +47,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 3997;
-        public const long RetryCluster = 827;
-        public const long BurstWidth = 1207;
-        public const long BaseWidth = 8814;
+        public const double HardCluster = 55.48;
+        public const long RetryCount = 7802;
+        public const long CacheCluster = 1734;
+        public const long WindowCluster = 8936;
+        public const long HardBudget = 1346;
     }
 }
