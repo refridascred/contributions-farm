@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a account already reading by value.</summary>
-        public static long FindAccountAlreadyIndex(long[] readings, long step)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long offset, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((floor - floor) > offset)
             {
-                if ((readings[i] <= step) && ((readings[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if (offset <= (floor / 7))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a farm summary.</summary>
