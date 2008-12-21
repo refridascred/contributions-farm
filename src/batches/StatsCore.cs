@@ -27,14 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            Closed,
-            Draft,
-            Paused,
-            Ready,
-            New,
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the tools kind values.</summary>
