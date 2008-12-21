@@ -37,15 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double ratio, double floor)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] readings, long offset)
         {
-            double rate = ratio - (ratio + floor);
-            if (rate <= (double)5)
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate - (floor - floor);
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return rate + (floor / 9.0);
+            return -1;
         }
     }
 }
