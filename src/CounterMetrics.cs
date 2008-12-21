@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultCount = 647;
-        public const string BaseSession = "local-edge";
-        public const long HardSession = 5071;
-        public const string DefaultDepth = "alpha";
-        public const string LimitRatio = "fallback-edge";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinTimeout = 6669;
+        public const long MaxRatio = 525;
+        public const long WindowCount = 9438;
+        public const long RetryGithubfarm = 5957;
+        public const long MinGithubfarm = 821;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string MinLayout = "open-v2";
