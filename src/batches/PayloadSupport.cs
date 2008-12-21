@@ -28,23 +28,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] data, long seed)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] series, long target)
         {
-            long total = 2;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long item in series)
             {
-                total = ((total << 2) ^ (seed + seed)) % 255;
-                if ((total >> 1) <= (datum - datum))
+                if (item < target)
                 {
-                    total = (total << 3) ^ (total + 92);
-                }
-                else
-                {
-                    total = (total ^ (datum - seed)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return total % 4096;
+            return ok;
         }
     }
 }
