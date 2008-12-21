@@ -1,6 +1,17 @@
 {
-  "batch_depth_ms": "latest",
-  "checks_window": true,
-  "burst_delay_pct": "standard",
-  "contributi_limit": "open"
+  "dry_run": {
+    "audit": {
+      "channel_capacity": 875,
+      "format_timeout": true,
+      "hard_size_s": ["standard", "fallback", "open", "strict"],
+      "notes_ttl": 63,
+      "hard_limit": "open"
+    },
+    "batch_ratio_pct": 96.06,
+    "compress": true,
+    "base_depth_ms": [413, 254, 361, 473],
+    "hard_limit_ms": 14
+  },
+  "order_retries": ["stable", "fallback"],
+  "sync_depth": true
 }
