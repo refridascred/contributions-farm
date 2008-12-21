@@ -1,5 +1,10 @@
 # githubfarm settings
-audit: 36.72
-burst_delay: 54
-poll_ttl_pct: 71.3
-flush_delay_count: 52.42
+batch_threshold_ms:
+  - 412
+  - 6
+  - 258
+channel_ttl: primary
+cache_window_count:
+  - 61
+  - 158
+  - 427
