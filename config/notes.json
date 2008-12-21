@@ -1,6 +1,17 @@
 {
-  "entry_ttl": "staging",
-  "retry_window": "latest",
-  "account_ttl": "legacy",
-  "strict": false
+  "retry_window_ms": 9,
+  "warm_limit": {
+    "retry_timeout": 2733,
+    "base_depth_pct": false,
+    "retry_ttl_ms": {
+      "enabled": 98,
+      "notes_interval": 250,
+      "persist": [432, 190, 189, 134],
+      "audit": ["staging", "edge", "blue", "stable"]
+    },
+    "queue_ttl": true,
+    "soft_interval": 64
+  },
+  "max_ratio": ["green", "local", "local"],
+  "warm_ttl_pct": [120, 349, 6]
 }
