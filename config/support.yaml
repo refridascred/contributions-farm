@@ -1,9 +1,7 @@
 # support settings
-cache_depth: eu-west
-burst_depth:
-  - 51
-  - 39
-  - 191
-  - 310
-audit: stable
-profile_capacity: 514
+retry_ratio_pct:
+  - strict
+  - local
+flush_ttl_s: 1024
+flush_delay: 500
+notes_interval: 250
