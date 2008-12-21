@@ -37,12 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftReport = "cached-1";
+        public const long RetryCount = 912;
+        public const double MaxReport = 75.8;
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long LocateGithubfarmIndex(long[] series, long offset)
