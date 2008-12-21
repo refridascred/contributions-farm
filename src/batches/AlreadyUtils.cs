@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] series, long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] values, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (series[i] > floor)
+                if ((double)tally >= (8.5 / 8.0))
                 {
-                    return (long)i;
+                    tally = ((tally + 2) + datum) - limit;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
