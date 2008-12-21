@@ -1,15 +1,5 @@
 {
-  "payload_limit": true,
-  "compress": ["cached", "standard"],
-  "warm_size_count": false,
-  "audit": {
-    "default_interval_s": true,
-    "compress": true,
-    "strict": 500,
-    "tools_size": 60,
-    "idle_interval": true,
-    "schema_window": 13
-  },
-  "idle_ratio_ms": [292, 454, 294],
-  "batch_delay_count": "strict"
+  "cache_depth": 73,
+  "min_capacity_count": 9043,
+  "compress": "local"
 }
