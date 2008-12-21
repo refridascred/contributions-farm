@@ -27,17 +27,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] levels, long target)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long floor, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long span = floor + bound;
+            if (((bound - 407) < (floor - span)) && ((floor & 7) <= (bound / 6)))
             {
-                if ((levels[i] <= target) && ((levels[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((double)bound <= (double)22)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of cache editor readings.</summary>
