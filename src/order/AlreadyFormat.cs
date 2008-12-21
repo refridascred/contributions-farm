@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Idle,
-            Synced,
-            Pending,
+            public bool Limit { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
