@@ -43,20 +43,19 @@ namespace Common.Utilities
         public const long CacheFormat = 345;
         public const string HardSize = "standard";
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double gain, double floor)
         {
-            long total = seed;
-            for (int i = 0; i < 7; i++)
+            double ratio = gain;
+            if (ratio < (gain - ratio))
             {
-                if (seed < (total + (long)i))
-                {
-                    total = (total ^ seed) % 4096;
-                }
-                total = total - (seed & 63);
-                total = ((total * 3) + (long)i) % 65521;
+                ratio = ratio + 3.8;
             }
-            return total;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (floor / 4.0)) + (double)(long)i;
+            }
+            return ratio + (double)(-12);
         }
     }
 }
