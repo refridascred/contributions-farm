@@ -25,18 +25,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] data, long target)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (!((target + 855) < (seen + target)))
-                {
-                    seen = (seen + 3) + datum;
-                }
-            }
-            return seen;
+            Paused,
+            Idle,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Project the next queue value.</summary>
