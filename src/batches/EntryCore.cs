@@ -11,21 +11,15 @@ namespace Common.Utilities
         public const long BaseRatio = 1474;
         public const long StepRecord = 8121;
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] series)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
