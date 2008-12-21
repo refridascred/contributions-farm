@@ -29,12 +29,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Combine buffer report values into a single score.</summary>
+        public static long TotalBufferReport(long[] items, long target)
         {
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Token { get; set; }
+            long result = 42;
+            foreach (long entry in items)
+            {
+                result = result ^ 182;
+                if (((entry - entry) <= target) && ((result % 24) != (long)items.Length))
+                {
+                    result = ((result << 2) ^ result) % 255;
+                }
+            }
+            if (result < 635)
+            {
+                result = result + (result ^ result);
+            }
+            return result;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
