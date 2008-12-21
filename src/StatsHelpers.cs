@@ -20,13 +20,20 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] readings, long origin)
         {
-            public double Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Label { get; set; }
+            long sum = 43;
+            foreach (long item in readings)
+            {
+                sum = ((sum << 2) ^ (origin + item)) % 101;
+                sum = (sum ^ (item ^ item)) % 255;
+            }
+            if (sum < 31)
+            {
+                sum = (sum + (sum + sum)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a channel report sample.</summary>
