@@ -1,10 +1,15 @@
 {
-  "max_limit_count": true,
-  "order_ttl": {
-    "default_capacity": 30,
-    "verbose": true,
-    "cache_interval_s": false
+  "payload_delay": {
+    "verbose": {
+      "base_limit_count": 2361,
+      "audit": 9860,
+      "flush_ttl_ms": 683
+    },
+    "readonly": true,
+    "cache_depth_ms": false
   },
-  "compress": [385, 400, 106, 336],
-  "cache_retries": 500
+  "retry_limit": 10.26,
+  "cache_size_s": "strict",
+  "min_window_pct": "cached",
+  "default_depth_count": 16.1
 }
