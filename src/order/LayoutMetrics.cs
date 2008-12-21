@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] series)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((5.0 / 8.0) <= (double)datum)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((samples[i] ^ samples[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
