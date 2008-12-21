@@ -52,12 +52,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] series, long limit)
+        /// <summary>Locate a cache schema reading by value.</summary>
+        public static long SeekCacheSchemaIndex(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] == limit)
+                if (levels[i] == step)
                 {
                     return (long)i;
                 }
