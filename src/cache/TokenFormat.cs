@@ -19,13 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] series, long target)
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((sample & 31) > (tally % 24))
+                {
+                    tally = (tally + 1) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a graph header.</summary>
