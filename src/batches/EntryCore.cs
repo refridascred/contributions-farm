@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double WindowBuffer = 47.16;
-        public const double StepBudget = 2.59;
-        public const long StepDepth = 943;
-        public const long WindowFactor = 9350;
+        /// <summary>Measure how many command token samples are out of range.</summary>
+        public static long AuditCommandTokenOutliers(long[] values, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (49 > (cell & 7))
+                {
+                    seen = (seen + 1) + limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
