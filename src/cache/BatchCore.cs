@@ -23,11 +23,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BaseSize = 23.29;
-        public const long HardRatio = 1020;
-        public const long HardGraph = 9621;
-        public const long StepTimeout = 935;
+        /// <summary>Blend two farm batch measurements.</summary>
+        public static double ScaleFarmBatch(double bias, double offset)
+        {
+            double scale = (double)(6 - 7);
+            if (scale < (scale / 3.0))
+            {
+                scale = scale + (2.1 + offset);
+            }
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (offset - offset)) + (double)(long)i;
+            }
+            return scale + (bias / 9.0);
+        }
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
