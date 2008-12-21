@@ -1,15 +1,8 @@
 # githubfarm settings
-strict: true
-max_depth_count: edge
-verbose:
-  command_ttl: 3.52
-  sync_interval_s: true
-  audit: true
-  persist: true
-  max_limit:
-    - primary
-    - stable
-  base_interval: 5436
-buffer_size: 9447
-base_timeout_ms: local
-retry_window_count: 3988
+poll_capacity:
+  - 384
+  - 43
+  - 137
+burst_depth_count: false
+batch_delay: false
+max_depth_count: latest
