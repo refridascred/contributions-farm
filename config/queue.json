@@ -1,10 +1,20 @@
 {
-  "base_depth": {
-    "idle_capacity": 30,
-    "warm_ttl_count": true,
-    "flush_ttl": 60
+  "batch_capacity": {
+    "flush_depth": ["stable", "open", "staging"],
+    "readonly": 1877,
+    "idle_depth": 5985,
+    "sync_threshold": "stable",
+    "flush_size_ms": 81,
+    "persist": "stable"
   },
-  "flush_retries_ms": 4275,
-  "account_interval": 29,
-  "layout_ttl": 96.84
+  "base_limit_count": 315,
+  "batch_delay": {
+    "session_retries": [256, 382, 463],
+    "order_ratio": 80,
+    "channel_threshold": 77.44,
+    "audit": 26.45
+  },
+  "compress": true,
+  "stats_capacity": 90.84,
+  "dry_run": 99
 }
