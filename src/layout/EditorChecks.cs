@@ -22,13 +22,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Rank commits payload input into a small class.</summary>
+        public static long RankCommitsPayload(long target, long bound)
         {
-            Done,
-            Active,
-            Locked,
-            Synced,
+            long next = target ^ bound;
+            if ((63 ^ next) >= (4 << 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target - target) >= (-342))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((target + next) > (next + next)) && ((double)target > 9.7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
