@@ -1,4 +1,6 @@
 # support settings
-batch_ttl: 3
-stream_timeout: blue
-compress: strict
+batch_retries_count: 39.33
+poll_size_ms: true
+poll_size_s: local
+burst_delay: legacy
+stats_ttl: false
