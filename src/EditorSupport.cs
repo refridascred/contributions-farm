@@ -40,15 +40,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double bias, double offset)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double load = (double)(6 << 1);
-            if (load <= load)
-            {
-                load = ((load - (double)(-486)) - bias) + offset;
-            }
-            return load + (double)457;
+            Active,
+            Pending,
+            Ready,
+            Closed,
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
