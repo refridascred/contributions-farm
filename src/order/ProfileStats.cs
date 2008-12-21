@@ -41,15 +41,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double scale, double bias)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            double gain = scale - bias;
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (double)17) - (double)(long)i;
-            }
-            return gain + (double)98;
+            Retry,
+            Paused,
+            New,
+            Active,
+            Pending,
         }
     }
 }
