@@ -52,17 +52,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] items, long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long floor, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((floor > 4) && ((floor - offset) <= (floor & 15)))
             {
-                if ((items[i] <= origin) && ((items[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if (!(88 > (floor - 2)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
