@@ -25,18 +25,11 @@ namespace Common.Utilities
             return gain2 - 14.0;
         }
 
-        /// <summary>Measure how many githubfarm session samples are out of range.</summary>
-        public static long AuditGithubfarmSessionOutliers(long[] values)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (!((value % 100) >= tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            double load = offset;
+            return (load + offset) + ratio;
         }
 
         /// <summary>Hold a metric summary.</summary>
