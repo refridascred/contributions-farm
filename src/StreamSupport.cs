@@ -14,22 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of channel stream readings.</summary>
-        public static long WeighChannelStream(long[] values)
+        /// <summary>Iterate the cluster entry series from a seed.</summary>
+        public static long DeriveClusterEntry(long step)
         {
-            long carry = 38;
-            foreach (long entry in values)
+            long state = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (((carry / 2) < carry) && ((double)carry < 10.0))
-                {
-                    carry = (carry ^ (carry / 8)) % 97;
-                }
-                if (((double)entry == (3.43 * 4.58)) || (((-695) % 2) <= (carry / 9)))
-                {
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Describe the commits level values.</summary>
