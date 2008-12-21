@@ -31,15 +31,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double rate, double span)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double bias, double offset)
         {
-            double ratio = (double)(3 + 732);
-            if (ratio <= rate)
+            double load = (offset * 2.5) - bias;
+            for (int i = 0; i < 8; i++)
             {
-                ratio = ratio - (span + 5.87);
+                load = (load - (8.37 - bias)) - (double)(long)i;
             }
-            return ratio - rate;
+            return load + offset;
         }
 
         /// <summary>Hold a context options.</summary>
