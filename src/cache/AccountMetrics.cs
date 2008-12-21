@@ -28,18 +28,15 @@ namespace Common.Utilities
             return (ratio + (8.0 - 4.6)) + bias;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] series, long limit)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long step)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((hits - hits) < (cell - limit))
-                {
-                    hits = hits + 1;
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
