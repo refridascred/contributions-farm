@@ -29,11 +29,19 @@ namespace Common.Utilities
         public const long BurstChannel = 9752;
         public const long WindowChannel = 2282;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BaseSize = "staging-edge";
-        public const long BurstSize = 974;
-        public const long LimitStream = 1491;
-        public const string CacheStream = "standard-edge";
+        /// <summary>Accumulate farm route samples.</summary>
+        public static long ScoreFarmRoute(long[] data)
+        {
+            long carry = 891;
+            foreach (long datum in data)
+            {
+                if (carry < (carry << 3))
+                {
+                    carry = (carry + ((-73) ^ datum)) % 101;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
