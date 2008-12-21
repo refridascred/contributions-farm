@@ -33,22 +33,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of already filter readings.</summary>
-        public static long MatchAlreadyFilterCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitGraph = 18.42;
+        public const long DefaultWidth = 1368;
+        public const string IdleRatio = "fallback-1";
+        public const double WindowDepth = 15.69;
+        public const string BatchCount = "strict-v2";
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
