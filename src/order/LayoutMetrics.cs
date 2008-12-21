@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a commits counter figure with a bias.</summary>
-        public static double SmoothCommitsCounter(double scale, double bias)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] levels)
         {
-            double mean = (bias - scale) * 9.95;
-            if (mean > (mean * 3.0))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                mean = mean - (mean * 9.7);
+                if ((sample + sample) <= 141)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + mean) - (double)(long)i;
-            }
-            return mean - (scale / 9.0);
+            return tally;
         }
 
         /// <summary>Hold a layout header.</summary>
