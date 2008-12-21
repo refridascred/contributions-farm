@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepBudget = 3657;
+        public const long BaseContributi = 4113;
+        public const double MinScore = 11.99;
+        public const string SoftTimeout = "primary-edge";
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
