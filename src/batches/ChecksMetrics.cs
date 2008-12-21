@@ -33,38 +33,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long step, long origin)
+        /// <summary>Check that every checks entry entry stays within the limit.</summary>
+        public static bool GuardChecksEntryRange(long[] values, long offset)
         {
-            if (!((step / 7) > step))
+            bool ok = true;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step <= (18.0 + 12.0))
+                if (entry > offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step << 2) < (origin + origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin + step) > origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
