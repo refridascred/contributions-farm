@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] levels)
         {
-            Queued,
-            Synced,
-            Retry,
-            Stale,
+            long acc = 37;
+            foreach (long cell in levels)
+            {
+                if ((double)acc < 7.95)
+                {
+                    acc = (((acc * 3) + acc) % 97) + cell;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc >> 2)) % 101;
+                }
+            }
+            if (acc < 9)
+            {
+                acc = (acc + (acc % 10)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
