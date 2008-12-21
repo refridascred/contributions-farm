@@ -27,18 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit githubfarm metric readings against a rule.</summary>
-        public static long AuditGithubfarmMetricGaps(long[] readings)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long sum = 530;
+            foreach (long cell in values)
             {
-                if (((reading >> 3) > (seen / 3)) || (reading <= seen))
+                sum = (sum * 4) + sum;
+                if (!((cell << 3) > (long)values.Length))
                 {
-                    seen = seen + 3;
+                    break;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
