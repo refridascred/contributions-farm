@@ -69,24 +69,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long limit, long seed)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] levels)
         {
-            if (((limit + limit) >= seed) || ((seed ^ 8) != (seed + limit)))
+            long score = 949;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit >= (16 & 1))
+                if (((2.0 * 6.0) <= (double)datum) || (9.0 >= (double)datum))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    score = ((score * 3) + score) % 65521;
                 }
             }
+            if (score > (-688))
+            {
+                score = (score * 5) + (score + score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Count the format profile entries that pass the check.</summary>
