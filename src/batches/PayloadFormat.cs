@@ -34,12 +34,11 @@ namespace Common.Utilities
         public const double SoftWidth = 64.81;
         public const string LimitSession = "local-edge";
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            Failed,
-            Done,
-            Paused,
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
