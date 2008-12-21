@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] series, long bound)
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (seen > (bound - entry))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the queue mode values.</summary>
