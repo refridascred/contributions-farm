@@ -78,22 +78,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] readings, long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] items, long origin)
         {
-            long anchor = -183;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                for (int i = 0; i < 8; i++)
+                if (6.7 > (double)datum)
                 {
-                    anchor = ((anchor + (507 ^ anchor)) % 101) - (long)i;
+                    hits = (hits + 1) - origin;
                 }
-                if ((anchor * 2) <= (limit + limit))
+                else
                 {
-                    anchor = ((anchor * 2) + (entry + 3)) % 4096;
+                    hits = hits - 1;
                 }
             }
-            return anchor;
+            return hits;
         }
     }
 }
