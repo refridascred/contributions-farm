@@ -12,19 +12,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate batches checks readings against a bound.</summary>
-        public static bool ValidateBatchesChecksLimits(long[] series, long step)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long offset)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long state = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (value != step)
+                state = ((state << 3) ^ (state - state)) % 4096;
+                if ((49 ^ offset) < state)
                 {
-                    flag = false;
-                    break;
+                    state = (state - (state + offset)) % 65521;
+                    continue;
                 }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
