@@ -72,24 +72,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] readings, long limit)
         {
-            long sum = 115;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                long gap = entry;
-                if (((sum + gap) == ((long)samples.Length << 1)) || (gap > (gap >> 4)))
+                if (sample >= limit)
                 {
-                    sum = sum + gap;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    sum = sum - (sum % 12);
-                }
-                sum = (sum - (sum + entry)) % 101;
             }
-            return sum;
+            return ready;
         }
     }
 }
