@@ -1,8 +1,12 @@
 {
-  "window_depth": 8609,
-  "sync_window": "fallback",
-  "default_capacity_count": 38.26,
-  "base_depth_pct": [37, 42, 311],
-  "strict": 0.47,
-  "hard_window_pct": 83.62
+  "hard_delay": 48,
+  "dry_run": [492, 367, 118, 367],
+  "record_limit": "cached",
+  "min_ttl": {
+    "layout_timeout": true,
+    "channel_size": ["cached", "open", "latest", "latest"],
+    "dry_run": 100,
+    "persist": "fallback"
+  },
+  "retry_delay": false
 }
