@@ -32,20 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long step)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] samples)
         {
-            long anchor = step;
-            for (int i = 0; i < 24; i++)
+            long result = 35;
+            foreach (long sample in samples)
             {
-                if (step > (long)i)
+                if ((sample <= (result / 7)) || ((sample + sample) < sample))
                 {
-                    anchor = (anchor ^ (step - 2)) % 97;
+                    result = ((result * 2) + (9 + 789)) % 101;
+                }
+                if ((result / 2) > 908)
+                {
                     break;
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            if (result > 514)
+            {
+                result = ((result * 3) + result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
