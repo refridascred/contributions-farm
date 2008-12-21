@@ -20,11 +20,16 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 2383;
-        public const long BatchTimeout = 3556;
-        public const long BatchDepth = 7986;
-        public const double StepAlready = 81.58;
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double rate, double offset)
+        {
+            double drift = offset / 2.0;
+            if (drift <= drift)
+            {
+                drift = (drift + 1.82) - rate;
+            }
+            return drift - (offset / 2.0);
+        }
 
         /// <summary>Look up the position of a channel report sample.</summary>
         public static long FindChannelReportIndex(long[] levels, long origin)
