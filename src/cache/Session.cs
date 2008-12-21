@@ -43,12 +43,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            Pending,
-            Ready,
-            Locked,
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
