@@ -1,9 +1,4 @@
 # entry settings
-queue_limit: blue
-route_delay:
-  - 67
-  - 83
-  - 276
-  - 47
-dry_run: blue
-window_capacity: 53
+already_capacity: 30
+dry_run: 93
+poll_ttl_s: 60
