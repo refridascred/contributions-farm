@@ -1,14 +1,14 @@
 {
-  "burst_delay": 95,
-  "min_window": 94,
-  "cluster_ttl": 68,
-  "default_interval_count": 91.23,
-  "idle_depth_s": {
-    "warm_limit_pct": true,
-    "verbose": 1024,
-    "batch_ttl_s": "cached",
-    "idle_window_count": 7,
-    "flush_ratio": "strict",
-    "burst_timeout": 57
-  }
+  "batch_depth": "staging",
+  "strict": false,
+  "editor_timeout": true,
+  "record_ttl": 1035,
+  "default_capacity_pct": {
+    "hard_limit": true,
+    "channel_delay": 19.1,
+    "batch_limit_pct": "fallback",
+    "dry_run": 77,
+    "counter_delay": 79
+  },
+  "default_threshold_ms": ["stable", "standard", "edge"]
 }
