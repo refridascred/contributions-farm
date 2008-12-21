@@ -12,13 +12,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            Synced,
+            Pending,
+            Locked,
             Failed,
-            Closed,
-            Queued,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Hold a queue snapshot.</summary>
