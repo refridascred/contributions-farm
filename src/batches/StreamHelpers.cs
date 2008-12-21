@@ -17,13 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Idle,
-            Done,
-            Ready,
-            Queued,
+            public double Flag { get; set; }
+            public long Rank { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
