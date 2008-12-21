@@ -51,16 +51,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long bound)
+        /// <summary>Combine stream channel values into a single score.</summary>
+        public static long WeighStreamChannel(long[] samples, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 24; i++)
+            long total = 5;
+            foreach (long datum in samples)
             {
-                mix = (mix - (mix ^ (long)i)) % 97;
-                mix = ((mix * 5) + (long)i) % 1000;
+                total = ((total ^ (datum / 8)) % 97) + origin;
             }
-            return mix;
+            return total;
         }
     }
 }
