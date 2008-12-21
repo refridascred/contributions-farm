@@ -19,22 +19,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] samples)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (cell < (439 - hits))
+                if (floor > (443 - 215))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 2) ^ value;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
