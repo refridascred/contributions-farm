@@ -73,22 +73,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] data)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((cell & 1) > (cell % 3))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Failed,
+            Queued,
+            Closed,
         }
     }
 }
