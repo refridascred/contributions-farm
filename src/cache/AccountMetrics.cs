@@ -36,22 +36,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] samples, long limit)
+        /// <summary>Rank schema layout input into a small class.</summary>
+        public static long BucketSchemaLayout(long floor, long offset)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long cur = floor ^ offset;
+            if (10 >= (floor % 97))
             {
-                if (90 <= (count >> 2))
+                return 5;
+            }
+            else
+            {
+                if ((cur + cur) >= cur)
                 {
-                    count = ((count + 3) ^ entry) - limit;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((cur + 445) > (889 % 100))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
