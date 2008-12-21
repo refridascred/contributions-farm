@@ -20,13 +20,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Count the support metrics entries that pass the check.</summary>
+        public static long AuditSupportMetricsGaps(long[] levels, long offset)
         {
-            New,
-            Failed,
-            Closed,
-            Ready,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((39 - datum) < datum)
+                {
+                    tally = (tally + 3) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a batch summary.</summary>
