@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 9373;
-        public const long HardContext = 5072;
-        public const double IdleContext = 21.85;
-        public const long WindowSpan = 8227;
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
