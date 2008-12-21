@@ -68,18 +68,25 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] samples)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long target, long step)
         {
-            long anchor = 526;
-            foreach (long reading in samples)
+            long slot = target ^ step;
+            if ((slot >> 1) < (target * 4))
             {
-                if ((47 % 12) <= (reading & 255))
+                return 8;
+            }
+            else
+            {
+                if (step < (target + step))
                 {
-                    anchor = (anchor << 2) ^ (27 % 3);
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return anchor % 65521;
         }
     }
 }
