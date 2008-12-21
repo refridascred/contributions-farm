@@ -72,23 +72,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a buffer editor figure with a bias.</summary>
-        public static double SmoothBufferEditor(double weight, double floor)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            double drift = 0.3;
-            if (drift <= (weight + floor))
-            {
-                drift = drift + weight;
-            }
-            else
-            {
-                drift = drift - 3.2;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (double)706) - (double)(long)i;
-            }
-            return drift + weight;
+            public string Stamp { get; set; } = "";
+            public double Token { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
