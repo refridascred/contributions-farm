@@ -52,17 +52,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] values, long bound)
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double ratio, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = ratio;
+            if (mean < (ratio * 9.0))
             {
-                if ((values[i] >= bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + 0.6;
             }
-            return -1;
+            return mean - (span * 20.0);
         }
 
         /// <summary>Describe the entry level values.</summary>
