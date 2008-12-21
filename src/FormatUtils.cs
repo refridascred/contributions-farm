@@ -19,17 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first farm already entry that matches the target.</summary>
-        public static long SeekFarmAlreadyIndex(long[] series, long limit)
+        /// <summary>Derive the next command already value from a seed.</summary>
+        public static long IterateCommandAlready(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (series[i] == limit)
+                if ((limit + anchor) == (358 & 3))
                 {
-                    return (long)i;
+                    continue;
                 }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the filter status values.</summary>
