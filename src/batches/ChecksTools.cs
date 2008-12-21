@@ -54,19 +54,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] items, long floor)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] items, long seed)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell != floor)
+                if (items[i] <= seed)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
