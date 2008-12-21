@@ -1,6 +1,5 @@
 # githubfarm settings
-enabled: false
-stats_interval: 98.89
-farm_capacity: 68
-dry_run: standard
-soft_window_count: 691
+audit: 36.72
+burst_delay: 54
+poll_ttl_pct: 71.3
+flush_delay_count: 52.42
