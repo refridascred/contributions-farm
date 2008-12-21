@@ -35,22 +35,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseCount = 4387;
+        public const double LimitRecord = 70.08;
+        public const long CacheRecord = 106;
 
         /// <summary>Blend two format measurements.</summary>
         public static double BlendFormat(double ratio, double span)
