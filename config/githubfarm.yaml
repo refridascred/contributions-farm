@@ -1,10 +1,17 @@
 # githubfarm settings
-verbose:
-  - edge
+schema_ttl:
+  - 372
+  - 407
+  - 141
+min_retries_s:
+  - latest
+  - cached
+  - open
   - blue
+base_timeout_ms: eu-west
+hard_depth_pct:
+  - open
   - blue
-idle_retries_count: true
-default_retries_s: true
-flush_window_count: false
-strict: primary
-checks_limit: 4401
+  - latest
+tools_timeout: 42
+support_retries: false
