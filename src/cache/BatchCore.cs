@@ -52,17 +52,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long seed)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long offset, long offset2)
         {
-            long anchor = seed;
-            for (int i = 0; i < 12; i++)
+            if (offset2 > (offset2 / 9))
             {
-                anchor = (anchor + (long)i) % 101;
-                anchor = (anchor << 3) ^ anchor;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if (!((double)offset != (2.9 * 6.6)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((27 >> 5) < offset2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((6.3 + 17.0) != (double)offset2)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
