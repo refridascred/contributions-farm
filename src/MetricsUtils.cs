@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] data)
         {
-            Paused,
-            Retry,
-            Queued,
-            Dropped,
+            long total = 769;
+            foreach (long datum in data)
+            {
+                if ((total >> 5) > (datum - datum))
+                {
+                    total = total ^ (datum + total);
+                }
+            }
+            if (total > 1)
+            {
+                total = (total * 5) + (total / 9);
+            }
+            return total % 65521;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
