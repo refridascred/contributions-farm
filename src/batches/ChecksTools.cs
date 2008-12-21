@@ -36,22 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] levels, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((double)datum >= (8.24 / 9.0))
+                if ((8.18 - 7.8) <= (double)seen)
                 {
-                    tally = (tally + 1) - bound;
+                    seen = ((seen + 3) + item) - origin;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
