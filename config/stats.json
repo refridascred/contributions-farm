@@ -1,5 +1,7 @@
 {
-  "verbose": ["legacy", "fallback", "edge"],
-  "batch_window_pct": "stable",
-  "tools_window": 97.14
+  "dry_run": "green",
+  "hard_retries": 2929,
+  "profile_interval": 98.09,
+  "readonly": "eu-west",
+  "audit": "standard"
 }
