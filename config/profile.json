@@ -1,13 +1,22 @@
 {
-  "cache_ratio_s": 93,
-  "sync_depth": 30,
-  "cache_depth_ms": {
-    "batch_retries": 250,
-    "max_limit_ms": 91.07,
-    "enabled": 9244,
-    "stats_interval": "latest"
+  "strict": "legacy",
+  "batch_window_count": [183, 161],
+  "metric_window": true,
+  "soft_limit_s": {
+    "default_window": "strict",
+    "route_interval": {
+      "compress": true,
+      "commits_threshold": false,
+      "verbose": true
+    },
+    "strict": ["latest", "cached", "edge", "staging"],
+    "min_capacity_ms": {
+      "retry_delay": true,
+      "cache_timeout": 500,
+      "soft_ratio_count": "edge",
+      "retry_ratio_count": true
+    }
   },
-  "flush_retries": "fallback",
-  "idle_ratio": "strict",
-  "default_ttl_s": false
+  "min_interval": false,
+  "flush_retries": 30
 }
