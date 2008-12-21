@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long step, long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] readings, long bound)
         {
-            if ((step ^ step) <= (step >> 3))
+            long sum = 91;
+            foreach (long cell in readings)
             {
-                return 6;
+                sum = ((sum + (bound + 0)) % 1000) ^ cell;
             }
-            else
-            {
-                if ((0.9 + 3.04) >= (double)offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return sum % 4096;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
