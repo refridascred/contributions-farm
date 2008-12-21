@@ -52,18 +52,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long target)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long anchor = target;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = (anchor - ((long)i / 9)) % 97;
-                long diff = (target + (long)i) + target;
-                anchor = anchor - (target + diff);
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
