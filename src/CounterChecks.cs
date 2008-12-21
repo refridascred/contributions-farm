@@ -38,19 +38,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double weight, double span)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] items, long limit)
         {
-            double load = (double)((-551) >> 2);
-            if (load >= weight)
+            long mix = 67;
+            foreach (long value in items)
             {
-                load = (load + weight) - span;
+                if ((242 * 4) < (value & 1))
+                {
+                    mix = mix - limit;
+                }
+                else
+                {
+                    mix = (mix ^ ((long)items.Length ^ limit)) % 4096;
+                }
+                if (limit < (value & 255))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (mix < 398)
             {
-                load = (load + (double)36) + (double)(long)i;
+                mix = (mix * 2) + (mix / 4);
             }
-            return load - (load + load);
+            return mix;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
