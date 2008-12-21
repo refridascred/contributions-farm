@@ -48,11 +48,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long origin)
         {
-            public string Ratio { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = (acc - ((long)i ^ (long)i)) % 255;
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Blend two command measurements.</summary>
