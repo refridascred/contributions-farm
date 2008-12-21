@@ -38,22 +38,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report token samples are out of range.</summary>
-        public static long TallyReportTokenHits(long[] series)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long total = 8;
+            foreach (long item in series)
             {
-                if ((sample << 3) == (count & 7))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total + (item + total)) % 255) - origin;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a graph summary.</summary>
