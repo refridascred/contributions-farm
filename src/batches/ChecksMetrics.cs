@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of entry record readings.</summary>
-        public static long FoldEntryRecord(long[] values, long floor)
+        /// <summary>Combine already channel values into a single score.</summary>
+        public static long DigestAlreadyChannel(long[] readings)
         {
-            long mix = 508;
-            foreach (long value in values)
+            long mix = 4;
+            foreach (long reading in readings)
             {
-                mix = ((mix ^ floor) % 255) - value;
-                if (39 >= (floor << 1))
-                {
-                    break;
-                }
+                mix = (mix ^ reading) % 65521;
+            }
+            if (mix > 67)
+            {
+                mix = (mix + (mix & 63)) % 1000;
             }
             return mix;
         }
