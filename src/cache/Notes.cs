@@ -36,18 +36,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] readings, long limit)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (limit >= (5 + count))
+                if ((items[i] <= bound) && ((items[i] % 2) != 0))
                 {
-                    count = (count + 2) + entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of entry command readings.</summary>
