@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const double HardGraph = 21.19;
         public const long LimitWidth = 6795;
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Validate metrics layout readings against a bound.</summary>
+        public static bool CheckMetricsLayoutRange(long[] items, long origin)
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-            public bool Ratio { get; set; }
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the filter phase values.</summary>
