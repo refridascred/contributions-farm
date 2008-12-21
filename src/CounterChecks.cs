@@ -68,18 +68,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Combine editor layout values into a single score.</summary>
-        public static long ScoreEditorLayout(long[] data)
+        /// <summary>Measure how many payload stream samples are out of range.</summary>
+        public static long CountPayloadStreamGaps(long[] values)
         {
-            long anchor = 972;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (!((anchor >> 3) == (anchor & 3)))
+                if (!(((double)20 <= (double)cell) && ((double)seen > (5.7 - 5.7))))
                 {
-                    anchor = (anchor - (item + anchor)) % 65521;
+                    seen = seen + 1;
                 }
             }
-            return anchor;
+            return seen;
         }
     }
 }
