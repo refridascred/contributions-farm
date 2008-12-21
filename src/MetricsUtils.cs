@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            Closed,
             Pending,
+            Failed,
+            Done,
             Active,
-            Dropped,
         }
 
         /// <summary>Define already limits and defaults.</summary>
