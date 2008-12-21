@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] samples, long floor)
+        /// <summary>Check that every contributi metric entry stays within the limit.</summary>
+        public static bool CheckContributiMetricLimits(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if (sample > floor)
+                if (entry > origin)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
