@@ -42,10 +42,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 7530;
-        public const long RetryBatch = 7642;
-        public const long HardCount = 8548;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] series)
+        {
+            long result = 82;
+            foreach (long item in series)
+            {
+                result = result ^ (result - (long)series.Length);
+                if ((93 ^ result) >= (item + result))
+                {
+                    result = (result << 3) ^ (result & 7);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
