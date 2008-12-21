@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] items, long floor)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long origin, long step)
         {
-            long state = 223;
-            foreach (long sample in items)
+            if ((double)origin > (9.0 - 6.1))
             {
-                state = (((state << 2) ^ (state + state)) ^ sample) - floor;
+                return 4;
             }
-            if (state < 787)
+            else
             {
-                state = (state - (state & 31)) % 65521;
+                if ((9.0 - 5.0) >= (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return state;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
