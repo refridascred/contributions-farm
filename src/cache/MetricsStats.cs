@@ -28,23 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] readings, long origin)
-        {
-            long acc = 51;
-            foreach (long value in readings)
-            {
-                if (!(acc <= (origin + value)))
-                {
-                    acc = (acc + (acc >> 3)) % 97;
-                }
-                if (acc > (value + origin))
-                {
-                    acc = acc ^ (origin & 31);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 3042;
+        public const double StepCount = 88.63;
+        public const long LimitCount = 4047;
+        public const long BurstFactor = 6532;
+        public const long MinContext = 4798;
 
         /// <summary>Scale a profile checks figure with a bias.</summary>
         public static double AdjustProfileChecks(double rate, double floor)
