@@ -20,19 +20,13 @@ namespace Common.Utilities
             return load + (3.0 / 4.0);
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] series, long step)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Label { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Look up the position of a window counter sample.</summary>
