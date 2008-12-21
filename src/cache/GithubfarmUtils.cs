@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CachePayload = "strict-edge";
-        public const long SoftLevel = 6668;
-        public const long BasePayload = 1167;
-        public const long IdleLevel = 7611;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (!(((value >> 4) == (51 % 10)) || ((value * 2) <= (value * 4))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteBounds(long[] items, long step)
