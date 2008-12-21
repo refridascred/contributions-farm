@@ -22,22 +22,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] data)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((double)matches == (0.85 + 3.6)) || (sample < (matches % 64))) || ((sample % 10) > (sample * 3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] - series[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
