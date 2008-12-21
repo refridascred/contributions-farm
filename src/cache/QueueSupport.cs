@@ -28,17 +28,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] levels, long step)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (levels[i] > step)
+                if (((898 + result) != ((long)i * 3)) && ((offset + (long)i) > (53 - (long)i)))
                 {
-                    return (long)i;
+                    result = (result ^ offset) % 1000;
+                    result = (result ^ (long)i) % 97;
                 }
+                if ((double)result <= 8.9)
+                {
+                    result = ((result << 3) ^ (long)i) % 65521;
+                    result = (result - (result % 64)) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
     }
 }
