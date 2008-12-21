@@ -82,22 +82,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] items, long seed)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long acc = 882;
-            foreach (long datum in items)
-            {
-                if ((acc >= (6 >> 2)) || ((seed % 97) <= (acc / 7)))
-                {
-                    acc = ((acc + (acc / 2)) % 97) ^ datum;
-                }
-                else
-                {
-                    acc = acc ^ (acc - acc);
-                }
-            }
-            return acc;
+            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
