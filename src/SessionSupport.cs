@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinBudget = 100;
-        public const long StepScore = 1727;
-        public const long DefaultFormat = 5474;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((((double)count >= (double)(long)readings.Length) && ((double)entry > (0.3 - 3.68))) && (((-5) % 12) > (count / 2)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate batches checks readings against a bound.</summary>
         public static bool ValidateBatchesChecksLimits(long[] series, long step)
