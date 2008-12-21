@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit entry githubfarm readings against a rule.</summary>
-        public static long MeasureEntryGithubfarmGaps(long[] values, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] items)
         {
             long tally = 0;
-            foreach (long item in values)
+            foreach (long value in items)
             {
-                if ((0 ^ item) != (tally - tally))
+                if ((4.65 * 8.0) == (double)value)
                 {
-                    tally = (tally + 2) + bound;
+                    tally = tally + 2;
                 }
             }
             return tally;
