@@ -17,10 +17,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftSize = 7983;
-        public const double RetryReport = 40.83;
-        public const string SoftReport = "stable-v2";
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandOutliers(long[] data, long limit)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((limit << 1) >= entry)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long CompareQueueCount(long[] series)
