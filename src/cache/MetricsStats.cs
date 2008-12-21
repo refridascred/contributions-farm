@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 4) + (offset % 97)) % 65521;
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string WindowChannel = "fallback-v2";
+        public const long HardChannel = 3327;
+        public const double HardCount = 36.68;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long TallyAlready(long[] levels, long origin)
