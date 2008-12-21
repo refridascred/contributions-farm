@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long seed, long seed2)
         {
-            Idle,
-            Dropped,
-            Failed,
+            long bound = seed - seed2;
+            if (bound < (bound << 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((2 & 15) != (seed + seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
