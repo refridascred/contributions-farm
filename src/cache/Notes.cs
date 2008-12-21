@@ -26,17 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] samples, long floor)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            New,
+            Idle,
+            Stale,
+            Synced,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
