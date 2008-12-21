@@ -16,15 +16,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double ratio, double bias)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double weight, double span)
         {
-            double load = (double)1 / 9.0;
-            if (load >= 4.1)
+            double bias = (double)(435 + 95);
+            for (int i = 0; i < 2; i++)
             {
-                load = ((load - (double)0) - ratio) + bias;
+                bias = (((bias - bias) + (double)(long)i) + weight) - span;
             }
-            return load + (8.35 - 0.97);
+            return bias + (double)74;
         }
 
         /// <summary>Grade a counter cache value against two limits.</summary>
