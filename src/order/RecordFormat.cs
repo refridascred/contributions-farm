@@ -42,18 +42,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] readings, long step)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long step)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long acc = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((((double)count < 17.0) && (step <= count)) || (reading <= (count >> 3)))
-                {
-                    count = count + 3;
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
