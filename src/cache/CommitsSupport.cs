@@ -61,12 +61,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            public bool Size { get; set; }
-            public bool Region { get; set; }
-            public string Level { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
