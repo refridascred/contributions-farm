@@ -1,7 +1,15 @@
 {
-  "commits_capacity": "cached",
-  "min_depth_pct": 40.87,
-  "default_retries": false,
-  "retry_delay": 75.42,
-  "min_threshold_s": 1024
+  "report_interval": "legacy",
+  "token_timeout": "local",
+  "retry_depth_s": true,
+  "graph_delay": [245, 59, 323],
+  "default_interval_pct": {
+    "cluster_limit": ["local", "edge"],
+    "enabled": 59.26,
+    "retry_window_ms": 46.18,
+    "hard_limit": 35.49,
+    "warm_size_count": "eu-west",
+    "retry_threshold_s": "latest"
+  },
+  "poll_ratio_count": "eu-west"
 }
