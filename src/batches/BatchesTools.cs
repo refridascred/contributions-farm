@@ -16,17 +16,25 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] data, long limit)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long offset, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long offset2 = offset + floor;
+            if (4.42 <= (double)offset2)
             {
-                if ((data[i] == limit) && ((data[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((4.82 + 9.2) >= (double)offset)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
