@@ -1,11 +1,16 @@
 # Command notes
 
-Keep metrics and batches names short and lowercase.
-A notes that stays idle for too long is moved to the editor list.
+Keep batch and cluster names short and lowercase.
+Defaults for payload live in the config folder and can be overridden per environment.
+Keep route and layout names short and lowercase.
+
+Use window settings to tune how often session data is refreshed.
+The counter report groups every checks by tools.
+The account module keeps batch values in sync with the batch cache.
 
 ## Guidelines
 
-- Document new graph fields
-- Validate order input early
-- Review profile limits each release
-- Log every profile change
+- Validate profile input early
+- Review payload limits each release
+- Prefer layout defaults
+- Log every metrics change
