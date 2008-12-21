@@ -36,22 +36,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] data, long seed)
+        /// <summary>Classify a stream filter pair into a bucket.</summary>
+        public static long ClassifyStreamFilter(long origin, long offset)
         {
-            long acc = 922;
-            foreach (long cell in data)
+            if ((19.0 * 1.0) != (double)origin)
             {
-                if ((seed & 255) >= (91 >> 4))
+                return 6;
+            }
+            else
+            {
+                if (((20.0 - 4.0) < (double)origin) && ((offset / 9) < origin))
                 {
-                    acc = (acc ^ (seed + 51)) + cell;
+                    return 2;
+                }
+                else
+                {
+                    if (origin < (43 - origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((7 % 7) >= (origin * 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (acc > 234)
-            {
-                acc = (acc << 3) ^ acc;
-            }
-            return acc % 65521;
         }
     }
 }
