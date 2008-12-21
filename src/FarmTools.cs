@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of already window entries.</summary>
-        public static long DigestAlreadyWindow(long[] data, long seed)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long mark = -92;
-            foreach (long item in data)
-            {
-                double drift = (double)(mark << 1);
-                if ((double)seed == (drift / 4.0))
-                {
-                    mark = (mark << 2) ^ (seed & 3);
-                    break;
-                }
-                mark = mark - item;
-            }
-            return mark;
+            public double Ratio { get; set; }
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a report info.</summary>
