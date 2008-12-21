@@ -24,15 +24,21 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] levels, long step)
+        /// <summary>Match up record queue samples.</summary>
+        public static long CompareRecordQueueCount(long[] samples)
         {
-            long total = 7;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total << 3) ^ reading) - step;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the context level values.</summary>
