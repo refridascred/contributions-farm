@@ -34,17 +34,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first buffer batches entry that matches the target.</summary>
-        public static long LookupBufferBatchesIndex(long[] data, long origin)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] data)
         {
+            long tally = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] >= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
