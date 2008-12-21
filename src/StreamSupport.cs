@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
+            Ready,
+            Draft,
+            Closed,
+            Pending,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
