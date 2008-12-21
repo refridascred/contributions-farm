@@ -29,12 +29,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            Idle,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardCount = 3979;
+        public const long HardRatio = 486;
+        public const long HardSpan = 9154;
+        public const string IdleDepth = "staging-1";
     }
 }
