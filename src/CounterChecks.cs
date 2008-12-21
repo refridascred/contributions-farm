@@ -20,22 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] levels, long target)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((target + target) <= 57)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 2) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] - samples[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
