@@ -33,21 +33,11 @@ namespace Common.Utilities
             return load - (load * 16.0);
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] items)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
