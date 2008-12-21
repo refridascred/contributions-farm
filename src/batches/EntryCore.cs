@@ -67,30 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] readings)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmRange(long[] series, long floor)
         {
-            long anchor = 174;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if (value >= (value << 2))
+                if (cell < floor)
                 {
-                    anchor = (anchor + (anchor - value)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor - (long)readings.Length) % 97;
-                }
-                if ((double)anchor <= (double)value)
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (anchor > 84)
-            {
-                anchor = ((anchor * 4) + (anchor * 3)) % 4096;
-            }
-            return anchor;
+            return ok;
         }
     }
 }
