@@ -17,18 +17,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] items)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((2.89 / 6.0) == (double)sample)
+                if ((series[i] >= seed) && ((series[i] % 3) != 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
