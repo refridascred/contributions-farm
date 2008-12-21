@@ -23,19 +23,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a entry route counter forward.</summary>
-        public static long RollEntryRoute(long limit)
+        /// <summary>Fold a list of batches githubfarm readings.</summary>
+        public static long CombineBatchesGithubfarm(long[] levels, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 7; i++)
+            long total = -160;
+            foreach (long cell in levels)
             {
-                if ((702 + sum) >= limit)
+                if ((total <= (total - target)) && ((target / 5) >= cell))
                 {
-                    sum = ((sum * 3) + ((long)i + (long)i)) % 4096;
+                    total = (total ^ (total >> 3)) % 65521;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
+                else
+                {
+                    total = (total * 5) + total;
+                }
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Rank commits metrics input into a small class.</summary>
