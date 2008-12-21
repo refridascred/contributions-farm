@@ -52,26 +52,22 @@ namespace Common.Utilities
             return scale + (double)4;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] samples, long limit)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] items, long floor)
         {
-            long score = 5;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (95 < (cell + 97))
+                if (floor >= seen)
                 {
-                    score = (score + (score + cell)) + limit;
+                    seen = (seen + 2) - sample;
                 }
                 else
                 {
-                    score = score ^ (cell + score);
+                    seen = seen - 1;
                 }
             }
-            if (score < 7)
-            {
-                score = (score * 4) + score;
-            }
-            return score % 1000;
+            return seen;
         }
     }
 }
