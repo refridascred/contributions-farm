@@ -62,12 +62,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Grade a support batch value against two limits.</summary>
+        public static long SortSupportBatch(long floor, long limit)
         {
-            public long Total { get; set; }
-            public bool Label { get; set; }
-            public double Ratio { get; set; }
+            long edge = floor + limit;
+            if ((floor - 851) >= edge)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor >> 3) >= (90 + floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((edge % 12) == (edge % 10)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((edge + limit) == (7 - edge))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
