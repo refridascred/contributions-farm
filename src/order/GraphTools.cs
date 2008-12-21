@@ -31,21 +31,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] data)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor << 3) ^ bound) % 97;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the batch state values.</summary>
