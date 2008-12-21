@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long HardChannel = 3327;
         public const double HardCount = 36.68;
 
-        /// <summary>Match up window report samples.</summary>
-        public static long MatchWindowReportCount(long[] readings)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (hits <= (item / 8))
                 {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 1) + target;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
