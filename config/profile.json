@@ -1,21 +1,6 @@
 {
-  "readonly": {
-    "idle_window": 27.7,
-    "enabled": 98,
-    "flush_size_s": false,
-    "default_retries": {
-      "cache_limit_ms": 5,
-      "route_threshold": 41,
-      "retry_depth_s": "staging",
-      "payload_retries": "eu-west",
-      "soft_ratio_ms": "stable",
-      "report_interval": "stable"
-    },
-    "stream_capacity": false
-  },
-  "idle_ttl_pct": "edge",
-  "max_retries_s": "local",
-  "metric_ttl": 6509,
-  "hard_limit_s": 63.93,
-  "commits_ttl": 48.19
+  "soft_window": 30,
+  "sync_window_pct": "edge",
+  "max_size": "eu-west",
+  "stats_threshold": 60
 }
