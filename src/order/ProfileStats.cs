@@ -20,14 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Locked,
-            Queued,
-            Closed,
-            Failed,
-            Ready,
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
