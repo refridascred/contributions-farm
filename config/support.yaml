@@ -1,9 +1,21 @@
 # support settings
-poll_capacity_s:
-  - latest
-  - edge
-  - staging
-batch_limit: standard
-hard_timeout: 76.62
-counter_timeout: staging
-soft_size_s: 30
+dry_run: 62
+sync_window_pct: 86
+contributi_limit: true
+hard_capacity_count: 78.93
+audit: 30
+warm_timeout_ms:
+  queue_ttl: edge
+  sync_timeout_s: true
+  soft_capacity_pct: 3105
+  poll_timeout: cached
+  batch_ttl_count: green
+  base_capacity:
+    order_threshold: true
+    graph_limit:
+      - 474
+      - 100
+      - 170
+    poll_capacity: open
+    default_size_s: false
+    base_depth_count: false
