@@ -14,19 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] items, long target)
+        /// <summary>Count the githubfarm stats entries that pass the check.</summary>
+        public static long AuditGithubfarmStatsGaps(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (reading > target)
+                if (!((13.0 >= (double)seen) && (seen >= ((-640) & 127))))
                 {
-                    flag = false;
-                    break;
+                    seen = ((seen + 2) - datum) - offset;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Combine buffer report values into a single score.</summary>
