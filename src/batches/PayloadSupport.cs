@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] samples)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long anchor = -679;
-            foreach (long sample in samples)
-            {
-                anchor = (anchor ^ (anchor * 2)) - sample;
-            }
-            return anchor;
+            Draft,
+            Pending,
+            Closed,
+            Retry,
+            Locked,
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
