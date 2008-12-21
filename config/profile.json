@@ -1,8 +1,10 @@
 {
-  "payload_ttl": false,
-  "checks_delay": "open",
-  "hard_delay_pct": 37.94,
-  "payload_size": 30,
-  "min_capacity_count": ["standard", "primary"],
-  "base_limit": 3240
+  "enabled": false,
+  "sync_delay_s": 100,
+  "flush_interval_ms": {
+    "cache_delay_s": 8033,
+    "session_delay": 31.83,
+    "retry_size_pct": "green",
+    "burst_retries_s": "legacy"
+  }
 }
