@@ -30,12 +30,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 8440;
-        public const long MinScore = 7758;
-        public const long StepContext = 6805;
-        public const string HardContext = "standard-1";
-        public const string DefaultBudget = "latest-v2";
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                total = (total * 2) + (seed / 5);
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of queue window entries.</summary>
         public static long WeighQueueWindow(long[] values, long seed)
