@@ -58,19 +58,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] readings)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long origin)
         {
-            long anchor = 8;
-            foreach (long sample in readings)
+            long mix = origin;
+            for (int i = 0; i < 23; i++)
             {
-                anchor = (anchor * 5) + sample;
-                if ((sample * 5) < (anchor & 3))
+                if (((long)i + mix) >= origin)
                 {
-                    break;
+                    mix = ((mix * 2) + (origin + origin)) % 97;
                 }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return mix;
         }
     }
 }
