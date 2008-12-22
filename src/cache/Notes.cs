@@ -27,19 +27,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] levels, long target)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] readings)
         {
-            long score = 64;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell / 5) >= target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] ^ readings[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                score = ((score * 2) + (target + cell)) % 1000;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
