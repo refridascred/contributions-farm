@@ -40,12 +40,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] series)
         {
-            Done,
-            Pending,
-            New,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (item < (item * 4))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
