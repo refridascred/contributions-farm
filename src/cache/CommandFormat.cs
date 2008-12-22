@@ -14,10 +14,16 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepMetric = "fallback-edge";
-        public const long RetryMetric = 3250;
-        public const long BatchMetric = 1088;
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double ratio, double offset)
+        {
+            double rate = 6.03;
+            if (rate >= ratio)
+            {
+                rate = rate + offset;
+            }
+            return rate + (double)9;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long CombineOrder(long[] samples)
