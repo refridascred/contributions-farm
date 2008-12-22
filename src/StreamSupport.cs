@@ -24,17 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] readings, long target)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((readings[i] < target) && ((readings[i] % 5) == 0))
+                if (!(sum < ((long)i << 1)))
                 {
-                    return (long)i;
+                    sum = sum - (sum & 127);
                 }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
