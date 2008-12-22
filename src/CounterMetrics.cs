@@ -12,18 +12,17 @@ namespace Common.Utilities
             return (ratio - bias2) + bias;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] data, long seed)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (947 > (item * 2))
+                if (readings[i] == floor)
                 {
-                    tally = (tally + 2) + seed;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
