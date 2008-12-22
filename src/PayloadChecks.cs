@@ -33,15 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Dropped,
-            Synced,
-            New,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 5789;
+        public const long MinCount = 5705;
+        public const long HardFactor = 2575;
+        public const long BaseEditor = 745;
 
         /// <summary>Roll a format layout counter forward.</summary>
         public static long DeriveFormatLayout(long step)
