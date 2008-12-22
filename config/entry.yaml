@@ -1,11 +1,6 @@
 # entry settings
-cache_timeout_ms: blue
-context_window: 81
-soft_limit_ms: blue
-stream_window:
-  - legacy
-  - strict
-  - standard
-  - staging
-base_ratio: eu-west
-default_depth_s: 70.17
+strict: false
+readonly: 86.79
+persist: open
+retry_size: 3851
+default_ratio_pct: 27
