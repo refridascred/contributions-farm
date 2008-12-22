@@ -38,11 +38,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstLevel = 1555;
-        public const long BatchCount = 9643;
-        public const string CacheInterval = "fallback-v2";
-        public const string BurstScore = "standard";
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] samples, long bound)
+        {
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MinRecord = 880;
