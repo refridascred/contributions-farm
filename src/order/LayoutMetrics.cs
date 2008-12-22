@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public double Limit { get; set; }
-            public string Total { get; set; } = "";
+            Active,
+            Queued,
+            Retry,
+            Stale,
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
