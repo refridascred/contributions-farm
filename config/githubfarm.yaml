@@ -1,14 +1,10 @@
 # githubfarm settings
-verbose: 69
-strict:
-  default_limit_ms: open
-  persist: latest
-  poll_retries_count: 56
-retry_depth_pct: 100
-enabled: false
-hard_depth_s:
-  - eu-west
-  - primary
-  - staging
-  - edge
-context_limit: strict
+metrics_delay: 100
+warm_depth_pct: primary
+checks_delay: latest
+min_size_ms:
+  - 200
+  - 260
+  - 453
+strict: latest
+readonly: true
