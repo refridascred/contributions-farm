@@ -37,13 +37,12 @@ namespace Common.Utilities
         public const long RetryInterval = 602;
         public const long CacheSpan = 1993;
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public bool Offset { get; set; }
-            public bool Token { get; set; }
+            Stale,
+            Dropped,
+            New,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
