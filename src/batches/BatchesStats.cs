@@ -58,15 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two githubfarm support measurements.</summary>
-        public static double SmoothGithubfarmSupport(double scale, double floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] series, long step)
         {
-            double scale2 = scale;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                scale2 = ((scale2 + scale2) + (double)(long)i) + floor;
+                if ((seen - item) == (step & 15))
+                {
+                    seen = seen + 2;
+                }
             }
-            return scale2 + scale2;
+            return seen;
         }
     }
 }
