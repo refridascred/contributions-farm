@@ -56,11 +56,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double scale, double span)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] data, long floor)
         {
-            double bias = (scale / 7.0) * 3.1;
-            return (bias + bias) + span;
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
