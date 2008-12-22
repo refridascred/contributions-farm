@@ -29,18 +29,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] values, long bound)
+        /// <summary>Check that every queue schema entry stays within the limit.</summary>
+        public static bool ValidateQueueSchemaLimits(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (!((tally + datum) < bound))
+                if (reading >= offset)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Hold a layout header.</summary>
