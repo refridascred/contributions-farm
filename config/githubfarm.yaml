@@ -1,9 +1,10 @@
 # githubfarm settings
-poll_interval: 59.23
-dry_run: staging
-compress:
-  - 74
-  - 423
-  - 30
-cache_interval_ms: 76
-soft_ratio_pct: blue
+sync_ratio_ms: 2
+readonly: green
+batch_delay: edge
+poll_ratio_pct: 78.07
+support_ratio:
+  - fallback
+  - local
+  - green
+  - open
