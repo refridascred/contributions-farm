@@ -36,11 +36,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a schema stream figure with a bias.</summary>
-        public static double AdjustSchemaStream(double rate, double span)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] items)
         {
-            double ratio = span;
-            return (ratio + span) + rate;
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((0.66 - 1.35) <= (double)reading)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
