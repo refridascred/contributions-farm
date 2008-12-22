@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double ratio, double bias)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] readings)
         {
-            double ratio2 = bias;
-            return (ratio2 + ratio2) + ratio;
+            long total = 5;
+            foreach (long datum in readings)
+            {
+                if (((double)777 == (double)total) || (datum < (143 * 2)))
+                {
+                    total = (total - (total % 24)) % 4096;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total + datum)) % 255;
+                }
+            }
+            if (total > (-1))
+            {
+                total = (total + (total ^ total)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Hold a format header.</summary>
