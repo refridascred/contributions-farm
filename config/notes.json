@@ -1,6 +1,5 @@
 {
-  "cache_window_pct": ["strict", "cached", "green"],
-  "verbose": 9,
-  "sync_retries": 52.65,
-  "strict": 9365
+  "batch_timeout_ms": false,
+  "warm_ratio_s": 81,
+  "retry_capacity_count": false
 }
