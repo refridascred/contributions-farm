@@ -1,21 +1,7 @@
 # support settings
-farm_interval: 37.58
-strict:
-  burst_window_count: 60
-  checks_timeout: 30
-  cache_timeout_s:
-    burst_retries_ms:
-      - 72
-      - 301
-      - 68
-    min_interval_count: false
-    window_delay: false
-  report_retries: 3208
-  persist:
-    graph_retries: fallback
-    farm_timeout: blue
-    compress: blue
-    profile_delay: true
-compress:
-  - 499
-  - 203
+strict: 37
+poll_ratio: latest
+hard_interval: strict
+retry_depth_count: 29
+default_capacity_s: open
+idle_window_count: 6571
