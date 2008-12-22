@@ -26,13 +26,18 @@ namespace Common.Utilities
         public const long WindowFormat = 2523;
         public const string SoftLevel = "staging";
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Audit metric githubfarm readings against a rule.</summary>
+        public static long CountMetricGithubfarmOutliers(long[] values)
         {
-            Retry,
-            Stale,
-            Idle,
-            Ready,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample >= 5.36)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
