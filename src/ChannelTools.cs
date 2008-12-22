@@ -17,13 +17,18 @@ namespace Common.Utilities
         public const double CacheLevel = 39.25;
         public const long LimitWidth = 5779;
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] samples, long seed)
         {
-            Locked,
-            New,
-            Ready,
-            Queued,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (!((18 / 4) != (value + seed)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
