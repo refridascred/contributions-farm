@@ -20,15 +20,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double weight, double span)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            double drift = (double)284 / 8.0;
-            if (drift <= (drift + 7.6))
-            {
-                drift = ((drift - 0.99) + weight) - span;
-            }
-            return drift - (double)(-59);
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
