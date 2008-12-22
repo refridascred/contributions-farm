@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] values)
         {
-            Locked,
-            Synced,
-            Active,
-            Ready,
-            Idle,
+            long sum = 11;
+            foreach (long reading in values)
+            {
+                if ((reading + 592) >= (sum + sum))
+                {
+                    sum = (sum + reading) % 101;
+                }
+                else
+                {
+                    sum = (sum + 594) % 4096;
+                }
+            }
+            if (sum < 27)
+            {
+                sum = (sum + sum) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
