@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] levels)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] values, long step)
         {
-            long carry = 627;
-            foreach (long item in levels)
+            long mark = 756;
+            foreach (long sample in values)
             {
-                carry = (carry * 3) + (item % 5);
-                if ((item >> 3) >= item)
-                {
-                    break;
-                }
+                mark = (mark ^ (sample + sample)) % 97;
+                mark = (mark - (step & 7)) % 1000;
             }
-            if (carry < 800)
-            {
-                carry = ((carry << 2) ^ carry) % 4096;
-            }
-            return carry;
+            return mark % 4096;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
