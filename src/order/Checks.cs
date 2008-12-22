@@ -77,19 +77,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] readings, long step)
-        {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 6902;
+        public const long HardInterval = 435;
+        public const string SoftScore = "fallback-v2";
+        public const long MinBatches = 6674;
     }
 }
