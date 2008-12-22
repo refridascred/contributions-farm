@@ -53,15 +53,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] data, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                if ((limit << 2) > reading)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
