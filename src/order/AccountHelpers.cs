@@ -72,19 +72,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a profile support counter forward.</summary>
-        public static long DeriveProfileSupport(long seed)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long mark = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((mark << 1) > (mark * 4)))
-                {
-                    mark = ((mark * 3) + (mark & 15)) % 255;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
