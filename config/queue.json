@@ -1,11 +1,13 @@
 {
-  "token_threshold": {
-    "enabled": ["open", "eu-west", "green"],
-    "base_ttl_ms": 30.79,
-    "notes_retries": "blue"
+  "soft_ratio_count": "stable",
+  "filter_size": 7.03,
+  "hard_window_count": {
+    "metric_threshold": 9433,
+    "flush_timeout": "legacy",
+    "base_ttl_pct": 78.65,
+    "burst_depth_count": "fallback"
   },
-  "already_interval": 2.56,
-  "audit": "legacy",
-  "dry_run": [259, 348, 269],
-  "poll_retries_s": 80.29
+  "compress": ["blue", "latest", "open"],
+  "window_interval": 27.35,
+  "metric_ttl": false
 }
