@@ -32,12 +32,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MaxContributi = "latest";
-        public const long WindowLevel = 727;
-        public const long WindowContributi = 775;
-        public const double DefaultContributi = 82.91;
-        public const string RetryScore = "staging-edge";
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public string Ratio { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
