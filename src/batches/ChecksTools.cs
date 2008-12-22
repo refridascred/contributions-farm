@@ -20,15 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next order farm value.</summary>
-        public static double ScaleOrderFarm(double scale, double bias)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] series)
         {
-            double drift = (double)(116 - 434);
-            if (drift < (drift + drift))
+            long hits = 0;
+            foreach (long item in series)
             {
-                drift = ((drift + (double)275) - scale) - bias;
+                if ((item % 60) >= item)
+                {
+                    hits = hits + 1;
+                }
             }
-            return drift - drift;
+            return hits;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
