@@ -1,6 +1,12 @@
 {
-  "batch_depth": "eu-west",
-  "strict": ["standard", "local", "blue", "staging"],
-  "route_limit": "edge",
-  "soft_window": 3885
+  "burst_capacity_count": {
+    "verbose": false,
+    "default_threshold_s": ["latest", "local"],
+    "hard_limit_pct": false,
+    "default_depth_count": false,
+    "default_timeout": 6887,
+    "base_window_pct": "primary"
+  },
+  "flush_capacity": false,
+  "retry_ttl_s": "eu-west"
 }
