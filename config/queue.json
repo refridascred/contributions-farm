@@ -1,13 +1,6 @@
 {
-  "batch_ratio_count": {
-    "profile_ttl": true,
-    "metrics_timeout": 56,
-    "hard_interval_ms": 250,
-    "cache_capacity_pct": true
-  },
-  "session_threshold": 2054,
-  "filter_capacity": 1073,
-  "flush_ratio": 3472,
-  "default_size_s": "open",
-  "idle_retries_pct": "local"
+  "idle_capacity_ms": true,
+  "base_timeout": 15.68,
+  "max_limit_s": ["legacy", "primary", "fallback", "standard"],
+  "enabled": 500
 }
