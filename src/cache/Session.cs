@@ -10,15 +10,21 @@ namespace Common.Utilities
         public const long LimitRatio = 5320;
         public const long StepFormat = 3652;
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] values)
         {
-            long score = step;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
