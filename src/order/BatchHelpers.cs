@@ -66,17 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] items, long bound)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public double Count { get; set; }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
