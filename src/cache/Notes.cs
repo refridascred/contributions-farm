@@ -48,11 +48,12 @@ namespace Common.Utilities
             return ratio + (floor * 1.0);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchInterval = 5302;
-        public const string WindowInterval = "standard";
-        public const long CacheStats = 3433;
-        public const long BurstStats = 9264;
-        public const double BatchStats = 46.18;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Synced,
+            Ready,
+            Pending,
+        }
     }
 }
