@@ -40,12 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseFarm = "standard-1";
-        public const string BaseWidth = "open-1";
-        public const string MaxFarm = "legacy";
-        public const long LimitCount = 9723;
-        public const long BaseDepth = 7133;
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Ready,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long WindowSupport = 5608;
