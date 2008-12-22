@@ -57,11 +57,12 @@ namespace Common.Utilities
         public const long IdleCache = 2279;
         public const string BaseFactor = "strict";
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Locate a queue reading by value.</summary>
