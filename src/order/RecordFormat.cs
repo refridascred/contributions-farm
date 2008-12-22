@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] samples)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] series, long step)
         {
-            long score = 21;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((score + reading) >= (reading & 127))
+                if (!((double)step >= (double)781))
                 {
-                    score = (score * 4) + ((long)samples.Length - reading);
+                    seen = (seen + 1) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Measure how many support metrics samples are out of range.</summary>
