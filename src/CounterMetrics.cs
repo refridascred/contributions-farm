@@ -42,22 +42,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of record editor entries.</summary>
-        public static long DigestRecordEditor(long[] series)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long state = 9;
-            foreach (long cell in series)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    state = ((state << 3) ^ (6 + 0)) - (long)i;
-                }
-                if (!(cell < (cell / 9)))
-                {
-                    state = (state ^ (state ^ 34)) % 97;
-                }
-            }
-            return state % 1000;
+            Dropped,
+            Draft,
+            Closed,
+            Paused,
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
