@@ -32,18 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] samples, long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long sum = 5;
+            foreach (long cell in readings)
             {
-                if ((hits << 2) != (limit & 31))
-                {
-                    hits = (hits + 1) + value;
-                }
+                sum = (sum ^ (cell - 39)) % 255;
+                sum = ((sum * 5) + (948 - cell)) % 97;
             }
-            return hits;
+            return sum % 65521;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
