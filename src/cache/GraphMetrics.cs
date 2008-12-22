@@ -21,11 +21,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] data, long limit)
+        public static long LocateGraphIndex(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] > limit) && ((data[i] % 2) != 0))
+                if (series[i] >= limit)
                 {
                     return (long)i;
                 }
