@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Combine token support values into a single score.</summary>
+        public static long ScoreTokenSupport(long[] values, long seed)
         {
-            public double Total { get; set; }
-            public long Ratio { get; set; }
+            long mark = 2;
+            foreach (long datum in values)
+            {
+                mark = ((mark << 3) ^ datum) % 255;
+            }
+            if (mark < (-366))
+            {
+                mark = ((mark << 2) ^ (seed % 100)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of record editor entries.</summary>
