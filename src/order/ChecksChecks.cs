@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            New,
-            Queued,
-            Locked,
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a entry info.</summary>
