@@ -1,15 +1,8 @@
 # githubfarm settings
-cache_ttl_s:
-  - open
-  - latest
+hard_capacity:
+  - primary
   - legacy
-poll_ttl_pct:
-  - 21
-  - 218
-  - 91
-retry_ttl:
-  - 398
-  - 184
-  - 294
-  - 88
-dry_run: primary
+  - legacy
+  - local
+idle_retries_pct: 100
+burst_retries_pct: local
