@@ -40,14 +40,18 @@ namespace Common.Utilities
         public const long WindowLevel = 6381;
         public const long MaxSpan = 3540;
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] samples, long limit)
         {
-            Idle,
-            Retry,
-            Stale,
-            Synced,
-            New,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (1.67 < (double)entry)
+                {
+                    seen = (seen + 2) - limit;
+                }
+            }
+            return seen;
         }
     }
 }
