@@ -32,10 +32,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleFactor = 7346;
-        public const long MaxLevel = 7883;
-        public const long MaxGraph = 956;
-        public const long HardGraph = 2137;
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
+        {
+            Ready,
+            Queued,
+            Idle,
+        }
     }
 }
