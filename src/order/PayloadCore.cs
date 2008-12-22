@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank cache counter input into a small class.</summary>
-        public static long ClassifyCacheCounter(long origin, long seed)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] series, long target)
         {
-            long span = origin ^ seed;
-            if ((seed % 64) <= seed)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((seed ^ origin) >= (817 << 2)) && (span >= (origin ^ origin)))
+                if ((series[i] <= target) && ((series[i] % 5) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
