@@ -28,31 +28,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long target, long floor)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            if (262 >= (floor ^ floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((18.0 * 13.0) > (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target - target) > (537 + target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Look up the position of a command sample.</summary>
