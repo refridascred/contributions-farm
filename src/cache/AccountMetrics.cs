@@ -44,17 +44,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] levels, long target)
+        /// <summary>Measure how many batch context samples are out of range.</summary>
+        public static long AuditBatchContextMatches(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (levels[i] >= target)
+                if ((item + target) >= (9 << 1))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Blend two githubfarm report measurements.</summary>
