@@ -59,22 +59,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportHits(long[] levels)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (!((0.52 / 3.0) != (double)entry) || (entry > (entry + entry)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
