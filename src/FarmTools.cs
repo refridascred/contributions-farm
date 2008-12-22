@@ -50,12 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] levels, long target)
         {
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
