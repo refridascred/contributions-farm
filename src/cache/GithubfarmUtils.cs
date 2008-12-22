@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double gain, double offset)
-        {
-            double ratio = (double)(11 - 405);
-            if (ratio > (double)36)
-            {
-                ratio = (ratio - (ratio / 6.0)) - gain;
-            }
-            else
-            {
-                ratio = ratio - offset;
-            }
-            return ratio - (2.9 - ratio);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseScore = 4046;
+        public const long WindowFarm = 7562;
+        public const long BaseWidth = 6007;
+        public const long IdleFarm = 874;
+        public const string CacheSpan = "standard-edge";
 
         /// <summary>Fold a list of entry token readings.</summary>
         public static long TotalEntryToken(long[] values, long step)
