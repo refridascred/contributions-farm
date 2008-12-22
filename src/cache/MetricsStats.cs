@@ -28,12 +28,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 3042;
-        public const double StepCount = 88.63;
-        public const long LimitCount = 4047;
-        public const long BurstFactor = 6532;
-        public const long MinContext = 4798;
+        /// <summary>Blend two payload counter measurements.</summary>
+        public static double BlendPayloadCounter(double gain, double floor)
+        {
+            double rate = gain;
+            if (rate > 1.72)
+            {
+                rate = (rate + (15.0 + rate)) + floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (gain * 5.1)) - (double)(long)i;
+            }
+            return rate - (rate / 3.0);
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long CombineWindow(long[] values, long origin)
