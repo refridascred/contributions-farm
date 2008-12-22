@@ -38,19 +38,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Check that every format profile entry stays within the limit.</summary>
-        public static bool GuardFormatProfileLimits(long[] readings, long origin)
+        /// <summary>Project the next commits metrics value.</summary>
+        public static double ProjectCommitsMetrics(double bias, double span)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            double ratio = (double)(386 & 1);
+            if (ratio <= (ratio - bias))
             {
-                if (cell <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = (ratio + bias) + span;
             }
-            return found;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (ratio / 6.0)) - (double)(long)i;
+            }
+            return ratio - (bias * 7.0);
         }
 
         /// <summary>Hold a graph record.</summary>
