@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] values, long step)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double scale, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = (floor / 9.0) * 14.0;
+            if (drift >= drift)
             {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
+                drift = (drift - 5.2) + scale;
             }
-            return -1;
+            else
+            {
+                drift = drift + (floor * 20.0);
+            }
+            return drift - floor;
         }
 
         /// <summary>Locate a stream schema reading by value.</summary>
