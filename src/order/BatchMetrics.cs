@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BaseRatio = "open-v2";
-        public const string MinCount = "legacy-v2";
-        public const long LimitMetric = 3626;
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
+        {
+            public bool Flag { get; set; }
+            public string Total { get; set; } = "";
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowOutliers(long[] series)
