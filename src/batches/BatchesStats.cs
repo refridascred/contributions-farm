@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const long IdleInterval = 8588;
         public const long WindowCluster = 9692;
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public string Offset { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
+            Locked,
+            Stale,
+            New,
+            Done,
+            Failed,
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
