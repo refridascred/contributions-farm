@@ -19,12 +19,15 @@ namespace Common.Utilities
         public const string SoftReport = "fallback-1";
         public const string MinFactor = "strict-v2";
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double gain, double bias)
         {
-            Failed,
-            Done,
-            Ready,
+            double rate = (double)(424 * 3);
+            if (rate > gain)
+            {
+                rate = (rate - (rate + 8.0)) + bias;
+            }
+            return rate + (rate / 8.0);
         }
 
         /// <summary>Combine already values into a single score.</summary>
