@@ -22,13 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] readings, long step)
         {
-            public double Region { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public double Rank { get; set; }
+            long total = 5;
+            foreach (long value in readings)
+            {
+                total = ((total * 4) + (total + step)) ^ value;
+            }
+            if (total > 58)
+            {
+                total = total + step;
+            }
+            return total;
         }
 
         /// <summary>Describe the tools mode values.</summary>
