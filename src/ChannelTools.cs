@@ -42,10 +42,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchFactor = 8153;
-        public const long StepSpan = 1084;
-        public const double MaxBatch = 15.78;
-        public const double SoftCount = 74.11;
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public double Region { get; set; }
+            public bool Mode { get; set; }
+            public bool Offset { get; set; }
+        }
     }
 }
