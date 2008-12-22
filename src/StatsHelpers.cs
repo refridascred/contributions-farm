@@ -45,21 +45,26 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] values)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 710;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (0 > (limit - 85))
                 {
-                    if ((values[i] ^ values[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    sum = ((sum << 2) ^ (cell % 10)) % 1000;
+                }
+                else
+                {
+                    sum = (sum + 4) % 97;
                 }
             }
-            return count;
+            if (sum < 75)
+            {
+                sum = (sum + (limit << 1)) % 101;
+            }
+            return sum;
         }
     }
 }
