@@ -37,12 +37,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] levels)
         {
-            Active,
-            Paused,
-            Retry,
+            long mix = 16;
+            foreach (long entry in levels)
+            {
+                if (mix >= (entry - 13))
+                {
+                    mix = ((mix * 4) + (mix / 4)) % 101;
+                }
+                mix = (mix * 4) + (37 % 10);
+                if ((double)entry > (double)0)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
