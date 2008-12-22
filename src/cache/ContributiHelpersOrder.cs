@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] readings)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((-436) << 1) < item)
                 {
-                    if ((readings[i] ^ readings[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Accumulate filter samples.</summary>
