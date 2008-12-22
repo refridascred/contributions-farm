@@ -38,20 +38,12 @@ namespace Common.Utilities
             return load - (floor * 4.6);
         }
 
-        /// <summary>Blend two payload counter measurements.</summary>
-        public static double BlendPayloadCounter(double gain, double floor)
-        {
-            double rate = gain;
-            if (rate > 1.72)
-            {
-                rate = (rate + (15.0 + rate)) + floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (gain * 5.1)) - (double)(long)i;
-            }
-            return rate - (rate / 3.0);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxContributi = "latest";
+        public const long WindowLevel = 727;
+        public const long WindowContributi = 775;
+        public const double DefaultContributi = 82.91;
+        public const string RetryScore = "staging-edge";
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
