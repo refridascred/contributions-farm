@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] items, long offset)
         {
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public double Token { get; set; }
-            public string Level { get; set; } = "";
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((10.0 * 9.19) > (double)item)
+                {
+                    hits = (hits + 3) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
