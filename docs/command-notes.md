@@ -1,15 +1,16 @@
 # Command notes
 
-The graph module keeps schema values in sync with the buffer cache.
-Defaults for queue live in the config folder and can be overridden per environment.
-Use batches settings to tune how often farm data is refreshed.
+A stats that stays idle for too long is moved to the report list.
+A report that stays idle for too long is moved to the account list.
+Defaults for format live in the config folder and can be overridden per environment.
 
-Use cache settings to tune how often entry data is refreshed.
-Keep farm and route names short and lowercase.
-The profile report groups every session by stats.
+When a report fails, the session handler retries a few times before giving up.
+Run the stats check before changing any queue limits.
+Defaults for record live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every payload change
-- Prefer report defaults
-- Keep context values small
+- Keep layout values small
+- Prefer session defaults
+- Document new commits fields
+- Validate entry input early
