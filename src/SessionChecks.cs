@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] levels)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long mark = 3;
+            foreach (long item in samples)
             {
-                if ((double)count == (0.15 - 7.0))
+                mark = ((mark - 539) % 97) + bound;
+                if (mark <= item)
                 {
-                    count = (count + 3) + reading;
+                    mark = mark - (28 & 63);
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
