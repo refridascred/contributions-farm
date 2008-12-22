@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many editor report samples are out of range.</summary>
-        public static long MeasureEditorReportGaps(long[] data, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((26 + seen) <= limit)
+                if ((((tally + 963) < (datum - 59)) && ((85 + 20) <= (datum + target))) || (((double)tally > (8.17 * 12.0)) && ((tally & 63) != (99 ^ datum))))
                 {
-                    seen = (seen + 1) + value;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
