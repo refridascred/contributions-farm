@@ -1,18 +1,39 @@
 # support settings
-poll_ratio:
-  warm_delay_s: 30
-  burst_window:
-    report_window:
-      - cached
-      - stable
-      - green
-      - open
-    enabled: staging
-    graph_interval: fallback
-    context_size: true
-    warm_size_ms: open
-    sync_threshold: latest
-  sync_size_ms: eu-west
-  strict: 4142
-enabled: false
-flush_retries_ms: edge
+hard_capacity_pct:
+  - cached
+  - latest
+  - green
+  - eu-west
+min_window:
+  readonly: 1393
+  soft_depth_ms:
+    sync_delay: staging
+    idle_ratio_ms: local
+    burst_ttl_s: 4
+    burst_retries_count: fallback
+    min_retries_s: 3743
+  layout_timeout: standard
+  audit:
+    - staging
+    - fallback
+    - edge
+    - strict
+  min_threshold_s: 40.27
+flush_size:
+  format_size: 100
+  batch_limit_count: true
+  hard_limit: 65.7
+queue_delay: cached
+hard_timeout_count:
+  max_capacity_pct: 250
+  readonly:
+    hard_retries: open
+    base_timeout: strict
+    cache_size: legacy
+    flush_depth: false
+    schema_size: 1024
+    burst_ratio: false
+  strict: 3.81
+  stats_window: strict
+  soft_limit_count: eu-west
+  idle_retries_ms: 80
