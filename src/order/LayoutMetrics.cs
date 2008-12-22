@@ -29,11 +29,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 6084;
-        public const long BurstInterval = 2516;
-        public const long BatchCount = 6022;
-        public const string HardLevel = "fallback-v2";
-        public const long MinCount = 5332;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Stale,
+            Ready,
+            New,
+        }
     }
 }
