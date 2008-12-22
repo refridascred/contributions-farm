@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultTimeout = 560;
-        public const long SoftFactor = 7583;
-        public const long RetryCounter = 4995;
-        public const long StepCounter = 7444;
-        public const string MinCounter = "local-v2";
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] data, long step)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((reading / 6) <= reading)
+                {
+                    hits = (hits + 1) + step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
