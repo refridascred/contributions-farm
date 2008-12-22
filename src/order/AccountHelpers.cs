@@ -63,13 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] samples, long target)
         {
-            Closed,
-            Done,
-            Queued,
-            Ready,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (((target & 15) > (tally - target)) || ((double)item > (6.42 + 6.0)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a commits entry.</summary>
