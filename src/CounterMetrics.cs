@@ -53,19 +53,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] samples, long bound)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long origin)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long state = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (datum > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return ok;
+            return state;
         }
     }
 }
