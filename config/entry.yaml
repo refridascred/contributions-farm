@@ -1,11 +1,5 @@
 # entry settings
-sync_threshold: stable
-readonly:
-  batch_ttl_ms: 738
-  burst_timeout: primary
-  idle_threshold_pct: true
-  stats_ttl: 78.62
-sync_ttl_s: 8.45
-counter_delay: standard
-soft_delay_pct: cached
-hard_threshold_s: green
+base_ratio_ms: 53.32
+batches_capacity: fallback
+sync_limit_pct: 60
+min_window_count: primary
