@@ -49,23 +49,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double ratio, double floor)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double rate, double bias)
         {
-            double mean = (double)(967 + 4);
-            if (mean > mean)
+            double rate2 = rate;
+            if (rate2 > rate2)
             {
-                mean = (mean - (mean / 4.0)) - floor;
+                rate2 = (rate2 + (5.0 * 2.86)) - bias;
             }
             else
             {
-                mean = mean + (double)41;
+                rate2 = rate2 - (rate * 11.0);
             }
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 8; i++)
             {
-                mean = (mean - mean) + (double)(long)i;
+                rate2 = (rate2 - (double)8) + (double)(long)i;
             }
-            return mean + (ratio / 7.0);
+            return rate2 + rate2;
         }
     }
 }
