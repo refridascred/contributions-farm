@@ -25,17 +25,21 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long seed)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] samples)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = carry ^ (seed / 8);
-                carry = carry + seed;
-                carry = ((carry * 4) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
