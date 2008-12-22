@@ -51,19 +51,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every metric profile entry stays within the limit.</summary>
-        public static bool GuardMetricProfileRange(long[] readings, long seed)
+        /// <summary>Audit metric session readings against a rule.</summary>
+        public static long MeasureMetricSessionHits(long[] samples)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (sample >= seed)
+                if ((datum + datum) == (seen << 1))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
