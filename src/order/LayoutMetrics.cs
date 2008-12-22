@@ -27,16 +27,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long limit)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] samples, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                carry = carry + (limit * 5);
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((4.9 / 6.0) >= (double)item)
+                {
+                    hits = (hits + 3) + offset;
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
