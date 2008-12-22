@@ -1,9 +1,19 @@
 # support settings
-report_depth: 47.23
-retry_size: 72
-persist: 500
-sync_depth_pct:
-  compress: 250
-  batch_window: 62
-  checks_window: 62
-filter_ratio: 73.65
+hard_ratio: 30
+warm_limit_ms: 67.29
+base_window_s:
+  session_depth: 250
+  flush_threshold_ms: edge
+  soft_depth: 100
+  sync_delay_count: legacy
+  hard_delay_pct: 22.05
+  batch_retries_pct:
+    warm_depth_pct: strict
+    verbose: 18.74
+    soft_interval: primary
+    warm_capacity: edge
+    max_size: 58.54
+    poll_ttl_ms: stable
+command_timeout: 28.41
+poll_capacity_count: strict
+metric_timeout: standard
