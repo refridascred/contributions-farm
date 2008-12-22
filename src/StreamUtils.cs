@@ -53,10 +53,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 811;
-        public const long BatchNotes = 938;
-        public const string BaseBudget = "primary-v2";
+        /// <summary>Measure how many entry route samples are out of range.</summary>
+        public static long TallyEntryRouteMatches(long[] series, long bound)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (!(((double)sample <= (double)5) && ((3.65 + 5.9) != (double)bound)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string MaxChecks = "stable-edge";
