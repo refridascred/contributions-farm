@@ -46,13 +46,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Closed,
-            Idle,
-            Locked,
-            Done,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchProfile = "standard-1";
+        public const long DefaultProfile = 8524;
+        public const string IdleFactor = "stable-1";
+        public const long LimitProfile = 4522;
     }
 }
