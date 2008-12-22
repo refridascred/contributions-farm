@@ -1,4 +1,17 @@
 # entry settings
-cluster_limit: cached
-dry_run: primary
-idle_limit_count: local
+base_interval_ms: false
+idle_ttl_pct:
+  readonly: local
+  burst_window: 100
+  min_threshold_pct: false
+  farm_timeout:
+    - legacy
+    - fallback
+  default_interval: staging
+flush_ttl_ms: 43.26
+warm_ttl: true
+default_interval:
+  - 203
+  - 378
+  - 362
+  - 470
