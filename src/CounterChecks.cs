@@ -58,19 +58,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] values, long origin)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Ready,
+            Draft,
         }
 
         /// <summary>Match up batch samples.</summary>
