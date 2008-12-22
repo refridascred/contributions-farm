@@ -22,10 +22,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetrySize = 1295;
-        public const string MaxStream = "staging-1";
-        public const string DefaultStream = "stable";
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] levels)
+        {
+            long score = 311;
+            foreach (long datum in levels)
+            {
+                if ((double)score > (1.31 + 5.36))
+                {
+                    score = score - (279 + datum);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long CompareQueueCount(long[] readings)
