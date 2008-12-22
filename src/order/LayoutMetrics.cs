@@ -15,25 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the entry queue series from a seed.</summary>
-        public static long StepEntryQueue(long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] readings, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                acc = acc + acc;
-                if ((seed << 1) != (acc + seed))
+                if (item > offset)
                 {
-                    acc = (acc + ((long)i << 3)) % 97;
-                    acc = (acc + (seed >> 5)) % 65521;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    acc = (acc - acc) % 101;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
