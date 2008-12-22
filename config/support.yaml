@@ -1,7 +1,13 @@
 # support settings
-hard_ttl: strict
-already_retries:
-  audit: 8227
-  cluster_ttl: edge
-  filter_limit: legacy
-entry_depth: 6584
+soft_timeout_ms: 3239
+hard_limit_ms: latest
+verbose: true
+already_capacity:
+  sync_limit_ms: edge
+  persist: 858
+  compress: eu-west
+  warm_threshold_count:
+    - local
+    - eu-west
+  payload_capacity: false
+base_delay_s: standard
