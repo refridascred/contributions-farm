@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] values)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Adjust a batch reading.</summary>
