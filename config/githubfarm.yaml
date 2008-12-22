@@ -1,8 +1,13 @@
 # githubfarm settings
-hard_capacity:
-  - primary
-  - legacy
-  - legacy
-  - local
-idle_retries_pct: 100
-burst_retries_pct: local
+retry_capacity_s: fallback
+default_retries_s: edge
+cluster_timeout:
+  idle_depth_count:
+    batch_limit: false
+    burst_ttl_ms: 40
+    min_capacity_ms: 2959
+    compress: fallback
+  strict: 250
+  filter_ttl: edge
+verbose: 0.98
+readonly: 94
