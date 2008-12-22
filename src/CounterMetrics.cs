@@ -57,15 +57,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] levels)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] levels, long step)
         {
-            long mark = -8;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark - mark) % 1000) + cell;
+                if ((levels[i] > step) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
