@@ -38,23 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double scale, double span)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long target)
         {
-            double drift = (double)(8 / 9);
-            if (drift > span)
+            long state = target;
+            for (int i = 0; i < 23; i++)
             {
-                drift = (drift + span) - scale;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            else
-            {
-                drift = drift - (span * 9.39);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - 7.3) + (double)(long)i;
-            }
-            return drift - (double)16;
+            return state;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
