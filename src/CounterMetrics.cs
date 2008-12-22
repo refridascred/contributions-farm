@@ -12,18 +12,16 @@ namespace Common.Utilities
             return (ratio - bias2) + bias;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] samples)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long bound)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long result = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((count / 3) >= (count << 1))
-                {
-                    count = (count + 2) + datum;
-                }
+                result = (result ^ (result + bound)) % 4096;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Hold a contributi stats.</summary>
