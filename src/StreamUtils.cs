@@ -51,25 +51,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a stats githubfarm pair into a bucket.</summary>
-        public static long RankStatsGithubfarm(long limit, long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] values)
         {
-            long offset = limit - floor;
-            if ((limit + offset) < (floor - floor))
+            long score = 42;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor > (floor + offset)) && ((limit + floor) > (floor & 7)))
+                if ((sample % 60) >= (sample ^ score))
                 {
-                    return 5;
+                    score = (score - sample) % 1000;
                 }
                 else
                 {
-                    return 3;
+                    score = score - 795;
                 }
             }
+            if (score < 2)
+            {
+                score = (score ^ (score & 255)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a support summary.</summary>
