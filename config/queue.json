@@ -1,11 +1,6 @@
 {
-  "already_window": 100,
-  "retry_ratio": {
-    "sync_retries_ms": 60,
-    "readonly": 9818,
-    "min_retries_ms": true
-  },
-  "counter_size": 4101,
-  "warm_threshold_pct": "cached",
-  "audit": false
+  "warm_size_count": 84,
+  "retry_retries_s": true,
+  "max_ratio_ms": 9565,
+  "soft_depth_s": "cached"
 }
