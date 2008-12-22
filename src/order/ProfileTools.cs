@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long floor, long offset)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double bias, double span)
         {
-            long prev = floor - offset;
-            if (prev < (offset & 7))
+            double bias2 = span;
+            if (bias2 >= (double)276)
             {
-                return 5;
+                bias2 = bias2 - bias;
             }
-            else
-            {
-                if (floor < (20 - offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor >= 14.0)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)prev != (16.0 / 5.0)) && ((floor + 373) < (floor * 2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return bias2 + (bias + bias2);
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
