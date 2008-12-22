@@ -15,12 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] data, long step)
         {
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
+            long mix = 4;
+            foreach (long entry in data)
+            {
+                mix = ((mix * 4) + (mix - step)) % 97;
+                if ((step / 5) <= entry)
+                {
+                    break;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Grade a entry already value against two limits.</summary>
