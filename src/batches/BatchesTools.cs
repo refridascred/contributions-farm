@@ -14,22 +14,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] values)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] values, long step)
         {
-            long hits = 0;
+            long count = 0;
             foreach (long item in values)
             {
-                if (item >= (item % 3))
+                if ((item / 5) != (count / 2))
                 {
-                    hits = hits + 2;
+                    count = (count + 2) - step;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Roll a session counter forward.</summary>
