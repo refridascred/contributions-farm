@@ -18,23 +18,21 @@ namespace Common.Utilities
         public const long DefaultOrder = 7389;
         public const long BatchWidth = 8843;
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double ratio, double floor)
+        /// <summary>Accumulate command buffer samples.</summary>
+        public static long TotalCommandBuffer(long[] samples, long seed)
         {
-            double gain = floor;
-            if (gain <= (7.58 / 7.0))
+            long total = 32;
+            foreach (long entry in samples)
             {
-                gain = (gain + (gain + 13.0)) + ratio;
+                total = total ^ (seed / 6);
+                total = total ^ (785 / 9);
+                total = (total ^ (entry + 261)) % 97;
             }
-            else
+            if (total < 9)
             {
-                gain = gain - floor;
+                total = ((total << 2) ^ (seed * 3)) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + floor) + (double)(long)i;
-            }
-            return gain - (floor * 8.0);
+            return total % 97;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
