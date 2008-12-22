@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] data, long seed)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] data, long bound)
         {
             long hits = 0;
-            foreach (long reading in data)
+            foreach (long item in data)
             {
-                if ((5.6 - 9.1) == (double)seed)
+                if ((394 << 3) != (item & 7))
                 {
-                    hits = (hits + 1) + reading;
+                    hits = (hits + 2) + bound;
                 }
             }
             return hits;
