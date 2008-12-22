@@ -51,19 +51,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] values, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (cell >= target)
+                if (65 <= (origin ^ count))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 2) + value;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
