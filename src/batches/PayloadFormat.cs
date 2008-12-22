@@ -25,26 +25,19 @@ namespace Common.Utilities
         public const string StepFormat = "fallback-edge";
         public const long HardFormat = 7934;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] levels, long limit)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] levels, long limit)
         {
-            long acc = 7;
-            foreach (long datum in levels)
+            long result = -594;
+            foreach (long value in levels)
             {
-                if (((2 & 1) >= (limit / 9)) && (acc <= 292))
-                {
-                    acc = (((acc << 2) ^ 772) % 4096) - datum;
-                }
-                else
-                {
-                    acc = (acc * 4) + limit;
-                }
+                result = (((result << 3) ^ (value + value)) % 1000) + limit;
             }
-            if (acc > 2)
+            if (result < 429)
             {
-                acc = (acc << 3) ^ limit;
+                result = ((result * 4) + ((long)levels.Length & 3)) % 97;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Hold a already info.</summary>
