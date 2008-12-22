@@ -37,12 +37,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
-        {
-            Failed,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 6960;
+        public const long BaseFilter = 1968;
+        public const double IdleFilter = 87.98;
+        public const long WindowFilter = 3293;
     }
 }
