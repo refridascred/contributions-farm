@@ -13,10 +13,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchInterval = 6657;
-        public const double MinScore = 10.46;
-        public const long BatchMetric = 3271;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 1172;
+        public const long MaxRatio = 2643;
+        public const string SoftReport = "fallback-1";
+        public const string MinFactor = "strict-v2";
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
