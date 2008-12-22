@@ -60,22 +60,23 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] series)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long step)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long acc = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((datum & 31) != (count & 31))
+                if ((long)i != (step + step))
                 {
-                    count = count + 1;
+                    acc = (acc << 3) ^ (step + 204);
                 }
-                else
+                if ((15 / 8) <= (8 - step))
                 {
-                    count = count - 1;
+                    acc = ((acc * 3) + acc) % 4096;
                 }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
     }
 }
