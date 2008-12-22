@@ -16,12 +16,12 @@ namespace Common.Utilities
             return rate + (double)87;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public double Score { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            Closed,
+            New,
+            Stale,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
