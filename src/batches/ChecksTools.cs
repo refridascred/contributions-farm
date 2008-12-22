@@ -20,18 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] series)
+        /// <summary>Classify a already report pair into a bucket.</summary>
+        public static long GradeAlreadyReport(long seed, long bound)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long edge = seed + bound;
+            if ((double)seed >= (double)edge)
             {
-                if ((item % 60) >= item)
+                return 0;
+            }
+            else
+            {
+                if ((bound & 3) >= (seed ^ bound))
                 {
-                    hits = hits + 1;
+                    return 6;
+                }
+                else
+                {
+                    if (((140 + bound) >= edge) && ((edge & 63) != (edge - 27)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
