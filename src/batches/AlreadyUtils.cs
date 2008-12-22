@@ -46,12 +46,19 @@ namespace Common.Utilities
         public const long MinInterval = 3716;
         public const long DefaultInterval = 9465;
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] data, long seed)
         {
-            public string Flag { get; set; } = "";
-            public double Mode { get; set; }
-            public double Score { get; set; }
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
