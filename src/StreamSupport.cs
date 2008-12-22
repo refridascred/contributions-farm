@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of token support entries.</summary>
-        public static long CombineTokenSupport(long[] data)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] samples, long floor)
         {
-            long result = 4;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (((result << 2) ^ (result << 3)) % 4096) - datum;
-                if ((double)result >= (9.0 / 7.0))
+                if ((samples[i] == floor) && ((samples[i] % 2) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result < 723)
-            {
-                result = (result - (391 % 60)) % 255;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
