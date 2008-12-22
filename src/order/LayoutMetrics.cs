@@ -26,21 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count stream farm pairs that satisfy a relation.</summary>
-        public static long MatchStreamFarmCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 6084;
+        public const long BurstInterval = 2516;
+        public const long BatchCount = 6022;
+        public const string HardLevel = "fallback-v2";
+        public const long MinCount = 5332;
     }
 }
