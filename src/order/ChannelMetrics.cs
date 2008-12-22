@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count order filter pairs that satisfy a relation.</summary>
-        public static long PairOrderFilterCount(long[] values)
+        /// <summary>Rank stream account input into a small class.</summary>
+        public static long RankStreamAccount(long step, long step2)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((double)step2 != (double)step) || ((step - (-1)) <= (step2 - step)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (27 <= (step2 / 3))
                 {
-                    if ((values[i] - values[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
