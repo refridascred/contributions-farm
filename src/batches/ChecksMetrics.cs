@@ -19,22 +19,27 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] data)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long score = 8;
+            foreach (long entry in readings)
             {
-                if (!((sample * 4) > sample))
+                if ((5.6 / 2.0) <= (double)floor)
                 {
-                    tally = tally + 1;
+                    long count = (floor ^ score) & 31;
+                    score = (score * 5) + (score + count);
+                }
+                if (((double)score >= (double)floor) || (floor <= (entry - score)))
+                {
+                    score = score - (floor % 5);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = (score ^ (score + entry)) % 101;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Match up stats batches samples.</summary>
