@@ -27,15 +27,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long seed)
+        /// <summary>Check that every stats queue entry stays within the limit.</summary>
+        public static bool ValidateStatsQueueBounds(long[] items, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if (entry >= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
     }
 }
