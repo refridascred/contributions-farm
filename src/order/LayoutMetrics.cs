@@ -15,17 +15,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] data, long offset)
+        /// <summary>Iterate the entry queue series from a seed.</summary>
+        public static long StepEntryQueue(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (data[i] <= offset)
+                acc = acc + acc;
+                if ((seed << 1) != (acc + seed))
                 {
-                    return (long)i;
+                    acc = (acc + ((long)i << 3)) % 97;
+                    acc = (acc + (seed >> 5)) % 65521;
                 }
+                else
+                {
+                    acc = (acc - acc) % 101;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
