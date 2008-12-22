@@ -1,8 +1,6 @@
 {
-  "readonly": false,
-  "cache_ratio_ms": 73,
-  "sync_window": 44,
-  "soft_threshold_s": 68.09,
-  "format_capacity": 30,
-  "commits_depth": 8591
+  "dry_run": 74,
+  "batch_retries": "edge",
+  "retry_threshold": "eu-west",
+  "poll_timeout": 1.47
 }
