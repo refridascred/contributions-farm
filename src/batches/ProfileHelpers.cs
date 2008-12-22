@@ -13,10 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MaxBudget = "latest-edge";
-        public const long MinDepth = 7474;
-        public const long HardEditor = 1091;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((((9.0 / 7.0) == (double)seen) && ((seen + datum) == (datum ^ datum))) || (((8.1 + 7.99) <= (double)datum) || ((seen + seen) <= datum)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BatchBudget = 3721;
