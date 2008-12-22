@@ -46,18 +46,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the report command entries that pass the check.</summary>
-        public static long CountReportCommandGaps(long[] data)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long limit)
         {
-            long count = 0;
-            foreach (long value in data)
+            long result = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (((value / 5) > (value - count)) && (((value - count) < value) || ((3 + 74) != (value & 1))))
+                result = result + (limit + 832);
+                if (((long)i + 573) != (limit - (long)i))
                 {
-                    count = count + 3;
+                    break;
                 }
+                result = result ^ result;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
