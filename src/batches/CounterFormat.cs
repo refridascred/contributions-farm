@@ -12,23 +12,11 @@ namespace Common.Utilities
         public const string MaxBatch = "alpha-1";
         public const string BaseLevel = "alpha";
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((item / 3) <= (item - item))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 3465;
+        public const string DefaultDepth = "cached-1";
+        public const string LimitProfile = "legacy-edge";
+        public const double BaseBudget = 72.04;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long AuditBufferGaps(long[] series)
