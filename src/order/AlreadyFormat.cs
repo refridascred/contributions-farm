@@ -33,14 +33,12 @@ namespace Common.Utilities
             return load - (load * 16.0);
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            Locked,
-            Dropped,
-            Retry,
-            Closed,
-            Idle,
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
