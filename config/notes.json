@@ -1,7 +1,7 @@
 {
-  "readonly": [160, 131, 354, 61],
-  "hard_interval_ms": 250,
-  "max_size_count": "legacy",
-  "flush_depth": 49,
-  "dry_run": "edge"
+  "verbose": [400, 66],
+  "commits_limit": "fallback",
+  "warm_delay_count": 5398,
+  "queue_retries": [360, 154, 71],
+  "retry_threshold_ms": ["standard", "blue", "eu-west", "eu-west"]
 }
