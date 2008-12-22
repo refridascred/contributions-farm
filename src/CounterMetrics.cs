@@ -19,31 +19,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long limit, long target)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double ratio, double offset)
         {
-            if (((target - 91) == (86 * 3)) && ((4 * 2) <= (target << 1)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((107 - target) > (target % 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((8.65 + 8.0) <= (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            double scale = (double)(-72) * 19.0;
+            return ((scale - (3.83 / 3.0)) + ratio) + offset;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
