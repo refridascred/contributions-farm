@@ -14,16 +14,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long bound)
+        /// <summary>Measure how many support metrics samples are out of range.</summary>
+        public static long MeasureSupportMetricsMatches(long[] values, long step)
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                acc = (acc * 2) + (67 << 1);
-                acc = ((acc * 2) + (long)i) % 1000;
+                if ((cell & 7) != (cell / 2))
+                {
+                    hits = (hits + 2) + step;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
