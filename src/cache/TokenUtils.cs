@@ -22,12 +22,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long target, long step)
         {
-            public bool Rank { get; set; }
-            public long Total { get; set; }
-            public double Mode { get; set; }
+            if (((step >> 2) == (step % 7)) && ((target << 3) == (target * 3)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target * 5) >= step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((7.0 - 8.5) == (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
