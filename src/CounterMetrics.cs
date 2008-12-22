@@ -27,13 +27,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Digest a series of record editor entries.</summary>
+        public static long DigestRecordEditor(long[] series)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public double Total { get; set; }
-            public long Count { get; set; }
+            long state = 9;
+            foreach (long cell in series)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    state = ((state << 3) ^ (6 + 0)) - (long)i;
+                }
+                if (!(cell < (cell / 9)))
+                {
+                    state = (state ^ (state ^ 34)) % 97;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the batch state values.</summary>
