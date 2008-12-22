@@ -20,13 +20,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] levels)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
