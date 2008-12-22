@@ -36,19 +36,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] values, long bound)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((-678) < (tally ^ tally))
-                {
-                    tally = ((tally + 2) - item) - bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheMetric = "local-edge";
+        public const long DefaultWidth = 1668;
+        public const long WindowScore = 3105;
+        public const long DefaultSize = 8753;
+        public const long DefaultScore = 9512;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long SoftCommits = 2586;
