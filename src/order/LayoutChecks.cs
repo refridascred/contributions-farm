@@ -38,22 +38,11 @@ namespace Common.Utilities
             return (load + (floor / 9.0)) + gain;
         }
 
-        /// <summary>Measure how many batches metrics samples are out of range.</summary>
-        public static long MeasureBatchesMetricsOutliers(long[] samples, long offset)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)offset >= (6.4 * 7.6))
-                {
-                    hits = (hits + 1) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Grade a batches channel value against two limits.</summary>
