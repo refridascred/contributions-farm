@@ -24,17 +24,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] series, long target)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= target) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Queued,
+            Active,
+            Ready,
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
