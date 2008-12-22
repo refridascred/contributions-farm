@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public string Limit { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 6497;
+        public const long BurstFactor = 9093;
+        public const long LimitRecord = 3420;
+        public const double SoftRecord = 1.04;
+        public const long RetrySize = 2865;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BurstReport = 1172;
