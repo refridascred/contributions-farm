@@ -21,13 +21,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Ready,
+            Failed,
+            Pending,
             Idle,
-            Active,
-            Paused,
         }
 
         /// <summary>Locate a cache reading by value.</summary>
