@@ -33,11 +33,22 @@ namespace Common.Utilities
             return load - (load * 16.0);
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] readings, long origin)
         {
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (!(((long)readings.Length - origin) < ((-73) / 6)))
+                {
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
