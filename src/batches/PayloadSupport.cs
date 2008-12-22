@@ -30,18 +30,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] readings, long limit)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum - limit) != (datum & 15))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public long Score { get; set; }
         }
     }
 }
