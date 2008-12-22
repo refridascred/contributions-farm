@@ -42,19 +42,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate stream account readings against a bound.</summary>
-        public static bool GuardStreamAccountRange(long[] values, long bound)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Idle,
+            Draft,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
