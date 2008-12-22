@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] data, long origin)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long score = 9;
+            foreach (long entry in values)
             {
-                if ((264 + reading) <= (reading ^ origin))
+                if ((score / 4) >= (score << 2))
                 {
-                    seen = seen + 1;
+                    score = ((score * 2) + (entry - score)) % 4096;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    score = (score + (entry + score)) % 255;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
