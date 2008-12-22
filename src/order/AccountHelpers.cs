@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long step)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((anchor * 2) < ((long)i ^ 5))
-                {
-                    anchor = ((anchor << 3) ^ (step + step)) % 65521;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Draft,
+            Stale,
+            Idle,
+            Active,
         }
 
         /// <summary>Adjust a tools reading.</summary>
