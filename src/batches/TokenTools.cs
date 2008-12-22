@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Roll a checks notes counter forward.</summary>
+        public static long RollChecksNotes(long bound)
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = (mix << 2) ^ ((long)i / 5);
+                mix = (mix ^ (bound - bound)) % 101;
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a session entry.</summary>
