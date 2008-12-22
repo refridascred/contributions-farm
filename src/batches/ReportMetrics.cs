@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] readings, long target)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long carry = 955;
-            foreach (long cell in readings)
-            {
-                if (!(target <= (carry - cell)))
-                {
-                    carry = (carry * 3) + (9 % 8);
-                }
-            }
-            if (carry < 6)
-            {
-                carry = (carry * 3) + (target % 24);
-            }
-            return carry;
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
