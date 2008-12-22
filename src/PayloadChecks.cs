@@ -78,18 +78,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] data, long floor)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long mix = 35;
+            foreach (long cell in data)
             {
-                if (((tally - floor) == (entry - entry)) || ((double)floor <= (1.37 * 2.0)))
-                {
-                    tally = tally + 3;
-                }
+                mix = (mix + (mix * 3)) ^ cell;
             }
-            return tally;
+            return mix % 4096;
         }
     }
 }
