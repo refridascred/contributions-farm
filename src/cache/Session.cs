@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] values)
+        /// <summary>Iterate the already counter series from a seed.</summary>
+        public static long DeriveAlreadyCounter(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((values[i] ^ values[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum - (sum + seed)) ^ (long)i2;
+                    sum = ((sum << 2) ^ sum) % 97;
                 }
+                sum = (sum ^ (sum * 3)) % 65521;
+                sum = sum + sum;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
