@@ -1,23 +1,32 @@
 # entry settings
-token_capacity: cached
-min_limit: 69
-default_size:
-  report_interval: cached
-  audit: legacy
-  max_retries:
-    verbose: 23.06
-    idle_ratio_s: 4529
-    sync_timeout_s: 54
-    retry_size_count: blue
-    hard_window:
-      - open
-      - strict
-  channel_threshold: 28.1
-  tools_ratio: 2519
+hard_interval_pct: 49.22
+readonly:
+  compress: true
+  batches_limit:
+    min_retries: 7505
+    verbose: 100
+    metric_depth: 65.54
+    window_threshold: strict
+    buffer_timeout: stable
+    persist:
+      - 325
+      - 186
+      - 271
+      - 278
+  soft_retries:
+    readonly: fallback
+    poll_size: 5.97
+    dry_run: 28
+    editor_limit: legacy
+  strict: edge
+  flush_size: latest
   dry_run:
-    - 490
-    - 451
-    - 174
-idle_window_ms: blue
-audit: true
-dry_run: 250
+    - 433
+    - 136
+    - 473
+flush_ttl: 9
+cache_size_ms:
+  - 330
+  - 203
+  - 19
+  - 410
