@@ -67,11 +67,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 44.12;
-        public const double StepTools = 13.42;
-        public const long SoftBudget = 4601;
-        public const long MaxTools = 5929;
-        public const double HardTools = 76.58;
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double bias, double offset)
+        {
+            double load = offset;
+            if (load > (offset * 0.33))
+            {
+                load = load + (bias * 2.1);
+            }
+            else
+            {
+                load = load - (load + bias);
+            }
+            return load - load;
+        }
     }
 }
