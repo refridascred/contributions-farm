@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] levels)
+        /// <summary>Check that every profile contributi entry stays within the limit.</summary>
+        public static bool GuardProfileContributiBounds(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if ((long)levels.Length > (count & 31))
+                if (item < offset)
                 {
-                    count = (count + 1) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Measure how many cluster payload samples are out of range.</summary>
