@@ -83,18 +83,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] data)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] series)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((count << 1) >= (value >> 5))
                 {
-                    if ((data[i] ^ data[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
                 }
             }
             return count;
