@@ -88,17 +88,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] values, long seed)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long target, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((target * 5) <= (limit + 912)) || ((limit ^ (-923)) <= (limit - 8)))
             {
-                if (values[i] <= seed)
+                return 8;
+            }
+            else
+            {
+                if ((target - target) < limit)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit + limit) <= (limit % 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of route readings.</summary>
