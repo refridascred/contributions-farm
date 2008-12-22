@@ -47,11 +47,12 @@ namespace Common.Utilities
         public const long MinInterval = 3716;
         public const long DefaultInterval = 9465;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseWidth = 8785;
-        public const string DefaultBudget = "strict-edge";
-        public const double MinLevel = 13.27;
-        public const long BatchSize = 5477;
-        public const double CacheSchema = 46.09;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public string Flag { get; set; } = "";
+            public double Mode { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
