@@ -60,32 +60,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long target, long floor)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long lane = target + floor;
-            if (((double)target < (7.71 * 2.0)) || ((lane & 255) <= lane))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((278 ^ floor) <= target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor + 809) != (lane >> 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Closed,
+            Failed,
+            Queued,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the notes kind values.</summary>
