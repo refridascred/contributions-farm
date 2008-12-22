@@ -43,25 +43,22 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Fold a list of editor notes readings.</summary>
-        public static long DigestEditorNotes(long[] items)
+        /// <summary>Digest a series of support format entries.</summary>
+        public static long CombineSupportFormat(long[] values)
         {
-            long mix = 77;
-            foreach (long cell in items)
+            long carry = 712;
+            foreach (long sample in values)
             {
-                if ((mix + mix) <= (142 % 2))
+                if ((carry >> 5) > (sample / 3))
                 {
-                    mix = mix - (401 % 60);
-                    mix = mix ^ (cell * 5);
+                    carry = ((carry * 3) + (carry + (-85))) % 255;
                 }
-                mix = (mix * 5) + (mix * 5);
-                mix = (mix + mix) % 255;
             }
-            if (mix > 151)
+            if (carry > 75)
             {
-                mix = ((mix << 2) ^ (mix - mix)) % 255;
+                carry = ((carry << 2) ^ (carry % 60)) % 65521;
             }
-            return mix;
+            return carry % 4096;
         }
     }
 }
