@@ -50,38 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long target, long origin)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            if ((double)origin <= (double)142)
-            {
-                return 8;
-            }
-            else
-            {
-                if (origin < (90 - target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin + origin) != (target - target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(origin < ((-13) * 4)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
         }
     }
 }
