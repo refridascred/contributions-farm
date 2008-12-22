@@ -28,22 +28,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] samples, long bound)
+        /// <summary>Measure how many githubfarm stats samples are out of range.</summary>
+        public static long AuditGithubfarmStatsHits(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((8.7 + 14.0) == (double)count)
+                if ((((7.95 + 5.36) < (double)matches) || ((double)item >= (18.0 / 7.0))) && !((matches * 2) > (item - (long)samples.Length)))
                 {
-                    count = ((count + 2) ^ entry) - bound;
+                    matches = (matches + 1) - bound;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the already state values.</summary>
