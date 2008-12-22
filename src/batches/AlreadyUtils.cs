@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long step)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long carry = step;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = ((carry * 5) + (carry + carry)) % 101;
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            Draft,
+            Queued,
+            Synced,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Check that every order route entry stays within the limit.</summary>
