@@ -53,38 +53,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long seed, long offset)
+        /// <summary>Measure how many layout graph samples are out of range.</summary>
+        public static long AuditLayoutGraphOutliers(long[] samples)
         {
-            if (!((seed + seed) >= 253))
+            long count = 0;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((seed * 5) < 46) || ((offset + offset) <= (offset + seed)))
+                if (!((item ^ 4) < item))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset + seed) != (seed + offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (seed <= (offset + seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
