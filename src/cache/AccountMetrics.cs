@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 3690;
-        public const long MinGraph = 152;
-        public const string WindowGraph = "standard-v2";
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public double Total { get; set; }
+            public bool Limit { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long FindWindowIndex(long[] items, long step)
