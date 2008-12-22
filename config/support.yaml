@@ -1,14 +1,10 @@
 # support settings
-base_ratio_s: 52
-filter_delay:
-  session_capacity: 41.53
-  batch_depth_ms: 30
-  idle_threshold:
-    - cached
-    - cached
-  dry_run: 250
-poll_timeout:
-  - 346
-  - 33
+stream_delay: 6.57
+filter_threshold: 3326
+min_size_ms: true
+payload_size:
+  - 25
+  - 289
   - 484
-  - 472
+  - 446
+enabled: 98
