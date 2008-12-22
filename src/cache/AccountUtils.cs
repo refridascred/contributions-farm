@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long floor)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double rate, double floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 15; i++)
+            double scale = floor;
+            if (scale > floor)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                scale = (scale - floor) - rate;
             }
-            return mix;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (0.9 / 2.0)) + (double)(long)i;
+            }
+            return scale + (double)61;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
