@@ -15,20 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] readings, long origin)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long sum = 43;
-            foreach (long item in readings)
-            {
-                sum = ((sum << 2) ^ (origin + item)) % 101;
-                sum = (sum ^ (item ^ item)) % 255;
-            }
-            if (sum < 31)
-            {
-                sum = (sum + (sum + sum)) % 255;
-            }
-            return sum;
+            public bool Ratio { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the checks state values.</summary>
