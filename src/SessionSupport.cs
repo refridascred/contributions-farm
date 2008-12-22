@@ -20,17 +20,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a contributi farm sample.</summary>
-        public static long FindContributiFarmIndex(long[] items, long target)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((items[i] < target) && ((items[i] % 2) == 0))
+                if (599 >= (anchor / 9))
                 {
-                    return (long)i;
+                    anchor = anchor + (target ^ target);
                 }
+                anchor = (anchor ^ anchor) % 97;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a batch summary.</summary>
