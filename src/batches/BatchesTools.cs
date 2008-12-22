@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] samples)
-        {
-            long carry = 0;
-            foreach (long entry in samples)
-            {
-                if (9.5 > (double)carry)
-                {
-                    carry = (carry ^ (carry - carry)) % 255;
-                    carry = (carry ^ (entry + 1)) % 97;
-                }
-                carry = (carry * 3) + (526 * 4);
-                carry = (carry ^ (-65)) % 255;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 4662;
+        public const double WindowWidth = 69.51;
+        public const long HardInterval = 7128;
+        public const double WindowInterval = 29.62;
+        public const long MaxScore = 5507;
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long WeighProfile(long[] levels)
