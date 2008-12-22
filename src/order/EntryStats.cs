@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] items)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long result = -5;
-            foreach (long value in items)
-            {
-                if ((result / 7) == (result / 8))
-                {
-                    result = ((result + 629) % 101) ^ value;
-                }
-            }
-            if (result < 257)
-            {
-                result = (result * 3) + result;
-            }
-            return result;
+            public string Limit { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
