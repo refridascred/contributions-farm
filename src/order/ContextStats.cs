@@ -14,12 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseBatches = 71.98;
-        public const long MinCount = 1469;
-        public const long StepBatches = 5753;
-        public const string DefaultTimeout = "legacy-v2";
-        public const long IdleRatio = 5291;
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long DigestBuffer(long[] series, long floor)
