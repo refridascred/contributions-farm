@@ -1,10 +1,12 @@
 # Command notes
 
-The order helpers are pure functions, so they are safe to call from any thread.
-Each profile is validated before it reaches the stats queue.
+Keep tools and checks names short and lowercase.
+Use batches settings to tune how often command data is refreshed.
+The contributi module keeps profile values in sync with the layout cache.
 
 ## Guidelines
 
-- Prefer token defaults
-- Review entry limits each release
-- Log every schema change
+- Log every format change
+- Document new window fields
+- Keep graph values small
+- Prefer commits defaults
