@@ -33,19 +33,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double bias, double span)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long seed, long bound)
         {
-            double bias2 = 3.15 + bias;
-            if (bias2 <= (bias / 9.0))
+            long span = seed - bound;
+            if ((3.4 - 19.0) <= (double)seed)
             {
-                bias2 = bias2 - (span * 5.0);
+                return 3;
             }
             else
             {
-                bias2 = bias2 + (7.6 - bias);
+                if (9 <= (span + span))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed >= (20.0 * 12.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((80 + 57) < bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return bias2 + bias;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
