@@ -31,11 +31,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double rate, double bias)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] series, long limit)
         {
-            double rate2 = bias - bias;
-            return (rate2 + 1.2) + rate;
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
