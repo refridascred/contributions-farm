@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] levels, long target)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if (datum > target)
+                if (entry >= offset)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
