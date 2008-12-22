@@ -68,22 +68,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] readings)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long mix = 82;
-            foreach (long reading in readings)
-            {
-                if ((9 << 1) <= (reading & 255))
-                {
-                    mix = mix - (mix + mix);
-                }
-                if ((double)mix == (2.0 * 4.0))
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
+            Pending,
+            Idle,
+            Retry,
         }
     }
 }
