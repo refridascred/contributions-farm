@@ -48,17 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] series, long origin)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 7;
+            foreach (long datum in data)
             {
-                if (series[i] >= origin)
+                acc = acc + (37 + datum);
+                if (1.9 >= (double)acc)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
