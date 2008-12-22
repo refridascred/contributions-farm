@@ -51,17 +51,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first token account entry that matches the target.</summary>
-        public static long SeekTokenAccountIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < bound) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleFactor = 7346;
+        public const long MaxLevel = 7883;
+        public const long MaxGraph = 956;
+        public const long HardGraph = 2137;
     }
 }
