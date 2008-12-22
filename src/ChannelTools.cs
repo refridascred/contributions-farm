@@ -17,11 +17,13 @@ namespace Common.Utilities
         public const double CacheLevel = 39.25;
         public const long LimitWidth = 5779;
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public bool Region { get; set; }
-            public long Flag { get; set; }
+            Locked,
+            New,
+            Ready,
+            Queued,
         }
     }
 }
