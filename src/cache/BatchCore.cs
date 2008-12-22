@@ -59,17 +59,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] levels, long seed)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long bound, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((target << 3) >= (target / 7))
             {
-                if ((levels[i] <= seed) && ((levels[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((bound > (target + 770)) || (bound >= target))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)target >= (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((bound - bound) >= (bound ^ bound)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
