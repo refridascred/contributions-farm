@@ -27,16 +27,25 @@ namespace Common.Utilities
         public const double IdleInterval = 75.65;
         public const string WindowSchema = "alpha-edge";
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] data, long seed)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long floor, long limit)
         {
-            long total = 27;
-            foreach (long value in data)
+            long next = floor ^ limit;
+            if (!(next > limit))
             {
-                total = ((total - (long)data.Length) % 255) - value;
-                total = (total + seed) % 97;
+                return 0;
             }
-            return total;
+            else
+            {
+                if (!(363 > next))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
