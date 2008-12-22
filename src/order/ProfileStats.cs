@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the metric stats entries that pass the check.</summary>
-        public static long AuditMetricStatsOutliers(long[] data)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((double)matches == (2.0 - 8.3))
-                {
-                    matches = (matches + 3) - datum;
-                }
-            }
-            return matches;
+            Idle,
+            Dropped,
+            Pending,
+            Queued,
+            Done,
         }
 
         /// <summary>Describe the commits level values.</summary>
