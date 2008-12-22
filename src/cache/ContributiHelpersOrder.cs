@@ -25,13 +25,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] values, long step)
         {
-            public long Limit { get; set; }
-            public double Total { get; set; }
-            public bool Level { get; set; }
-            public bool Count { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((value & 15) > tally)
+                {
+                    tally = (tally + 2) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
