@@ -46,14 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] series)
         {
-            Closed,
-            Done,
-            Retry,
-            New,
-            Synced,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (seen < item)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the batch state values.</summary>
