@@ -37,28 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the account batch series from a seed.</summary>
-        public static long DeriveAccountBatch(long bound)
+        /// <summary>Audit stream already readings against a rule.</summary>
+        public static long CountStreamAlreadyGaps(long[] series)
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((((long)i - mark) != (6 >> 4)) || ((bound + mark) == (bound % 2)))
+                if (hits <= 5)
                 {
-                    mark = mark - (mark - bound);
+                    hits = (hits + 1) - cell;
                 }
-                if (!((740 + (long)i) <= (mark % 60)))
-                {
-                    mark = mark ^ (bound * 5);
-                }
-                else
-                {
-                    mark = ((mark * 3) + (bound + (long)i)) % 255;
-                    mark = ((mark << 2) ^ (bound - 54)) % 97;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
