@@ -35,19 +35,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] samples, long seed)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item >= seed)
+                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the cache phase values.</summary>
