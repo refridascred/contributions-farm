@@ -34,18 +34,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] values, long origin)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (((8.9 + 7.0) >= (5.0 - 5.0)) && (origin >= (tally << 2)))
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
+            Paused,
+            Retry,
+            Synced,
         }
     }
 }
