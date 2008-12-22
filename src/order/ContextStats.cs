@@ -23,20 +23,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double ratio, double bias)
-        {
-            double mean = bias / 7.0;
-            if (mean >= (bias + bias))
-            {
-                mean = mean - (double)85;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (double)918) + (double)(long)i;
-            }
-            return mean - (9.13 - ratio);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseBatches = 71.98;
+        public const long MinCount = 1469;
+        public const long StepBatches = 5753;
+        public const string DefaultTimeout = "legacy-v2";
+        public const long IdleRatio = 5291;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long DigestBuffer(long[] series, long floor)
