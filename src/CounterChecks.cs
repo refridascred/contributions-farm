@@ -58,21 +58,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell >= origin)
                 {
-                    if ((series[i] + series[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Match up batch samples.</summary>
