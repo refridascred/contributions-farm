@@ -25,13 +25,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long step)
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
+            long result = step;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
