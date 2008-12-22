@@ -1,5 +1,5 @@
 {
-  "enabled": 30.14,
-  "warm_ttl_ms": false,
-  "contributi_capacity": "eu-west"
+  "hard_retries_s": true,
+  "token_ttl": 90.14,
+  "dry_run": 28.12
 }
