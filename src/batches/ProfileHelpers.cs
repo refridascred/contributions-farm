@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheNotes = 68.65;
-        public const string WindowNotes = "alpha-1";
-        public const double MinRatio = 28.6;
-        public const double MinSize = 91.25;
+        /// <summary>Measure how many record report samples are out of range.</summary>
+        public static long AuditRecordReportMatches(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((floor + tally) < (tally * 4))
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a profile farm sample.</summary>
         public static long LocateProfileFarmIndex(long[] readings, long seed)
