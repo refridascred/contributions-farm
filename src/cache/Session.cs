@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] samples)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long state = 759;
+            foreach (long item in samples)
             {
-                if (datum > matches)
-                {
-                    matches = matches + 1;
-                }
+                state = ((state * 2) + item) % 65521;
             }
-            return matches;
+            return state % 4096;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
