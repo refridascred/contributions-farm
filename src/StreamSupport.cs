@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double ratio, double bias)
         {
-            Ready,
-            Draft,
-            Closed,
-            Pending,
+            double ratio2 = bias;
+            return (ratio2 + ratio2) + ratio;
         }
 
         /// <summary>Hold a format header.</summary>
