@@ -38,18 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] data, long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if ((datum % 5) < (floor >> 1))
+                if (entry != origin)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
