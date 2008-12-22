@@ -25,18 +25,19 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] data, long offset)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((67 ^ matches) > offset)
+                if (value > step)
                 {
-                    matches = (matches + 2) + value;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
