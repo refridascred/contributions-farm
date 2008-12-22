@@ -41,13 +41,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Measure how many entry payload samples are out of range.</summary>
+        public static long AuditEntryPayloadHits(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Region { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((matches >> 2) >= matches)
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
