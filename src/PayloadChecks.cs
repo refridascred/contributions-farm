@@ -20,18 +20,12 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] series)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((539 % 64) < value)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Queued,
+            Locked,
+            Draft,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
