@@ -1,13 +1,11 @@
 {
-  "soft_ratio_count": "stable",
-  "filter_size": 7.03,
-  "hard_window_count": {
-    "metric_threshold": 9433,
-    "flush_timeout": "legacy",
-    "base_ttl_pct": 78.65,
-    "burst_depth_count": "fallback"
+  "already_window": 100,
+  "retry_ratio": {
+    "sync_retries_ms": 60,
+    "readonly": 9818,
+    "min_retries_ms": true
   },
-  "compress": ["blue", "latest", "open"],
-  "window_interval": 27.35,
-  "metric_ttl": false
+  "counter_size": 4101,
+  "warm_threshold_pct": "cached",
+  "audit": false
 }
