@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] levels)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long limit)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((reading + reading) <= (count & 7)))
+                if ((long)i > anchor)
                 {
-                    count = count + 3;
+                    anchor = (anchor + (anchor - anchor)) % 65521;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
