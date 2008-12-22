@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long IdleInterval = 8588;
         public const long WindowCluster = 9692;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] data)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelLimits(long[] readings, long target)
         {
-            long mark = 51;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if ((mark & 31) >= (sample << 3))
+                if (datum >= target)
                 {
-                    mark = (mark << 2) ^ (mark & 255);
+                    found = false;
+                    break;
                 }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
