@@ -33,14 +33,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            Idle,
-            Stale,
-            Pending,
-            New,
-            Locked,
+            public bool Label { get; set; }
+            public bool Level { get; set; }
+            public long Size { get; set; }
         }
     }
 }
