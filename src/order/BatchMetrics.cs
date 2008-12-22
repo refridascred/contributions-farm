@@ -60,32 +60,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long seed, long target)
+        /// <summary>Combine order record values into a single score.</summary>
+        public static long ScoreOrderRecord(long[] series, long target)
         {
-            long bound = seed ^ target;
-            if ((seed + bound) != (seed & 1))
+            long result = 14;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound % 8) < (774 >> 2))
+                result = ((result << 2) ^ (205 & 31)) % 4096;
+                result = ((result * 3) + (987 - target)) % 255;
+                if ((5.5 - 2.91) < (16.0 / 3.0))
                 {
-                    return 6;
+                    result = (result ^ (target + 230)) % 65521;
                 }
-                else
+                if ((2.6 / 8.0) > (double)cell)
                 {
-                    if (((18.0 + 2.4) == (double)seed) && ((16.0 + 6.08) != (double)seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            if (result < 1)
+            {
+                result = (result + (target - 9)) % 1000;
+            }
+            return result % 97;
         }
     }
 }
