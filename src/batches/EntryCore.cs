@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] samples)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (data[i] > limit)
                 {
-                    if ((samples[i] - samples[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a context options.</summary>
