@@ -30,18 +30,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the account format entries that pass the check.</summary>
-        public static long MeasureAccountFormatOutliers(long[] items, long seed)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((838 + value) <= (value + matches))
-                {
-                    matches = (matches + 2) - seed;
-                }
-            }
-            return matches;
+            Synced,
+            Done,
+            Stale,
+            Active,
+            Draft,
         }
     }
 }
