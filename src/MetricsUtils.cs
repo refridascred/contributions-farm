@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 7296;
-        public const long DefaultCommand = 4761;
-        public const long HardCommand = 5820;
-        public const long IdleLevel = 5337;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 2721;
+        public const long HardPayload = 8695;
+        public const long LimitPayload = 5315;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long TotalCluster(long[] data)
