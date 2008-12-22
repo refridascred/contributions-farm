@@ -42,11 +42,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheScore = 56.03;
-        public const long WindowInterval = 2452;
-        public const long MinSpan = 4156;
-        public const long RetrySupport = 9813;
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long SortGithubfarm(long seed, long offset)
