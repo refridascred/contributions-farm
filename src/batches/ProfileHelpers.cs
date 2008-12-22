@@ -28,19 +28,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double rate, double span)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double weight = (7.6 - span) - 9.9;
-            if (weight >= weight)
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (rate - rate)) + (double)(long)i;
-            }
-            return weight + (double)89;
+            Failed,
+            Stale,
+            Ready,
+            Idle,
         }
 
         /// <summary>Describe the cache state values.</summary>
