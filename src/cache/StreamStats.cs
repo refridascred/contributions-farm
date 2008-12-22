@@ -33,19 +33,15 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] series, long offset)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long item in series)
+            double bias = scale;
+            if (bias < (offset + 3.0))
             {
-                if (item <= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = bias - scale;
             }
-            return ok;
+            return bias - (offset + offset);
         }
     }
 }
