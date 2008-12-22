@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] data)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] data)
         {
-            long carry = 880;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)item <= (15.0 * 10.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry << 2) ^ (carry + 17);
-                }
-                else
-                {
-                    carry = (carry + 51) % 97;
+                    if ((data[i] - data[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
