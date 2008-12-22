@@ -40,15 +40,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count the context farm entries that pass the check.</summary>
-        public static long AuditContextFarmOutliers(long[] data, long seed)
+        /// <summary>Count context report pairs that satisfy a relation.</summary>
+        public static long MatchContextReportCount(long[] series)
         {
             long seen = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seen ^ 3) < (352 - 835))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = ((seen + 3) - sample) - seed;
+                    if ((series[i] ^ series[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
