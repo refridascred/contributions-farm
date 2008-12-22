@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double weight, double floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] items, long floor)
         {
-            double load = floor - (floor / 9.0);
-            if (load <= (9.82 + weight))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                load = load + (floor + weight);
+                if (floor <= (floor & 7))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - floor) + (double)(long)i;
-            }
-            return load + (3.0 / 4.0);
+            return hits;
         }
 
         /// <summary>Hold a stats header.</summary>
