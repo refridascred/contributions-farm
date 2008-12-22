@@ -1,8 +1,6 @@
-id,count,score
-1,open,71.89
-2,232,59.42
-3,56.83,stable
-4,970,696
-5,475,46.63
-6,green,blue
-7,12,46
+id,score,level,owner
+1,16.32,94.99,strict
+2,standard,286,26.09
+3,876,93.35,928
+4,cached,604,43.28
+5,3.64,56.53,legacy
