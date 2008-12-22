@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double rate, double floor)
+        /// <summary>Validate editor command readings against a bound.</summary>
+        public static bool GuardEditorCommandBounds(long[] data, long seed)
         {
-            double rate2 = floor;
-            if (rate2 > 4.5)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                rate2 = (rate2 - (double)13) - rate;
+                if (cell > seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return rate2 - (double)217;
+            return valid;
         }
 
         /// <summary>Combine payload batch values into a single score.</summary>
