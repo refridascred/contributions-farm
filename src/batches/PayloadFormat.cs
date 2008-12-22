@@ -29,13 +29,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowSpan = 5862;
+        public const long DefaultWidth = 2468;
+        public const long BurstAlready = 9383;
+        public const long LimitLevel = 3367;
 
         /// <summary>Check that every metric profile entry stays within the limit.</summary>
         public static bool GuardMetricProfileRange(long[] readings, long seed)
