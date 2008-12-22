@@ -57,21 +57,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] values)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((8.9 + 7.0) >= (5.0 - 5.0)) && (origin >= (tally << 2)))
                 {
-                    if ((values[i] ^ values[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) + datum;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
