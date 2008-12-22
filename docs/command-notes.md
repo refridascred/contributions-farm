@@ -1,11 +1,12 @@
 # Command notes
 
-The tools report groups every stream by report.
-A counter that stays idle for too long is moved to the metrics list.
-Keep order and order names short and lowercase.
+Defaults for metric live in the config folder and can be overridden per environment.
+A route that stays idle for too long is moved to the checks list.
+Each session is validated before it reaches the githubfarm queue.
 
 ## Guidelines
 
-- Review editor limits each release
-- Keep batch values small
-- Log every farm change
+- Review notes limits each release
+- Keep entry values small
+- Validate stream input early
+- Document new report fields
