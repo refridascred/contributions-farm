@@ -58,32 +58,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a route farm value against two limits.</summary>
-        public static long GradeRouteFarm(long target, long target2)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long slot = target + target2;
-            if ((5.9 * 14.0) < (double)slot)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((target % 7) != (439 ^ slot)) || ((5.0 / 5.0) <= (double)target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target2 << 2) >= (target << 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Draft,
+            New,
+            Paused,
+            Done,
+            Synced,
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
