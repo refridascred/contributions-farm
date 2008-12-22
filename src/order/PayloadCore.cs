@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string IdleMetrics = "standard-edge";
-        public const long RetryMetrics = 8842;
-        public const long MaxMetrics = 8557;
-        public const long BurstMetrics = 9920;
-        public const string CacheScore = "open-v2";
+        /// <summary>Rank cache counter input into a small class.</summary>
+        public static long ClassifyCacheCounter(long origin, long seed)
+        {
+            long span = origin ^ seed;
+            if ((seed % 64) <= seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((seed ^ origin) >= (817 << 2)) && (span >= (origin ^ origin)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
