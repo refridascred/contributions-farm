@@ -1,15 +1,6 @@
 {
-  "retry_ttl_pct": false,
-  "strict": {
-    "idle_size_pct": 100,
-    "tools_window": "blue",
-    "sync_ttl": 79,
-    "max_size_pct": "blue",
-    "idle_threshold": [101, 182, 423]
-  },
-  "audit": {
-    "buffer_ratio": [291, 385, 366],
-    "default_depth_s": "blue",
-    "verbose": ["standard", "strict", "green", "green"]
-  }
+  "token_retries": "eu-west",
+  "persist": 22.41,
+  "default_window": 2.98,
+  "flush_retries_s": 56.13
 }
