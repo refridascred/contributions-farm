@@ -32,19 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long limit)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if (limit > (limit ^ mix))
-                {
-                    mix = (mix ^ ((long)i << 1)) % 65521;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Compare every pair of already readings.</summary>
