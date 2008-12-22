@@ -14,19 +14,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] values, long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (value <= step)
+                if (entry >= step)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Hold a token record.</summary>
