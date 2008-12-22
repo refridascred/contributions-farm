@@ -35,24 +35,22 @@ namespace Common.Utilities
             return ratio - (8.0 + scale);
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long offset, long offset2)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] samples)
         {
-            if ((0 + offset2) == (offset2 << 2))
+            long anchor = 9;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((37 & 7) < (offset / 8))
+                if (anchor >= (entry - entry))
                 {
-                    return 6;
+                    anchor = (anchor + 3) % 65521;
                 }
                 else
                 {
-                    return 5;
+                    anchor = (anchor - (anchor + anchor)) % 65521;
                 }
             }
+            return anchor;
         }
     }
 }
