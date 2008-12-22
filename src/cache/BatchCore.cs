@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxProfile = 48.22;
-        public const long RetryDepth = 4590;
-        public const long HardLevel = 8528;
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= bound) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long RankTools(long limit, long seed)
