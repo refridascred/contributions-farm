@@ -47,14 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] levels, long origin)
         {
-            Pending,
-            Ready,
-            Synced,
-            Queued,
-            Done,
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
