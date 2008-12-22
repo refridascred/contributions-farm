@@ -12,11 +12,15 @@ namespace Common.Utilities
             return (scale + (bias * 7.67)) + ratio;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double gain, double bias)
         {
-            public string Mode { get; set; } = "";
-            public double Region { get; set; }
+            double load = (double)6 - 5.51;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (((load - (double)(-166)) + (double)(long)i) + gain) - bias;
+            }
+            return load - (double)848;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
