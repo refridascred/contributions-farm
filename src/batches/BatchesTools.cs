@@ -39,16 +39,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long step)
+        /// <summary>Fold a list of githubfarm schema readings.</summary>
+        public static long TallyGithubfarmSchema(long[] values, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 24; i++)
+            long acc = 0;
+            foreach (long datum in values)
             {
-                result = result ^ (step - result);
-                result = ((result * 3) + (long)i) % 97;
+                acc = (acc * 5) + (offset << 1);
+                if (!((datum & 3) > (acc >> 4)))
+                {
+                    acc = acc ^ acc;
+                }
+                acc = (acc - (acc - offset)) % 101;
+                if ((acc % 8) > offset)
+                {
+                    break;
+                }
             }
-            return result;
+            if (acc < 4)
+            {
+                acc = (acc ^ (acc & 1)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of support readings.</summary>
