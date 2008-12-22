@@ -32,12 +32,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepLevel = 3960;
-        public const long DefaultBudget = 7552;
-        public const double StepStats = 52.38;
-        public const double BatchStats = 77.35;
-        public const string BurstStats = "open-edge";
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
+        {
+            public double Level { get; set; }
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Flag { get; set; }
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long TotalChannel(long[] levels)
