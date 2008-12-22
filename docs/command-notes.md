@@ -1,11 +1,14 @@
 # Command notes
 
-Use session settings to tune how often format data is refreshed.
-A checks that stays idle for too long is moved to the record list.
+Defaults for filter live in the config folder and can be overridden per environment.
+The buffer module keeps context values in sync with the format cache.
+Run the schema check before changing any metrics limits.
+
+Run the commits check before changing any metrics limits.
+Run the format check before changing any batches limits.
 
 ## Guidelines
 
-- Validate commits input early
-- Keep counter values small
-- Prefer githubfarm defaults
-- Review stats limits each release
+- Keep token values small
+- Prefer channel defaults
+- Log every record change
