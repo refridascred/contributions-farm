@@ -51,11 +51,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchFactor = 6396;
-        public const double MaxReport = 34.08;
-        public const long MinReport = 3897;
-        public const long StepSpan = 9291;
-        public const double CacheDepth = 51.62;
+        /// <summary>Grade a session cache value against two limits.</summary>
+        public static long GradeSessionCache(long offset, long offset2)
+        {
+            if ((offset % 16) <= 938)
+            {
+                return 7;
+            }
+            else
+            {
+                if (2.0 >= (double)offset2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (491 < offset2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((12 >> 2) == (offset + offset2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
