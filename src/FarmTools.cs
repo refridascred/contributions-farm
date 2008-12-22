@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            Synced,
-            Active,
-            Stale,
-            Failed,
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a report info.</summary>
