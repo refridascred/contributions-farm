@@ -61,26 +61,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] data)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long offset, long seed)
         {
-            long acc = -444;
-            foreach (long sample in data)
+            if ((double)seed < (1.8 + 8.1))
             {
-                if (2.9 >= (double)acc)
+                return 5;
+            }
+            else
+            {
+                if ((-446) < (offset * 3))
                 {
-                    acc = ((acc * 2) + (sample * 5)) % 65521;
+                    return 6;
                 }
                 else
                 {
-                    acc = (acc - (acc + acc)) % 97;
+                    if (!((seed + seed) < (527 - offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed + seed) < (offset % 100))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (acc < 47)
-            {
-                acc = acc + (acc >> 5);
-            }
-            return acc;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
