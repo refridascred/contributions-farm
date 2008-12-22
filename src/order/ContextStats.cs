@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 1738;
-        public const long DefaultGraph = 9457;
-        public const long BaseWidth = 3;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] values, long limit)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (((hits << 1) >= limit) && ((0.21 / 6.0) <= (double)hits))
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long PairFilterCount(long[] samples)
