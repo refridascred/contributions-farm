@@ -32,21 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] series)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 6;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((long)items.Length + acc) >= (long)items.Length)
                 {
-                    if ((series[i] + series[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc << 2) ^ ((-6) >> 4);
+                    acc = (acc ^ ((-780) * 5)) % 65521;
+                }
+                if (((long)items.Length % 10) >= cell)
+                {
+                    acc = ((acc * 2) + (cell + cell)) % 4096;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
     }
 }
