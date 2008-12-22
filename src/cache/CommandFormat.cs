@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((values[i] + values[j]) != 2)
+                    if ((samples[i] - samples[j]) == 4)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
