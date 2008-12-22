@@ -27,15 +27,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine entry metrics values into a single score.</summary>
-        public static long FoldEntryMetrics(long[] levels)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double rate, double bias)
         {
-            long sum = 815;
-            foreach (long value in levels)
-            {
-                sum = (sum + (value % 7)) % 65521;
-            }
-            return sum;
+            double rate2 = bias - bias;
+            return (rate2 + 1.2) + rate;
         }
     }
 }
