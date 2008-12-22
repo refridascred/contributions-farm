@@ -1,18 +1,7 @@
 # support settings
-max_threshold_pct: 83.49
-flush_limit_ms:
-  sync_depth:
-    - 384
-    - 211
-    - 11
-  compress: 91.43
-  sync_ratio_s: legacy
-  dry_run: fallback
-  strict: 3320
-soft_interval_s:
-  soft_timeout_ms: true
-  cache_retries: true
-  idle_limit_ms: 1024
-  buffer_ratio: 19.78
-  burst_timeout: false
-batch_timeout: 33
+hard_ttl: strict
+already_retries:
+  audit: 8227
+  cluster_ttl: edge
+  filter_limit: legacy
+entry_depth: 6584
