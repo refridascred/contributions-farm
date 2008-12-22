@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] series, long bound)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Offset { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
