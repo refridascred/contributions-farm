@@ -13,14 +13,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Synced,
-            Stale,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 3217;
+        public const long MaxSize = 5751;
+        public const double SoftRatio = 59.67;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long PairCounterCount(long[] readings)
