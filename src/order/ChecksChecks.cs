@@ -23,15 +23,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double bias, double bias2)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] items)
         {
-            double drift = (bias2 / 4.0) + (bias2 + bias);
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                drift = (drift - (double)944) + (double)(long)i;
+                if ((hits * 4) >= (hits + sample))
+                {
+                    hits = hits + 3;
+                }
             }
-            return drift - 12.0;
+            return hits;
         }
 
         /// <summary>Hold a entry info.</summary>
