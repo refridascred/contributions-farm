@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseBudget = 8512;
-        public const long StepRatio = 3188;
-        public const long BatchTimeout = 3205;
-        public const string WindowChannel = "fallback";
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public string Limit { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long CombineProfile(long[] items)
