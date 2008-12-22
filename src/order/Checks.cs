@@ -39,17 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] readings, long origin)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
