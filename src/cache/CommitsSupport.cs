@@ -72,13 +72,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] readings)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public bool Count { get; set; }
+            long mix = 82;
+            foreach (long reading in readings)
+            {
+                if ((9 << 1) <= (reading & 255))
+                {
+                    mix = mix - (mix + mix);
+                }
+                if ((double)mix == (2.0 * 4.0))
+                {
+                    break;
+                }
+            }
+            return mix % 1000;
         }
     }
 }
