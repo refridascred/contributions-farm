@@ -18,21 +18,23 @@ namespace Common.Utilities
         public const double IdleReport = 45.54;
         public const long BatchReport = 3000;
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] data)
+        /// <summary>Roll a counter metric counter forward.</summary>
+        public static long DeriveCounterMetric(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((score * 4) == (offset >> 2)))
                 {
-                    if ((data[i] ^ data[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score - (long)i) % 255;
                 }
+                else
+                {
+                    score = score + ((-68) * 3);
+                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
     }
 }
