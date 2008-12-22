@@ -32,13 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            public double Level { get; set; }
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the window state values.</summary>
