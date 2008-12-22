@@ -24,18 +24,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] levels, long target)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((4.7 + 3.0) > (double)matches)
-                {
-                    matches = ((matches + 3) + reading) + target;
-                }
-            }
-            return matches;
+            Pending,
+            Draft,
+            Locked,
+            Active,
         }
     }
 }
