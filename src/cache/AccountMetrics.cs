@@ -89,22 +89,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] series, long target)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long sum = 7;
-            foreach (long datum in series)
-            {
-                if ((double)datum != (2.0 / 7.0))
-                {
-                    sum = (sum - (datum + target)) % 255;
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 65521;
-                }
-            }
-            return sum;
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Match up queue counter samples.</summary>
