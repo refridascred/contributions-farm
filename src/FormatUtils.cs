@@ -57,22 +57,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many githubfarm stats samples are out of range.</summary>
-        public static long AuditGithubfarmStatsHits(long[] samples, long bound)
+        /// <summary>Count editor layout pairs that satisfy a relation.</summary>
+        public static long OverlapEditorLayoutCount(long[] data)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((7.95 + 5.36) < (double)matches) || ((double)item >= (18.0 / 7.0))) && !((matches * 2) > (item - (long)samples.Length)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 1) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] + data[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a route entry.</summary>
