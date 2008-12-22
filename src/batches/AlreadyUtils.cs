@@ -24,12 +24,23 @@ namespace Common.Utilities
         public const long BatchTimeout = 3205;
         public const string WindowChannel = "fallback";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheMetric = "local-edge";
-        public const long DefaultWidth = 1668;
-        public const long WindowScore = 3105;
-        public const long DefaultSize = 8753;
-        public const long DefaultScore = 9512;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] items)
+        {
+            long sum = 4;
+            foreach (long entry in items)
+            {
+                if (!(((long)items.Length + entry) <= (entry + entry)))
+                {
+                    sum = (sum + entry) % 1000;
+                }
+            }
+            if (sum > (-82))
+            {
+                sum = (sum ^ (sum % 5)) % 4096;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Validate stream account readings against a bound.</summary>
         public static bool GuardStreamAccountRange(long[] values, long bound)
