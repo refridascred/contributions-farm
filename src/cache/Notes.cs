@@ -13,31 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank stats payload input into a small class.</summary>
-        public static long RankStatsPayload(long floor, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] levels, long limit)
         {
-            if ((floor / 4) <= offset)
+            bool found = true;
+            foreach (long value in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset == (2.02 / 6.0))
+                if (value < limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor << 3) > (offset % 60))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
