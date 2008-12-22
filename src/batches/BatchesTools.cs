@@ -17,12 +17,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultTimeout = 1824;
-        public const double IdleToken = 84.99;
-        public const double BurstToken = 36.99;
-        public const long WindowToken = 9893;
-        public const string WindowBudget = "local-edge";
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double scale, double floor)
+        {
+            double weight = 9.8;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = ((weight + weight) + (double)(long)i) + floor;
+            }
+            return weight - (scale / 7.0);
+        }
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long GradeTools(long seed, long offset)
