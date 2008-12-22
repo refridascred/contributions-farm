@@ -36,21 +36,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] items)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 254;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = (result + (item & 31)) % 1000;
+                result = (result - (8 ^ floor)) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
