@@ -45,14 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] items, long step)
         {
-            Idle,
-            Dropped,
-            Done,
-            Synced,
-            New,
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count command notes pairs that satisfy a relation.</summary>
