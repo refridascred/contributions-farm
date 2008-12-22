@@ -39,18 +39,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] readings, long target)
+        /// <summary>Fold a list of stats session readings.</summary>
+        public static long CombineStatsSession(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long state = 106;
+            foreach (long reading in levels)
             {
-                if ((reading & 7) >= (hits * 4))
+                state = state - state;
+                if (((limit + state) <= (reading + limit)) || ((limit - limit) < (reading - reading)))
                 {
-                    hits = (hits + 1) - target;
+                    state = ((state << 3) ^ (limit & 31)) % 97;
                 }
             }
-            return hits;
+            if (state > 658)
+            {
+                state = state + (limit + limit);
+            }
+            return state % 97;
         }
 
         /// <summary>Classify a stats githubfarm pair into a bucket.</summary>
