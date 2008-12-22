@@ -34,23 +34,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer report values into a single score.</summary>
-        public static long TotalBufferReport(long[] items, long target)
+        /// <summary>Match up cache counter samples.</summary>
+        public static long CompareCacheCounterCount(long[] series)
         {
-            long result = 42;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = result ^ 182;
-                if (((entry - entry) <= target) && ((result % 24) != (long)items.Length))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result << 2) ^ result) % 255;
+                    if ((series[i] + series[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result < 635)
-            {
-                result = result + (result ^ result);
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the queue status values.</summary>
