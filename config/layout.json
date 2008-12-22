@@ -1,6 +1,5 @@
 {
-  "sync_ttl_count": ["latest", "stable"],
-  "payload_size": 6808,
-  "flush_interval_count": 478,
-  "enabled": ["strict", "cached", "latest"]
+  "audit": 31.47,
+  "notes_delay": 1024,
+  "persist": "standard"
 }
