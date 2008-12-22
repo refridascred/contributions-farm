@@ -86,11 +86,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public double Total { get; set; }
-            public double Flag { get; set; }
+            Queued,
+            Done,
+            Draft,
         }
     }
 }
