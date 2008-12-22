@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Support helpers helpers.</summary>
     public static class SupportHelpers
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Look up the position of a stats schema sample.</summary>
+        public static long LocateStatsSchemaIndex(long[] samples, long step)
         {
-            Queued,
-            Draft,
-            Ready,
-            Pending,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of record batches entries.</summary>
