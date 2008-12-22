@@ -16,23 +16,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long bound)
+        /// <summary>Derive the next editor stats value from a seed.</summary>
+        public static long RollEditorStats(long bound)
         {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
+            long mark = bound;
+            for (int i = 0; i < 12; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    result = ((result * 4) + bound) ^ (long)i2;
-                }
-                if ((result - bound) < bound)
-                {
-                    result = result + (long)i;
-                }
-                result = ((result * 4) + (long)i) % 97;
+                mark = (mark ^ mark) % 255;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
