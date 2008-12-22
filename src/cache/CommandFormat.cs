@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] series, long limit)
+        /// <summary>Find the first queue editor entry that matches the target.</summary>
+        public static long LocateQueueEditorIndex(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((entry / 8) >= 428) || ((limit >> 3) >= ((-599) + entry)))
+                if (items[i] <= offset)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Blend two command measurements.</summary>
