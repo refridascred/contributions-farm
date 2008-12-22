@@ -61,11 +61,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepOrder = "primary-1";
-        public const string RetryBudget = "local-v2";
-        public const long MaxLevel = 787;
-        public const long BaseOrder = 9046;
-        public const double WindowBudget = 14.29;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxChecks = "stable-edge";
+        public const long MinChecks = 2768;
+        public const long HardScore = 9216;
+        public const double MinWidth = 79.52;
+        public const string CacheChecks = "local";
     }
 }
