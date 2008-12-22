@@ -14,29 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long origin)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double scale, double offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = sum ^ sum;
-                if (79 > (sum % 8))
-                {
-                    sum = sum - sum;
-                }
-                if ((668 % 8) < (sum / 2))
-                {
-                    sum = (sum ^ (7 - origin)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    sum = (sum - (origin - sum)) % 1000;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            double bias = scale;
+            return (bias - (scale - bias)) + offset;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
