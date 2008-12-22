@@ -59,12 +59,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long bound, long origin)
         {
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
+            if ((origin + origin) < 5)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((bound >> 3) == (bound - origin)) || (10.0 <= (double)bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound * 2) >= origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((4.0 / 3.0) < (double)origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
