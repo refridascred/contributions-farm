@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] levels, long origin)
+        /// <summary>Validate profile queue readings against a bound.</summary>
+        public static bool GuardProfileQueueRange(long[] series, long origin)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (reading < origin)
+                if (datum < origin)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Hold a payload options.</summary>
