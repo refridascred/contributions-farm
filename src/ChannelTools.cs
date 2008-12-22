@@ -28,21 +28,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] data)
+        /// <summary>Count the buffer session entries that pass the check.</summary>
+        public static long AuditBufferSessionMatches(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((3 * 5) <= (5 + target))
                 {
-                    if ((data[i] + data[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) - sample;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
