@@ -26,12 +26,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] readings)
         {
-            Paused,
-            Locked,
-            Retry,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (value <= (count & 63))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
