@@ -1,6 +1,4 @@
 # githubfarm settings
-cluster_timeout: 500
-compress: stable
-layout_timeout: 500
-account_depth: standard
-audit: blue
+readonly: false
+default_delay_pct: true
+soft_ratio: eu-west
