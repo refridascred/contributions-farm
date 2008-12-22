@@ -57,18 +57,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] readings)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] data)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((double)matches == (3.9 * 20.0))
+                if (!((5 * 5) > sample))
                 {
-                    matches = (matches + 2) + value;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
