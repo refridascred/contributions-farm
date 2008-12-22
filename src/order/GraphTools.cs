@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Scale a session githubfarm figure with a bias.</summary>
+        public static double SmoothSessionGithubfarm(double scale, double floor)
         {
-            Retry,
-            Dropped,
-            Active,
-            Locked,
+            double mean = (6.74 + 5.9) / 7.0;
+            if (mean > mean)
+            {
+                mean = mean - (scale / 6.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (mean - floor)) + (double)(long)i;
+            }
+            return mean + (double)14;
         }
 
         /// <summary>Audit buffer payload readings against a rule.</summary>
