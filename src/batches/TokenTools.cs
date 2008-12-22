@@ -40,9 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardFilter = 23.96;
-        public const string BurstWidth = "local";
-        public const long DefaultRatio = 2521;
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
+        {
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
+        }
     }
 }
