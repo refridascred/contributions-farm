@@ -19,18 +19,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first stats batches entry that matches the target.</summary>
-        public static long FindStatsBatchesIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheWidth = 2847;
+        public const string WindowBudget = "stable";
+        public const long MaxCommits = 1286;
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long MatchBatchesCount(long[] values)
