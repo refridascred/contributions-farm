@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowInterval = 964;
-        public const double CacheEntry = 93.91;
-        public const long MinEntry = 4690;
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a stream schema reading by value.</summary>
         public static long LookupStreamSchemaIndex(long[] values, long seed)
