@@ -17,14 +17,17 @@ namespace Common.Utilities
         public const double CacheLevel = 39.25;
         public const long LimitWidth = 5779;
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Look up the position of a commits batches sample.</summary>
+        public static long LocateCommitsBatchesIndex(long[] values, long offset)
         {
-            Ready,
-            Queued,
-            Paused,
-            Synced,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
