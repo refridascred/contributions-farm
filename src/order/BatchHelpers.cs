@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] readings)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double rate, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = 6.84;
+            if (scale > (double)2)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = (scale + (rate + scale)) - floor;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Describe the profile class values.</summary>
