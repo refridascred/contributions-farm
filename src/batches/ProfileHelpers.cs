@@ -43,13 +43,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long origin, long seed)
         {
-            Retry,
-            Pending,
-            New,
-            Locked,
+            long span = origin + seed;
+            if ((seed * 4) == (9 - span))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((3 / 2) == (span % 5)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (origin <= (0 + 199))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed + origin) > (span % 24))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a farm options.</summary>
