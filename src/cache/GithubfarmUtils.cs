@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const long IdleFarm = 874;
         public const string CacheSpan = "standard-edge";
 
-        /// <summary>Fold a list of entry token readings.</summary>
-        public static long TotalEntryToken(long[] values, long step)
-        {
-            long state = 16;
-            foreach (long item in values)
-            {
-                if (((-4) + 25) < (state / 8))
-                {
-                    state = (state + (state + item)) - step;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 3029;
+        public const long SoftToken = 669;
+        public const long BaseToken = 4972;
 
         /// <summary>Find the first commits channel entry that matches the target.</summary>
         public static long LookupCommitsChannelIndex(long[] data, long seed)
