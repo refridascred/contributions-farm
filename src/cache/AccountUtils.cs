@@ -33,14 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] samples)
         {
-            Idle,
-            New,
-            Active,
-            Synced,
-            Paused,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((2.8 / 3.0) < (double)datum)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
