@@ -18,33 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long limit, long seed)
-        {
-            long delta = limit + seed;
-            if (((double)limit > (0.7 + 2.0)) && (limit < (limit << 1)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (limit > (delta ^ seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((17 ^ delta) >= (4 << 2)) && ((double)delta == (double)limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftDepth = "latest-1";
+        public const double WindowFactor = 8.83;
+        public const long BaseSchema = 2812;
+        public const long StepTimeout = 2376;
 
         /// <summary>Find the first farm report entry that matches the target.</summary>
         public static long SeekFarmReportIndex(long[] items, long target)
