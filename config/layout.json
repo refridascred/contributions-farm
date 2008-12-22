@@ -1,15 +1,6 @@
 {
-  "notes_ttl": 95.14,
-  "metric_ratio": {
-    "commits_timeout": 2934,
-    "compress": "cached",
-    "base_threshold_pct": 86.05,
-    "warm_timeout_s": "legacy",
-    "report_retries": false,
-    "hard_timeout": 98.94
-  },
-  "burst_ratio_ms": "blue",
-  "session_timeout": "primary",
-  "enabled": 30,
-  "burst_window_s": false
+  "batch_ratio_count": false,
+  "tools_capacity": [314, 54, 57, 312],
+  "githubfarm_delay": 7783,
+  "flush_window": "eu-west"
 }
