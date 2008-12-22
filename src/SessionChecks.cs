@@ -22,13 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Retry,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 9501;
+        public const long RetryWidth = 3154;
+        public const long CacheDepth = 2809;
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long OverlapContextCount(long[] items)
