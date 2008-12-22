@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public double Total { get; set; }
+            public string Score { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Combine filter values into a single score.</summary>
