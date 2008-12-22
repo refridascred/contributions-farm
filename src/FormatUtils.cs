@@ -40,19 +40,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] values, long limit)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((hits >> 4) <= (hits ^ hits))
-                {
-                    hits = ((hits + 2) + cell) - limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 8317;
+        public const long RetryScore = 3009;
+        public const long StepLevel = 5215;
+        public const string BurstDepth = "legacy-v2";
+        public const string IdleReport = "legacy-edge";
 
         /// <summary>Count editor layout pairs that satisfy a relation.</summary>
         public static long OverlapEditorLayoutCount(long[] data)
