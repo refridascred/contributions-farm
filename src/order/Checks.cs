@@ -39,15 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double gain, double bias)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] readings, long origin)
         {
-            double load = (double)6 - 5.51;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (((load - (double)(-166)) + (double)(long)i) + gain) - bias;
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return load - (double)848;
+            return -1;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
