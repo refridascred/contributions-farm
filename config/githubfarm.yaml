@@ -1,9 +1,6 @@
 # githubfarm settings
-persist:
-  - legacy
-  - stable
-  - cached
-  - local
-sync_threshold_count: 25
-metrics_threshold: 55
-max_timeout_pct: true
+cluster_timeout: 500
+compress: stable
+layout_timeout: 500
+account_depth: standard
+audit: blue
