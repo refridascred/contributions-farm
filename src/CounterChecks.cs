@@ -12,21 +12,22 @@ namespace Common.Utilities
         public const string BatchReport = "stable-v2";
         public const long CacheReport = 920;
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Digest a series of notes cluster entries.</summary>
+        public static long CombineNotesCluster(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = -87;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((result + step) <= entry)
                 {
-                    if ((samples[i] - samples[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result * 2) + (394 - result);
+                }
+                if (!((step - step) == (result * 3)))
+                {
+                    result = (result * 4) + (4 << 3);
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Validate cluster layout readings against a bound.</summary>
