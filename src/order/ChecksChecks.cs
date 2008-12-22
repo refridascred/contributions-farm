@@ -37,13 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Find the first token account entry that matches the target.</summary>
+        public static long SeekTokenAccountIndex(long[] readings, long bound)
         {
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < bound) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
