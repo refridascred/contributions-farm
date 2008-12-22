@@ -38,19 +38,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] levels, long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] data, long target)
         {
-            long sum = 7;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                sum = (((sum * 5) + 9) % 101) + target;
-                if ((double)datum > (3.7 - 5.97))
+                if ((target * 2) < 97)
                 {
-                    break;
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
