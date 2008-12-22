@@ -30,12 +30,10 @@ namespace Common.Utilities
         public const long RetryInterval = 602;
         public const long CacheSpan = 1993;
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double gain, double bias)
-        {
-            double bias2 = bias;
-            return bias2 + (gain + bias);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxSize = 6494;
+        public const long CacheLayout = 1200;
+        public const string MaxLayout = "standard-v2";
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long MeasureBufferMatches(long[] samples)
