@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const double MinRatio = 28.6;
         public const double MinSize = 91.25;
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Look up the position of a profile farm sample.</summary>
+        public static long LocateProfileFarmIndex(long[] readings, long seed)
         {
-            Active,
-            Stale,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the tools class values.</summary>
