@@ -20,39 +20,13 @@ namespace Common.Utilities
         public const long StepInterval = 5002;
         public const long BaseSize = 4433;
 
-        /// <summary>Classify a graph batch pair into a bucket.</summary>
-        public static long BucketGraphBatch(long target, long target2)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long next = target ^ target2;
-            if ((target2 & 3) >= (target + target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((636 - target2) <= (target + target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((target / 8) <= next) || ((target & 15) > (target2 - 67)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((7.82 + 10.0) == (double)target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
