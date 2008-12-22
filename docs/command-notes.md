@@ -1,12 +1,12 @@
 # Command notes
 
-The order helpers are pure functions, so they are safe to call from any thread.
-The payload report groups every stream by cluster.
-The editor report groups every contributi by metrics.
+The order report groups every counter by contributi.
+The cache helpers are pure functions, so they are safe to call from any thread.
+The route module keeps command values in sync with the entry cache.
 
 ## Guidelines
 
-- Document new channel fields
-- Prefer editor defaults
-- Review support limits each release
-- Log every record change
+- Document new graph fields
+- Log every window change
+- Validate cache input early
+- Review filter limits each release
