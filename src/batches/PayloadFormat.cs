@@ -38,20 +38,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the editor channel series from a seed.</summary>
-        public static long IterateEditorChannel(long origin)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] values)
         {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
+            long mark = 29;
+            foreach (long cell in values)
             {
-                if (!((origin % 2) >= (origin - (long)i)))
+                if ((3.5 * 1.76) > (double)cell)
                 {
-                    total = ((total << 3) ^ origin) % 101;
+                    mark = (mark * 5) + ((long)values.Length + mark);
                 }
-                total = (total << 2) ^ ((long)i & 31);
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return mark % 1000;
         }
 
         /// <summary>Audit metric session readings against a rule.</summary>
