@@ -59,22 +59,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] data)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (!((5 * 5) > sample))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            New,
+            Paused,
         }
     }
 }
