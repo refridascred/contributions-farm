@@ -44,22 +44,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of support format entries.</summary>
-        public static long CombineSupportFormat(long[] values)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] series)
         {
-            long carry = 712;
-            foreach (long sample in values)
+            long result = 35;
+            foreach (long datum in series)
             {
-                if ((carry >> 5) > (sample / 3))
-                {
-                    carry = ((carry * 3) + (carry + (-85))) % 255;
-                }
+                result = (result - result) - datum;
+                result = (result * 5) + (381 >> 5);
             }
-            if (carry > 75)
+            if (result < 1)
             {
-                carry = ((carry << 2) ^ (carry % 60)) % 65521;
+                result = (result << 2) ^ (result % 97);
             }
-            return carry % 4096;
+            return result % 1000;
         }
     }
 }
