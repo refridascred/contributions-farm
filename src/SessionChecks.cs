@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] items)
-        {
-            long state = 445;
-            foreach (long cell in items)
-            {
-                if (!((cell ^ state) > cell))
-                {
-                    state = state - (state & 15);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitCount = 63.14;
+        public const long LimitEditor = 1518;
+        public const string IdleInterval = "fallback-edge";
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
