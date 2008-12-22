@@ -51,12 +51,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] data)
         {
-            Queued,
-            Done,
-            Draft,
+            long total = 258;
+            foreach (long entry in data)
+            {
+                if ((total ^ entry) < (total & 31))
+                {
+                    total = (total << 2) ^ (entry + entry);
+                }
+            }
+            if (total > 3)
+            {
+                total = ((total * 3) + total) % 65521;
+            }
+            return total;
         }
     }
 }
