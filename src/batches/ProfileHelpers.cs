@@ -43,39 +43,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long origin, long seed)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] levels)
         {
-            long span = origin + seed;
-            if ((seed * 4) == (9 - span))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((3 / 2) == (span % 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (origin <= (0 + 199))
+                    if ((levels[i] ^ levels[j]) != 4)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed + origin) > (span % 24))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a farm options.</summary>
