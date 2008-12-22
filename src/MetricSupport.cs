@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] levels, long seed)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] values)
         {
-            long score = 67;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                score = ((score * 2) + (datum + score)) % 97;
+                if (!((cell + tally) > (tally << 3)))
+                {
+                    tally = tally + 2;
+                }
             }
-            if (score > 22)
-            {
-                score = (score * 5) + seed;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Project the next buffer value.</summary>
