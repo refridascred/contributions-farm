@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double bias, double bias2)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            double gain = bias;
-            if (gain <= (9.1 * 15.0))
-            {
-                gain = gain + (gain + bias2);
-            }
-            else
-            {
-                gain = gain + (bias + bias);
-            }
-            return gain - bias;
+            Dropped,
+            New,
+            Queued,
+            Synced,
+            Closed,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
