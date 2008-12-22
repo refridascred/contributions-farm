@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token support values into a single score.</summary>
-        public static long ScoreTokenSupport(long[] values, long seed)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] samples, long limit)
         {
-            long mark = 2;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark << 3) ^ datum) % 255;
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < (-366))
-            {
-                mark = ((mark << 2) ^ (seed % 100)) % 1000;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Project the next order value.</summary>
