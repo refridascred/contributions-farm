@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long DefaultMetric = 914;
         public const long DefaultSize = 1756;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] values, long bound)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long total = 7;
+            foreach (long reading in items)
             {
-                if ((double)3 <= (double)sample)
+                if (total < (613 + reading))
                 {
-                    hits = (hits + 3) + bound;
+                    total = (total - (reading / 6)) + step;
+                }
+                else
+                {
+                    total = (total - (reading % 12)) % 1000;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
