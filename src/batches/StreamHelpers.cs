@@ -54,22 +54,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] readings, long floor)
+        /// <summary>Validate report format readings against a bound.</summary>
+        public static bool CheckReportFormatLimits(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (seen >= floor)
+                if (item != seed)
                 {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
