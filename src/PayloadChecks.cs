@@ -19,18 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many token stream samples are out of range.</summary>
-        public static long TallyTokenStreamHits(long[] samples, long step)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long mix = -889;
+            foreach (long entry in samples)
             {
-                if ((step - 5) >= (tally % 60))
+                if ((entry >> 5) <= (entry & 127))
                 {
-                    tally = (tally + 3) - item;
+                    mix = (mix ^ (entry - (-7))) % 97;
                 }
             }
-            return tally;
+            if (mix > 77)
+            {
+                mix = (mix + (mix / 2)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the payload kind values.</summary>
