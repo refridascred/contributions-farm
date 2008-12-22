@@ -23,21 +23,15 @@ namespace Common.Utilities
         public const double CacheContributi = 89.05;
         public const long RetryRatio = 6064;
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] data)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 798;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (sum + (value << 1)) % 97;
             }
-            return seen;
+            return sum % 97;
         }
     }
 }
