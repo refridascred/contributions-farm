@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowEditor = 51.19;
-        public const long BaseSpan = 2840;
-        public const double DefaultEditor = 44.91;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 2725;
+        public const long LimitSpan = 6361;
+        public const long HardBudget = 4084;
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long SeriesRecord(long bound)
