@@ -50,12 +50,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftSpan = 1357;
-        public const string MaxTimeout = "open-v2";
-        public const double DefaultCache = 98.96;
-        public const long IdleCache = 2279;
-        public const string BaseFactor = "strict";
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                long count = anchor % 64;
+                count = ((count * 4) + count) % 255;
+                if (26 <= (count % 60))
+                {
+                    anchor = anchor - (180 ^ count);
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
