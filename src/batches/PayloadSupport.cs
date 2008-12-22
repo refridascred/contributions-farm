@@ -15,14 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] levels)
         {
-            Ready,
-            Closed,
-            Stale,
-            Done,
-            Idle,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((4 << 3) <= hits)
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two farm cluster measurements.</summary>
