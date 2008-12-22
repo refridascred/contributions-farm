@@ -1,7 +1,8 @@
 {
-  "base_delay_count": 60,
-  "checks_timeout": "legacy",
-  "warm_depth": "staging",
-  "already_threshold": [153, 241],
-  "sync_timeout": false
+  "default_retries_pct": 60.44,
+  "retry_ttl_pct": 9951,
+  "max_ratio_count": 21.05,
+  "flush_limit_pct": 77.02,
+  "flush_ttl": ["fallback", "local", "local"],
+  "min_limit_s": "latest"
 }
