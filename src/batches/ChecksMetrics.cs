@@ -75,15 +75,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] items, long floor)
+        /// <summary>Scale a stream notes figure with a bias.</summary>
+        public static double ProjectStreamNotes(double weight, double floor)
         {
-            long score = 3;
-            foreach (long cell in items)
+            double ratio = floor;
+            if (ratio > (double)(-4))
             {
-                score = ((score - (cell << 1)) % 65521) + floor;
+                ratio = (ratio + ratio) + weight;
             }
-            return score % 65521;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (0.22 + floor)) + (double)(long)i;
+            }
+            return ratio - (ratio * 8.09);
         }
     }
 }
