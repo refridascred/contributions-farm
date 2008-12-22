@@ -1,5 +1,11 @@
 {
-  "hard_retries_s": true,
-  "token_ttl": 90.14,
-  "dry_run": 28.12
+  "burst_delay_ms": {
+    "hard_limit_count": 1024,
+    "burst_delay_count": 1024,
+    "entry_delay": "blue",
+    "burst_timeout_ms": "stable",
+    "poll_window_s": 3909
+  },
+  "filter_threshold": 14,
+  "session_interval": 100
 }
