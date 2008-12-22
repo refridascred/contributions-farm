@@ -79,13 +79,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Combine profile queue values into a single score.</summary>
+        public static long TallyProfileQueue(long[] values)
         {
-            Locked,
-            Queued,
-            Failed,
-            Retry,
+            long mark = 7;
+            foreach (long reading in values)
+            {
+                mark = mark + (mark >> 2);
+                mark = (mark + (reading >> 5)) % 65521;
+                if (reading >= (mark >> 5))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
     }
 }
