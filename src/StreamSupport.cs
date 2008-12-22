@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] readings)
+        /// <summary>Measure how many editor report samples are out of range.</summary>
+        public static long MeasureEditorReportGaps(long[] data, long limit)
         {
-            long total = 5;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (((double)777 == (double)total) || (datum < (143 * 2)))
+                if ((26 + seen) <= limit)
                 {
-                    total = (total - (total % 24)) % 4096;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (total + datum)) % 255;
+                    seen = (seen + 1) + value;
                 }
             }
-            if (total > (-1))
-            {
-                total = (total + (total ^ total)) % 255;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Rank support input into a small class.</summary>
