@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitDepth = 43.4;
-        public const long RetryWindow = 3088;
-        public const double StepWindow = 67.08;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] samples)
+        {
+            long carry = 0;
+            foreach (long value in samples)
+            {
+                carry = ((carry - (9 / 5)) % 1000) + value;
+            }
+            if (carry < 8)
+            {
+                carry = ((carry * 2) + carry) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Adjust a report reading.</summary>
         public static double ProjectReport(double bias, double bias2)
