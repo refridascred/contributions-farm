@@ -59,19 +59,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] levels, long limit)
+        /// <summary>Scale a contributi channel figure with a bias.</summary>
+        public static double SmoothContributiChannel(double bias, double span)
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double mean = span;
+            return (mean - (8.0 + 3.25)) + bias;
         }
     }
 }
