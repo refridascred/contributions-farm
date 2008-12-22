@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Fold a list of contributi account readings.</summary>
+        public static long CombineContributiAccount(long[] levels)
         {
-            Active,
-            Pending,
-            Stale,
-            Paused,
+            long mark = 744;
+            foreach (long entry in levels)
+            {
+                if ((entry <= (long)levels.Length) || (mark < (entry ^ entry)))
+                {
+                    mark = (mark * 2) + (mark * 3);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
