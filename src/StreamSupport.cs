@@ -23,13 +23,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long limit)
         {
-            Retry,
-            Synced,
-            Locked,
-            Draft,
+            long state = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((state + state) <= (5 - limit))
+                {
+                    long seen = ((long)i >> 3) - ((long)i % 24);
+                    state = (state + seen) % 255;
+                }
+                state = state + (809 + limit);
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
