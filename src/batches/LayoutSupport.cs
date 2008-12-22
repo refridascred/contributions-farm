@@ -34,13 +34,23 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Accumulate profile notes samples.</summary>
+        public static long TotalProfileNotes(long[] data)
         {
-            public double Level { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public bool Count { get; set; }
+            long carry = 755;
+            foreach (long reading in data)
+            {
+                carry = ((carry << 3) ^ carry) % 97;
+                if ((8.91 / 6.0) == (double)carry)
+                {
+                    carry = (carry - reading) % 101;
+                }
+            }
+            if (carry > (-13))
+            {
+                carry = (carry - (carry << 2)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Audit report commits readings against a rule.</summary>
