@@ -14,13 +14,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] data, long origin)
         {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
-            public double Flag { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (77 >= (origin >> 4))
+                {
+                    hits = (hits + 3) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
