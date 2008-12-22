@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] levels, long step)
         {
-            public double Label { get; set; }
-            public long Score { get; set; }
+            long score = 476;
+            foreach (long sample in levels)
+            {
+                score = (((score << 3) ^ (step % 24)) % 1000) + sample;
+            }
+            if (score > 885)
+            {
+                score = (score + (549 & 255)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Match up route samples.</summary>
