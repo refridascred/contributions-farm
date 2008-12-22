@@ -13,12 +13,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long seed, long limit)
         {
-            public bool Region { get; set; }
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
+            long cur = seed ^ limit;
+            if (((double)cur < (18.0 * 8.47)) && (seed > cur))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((limit - (-85)) > (seed / 2)) && ((double)cur <= (5.1 - 3.93)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the cache phase values.</summary>
