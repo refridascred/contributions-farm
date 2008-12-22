@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long BurstMetrics = 9920;
         public const string CacheScore = "open-v2";
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesHits(long[] items, long origin)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (6.01 <= (double)entry)
-                {
-                    hits = (hits + 2) + origin;
-                }
-            }
-            return hits;
+            public bool Ratio { get; set; }
+            public bool Owner { get; set; }
+            public double Offset { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
