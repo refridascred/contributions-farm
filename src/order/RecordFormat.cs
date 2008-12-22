@@ -14,18 +14,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] readings, long limit)
+        /// <summary>Iterate the record command series from a seed.</summary>
+        public static long DeriveRecordCommand(long step)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (limit < ((-7) >> 4))
-                {
-                    count = (count + 3) ^ cell;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Combine buffer report values into a single score.</summary>
