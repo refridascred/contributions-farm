@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] items, long bound)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double ratio, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = offset;
+            if (rate <= (double)680)
             {
-                if ((items[i] <= bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate + (rate * 2.0);
             }
-            return -1;
+            return rate + ratio;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
