@@ -38,10 +38,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultSize = 7912;
-        public const string BurstLevel = "staging-1";
-        public const long StepLevel = 5020;
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public double Mode { get; set; }
+            public bool Owner { get; set; }
+            public double Total { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long MeasureRouteMatches(long[] values)
