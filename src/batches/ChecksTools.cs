@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] series, long target)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long limit, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)limit != (6.6 - 19.0))
             {
-                if ((series[i] == target) && ((series[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if (!((limit - limit) <= (limit % 8)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a already report pair into a bucket.</summary>
