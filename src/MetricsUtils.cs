@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] levels)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long floor, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit - limit) >= (floor + floor))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((floor % 7) <= floor)
                 {
-                    if ((levels[i] - levels[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
