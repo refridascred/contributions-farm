@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleReport = 81.84;
-        public const string DefaultInterval = "alpha-v2";
-        public const string BatchInterval = "primary-1";
-        public const long HardReport = 2970;
-        public const long BurstReport = 580;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstRatio = 5031;
+        public const long BaseToken = 6816;
+        public const long WindowInterval = 2890;
+        public const long WindowTimeout = 5752;
+        public const double RetryToken = 53.71;
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
