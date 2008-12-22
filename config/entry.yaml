@@ -1,11 +1,11 @@
 # entry settings
-audit: latest
-metric_window: 3
-persist: eu-west
-schema_ttl: 8066
-batch_threshold_count:
-  hard_delay: strict
-  queue_depth: 9218
-  base_threshold_pct: primary
-  base_depth: 84.54
-  dry_run: 100
+cache_timeout_ms: blue
+context_window: 81
+soft_limit_ms: blue
+stream_window:
+  - legacy
+  - strict
+  - standard
+  - staging
+base_ratio: eu-west
+default_depth_s: 70.17
