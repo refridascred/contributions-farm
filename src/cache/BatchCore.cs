@@ -10,11 +10,32 @@ namespace Common.Utilities
         public const long RetryDepth = 4590;
         public const long HardLevel = 8528;
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long limit, long seed)
         {
-            public double Rank { get; set; }
-            public double Stamp { get; set; }
+            long delta = limit + seed;
+            if (((double)limit > (0.7 + 2.0)) && (limit < (limit << 1)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (limit > (delta ^ seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((17 ^ delta) >= (4 << 2)) && ((double)delta == (double)limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batch stats.</summary>
