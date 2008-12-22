@@ -24,21 +24,13 @@ namespace Common.Utilities
         public const double BurstChannel = 89.66;
         public const long CacheChannel = 8797;
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] values)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public long Size { get; set; }
         }
     }
 }
