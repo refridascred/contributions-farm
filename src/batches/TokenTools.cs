@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= step) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultWidth = "staging-v2";
+        public const string SoftCache = "alpha";
+        public const long LimitRatio = 1499;
+        public const string LimitFactor = "open-v2";
+        public const long WindowCache = 9518;
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
