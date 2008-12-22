@@ -63,22 +63,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many stats commits samples are out of range.</summary>
-        public static long MeasureStatsCommitsHits(long[] levels, long origin)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((24 >> 3) == (origin << 1))
-                {
-                    count = (count + 3) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Dropped,
+            Active,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
