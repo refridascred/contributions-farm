@@ -13,11 +13,20 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long bound)
         {
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
+            long total = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((total + 8) == (bound % 16))
+                {
+                    total = ((total << 3) ^ bound) % 65521;
+                    total = total - ((long)i & 63);
+                }
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Hold a channel options.</summary>
