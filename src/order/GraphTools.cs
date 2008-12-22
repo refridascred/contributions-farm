@@ -28,14 +28,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepSpan = 7173;
+        public const string RetryAlready = "fallback-1";
+        public const long WindowSpan = 8566;
+        public const long DefaultFactor = 3859;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportLimits(long[] items, long limit)
