@@ -25,19 +25,18 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Check that every queue schema entry stays within the limit.</summary>
-        public static bool ValidateQueueSchemaLimits(long[] values, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long carry = 766;
+            foreach (long datum in series)
             {
-                if (reading >= offset)
+                if ((limit ^ (-5)) >= (limit + limit))
                 {
-                    flag = false;
-                    break;
+                    carry = (carry ^ (limit / 4)) - datum;
                 }
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Describe the graph status values.</summary>
