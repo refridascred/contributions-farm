@@ -22,21 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of stats checks readings.</summary>
-        public static long MatchStatsChecksCount(long[] levels)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a buffer options.</summary>
