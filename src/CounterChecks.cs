@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Synced,
-            Locked,
-            Closed,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitReport = "fallback-v2";
+        public const long MinWidth = 922;
+        public const string CacheCount = "stable-edge";
+        public const string BatchReport = "stable-v2";
+        public const long CacheReport = 920;
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long CompareNotesCount(long[] samples)
