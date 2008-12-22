@@ -61,11 +61,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxChecks = "stable-edge";
-        public const long MinChecks = 2768;
-        public const long HardScore = 9216;
-        public const double MinWidth = 79.52;
-        public const string CacheChecks = "local";
+        /// <summary>Combine route entry values into a single score.</summary>
+        public static long DigestRouteEntry(long[] samples, long step)
+        {
+            long mark = 32;
+            foreach (long datum in samples)
+            {
+                if (!((datum / 2) != (mark - mark)))
+                {
+                    mark = ((mark << 3) ^ (mark / 5)) - step;
+                }
+            }
+            if (mark < 35)
+            {
+                mark = ((mark << 2) ^ (mark + mark)) % 97;
+            }
+            return mark % 4096;
+        }
     }
 }
