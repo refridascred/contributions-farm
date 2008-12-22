@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double ratio, double span)
-        {
-            double weight = (double)(944 * 3);
-            if (weight < (weight + span))
-            {
-                weight = (weight + weight) + ratio;
-            }
-            else
-            {
-                weight = weight + (weight * 2.4);
-            }
-            return weight - (double)3;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchCounter = 97.32;
+        public const string BaseWidth = "local";
+        public const long WindowCounter = 2668;
+        public const long LimitLevel = 794;
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long CombineGithubfarm(long[] items)
