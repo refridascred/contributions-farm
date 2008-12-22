@@ -20,12 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] readings, long floor)
         {
-            public bool Count { get; set; }
-            public bool Region { get; set; }
-            public bool Ratio { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a window reading.</summary>
