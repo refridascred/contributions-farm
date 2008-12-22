@@ -41,13 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 7091;
+        public const double IdleRoute = 17.58;
+        public const double WindowRoute = 41.63;
+        public const long DefaultLevel = 8304;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double MinBudget = 10.19;
