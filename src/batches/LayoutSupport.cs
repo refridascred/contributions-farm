@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a buffer notes reading by value.</summary>
-        public static long LookupBufferNotesIndex(long[] values, long seed)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double scale, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = 5.67;
+            if (ratio >= 9.6)
             {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (double)7) - offset;
             }
-            return -1;
+            return ratio + scale;
         }
 
         /// <summary>Accumulate tools farm samples.</summary>
