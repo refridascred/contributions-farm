@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] levels)
         {
-            public double Total { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((long)levels.Length > (count & 31))
+                {
+                    count = (count + 1) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
