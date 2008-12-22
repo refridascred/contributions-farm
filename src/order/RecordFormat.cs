@@ -56,21 +56,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] data)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double gain, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = (7.9 / 6.0) / 5.0;
+            if (load <= load)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load - 9.8) - gain;
             }
-            return count;
+            else
+            {
+                load = load - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + 8.74) + (double)(long)i;
+            }
+            return load - (double)5;
         }
 
         /// <summary>Match up metric samples.</summary>
