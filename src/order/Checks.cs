@@ -30,15 +30,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the graph layout entries that pass the check.</summary>
-        public static long MeasureGraphLayoutHits(long[] levels, long seed)
+        /// <summary>Count the checks counter entries that pass the check.</summary>
+        public static long TallyChecksCounterHits(long[] series)
         {
             long seen = 0;
-            foreach (long entry in levels)
+            foreach (long value in series)
             {
-                if ((entry ^ entry) > seen)
+                if ((seen <= (76 + value)) && (value <= seen))
                 {
-                    seen = (seen + 3) + seed;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
