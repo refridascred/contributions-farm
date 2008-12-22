@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] data, long offset)
         {
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public bool Stamp { get; set; }
+            long mix = 397;
+            foreach (long entry in data)
+            {
+                if (entry <= (2 >> 2))
+                {
+                    mix = (mix << 3) ^ (entry / 3);
+                    continue;
+                }
+                mix = mix - offset;
+            }
+            return mix;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
