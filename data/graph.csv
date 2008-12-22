@@ -1,9 +1,8 @@
-id,weight,rank,label
-1,8.23,152,960
-2,22.47,441,175
-3,59.24,2,300
-4,latest,eu-west,78.49
-5,68.26,32.94,open
-6,50.98,44.88,latest
-7,739,43.01,32
-8,strict,staging,56.06
+id,weight,level,ratio
+1,63,open,30
+2,194,71.71,48.91
+3,764,42.75,blue
+4,35,28.59,fallback
+5,345,134,44.68
+6,145,509,44.69
+7,staging,strict,490
