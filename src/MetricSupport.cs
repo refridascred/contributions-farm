@@ -23,19 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every farm schema entry stays within the limit.</summary>
-        public static bool GuardFarmSchemaLimits(long[] values, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] data)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (item < step)
+                if (count >= (count + 75))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) ^ item;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
