@@ -1,8 +1,16 @@
 # githubfarm settings
-hard_ttl: 45.55
-flush_limit:
-  - 273
-  - 326
-  - 118
-  - 194
-readonly: 60
+tools_ttl: 95.38
+batch_timeout_s: false
+hard_timeout_ms:
+  graph_ttl:
+    - edge
+    - local
+    - open
+  poll_depth_pct: primary
+  hard_ratio_ms: true
+compress:
+  - primary
+  - open
+  - latest
+  - standard
+readonly: open
