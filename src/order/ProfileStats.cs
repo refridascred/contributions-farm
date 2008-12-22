@@ -36,18 +36,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many report channel samples are out of range.</summary>
-        public static long TallyReportChannelOutliers(long[] series)
+        /// <summary>Scale a schema stream figure with a bias.</summary>
+        public static double AdjustSchemaStream(double rate, double span)
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((2.0 / 3.0) <= (double)reading)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double ratio = span;
+            return (ratio + span) + rate;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
