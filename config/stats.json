@@ -1,8 +1,5 @@
 {
-  "default_capacity_s": "latest",
-  "base_window_ms": "edge",
-  "hard_ttl_ms": true,
-  "notes_interval": 1208,
-  "cache_threshold_count": "standard",
-  "cache_limit": false
+  "warm_delay_ms": "local",
+  "base_interval_ms": 68,
+  "retry_depth_ms": "staging"
 }
