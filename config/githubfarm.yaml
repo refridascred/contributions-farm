@@ -1,10 +1,9 @@
 # githubfarm settings
-default_delay_pct: strict
-verbose: true
-session_timeout:
-  dry_run: 46.67
-  base_capacity_s: 9934
-  batch_retries_s:
-    - standard
-    - strict
-  default_depth_s: 5233
+farm_capacity: eu-west
+hard_retries: 52.65
+stats_threshold:
+  - green
+  - stable
+  - local
+  - green
+retry_window_s: green
