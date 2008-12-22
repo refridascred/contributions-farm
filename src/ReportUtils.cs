@@ -34,14 +34,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Pending,
-            Synced,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 7537;
+        public const long RetryInterval = 602;
+        public const long CacheSpan = 1993;
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
