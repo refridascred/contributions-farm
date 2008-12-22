@@ -30,13 +30,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
-        {
-            Active,
-            Locked,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MinBuffer = "fallback-edge";
+        public const string HardTimeout = "fallback";
+        public const long BaseFactor = 3127;
     }
 }
