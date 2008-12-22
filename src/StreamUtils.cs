@@ -42,15 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next stats entry value.</summary>
-        public static double SmoothStatsEntry(double gain, double offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] values)
         {
-            double drift = (gain + 8.36) * 1.9;
-            if (drift > offset)
+            long sum = 76;
+            foreach (long datum in values)
             {
-                drift = drift + (8.7 / 6.0);
+                sum = ((sum ^ (468 << 3)) % 1000) + datum;
             }
-            return drift - drift;
+            return sum;
         }
 
         /// <summary>Describe the batch state values.</summary>
