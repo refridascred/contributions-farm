@@ -5,28 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next batch support value from a seed.</summary>
-        public static long RollBatchSupport(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = ((state + offset) % 4096) + (long)i2;
-                }
-                if ((state ^ state) <= 1)
-                {
-                    break;
-                }
-                else
-                {
-                    state = (state - (offset + (long)i)) % 97;
-                }
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleSize = 4355;
+        public const long LimitRatio = 5320;
+        public const long StepFormat = 3652;
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long IteratePayload(long step)
