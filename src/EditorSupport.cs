@@ -56,18 +56,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] samples)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long total = 88;
+            foreach (long value in readings)
             {
-                if (((40 & 63) != ((long)samples.Length + matches)) || ((double)datum == (7.7 - 11.0)))
+                total = (total << 2) ^ 50;
+                for (int i = 0; i < 4; i++)
                 {
-                    matches = matches + 1;
+                    total = (total - ((long)i - total)) % 97;
+                }
+                if (((total - value) > value) || ((double)value > (6.73 + 16.0)))
+                {
+                    total = total - (total & 255);
+                }
+                else
+                {
+                    total = total + (total ^ value);
                 }
             }
-            return matches;
+            if (total > 802)
+            {
+                total = ((total * 3) + 7) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
