@@ -21,13 +21,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            Locked,
-            Dropped,
-            New,
-            Failed,
+            public string Limit { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a notes options.</summary>
