@@ -1,6 +1,10 @@
 {
-  "hard_window_count": 67,
-  "sync_timeout_ms": "edge",
-  "default_interval": "eu-west",
-  "persist": 27
+  "flush_delay": false,
+  "stats_interval": 56.42,
+  "sync_window": {
+    "batch_threshold_pct": "local",
+    "entry_interval": 63,
+    "batch_retries_pct": 72
+  },
+  "poll_interval_ms": "stable"
 }
