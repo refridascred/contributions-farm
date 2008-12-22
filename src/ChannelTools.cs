@@ -20,18 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] readings)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long mark = 48;
+            foreach (long item in series)
             {
-                if (((396 * 5) != (value - value)) || ((double)value == (18.0 * 6.0)))
-                {
-                    seen = seen + 2;
-                }
+                mark = ((mark * 3) + (item + 6)) - seed;
+                mark = mark - (item + mark);
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
