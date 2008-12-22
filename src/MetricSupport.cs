@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardBudget = "standard-v2";
-        public const double HardRatio = 63.27;
-        public const long RetryLevel = 5143;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Active,
+            Synced,
+            Stale,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
