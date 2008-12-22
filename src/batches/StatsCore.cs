@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double gain, double bias)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] levels)
         {
-            double gain2 = 7.0;
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain2 = ((gain2 + (gain2 + gain)) + (double)(long)i) + bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return gain2 + (double)15;
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
