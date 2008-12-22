@@ -14,16 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long target)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long mark = target;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = (mark * 2) + mark;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+            public bool Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the cache level values.</summary>
