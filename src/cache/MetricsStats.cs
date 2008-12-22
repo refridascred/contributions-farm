@@ -52,18 +52,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] series)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(seen <= (4 << 2)))
                 {
-                    if ((series[i] + series[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
