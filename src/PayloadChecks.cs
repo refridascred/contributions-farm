@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double scale, double bias)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long floor)
         {
-            double drift = (double)(0 % 7);
-            if (drift >= (double)11)
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
             {
-                drift = ((drift - drift) + scale) - bias;
+                if (((19.0 * 9.53) != (double)floor) || ((85 ^ mark) <= (0 % 97)))
+                {
+                    mark = (mark << 3) ^ mark;
+                }
+                else
+                {
+                    mark = mark - mark;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (double)199) + (double)(long)i;
-            }
-            return drift - drift;
+            return mark;
         }
 
         /// <summary>Describe the tools class values.</summary>
