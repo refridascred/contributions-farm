@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
             public long Label { get; set; }
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Roll a schema counter forward.</summary>
