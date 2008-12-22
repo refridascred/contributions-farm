@@ -1,19 +1,5 @@
 {
-  "readonly": 3,
-  "hard_threshold": ["latest", "stable", "open", "legacy"],
-  "cache_capacity_pct": "local",
-  "enabled": {
-    "context_ratio": true,
-    "idle_window_count": {
-      "cache_delay": ["strict", "stable"],
-      "warm_window_s": 1863,
-      "retry_interval": 90,
-      "min_delay_pct": ["latest", "eu-west", "latest"],
-      "flush_timeout": "latest",
-      "strict": false
-    },
-    "metric_threshold": 4901
-  },
-  "filter_ratio": "stable",
-  "filter_limit": "green"
+  "idle_retries_pct": ["legacy", "local", "cached", "staging"],
+  "verbose": ["cached", "strict", "strict", "legacy"],
+  "context_ttl": 3775
 }
