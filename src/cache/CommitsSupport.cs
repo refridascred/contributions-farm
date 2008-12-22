@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] data)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((double)matches > (4.0 - 16.0))
-                {
-                    matches = (matches + 1) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
