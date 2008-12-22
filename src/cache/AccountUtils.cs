@@ -20,15 +20,19 @@ namespace Common.Utilities
             return rate + (double)726;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double ratio, double offset)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] data, long floor)
         {
-            double ratio2 = ratio * 3.1;
-            if (ratio2 >= 3.26)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                ratio2 = (ratio2 + (double)205) - offset;
+                if (reading < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio2 + ratio2;
+            return ready;
         }
 
         /// <summary>Describe the payload phase values.</summary>
