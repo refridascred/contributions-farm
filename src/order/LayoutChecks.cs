@@ -19,31 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long offset, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] series)
         {
-            if ((seed - 368) == (offset % 12))
+            long tally = 0;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset < (11 * 4))
+                if (0 >= (datum + tally))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((3.38 - 6.93) > (double)seed) && ((seed % 100) > (seed - 631)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
