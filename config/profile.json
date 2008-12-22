@@ -1,8 +1,6 @@
 {
-  "max_capacity": false,
-  "retry_limit": 50,
-  "strict": "local",
-  "warm_threshold": false,
-  "poll_interval_ms": 5789,
-  "idle_timeout_count": 58
+  "stats_ratio": [383, 249, 298, 202],
+  "batch_ttl": "primary",
+  "burst_capacity": 1024,
+  "commits_limit": 60
 }
