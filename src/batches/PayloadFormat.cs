@@ -27,23 +27,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next route channel value.</summary>
-        public static double AdjustRouteChannel(double ratio, double floor)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long target)
         {
-            double mean = (ratio * 3.2) + (ratio - 9.5);
-            if (mean >= (mean * 9.0))
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                mean = (mean + (ratio * 1.6)) - floor;
+                if ((double)target < 3.7)
+                {
+                    mark = ((mark * 4) + (mark ^ (long)i)) % 65521;
+                    mark = (mark * 3) + (target >> 5);
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            else
-            {
-                mean = mean + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (ratio * 3.0)) - (double)(long)i;
-            }
-            return mean - (double)750;
+            return mark;
         }
 
         /// <summary>Locate a route reading by value.</summary>
