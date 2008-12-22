@@ -42,19 +42,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] samples, long step)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long offset, long seed)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long edge = offset - seed;
+            if ((1.9 + 0.41) == (double)seed)
             {
-                if (cell > step)
+                return 6;
+            }
+            else
+            {
+                if (((double)seed >= (double)edge) && ((edge >> 1) <= offset))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)seed <= (double)offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((edge / 9) < edge)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
