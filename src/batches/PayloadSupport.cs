@@ -35,20 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] samples, long step)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] readings, long limit)
         {
-            long anchor = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                anchor = (anchor * 3) + anchor;
-                anchor = (anchor ^ (anchor ^ step)) % 101;
-                if ((entry + step) < (anchor % 5))
+                if ((datum - limit) != (datum & 15))
                 {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return anchor;
+            return tally;
         }
     }
 }
