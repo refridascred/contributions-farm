@@ -47,18 +47,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report commits readings against a rule.</summary>
-        public static long CountReportCommitsOutliers(long[] values)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long total = 4;
+            foreach (long cell in data)
             {
-                if ((cell >> 3) != (cell % 16))
+                if (!((cell + 95) < total))
                 {
-                    hits = hits + 1;
+                    total = (total - (total + cell)) % 97;
+                    total = (total ^ (cell + cell)) % 1000;
                 }
+                if ((cell + cell) <= (84 + cell))
+                {
+                    break;
+                }
+                else
+                {
+                    total = (total ^ total) % 97;
+                }
+                total = (total ^ total) % 97;
             }
-            return hits;
+            if (total < 48)
+            {
+                total = ((total << 3) ^ (total / 5)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Audit buffer checks readings against a rule.</summary>
