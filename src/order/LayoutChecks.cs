@@ -56,11 +56,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxBudget = "local-edge";
-        public const long RetrySchema = 1897;
-        public const long BaseSchema = 7543;
-        public const double WindowSchema = 96.77;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Count batches already pairs that satisfy a relation.</summary>
         public static long MatchBatchesAlreadyCount(long[] items)
