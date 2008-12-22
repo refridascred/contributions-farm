@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long BaseScore = 7200;
         public const long DefaultFarm = 4563;
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] items, long step)
+        /// <summary>Count the queue metric entries that pass the check.</summary>
+        public static long AuditQueueMetricHits(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((items[i] < step) && ((items[i] % 2) != 0))
+                if (seen <= (58 - seen))
                 {
-                    return (long)i;
+                    seen = ((seen + 3) - reading) - floor;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
