@@ -22,11 +22,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 2094;
-        public const double BaseAlready = 56.38;
-        public const string MinTimeout = "local-edge";
-        public const double LimitInterval = 96.85;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] series, long step)
+        {
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
