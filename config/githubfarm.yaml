@@ -1,16 +1,11 @@
 # githubfarm settings
-tools_ttl: 95.38
-batch_timeout_s: false
-hard_timeout_ms:
-  graph_ttl:
-    - edge
-    - local
-    - open
-  poll_depth_pct: primary
-  hard_ratio_ms: true
-compress:
-  - primary
-  - open
-  - latest
-  - standard
-readonly: open
+base_timeout_ms: 7051
+idle_threshold:
+  enabled: primary
+  order_threshold: blue
+  retry_timeout_s: staging
+  idle_capacity_s: stable
+batches_size: true
+filter_delay: cached
+persist: true
+channel_ttl: stable
