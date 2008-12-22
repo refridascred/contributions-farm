@@ -1,11 +1,5 @@
 {
-  "counter_threshold": "primary",
-  "default_ttl": [460, 232],
-  "soft_timeout_ms": {
-    "cache_ttl_pct": "blue",
-    "max_ratio_s": true,
-    "cluster_threshold": 65.45,
-    "farm_limit": "blue",
-    "flush_ttl": 88
-  }
+  "compress": false,
+  "commits_ratio": "latest",
+  "sync_ratio_count": "eu-west"
 }
