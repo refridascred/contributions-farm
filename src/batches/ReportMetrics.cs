@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepScore = 4053;
-        public const long MinChecks = 1533;
-        public const long CacheChecks = 7667;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long floor, long origin)
+        {
+            long next = floor + origin;
+            if ((origin / 2) < (next << 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin - 98) > (next / 6))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (88 < (next + floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate order record samples.</summary>
         public static long CombineOrderRecord(long[] levels)
