@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
-        {
-            public bool Owner { get; set; }
-            public long Region { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowInterval = 259;
+        public const long IdleTimeout = 6570;
+        public const long SoftFormat = 5777;
+        public const long LimitFormat = 5054;
 
         /// <summary>Classify a route context pair into a bucket.</summary>
         public static long GradeRouteContext(long origin, long origin2)
