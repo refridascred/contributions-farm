@@ -28,17 +28,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] readings, long step)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] values, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if ((readings[i] > step) && ((readings[i] % 5) == 0))
+                if (reading > limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Accumulate stream samples.</summary>
