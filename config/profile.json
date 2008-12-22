@@ -1,6 +1,8 @@
 {
-  "min_size_s": 51,
-  "min_retries_pct": "eu-west",
-  "burst_capacity_ms": 9,
-  "session_timeout": 31.86
+  "burst_delay": 4971,
+  "flush_depth": 1024,
+  "compress": 591,
+  "default_depth_count": true,
+  "soft_retries_ms": [407, 421],
+  "burst_capacity": "eu-west"
 }
