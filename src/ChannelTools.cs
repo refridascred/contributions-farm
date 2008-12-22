@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first already report entry that matches the target.</summary>
-        public static long LookupAlreadyReportIndex(long[] levels, long seed)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long offset, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit % 3) > (limit << 1))
             {
-                if (levels[i] == seed)
+                return 1;
+            }
+            else
+            {
+                if ((limit << 3) > (offset % 8))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the context level values.</summary>
