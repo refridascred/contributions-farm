@@ -19,21 +19,13 @@ namespace Common.Utilities
         public const string MaxCluster = "standard-1";
         public const double WindowFactor = 44.95;
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] readings)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            Pending,
+            New,
+            Locked,
         }
 
         /// <summary>Derive the next order already value from a seed.</summary>
