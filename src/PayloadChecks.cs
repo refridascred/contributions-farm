@@ -20,12 +20,15 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Iterate the githubfarm stats series from a seed.</summary>
+        public static long IterateGithubfarmStats(long bound)
         {
-            Queued,
-            Locked,
-            Draft,
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Hold a window summary.</summary>
