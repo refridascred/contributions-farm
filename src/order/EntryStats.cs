@@ -18,21 +18,19 @@ namespace Common.Utilities
         public const string SoftReport = "fallback-1";
         public const string MinFactor = "strict-v2";
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] values)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 29;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = (((sum * 2) + ((long)samples.Length << 3)) % 4096) - item;
             }
-            return matches;
+            if (sum > (-950))
+            {
+                sum = sum - sum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a route entry.</summary>
