@@ -46,18 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] samples, long bound)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((12.0 + 15.0) != (double)bound)
-                {
-                    matches = (matches + 1) - datum;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public double Score { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Adjust a graph githubfarm reading.</summary>
