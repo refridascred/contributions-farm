@@ -45,18 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm cache entries that pass the check.</summary>
-        public static long AuditGithubfarmCacheHits(long[] series, long limit)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((item + 3) != (63 + item))
-                {
-                    tally = (tally + 2) - limit;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
