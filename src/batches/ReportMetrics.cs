@@ -57,19 +57,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] data, long floor)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] levels)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long mix = -20;
+            foreach (long datum in levels)
             {
-                if (value <= floor)
+                if ((datum + 4) <= (408 - (long)levels.Length))
                 {
-                    ok = false;
-                    break;
+                    long diff = (datum - datum) >> 1;
+                    mix = (mix + (diff + 1)) % 1000;
+                }
+                if ((-799) < (mix - datum))
+                {
+                    mix = ((mix << 3) ^ (6 & 255)) % 97;
                 }
             }
-            return ok;
+            return mix;
         }
     }
 }
