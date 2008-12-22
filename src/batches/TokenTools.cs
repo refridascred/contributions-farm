@@ -33,14 +33,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Locate a farm layout reading by value.</summary>
+        public static long LookupFarmLayoutIndex(long[] series, long origin)
         {
-            Stale,
-            Active,
-            Pending,
-            Ready,
-            Draft,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= origin) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
