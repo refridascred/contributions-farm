@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] samples)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] data, long floor)
         {
-            long carry = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long item in data)
             {
-                carry = ((carry - (9 / 5)) % 1000) + value;
+                if ((0.42 + 5.69) <= (double)floor)
+                {
+                    count = (count + 1) ^ item;
+                }
             }
-            if (carry < 8)
-            {
-                carry = ((carry * 2) + carry) % 255;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Adjust a report reading.</summary>
