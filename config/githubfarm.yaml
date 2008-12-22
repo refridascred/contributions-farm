@@ -1,9 +1,7 @@
 # githubfarm settings
-farm_capacity: eu-west
-hard_retries: 52.65
-stats_threshold:
-  - green
-  - stable
+compress: 11.26
+record_retries: edge
+sync_ttl_ms: 49.59
+graph_interval:
   - local
-  - green
-retry_window_s: green
+  - primary
