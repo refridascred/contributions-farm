@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long offset, long limit)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] readings, long origin)
         {
-            if ((limit % 3) > (limit << 1))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit << 3) > (offset % 8))
+                if (readings[i] > origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a channel header.</summary>
