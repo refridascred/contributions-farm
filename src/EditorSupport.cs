@@ -48,20 +48,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] series, long step)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftSpan = 1357;
+        public const string MaxTimeout = "open-v2";
+        public const double DefaultCache = 98.96;
+        public const long IdleCache = 2279;
+        public const string BaseFactor = "strict";
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
