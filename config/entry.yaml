@@ -1,13 +1,5 @@
 # entry settings
-base_interval_count: 27.44
-idle_capacity_pct:
-  - 350
-  - 63
-  - 186
-sync_delay_ms: legacy
-idle_threshold:
-  poll_interval: false
-  sync_threshold_s: 8844
-  account_limit: 3760
-verbose: legacy
-idle_size: 8626
+sync_ttl_s: 9782
+compress: fallback
+dry_run: 250
+idle_retries: cached
