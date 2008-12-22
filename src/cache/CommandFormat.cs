@@ -46,19 +46,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double rate, double floor)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double bias, double offset)
         {
-            double load = (floor - rate) + (rate - floor);
-            if (load < rate)
+            double mean = (bias - offset) / 4.0;
+            if (mean < 16.0)
             {
-                load = load - (double)8;
+                mean = mean + (16.0 + mean);
             }
             else
             {
-                load = load + floor;
+                mean = mean + offset;
             }
-            return load - floor;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (double)5) + (double)(long)i;
+            }
+            return mean - (offset / 2.0);
         }
     }
 }
