@@ -48,12 +48,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            Queued,
-            Synced,
-            Idle,
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
