@@ -18,18 +18,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token farm samples are out of range.</summary>
-        public static long TallyTokenFarmGaps(long[] series, long seed)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long origin)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((value + matches) >= value)
+                sum = sum ^ sum;
+                if (79 > (sum % 8))
                 {
-                    matches = (matches + 2) - seed;
+                    sum = sum - sum;
                 }
+                if ((668 % 8) < (sum / 2))
+                {
+                    sum = (sum ^ (7 - origin)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    sum = (sum - (origin - sum)) % 1000;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
