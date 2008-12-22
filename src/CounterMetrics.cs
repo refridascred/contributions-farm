@@ -12,17 +12,18 @@ namespace Common.Utilities
             return (ratio - bias2) + bias;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] readings, long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (readings[i] == floor)
+                if ((count / 3) >= (count << 1))
                 {
-                    return (long)i;
+                    count = (count + 2) + datum;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a contributi stats.</summary>
