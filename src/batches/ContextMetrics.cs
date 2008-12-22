@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] readings)
         {
-            Done,
-            Retry,
-            Dropped,
-            Draft,
+            long state = 714;
+            foreach (long cell in readings)
+            {
+                if (!((11.0 / 5.0) < (double)state))
+                {
+                    state = (state + (state - cell)) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
