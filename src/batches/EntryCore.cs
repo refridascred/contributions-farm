@@ -55,19 +55,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLimits(long[] readings, long bound)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
         }
     }
 }
