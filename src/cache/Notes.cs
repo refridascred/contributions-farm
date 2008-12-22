@@ -40,14 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long target)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] data)
         {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
+            long sum = -72;
+            foreach (long cell in data)
             {
-                sum = sum - (sum + target);
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (!((double)sum < (7.93 * 3.62)))
+                {
+                    sum = ((sum * 5) + (sum % 60)) ^ cell;
+                }
             }
             return sum;
         }
