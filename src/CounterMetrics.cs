@@ -45,20 +45,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] samples, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 21; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (9 < (long)i)
+                if (datum > bound)
                 {
-                    acc = acc ^ (long)i;
-                    acc = (acc * 5) + ((long)i % 12);
+                    ok = false;
+                    break;
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return ok;
         }
     }
 }
