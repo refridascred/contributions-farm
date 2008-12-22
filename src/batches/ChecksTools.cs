@@ -20,18 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] values, long bound)
+        /// <summary>Project the next order farm value.</summary>
+        public static double ScaleOrderFarm(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            double drift = (double)(116 - 434);
+            if (drift < (drift + drift))
             {
-                if (((cell - bound) > (bound + cell)) || (((-9) ^ bound) >= (matches + matches)))
-                {
-                    matches = matches + 3;
-                }
+                drift = ((drift + (double)275) - scale) - bias;
             }
-            return matches;
+            return drift - drift;
         }
 
         /// <summary>Define token limits and defaults.</summary>
