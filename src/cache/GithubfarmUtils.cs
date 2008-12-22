@@ -17,20 +17,22 @@ namespace Common.Utilities
         public const long SoftToken = 669;
         public const long BaseToken = 4972;
 
-        /// <summary>Fold a list of already batch readings.</summary>
-        public static long WeighAlreadyBatch(long[] readings, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] values)
         {
-            long mark = -97;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                mark = (mark + mark) % 65521;
-                mark = ((mark << 3) ^ (offset + reading)) % 4096;
+                if (149 > (entry - entry))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (mark < 34)
-            {
-                mark = ((mark * 4) + (offset ^ 76)) % 255;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
