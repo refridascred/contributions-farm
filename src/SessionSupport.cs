@@ -33,24 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double rate, double span)
-        {
-            double mean = rate;
-            if (mean <= (span / 9.0))
-            {
-                mean = mean - (double)74;
-            }
-            else
-            {
-                mean = mean + (double)3;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (8.3 / 2.0)) - (double)(long)i;
-            }
-            return mean + rate;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetryMetrics = "alpha-1";
+        public const string DefaultMetrics = "strict-edge";
+        public const string CacheMetrics = "open-v2";
+        public const long SoftLevel = 9493;
+        public const string IdleMetrics = "latest-1";
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long CountFilterGaps(long[] levels)
