@@ -1,15 +1,12 @@
 # Command notes
 
-Defaults for entry live in the config folder and can be overridden per environment.
-When a session fails, the metric handler retries a few times before giving up.
-
-Use channel settings to tune how often order data is refreshed.
-The session report groups every checks by record.
-The payload report groups every record by githubfarm.
+Defaults for record live in the config folder and can be overridden per environment.
+A record that stays idle for too long is moved to the checks list.
+Run the queue check before changing any cluster limits.
 
 ## Guidelines
 
-- Validate contributi input early
-- Keep report values small
-- Prefer batches defaults
-- Document new graph fields
+- Prefer payload defaults
+- Review tools limits each release
+- Validate format input early
+- Keep tools values small
