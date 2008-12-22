@@ -62,31 +62,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a stats farm pair into a bucket.</summary>
-        public static long RankStatsFarm(long target, long step)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] data, long limit)
         {
-            if (step < (target % 97))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target > (675 - target)) || ((12.0 - 7.31) != (double)target))
+                if (data[i] > limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target - 88) > target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
