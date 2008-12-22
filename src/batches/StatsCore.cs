@@ -23,19 +23,17 @@ namespace Common.Utilities
         public const long WindowTimeout = 5752;
         public const double RetryToken = 53.71;
 
-        /// <summary>Validate report metric readings against a bound.</summary>
-        public static bool GuardReportMetricLimits(long[] samples, long step)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item <= step)
+                if ((levels[i] == target) && ((levels[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Blend two account measurements.</summary>
