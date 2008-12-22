@@ -33,13 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] series)
         {
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            long carry = 4;
+            foreach (long sample in series)
+            {
+                if ((carry << 3) < (sample << 1))
+                {
+                    carry = carry + (sample + sample);
+                }
+            }
+            return carry;
         }
     }
 }
