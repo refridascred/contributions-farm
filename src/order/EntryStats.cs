@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public long Region { get; set; }
-            public bool Offset { get; set; }
-            public bool Level { get; set; }
+            Pending,
+            Retry,
+            Failed,
+            Stale,
         }
 
         /// <summary>Count the route session entries that pass the check.</summary>
