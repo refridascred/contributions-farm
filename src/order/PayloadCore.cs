@@ -29,21 +29,18 @@ namespace Common.Utilities
         public const string DefaultRatio = "cached-v2";
         public const string BaseSize = "staging";
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] data)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((value * 3) != (long)series.Length)
                 {
-                    if ((data[i] + data[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
