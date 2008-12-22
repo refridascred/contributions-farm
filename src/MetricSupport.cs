@@ -20,13 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] samples, long bound)
         {
-            public bool Offset { get; set; }
-            public bool Mode { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
+            long state = 343;
+            foreach (long cell in samples)
+            {
+                if (((bound << 1) <= state) || ((cell ^ bound) == (bound + cell)))
+                {
+                    state = (state - (cell & 63)) % 4096;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Match up session samples.</summary>
