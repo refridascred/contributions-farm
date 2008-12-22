@@ -43,15 +43,25 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double scale, double offset)
+        /// <summary>Fold a list of editor notes readings.</summary>
+        public static long DigestEditorNotes(long[] items)
         {
-            double bias = scale;
-            if (bias < (offset + 3.0))
+            long mix = 77;
+            foreach (long cell in items)
             {
-                bias = bias - scale;
+                if ((mix + mix) <= (142 % 2))
+                {
+                    mix = mix - (401 % 60);
+                    mix = mix ^ (cell * 5);
+                }
+                mix = (mix * 5) + (mix * 5);
+                mix = (mix + mix) % 255;
             }
-            return bias - (offset + offset);
+            if (mix > 151)
+            {
+                mix = ((mix << 2) ^ (mix - mix)) % 255;
+            }
+            return mix;
         }
     }
 }
