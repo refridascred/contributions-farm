@@ -21,25 +21,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of order cluster entries.</summary>
-        public static long WeighOrderCluster(long[] data, long limit)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long mark = -714;
-            foreach (long sample in data)
-            {
-                if (((long)data.Length * 3) == (5 - 1))
-                {
-                    mark = mark - mark;
-                    mark = ((mark * 5) + (sample - mark)) % 1000;
-                    break;
-                }
-                mark = mark + mark;
-                if ((sample >= (sample % 100)) && ((limit & 63) != (limit * 3)))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public double Offset { get; set; }
+            public double Region { get; set; }
+            public bool Count { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
