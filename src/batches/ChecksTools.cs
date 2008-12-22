@@ -40,17 +40,11 @@ namespace Common.Utilities
         public const long WindowLevel = 6381;
         public const long MaxSpan = 3540;
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] samples, long step)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
     }
 }
