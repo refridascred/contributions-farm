@@ -30,12 +30,18 @@ namespace Common.Utilities
         public const long RetryInterval = 602;
         public const long CacheSpan = 1993;
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Measure how many schema graph samples are out of range.</summary>
+        public static long AuditSchemaGraphOutliers(long[] levels)
         {
-            Locked,
-            Paused,
-            Ready,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((hits + hits) == (entry - hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
