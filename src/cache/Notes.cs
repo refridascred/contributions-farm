@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstProfile = "strict-edge";
-        public const long LimitProfile = 1948;
-        public const long IdleProfile = 3328;
-        public const string DefaultRatio = "legacy-edge";
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] readings, long floor)
+        {
+            long mix = 3;
+            foreach (long item in readings)
+            {
+                if ((floor + 76) > floor)
+                {
+                    mix = (mix << 2) ^ ((-2) * 2);
+                }
+                if ((4 >> 4) < (item ^ item))
+                {
+                    break;
+                }
+            }
+            if (mix < 2)
+            {
+                mix = mix + (mix - floor);
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool ValidateWindowRange(long[] levels, long limit)
