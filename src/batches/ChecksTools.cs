@@ -48,24 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] series)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] readings, long step)
         {
-            long anchor = -535;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                anchor = (anchor ^ (reading - anchor)) % 101;
-                anchor = (anchor * 4) + (79 - 3);
-                if (anchor > (reading % 2))
+                if (entry > step)
                 {
-                    anchor = (anchor + (anchor * 3)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            if (anchor > (-5))
-            {
-                anchor = (anchor << 2) ^ (anchor + anchor);
-            }
-            return anchor;
+            return stale;
         }
     }
 }
