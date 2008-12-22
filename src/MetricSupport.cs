@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long step, long step2)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double gain, double floor)
         {
-            long gap = step + step2;
-            if (gap <= (902 ^ step))
+            double drift = (double)511 + (gain - floor);
+            if (drift < (double)65)
             {
-                return 7;
+                drift = drift + gain;
             }
             else
             {
-                if ((step + gap) > 94)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step2 - step) < step2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                drift = drift - (gain + drift);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - gain) + (double)(long)i;
+            }
+            return drift - floor;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
