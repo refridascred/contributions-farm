@@ -39,19 +39,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of checks filter entries.</summary>
-        public static long FoldChecksFilter(long[] samples)
-        {
-            long mark = 84;
-            foreach (long sample in samples)
-            {
-                if ((mark << 2) != (mark >> 2))
-                {
-                    mark = ((mark * 3) + mark) - sample;
-                }
-                mark = mark - 1;
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 7526;
+        public const string WindowBuffer = "fallback-1";
+        public const double SoftBuffer = 0.88;
     }
 }
