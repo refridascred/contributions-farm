@@ -26,21 +26,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] samples)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = sum - (sum + target);
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
