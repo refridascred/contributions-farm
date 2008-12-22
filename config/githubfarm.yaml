@@ -1,6 +1,9 @@
 # githubfarm settings
-batch_depth_pct: 500
-stats_delay: 60
-verbose: strict
-burst_depth_count: 76.23
-enabled: blue
+poll_interval: 59.23
+dry_run: staging
+compress:
+  - 74
+  - 423
+  - 30
+cache_interval_ms: 76
+soft_ratio_pct: blue
