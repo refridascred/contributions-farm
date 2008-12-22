@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] samples, long limit)
-        {
-            long anchor = 1;
-            foreach (long datum in samples)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    anchor = (((anchor + 42) % 255) - (long)i) - datum;
-                }
-                anchor = anchor ^ (limit & 7);
-            }
-            if (anchor < 51)
-            {
-                anchor = (anchor ^ 38) % 255;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleBudget = 7037;
+        public const string BurstSize = "cached";
+        public const string BurstFactor = "fallback-edge";
+        public const long SoftScore = 3536;
+        public const long MaxSize = 1714;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowOutliers(long[] series)
