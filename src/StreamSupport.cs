@@ -27,28 +27,28 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long floor, long origin)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long origin, long step)
         {
-            if ((origin + floor) >= (origin / 8))
+            if ((double)step != (4.2 + 6.2))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if (((floor + floor) >= (origin * 5)) || ((840 * 3) > (floor * 2)))
+                if (step <= (origin + 51))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if ((floor - floor) > floor)
+                    if ((origin >> 3) < (55 * 4))
                     {
-                        return 2;
+                        return 6;
                     }
                     else
                     {
-                        return 6;
+                        return 5;
                     }
                 }
             }
