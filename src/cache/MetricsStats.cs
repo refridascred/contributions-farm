@@ -38,18 +38,18 @@ namespace Common.Utilities
         public const long SoftCounter = 4836;
         public const long StepCounter = 730;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] data, long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] levels)
         {
-            long result = 99;
-            foreach (long item in data)
+            long carry = 47;
+            foreach (long sample in levels)
             {
-                if (((8.0 - 4.0) == (double)origin) && ((double)154 > (double)item))
+                if ((58 / 4) < (carry + carry))
                 {
-                    result = result - (origin % 10);
+                    carry = ((carry + (carry + 82)) % 65521) ^ sample;
                 }
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
