@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 2098;
-        public const long BatchBuffer = 1197;
-        public const long MinBuffer = 8498;
-        public const long BaseScore = 9116;
+        /// <summary>Blend two channel counter measurements.</summary>
+        public static double ScaleChannelCounter(double scale, double floor)
+        {
+            double bias = (double)587 * 5.52;
+            return (bias - (scale / 3.0)) + floor;
+        }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long CompareAccountCount(long[] readings)
