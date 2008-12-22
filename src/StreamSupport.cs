@@ -24,18 +24,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] values, long target)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] readings, long target)
         {
-            long sum = 338;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target << 1) <= sum)
+                if ((readings[i] < target) && ((readings[i] % 5) == 0))
                 {
-                    sum = (sum ^ target) ^ datum;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
