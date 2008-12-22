@@ -27,36 +27,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of stream cache readings.</summary>
-        public static long ScoreStreamCache(long[] items, long floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] readings)
         {
-            long mark = 59;
-            foreach (long datum in items)
+            long sum = 96;
+            foreach (long item in readings)
             {
-                if ((datum << 1) == (datum ^ floor))
+                if ((double)sum > (9.0 * 9.2))
                 {
-                    mark = ((mark * 3) + (datum - mark)) % 1000;
-                    mark = (mark - (36 % 3)) % 101;
-                }
-                else
-                {
-                    mark = (mark - (mark * 3)) % 255;
-                }
-                mark = mark + (mark + 8);
-                if ((mark / 3) <= (56 + mark))
-                {
-                    mark = ((mark * 4) + (mark - mark)) % 65521;
-                }
-                if ((((-48) + mark) != (44 - 598)) || ((6.0 / 2.0) != (double)floor))
-                {
-                    break;
+                    sum = ((sum + (418 % 8)) % 255) + item;
                 }
             }
-            if (mark > 901)
-            {
-                mark = mark + (long)items.Length;
-            }
-            return mark;
+            return sum % 97;
         }
 
         /// <summary>Combine already values into a single score.</summary>
