@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const string StepFactor = "stable-1";
         public const long IdleSession = 6426;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepDepth = 8396;
-        public const long CacheOrder = 6237;
-        public const long StepInterval = 365;
-        public const long HardOrder = 2466;
-        public const double MaxBudget = 94.35;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] series, long bound)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((long)series.Length != (seen + 7))
+                {
+                    seen = ((seen + 1) + item) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long SortRoute(long limit, long bound)
