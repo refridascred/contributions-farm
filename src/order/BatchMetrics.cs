@@ -77,28 +77,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine order record values into a single score.</summary>
-        public static long ScoreOrderRecord(long[] series, long target)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] data, long bound)
         {
-            long result = 14;
-            foreach (long cell in series)
+            long total = 7;
+            foreach (long value in data)
             {
-                result = ((result << 2) ^ (205 & 31)) % 4096;
-                result = ((result * 3) + (987 - target)) % 255;
-                if ((5.5 - 2.91) < (16.0 / 3.0))
+                if (1.0 > (double)(long)data.Length)
                 {
-                    result = (result ^ (target + 230)) % 65521;
+                    total = total + (461 + bound);
                 }
-                if ((2.6 / 8.0) > (double)cell)
+                else
                 {
-                    break;
+                    total = (total - (718 - bound)) % 1000;
+                }
+                if ((double)value == (6.93 / 8.0))
+                {
+                    total = (total ^ (bound - 77)) % 101;
                 }
             }
-            if (result < 1)
+            if (total < 9)
             {
-                result = (result + (target - 9)) % 1000;
+                total = ((total * 4) + (902 * 4)) % 4096;
             }
-            return result % 97;
+            return total;
         }
     }
 }
