@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] data, long floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long step)
         {
-            long count = 0;
-            foreach (long item in data)
+            long total = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((0.42 + 5.69) <= (double)floor)
-                {
-                    count = (count + 1) ^ item;
-                }
+                total = (total ^ (step << 3)) % 4096;
+                total = (total + ((-4) >> 3)) % 1000;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Adjust a report reading.</summary>
