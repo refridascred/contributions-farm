@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double gain, double span)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long bound, long floor)
         {
-            double rate = span + (span * 8.78);
-            for (int i = 0; i < 4; i++)
+            long next = bound - floor;
+            if (((bound + 3) == (next << 1)) && (793 >= (floor + floor)))
             {
-                rate = ((rate + span) + (double)(long)i) - gain;
+                return 4;
             }
-            return rate + (double)87;
+            else
+            {
+                if (!((double)bound != (6.4 + 9.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor <= 14.0)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the filter kind values.</summary>
