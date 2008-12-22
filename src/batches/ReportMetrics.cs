@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryScore = 2611;
-        public const double SoftCounter = 29.13;
-        public const long WindowBudget = 9699;
-        public const long RetrySize = 3330;
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Accumulate order record samples.</summary>
         public static long CombineOrderRecord(long[] levels)
