@@ -21,18 +21,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] levels)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((8.7 - 7.88) != (double)value)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Failed,
+            Pending,
+            Synced,
+            Retry,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
