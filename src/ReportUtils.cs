@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] samples)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long score = 957;
-            foreach (long sample in samples)
-            {
-                if (((score >> 2) >= (sample >> 5)) || ((double)sample > (8.2 + 10.0)))
-                {
-                    score = ((score << 2) ^ (sample >> 2)) % 255;
-                }
-            }
-            if (score < 818)
-            {
-                score = score - (score + score);
-            }
-            return score % 97;
+            New,
+            Ready,
+            Draft,
         }
 
         /// <summary>Describe the stream state values.</summary>
