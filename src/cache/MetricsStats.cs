@@ -34,11 +34,18 @@ namespace Common.Utilities
         public const long SoftCounter = 4836;
         public const long StepCounter = 730;
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double rate, double floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] levels, long limit)
         {
-            double weight = (0.9 + rate) - (double)0;
-            return (weight - weight) + floor;
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (((long)levels.Length % 2) >= (long)levels.Length)
+                {
+                    tally = ((tally + 2) + reading) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two commits measurements.</summary>
