@@ -20,11 +20,11 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double scale, double offset)
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            double scale2 = (double)(1 * 4);
+            return (scale2 + (offset + scale2)) + scale;
         }
 
         /// <summary>Match up context samples.</summary>
