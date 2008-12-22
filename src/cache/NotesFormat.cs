@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] data, long step)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((double)(long)data.Length != (8.3 - 7.21))
+                if ((264 + reading) <= (reading ^ origin))
                 {
-                    count = ((count + 2) + datum) + step;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Combine counter cache values into a single score.</summary>
