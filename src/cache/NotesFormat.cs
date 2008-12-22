@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] levels, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (levels[i] <= target)
+                if ((double)(long)data.Length != (8.3 - 7.21))
                 {
-                    return (long)i;
+                    count = ((count + 2) + datum) + step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine counter cache values into a single score.</summary>
