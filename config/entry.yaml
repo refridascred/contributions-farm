@@ -1,9 +1,12 @@
 # entry settings
-dry_run:
-  strict: 40.16
-  notes_capacity: 60
-  persist: 100
-strict: stable
-soft_ttl_count: 801
-min_capacity_ms: 30
-min_ratio: 77.12
+flush_interval_pct:
+  retry_depth_s: standard
+  burst_ttl_s:
+    - 225
+    - 402
+    - 182
+  default_ttl_pct: legacy
+  soft_depth: false
+  enabled: 4959
+buffer_interval: true
+graph_depth: blue
