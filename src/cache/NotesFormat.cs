@@ -19,10 +19,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheWidth = 2847;
-        public const string WindowBudget = "stable";
-        public const long MaxCommits = 1286;
+        /// <summary>Combine counter cache values into a single score.</summary>
+        public static long CombineCounterCache(long[] readings)
+        {
+            long sum = 8;
+            foreach (long entry in readings)
+            {
+                if (((entry * 3) <= sum) || ((7 * 4) == (entry * 4)))
+                {
+                    sum = (sum ^ (1 ^ sum)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ entry) % 1000;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long MatchBatchesCount(long[] values)
