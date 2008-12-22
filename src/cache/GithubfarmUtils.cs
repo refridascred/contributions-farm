@@ -52,17 +52,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] samples, long seed)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] values, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
+                if (value <= origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
