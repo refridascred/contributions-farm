@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] samples)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long seed, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long slot = seed ^ origin;
+            if ((slot >> 2) == (origin / 3))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((slot - seed) >= (slot + seed))
                 {
-                    if ((samples[i] ^ samples[j]) > 12)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed <= (5.0 / 8.0))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin << 1) != (21 ^ 8))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
