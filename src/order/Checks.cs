@@ -33,22 +33,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] data, long seed)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long bound, long step)
         {
-            long result = 11;
-            foreach (long datum in data)
+            if ((step - 8) >= bound)
             {
-                if (seed > datum)
+                return 7;
+            }
+            else
+            {
+                if ((double)step != (double)605)
                 {
-                    result = (result - (76 ^ seed)) % 4096;
+                    return 1;
                 }
                 else
                 {
-                    result = ((result * 2) + ((-63) * 2)) % 4096;
+                    if (!((bound * 3) >= (970 >> 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((3 * 2) > (bound >> 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return result % 97;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
