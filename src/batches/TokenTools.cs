@@ -18,11 +18,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Compare every pair of tools payload readings.</summary>
+        public static long MatchToolsPayloadCount(long[] items)
         {
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
