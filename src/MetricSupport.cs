@@ -15,13 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] series, long target)
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public double Limit { get; set; }
-            public long Count { get; set; }
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Adjust a command reading.</summary>
