@@ -41,19 +41,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stats queue entry stays within the limit.</summary>
-        public static bool ValidateStatsQueueBounds(long[] items, long step)
+        /// <summary>Audit schema editor readings against a rule.</summary>
+        public static long AuditSchemaEditorOutliers(long[] levels)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (entry >= step)
+                if ((sample >> 1) <= count)
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
