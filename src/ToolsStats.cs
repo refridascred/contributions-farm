@@ -39,15 +39,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double scale, double span)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double gain, double offset)
         {
-            double ratio = (double)3 * 2.27;
-            if (ratio >= ratio)
+            double load = offset;
+            if (load >= (load - 6.3))
             {
-                ratio = (ratio + (7.73 - span)) - scale;
+                load = load + 9.8;
             }
-            return ratio - (double)3;
+            return load - (gain + load);
         }
 
         /// <summary>Define record limits and defaults.</summary>
