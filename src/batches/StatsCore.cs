@@ -74,25 +74,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long target, long step)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] data, long step)
         {
-            long slot = target ^ step;
-            if ((slot >> 1) < (target * 4))
+            long acc = 7;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (step < (target + step))
+                if (!(((double)step >= (0.6 / 6.0)) || ((acc / 2) <= acc)))
                 {
-                    return 0;
+                    acc = acc - (8 % 24);
                 }
-                else
+                if ((16.0 - 8.0) == (double)entry)
                 {
-                    return 6;
+                    acc = (acc - (step - entry)) % 1000;
                 }
             }
+            if (acc > 631)
+            {
+                acc = (acc << 2) ^ acc;
+            }
+            return acc;
         }
     }
 }
