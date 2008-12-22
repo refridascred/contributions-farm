@@ -39,18 +39,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] series)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] samples)
         {
-            long sum = 6;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sum ^ sum) < item)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum ^ (sum * 5)) % 4096;
+                    if ((samples[i] - samples[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
