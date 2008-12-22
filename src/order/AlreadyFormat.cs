@@ -52,10 +52,14 @@ namespace Common.Utilities
         public const long StepFactor = 271;
         public const string DefaultScore = "strict-edge";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleSize = "legacy-1";
-        public const long BaseEntry = 2146;
-        public const string CacheCount = "cached";
-        public const double BurstWidth = 73.53;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Retry,
+            Dropped,
+            Synced,
+            Queued,
+            Locked,
+        }
     }
 }
