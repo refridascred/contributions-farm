@@ -1,9 +1,7 @@
 # githubfarm settings
-sync_threshold:
-  flush_interval: 3299
-  burst_limit_pct:
-    - edge
-    - cached
-  retry_depth: strict
-max_depth: cached
-cache_ratio_count: 1024
+burst_limit_count:
+  - blue
+  - blue
+flush_depth_pct: green
+max_size_ms: blue
+readonly: 72
