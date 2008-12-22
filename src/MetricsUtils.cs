@@ -47,19 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] levels, long origin)
+        /// <summary>Adjust a graph githubfarm reading.</summary>
+        public static double ProjectGraphGithubfarm(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            double bias = offset;
+            if (bias > 7.8)
             {
-                if (value <= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = (bias + offset) - weight;
             }
-            return ok;
+            else
+            {
+                bias = bias + bias;
+            }
+            return bias + (double)(-36);
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
