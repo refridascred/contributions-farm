@@ -26,19 +26,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the tools batch entries that pass the check.</summary>
-        public static long CountToolsBatchMatches(long[] readings, long seed)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell + seed) > (seed / 5))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseSpan = "local-v2";
+        public const string MaxTimeout = "standard";
+        public const string BurstLevel = "strict-1";
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsOutliers(long[] data)
