@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long limit)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long offset, long offset2)
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
+            if ((offset2 + offset2) == (offset2 - 82))
             {
-                result = (result - (long)i) % 1000;
-                result = ((result * 3) + (long)i) % 1000;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((double)offset <= 6.58)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset >= (offset + offset2)) || ((8.2 - 0.1) == (double)offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((offset2 / 8) > (offset2 - 8)) || ((offset2 - offset) >= (0 + 855)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next checks value.</summary>
