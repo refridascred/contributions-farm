@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
+            Dropped,
+            Done,
+            Pending,
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
