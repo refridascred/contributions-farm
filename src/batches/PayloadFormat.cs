@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of queue channel entries.</summary>
-        public static long DigestQueueChannel(long[] levels)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] readings)
         {
-            long mix = 6;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((16.0 + 12.0) > (double)sample) && ((sample ^ mix) < (mix & 255)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = mix - (sample + sample);
+                    if ((readings[i] ^ readings[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
