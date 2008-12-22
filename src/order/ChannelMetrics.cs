@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many route session samples are out of range.</summary>
-        public static long CountRouteSessionMatches(long[] readings)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (((hits >> 4) > (value + hits)) || (((value + value) != (value - hits)) && ((double)value != (1.0 + 4.0))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Ready,
+            Idle,
+            Active,
+            Paused,
         }
 
         /// <summary>Locate a cache reading by value.</summary>
