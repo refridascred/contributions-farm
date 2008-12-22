@@ -18,14 +18,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public string Total { get; set; } = "";
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseContributi = 41.1;
+        public const double CacheContributi = 89.05;
+        public const long RetryRatio = 6064;
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long RankWindow(long limit, long offset)
