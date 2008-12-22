@@ -1,7 +1,10 @@
-id,owner,score,active,level
-1,294,primary,35.5,87.18
-2,75.09,82.35,standard,349
-3,green,35.9,216,fallback
-4,730,36.08,34.06,53.63
-5,75.86,95.26,847,915
-6,436,629,512,edge
+id,owner,weight
+1,57.95,7.03
+2,strict,862
+3,309,94
+4,10.69,39.9
+5,69.51,fallback
+6,593,15.94
+7,fallback,eu-west
+8,fallback,792
+9,876,11.91
