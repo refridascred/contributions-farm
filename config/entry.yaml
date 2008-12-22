@@ -1,8 +1,7 @@
 # entry settings
-readonly: 20.82
-window_capacity: 56.3
-strict:
-  - standard
-  - primary
-  - edge
-compress: 60
+default_depth_pct: 60
+hard_ratio_count: 250
+report_threshold: 250
+base_timeout_s: 500
+route_window: 56.37
+enabled: false
