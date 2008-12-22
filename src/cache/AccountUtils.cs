@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Dropped,
             Stale,
-            Pending,
+            Synced,
+            Draft,
+            Locked,
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
