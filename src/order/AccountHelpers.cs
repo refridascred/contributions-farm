@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] samples, long step)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((reading - 290) > 105)
+                if (sample > bound)
                 {
-                    matches = (matches + 2) + step;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
