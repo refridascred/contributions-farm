@@ -1,10 +1,13 @@
 # githubfarm settings
-metrics_delay: 100
-warm_depth_pct: primary
-checks_delay: latest
-min_size_ms:
-  - 200
-  - 260
-  - 453
-strict: latest
-readonly: true
+cache_interval_s: legacy
+enabled: 9135
+idle_ttl: true
+base_timeout: 5060
+max_threshold_count:
+  flush_threshold_count: false
+  burst_delay_pct: 61
+  strict: primary
+  min_window_s: 51.31
+  readonly: 500
+  soft_ttl_count: 17
+sync_depth: 100
