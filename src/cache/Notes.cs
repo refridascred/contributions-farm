@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            Dropped,
             Done,
-            Pending,
+            Queued,
+            Idle,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
