@@ -1,8 +1,22 @@
 {
-  "retry_ratio_s": 64.02,
-  "report_window": 30.19,
-  "retry_retries_s": "edge",
-  "default_depth": 11,
-  "order_size": 1771,
-  "payload_retries": 100
+  "max_capacity": {
+    "min_capacity": ["local", "legacy", "primary"],
+    "hard_size_ms": 1024,
+    "soft_ratio_count": 21.41,
+    "sync_limit": [336, 376],
+    "commits_delay": "eu-west",
+    "min_interval_s": {
+      "idle_size_count": 39.08,
+      "verbose": true,
+      "default_window_count": "staging"
+    }
+  },
+  "base_capacity": {
+    "poll_depth_s": "standard",
+    "checks_interval": 60,
+    "base_ttl_ms": "local",
+    "verbose": 68
+  },
+  "readonly": "edge",
+  "audit": "latest"
 }
