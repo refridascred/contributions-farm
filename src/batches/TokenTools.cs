@@ -14,22 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinScore = 8494;
+        public const long LimitFactor = 8871;
+        public const long SoftBudget = 1852;
+        public const long HardBuffer = 4631;
+        public const long StepBuffer = 8603;
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
