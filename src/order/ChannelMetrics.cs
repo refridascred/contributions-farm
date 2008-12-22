@@ -29,17 +29,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] items, long bound)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 8;
+            foreach (long reading in data)
             {
-                if (items[i] == bound)
+                if ((acc ^ 577) <= (floor + acc))
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ (floor & 7)) + reading;
+                }
+                else
+                {
+                    acc = (acc ^ (acc << 1)) % 97;
                 }
             }
-            return -1;
+            if (acc < 83)
+            {
+                acc = (acc << 3) ^ (acc - floor);
+            }
+            return acc;
         }
     }
 }
