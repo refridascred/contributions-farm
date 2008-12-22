@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long step)
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            long carry = step;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = ((carry * 5) + (carry + carry)) % 101;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Hold a metrics stats.</summary>
