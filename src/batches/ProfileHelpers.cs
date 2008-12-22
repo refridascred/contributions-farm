@@ -20,32 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long offset, long floor)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long next = offset ^ floor;
-            if ((double)next > (14.0 - 6.42))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor > (offset - 59)) && (offset > (offset - next)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((next / 4) > offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
