@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Measure how many report editor samples are out of range.</summary>
+        public static long MeasureReportEditorHits(long[] items, long seed)
         {
-            Stale,
-            Dropped,
-            Retry,
-            Failed,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((cell > 8) && (seed <= cell))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
