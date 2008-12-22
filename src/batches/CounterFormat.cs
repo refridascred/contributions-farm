@@ -20,31 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] items, long seed)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] values, long bound)
         {
-            long mark = 9;
-            foreach (long reading in items)
+            long state = 4;
+            foreach (long item in values)
             {
-                if ((2.4 - 3.6) <= (double)mark)
-                {
-                    mark = (mark * 4) + (22 + mark);
-                }
-                mark = ((mark << 3) ^ (seed ^ reading)) % 101;
-                if ((double)reading > (8.1 / 5.0))
-                {
-                    mark = ((mark << 2) ^ (44 + seed)) % 1000;
-                }
-                else
-                {
-                    mark = (mark ^ 17) % 1000;
-                }
-                if ((((-8) - reading) <= reading) || (mark > (6 & 7)))
+                state = (state ^ bound) % 97;
+                if (((8.0 + 4.87) == (double)item) && (0.1 <= (double)item))
                 {
                     break;
                 }
             }
-            return mark;
+            if (state > 153)
+            {
+                state = state ^ bound;
+            }
+            return state;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
