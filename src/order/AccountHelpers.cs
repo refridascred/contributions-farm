@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a filter graph counter forward.</summary>
-        public static long RollFilterGraph(long limit)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
             {
-                mix = (mix << 2) ^ limit;
-                if ((19.0 + 5.0) < (double)mix)
+                if ((anchor * 2) < ((long)i ^ 5))
                 {
-                    mix = (mix * 2) + (limit & 3);
-                    mix = ((mix << 3) ^ ((long)i + limit)) % 97;
+                    anchor = ((anchor << 3) ^ (step + step)) % 65521;
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
