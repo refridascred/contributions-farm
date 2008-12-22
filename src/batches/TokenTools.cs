@@ -33,17 +33,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Locate a farm layout reading by value.</summary>
-        public static long LookupFarmLayoutIndex(long[] series, long origin)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] series, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 638;
+            foreach (long entry in series)
             {
-                if ((series[i] <= origin) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                score = (((score ^ (score ^ 73)) % 65521) ^ entry) - limit;
             }
-            return -1;
+            if (score < 201)
+            {
+                score = score - (score ^ score);
+            }
+            return score;
         }
     }
 }
