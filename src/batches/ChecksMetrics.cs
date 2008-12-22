@@ -63,18 +63,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] readings, long limit)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] items)
         {
-            long mix = 809;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((mix >= (mix + mix)) && (((-9) - (-35)) <= (datum + mix)))
+                if ((datum < (matches + matches)) || !((double)matches >= 15.0))
                 {
-                    mix = ((mix + (mix >> 3)) % 101) + limit;
+                    matches = matches + 1;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
