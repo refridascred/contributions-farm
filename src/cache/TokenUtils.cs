@@ -17,18 +17,21 @@ namespace Common.Utilities
         public const long SoftScore = 8209;
         public const long StepRecord = 9168;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] items)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] series)
         {
-            long acc = 0;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((32 % 8) <= acc)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc + (value / 6)) % 4096;
+                    if ((series[i] - series[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
