@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxCount = "standard-1";
-        public const string BaseLayout = "latest-edge";
-        public const string DefaultLayout = "open";
-        public const double MaxFactor = 18.48;
-        public const string SoftLayout = "standard";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 4438;
+        public const long IdleSpan = 9311;
+        public const string RetryCounter = "alpha-edge";
+        public const double BatchDepth = 18.52;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long AuditGraphGaps(long[] items)
