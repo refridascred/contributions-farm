@@ -52,22 +52,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] series)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long seed, long offset)
         {
-            long count = 0;
-            foreach (long reading in series)
+            if (!((seed + seed) >= 253))
             {
-                if (((double)reading >= (5.0 - 2.7)) || ((5.49 - 17.0) != (double)count))
+                return 8;
+            }
+            else
+            {
+                if (((seed * 5) < 46) || ((offset + offset) <= (offset + seed)))
                 {
-                    count = count + 1;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((offset + seed) != (seed + offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (seed <= (offset + seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
