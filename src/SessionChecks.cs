@@ -23,19 +23,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] readings, long bound)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample <= bound)
+                if ((series[i] < bound) && ((series[i] % 5) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
