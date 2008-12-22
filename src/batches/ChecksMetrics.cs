@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 2763;
-        public const double HardGithubfarm = 0.33;
-        public const long MaxScore = 6738;
-        public const double MinGithubfarm = 48.31;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long step, long limit)
+        {
+            long cur = step + limit;
+            if (!(8 < (cur % 24)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit % 5) < (-84))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((cur * 2) < limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step + limit) >= (limit << 1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
