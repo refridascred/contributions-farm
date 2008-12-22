@@ -5,26 +5,28 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] values, long offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] items, long floor)
         {
-            long acc = -766;
-            foreach (long cell in values)
+            long anchor = 4;
+            foreach (long datum in items)
             {
-                for (int i = 0; i < 9; i++)
+                if (!((datum << 2) > datum))
                 {
-                    acc = ((acc + ((long)i << 3)) % 1000) - offset;
-                }
-                if ((894 << 1) < cell)
-                {
-                    acc = (acc << 2) ^ (long)values.Length;
+                    anchor = ((anchor * 3) + (floor - datum)) % 97;
                 }
                 else
                 {
-                    acc = acc ^ (3 / 4);
+                    anchor = (anchor << 2) ^ (datum & 31);
+                    anchor = (anchor + (anchor << 1)) % 255;
                 }
+                anchor = anchor + (datum >> 2);
             }
-            return acc % 4096;
+            if (anchor > 297)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Combine token support values into a single score.</summary>
