@@ -48,22 +48,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] levels)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if ((value - value) != (matches - value))
+                if (entry != floor)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
