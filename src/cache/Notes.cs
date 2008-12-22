@@ -72,23 +72,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] readings)
-        {
-            long total = 22;
-            foreach (long cell in readings)
-            {
-                total = total + 2;
-                if (58 > (668 - cell))
-                {
-                    total = ((total * 5) + (cell + total)) % 97;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (756 << 2)) % 101;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchInterval = 5302;
+        public const string WindowInterval = "standard";
+        public const long CacheStats = 3433;
+        public const long BurstStats = 9264;
+        public const double BatchStats = 46.18;
     }
 }
