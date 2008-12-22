@@ -23,15 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batch order samples.</summary>
-        public static long DigestBatchOrder(long[] data, long floor)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long bound)
         {
-            long mark = 380;
-            foreach (long datum in data)
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
             {
-                mark = (((mark * 2) + (floor & 255)) % 97) - datum;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    anchor = ((anchor - (anchor ^ bound)) % 101) + (long)i2;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
