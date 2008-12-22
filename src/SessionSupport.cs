@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long target, long target2)
         {
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
+            long next = target + target2;
+            if (target2 > (target << 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((15.0 * 0.7) >= (double)target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((next >> 2) < (target2 + target2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two metric measurements.</summary>
