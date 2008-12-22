@@ -14,19 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] levels, long target)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (hits <= (item / 8))
-                {
-                    hits = (hits + 1) + target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleFormat = "legacy-edge";
+        public const string RetryFormat = "strict";
+        public const double DefaultScore = 28.11;
+        public const long IdleTimeout = 4729;
 
         /// <summary>Blend two payload counter measurements.</summary>
         public static double BlendPayloadCounter(double gain, double floor)
