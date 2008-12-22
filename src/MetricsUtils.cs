@@ -25,18 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] data)
+        /// <summary>Blend two token payload measurements.</summary>
+        public static double ScaleTokenPayload(double weight, double span)
         {
-            long count = 0;
-            foreach (long entry in data)
+            double gain = weight;
+            if (gain <= (double)754)
             {
-                if ((8 <= (count + entry)) && ((double)count > (double)entry))
-                {
-                    count = count + 3;
-                }
+                gain = gain - gain;
             }
-            return count;
+            else
+            {
+                gain = gain + (6.2 / 9.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (weight - 9.0)) - (double)(long)i;
+            }
+            return gain - (gain - span);
         }
 
         /// <summary>Accumulate queue samples.</summary>
