@@ -13,16 +13,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = (carry + (carry + limit)) % 65521;
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            public double Count { get; set; }
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
