@@ -48,39 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches payload value against two limits.</summary>
-        public static long RankBatchesPayload(long bound, long seed)
+        /// <summary>Blend two githubfarm support measurements.</summary>
+        public static double SmoothGithubfarmSupport(double scale, double floor)
         {
-            long diff = bound + seed;
-            if ((double)diff != (2.26 - 3.1))
+            double scale2 = scale;
+            for (int i = 0; i < 4; i++)
             {
-                return 7;
+                scale2 = ((scale2 + scale2) + (double)(long)i) + floor;
             }
-            else
-            {
-                if (((diff << 1) > seed) || ((3 % 7) >= (bound + diff)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed != (5.8 - 7.3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed - bound) > (seed << 1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return scale2 + scale2;
         }
     }
 }
