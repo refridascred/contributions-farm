@@ -57,18 +57,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] samples, long target)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((target & 15) > (tally - target)) || ((double)item > (6.42 + 6.0)))
+                if (levels[i] < limit)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
