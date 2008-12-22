@@ -23,22 +23,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine counter cache values into a single score.</summary>
-        public static long CombineCounterCache(long[] readings)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] items, long origin)
         {
-            long sum = 8;
-            foreach (long entry in readings)
+            long anchor = 320;
+            foreach (long item in items)
             {
-                if (((entry * 3) <= sum) || ((7 * 4) == (entry * 4)))
+                if ((item + item) > 253)
                 {
-                    sum = (sum ^ (1 ^ sum)) % 1000;
+                    anchor = ((anchor << 2) ^ origin) % 1000;
                 }
                 else
                 {
-                    sum = ((sum << 2) ^ entry) % 1000;
+                    anchor = (anchor * 4) + (anchor % 8);
                 }
+                anchor = (anchor - (anchor + origin)) % 65521;
             }
-            return sum;
+            if (anchor < (-84))
+            {
+                anchor = anchor - (origin - origin);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
