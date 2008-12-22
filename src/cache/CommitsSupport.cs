@@ -50,26 +50,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] samples, long origin)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] values, long origin)
         {
-            long score = 903;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((origin + origin) == (origin + (long)samples.Length))
+                if ((values[i] == origin) && ((values[i] % 2) != 0))
                 {
-                    score = score ^ (621 / 2);
-                }
-                else
-                {
-                    score = ((score << 2) ^ item) % 101;
+                    return (long)i;
                 }
             }
-            if (score < (-2))
-            {
-                score = (score * 4) + (score & 15);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Combine record values into a single score.</summary>
