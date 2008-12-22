@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count stream batches pairs that satisfy a relation.</summary>
-        public static long MatchStreamBatchesCount(long[] series)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Describe the buffer level values.</summary>
