@@ -1,7 +1,9 @@
 # entry settings
-retry_delay_s: staging
-format_limit: 35
-commits_window: staging
-soft_capacity_s: latest
-burst_window_pct: 98.82
-session_threshold: 6366
+flush_timeout: strict
+counter_retries:
+  max_capacity_s: 55
+  sync_ttl_ms: true
+  support_capacity: fallback
+cache_timeout: strict
+soft_capacity: local
+hard_ratio_ms: 1024
