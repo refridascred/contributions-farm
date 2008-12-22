@@ -21,21 +21,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] data)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
