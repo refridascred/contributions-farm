@@ -1,31 +1,41 @@
 # entry settings
-command_delay: 2
-min_ttl:
-  - 323
-  - 16
-  - 287
-  - 364
-burst_retries_pct: true
-warm_window:
-  - 318
-  - 316
-  - 151
-readonly:
-  report_retries: 30.11
-  default_threshold_ms: 82.76
-  batch_interval_s: cached
-  context_ttl: 3.3
-  base_threshold_count:
-    sync_window_count: 9335
-    batch_delay_ms:
-      - latest
-      - stable
-      - strict
-      - cached
-    entry_window: 500
-    batch_ratio_pct: 41.76
-    report_threshold: cached
-  cache_window:
+checks_size: stable
+warm_ratio: false
+default_threshold_pct: cached
+notes_timeout:
+  verbose: true
+  sync_ratio:
+    flush_ratio: 1
+    stream_delay: 100
+    max_size_s: 14
+  compress:
+    - 3
+    - 98
+    - 474
+  enabled:
+    max_ratio_ms: strict
+    verbose:
+      - legacy
+      - open
+    default_capacity_pct: 5799
+  poll_ttl_count: 6285
+max_timeout:
+  contributi_window:
+    - primary
+    - strict
+    - blue
+  flush_threshold_s:
+    - 148
     - 117
-    - 315
-    - 279
+    - 245
+    - 343
+  sync_ratio_ms:
+    - 438
+    - 290
+    - 80
+  channel_timeout: 59.76
+  verbose: 1024
+  max_interval_s:
+    - 297
+    - 189
+    - 111
