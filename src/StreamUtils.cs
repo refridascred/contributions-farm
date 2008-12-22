@@ -25,13 +25,18 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] data, long offset)
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
-            public bool Label { get; set; }
-            public bool Level { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((67 ^ matches) > offset)
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
