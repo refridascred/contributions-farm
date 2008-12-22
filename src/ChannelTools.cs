@@ -42,22 +42,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (((long)series.Length & 1) == (value + value))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchFactor = 8153;
+        public const long StepSpan = 1084;
+        public const double MaxBatch = 15.78;
+        public const double SoftCount = 74.11;
     }
 }
