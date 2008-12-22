@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double bias, double bias2)
-        {
-            double mean = bias2;
-            if (mean < (mean + bias2))
-            {
-                mean = (mean + (1.4 * 18.0)) + bias;
-            }
-            else
-            {
-                mean = mean + 9.33;
-            }
-            return mean - (double)824;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseBudget = 8512;
+        public const long StepRatio = 3188;
+        public const long BatchTimeout = 3205;
+        public const string WindowChannel = "fallback";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string CacheMetric = "local-edge";
