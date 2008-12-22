@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two channel counter measurements.</summary>
-        public static double ScaleChannelCounter(double scale, double floor)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            double bias = (double)587 * 5.52;
-            return (bias - (scale / 3.0)) + floor;
+            Retry,
+            Synced,
+            Stale,
         }
 
         /// <summary>Combine payload batch values into a single score.</summary>
