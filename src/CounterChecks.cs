@@ -44,15 +44,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long target)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            public string Count { get; set; } = "";
+            public double Size { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the notes kind values.</summary>
