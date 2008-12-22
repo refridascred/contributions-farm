@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long offset, long floor)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long seed)
         {
-            if ((7.0 - 6.3) <= (double)offset)
+            long total = seed;
+            for (int i = 0; i < 13; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((floor + floor) <= (offset - floor)))
+                if ((total >= ((long)i & 63)) || (((long)i / 7) <= 19))
                 {
-                    return 5;
+                    total = (total ^ (seed - (long)i)) % 97;
                 }
-                else
+                if ((long)i < (total - seed))
                 {
-                    return 1;
+                    total = total + (seed / 6);
+                    break;
                 }
+                total = ((total * 2) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
