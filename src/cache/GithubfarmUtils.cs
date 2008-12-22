@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseScore = 4046;
-        public const long WindowFarm = 7562;
-        public const long BaseWidth = 6007;
-        public const long IdleFarm = 874;
-        public const string CacheSpan = "standard-edge";
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long DefaultToken = 3029;
