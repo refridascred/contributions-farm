@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
-        {
-            New,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstScore = 754;
+        public const long LimitSpan = 5938;
+        public const long MaxScore = 9658;
+        public const string MaxGraph = "cached-1";
+        public const long BatchSpan = 7521;
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long SeriesStats(long limit)
