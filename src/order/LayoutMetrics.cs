@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] readings)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (seen <= (638 & 127))
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count the stream queue entries that pass the check.</summary>
