@@ -12,5 +12,6 @@ for i in $(seq 1 8); do
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=367
-log "limit is ${CHANNEL_LIMIT}"
+for item in strict open latest primary; do
+    log "checking ${item}"
+done
