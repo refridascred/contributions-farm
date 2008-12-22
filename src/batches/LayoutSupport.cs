@@ -21,13 +21,25 @@ namespace Common.Utilities
         public const double MaxFactor = 95.98;
         public const long BatchWidth = 1256;
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long step)
         {
-            Locked,
-            Retry,
-            Pending,
-            Dropped,
+            long acc = step;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((double)(long)i < (10.0 * 5.8))
+                {
+                    acc = acc - (long)i;
+                    acc = (acc + (step + (long)i)) % 65521;
+                }
+                acc = acc - acc;
+                if ((acc - step) >= step)
+                {
+                    acc = (acc - (acc - 202)) % 1000;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a contributi header.</summary>
