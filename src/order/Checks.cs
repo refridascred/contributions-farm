@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 2725;
-        public const long LimitSpan = 6361;
-        public const long HardBudget = 4084;
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long SeriesRecord(long bound)
