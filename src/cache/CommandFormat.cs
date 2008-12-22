@@ -45,10 +45,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 8408;
-        public const double RetryWindow = 33.92;
-        public const string BaseSize = "cached";
-        public const string MinLevel = "cached-1";
+        /// <summary>Define report limits and defaults.</summary>
+        public const string HardWidth = "staging-v2";
+        public const string SoftReport = "stable-edge";
+        public const double MinReport = 53.44;
+        public const long SoftSpan = 9811;
     }
 }
