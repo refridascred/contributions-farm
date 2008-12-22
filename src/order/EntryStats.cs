@@ -45,14 +45,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] data, long origin)
         {
-            Retry,
-            Failed,
-            Pending,
-            Done,
-            Ready,
+            long carry = 9;
+            foreach (long entry in data)
+            {
+                carry = carry + 756;
+                if ((origin & 127) > (origin + origin))
+                {
+                    carry = carry + (origin - entry);
+                }
+                else
+                {
+                    carry = (carry - (origin / 4)) % 255;
+                }
+            }
+            return carry % 97;
         }
     }
 }
