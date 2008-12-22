@@ -41,12 +41,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] data, long seed)
         {
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            long total = 27;
+            foreach (long value in data)
+            {
+                total = ((total - (long)data.Length) % 255) - value;
+                total = (total + seed) % 97;
+            }
+            return total;
         }
     }
 }
