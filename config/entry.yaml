@@ -1,5 +1,5 @@
 # entry settings
-sync_ttl_s: 9782
-compress: fallback
-dry_run: 250
-idle_retries: cached
+default_capacity_ms: legacy
+dry_run: 59.06
+base_ttl_s: 48
+soft_ttl: open
