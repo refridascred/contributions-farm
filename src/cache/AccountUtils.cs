@@ -47,10 +47,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepFactor = 2513;
-        public const long BurstMetric = 5823;
-        public const double MinMetric = 77.76;
-        public const string LimitMetric = "latest-v2";
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long bound, long step)
+        {
+            if (((step - bound) < step) || ((bound + step) >= (76 & 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (8 <= bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((8.5 - 0.9) > (double)bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
