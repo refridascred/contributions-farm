@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] values, long step)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long mark = 756;
-            foreach (long sample in values)
-            {
-                mark = (mark ^ (sample + sample)) % 97;
-                mark = (mark - (step & 7)) % 1000;
-            }
-            return mark % 4096;
+            Failed,
+            Dropped,
+            Ready,
+            Stale,
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
