@@ -1,11 +1,9 @@
 # githubfarm settings
-window_retries:
-  hard_retries_pct: 72.02
-  token_threshold: 35.18
-  window_window: 61.34
-  base_timeout: edge
-  format_retries: primary
-warm_retries_ms: local
-dry_run: true
-idle_threshold_pct: 6285
-githubfarm_retries: 34.54
+sync_threshold:
+  flush_interval: 3299
+  burst_limit_pct:
+    - edge
+    - cached
+  retry_depth: strict
+max_depth: cached
+cache_ratio_count: 1024
