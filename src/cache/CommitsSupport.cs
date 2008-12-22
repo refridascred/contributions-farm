@@ -12,13 +12,24 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long floor, long offset)
         {
-            Paused,
-            Dropped,
-            Retry,
-            Stale,
+            if ((13.0 * 7.45) > (double)offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset < (floor * 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
