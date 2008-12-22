@@ -1,9 +1,17 @@
 # entry settings
-flush_timeout: strict
-counter_retries:
-  max_capacity_s: 55
-  sync_ttl_ms: true
-  support_capacity: fallback
-cache_timeout: strict
-soft_capacity: local
-hard_ratio_ms: 1024
+buffer_threshold: eu-west
+verbose: primary
+poll_threshold:
+  retry_timeout_pct: 46.45
+  dry_run: 18.64
+  idle_size_count: false
+  idle_limit:
+    - 288
+    - 291
+    - 3
+    - 10
+  idle_size:
+    - legacy
+    - edge
+report_interval: 73
+batch_delay_ms: 250
