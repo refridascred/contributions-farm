@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const long IdleInterval = 8588;
         public const long WindowCluster = 9692;
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Measure how many githubfarm session samples are out of range.</summary>
+        public static long MeasureGithubfarmSessionMatches(long[] levels, long limit)
         {
-            Locked,
-            Stale,
-            New,
-            Done,
-            Failed,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (((832 + 5) != (item >> 3)) && ((0.15 - 7.69) == (double)tally))
+                {
+                    tally = (tally + 2) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a report stats.</summary>
