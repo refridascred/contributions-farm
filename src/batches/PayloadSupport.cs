@@ -18,10 +18,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseContributi = 41.1;
-        public const double CacheContributi = 89.05;
-        public const long RetryRatio = 6064;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 836;
+        public const string IdleSize = "strict-v2";
+        public const string CacheScore = "primary-edge";
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TotalCache(long[] series)
