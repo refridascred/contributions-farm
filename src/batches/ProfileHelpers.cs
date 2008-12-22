@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] levels)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] values, long target)
         {
-            long score = 88;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long value in values)
             {
-                score = score ^ (entry << 3);
+                if (value >= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
