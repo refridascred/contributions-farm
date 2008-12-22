@@ -25,23 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two token payload measurements.</summary>
-        public static double ScaleTokenPayload(double weight, double span)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            double gain = weight;
-            if (gain <= (double)754)
-            {
-                gain = gain - gain;
-            }
-            else
-            {
-                gain = gain + (6.2 / 9.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (weight - 9.0)) - (double)(long)i;
-            }
-            return gain - (gain - span);
+            Pending,
+            Failed,
+            Draft,
         }
 
         /// <summary>Accumulate queue samples.</summary>
