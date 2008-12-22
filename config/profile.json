@@ -1,7 +1,20 @@
 {
-  "dry_run": 30,
-  "report_limit": true,
-  "batch_depth_ms": "primary",
-  "default_threshold_s": 60,
-  "idle_size_pct": false
+  "sync_limit_s": 321,
+  "batch_window_count": {
+    "sync_size": "blue",
+    "idle_timeout_pct": 6448,
+    "soft_timeout_count": {
+      "persist": 24,
+      "cache_depth_pct": false,
+      "base_delay": [419, 282],
+      "min_capacity_ms": 9,
+      "min_depth_s": false,
+      "cache_capacity": "edge"
+    },
+    "batch_limit": ["strict", "latest", "cached"],
+    "idle_capacity": 48.36,
+    "default_capacity": 80
+  },
+  "batch_timeout_count": 5107,
+  "sync_depth": [447, 485, 363, 222]
 }
