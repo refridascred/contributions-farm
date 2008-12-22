@@ -46,15 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Locked,
-            Stale,
-            New,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseInterval = 2080;
+        public const long LimitTimeout = 9954;
+        public const long StepCache = 8262;
+        public const string MaxCache = "fallback-edge";
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
