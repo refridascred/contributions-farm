@@ -13,25 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long seed, long limit)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long cur = seed ^ limit;
-            if (((double)cur < (18.0 * 8.47)) && (seed > cur))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((limit - (-85)) > (seed / 2)) && ((double)cur <= (5.1 - 3.93)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
