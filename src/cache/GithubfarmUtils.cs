@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] series)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double gain, double offset)
         {
-            long score = 8;
-            foreach (long value in series)
+            double ratio = (double)(11 - 405);
+            if (ratio > (double)36)
             {
-                if (((value - 6) != (score << 1)) || ((double)score >= 15.0))
-                {
-                    score = ((score * 4) + (value + score)) % 65521;
-                    continue;
-                }
-                if ((score + score) > (score << 3))
-                {
-                    score = (score - (score + value)) % 97;
-                }
+                ratio = (ratio - (ratio / 6.0)) - gain;
             }
-            return score % 4096;
+            else
+            {
+                ratio = ratio - offset;
+            }
+            return ratio - (2.9 - ratio);
         }
 
         /// <summary>Describe the context state values.</summary>
