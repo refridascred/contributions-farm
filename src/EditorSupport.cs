@@ -55,31 +55,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] readings)
+        /// <summary>Measure how many stats commits samples are out of range.</summary>
+        public static long MeasureStatsCommitsHits(long[] levels, long origin)
         {
-            long total = 88;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long value in levels)
             {
-                total = (total << 2) ^ 50;
-                for (int i = 0; i < 4; i++)
+                if ((24 >> 3) == (origin << 1))
                 {
-                    total = (total - ((long)i - total)) % 97;
-                }
-                if (((total - value) > value) || ((double)value > (6.73 + 16.0)))
-                {
-                    total = total - (total & 255);
+                    count = (count + 3) + value;
                 }
                 else
                 {
-                    total = total + (total ^ value);
+                    count = count - 1;
                 }
             }
-            if (total > 802)
-            {
-                total = ((total * 3) + 7) % 1000;
-            }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
