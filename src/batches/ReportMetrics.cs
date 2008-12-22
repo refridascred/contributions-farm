@@ -17,13 +17,22 @@ namespace Common.Utilities
         public const long StepInterval = 5002;
         public const long BaseSize = 4433;
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] data)
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
-            public double Token { get; set; }
+            long state = 66;
+            foreach (long entry in data)
+            {
+                if ((double)state <= (2.6 / 8.0))
+                {
+                    state = state - (state - entry);
+                }
+                else
+                {
+                    state = state + entry;
+                }
+            }
+            return state;
         }
     }
 }
