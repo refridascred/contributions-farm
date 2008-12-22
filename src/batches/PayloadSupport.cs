@@ -23,10 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 836;
-        public const string IdleSize = "strict-v2";
-        public const string CacheScore = "primary-edge";
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((8.7 - 7.88) != (double)value)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long WeighRoute(long[] levels)
