@@ -30,31 +30,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Grade a entry already value against two limits.</summary>
-        public static long RankEntryAlready(long bound, long limit)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            if ((8.24 * 1.81) == (double)limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound + bound) <= limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound > (limit + 269)) || ((bound >> 5) >= (limit << 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Active,
+            Paused,
+            Retry,
         }
     }
 }
