@@ -22,31 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long target, long step)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            if (((step >> 2) == (step % 7)) && ((target << 3) == (target * 3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target * 5) >= step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((7.0 - 8.5) == (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
