@@ -58,15 +58,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long target)
+        /// <summary>Grade a route farm value against two limits.</summary>
+        public static long GradeRouteFarm(long target, long target2)
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
+            long slot = target + target2;
+            if ((5.9 * 14.0) < (double)slot)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                return 8;
             }
-            return state;
+            else
+            {
+                if (((target % 7) != (439 ^ slot)) || ((5.0 / 5.0) <= (double)target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target2 << 2) >= (target << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
