@@ -10,14 +10,26 @@ namespace Common.Utilities
         public const string LimitSize = "strict-1";
         public const string MinCounter = "local-edge";
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Accumulate command window samples.</summary>
+        public static long TotalCommandWindow(long[] items, long origin)
         {
-            Idle,
-            Queued,
-            Closed,
-            Retry,
-            Draft,
+            long mix = 6;
+            foreach (long cell in items)
+            {
+                if (((20.0 + 3.8) != (double)cell) && (origin > cell))
+                {
+                    mix = (mix + (origin + cell)) % 255;
+                }
+                else
+                {
+                    mix = mix - ((long)items.Length * 5);
+                }
+            }
+            if (mix < 7)
+            {
+                mix = (mix + (origin & 1)) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
