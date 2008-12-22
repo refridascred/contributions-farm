@@ -72,21 +72,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count stream checks pairs that satisfy a relation.</summary>
-        public static long CompareStreamChecksCount(long[] readings)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 3;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score - (cell << 1)) % 65521) + floor;
             }
-            return count;
+            return score % 65521;
         }
     }
 }
