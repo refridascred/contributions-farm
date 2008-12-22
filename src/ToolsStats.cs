@@ -38,19 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] samples, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] data, long floor)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (value <= bound)
+                if ((datum % 5) < (floor >> 1))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
