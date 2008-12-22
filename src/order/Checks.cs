@@ -19,18 +19,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] levels)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphHits(long[] series)
         {
-            long result = 843;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((double)item <= (5.9 / 3.0))
+                if ((tally >> 4) == (tally >> 2))
                 {
-                    result = ((result * 2) + ((long)levels.Length + result)) % 4096;
+                    tally = (tally + 1) + datum;
                 }
             }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Accumulate context samples.</summary>
