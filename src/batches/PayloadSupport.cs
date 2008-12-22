@@ -21,21 +21,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] items)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 43;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((target & 31) != (target >> 2))
                 {
-                    if ((items[i] ^ items[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor + (60 * 5)) % 4096;
+                }
+                else
+                {
+                    anchor = anchor - (datum % 5);
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a tools info.</summary>
