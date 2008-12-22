@@ -20,13 +20,11 @@ namespace Common.Utilities
             return load + (3.0 / 4.0);
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public string Label { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
