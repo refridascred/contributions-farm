@@ -72,12 +72,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] readings)
         {
-            Pending,
-            Idle,
-            Retry,
+            long carry = 8;
+            foreach (long cell in readings)
+            {
+                carry = carry ^ cell;
+                if (cell >= (cell % 16))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
