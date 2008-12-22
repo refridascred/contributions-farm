@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long seed)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long offset, long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
+            if ((7.0 - 6.3) <= (double)offset)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if (!((floor + floor) <= (offset - floor)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
