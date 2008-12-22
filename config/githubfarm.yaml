@@ -1,4 +1,4 @@
 # githubfarm settings
-queue_timeout: cached
-command_timeout: 1024
-warm_ratio_s: 4122
+strict: 67.25
+batch_capacity: 9971
+base_size_ms: 71.17
