@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const double SoftRecord = 1.04;
         public const long RetrySize = 2865;
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Count the route session entries that pass the check.</summary>
+        public static long MeasureRouteSessionMatches(long[] levels)
         {
-            Idle,
-            Failed,
-            New,
-            Pending,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (!(8.0 < (double)reading) || (count > (reading + 52)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
