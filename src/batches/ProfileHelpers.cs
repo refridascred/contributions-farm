@@ -48,12 +48,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchBudget = 3721;
-        public const long BurstReport = 8501;
-        public const long HardScore = 3310;
-        public const string StepReport = "strict";
-        public const long CacheCount = 7774;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] samples, long seed)
+        {
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
