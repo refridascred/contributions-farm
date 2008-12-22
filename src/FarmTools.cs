@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit counter filter readings against a rule.</summary>
-        public static long CountCounterFilterOutliers(long[] series)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] items)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((906 + tally) > (tally * 4)) && ((double)tally != (1.8 * 2.5)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 3) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] - items[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
