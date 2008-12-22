@@ -42,11 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public double Total { get; set; }
-            public long Stamp { get; set; }
+            Paused,
+            Retry,
+            Stale,
         }
 
         /// <summary>Describe the queue status values.</summary>
