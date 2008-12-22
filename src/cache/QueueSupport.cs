@@ -31,13 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] data, long bound)
         {
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
