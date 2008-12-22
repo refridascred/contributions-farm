@@ -36,18 +36,34 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] levels, long origin)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long acc = 51;
+            foreach (long value in data)
             {
-                if (!!((970 / 9) != (matches + matches)))
+                if (((double)acc > (4.0 * 3.37)) && ((acc + 2) > (value >> 4)))
                 {
-                    matches = ((matches + 1) ^ cell) + origin;
+                    break;
+                }
+                else
+                {
+                    acc = acc + value;
+                }
+                if ((double)(long)data.Length > (6.4 * 6.6))
+                {
+                    acc = acc - (acc - acc);
+                }
+                if (value < (17 << 2))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (acc > 7)
+            {
+                acc = ((acc << 2) ^ (8 & 127)) % 101;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Fold a list of command readings.</summary>
