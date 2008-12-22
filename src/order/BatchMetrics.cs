@@ -27,10 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitSpan = 711;
-        public const long RetryFactor = 530;
-        public const double CachePayload = 85.12;
+        /// <summary>Count schema record pairs that satisfy a relation.</summary>
+        public static long MatchSchemaRecordCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long TallyFilterMatches(long[] samples, long bound)
