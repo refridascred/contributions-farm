@@ -65,32 +65,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long step, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] series)
         {
-            long next = step - limit;
-            if ((limit << 1) <= next)
+            long count = 0;
+            foreach (long datum in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit >= (limit + next))
+                if ((datum & 31) != (count & 31))
                 {
-                    return 6;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((limit + (-66)) == (67 + next))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
