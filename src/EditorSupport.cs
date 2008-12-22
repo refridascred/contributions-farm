@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const string LimitContributi = "staging-v2";
         public const long WindowRatio = 4912;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 2140;
-        public const long MinOrder = 5459;
-        public const string LimitBudget = "standard";
-        public const long DefaultOrder = 7389;
-        public const long BatchWidth = 8843;
+        /// <summary>Locate a stream schema reading by value.</summary>
+        public static long LookupStreamSchemaIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < seed) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate command buffer samples.</summary>
         public static long TotalCommandBuffer(long[] samples, long seed)
