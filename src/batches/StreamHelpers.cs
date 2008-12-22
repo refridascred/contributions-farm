@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every contributi metric entry stays within the limit.</summary>
-        public static bool CheckContributiMetricLimits(long[] items, long origin)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] levels, long limit)
         {
             bool stale = true;
-            foreach (long entry in items)
+            foreach (long entry in levels)
             {
-                if (entry > origin)
+                if (entry != limit)
                 {
                     stale = false;
                     break;
