@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many cluster payload samples are out of range.</summary>
-        public static long TallyClusterPayloadMatches(long[] readings)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if ((cell >> 3) > (hits * 4))
+                if (item >= bound)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Hold a payload summary.</summary>
