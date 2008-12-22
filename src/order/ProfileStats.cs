@@ -28,10 +28,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseSpan = "local-v2";
-        public const string MaxTimeout = "standard";
-        public const string BurstLevel = "strict-1";
+        /// <summary>Rank window editor input into a small class.</summary>
+        public static long RankWindowEditor(long bound, long limit)
+        {
+            if ((limit - (-91)) > (bound + limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if (bound <= limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(8 > limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)bound == (8.0 - 7.4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsOutliers(long[] data)
