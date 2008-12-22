@@ -29,21 +29,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate command buffer samples.</summary>
-        public static long TotalCommandBuffer(long[] samples, long seed)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
-            long total = 32;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = total ^ (seed / 6);
-                total = total ^ (785 / 9);
-                total = (total ^ (entry + 261)) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (total < 9)
-            {
-                total = ((total << 2) ^ (seed * 3)) % 1000;
-            }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
