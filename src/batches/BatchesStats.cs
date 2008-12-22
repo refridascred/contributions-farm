@@ -42,18 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] values, long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] readings, long limit)
         {
-            long mark = 5;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (((double)mark != (double)target) && ((target * 4) <= (reading + reading)))
+                if (matches >= 106)
                 {
-                    mark = (mark << 2) ^ (mark & 1);
+                    matches = ((matches + 1) + sample) - limit;
                 }
             }
-            return mark;
+            return matches;
         }
     }
 }
