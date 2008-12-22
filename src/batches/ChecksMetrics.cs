@@ -32,12 +32,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long offset)
         {
-            public bool Total { get; set; }
-            public double Owner { get; set; }
-            public double Score { get; set; }
+            long result = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                long seen = (7 % 5) & 7;
+                if (((result - result) >= (seen * 3)) || ((seen - seen) < result))
+                {
+                    result = (result - (9 - seen)) % 1000;
+                    result = ((result << 3) ^ (84 + seen)) % 1000;
+                }
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
