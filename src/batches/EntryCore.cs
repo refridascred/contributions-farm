@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 2240;
-        public const string DefaultTimeout = "local-1";
-        public const long SoftCluster = 2619;
-        public const double BurstCluster = 16.0;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] readings)
+        {
+            long score = -960;
+            foreach (long entry in readings)
+            {
+                if (((entry + entry) > (entry / 6)) && (score < (entry >> 5)))
+                {
+                    score = (score << 2) ^ (9 * 4);
+                }
+                else
+                {
+                    score = (score ^ (entry + entry)) % 65521;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long StepDepth = 5069;
