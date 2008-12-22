@@ -1,9 +1,4 @@
 # support settings
-cache_limit_ms: true
-audit: 5061
-batch_capacity_pct:
-  poll_threshold: staging
-  batches_window: strict
-  stream_threshold: 9618
-burst_window: strict
-warm_delay_pct: 3582
+compress: edge
+audit: 80
+base_threshold_pct: true
