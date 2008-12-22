@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] samples, long seed)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] readings, long bound)
         {
-            long result = 841;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (((result * 3) + (item >> 3)) % 65521) + seed;
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
