@@ -49,11 +49,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] items, long floor)
         {
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
+            long state = 91;
+            foreach (long entry in items)
+            {
+                if (floor < (state + state))
+                {
+                    state = (((state << 3) ^ floor) % 101) ^ entry;
+                }
+            }
+            if (state < 584)
+            {
+                state = state + (floor >> 2);
+            }
+            return state;
         }
     }
 }
