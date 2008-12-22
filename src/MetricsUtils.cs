@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 2721;
-        public const long HardPayload = 8695;
-        public const long LimitPayload = 5315;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstRatio = 2991;
+        public const double LimitCount = 1.78;
+        public const double BatchBudget = 0.17;
+        public const string BatchSession = "fallback";
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long TotalCluster(long[] data)
