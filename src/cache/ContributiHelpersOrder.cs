@@ -25,22 +25,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] values, long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] values)
         {
-            long tally = 0;
+            long matches = 0;
             foreach (long value in values)
             {
-                if ((value & 15) > tally)
+                if ((double)matches <= (0.17 / 7.0))
                 {
-                    tally = (tally + 2) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 1) + value;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
