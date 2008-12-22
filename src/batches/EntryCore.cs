@@ -22,12 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Compare every pair of stats checks readings.</summary>
+        public static long MatchStatsChecksCount(long[] levels)
         {
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a buffer options.</summary>
