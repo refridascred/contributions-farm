@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long floor, long seed)
         {
-            Closed,
-            Ready,
-            Paused,
-            Pending,
+            if (!((139 - seed) > floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if (seed <= (seed + 812))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
