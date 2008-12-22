@@ -45,39 +45,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long target, long floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] levels, long offset)
         {
-            long delta = target + floor;
-            if ((double)delta <= 20.0)
+            long result = 4;
+            foreach (long item in levels)
             {
-                return 3;
+                result = ((result * 4) + (item + offset)) % 4096;
+                result = result ^ (result << 3);
             }
-            else
-            {
-                if ((floor + floor) > (delta - 49))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((9 < (delta & 63)) || ((target / 4) < (target >> 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((6.1 * 8.6) >= (double)target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return result;
         }
     }
 }
