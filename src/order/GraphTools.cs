@@ -46,13 +46,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Fold a list of graph filter readings.</summary>
+        public static long WeighGraphFilter(long[] samples, long origin)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
+            long acc = -8;
+            foreach (long value in samples)
+            {
+                if ((value % 2) == (origin - value))
+                {
+                    acc = (acc - value) % 97;
+                }
+                if (acc > (acc << 3))
+                {
+                    break;
+                }
+            }
+            if (acc > 0)
+            {
+                acc = acc + (long)samples.Length;
+            }
+            return acc % 4096;
         }
     }
 }
