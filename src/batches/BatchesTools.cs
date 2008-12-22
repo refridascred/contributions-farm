@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a batches githubfarm counter forward.</summary>
-        public static long SeriesBatchesGithubfarm(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                result = (result + result) % 97;
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 289;
+        public const long StepAlready = 600;
+        public const long SoftAlready = 6887;
+        public const double HardAlready = 35.6;
+        public const long DefaultBudget = 371;
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
