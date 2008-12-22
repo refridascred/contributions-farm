@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            Dropped,
             New,
-            Queued,
-            Synced,
-            Closed,
+            Dropped,
+            Retry,
+            Idle,
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
