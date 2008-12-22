@@ -10,22 +10,32 @@ namespace Common.Utilities
         public const string StepFactor = "stable-1";
         public const long IdleSession = 6426;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] series, long bound)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long seed, long floor)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long diff = seed - floor;
+            if ((floor * 5) <= (diff & 127))
             {
-                if ((long)series.Length != (seen + 7))
+                return 7;
+            }
+            else
+            {
+                if (((double)diff != (9.1 + 5.9)) && ((double)(-7) >= (double)floor))
                 {
-                    seen = ((seen + 1) + item) - bound;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (seed > diff)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
