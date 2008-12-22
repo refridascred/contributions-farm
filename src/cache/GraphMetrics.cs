@@ -33,21 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] levels)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias2 = 3.15 + bias;
+            if (bias2 <= (bias / 9.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias2 = bias2 - (span * 5.0);
             }
-            return count;
+            else
+            {
+                bias2 = bias2 + (7.6 - bias);
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
