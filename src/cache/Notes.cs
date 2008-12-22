@@ -40,18 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] data)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] samples, long offset)
         {
-            long sum = -72;
-            foreach (long cell in data)
+            long result = 450;
+            foreach (long sample in samples)
             {
-                if (!((double)sum < (7.93 * 3.62)))
+                result = ((result + sample) % 1000) + offset;
+                result = result ^ (sample >> 5);
+                if ((double)sample < (1.4 / 3.0))
                 {
-                    sum = ((sum * 5) + (sum % 60)) ^ cell;
+                    break;
                 }
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
