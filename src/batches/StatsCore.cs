@@ -78,26 +78,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] data, long step)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] samples, long floor)
         {
-            long acc = 7;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (!(((double)step >= (0.6 / 6.0)) || ((acc / 2) <= acc)))
+                if (entry >= floor)
                 {
-                    acc = acc - (8 % 24);
-                }
-                if ((16.0 - 8.0) == (double)entry)
-                {
-                    acc = (acc - (step - entry)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            if (acc > 631)
-            {
-                acc = (acc << 2) ^ acc;
-            }
-            return acc;
+            return valid;
         }
     }
 }
