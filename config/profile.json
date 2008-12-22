@@ -1,25 +1,7 @@
 {
-  "soft_interval": {
-    "sync_interval_count": {
-      "cache_timeout": "open",
-      "account_delay": ["green", "staging", "eu-west"],
-      "dry_run": "latest",
-      "batch_limit_count": false,
-      "graph_size": "standard",
-      "enabled": "stable"
-    },
-    "retry_depth": "standard",
-    "warm_depth_ms": ["latest", "primary"],
-    "burst_threshold": {
-      "cache_threshold_pct": "blue",
-      "compress": "fallback",
-      "readonly": 250,
-      "retry_timeout_s": "cached",
-      "cluster_ratio": "latest"
-    },
-    "default_size_s": 500,
-    "idle_window_count": true
-  },
-  "poll_depth_pct": 95,
-  "cache_threshold": false
+  "buffer_retries": "cached",
+  "max_timeout_count": 31,
+  "verbose": [479, 496, 80],
+  "base_ratio_pct": 7867,
+  "hard_interval_ms": 25
 }
