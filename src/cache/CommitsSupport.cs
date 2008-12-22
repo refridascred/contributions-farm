@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session commits readings.</summary>
-        public static long TotalSessionCommits(long[] data)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] series)
         {
-            long mark = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((double)mark >= (8.0 / 9.0))
+                if (count < value)
                 {
-                    mark = ((mark ^ (655 % 2)) % 4096) + cell;
+                    count = count + 1;
                 }
             }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Describe the layout class values.</summary>
