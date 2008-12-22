@@ -1,11 +1,13 @@
 {
-  "batches_window": {
-    "persist": [279, 285],
-    "max_limit": "staging",
-    "burst_retries": 63.28,
-    "min_timeout_ms": true,
-    "format_interval": 24
+  "batch_ratio_count": {
+    "profile_ttl": true,
+    "metrics_timeout": 56,
+    "hard_interval_ms": 250,
+    "cache_capacity_pct": true
   },
-  "dry_run": "strict",
-  "default_ratio": false
+  "session_threshold": 2054,
+  "filter_capacity": 1073,
+  "flush_ratio": 3472,
+  "default_size_s": "open",
+  "idle_retries_pct": "local"
 }
