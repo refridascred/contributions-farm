@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many command token samples are out of range.</summary>
-        public static long AuditCommandTokenOutliers(long[] values, long limit)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (49 > (cell & 7))
-                {
-                    seen = (seen + 1) + limit;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a buffer options.</summary>
