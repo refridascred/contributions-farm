@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine already channel values into a single score.</summary>
-        public static long DigestAlreadyChannel(long[] readings)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double scale, double offset)
         {
-            long mix = 4;
-            foreach (long reading in readings)
+            double rate = offset + 5.67;
+            if (rate > (offset - offset))
             {
-                mix = (mix ^ reading) % 65521;
+                rate = (rate - (double)754) - scale;
             }
-            if (mix > 67)
-            {
-                mix = (mix + (mix & 63)) % 1000;
-            }
-            return mix;
+            return rate + (double)63;
         }
 
         /// <summary>Describe the report level values.</summary>
