@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const long IdleInterval = 8588;
         public const long WindowCluster = 9692;
 
-        /// <summary>Measure how many githubfarm session samples are out of range.</summary>
-        public static long MeasureGithubfarmSessionMatches(long[] levels, long limit)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((832 + 5) != (item >> 3)) && ((0.15 - 7.69) == (double)tally))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 2) - limit;
+                    if ((readings[i] - readings[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
