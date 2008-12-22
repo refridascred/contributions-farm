@@ -64,19 +64,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batches counter entry stays within the limit.</summary>
-        public static bool GuardBatchesCounterLimits(long[] items, long origin)
+        /// <summary>Classify a batch contributi pair into a bucket.</summary>
+        public static long RankBatchContributi(long floor, long seed)
         {
-            bool found = true;
-            foreach (long reading in items)
+            if ((6 + seed) > ((-566) ^ seed))
             {
-                if (reading >= origin)
+                return 2;
+            }
+            else
+            {
+                if (!((floor >> 3) != (seed % 7)))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (seed > (seed ^ 276))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((37 < seed) && ((seed * 2) >= ((-4) << 1)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
