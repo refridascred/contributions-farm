@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Done,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstProfile = "strict-edge";
+        public const long LimitProfile = 1948;
+        public const long IdleProfile = 3328;
+        public const string DefaultRatio = "legacy-edge";
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool ValidateWindowRange(long[] levels, long limit)
