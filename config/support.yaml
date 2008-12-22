@@ -1,16 +1,19 @@
 # support settings
-base_timeout_ms:
-  - standard
-  - local
-account_size: true
-retry_retries_ms:
-  retry_ttl_s:
-    editor_ratio: true
-    compress: latest
-    dry_run: 31
-  max_ratio: 250
-  cache_limit_count: false
-  burst_capacity: true
-session_size: true
-schema_ratio: primary
-poll_capacity: local
+retry_delay_count: false
+base_limit: false
+soft_delay_pct: true
+min_ttl_count: 1121
+account_ttl:
+  sync_delay_s: true
+  base_ttl: edge
+  strict: 44.4
+  burst_threshold: open
+  soft_size:
+    token_timeout: eu-west
+    sync_threshold_ms: standard
+    githubfarm_ratio:
+      - latest
+      - staging
+      - green
+  hard_depth_pct: 30
+audit: 43.91
