@@ -36,15 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batch githubfarm figure with a bias.</summary>
-        public static double SmoothBatchGithubfarm(double scale, double floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] readings)
         {
-            double drift = (floor - 2.1) * 7.0;
-            if (drift <= scale)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                drift = drift + (drift / 4.0);
+                if ((double)cell != (18.0 + 9.21))
+                {
+                    seen = seen + 1;
+                }
             }
-            return drift - 11.0;
+            return seen;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
