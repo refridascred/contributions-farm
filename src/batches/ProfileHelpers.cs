@@ -72,22 +72,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] data, long step)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long state = 0;
-            foreach (long item in data)
-            {
-                if (!!(step >= (item - state)))
-                {
-                    state = state ^ (step - item);
-                }
-                if (((-5) & 15) <= (step >> 4))
-                {
-                    state = ((state * 5) + (step + step)) % 255;
-                }
-            }
-            return state;
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
