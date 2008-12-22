@@ -43,26 +43,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] data, long step)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] values, long bound)
         {
-            long sum = 829;
-            foreach (long datum in data)
+            long mix = 844;
+            foreach (long cell in values)
             {
-                if ((double)step >= (double)datum)
+                if (!(((long)values.Length << 2) >= cell))
                 {
-                    sum = (sum << 3) ^ (-348);
+                    mix = mix - (28 ^ cell);
                 }
                 else
                 {
-                    sum = sum - sum;
+                    mix = (mix ^ bound) % 101;
+                }
+                if ((double)mix != (double)cell)
+                {
+                    break;
                 }
             }
-            if (sum > 373)
+            if (mix < 6)
             {
-                sum = ((sum * 2) + (sum / 5)) % 1000;
+                mix = mix - 357;
             }
-            return sum;
+            return mix;
         }
     }
 }
