@@ -5,20 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] values, long limit)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long floor, long offset)
         {
-            long result = 21;
-            foreach (long item in values)
+            if ((floor << 1) >= (floor ^ 72))
             {
-                if (!((item & 7) >= item))
-                {
-                    result = result ^ (34 >> 5);
-                    result = (result + (item & 127)) % 4096;
-                }
-                result = result - limit;
+                return 2;
             }
-            return result % 1000;
+            else
+            {
+                if (!((offset ^ floor) < (floor ^ 485)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(floor >= (floor / 7)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor << 3) == (offset / 7))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
