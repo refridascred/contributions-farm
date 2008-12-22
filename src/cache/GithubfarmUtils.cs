@@ -20,22 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine context entry values into a single score.</summary>
-        public static long CombineContextEntry(long[] values)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long result = 7;
-            foreach (long reading in values)
-            {
-                if ((reading >> 1) < (7 % 97))
-                {
-                    result = (result ^ (reading & 7)) % 97;
-                }
-            }
-            if (result > 30)
-            {
-                result = ((result * 3) + 552) % 255;
-            }
-            return result;
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Iterate the account batch series from a seed.</summary>
