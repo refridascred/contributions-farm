@@ -34,39 +34,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long origin, long offset)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long span = origin + offset;
-            if ((0 - origin) <= 761)
-            {
-                return 6;
-            }
-            else
-            {
-                if (span > offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (origin > (origin >> 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin % 7) > offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit report commits readings against a rule.</summary>
