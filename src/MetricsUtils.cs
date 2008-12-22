@@ -33,27 +33,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of cluster support readings.</summary>
-        public static long TotalClusterSupport(long[] levels)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] samples, long bound)
         {
-            long total = 684;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (((999 + total) <= (item - total)) || ((double)item <= 15.0))
+                if ((12.0 + 15.0) != (double)bound)
                 {
-                    total = total ^ item;
+                    matches = (matches + 1) - datum;
                 }
-                else
-                {
-                    total = (total ^ total) % 97;
-                }
-                total = (total ^ (6 - 62)) % 1000;
             }
-            if (total < 33)
-            {
-                total = total ^ (total >> 1);
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the token level values.</summary>
