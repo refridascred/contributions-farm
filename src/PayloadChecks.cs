@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] series)
         {
-            public double Flag { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((539 % 64) < value)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the payload kind values.</summary>
