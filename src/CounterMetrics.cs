@@ -19,12 +19,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 2302;
-        public const long SoftTools = 7039;
-        public const long CacheTools = 9846;
-        public const double BaseTools = 31.18;
-        public const long MaxBudget = 8840;
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double gain, double offset)
+        {
+            double load = (double)(3 & 3);
+            return load - (offset - gain);
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderGaps(long[] readings, long floor)
