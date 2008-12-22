@@ -17,18 +17,14 @@ namespace Common.Utilities
         public const double CacheLevel = 39.25;
         public const long LimitWidth = 5779;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] samples, long seed)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (!((18 / 4) != (value + seed)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Ready,
+            Queued,
+            Paused,
+            Synced,
+            Draft,
         }
     }
 }
