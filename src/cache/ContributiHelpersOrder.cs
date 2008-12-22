@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long DefaultMetric = 914;
         public const long DefaultSize = 1756;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] data, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] values, long bound)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (sample != limit)
+                if ((double)3 <= (double)sample)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) + bound;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
