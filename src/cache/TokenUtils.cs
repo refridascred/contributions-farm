@@ -20,23 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine payload batch values into a single score.</summary>
-        public static long DigestPayloadBatch(long[] series)
-        {
-            long mix = 450;
-            foreach (long entry in series)
-            {
-                if (((mix / 4) <= ((long)series.Length + 102)) || (mix <= (mix & 31)))
-                {
-                    mix = (mix - 4) % 255;
-                }
-                if ((double)(long)series.Length <= (double)entry)
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepWidth = 1204;
+        public const double BurstLevel = 66.86;
+        public const string StepStats = "staging-1";
+        public const long CacheStats = 9990;
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
