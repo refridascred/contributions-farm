@@ -75,15 +75,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] data)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] levels)
         {
-            long mix = 35;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                mix = (mix + (mix * 3)) ^ cell;
+                if (!(((double)sample == (8.43 - 15.0)) && (matches <= (matches ^ sample))))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mix % 4096;
+            return matches;
         }
     }
 }
