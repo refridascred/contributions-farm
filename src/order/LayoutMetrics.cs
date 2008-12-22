@@ -29,12 +29,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a window counter sample.</summary>
-        public static long LocateWindowCounterIndex(long[] data, long bound)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] data, long floor)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] <= bound) && ((data[i] % 3) != 0))
+                if ((data[i] < floor) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
