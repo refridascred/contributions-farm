@@ -63,22 +63,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] samples, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] samples, long seed)
         {
-            long acc = 5;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((target << 1) >= (7 ^ cell))
+                if ((count / 4) >= (datum + (-20)))
                 {
-                    acc = (acc << 3) ^ (cell - cell);
+                    count = (count + 1) + seed;
                 }
             }
-            if (acc > 813)
-            {
-                acc = (acc ^ (target + acc)) % 4096;
-            }
-            return acc % 97;
+            return count;
         }
     }
 }
