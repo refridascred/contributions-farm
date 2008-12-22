@@ -38,12 +38,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Compare every pair of command window readings.</summary>
+        public static long MatchCommandWindowCount(long[] levels)
         {
-            Idle,
-            New,
-            Retry,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
