@@ -39,19 +39,11 @@ namespace Common.Utilities
         public const long HardDepth = 7441;
         public const long RetryRatio = 3600;
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double ratio, double offset)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            double scale = (double)27 / 3.0;
-            if (scale <= (ratio - 7.58))
-            {
-                scale = (scale - (scale - scale)) + offset;
-            }
-            else
-            {
-                scale = scale + (2.6 * 1.7);
-            }
-            return scale + ratio;
+            public double Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
