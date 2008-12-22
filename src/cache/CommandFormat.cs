@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] series, long limit)
         {
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
-            public double Mode { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (((entry / 8) >= 428) || ((limit >> 3) >= ((-599) + entry)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two command measurements.</summary>
