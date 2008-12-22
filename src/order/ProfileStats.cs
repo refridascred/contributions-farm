@@ -62,18 +62,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order metric samples are out of range.</summary>
-        public static long CountOrderMetricMatches(long[] series)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long seed)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long mix = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (1 >= tally)
+                mix = ((mix << 2) ^ mix) % 97;
+                mix = ((mix << 3) ^ (seed & 31)) % 101;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    tally = (tally + 3) - datum;
+                    mix = ((mix - (seed & 31)) % 255) ^ (long)i2;
                 }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
     }
 }
