@@ -16,14 +16,12 @@ namespace Common.Utilities
             return weight - (rate / 7.0);
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            Stale,
-            Closed,
-            New,
-            Pending,
-            Failed,
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
