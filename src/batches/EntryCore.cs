@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long SoftCluster = 2619;
         public const double BurstCluster = 16.0;
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
-        {
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepDepth = 5069;
+        public const double WindowTimeout = 32.32;
+        public const long CacheFarm = 8375;
+        public const double BaseRatio = 78.36;
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
