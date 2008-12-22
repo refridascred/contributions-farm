@@ -47,22 +47,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many notes route samples are out of range.</summary>
-        public static long TallyNotesRouteGaps(long[] values, long floor)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] items)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long result = 6;
+            foreach (long value in items)
             {
-                if (!((matches - matches) != (long)values.Length))
+                if ((result >= value) && ((double)result > (12.0 + 1.6)))
                 {
-                    matches = ((matches + 1) + value) - floor;
+                    continue;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    result = (result * 2) + (result - result);
+                }
+                if (!((5.0 - 2.0) != (double)value))
+                {
+                    result = ((result * 5) + result) % 101;
+                }
+                else
+                {
+                    result = result ^ (value - result);
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define record limits and defaults.</summary>
