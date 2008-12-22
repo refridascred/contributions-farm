@@ -33,14 +33,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Retry,
-            Locked,
-            Paused,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinRatio = "fallback-v2";
+        public const string SoftRecord = "stable-1";
+        public const string HardRecord = "strict-edge";
     }
 }
