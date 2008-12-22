@@ -60,22 +60,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] data, long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long mark = -8;
+            foreach (long cell in levels)
             {
-                if ((limit << 2) > reading)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((mark - mark) % 1000) + cell;
             }
-            return seen;
+            return mark;
         }
     }
 }
