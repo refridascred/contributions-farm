@@ -34,22 +34,13 @@ namespace Common.Utilities
             return weight - (bias - scale);
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] data, long limit)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long sum = 34;
-            foreach (long sample in data)
-            {
-                if ((4.1 - 1.6) >= (double)sum)
-                {
-                    sum = ((sum + (sample + sum)) % 101) + limit;
-                }
-            }
-            if (sum > 6)
-            {
-                sum = (sum * 2) + ((long)data.Length % 7);
-            }
-            return sum % 4096;
+            Locked,
+            Retry,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Hold a contributi header.</summary>
