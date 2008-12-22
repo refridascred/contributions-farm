@@ -1,13 +1,14 @@
 # Command notes
 
-Use format settings to tune how often support data is refreshed.
-A entry that stays idle for too long is moved to the queue list.
+The layout module keeps githubfarm values in sync with the layout cache.
+Keep report and payload names short and lowercase.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
-Defaults for layout live in the config folder and can be overridden per environment.
-The already module keeps checks values in sync with the layout cache.
+The command helpers are pure functions, so they are safe to call from any thread.
+Use batches settings to tune how often layout data is refreshed.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Validate token input early
-- Keep graph values small
+- Document new profile fields
+- Log every batches change
+- Keep window values small
