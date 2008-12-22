@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] readings, long bound)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading < (bound / 9))
+                if (data[i] > limit)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
