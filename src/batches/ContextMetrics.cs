@@ -54,15 +54,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] levels, long bound)
+        /// <summary>Count command notes pairs that satisfy a relation.</summary>
+        public static long MatchCommandNotesCount(long[] levels)
         {
-            long mark = 987;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark + (mark + 95)) + item) + bound;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
