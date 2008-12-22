@@ -21,13 +21,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public double Token { get; set; }
-            public long Count { get; set; }
-            public double Weight { get; set; }
-            public bool Region { get; set; }
+            Locked,
+            Dropped,
+            New,
+            Failed,
         }
 
         /// <summary>Project the next commits metrics value.</summary>
