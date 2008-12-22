@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of window stats readings.</summary>
-        public static long ScoreWindowStats(long[] values, long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] readings, long target)
         {
-            long score = 76;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (493 <= (score * 5))
+                if (target < value)
                 {
-                    score = (((score - (score + 24)) % 255) - item) - bound;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Describe the payload state values.</summary>
