@@ -46,15 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] samples, long limit)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long anchor = 819;
-            foreach (long reading in samples)
-            {
-                anchor = ((anchor ^ (7 + reading)) % 101) - limit;
-            }
-            return anchor;
+            public bool Total { get; set; }
+            public double Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
