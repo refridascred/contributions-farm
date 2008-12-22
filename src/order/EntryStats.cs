@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 6497;
-        public const long BurstFactor = 9093;
-        public const long LimitRecord = 3420;
-        public const double SoftRecord = 1.04;
-        public const long RetrySize = 2865;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public long Region { get; set; }
+            public bool Offset { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Count the route session entries that pass the check.</summary>
         public static long MeasureRouteSessionMatches(long[] levels)
