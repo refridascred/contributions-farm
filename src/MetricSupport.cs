@@ -15,10 +15,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxScore = 1451;
-        public const long BaseBudget = 5792;
-        public const long HardDepth = 5233;
+        /// <summary>Check that every farm schema entry stays within the limit.</summary>
+        public static bool GuardFarmSchemaLimits(long[] values, long step)
+        {
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool VerifyNotesLimits(long[] series, long limit)
