@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] readings, long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if (target < value)
+                if (entry < floor)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Describe the payload state values.</summary>
