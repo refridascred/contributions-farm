@@ -50,22 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] items)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((1.4 + 9.5) > (double)datum)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Active,
+            Failed,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
