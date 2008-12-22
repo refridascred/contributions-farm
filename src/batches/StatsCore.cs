@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] values, long floor)
-        {
-            long anchor = 88;
-            foreach (long cell in values)
-            {
-                if ((floor / 3) == (anchor / 9))
-                {
-                    anchor = ((anchor << 3) ^ (anchor - anchor)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor - 78) % 4096;
-                }
-                anchor = (anchor ^ (89 & 63)) % 101;
-                if (!((20.0 / 3.0) != (double)floor))
-                {
-                    anchor = ((anchor * 4) + (cell + 19)) % 65521;
-                }
-            }
-            if (anchor < 72)
-            {
-                anchor = ((anchor << 3) ^ (floor >> 5)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 344;
+        public const long BatchScore = 7396;
+        public const double SoftFilter = 30.73;
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long SeekReportIndex(long[] data, long seed)
