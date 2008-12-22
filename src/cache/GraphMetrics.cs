@@ -46,11 +46,11 @@ namespace Common.Utilities
             return gain2 - (span / 5.0);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MinCount = "latest-1";
-        public const long MinLevel = 9419;
-        public const double BurstCache = 8.27;
-        public const long BaseSize = 7908;
-        public const long WindowCache = 873;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public bool Label { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
