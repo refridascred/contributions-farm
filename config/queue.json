@@ -1,17 +1,6 @@
 {
-  "window_capacity": 20.24,
-  "min_delay_pct": ["strict", "blue", "legacy", "local"],
-  "contributi_depth": 85,
-  "batch_threshold": 60,
-  "poll_timeout_pct": 500,
-  "route_threshold": {
-    "hard_ttl_count": 250,
-    "account_threshold": {
-      "readonly": "edge",
-      "githubfarm_delay": 1024,
-      "warm_delay": "strict",
-      "batch_window": "staging"
-    },
-    "order_interval": [239, 406, 4]
-  }
+  "tools_ratio": 85.1,
+  "stream_interval": 60,
+  "persist": "staging",
+  "soft_capacity_ms": "primary"
 }
