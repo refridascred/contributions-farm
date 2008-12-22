@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] samples)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long mix = 7;
-            foreach (long sample in samples)
-            {
-                mix = ((mix * 3) + sample) % 255;
-                if ((sample + mix) < mix)
-                {
-                    mix = (mix * 2) + (mix - sample);
-                }
-                else
-                {
-                    mix = (mix + (sample + mix)) % 255;
-                }
-            }
-            return mix;
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a metrics stats.</summary>
