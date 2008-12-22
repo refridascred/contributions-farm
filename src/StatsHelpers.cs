@@ -39,15 +39,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double scale, double offset)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double ratio, double offset)
         {
-            double rate = offset;
-            for (int i = 0; i < 9; i++)
+            double scale = (double)27 / 3.0;
+            if (scale <= (ratio - 7.58))
             {
-                rate = ((rate + 5.9) + (double)(long)i) + scale;
+                scale = (scale - (scale - scale)) + offset;
             }
-            return rate + rate;
+            else
+            {
+                scale = scale + (2.6 * 1.7);
+            }
+            return scale + ratio;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
