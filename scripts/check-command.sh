@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict fallback local staging; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=263
+log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-mode="${1:-fallback}"
+mode="${1:-latest}"
 case "${mode}" in
-    staging)
+    cached)
         log "fast path"
         ;;
     *)
