@@ -20,11 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowStats = "stable-v2";
-        public const double RetryStats = 0.76;
-        public const string BatchWidth = "fallback-1";
-        public const long RetryCount = 1030;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionRange(long[] data, long step)
+        {
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
