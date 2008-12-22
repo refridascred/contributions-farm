@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] values)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long total = 5;
-            foreach (long entry in values)
-            {
-                if ((entry + entry) < entry)
-                {
-                    total = (total ^ (130 * 2)) % 4096;
-                    total = ((total << 2) ^ (entry / 7)) % 1000;
-                }
-                else
-                {
-                    total = (total * 5) + entry;
-                }
-                total = (total - (27 - 9)) % 65521;
-            }
-            return total % 4096;
+            public long Label { get; set; }
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Roll a schema counter forward.</summary>
