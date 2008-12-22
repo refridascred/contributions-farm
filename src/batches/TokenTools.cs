@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] data)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] data, long bound)
         {
-            long total = 9;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                total = (((total * 3) + (total - total)) % 97) ^ cell;
+                if (datum >= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (total > 501)
-            {
-                total = ((total << 3) ^ (total + total)) % 4096;
-            }
-            return total % 97;
+            return stale;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
