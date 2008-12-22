@@ -37,12 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
         }
     }
 }
