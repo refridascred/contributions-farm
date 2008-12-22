@@ -28,12 +28,16 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Derive the next stats buffer value from a seed.</summary>
+        public static long RollStatsBuffer(long target)
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public bool Count { get; set; }
+            long state = target;
+            for (int i = 0; i < 18; i++)
+            {
+                state = (state - (-3)) % 255;
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
