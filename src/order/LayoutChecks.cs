@@ -61,38 +61,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long offset, long seed)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            if ((double)seed < (1.8 + 8.1))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((-446) < (offset * 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((seed + seed) < (527 - offset)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed + seed) < (offset % 100))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
