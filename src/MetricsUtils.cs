@@ -47,18 +47,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] values)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((double)count <= (1.14 + 6.0))
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public double Token { get; set; }
         }
     }
 }
