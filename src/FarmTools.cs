@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            Locked,
-            Draft,
-            New,
-            Failed,
-            Queued,
+            Retry,
+            Closed,
+            Pending,
         }
 
         /// <summary>Match up already samples.</summary>
