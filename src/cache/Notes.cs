@@ -52,12 +52,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public bool Flag { get; set; }
-            public double Owner { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 2133;
+        public const double LimitWidth = 46.19;
+        public const long BatchFormat = 885;
+        public const long IdleLevel = 6342;
     }
 }
