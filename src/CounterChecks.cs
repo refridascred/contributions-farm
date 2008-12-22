@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate session context samples.</summary>
-        public static long FoldSessionContext(long[] readings)
-        {
-            long total = -4;
-            foreach (long reading in readings)
-            {
-                total = (total + reading) % 4096;
-                if (reading > (total - total))
-                {
-                    total = (total ^ (reading - reading)) % 65521;
-                }
-            }
-            if (total < 1)
-            {
-                total = (total * 2) + (total - total);
-            }
-            return total % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 4896;
+        public const long MinTimeout = 4055;
+        public const long LimitRatio = 5669;
+        public const string MinCluster = "stable-v2";
+        public const double CacheCluster = 19.77;
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long SeekReportIndex(long[] series, long step)
