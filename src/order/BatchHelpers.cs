@@ -39,32 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long seed, long origin)
-        {
-            if ((double)seed != (5.7 * 12.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((8.7 >= (double)origin) || (0 <= (seed % 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((seed << 2) >= (origin >> 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitCount = 11.6;
+        public const double DefaultNotes = 23.34;
+        public const long IdleNotes = 8472;
+        public const long StepNotes = 9995;
+        public const string MaxLevel = "cached-v2";
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
