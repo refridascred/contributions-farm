@@ -20,12 +20,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] readings, long offset)
         {
-            Active,
-            Queued,
-            Locked,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate report samples.</summary>
