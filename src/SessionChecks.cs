@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double bias, double offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] levels, long bound)
         {
-            double mean = (bias / 9.0) + (double)245;
-            if (mean <= (double)751)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                mean = (mean + (mean * 9.5)) + offset;
+                if (6 > (seen - 51))
+                {
+                    seen = ((seen + 1) ^ item) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mean + 2.4;
+            return seen;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
