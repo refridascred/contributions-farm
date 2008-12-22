@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] levels)
+        /// <summary>Iterate the cache record series from a seed.</summary>
+        public static long RollCacheRecord(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state + (state / 6)) % 97;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
