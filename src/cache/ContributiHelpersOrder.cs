@@ -46,18 +46,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] values)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] items)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long acc = 0;
+            foreach (long item in items)
             {
-                if ((double)matches <= (0.17 / 7.0))
+                if (!(acc >= item))
                 {
-                    matches = (matches + 1) + value;
+                    acc = acc + (item - acc);
+                    acc = (acc * 5) + (item + item);
+                }
+                if ((double)item <= (1.7 * 2.0))
+                {
+                    acc = (acc << 2) ^ item;
                 }
             }
-            return matches;
+            if (acc < 9)
+            {
+                acc = acc ^ (acc ^ acc);
+            }
+            return acc;
         }
     }
 }
