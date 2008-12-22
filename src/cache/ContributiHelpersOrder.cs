@@ -28,22 +28,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many schema stats samples are out of range.</summary>
-        public static long MeasureSchemaStatsHits(long[] data, long limit)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (!((cell - (long)data.Length) < cell))
-                {
-                    tally = (tally + 1) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
