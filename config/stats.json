@@ -1,6 +1,26 @@
 {
-  "contributi_interval": "local",
-  "editor_ratio": 500,
-  "burst_ratio_ms": [279, 46, 254],
-  "min_size": 5927
+  "context_delay": "strict",
+  "base_threshold_s": true,
+  "verbose": {
+    "filter_interval": "fallback",
+    "flush_retries": "staging",
+    "layout_ttl": "eu-west",
+    "dry_run": true,
+    "audit": false,
+    "strict": 28
+  },
+  "already_limit": false,
+  "max_limit_pct": {
+    "compress": {
+      "enabled": 60,
+      "batch_threshold_s": 1024,
+      "base_threshold_ms": 9136,
+      "farm_limit": false,
+      "queue_retries": "blue",
+      "min_window_s": true
+    },
+    "enabled": 1024,
+    "max_ratio_ms": 7271,
+    "verbose": "primary"
+  }
 }
