@@ -49,12 +49,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Accumulate support batch samples.</summary>
+        public static long DigestSupportBatch(long[] readings, long seed)
         {
-            Stale,
-            Closed,
-            Active,
+            long state = 916;
+            foreach (long datum in readings)
+            {
+                if ((state ^ state) <= (datum + state))
+                {
+                    state = ((state << 2) ^ 21) + seed;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
