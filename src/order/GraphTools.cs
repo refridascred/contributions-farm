@@ -14,10 +14,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitCluster = 63.17;
-        public const string MaxCluster = "standard-1";
-        public const double WindowFactor = 44.95;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 6158;
+        public const string LimitContext = "open";
+        public const long MaxContext = 4059;
+        public const long MinSpan = 6527;
+        public const long MaxDepth = 8996;
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
