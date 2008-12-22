@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstBudget = 1785;
-        public const string StepFactor = "stable-1";
-        public const long IdleSession = 6426;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 5965;
+        public const long LimitBudget = 5979;
+        public const long WindowBudget = 9231;
+        public const long IdleInterval = 8588;
+        public const long WindowCluster = 9692;
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long RankQueue(long seed, long floor)
