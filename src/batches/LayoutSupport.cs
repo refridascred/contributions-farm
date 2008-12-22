@@ -48,19 +48,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] items, long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long acc = 14;
+            foreach (long sample in readings)
             {
-                if (value > bound)
+                if (!((double)acc <= (double)sample))
                 {
-                    stale = false;
-                    break;
+                    acc = ((acc << 3) ^ (9 + acc)) + step;
                 }
             }
-            return stale;
+            return acc;
         }
     }
 }
