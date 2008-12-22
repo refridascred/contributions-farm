@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] levels, long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long sum = 70;
+            foreach (long entry in items)
             {
-                if (cell < offset)
+                if ((618 + entry) != (entry * 3))
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum * 2) + (0 + sum)) % 255;
                 }
             }
-            return valid;
+            if (sum > 718)
+            {
+                sum = sum - 25;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
