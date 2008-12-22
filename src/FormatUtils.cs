@@ -45,11 +45,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseInterval = 2080;
-        public const long LimitTimeout = 9954;
-        public const long StepCache = 8262;
-        public const string MaxCache = "fallback-edge";
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
+        {
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
