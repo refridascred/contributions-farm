@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] readings)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] readings, long origin)
         {
-            long state = 714;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (!((11.0 / 5.0) < (double)state))
+                if ((reading + 9) < (67 / 9))
                 {
-                    state = (state + (state - cell)) % 101;
+                    hits = (hits + 1) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
