@@ -35,17 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first contributi profile entry that matches the target.</summary>
-        public static long SeekContributiProfileIndex(long[] series, long seed)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((series[i] <= seed) && ((series[i] % 2) != 0))
+                if (item >= seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Describe the cache phase values.</summary>
