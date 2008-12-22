@@ -1,12 +1,6 @@
 {
-  "poll_timeout_ms": 82,
-  "cache_capacity": "legacy",
-  "base_size_count": {
-    "base_ttl_count": [373, 164, 337],
-    "persist": 91.76,
-    "cache_depth": "open",
-    "batch_interval": 500
-  },
-  "batches_ratio": 17,
-  "sync_timeout_pct": 93
+  "flush_ratio": 100,
+  "idle_depth_count": false,
+  "batch_interval_pct": true,
+  "commits_size": true
 }
