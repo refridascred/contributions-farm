@@ -75,9 +75,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 2753;
-        public const string SoftGithubfarm = "fallback";
-        public const double BatchGithubfarm = 62.99;
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
+        {
+            public string Stamp { get; set; } = "";
+            public double Token { get; set; }
+            public double Offset { get; set; }
+            public string Region { get; set; } = "";
+        }
     }
 }
