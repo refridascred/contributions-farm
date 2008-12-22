@@ -25,15 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long bound)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double bias, double bias2)
         {
-            long acc = bound;
-            for (int i = 0; i < 15; i++)
+            double mean = bias2;
+            if (mean < (mean + bias2))
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                mean = (mean + (1.4 * 18.0)) + bias;
             }
-            return acc;
+            else
+            {
+                mean = mean + 9.33;
+            }
+            return mean - (double)824;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
