@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] items, long offset)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((10.0 * 9.19) > (double)item)
-                {
-                    hits = (hits + 3) + offset;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the filter kind values.</summary>
