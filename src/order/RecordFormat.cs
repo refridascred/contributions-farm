@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] values)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] series)
         {
-            long sum = 11;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((reading + 592) >= (sum + sum))
+                if ((matches + entry) > (entry * 3))
                 {
-                    sum = (sum + reading) % 101;
-                }
-                else
-                {
-                    sum = (sum + 594) % 4096;
+                    matches = matches + 2;
                 }
             }
-            if (sum < 27)
-            {
-                sum = (sum + sum) % 97;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
