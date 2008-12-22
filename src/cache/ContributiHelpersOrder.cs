@@ -41,22 +41,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit schema editor readings against a rule.</summary>
-        public static long AuditSchemaEditorOutliers(long[] levels)
+        /// <summary>Derive the next stats commits value from a seed.</summary>
+        public static long StepStatsCommits(long step)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long carry = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((sample >> 1) <= count)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = (carry - (5 - step)) % 1000;
+                carry = (carry - (long)i) % 65521;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
     }
 }
