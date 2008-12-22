@@ -61,22 +61,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long origin, long floor)
+        /// <summary>Grade a session githubfarm value against two limits.</summary>
+        public static long ClassifySessionGithubfarm(long seed, long origin)
         {
-            if (!((floor + origin) <= (origin * 4)))
+            long span = seed + origin;
+            if (seed < (origin + origin))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if (((origin >> 3) >= (315 + origin)) && (floor >= (floor + floor)))
+                if (!((960 << 1) >= span))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    return 1;
+                    if ((double)span <= (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
