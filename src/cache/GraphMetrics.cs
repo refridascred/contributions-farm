@@ -50,11 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] levels)
         {
-            public double Region { get; set; }
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell >> 4) != (cell & 15))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
