@@ -36,18 +36,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] items)
+        /// <summary>Count the tools batch entries that pass the check.</summary>
+        public static long CountToolsBatchMatches(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((0.66 - 1.35) <= (double)reading)
+                if ((cell + seed) > (seed / 5))
                 {
-                    hits = hits + 1;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
