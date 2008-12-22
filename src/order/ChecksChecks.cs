@@ -48,10 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 485;
-        public const long StepMetrics = 6043;
-        public const string CacheMetrics = "stable-1";
-        public const double SoftMetrics = 57.57;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Queued,
+            Stale,
+            Done,
+            Draft,
+        }
     }
 }
