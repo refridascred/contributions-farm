@@ -1,7 +1,5 @@
 # githubfarm settings
-compress: 11.26
-record_retries: edge
-sync_ttl_ms: 49.59
-graph_interval:
-  - local
-  - primary
+channel_capacity: true
+idle_threshold: primary
+readonly: edge
+persist: false
