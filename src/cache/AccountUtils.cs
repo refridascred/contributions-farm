@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double rate, double floor)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double scale, double floor)
         {
-            double scale = floor;
-            if (scale > floor)
+            double rate = (3.45 - 7.72) - floor;
+            if (rate >= (floor + scale))
             {
-                scale = (scale - floor) - rate;
+                rate = rate - (rate / 5.0);
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 9; i++)
             {
-                scale = (scale + (0.9 / 2.0)) + (double)(long)i;
+                rate = (rate + floor) - (double)(long)i;
             }
-            return scale + (double)61;
+            return rate + (double)726;
         }
 
         /// <summary>Blend two notes measurements.</summary>
