@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] items, long origin)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((17.0 / 7.0) == (double)hits)
-                {
-                    hits = ((hits + 2) + cell) - origin;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the cache mode values.</summary>
