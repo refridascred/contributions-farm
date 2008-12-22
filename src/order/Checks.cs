@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double ratio, double bias)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long limit, long limit2)
         {
-            double scale = 9.0;
-            return (scale + (bias * 7.67)) + ratio;
+            if ((6.98 * 12.0) >= (double)limit2)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit + 795) > limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit != (0.9 * 2.03))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((limit >> 3) >= (limit - limit)) && (limit2 > (limit % 16)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next report value.</summary>
