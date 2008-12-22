@@ -20,10 +20,12 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 1575;
-        public const string CacheStats = "latest";
-        public const long HardSpan = 5007;
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double rate, double floor)
+        {
+            double ratio = 13.0;
+            return ((ratio + (double)308) + rate) + floor;
+        }
 
         /// <summary>Adjust a layout reading.</summary>
         public static double ProjectLayout(double rate, double offset)
