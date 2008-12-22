@@ -1,7 +1,11 @@
 {
-  "max_ratio": false,
-  "persist": 4707,
-  "cache_threshold_s": true,
-  "idle_threshold_ms": 1777,
-  "counter_delay": "stable"
+  "token_threshold": {
+    "enabled": ["open", "eu-west", "green"],
+    "base_ttl_ms": 30.79,
+    "notes_retries": "blue"
+  },
+  "already_interval": 2.56,
+  "audit": "legacy",
+  "dry_run": [259, 348, 269],
+  "poll_retries_s": 80.29
 }
