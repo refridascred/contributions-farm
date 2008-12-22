@@ -44,18 +44,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] items, long target)
+        /// <summary>Locate a channel route reading by value.</summary>
+        public static long SeekChannelRouteIndex(long[] data, long floor)
         {
-            long mark = 8;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((8 / 6) >= sample)
+                if (data[i] <= floor)
                 {
-                    mark = (mark ^ (mark << 3)) - target;
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Hold a record info.</summary>
