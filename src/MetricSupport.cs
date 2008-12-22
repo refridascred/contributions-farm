@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long step, long step2)
         {
-            Active,
-            Synced,
-            Stale,
-            Locked,
-            Ready,
+            long gap = step + step2;
+            if (gap <= (902 ^ step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step + gap) > 94)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step2 - step) < step2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
