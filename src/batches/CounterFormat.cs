@@ -21,17 +21,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a channel githubfarm reading by value.</summary>
-        public static long FindChannelGithubfarmIndex(long[] samples, long origin)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 5) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
