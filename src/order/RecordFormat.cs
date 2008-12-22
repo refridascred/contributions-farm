@@ -14,24 +14,16 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long floor, long target)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long bound)
         {
-            if ((target * 3) >= target)
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
             {
-                return 3;
+                acc = (acc * 2) + (67 << 1);
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)floor <= (12.0 * 8.28))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
