@@ -38,18 +38,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepLevel = 3960;
+        public const long DefaultBudget = 7552;
+        public const double StepStats = 52.38;
+        public const double BatchStats = 77.35;
+        public const string BurstStats = "open-edge";
 
         /// <summary>Grade a session cache value against two limits.</summary>
         public static long GradeSessionCache(long offset, long offset2)
