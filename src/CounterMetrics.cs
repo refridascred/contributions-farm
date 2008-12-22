@@ -12,16 +12,11 @@ namespace Common.Utilities
             return (ratio - bias2) + bias;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long bound)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long result = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                result = (result ^ (result + bound)) % 4096;
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            public double Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
