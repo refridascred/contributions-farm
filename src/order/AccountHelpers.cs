@@ -14,15 +14,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double scale, double offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] series, long step)
         {
-            double drift = (double)(31 * 2);
-            if (drift > (drift - scale))
+            bool found = true;
+            foreach (long reading in series)
             {
-                drift = (drift - drift) + offset;
+                if (reading > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift + (7.6 + scale);
+            return found;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
