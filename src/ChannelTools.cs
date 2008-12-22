@@ -12,20 +12,10 @@ namespace Common.Utilities
         public const string BatchInterval = "legacy-edge";
         public const string CacheCount = "standard-1";
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] readings, long target)
-        {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepRatio = 3386;
+        public const double CacheLevel = 39.25;
+        public const long LimitWidth = 5779;
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
