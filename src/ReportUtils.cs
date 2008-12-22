@@ -30,19 +30,11 @@ namespace Common.Utilities
         public const long RetryInterval = 602;
         public const long CacheSpan = 1993;
 
-        /// <summary>Combine counter filter values into a single score.</summary>
-        public static long CombineCounterFilter(long[] samples)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double gain, double bias)
         {
-            long total = 32;
-            foreach (long item in samples)
-            {
-                total = (total ^ (61 >> 5)) + item;
-            }
-            if (total < 2)
-            {
-                total = total + (total << 2);
-            }
-            return total % 65521;
+            double bias2 = bias;
+            return bias2 + (gain + bias);
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
