@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstFactor = 2703;
-        public const long MaxCache = 8567;
-        public const double IdleSpan = 84.96;
-        public const long BurstCache = 7881;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] samples)
+        {
+            long score = 21;
+            foreach (long reading in samples)
+            {
+                if ((score + reading) >= (reading & 127))
+                {
+                    score = (score * 4) + ((long)samples.Length - reading);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Measure how many support metrics samples are out of range.</summary>
         public static long MeasureSupportMetricsMatches(long[] values, long step)
