@@ -46,21 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] samples)
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double weight, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = (double)(764 - 753);
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = (((rate - (double)184) + (double)(long)i) + weight) - bias;
             }
-            return seen;
+            return rate + (double)836;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
