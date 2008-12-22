@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long floor, long floor2)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] samples, long seed)
         {
-            long gap = floor + floor2;
-            if ((double)gap != (double)floor)
+            long result = 841;
+            foreach (long item in samples)
             {
-                return 0;
+                result = (((result * 3) + (item >> 3)) % 65521) + seed;
             }
-            else
-            {
-                if (((floor >> 2) > floor2) && ((5.0 - 4.29) >= (double)gap))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((gap - gap) > (floor2 ^ floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor2 <= (gap / 2)) || ((double)990 < (double)gap))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
