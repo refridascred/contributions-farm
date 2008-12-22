@@ -1,8 +1,24 @@
 # entry settings
-cache_delay_count: 51
-compress:
-  - standard
-  - latest
-  - latest
-verbose: 87
-max_timeout: 60
+audit:
+  - edge
+  - fallback
+  - fallback
+commits_retries: 8582
+min_interval: local
+profile_timeout:
+  enabled: false
+  farm_capacity:
+    sync_size_count: blue
+    base_ratio: cached
+    sync_window_pct: strict
+    route_capacity: 250
+    hard_size: primary
+  account_size:
+    - green
+    - local
+    - local
+  persist: 85
+  burst_threshold: false
+  burst_retries_s:
+    - 344
+    - 433
