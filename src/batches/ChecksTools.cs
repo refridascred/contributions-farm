@@ -53,18 +53,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many layout graph samples are out of range.</summary>
-        public static long AuditLayoutGraphOutliers(long[] samples)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long offset, long offset2)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long gap = offset + offset2;
+            if ((5.49 + 11.0) > (double)offset2)
             {
-                if (!((item ^ 4) < item))
+                return 8;
+            }
+            else
+            {
+                if ((double)offset <= (1.58 / 2.0))
                 {
-                    count = count + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((gap % 24) <= (913 / 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
     }
 }
