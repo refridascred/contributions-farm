@@ -37,19 +37,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate command batches readings against a bound.</summary>
-        public static bool VerifyCommandBatchesRange(long[] levels, long limit)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double gain, double offset)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            double load = offset;
+            if (load > offset)
             {
-                if (sample > limit)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load + (offset + load)) + gain;
             }
-            return found;
+            else
+            {
+                load = load + 7.0;
+            }
+            return load - load;
         }
     }
 }
