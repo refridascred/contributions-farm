@@ -22,15 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double ratio, double offset)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            double rate = 6.03;
-            if (rate >= ratio)
-            {
-                rate = rate + offset;
-            }
-            return rate + (double)9;
+            public double Region { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the tools mode values.</summary>
