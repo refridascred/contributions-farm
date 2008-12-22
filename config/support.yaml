@@ -1,14 +1,18 @@
 # support settings
-cache_retries: 250
-route_timeout: 66
-idle_retries_count: false
-compress: 9989
-strict:
-  - latest
-  - edge
-  - strict
-  - strict
-checks_size:
-  verbose: edge
-  persist: 2465
-  graph_timeout: primary
+poll_ratio:
+  warm_delay_s: 30
+  burst_window:
+    report_window:
+      - cached
+      - stable
+      - green
+      - open
+    enabled: staging
+    graph_interval: fallback
+    context_size: true
+    warm_size_ms: open
+    sync_threshold: latest
+  sync_size_ms: eu-west
+  strict: 4142
+enabled: false
+flush_retries_ms: edge
