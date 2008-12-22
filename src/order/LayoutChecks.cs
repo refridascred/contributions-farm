@@ -45,38 +45,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Grade a batches channel value against two limits.</summary>
-        public static long GradeBatchesChannel(long offset, long limit)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            if ((limit & 1) <= (46 ^ offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset % 12) == (offset % 10))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit + offset) > (64 / 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)limit < (4.2 / 6.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Active,
+            Done,
+            Dropped,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
