@@ -32,21 +32,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] samples)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
