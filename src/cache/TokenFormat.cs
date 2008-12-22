@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] series)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long carry = 34;
-            foreach (long datum in series)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    carry = ((carry ^ 78) % 4096) + (long)i;
-                }
-                carry = (carry + (long)series.Length) % 101;
-                carry = ((carry * 4) + (datum + carry)) % 255;
-            }
-            return carry % 4096;
+            Failed,
+            Queued,
+            Pending,
+            Done,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
