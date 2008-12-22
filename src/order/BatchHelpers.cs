@@ -20,12 +20,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitCount = 11.6;
-        public const double DefaultNotes = 23.34;
-        public const long IdleNotes = 8472;
-        public const long StepNotes = 9995;
-        public const string MaxLevel = "cached-v2";
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long TallyReportOutliers(long[] items)
