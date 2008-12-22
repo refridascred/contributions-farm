@@ -44,31 +44,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a record filter pair into a bucket.</summary>
-        public static long ClassifyRecordFilter(long seed, long bound)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] values)
         {
-            if (2 < (seed % 64))
+            long anchor = 751;
+            foreach (long cell in values)
             {
-                return 2;
+                anchor = ((anchor - 8) % 4096) ^ cell;
             }
-            else
-            {
-                if ((bound <= (196 >> 3)) && (bound <= (seed - bound)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (seed >= (7 + seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return anchor % 97;
         }
     }
 }
