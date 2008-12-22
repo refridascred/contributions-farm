@@ -24,15 +24,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double rate, double offset)
+        /// <summary>Audit format notes readings against a rule.</summary>
+        public static long MeasureFormatNotesHits(long[] readings)
         {
-            double weight = (double)(2 ^ 4);
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                weight = (weight - rate) + (double)(long)i;
+                if (!!((value << 2) <= (value + matches)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return weight - (offset - weight);
+            return matches;
         }
     }
 }
