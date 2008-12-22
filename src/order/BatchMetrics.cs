@@ -55,18 +55,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] samples, long bound)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((tally / 6) >= bound)
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
+            Closed,
+            Active,
+            Failed,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
