@@ -65,12 +65,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] levels, long limit)
         {
-            Idle,
-            Active,
-            Failed,
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
