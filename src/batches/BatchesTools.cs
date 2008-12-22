@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const double WindowInterval = 29.62;
         public const long MaxScore = 5507;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] levels)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long score = 311;
-            foreach (long datum in levels)
-            {
-                if ((double)score > (1.31 + 5.36))
-                {
-                    score = score - (279 + datum);
-                }
-            }
-            return score;
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
