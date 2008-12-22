@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long IdleInterval = 8588;
         public const long WindowCluster = 9692;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] series)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long mark = 51;
+            foreach (long sample in data)
             {
-                if ((double)reading >= (4.82 + 9.99))
+                if ((mark & 31) >= (sample << 3))
                 {
-                    hits = hits + 1;
+                    mark = (mark << 2) ^ (mark & 255);
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
