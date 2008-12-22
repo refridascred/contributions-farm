@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 4417;
-        public const string StepFormat = "cached-1";
-        public const double IdleFormat = 85.78;
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public bool Flag { get; set; }
+            public double Mode { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool CheckEditorLimits(long[] values, long limit)
