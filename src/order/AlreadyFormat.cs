@@ -36,16 +36,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] items)
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                state = ((state << 2) ^ (origin - origin)) % 97;
-                state = ((state * 3) + (long)i) % 65521;
+                if ((sample >> 5) < sample)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
