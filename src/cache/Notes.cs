@@ -28,24 +28,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long step, long seed)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] levels, long bound)
         {
-            if ((seed + 6) <= (step >> 4))
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step <= 2.4)
+                if (reading <= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Adjust a token metric reading.</summary>
