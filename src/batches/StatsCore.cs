@@ -73,19 +73,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] items)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] levels, long step)
         {
             long count = 0;
-            foreach (long cell in items)
+            foreach (long sample in levels)
             {
-                if ((count + count) == (count % 5))
+                if ((step - count) <= (3 & 15))
                 {
-                    count = (count + 3) + cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 2) + sample;
                 }
             }
             return count;
