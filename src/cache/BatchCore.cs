@@ -45,31 +45,15 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Grade a payload layout value against two limits.</summary>
-        public static long ClassifyPayloadLayout(long target, long limit)
+        /// <summary>Fold a list of stream channel readings.</summary>
+        public static long DigestStreamChannel(long[] data)
         {
-            if ((limit - target) < (target + target))
+            long anchor = 60;
+            foreach (long datum in data)
             {
-                return 3;
+                anchor = ((anchor * 3) + (datum - anchor)) % 101;
             }
-            else
-            {
-                if ((limit ^ target) > target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target + 1) > (9 ^ target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
