@@ -80,15 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two githubfarm report measurements.</summary>
-        public static double AdjustGithubfarmReport(double scale, double offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] readings)
         {
-            double weight = offset;
-            if (weight >= scale)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                weight = weight - weight;
+                if ((cell + (-52)) < (9 - cell))
+                {
+                    seen = seen + 3;
+                }
             }
-            return weight + (offset - offset);
+            return seen;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
