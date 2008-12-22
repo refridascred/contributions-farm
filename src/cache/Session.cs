@@ -17,13 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Check that every buffer already entry stays within the limit.</summary>
+        public static bool ValidateBufferAlreadyLimits(long[] values, long target)
         {
-            Dropped,
-            Queued,
-            Stale,
-            Failed,
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
