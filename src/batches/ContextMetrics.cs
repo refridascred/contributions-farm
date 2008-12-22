@@ -63,20 +63,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] items, long step)
-        {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseChecks = 40.84;
+        public const string CacheSize = "fallback-edge";
+        public const string RetrySize = "strict-v2";
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
