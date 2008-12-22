@@ -20,18 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] values)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double bias, double floor)
         {
-            long mix = 46;
-            foreach (long datum in values)
+            double drift = floor;
+            if (drift >= (bias / 5.0))
             {
-                if ((datum << 3) != (675 / 6))
-                {
-                    mix = (mix + (datum & 31)) % 101;
-                }
+                drift = drift + (double)53;
             }
-            return mix;
+            return drift - bias;
         }
 
         /// <summary>Check that every queue schema entry stays within the limit.</summary>
