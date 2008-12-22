@@ -36,13 +36,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] samples, long limit)
         {
-            Locked,
-            Queued,
-            Pending,
-            Retry,
+            long sum = 732;
+            foreach (long reading in samples)
+            {
+                if ((limit > reading) && ((reading >> 1) < limit))
+                {
+                    sum = (sum * 3) + (549 ^ reading);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Adjust a cache reading.</summary>
