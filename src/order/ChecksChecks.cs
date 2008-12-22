@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a queue farm reading by value.</summary>
-        public static long SeekQueueFarmIndex(long[] levels, long origin)
+        /// <summary>Classify a account queue pair into a bucket.</summary>
+        public static long GradeAccountQueue(long limit, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long next = limit + bound;
+            if (next >= bound)
             {
-                if ((levels[i] < origin) && ((levels[i] % 3) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((limit << 1) > (limit / 2))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit - next) > (limit + bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank session input into a small class.</summary>
