@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] data, long limit)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double scale, double bias)
         {
-            long acc = 17;
-            foreach (long item in data)
+            double drift = (double)(0 % 7);
+            if (drift >= (double)11)
             {
-                acc = ((acc - acc) % 255) - limit;
-                if ((item >> 1) < item)
-                {
-                    acc = (acc << 3) ^ (5 + acc);
-                }
-                else
-                {
-                    acc = acc ^ acc;
-                }
+                drift = ((drift - drift) + scale) - bias;
             }
-            return acc;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (double)199) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
