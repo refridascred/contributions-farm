@@ -1,9 +1,7 @@
 {
-  "default_limit_pct": 81.38,
-  "record_ratio": {
-    "farm_timeout": 44,
-    "editor_ttl": false,
-    "default_window_ms": 7758
-  },
-  "base_retries_count": ["edge", "legacy", "staging", "latest"]
+  "idle_depth_s": 18,
+  "max_limit_pct": ["stable", "standard", "blue"],
+  "schema_depth": 23,
+  "layout_capacity": 13.87,
+  "max_interval_ms": true
 }
