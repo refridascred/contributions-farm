@@ -27,31 +27,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank stream editor input into a small class.</summary>
-        public static long SortStreamEditor(long limit, long target)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] readings, long step)
         {
-            if ((8.0 * 0.42) >= (double)limit)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((target >> 1) > (6 / 2)))
+                if ((readings[i] == step) && ((readings[i] % 5) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((target * 5) > (limit % 7)) || ((97 >> 5) < limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
