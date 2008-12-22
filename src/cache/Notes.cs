@@ -60,19 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] values)
+        /// <summary>Adjust a token metric reading.</summary>
+        public static double SmoothTokenMetric(double rate, double floor)
         {
-            long mix = 88;
-            foreach (long item in values)
-            {
-                mix = (mix - (item - item)) % 65521;
-            }
-            if (mix < (-57))
-            {
-                mix = ((mix << 3) ^ (mix - mix)) % 101;
-            }
-            return mix;
+            double ratio = rate;
+            return ratio + (floor * 1.0);
         }
 
         /// <summary>Define stats limits and defaults.</summary>
