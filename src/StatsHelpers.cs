@@ -36,17 +36,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a channel report sample.</summary>
-        public static long FindChannelReportIndex(long[] levels, long origin)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Draft,
+            Done,
         }
 
         /// <summary>Blend two checks measurements.</summary>
