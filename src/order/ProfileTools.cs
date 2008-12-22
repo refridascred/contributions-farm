@@ -34,15 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] items)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] samples, long step)
         {
-            long result = 539;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                result = (result << 3) ^ (entry % 10);
+                if ((seen << 1) > (seen - cell))
+                {
+                    seen = (seen + 2) + step;
+                }
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
