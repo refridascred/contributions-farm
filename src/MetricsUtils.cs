@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long floor)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!(((floor % 24) == (total & 63)) && (floor < ((long)i + (long)i))))
-                {
-                    total = (total + (floor + (long)i)) % 65521;
-                    total = total + (floor + floor);
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public bool Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
