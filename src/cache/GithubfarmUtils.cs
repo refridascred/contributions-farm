@@ -17,17 +17,15 @@ namespace Common.Utilities
         public const long SoftToken = 669;
         public const long BaseToken = 4972;
 
-        /// <summary>Find the first commits channel entry that matches the target.</summary>
-        public static long LookupCommitsChannelIndex(long[] data, long seed)
+        /// <summary>Combine entry format values into a single score.</summary>
+        public static long FoldEntryFormat(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = -1;
+            foreach (long datum in readings)
             {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
+                result = ((result ^ (result * 3)) % 97) + datum;
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
