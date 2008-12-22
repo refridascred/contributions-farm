@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] levels, long floor)
         {
-            long total = step;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                total = ((total << 2) ^ (step + total)) % 65521;
-                total = (total + (step >> 4)) % 255;
-                total = ((total * 2) + (long)i) % 101;
+                if ((floor + item) <= matches)
+                {
+                    matches = matches + 3;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
