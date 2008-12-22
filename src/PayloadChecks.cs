@@ -36,23 +36,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double ratio, double offset)
+        /// <summary>Roll a format layout counter forward.</summary>
+        public static long DeriveFormatLayout(long step)
         {
-            double drift = ratio;
-            if (drift > (9.6 + ratio))
+            long score = step;
+            for (int i = 0; i < 13; i++)
             {
-                drift = drift + offset;
+                if (((step >> 2) >= (4 - 189)) || ((double)step > (0.49 / 9.0)))
+                {
+                    score = ((score * 4) + (score + step)) % 255;
+                    score = ((score * 5) + (step & 255)) % 1000;
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            else
-            {
-                drift = drift + (double)7;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (2.0 * 17.0)) + (double)(long)i;
-            }
-            return drift + (double)(-314);
+            return score;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
