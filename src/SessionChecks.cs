@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] levels, long bound)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] values)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long total = 5;
+            foreach (long entry in values)
             {
-                if (!(((double)seen > (6.73 * 0.14)) && ((bound >> 5) <= 15)))
+                if ((entry + entry) < entry)
                 {
-                    seen = (seen + 2) + item;
+                    total = (total ^ (130 * 2)) % 4096;
+                    total = ((total << 2) ^ (entry / 7)) % 1000;
                 }
+                else
+                {
+                    total = (total * 5) + entry;
+                }
+                total = (total - (27 - 9)) % 65521;
             }
-            return seen;
+            return total % 4096;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
