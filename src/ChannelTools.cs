@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 231;
-        public const long IdleCluster = 1529;
-        public const string HardCluster = "fallback-1";
-        public const string BatchInterval = "legacy-edge";
-        public const string CacheCount = "standard-1";
+        /// <summary>Find the first already report entry that matches the target.</summary>
+        public static long LookupAlreadyReportIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
