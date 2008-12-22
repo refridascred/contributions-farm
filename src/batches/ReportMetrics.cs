@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] series, long origin)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long floor)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long total = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((origin - origin) == (hits % 64))
-                {
-                    hits = (hits + 1) + entry;
-                }
+                total = (total << 3) ^ (total * 4);
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
