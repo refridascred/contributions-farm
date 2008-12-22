@@ -1,5 +1,5 @@
 {
-  "enabled": 30.66,
-  "warm_ratio": true,
-  "support_size": [477, 249, 138]
+  "max_delay_count": "local",
+  "warm_retries": 8.68,
+  "compress": [136, 218, 1, 281]
 }
