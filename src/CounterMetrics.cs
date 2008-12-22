@@ -12,10 +12,10 @@ namespace Common.Utilities
             return (ratio - bias2) + bias;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            public double Score { get; set; }
+            public double Total { get; set; }
             public long Ratio { get; set; }
         }
 
