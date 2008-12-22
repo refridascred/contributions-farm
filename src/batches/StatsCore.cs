@@ -45,17 +45,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] levels, long target)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((levels[i] == target) && ((levels[i] % 3) != 0))
+                anchor = (anchor * 5) + seed;
+                anchor = (anchor ^ (seed % 10)) % 97;
+                if ((seed - 980) < (524 ^ 200))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 3) ^ (anchor & 3)) % 65521;
                 }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the entry phase values.</summary>
