@@ -56,20 +56,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Combine profile queue values into a single score.</summary>
-        public static long TallyProfileQueue(long[] values)
+        /// <summary>Check that every contributi batches entry stays within the limit.</summary>
+        public static bool VerifyContributiBatchesRange(long[] series, long target)
         {
-            long mark = 7;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                mark = mark + (mark >> 2);
-                mark = (mark + (reading >> 5)) % 65521;
-                if (reading >= (mark >> 5))
+                if (cell > target)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return mark;
+            return flag;
         }
     }
 }
