@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] levels)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long step)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long total = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((((count - count) < (value % 64)) || ((count * 5) > count)) || ((value ^ count) == (value & 15)))
-                {
-                    count = count + 1;
-                }
+                total = ((total << 2) ^ (step + total)) % 65521;
+                total = (total + (step >> 4)) % 255;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a tools options.</summary>
