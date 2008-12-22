@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamLimits(long[] values, long target)
-        {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheNotes = 68.65;
+        public const string WindowNotes = "alpha-1";
+        public const double MinRatio = 28.6;
+        public const double MinSize = 91.25;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
