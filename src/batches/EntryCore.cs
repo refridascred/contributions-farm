@@ -22,13 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
             public string Total { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a buffer options.</summary>
