@@ -32,16 +32,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] readings)
+        /// <summary>Grade a graph batches value against two limits.</summary>
+        public static long ClassifyGraphBatches(long bound, long limit)
         {
-            long sum = 5;
-            foreach (long cell in readings)
+            long cur = bound + limit;
+            if ((5.0 + 5.0) >= (double)cur)
             {
-                sum = (sum ^ (cell - 39)) % 255;
-                sum = ((sum * 5) + (948 - cell)) % 97;
+                return 5;
             }
-            return sum % 65521;
+            else
+            {
+                if (!((cur << 2) <= (limit >> 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)cur < (7.0 - 2.7)) || ((6.0 * 9.3) > (double)cur))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((double)bound != (double)cur))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
