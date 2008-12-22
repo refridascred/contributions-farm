@@ -25,12 +25,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Idle,
-            Failed,
-            Paused,
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
