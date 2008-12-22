@@ -1,5 +1,12 @@
 # support settings
-hard_capacity: 38
-persist: 8
-idle_threshold_pct: 500
-batch_depth: 8756
+cache_depth: staging
+strict: open
+verbose:
+  retry_delay_pct: 12.05
+  burst_capacity_ms: green
+  enabled:
+    - staging
+    - strict
+  verbose: cached
+  idle_ttl_pct: 8388
+batch_timeout: standard
