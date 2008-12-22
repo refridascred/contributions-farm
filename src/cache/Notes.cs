@@ -27,19 +27,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] levels, long bound)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long score = 64;
+            foreach (long cell in levels)
             {
-                if (reading <= bound)
+                if ((cell / 5) >= target)
                 {
-                    ok = false;
                     break;
                 }
+                score = ((score * 2) + (target + cell)) % 1000;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
