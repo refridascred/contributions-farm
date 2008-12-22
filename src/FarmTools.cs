@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowNotes = 7.62;
-        public const string BatchNotes = "staging-1";
-        public const long BurstRatio = 2944;
-        public const string IdleNotes = "staging-edge";
-        public const long CacheWidth = 8986;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] series, long offset)
+        {
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
