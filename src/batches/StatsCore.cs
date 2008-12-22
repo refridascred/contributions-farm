@@ -23,14 +23,18 @@ namespace Common.Utilities
         public const long WindowTimeout = 5752;
         public const double RetryToken = 53.71;
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] series)
         {
-            Locked,
-            Pending,
-            Failed,
-            Closed,
-            Done,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (((23 ^ reading) <= reading) && (seen < (long)series.Length))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two account measurements.</summary>
