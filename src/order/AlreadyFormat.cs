@@ -66,12 +66,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] levels)
         {
-            Retry,
-            Active,
-            Idle,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((value - value) != (matches - value))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
