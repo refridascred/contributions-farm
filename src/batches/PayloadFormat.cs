@@ -17,23 +17,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of window entry entries.</summary>
-        public static long FoldWindowEntry(long[] values, long bound)
+        /// <summary>Count the commits command entries that pass the check.</summary>
+        public static long MeasureCommitsCommandMatches(long[] values, long bound)
         {
-            long total = 123;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long item in values)
             {
-                total = total ^ datum;
-                if ((3.0 + 0.11) > (double)total)
+                if (7.0 < (double)matches)
                 {
-                    total = ((total << 2) ^ bound) % 65521;
+                    matches = ((matches + 2) + item) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (total > 399)
-            {
-                total = (total << 2) ^ bound;
-            }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Match up window entry samples.</summary>
