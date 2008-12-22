@@ -14,12 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Audit buffer payload readings against a rule.</summary>
+        public static long MeasureBufferPayloadMatches(long[] readings)
         {
-            public bool Token { get; set; }
-            public long Label { get; set; }
-            public bool Size { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)seen >= (2.1 + 4.7))
+                {
+                    seen = (seen + 2) - reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metrics header.</summary>
