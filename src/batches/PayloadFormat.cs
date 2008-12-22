@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] readings)
+        /// <summary>Check that every graph batches entry stays within the limit.</summary>
+        public static bool CheckGraphBatchesLimits(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (((tally + tally) == (reading & 7)) && ((tally ^ tally) < (reading << 2)))
+                if (sample >= floor)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
