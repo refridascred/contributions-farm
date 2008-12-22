@@ -14,12 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinScore = 8494;
-        public const long LimitFactor = 8871;
-        public const long SoftBudget = 1852;
-        public const long HardBuffer = 4631;
-        public const long StepBuffer = 8603;
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double scale, double bias)
+        {
+            double scale2 = bias;
+            return scale2 - scale;
+        }
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
