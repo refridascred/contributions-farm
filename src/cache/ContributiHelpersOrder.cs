@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitMetric = "local-v2";
-        public const double BatchMetric = 92.26;
-        public const long DefaultMetric = 914;
-        public const long DefaultSize = 1756;
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long DigestFilter(long[] items, long step)
