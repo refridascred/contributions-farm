@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double gain, double floor)
+        /// <summary>Combine queue metric values into a single score.</summary>
+        public static long DigestQueueMetric(long[] samples)
         {
-            double drift = (double)511 + (gain - floor);
-            if (drift < (double)65)
+            long mark = 523;
+            foreach (long value in samples)
             {
-                drift = drift + gain;
+                mark = mark - (mark - value);
             }
-            else
-            {
-                drift = drift - (gain + drift);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - gain) + (double)(long)i;
-            }
-            return drift - floor;
+            return mark;
         }
 
         /// <summary>Hold a support header.</summary>
