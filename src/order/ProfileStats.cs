@@ -22,17 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a batches token reading by value.</summary>
-        public static long LocateBatchesTokenIndex(long[] values, long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] values, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 81;
+            foreach (long entry in values)
             {
-                if (values[i] > floor)
+                carry = carry + (long)values.Length;
+                if (!((9.0 - 19.0) != (double)entry))
                 {
-                    return (long)i;
+                    carry = carry + limit;
                 }
+                carry = (carry - (entry + entry)) % 4096;
             }
-            return -1;
+            if (carry > 0)
+            {
+                carry = (carry ^ 30) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
