@@ -12,21 +12,22 @@ namespace Common.Utilities
             return (bias - (scale / 3.0)) + floor;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] readings)
+        /// <summary>Combine payload batch values into a single score.</summary>
+        public static long DigestPayloadBatch(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 450;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((mix / 4) <= ((long)series.Length + 102)) || (mix <= (mix & 31)))
                 {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix - 4) % 255;
+                }
+                if ((double)(long)series.Length <= (double)entry)
+                {
+                    break;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the layout mode values.</summary>
