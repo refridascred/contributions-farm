@@ -13,19 +13,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long origin)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long seed, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
+            if ((double)seed != (5.7 * 12.0))
             {
-                if ((origin << 2) >= (2 & 3))
-                {
-                    continue;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((8.7 >= (double)origin) || (0 <= (seed % 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((seed << 2) >= (origin >> 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
