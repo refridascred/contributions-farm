@@ -46,16 +46,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long seed)
+        /// <summary>Match up stats batches samples.</summary>
+        public static long CompareStatsBatchesCount(long[] levels)
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result ^ (long)i) % 65521;
-                result = ((result * 5) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Fold a list of context readings.</summary>
