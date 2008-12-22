@@ -21,17 +21,18 @@ namespace Common.Utilities
         public const long MinSpan = 6527;
         public const long MaxDepth = 8996;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] values, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((values[i] < limit) && ((values[i] % 5) != 0))
+                if (((tally ^ tally) > 40) || ((19.0 * 7.68) <= (double)tally))
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
