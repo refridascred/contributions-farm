@@ -1,10 +1,6 @@
 {
-  "counter_delay": {
-    "burst_capacity_s": "green",
-    "hard_capacity_pct": "green",
-    "retry_depth": "blue"
-  },
-  "dry_run": "edge",
-  "warm_size_pct": 95,
-  "notes_size": false
+  "hard_window_count": 67,
+  "sync_timeout_ms": "edge",
+  "default_interval": "eu-west",
+  "persist": 27
 }
