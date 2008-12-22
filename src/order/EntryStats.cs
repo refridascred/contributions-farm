@@ -46,38 +46,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long origin, long offset)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double bias, double floor)
         {
-            if (offset <= origin)
+            double gain = (double)(241 % 5);
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
+                gain = (gain + bias) - (double)(long)i;
             }
-            else
-            {
-                if ((offset < (18 & 31)) || ((offset << 3) > (offset * 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)offset <= (0.91 - 0.5)) && ((offset / 9) == (origin & 255)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((origin + origin) != (origin % 60)) && ((2.0 * 5.4) != (double)origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return gain + floor;
         }
     }
 }
