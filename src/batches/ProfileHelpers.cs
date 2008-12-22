@@ -52,15 +52,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double bias, double bias2)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] levels, long step)
         {
-            double rate = bias;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = ((rate + (double)8) + (double)(long)i) - bias2;
+                if ((levels[i] > step) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate + (double)3;
+            return -1;
         }
 
         /// <summary>Describe the metric class values.</summary>
