@@ -43,13 +43,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Classify a tools buffer pair into a bucket.</summary>
+        public static long RankToolsBuffer(long bound, long origin)
         {
-            Queued,
-            Stale,
-            New,
-            Pending,
+            if ((3.0 + 7.33) <= (double)bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)bound <= (2.97 / 3.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
