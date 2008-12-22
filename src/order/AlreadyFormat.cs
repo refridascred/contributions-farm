@@ -59,21 +59,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of command payload readings.</summary>
-        public static long PairCommandPayloadCount(long[] items)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] readings, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 620;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 2; i++)
                 {
-                    if ((items[i] - items[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (((mark * 2) + (floor - mark)) % 101) ^ (long)i;
                 }
+                mark = (mark + (877 - datum)) % 65521;
             }
-            return count;
+            return mark;
         }
     }
 }
