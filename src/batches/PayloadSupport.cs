@@ -33,18 +33,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] series)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long carry = 4;
-            foreach (long sample in series)
-            {
-                if ((carry << 3) < (sample << 1))
-                {
-                    carry = carry + (sample + sample);
-                }
-            }
-            return carry;
+            Retry,
+            Locked,
+            Paused,
+            Failed,
+            Draft,
         }
     }
 }
