@@ -23,21 +23,13 @@ namespace Common.Utilities
         public const long StepInterval = 5002;
         public const long BaseSize = 4433;
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] items)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
