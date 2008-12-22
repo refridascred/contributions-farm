@@ -50,21 +50,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long origin)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                long count = anchor % 64;
-                count = ((count * 4) + count) % 255;
-                if (26 <= (count % 60))
-                {
-                    anchor = anchor - (180 ^ count);
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Dropped,
+            Active,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a format info.</summary>
