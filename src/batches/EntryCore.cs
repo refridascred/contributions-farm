@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] series, long origin)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Region { get; set; }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a context options.</summary>
