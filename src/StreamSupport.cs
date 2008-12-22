@@ -12,19 +12,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long target)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] samples)
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(sum < ((long)i << 1)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = sum - (sum & 127);
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Audit contributi command readings against a rule.</summary>
