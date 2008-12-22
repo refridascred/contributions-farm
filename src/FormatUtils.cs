@@ -20,18 +20,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] values)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double weight, double span)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            double drift = (double)284 / 8.0;
+            if (drift <= (drift + 7.6))
             {
-                if (!(4.0 >= (double)(long)values.Length))
-                {
-                    hits = (hits + 1) + cell;
-                }
+                drift = ((drift - 0.99) + weight) - span;
             }
-            return hits;
+            return drift - (double)(-59);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
