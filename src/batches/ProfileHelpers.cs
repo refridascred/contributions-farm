@@ -62,11 +62,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitSize = 7894;
-        public const double MinCluster = 65.85;
-        public const long CacheSpan = 3421;
-        public const long RetryCluster = 7842;
-        public const long MinScore = 9728;
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Locked,
+            Queued,
+            Failed,
+            Retry,
+        }
     }
 }
