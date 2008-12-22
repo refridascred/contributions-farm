@@ -1,6 +1,8 @@
-id,rank,label
-1,45.15,799
-2,54.26,latest
-3,711,91.2
-4,latest,legacy
-5,primary,98.66
+id,token,rank
+1,open,staging
+2,17.11,326
+3,strict,eu-west
+4,open,20.78
+5,blue,68.74
+6,60.74,0.67
+7,green,216
