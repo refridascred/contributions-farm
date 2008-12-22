@@ -1,8 +1,15 @@
 # githubfarm settings
-warm_size: staging
-hard_retries: 12.68
-sync_capacity:
-  checks_ttl: eu-west
-  support_capacity: 688
-  sync_ratio: staging
-verbose: false
+cache_ttl_s:
+  - open
+  - latest
+  - legacy
+poll_ttl_pct:
+  - 21
+  - 218
+  - 91
+retry_ttl:
+  - 398
+  - 184
+  - 294
+  - 88
+dry_run: primary
