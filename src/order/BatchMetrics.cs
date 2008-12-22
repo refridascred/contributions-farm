@@ -27,20 +27,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] series, long offset)
-        {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitSpan = 711;
+        public const long RetryFactor = 530;
+        public const double CachePayload = 85.12;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long TallyFilterMatches(long[] samples, long bound)
