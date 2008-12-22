@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const string CacheAccount = "open-v2";
         public const string StepAccount = "cached-edge";
 
-        /// <summary>Count account command pairs that satisfy a relation.</summary>
-        public static long CompareAccountCommandCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BurstReport = "primary-edge";
+        public const string BaseSpan = "open-edge";
+        public const long DefaultCount = 4946;
+        public const double IdleReport = 45.54;
+        public const long BatchReport = 3000;
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
