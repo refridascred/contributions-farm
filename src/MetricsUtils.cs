@@ -58,17 +58,18 @@ namespace Common.Utilities
         public const long MinScore = 5300;
         public const long CacheCount = 4625;
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] readings, long floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (readings[i] == floor)
+                if ((double)count <= (1.14 + 6.0))
                 {
-                    return (long)i;
+                    count = (count + 1) + datum;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
