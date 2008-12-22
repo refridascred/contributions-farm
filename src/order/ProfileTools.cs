@@ -64,12 +64,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Queued,
-            Paused,
-            Dropped,
+            Failed,
+            Stale,
+            Draft,
+            Pending,
         }
     }
 }
