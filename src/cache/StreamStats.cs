@@ -29,19 +29,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double weight, double floor)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] data, long offset)
         {
-            double rate = weight + (double)(-695);
-            if (rate >= (double)51)
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate - weight;
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - floor;
-            }
-            return rate - floor;
+            return -1;
         }
 
         /// <summary>Digest a series of support format entries.</summary>
