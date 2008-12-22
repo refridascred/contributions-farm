@@ -29,26 +29,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] data, long floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long target, long floor)
         {
-            long acc = 8;
-            foreach (long reading in data)
+            long delta = target + floor;
+            if ((double)delta <= 20.0)
             {
-                if ((acc ^ 577) <= (floor + acc))
+                return 3;
+            }
+            else
+            {
+                if ((floor + floor) > (delta - 49))
                 {
-                    acc = ((acc << 3) ^ (floor & 7)) + reading;
+                    return 7;
                 }
                 else
                 {
-                    acc = (acc ^ (acc << 1)) % 97;
+                    if ((9 < (delta & 63)) || ((target / 4) < (target >> 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((6.1 * 8.6) >= (double)target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (acc < 83)
-            {
-                acc = (acc << 3) ^ (acc - floor);
-            }
-            return acc;
         }
     }
 }
