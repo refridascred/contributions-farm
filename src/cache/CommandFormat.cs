@@ -19,12 +19,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string LimitTimeout = "local-edge";
-        public const long MinWidth = 8862;
-        public const long LimitLevel = 8430;
-        public const long WindowFormat = 2523;
-        public const string SoftLevel = "staging";
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (!((double)hits <= 1.8) && !((136 >> 4) <= (cell * 5)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit metric githubfarm readings against a rule.</summary>
         public static long CountMetricGithubfarmOutliers(long[] values)
