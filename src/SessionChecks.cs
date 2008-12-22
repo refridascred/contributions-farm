@@ -34,18 +34,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] series, long limit)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileBounds(long[] series, long target)
         {
-            long count = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((double)count >= 2.77)
+                if (entry > target)
                 {
-                    count = ((count + 2) + value) - limit;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
