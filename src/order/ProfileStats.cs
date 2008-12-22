@@ -41,10 +41,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardCount = 9053;
-        public const long WindowChecks = 8334;
-        public const string SoftChecks = "latest-v2";
-        public const long RetryRatio = 2950;
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Paused,
+            Stale,
+            New,
+        }
     }
 }
