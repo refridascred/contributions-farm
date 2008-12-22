@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] levels)
         {
-            public string Label { get; set; } = "";
-            public bool Size { get; set; }
+            long sum = 617;
+            foreach (long entry in levels)
+            {
+                if (!((entry >> 2) >= (entry + sum)))
+                {
+                    sum = ((sum << 2) ^ (sum * 4)) % 97;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum + entry)) % 4096;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
