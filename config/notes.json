@@ -1,8 +1,6 @@
 {
-  "default_retries_pct": 60.44,
-  "retry_ttl_pct": 9951,
-  "max_ratio_count": 21.05,
-  "flush_limit_pct": 77.02,
-  "flush_ttl": ["fallback", "local", "local"],
-  "min_limit_s": "latest"
+  "cache_window_pct": ["strict", "cached", "green"],
+  "verbose": 9,
+  "sync_retries": 52.65,
+  "strict": 9365
 }
