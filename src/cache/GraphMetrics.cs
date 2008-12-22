@@ -50,18 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] levels)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell >> 4) != (cell & 15))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public bool Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
