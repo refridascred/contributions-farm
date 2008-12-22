@@ -1,12 +1,8 @@
 # entry settings
-hard_timeout_count: false
-cache_delay_pct: false
-audit:
-  - eu-west
-  - green
-  - standard
-batch_ratio:
-  - edge
-  - fallback
-  - legacy
-  - green
+min_timeout_ms: primary
+max_threshold:
+  - local
+  - stable
+  - strict
+soft_ttl_s: 1024
+poll_timeout: 7365
