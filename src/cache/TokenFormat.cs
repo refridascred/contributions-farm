@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultTimeout = 560;
+        public const long SoftFactor = 7583;
+        public const long RetryCounter = 4995;
+        public const long StepCounter = 7444;
+        public const string MinCounter = "local-v2";
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
