@@ -58,18 +58,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] series)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long bound, long bound2)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long span = bound - bound2;
+            if (!((3.4 - 0.74) > (double)bound))
             {
-                if ((((tally / 9) != (tally + tally)) || (sample < tally)) && ((sample % 24) != (497 << 2)))
+                return 1;
+            }
+            else
+            {
+                if ((bound2 >> 3) == (bound2 % 10))
                 {
-                    tally = tally + 1;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound + span) < (bound + bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of report entries.</summary>
