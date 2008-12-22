@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long target, long target2)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long seed)
         {
-            long next = target + target2;
-            if (target2 > (target << 3))
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
             {
-                return 1;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((15.0 * 0.7) >= (double)target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((next >> 2) < (target2 + target2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
