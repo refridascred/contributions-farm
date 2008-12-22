@@ -35,12 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double weight, double bias)
         {
-            Stale,
-            Ready,
-            New,
+            double bias2 = bias;
+            if (bias2 >= (double)337)
+            {
+                bias2 = (bias2 - bias) - weight;
+            }
+            else
+            {
+                bias2 = bias2 + (bias / 7.0);
+            }
+            return bias2 - (bias2 * 3.1);
         }
     }
 }
