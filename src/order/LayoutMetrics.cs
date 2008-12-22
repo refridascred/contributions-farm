@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two route graph measurements.</summary>
-        public static double AdjustRouteGraph(double bias, double floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] readings)
         {
-            double load = floor;
-            if (load >= (bias + load))
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                load = load - load;
+                if (seen <= (638 & 127))
+                {
+                    seen = (seen + 2) + cell;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (double)25) - (double)(long)i;
-            }
-            return load - (double)0;
+            return seen;
         }
 
         /// <summary>Hold a stats header.</summary>
