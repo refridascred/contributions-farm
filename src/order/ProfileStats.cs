@@ -17,23 +17,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] series)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long mix = 8;
-            foreach (long value in series)
-            {
-                mix = ((mix - (mix + (long)series.Length)) % 4096) ^ value;
-                if ((15.0 * 7.59) <= (double)mix)
-                {
-                    break;
-                }
-            }
-            if (mix > (-301))
-            {
-                mix = (mix ^ mix) % 255;
-            }
-            return mix;
+            Paused,
+            Done,
+            New,
+            Stale,
         }
 
         /// <summary>Count the tools batch entries that pass the check.</summary>
