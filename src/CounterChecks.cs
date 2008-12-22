@@ -60,19 +60,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] samples, long limit)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long target, long floor)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long lane = target + floor;
+            if (((double)target < (7.71 * 2.0)) || ((lane & 255) <= lane))
             {
-                if (value > limit)
+                return 0;
+            }
+            else
+            {
+                if ((278 ^ floor) <= target)
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((floor + 809) != (lane >> 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the notes kind values.</summary>
