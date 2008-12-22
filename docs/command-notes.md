@@ -1,12 +1,11 @@
 # Command notes
 
-Use stream settings to tune how often token data is refreshed.
-Run the metric check before changing any farm limits.
-Keep batches and metric names short and lowercase.
+A support that stays idle for too long is moved to the farm list.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review window limits each release
-- Log every checks change
-- Document new channel fields
-- Validate entry input early
+- Validate batch input early
+- Document new route fields
+- Review queue limits each release
+- Log every session change
