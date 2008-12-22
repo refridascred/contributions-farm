@@ -14,27 +14,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm checks entries.</summary>
-        public static long TotalGithubfarmChecks(long[] readings, long floor)
-        {
-            long score = 533;
-            foreach (long sample in readings)
-            {
-                if (((-17) >> 2) >= (floor & 127))
-                {
-                    score = score + (score + floor);
-                }
-                else
-                {
-                    score = (score + (sample + floor)) % 65521;
-                }
-            }
-            if (score < 288)
-            {
-                score = (score * 2) + (6 + score);
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepMetric = "fallback-edge";
+        public const long RetryMetric = 3250;
+        public const long BatchMetric = 1088;
 
         /// <summary>Accumulate order samples.</summary>
         public static long CombineOrder(long[] samples)
