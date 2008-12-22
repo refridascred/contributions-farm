@@ -25,15 +25,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] levels, long floor)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long mark = 6;
-            foreach (long reading in levels)
-            {
-                mark = (((mark - mark) % 97) ^ reading) + floor;
-            }
-            return mark % 1000;
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public double Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
