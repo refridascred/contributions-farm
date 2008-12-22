@@ -33,22 +33,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long origin)
+        /// <summary>Find the first commits channel entry that matches the target.</summary>
+        public static long LookupCommitsChannelIndex(long[] data, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor - (origin % 60)) % 4096;
-                if (origin < ((long)i ^ anchor))
+                if (data[i] >= seed)
                 {
-                    anchor = ((anchor << 3) ^ 517) % 4096;
-                    continue;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (anchor + (long)i)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
