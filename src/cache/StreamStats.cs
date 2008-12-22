@@ -18,21 +18,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] series)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = weight + (double)(-695);
+            if (rate >= (double)51)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = rate - weight;
             }
-            return count;
+            else
+            {
+                rate = rate - floor;
+            }
+            return rate - floor;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
