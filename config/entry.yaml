@@ -1,21 +1,15 @@
 # entry settings
-burst_capacity_pct:
-  enabled: 29
-  flush_retries_s: 16.02
-  strict: 49
-  warm_ttl: 88.68
-compress: 30
-max_ttl_pct:
-  - 301
-  - 209
-sync_delay: edge
-dry_run:
-  order_depth:
-    - 62
-    - 427
-    - 71
-    - 362
-  hard_window: 30
-  report_limit: 21.19
-  audit: true
-  soft_threshold: 21.43
+metric_threshold: 65.33
+strict:
+  soft_window_pct: 1024
+  window_capacity: 2034
+  dry_run:
+    - 197
+    - 354
+  stream_retries: fallback
+base_limit_count: blue
+cache_threshold:
+  - 315
+  - 132
+soft_limit: false
+base_limit: open
