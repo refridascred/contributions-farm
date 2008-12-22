@@ -12,19 +12,11 @@ namespace Common.Utilities
             return (scale + (bias * 7.67)) + ratio;
         }
 
-        /// <summary>Project the next batches contributi value.</summary>
-        public static double ScaleBatchesContributi(double gain, double span)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            double drift = (double)(81 / 5);
-            if (drift >= (gain + span))
-            {
-                drift = drift + (drift + span);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (double)67) + (double)(long)i;
-            }
-            return drift + (double)4;
+            public string Mode { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Digest a series of support entries.</summary>
