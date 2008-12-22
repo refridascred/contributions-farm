@@ -1,5 +1,6 @@
 {
-  "base_retries_ms": 53,
-  "layout_timeout": "primary",
-  "sync_size_pct": 5129
+  "batch_depth": "eu-west",
+  "strict": ["standard", "local", "blue", "staging"],
+  "route_limit": "edge",
+  "soft_window": 3885
 }
