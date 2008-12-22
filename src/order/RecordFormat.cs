@@ -34,11 +34,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 5355;
-        public const long MaxCount = 8989;
-        public const string MinProfile = "strict-edge";
-        public const long IdleProfile = 4369;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Queued,
+            Synced,
+            Stale,
+            Active,
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long OverlapContributiCount(long[] data)
