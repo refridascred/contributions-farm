@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] items, long target)
         {
-            Locked,
-            Queued,
-            Dropped,
-            Done,
-            Retry,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((target >> 2) == (value >> 3))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every farm schema entry stays within the limit.</summary>
