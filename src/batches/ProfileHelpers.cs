@@ -55,11 +55,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Adjust a cache cluster reading.</summary>
+        public static double SmoothCacheCluster(double ratio, double offset)
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            double mean = (offset / 4.0) / 6.0;
+            if (mean >= mean)
+            {
+                mean = (mean + (double)(-7)) + ratio;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean + mean;
         }
 
         /// <summary>Describe the metric class values.</summary>
