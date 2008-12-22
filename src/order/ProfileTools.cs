@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] series, long origin)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long seed)
         {
-            long count = 0;
-            foreach (long value in series)
+            long result = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((2.5 - 10.0) == (double)value))
-                {
-                    count = (count + 2) - origin;
-                }
+                result = ((result * 5) + (seed + seed)) % 1000;
+                result = (result ^ result) % 101;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
