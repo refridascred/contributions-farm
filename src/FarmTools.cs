@@ -50,19 +50,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] levels, long target)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample >= target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
