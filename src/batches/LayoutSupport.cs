@@ -34,13 +34,22 @@ namespace Common.Utilities
             return weight - (bias - scale);
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] data, long limit)
         {
-            Retry,
-            Paused,
-            Done,
-            Ready,
+            long sum = 34;
+            foreach (long sample in data)
+            {
+                if ((4.1 - 1.6) >= (double)sum)
+                {
+                    sum = ((sum + (sample + sum)) % 101) + limit;
+                }
+            }
+            if (sum > 6)
+            {
+                sum = (sum * 2) + ((long)data.Length % 7);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a contributi header.</summary>
