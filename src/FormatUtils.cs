@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const double BaseSpan = 50.32;
         public const double IdleEntry = 47.13;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] data, long step)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((reading - 70) == (reading - step))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Idle,
+            Queued,
+            Closed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
