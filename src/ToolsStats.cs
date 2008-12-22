@@ -70,18 +70,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] samples, long limit)
         {
-            long result = 635;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (result < (result / 7))
+                if ((samples[i] <= limit) && ((samples[i] % 3) != 0))
                 {
-                    result = result - entry;
+                    return (long)i;
                 }
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Project the next context route value.</summary>
