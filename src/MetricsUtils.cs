@@ -25,12 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheStream = "cached";
-        public const long BatchScore = 7931;
-        public const string BurstStream = "stable-edge";
-        public const long DefaultDepth = 6314;
-        public const long BaseStream = 861;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long seed, long seed2)
+        {
+            long offset = seed ^ seed2;
+            if ((double)seed2 <= (0.1 * 1.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset << 2) <= seed2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long AuditWindowHits(long[] samples, long bound)
