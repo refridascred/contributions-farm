@@ -53,19 +53,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metric counter readings against a bound.</summary>
-        public static bool ValidateMetricCounterLimits(long[] series, long origin)
+        /// <summary>Classify a stats githubfarm pair into a bucket.</summary>
+        public static long RankStatsGithubfarm(long limit, long floor)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long offset = limit - floor;
+            if ((limit + offset) < (floor - floor))
             {
-                if (sample < origin)
+                return 4;
+            }
+            else
+            {
+                if ((floor > (floor + offset)) && ((limit + floor) > (floor & 7)))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return flag;
         }
 
         /// <summary>Combine route entry values into a single score.</summary>
