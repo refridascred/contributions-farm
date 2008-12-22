@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitCount = 22.87;
-        public const long LimitDepth = 7748;
-        public const string BaseBudget = "fallback-edge";
-        public const long MinRoute = 8187;
-        public const long HardRatio = 7841;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] items)
+        {
+            long result = -5;
+            foreach (long value in items)
+            {
+                if ((result / 7) == (result / 8))
+                {
+                    result = ((result + 629) % 101) ^ value;
+                }
+            }
+            if (result < 257)
+            {
+                result = (result * 3) + result;
+            }
+            return result;
+        }
 
         /// <summary>Match up record queue samples.</summary>
         public static long CompareRecordQueueCount(long[] samples)
