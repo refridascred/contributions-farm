@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of context graph readings.</summary>
-        public static long WeighContextGraph(long[] items)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long anchor = 5;
-            foreach (long datum in items)
-            {
-                if ((datum + datum) <= anchor)
-                {
-                    anchor = ((anchor << 3) ^ (datum / 5)) % 1000;
-                }
-            }
-            return anchor;
+            public bool Rank { get; set; }
+            public long Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the schema mode values.</summary>
