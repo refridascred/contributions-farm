@@ -38,19 +38,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of token window readings.</summary>
-        public static long TotalTokenWindow(long[] samples, long floor)
-        {
-            long acc = 79;
-            foreach (long sample in samples)
-            {
-                if ((sample ^ sample) > 761)
-                {
-                    acc = ((acc << 3) ^ (floor ^ acc)) % 97;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstLevel = 1555;
+        public const long BatchCount = 9643;
+        public const string CacheInterval = "fallback-v2";
+        public const string BurstScore = "standard";
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MinRecord = 880;
