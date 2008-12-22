@@ -22,18 +22,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] levels)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (((tally ^ tally) > 40) || ((19.0 * 7.68) <= (double)tally))
-                {
-                    tally = (tally + 3) ^ item;
-                }
-            }
-            return tally;
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
