@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Accumulate filter commits samples.</summary>
+        public static long TallyFilterCommits(long[] values, long seed)
         {
-            public bool Count { get; set; }
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            long score = -4;
+            foreach (long value in values)
+            {
+                score = ((score ^ value) % 97) - seed;
+                score = (score - (score << 3)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Describe the tools mode values.</summary>
