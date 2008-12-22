@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count stats farm pairs that satisfy a relation.</summary>
-        public static long PairStatsFarmCount(long[] values)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i = 0; i < 5; i++)
                 {
-                    if ((values[i] - values[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = ((state + 7) % 65521) ^ (long)i;
+                }
+                if ((((long)values.Length % 60) == (cell << 3)) || ((double)cell < (double)state))
+                {
+                    state = (state ^ (state ^ state)) % 65521;
                 }
             }
-            return tally;
+            return state % 97;
         }
 
         /// <summary>Project the next schema value.</summary>
