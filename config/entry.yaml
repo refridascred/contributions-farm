@@ -1,41 +1,29 @@
 # entry settings
-checks_size: stable
-warm_ratio: false
-default_threshold_pct: cached
-notes_timeout:
-  verbose: true
-  sync_ratio:
-    flush_ratio: 1
-    stream_delay: 100
-    max_size_s: 14
-  compress:
-    - 3
-    - 98
-    - 474
-  enabled:
-    max_ratio_ms: strict
-    verbose:
+batch_ttl: 2697
+compress:
+  - stable
+  - fallback
+  - legacy
+retry_retries_count: 56.44
+poll_size_ms:
+  soft_window_ms: 80.85
+  persist:
+    default_ratio_ms:
+      - staging
       - legacy
-      - open
-    default_capacity_pct: 5799
-  poll_ttl_count: 6285
-max_timeout:
-  contributi_window:
-    - primary
-    - strict
-    - blue
-  flush_threshold_s:
-    - 148
-    - 117
-    - 245
-    - 343
-  sync_ratio_ms:
-    - 438
-    - 290
-    - 80
-  channel_timeout: 59.76
-  verbose: 1024
-  max_interval_s:
-    - 297
-    - 189
-    - 111
+      - fallback
+    cache_window_pct: false
+    batch_timeout_s: 69.84
+    sync_size: cached
+  compress: 23
+  audit:
+    queue_ttl: true
+    base_ttl_pct: legacy
+    record_threshold: 91.01
+  max_delay_count:
+    - 478
+    - 474
+    - 321
+    - 284
+poll_retries_ms: 1185
+base_depth: false
