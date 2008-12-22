@@ -23,22 +23,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long step, long limit)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long limit, long origin)
         {
-            if ((184 + 84) >= limit)
+            long edge = limit - origin;
+            if (!((double)edge <= 9.58))
             {
                 return 6;
             }
             else
             {
-                if ((3.0 * 9.9) > (double)step)
+                if ((18.0 * 17.0) >= (double)limit)
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    return 7;
+                    if (!((origin & 7) <= (67 & 31)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
