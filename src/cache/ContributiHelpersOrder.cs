@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] levels)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long carry = 806;
+            foreach (long sample in values)
             {
-                if ((matches + cell) > (matches - matches))
+                if (!((4.59 + 5.1) <= (double)carry))
                 {
-                    matches = matches + 3;
+                    break;
+                }
+                if ((double)carry == (8.06 + 3.48))
+                {
+                    carry = (carry ^ (sample >> 3)) % 255;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (sample - sample)) % 1000;
                 }
             }
-            return matches;
+            return carry % 1000;
         }
 
         /// <summary>Describe the format mode values.</summary>
