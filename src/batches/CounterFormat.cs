@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftSession = "staging-1";
-        public const string BaseWidth = "stable-edge";
-        public const long RetryBudget = 5717;
-        public const long BaseSession = 8583;
-        public const double HardSession = 59.45;
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool ValidateBatchesBounds(long[] series, long step)
