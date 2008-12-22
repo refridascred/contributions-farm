@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] series, long seed)
         {
-            New,
-            Failed,
-            Done,
-            Queued,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < seed) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
