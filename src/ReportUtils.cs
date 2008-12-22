@@ -32,15 +32,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] readings, long target)
         {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                if ((double)count > (0.2 / 7.0))
+                {
+                    count = ((count + 3) + datum) + target;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Combine stream channel values into a single score.</summary>
