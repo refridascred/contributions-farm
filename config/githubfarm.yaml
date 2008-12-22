@@ -1,26 +1,14 @@
 # githubfarm settings
-dry_run: 24
-cache_delay_pct: cached
-cache_limit_count:
-  - 355
-  - 204
-  - 416
-  - 409
-poll_interval_pct: eu-west
-max_timeout_s: 46.62
-counter_limit:
-  hard_timeout: true
-  soft_timeout_pct:
-    - 192
-    - 155
-    - 84
-  enabled: true
-  flush_threshold_ms:
-    - edge
-    - blue
-    - strict
-    - primary
-  default_retries_s:
-    - green
-    - legacy
-    - edge
+batches_limit: 2626
+persist: strict
+max_retries:
+  commits_ttl: latest
+  sync_window: 17.8
+  counter_interval: 26.85
+  soft_threshold: primary
+  schema_depth:
+    - 440
+    - 384
+    - 342
+retry_interval_count: stable
+min_ratio_count: true
