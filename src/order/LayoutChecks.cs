@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many farm filter samples are out of range.</summary>
-        public static long CountFarmFilterMatches(long[] data, long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (matches > (step << 1))
+                if ((5.52 + 7.54) < (9.0 + 3.46))
                 {
-                    matches = (matches + 2) + datum;
+                    count = ((count + 1) ^ cell) - origin;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
