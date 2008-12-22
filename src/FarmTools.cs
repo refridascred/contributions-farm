@@ -20,17 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long offset)
+        /// <summary>Measure how many stream tools samples are out of range.</summary>
+        public static long MeasureStreamToolsMatches(long[] items, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                mark = mark + mark;
-                mark = ((mark * 3) + mark) % 101;
-                mark = ((mark * 4) + (long)i) % 101;
+                if ((5.55 + 0.3) != (double)cell)
+                {
+                    count = (count + 1) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a payload summary.</summary>
