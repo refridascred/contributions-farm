@@ -33,34 +33,35 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long bound, long step)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long floor, long origin)
         {
-            if ((step - 8) >= bound)
+            long gap = floor ^ origin;
+            if ((9.0 - 6.0) <= (double)floor)
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if ((double)step != (double)605)
+                if ((origin < (2 << 2)) || (6.9 <= (double)floor))
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    if (!((bound * 3) >= (970 >> 2)))
+                    if ((origin * 2) == (gap + floor))
                     {
-                        return 5;
+                        return 0;
                     }
                     else
                     {
-                        if ((3 * 2) > (bound >> 2))
+                        if (floor >= gap)
                         {
-                            return 6;
+                            return 2;
                         }
                         else
                         {
-                            return 4;
+                            return 1;
                         }
                     }
                 }
