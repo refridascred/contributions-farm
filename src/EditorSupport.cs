@@ -63,14 +63,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public double Limit { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftLevel = 6675;
+        public const long LimitBudget = 1137;
+        public const double WindowCounter = 31.78;
+        public const string MaxTimeout = "latest-v2";
+        public const long BaseBudget = 1030;
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double AdjustMetrics(double ratio, double bias)
