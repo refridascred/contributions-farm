@@ -1,10 +1,7 @@
-id,token,active,state
-1,eu-west,621,89.9
-2,843,primary,50.78
-3,33.3,259,647
-4,400,26.34,open
-5,eu-west,91.01,50.96
-6,189,eu-west,329
-7,241,50.16,623
-8,168,222,standard
-9,27.54,264,274
+id,ratio,weight,rank,label
+1,31.22,13.09,local,33
+2,98.68,fallback,808,347
+3,574,776,899,328
+4,12.33,15.03,standard,92.59
+5,standard,strict,2.33,74.44
+6,52,48.57,cached,local
