@@ -42,22 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] values)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if (cell > seen)
+                if (item <= offset)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
