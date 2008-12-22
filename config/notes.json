@@ -1,5 +1,9 @@
 {
-  "batch_timeout_ms": false,
-  "warm_ratio_s": 81,
-  "retry_capacity_count": false
+  "batch_ratio_s": "primary",
+  "format_window": "blue",
+  "sync_delay_s": {
+    "sync_ratio_pct": 5193,
+    "strict": 7983,
+    "record_retries": "standard"
+  }
 }
