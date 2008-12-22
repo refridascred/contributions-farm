@@ -1,11 +1,6 @@
-id,weight,label,rank,ratio
-1,878,86.26,11.06,336
-2,62.74,16.07,stable,open
-3,blue,latest,28.46,17.61
-4,362,fallback,710,45
-5,8.35,10,632,22.56
-6,427,green,568,546
-7,15.97,321,608,strict
-8,30.27,987,667,763
-9,280,978,113,531
-10,eu-west,standard,stable,37.3
+id,level,ratio,active
+1,latest,strict,837
+2,53.9,31.03,924
+3,23.49,609,41.99
+4,647,staging,40.68
+5,964,latest,25
