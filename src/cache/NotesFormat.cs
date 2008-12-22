@@ -33,18 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] values)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long carry = 1;
-            foreach (long cell in values)
-            {
-                if ((cell + 782) >= (carry - cell))
-                {
-                    carry = ((carry * 5) + (cell + carry)) % 65521;
-                }
-            }
-            return carry % 1000;
+            Synced,
+            Done,
+            New,
+            Closed,
         }
 
         /// <summary>Check that every queue batches entry stays within the limit.</summary>
