@@ -42,11 +42,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string LimitCounter = "fallback-v2";
-        public const long BatchCounter = 5706;
-        public const string CacheSpan = "standard";
-        public const string DefaultCount = "fallback-v2";
-        public const long DefaultCounter = 5515;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Closed,
+            Idle,
+            Locked,
+            Done,
+        }
     }
 }
