@@ -11,24 +11,12 @@ namespace Common.Utilities
         public const long SoftFormat = 5777;
         public const long LimitFormat = 5054;
 
-        /// <summary>Classify a route context pair into a bucket.</summary>
-        public static long GradeRouteContext(long origin, long origin2)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            if ((origin2 ^ origin2) >= origin2)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((14.0 - 9.94) == (double)origin2) || ((double)origin2 < (4.1 * 2.2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Locked,
+            Draft,
+            Closed,
         }
 
         /// <summary>Roll a window counter forward.</summary>
