@@ -78,11 +78,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] readings)
         {
-            public double Stamp { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((double)matches == (3.9 * 20.0))
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
         }
     }
 }
