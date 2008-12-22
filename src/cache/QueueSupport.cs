@@ -15,19 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] data, long step)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] data)
         {
-            long mix = 4;
+            long hits = 0;
             foreach (long entry in data)
             {
-                mix = ((mix * 4) + (mix - step)) % 97;
-                if ((step / 5) <= entry)
+                if (entry < hits)
                 {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return mix % 1000;
+            return hits;
         }
 
         /// <summary>Describe the editor state values.</summary>
