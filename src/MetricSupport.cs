@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] data, long target)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long score = 67;
+            foreach (long datum in levels)
             {
-                if (sample != target)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score * 2) + (datum + score)) % 97;
             }
-            return flag;
+            if (score > 22)
+            {
+                score = (score * 5) + seed;
+            }
+            return score;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
