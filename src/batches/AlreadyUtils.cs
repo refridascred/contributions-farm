@@ -25,19 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double scale, double floor)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long bound)
         {
-            double gain = floor - floor;
-            if (gain <= (gain / 3.0))
+            long acc = bound;
+            for (int i = 0; i < 15; i++)
             {
-                gain = gain - (double)613;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (gain + gain)) + (double)(long)i;
-            }
-            return gain - (floor - scale);
+            return acc;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
