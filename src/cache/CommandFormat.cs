@@ -30,18 +30,13 @@ namespace Common.Utilities
             return rate + (double)9;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] samples)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long mark = 99;
-            foreach (long item in samples)
-            {
-                if (((double)item > (5.1 + 20.0)) && ((mark / 3) <= item))
-                {
-                    mark = ((mark * 2) + (280 ^ item)) % 1000;
-                }
-            }
-            return mark % 97;
+            Retry,
+            Stale,
+            Idle,
+            Ready,
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
