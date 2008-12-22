@@ -56,18 +56,23 @@ namespace Common.Utilities
         public const long IdleInterval = 9753;
         public const long BurstRecord = 4014;
 
-        /// <summary>Audit cluster tools readings against a rule.</summary>
-        public static long MeasureClusterToolsOutliers(long[] values, long seed)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double load = (double)125 + offset;
+            if (load < (double)8)
             {
-                if (!((101 - 4) > (matches & 7)))
-                {
-                    matches = ((matches + 1) ^ reading) - seed;
-                }
+                load = load - (double)77;
             }
-            return matches;
+            else
+            {
+                load = load + (scale / 2.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (load - load)) + (double)(long)i;
+            }
+            return load + (offset - load);
         }
     }
 }
