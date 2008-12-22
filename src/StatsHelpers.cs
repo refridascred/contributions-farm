@@ -32,12 +32,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchRatio = 6576;
-        public const double MinFactor = 48.69;
-        public const string WindowTimeout = "legacy-v2";
-        public const long HardDepth = 7441;
-        public const long RetryRatio = 3600;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] samples, long bound)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((bound & 1) < (89 * 4))
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
