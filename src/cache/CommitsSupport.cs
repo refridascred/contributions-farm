@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Compare every pair of channel batches readings.</summary>
-        public static long OverlapChannelBatchesCount(long[] data)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)matches > (4.0 - 16.0))
                 {
-                    if ((data[i] ^ data[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
