@@ -42,38 +42,15 @@ namespace Common.Utilities
         public const double BatchStats = 77.35;
         public const string BurstStats = "open-edge";
 
-        /// <summary>Grade a session cache value against two limits.</summary>
-        public static long GradeSessionCache(long offset, long offset2)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] levels)
         {
-            if ((offset % 16) <= 938)
+            long state = 70;
+            foreach (long value in levels)
             {
-                return 7;
+                state = (state ^ 4) ^ value;
             }
-            else
-            {
-                if (2.0 >= (double)offset2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (491 < offset2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((12 >> 2) == (offset + offset2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return state % 97;
         }
     }
 }
