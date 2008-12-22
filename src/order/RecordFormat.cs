@@ -47,12 +47,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 8161;
-        public const string SoftInterval = "alpha-edge";
-        public const long LimitWidth = 3494;
-        public const long BaseOrder = 2584;
-        public const long BurstBudget = 9595;
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next payload value.</summary>
         public static double AdjustPayload(double gain, double bias)
