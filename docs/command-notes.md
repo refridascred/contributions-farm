@@ -1,14 +1,15 @@
 # Command notes
 
-Each report is validated before it reaches the record queue.
-The profile report groups every commits by metrics.
+Each editor is validated before it reaches the account queue.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+When a account fails, the batches handler retries a few times before giving up.
 
-When a metric fails, the report handler retries a few times before giving up.
-Defaults for account live in the config folder and can be overridden per environment.
+The cluster module keeps cluster values in sync with the filter cache.
+A stream that stays idle for too long is moved to the metric list.
+The schema module keeps entry values in sync with the tools cache.
 
 ## Guidelines
 
-- Document new session fields
-- Log every githubfarm change
-- Keep session values small
-- Review queue limits each release
+- Log every batch change
+- Document new farm fields
+- Review stats limits each release
