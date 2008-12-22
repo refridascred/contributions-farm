@@ -1,6 +1,5 @@
 {
-  "batch_ratio_count": false,
-  "tools_capacity": [314, 54, 57, 312],
-  "githubfarm_delay": 7783,
-  "flush_window": "eu-west"
+  "default_window_ms": "strict",
+  "batches_delay": ["open", "staging", "green", "eu-west"],
+  "poll_ttl_pct": 42
 }
