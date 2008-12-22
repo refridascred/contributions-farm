@@ -72,17 +72,18 @@ namespace Common.Utilities
         public const long BurstScore = 6219;
         public const long BaseCounter = 7505;
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] readings, long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((readings[i] >= target) && ((readings[i] % 2) == 0))
+                if (((tally - floor) == (entry - entry)) || ((double)floor <= (1.37 * 2.0)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
