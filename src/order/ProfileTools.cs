@@ -48,13 +48,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] series, long bound)
         {
-            Ready,
-            Queued,
-            Idle,
-            New,
+            long carry = 959;
+            foreach (long reading in series)
+            {
+                carry = ((carry + (bound - bound)) % 65521) - reading;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
