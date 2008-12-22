@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const double HardAlready = 35.6;
         public const long DefaultBudget = 371;
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultTimeout = 1824;
+        public const double IdleToken = 84.99;
+        public const double BurstToken = 36.99;
+        public const long WindowToken = 9893;
+        public const string WindowBudget = "local-edge";
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long CompareQueueCount(long[] readings)
