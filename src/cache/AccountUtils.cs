@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] items, long bound)
         {
-            long result = floor;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (sample > (matches - 1))
                 {
-                    result = ((result << 3) ^ floor) % 97;
-                    result = result ^ ((long)i2 + (long)i2);
+                    matches = (matches + 3) + bound;
                 }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
