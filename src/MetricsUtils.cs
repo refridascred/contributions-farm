@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 9454;
-        public const long CacheAlready = 6687;
-        public const string StepBudget = "primary-v2";
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] samples, long floor)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (!(((double)datum < (9.8 - 6.92)) && ((3.8 - 1.7) < (double)seen)))
+                {
+                    seen = (seen + 2) - floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long TotalCluster(long[] data)
