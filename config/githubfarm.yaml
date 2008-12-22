@@ -1,5 +1,6 @@
 # githubfarm settings
-channel_capacity: true
-idle_threshold: primary
-readonly: edge
-persist: false
+batch_depth_pct: 500
+stats_delay: 60
+verbose: strict
+burst_depth_count: 76.23
+enabled: blue
