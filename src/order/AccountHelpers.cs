@@ -71,19 +71,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] levels, long target)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 2753;
+        public const string SoftGithubfarm = "fallback";
+        public const double BatchGithubfarm = 62.99;
     }
 }
