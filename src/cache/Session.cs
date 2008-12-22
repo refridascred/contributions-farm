@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] readings, long limit)
+        /// <summary>Derive the next batch support value from a seed.</summary>
+        public static long RollBatchSupport(long offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long state = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)hits == (double)limit)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    hits = (hits + 2) - value;
+                    state = ((state + offset) % 4096) + (long)i2;
                 }
+                if ((state ^ state) <= 1)
+                {
+                    break;
+                }
+                else
+                {
+                    state = (state - (offset + (long)i)) % 97;
+                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Digest a series of command entries.</summary>
