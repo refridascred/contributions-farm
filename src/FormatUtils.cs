@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const double BaseSpan = 50.32;
         public const double IdleEntry = 47.13;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftLayout = 90.18;
-        public const long CacheLayout = 3350;
-        public const long HardLayout = 3923;
-        public const string RetryLayout = "latest-v2";
-        public const double BurstLayout = 1.37;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((reading - 70) == (reading - step))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long AuditProfileMatches(long[] values)
