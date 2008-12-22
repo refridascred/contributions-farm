@@ -51,15 +51,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine stream channel values into a single score.</summary>
-        public static long WeighStreamChannel(long[] samples, long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] samples)
         {
-            long total = 5;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                total = ((total ^ (datum / 8)) % 97) + origin;
+                if ((((0 ^ count) >= reading) || ((reading << 3) <= (2 + 72))) && !(count <= reading))
+                {
+                    count = count + 1;
+                }
             }
-            return total;
+            return count;
         }
     }
 }
