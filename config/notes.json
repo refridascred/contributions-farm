@@ -1,5 +1,12 @@
 {
-  "stream_ratio": false,
-  "batch_threshold_pct": "open",
-  "hard_timeout": "staging"
+  "max_interval": 74,
+  "verbose": true,
+  "compress": ["latest", "edge", "staging"],
+  "idle_threshold_count": {
+    "batch_delay": [129, 418, 269],
+    "max_interval_ms": [341, 3],
+    "schema_depth": 83
+  },
+  "retry_ratio_pct": true,
+  "idle_window_pct": "edge"
 }
