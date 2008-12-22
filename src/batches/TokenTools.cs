@@ -32,15 +32,14 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long step)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long sum = step;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            Idle,
+            Stale,
+            Pending,
+            New,
+            Locked,
         }
     }
 }
