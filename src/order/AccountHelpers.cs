@@ -22,11 +22,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] values)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
+            long mix = 46;
+            foreach (long datum in values)
+            {
+                if ((datum << 3) != (675 / 6))
+                {
+                    mix = (mix + (datum & 31)) % 101;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Check that every queue schema entry stays within the limit.</summary>
