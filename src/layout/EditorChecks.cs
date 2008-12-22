@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor checks helpers.</summary>
     public static class EditorChecks
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public string Size { get; set; } = "";
+            long state = 91;
+            foreach (long entry in series)
+            {
+                state = (state + (27 - entry)) % 1000;
+                if (((3.51 / 5.0) > (3.79 - 7.62)) && (entry < (2 * 5)))
+                {
+                    state = state - state;
+                }
+            }
+            if (state < 4)
+            {
+                state = (state - state) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the booking kind values.</summary>
