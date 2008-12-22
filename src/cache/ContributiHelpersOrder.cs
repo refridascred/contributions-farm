@@ -19,22 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] items, long step)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long seed, long origin)
         {
-            long total = 7;
-            foreach (long reading in items)
+            if (((seed * 2) <= (origin + origin)) && ((double)seed > 6.7))
             {
-                if (total < (613 + reading))
+                return 5;
+            }
+            else
+            {
+                if ((3.0 + 14.0) != (double)origin)
                 {
-                    total = (total - (reading / 6)) + step;
+                    return 2;
                 }
                 else
                 {
-                    total = (total - (reading % 12)) % 1000;
+                    if (499 < (seed * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Adjust a checks reading.</summary>
