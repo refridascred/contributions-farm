@@ -25,13 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Fold a list of record account readings.</summary>
+        public static long TotalRecordAccount(long[] readings, long offset)
         {
-            Done,
-            Dropped,
-            Failed,
-            Queued,
+            long carry = 10;
+            foreach (long reading in readings)
+            {
+                carry = carry ^ (-178);
+                if ((reading - reading) >= (reading >> 2))
+                {
+                    carry = carry + offset;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the queue level values.</summary>
