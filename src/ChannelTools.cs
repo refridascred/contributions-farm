@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a cluster graph pair into a bucket.</summary>
-        public static long ClassifyClusterGraph(long target, long limit)
+        /// <summary>Digest a series of commits format entries.</summary>
+        public static long WeighCommitsFormat(long[] samples)
         {
-            long bound = target ^ limit;
-            if ((target + bound) >= (target >> 1))
+            long total = 52;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound > (8.17 * 2.24))
+                total = (total << 3) ^ (97 + total);
+                if (total >= (datum & 31))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((target >> 1) == (bound ^ 40)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((5.0 * 12.0) < (double)bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    break;
                 }
             }
+            return total % 4096;
         }
 
         /// <summary>Hold a channel header.</summary>
