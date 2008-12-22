@@ -46,12 +46,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
-        {
-            public long Level { get; set; }
-            public double Offset { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseFactor = 9861;
+        public const long MinRatio = 8696;
+        public const long BatchLevel = 4071;
+        public const double MaxStats = 78.49;
     }
 }
