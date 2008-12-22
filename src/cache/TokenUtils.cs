@@ -36,19 +36,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] levels)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long step)
         {
-            long result = 54;
-            foreach (long item in levels)
+            long result = step;
+            for (int i = 0; i < 5; i++)
             {
-                result = ((result << 2) ^ (item + result)) % 65521;
-                if ((item & 3) <= result)
-                {
-                    result = (result ^ (long)levels.Length) % 1000;
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return result % 4096;
+            return result;
         }
     }
 }
