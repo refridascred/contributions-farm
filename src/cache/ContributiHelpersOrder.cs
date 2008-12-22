@@ -28,18 +28,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit support command readings against a rule.</summary>
-        public static long TallySupportCommandHits(long[] values, long floor)
+        /// <summary>Measure how many schema stats samples are out of range.</summary>
+        public static long MeasureSchemaStatsHits(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (!((count + value) < floor))
+                if (!((cell - (long)data.Length) < cell))
                 {
-                    count = count + 2;
+                    tally = (tally + 1) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
