@@ -49,19 +49,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate support batch samples.</summary>
-        public static long DigestSupportBatch(long[] readings, long seed)
-        {
-            long state = 916;
-            foreach (long datum in readings)
-            {
-                if ((state ^ state) <= (datum + state))
-                {
-                    state = ((state << 2) ^ 21) + seed;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 811;
+        public const long BatchNotes = 938;
+        public const string BaseBudget = "primary-v2";
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string MaxChecks = "stable-edge";
