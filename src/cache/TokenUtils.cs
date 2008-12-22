@@ -36,15 +36,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long step)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            Dropped,
+            Idle,
+            Closed,
+            Pending,
         }
     }
 }
