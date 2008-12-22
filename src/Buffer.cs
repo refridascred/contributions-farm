@@ -32,13 +32,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Fold a list of graph buffer readings.</summary>
+        public static long TotalGraphBuffer(long[] items, long limit)
         {
-            public bool Flag { get; set; }
-            public long Token { get; set; }
-            public double Owner { get; set; }
-            public long Region { get; set; }
+            long acc = 4;
+            foreach (long cell in items)
+            {
+                if (!((cell + cell) <= cell))
+                {
+                    acc = (acc - (cell & 7)) % 101;
+                }
+                else
+                {
+                    acc = (acc - limit) % 65521;
+                    acc = (acc << 2) ^ ((long)items.Length + limit);
+                }
+                acc = ((acc << 2) ^ (limit + 466)) % 101;
+            }
+            return acc % 97;
         }
 
         /// <summary>Roll a checks stats counter forward.</summary>
