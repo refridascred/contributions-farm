@@ -1,5 +1,8 @@
 {
-  "idle_retries_pct": ["legacy", "local", "cached", "staging"],
-  "verbose": ["cached", "strict", "strict", "legacy"],
-  "context_ttl": 3775
+  "readonly": false,
+  "cache_ratio_ms": 73,
+  "sync_window": 44,
+  "soft_threshold_s": 68.09,
+  "format_capacity": 30,
+  "commits_depth": 8591
 }
