@@ -36,19 +36,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long limit)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = (((result << 2) ^ (result % 2)) % 1000) ^ (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
