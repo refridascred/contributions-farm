@@ -1,7 +1,5 @@
 {
-  "sync_capacity": 50.16,
-  "verbose": [149, 268, 78, 112],
-  "enabled": 93,
-  "idle_delay_ms": 12.22,
-  "batches_capacity": 7422
+  "base_retries_ms": 53,
+  "layout_timeout": "primary",
+  "sync_size_pct": 5129
 }
