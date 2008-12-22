@@ -12,18 +12,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the stream queue entries that pass the check.</summary>
-        public static long TallyStreamQueueMatches(long[] samples, long origin)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((value << 1) >= (seen + origin))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((levels[i] - levels[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
