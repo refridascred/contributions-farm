@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] samples, long offset)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long score = 8;
-            foreach (long sample in samples)
-            {
-                if ((double)score <= (6.92 - 1.12))
-                {
-                    score = ((score + (780 + 72)) % 1000) + sample;
-                }
-                score = (score << 2) ^ offset;
-            }
-            return score;
+            public bool Count { get; set; }
+            public bool Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Adjust a window reading.</summary>
