@@ -19,16 +19,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] readings, long floor)
+        /// <summary>Audit stream batch readings against a rule.</summary>
+        public static long AuditStreamBatchOutliers(long[] data, long limit)
         {
-            long result = 254;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long value in data)
             {
-                result = (result + (item & 31)) % 1000;
-                result = (result - (8 ^ floor)) % 101;
+                if (((tally - limit) == (value - 929)) && (((long)data.Length ^ 2) != (value << 3)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a already header.</summary>
