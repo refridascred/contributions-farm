@@ -31,17 +31,19 @@ namespace Common.Utilities
         public const long CacheInterval = 7872;
         public const long MaxSchema = 9822;
 
-        /// <summary>Look up the position of a stats token sample.</summary>
-        public static long LookupStatsTokenIndex(long[] samples, long bound)
+        /// <summary>Scale a context cache figure with a bias.</summary>
+        public static double SmoothContextCache(double gain, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain2 = gain;
+            if (gain2 > (gain - 2.2))
             {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 + (double)99;
             }
-            return -1;
+            else
+            {
+                gain2 = gain2 + span;
+            }
+            return gain2 - (span / 5.0);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
