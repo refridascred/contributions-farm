@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long bound)
+        /// <summary>Count the queue contributi entries that pass the check.</summary>
+        public static long AuditQueueContributiHits(long[] items, long target)
         {
-            long mark = bound;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                mark = (mark * 5) + bound;
-                mark = ((mark * 5) + (long)i) % 97;
+                if ((item * 5) < 856)
+                {
+                    hits = (hits + 2) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Compare every pair of tools payload readings.</summary>
