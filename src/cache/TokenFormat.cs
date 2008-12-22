@@ -19,18 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] data, long step)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long step, long seed)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            if ((step % 64) < 958)
             {
-                if ((reading / 6) <= reading)
+                return 8;
+            }
+            else
+            {
+                if ((double)step >= 9.7)
                 {
-                    hits = (hits + 1) + step;
+                    return 1;
+                }
+                else
+                {
+                    if (!((step - step) > (step % 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the filter class values.</summary>
