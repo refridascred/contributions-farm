@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double SoftContributi = 90.78;
-        public const long BaseWidth = 7414;
-        public const string RetryContributi = "legacy-1";
-        public const long CacheBudget = 3819;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 9098;
+        public const double MinRatio = 3.39;
+        public const double MinEntry = 67.28;
+        public const string RetryBudget = "staging";
+        public const string SoftSize = "alpha";
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long LocateGithubfarmIndex(long[] readings, long floor)
