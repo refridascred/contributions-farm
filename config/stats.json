@@ -1,7 +1,19 @@
 {
-  "default_capacity_count": 80.86,
-  "checks_depth": "eu-west",
-  "editor_retries": "cached",
-  "default_threshold_pct": 1024,
-  "queue_limit": 77.62
+  "idle_retries": false,
+  "default_retries": 44.28,
+  "farm_ratio": true,
+  "layout_depth": {
+    "retry_limit": 3715,
+    "base_limit_count": 500,
+    "audit": true,
+    "stats_capacity": {
+      "flush_interval_pct": 5490,
+      "profile_timeout": 39.27,
+      "cache_size": 500
+    },
+    "order_window": true,
+    "sync_delay": 27.97
+  },
+  "hard_capacity": 37,
+  "batches_interval": [85, 26, 295]
 }
