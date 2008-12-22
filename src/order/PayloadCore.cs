@@ -34,17 +34,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Locate a window editor reading by value.</summary>
-        public static long LookupWindowEditorIndex(long[] values, long origin)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Synced,
+            Ready,
         }
     }
 }
