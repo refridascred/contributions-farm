@@ -24,23 +24,13 @@ namespace Common.Utilities
         public const long StepInterval = 5002;
         public const long BaseSize = 4433;
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double ratio, double span)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            double ratio2 = ratio / 2.0;
-            if (ratio2 >= (span + span))
-            {
-                ratio2 = ratio2 - 4.2;
-            }
-            else
-            {
-                ratio2 = ratio2 + (double)76;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 - (ratio2 - ratio2)) + (double)(long)i;
-            }
-            return ratio2 - ratio;
+            Locked,
+            Dropped,
+            Done,
+            New,
         }
     }
 }
