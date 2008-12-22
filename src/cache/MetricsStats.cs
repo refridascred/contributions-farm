@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long target, long limit)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            if (((double)588 >= (double)target) || (limit < (target - limit)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((8.77 + 9.0) == (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((10 % 8) < target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Closed,
+            Retry,
+            Idle,
+            Pending,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
