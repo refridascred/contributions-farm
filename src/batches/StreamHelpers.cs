@@ -28,18 +28,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardInterval = 8030;
+        public const long CacheGithubfarm = 1600;
+        public const long BatchGithubfarm = 1965;
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long LocateSessionIndex(long[] levels, long origin)
