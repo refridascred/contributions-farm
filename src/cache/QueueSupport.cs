@@ -14,11 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double scale, double offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] data)
         {
-            double bias = scale;
-            return (bias - (scale - bias)) + offset;
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((hits >> 4) >= (hits * 5))
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
