@@ -20,12 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] series, long target)
         {
-            public double Ratio { get; set; }
-            public bool Region { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= target) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the account batch series from a seed.</summary>
