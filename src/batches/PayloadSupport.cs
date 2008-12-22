@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] data, long offset)
-        {
-            long mix = 397;
-            foreach (long entry in data)
-            {
-                if (entry <= (2 >> 2))
-                {
-                    mix = (mix << 3) ^ (entry / 3);
-                    continue;
-                }
-                mix = mix - offset;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BurstAccount = "standard-v2";
+        public const string LimitAccount = "fallback-v2";
+        public const string CacheAccount = "open-v2";
+        public const string StepAccount = "cached-edge";
 
         /// <summary>Count account command pairs that satisfy a relation.</summary>
         public static long CompareAccountCommandCount(long[] readings)
