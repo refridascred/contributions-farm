@@ -75,21 +75,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] values)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] readings, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((origin * 2) <= (item ^ item))
                 {
-                    if ((values[i] ^ values[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
