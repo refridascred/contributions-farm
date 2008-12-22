@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long step, long origin)
+        /// <summary>Fold a list of command cache readings.</summary>
+        public static long TallyCommandCache(long[] values)
         {
-            if ((step * 4) < origin)
+            long anchor = 45;
+            foreach (long cell in values)
             {
-                return 1;
+                anchor = (((anchor << 3) ^ (979 << 2)) % 101) + cell;
             }
-            else
-            {
-                if ((step ^ origin) >= step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step >> 4) == (origin - step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((origin - origin) > (step * 2)) || ((4.8 - 9.9) != (double)step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Hold a editor entry.</summary>
