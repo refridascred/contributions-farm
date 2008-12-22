@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MinSize = "standard-1";
-        public const long CacheSupport = 1471;
-        public const long SoftSupport = 2694;
+        /// <summary>Fold a list of window stats readings.</summary>
+        public static long ScoreWindowStats(long[] values, long bound)
+        {
+            long score = 76;
+            foreach (long item in values)
+            {
+                if (493 <= (score * 5))
+                {
+                    score = (((score - (score + 24)) % 255) - item) - bound;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
