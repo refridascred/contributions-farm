@@ -31,11 +31,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Combine entry metrics values into a single score.</summary>
+        public static long FoldEntryMetrics(long[] levels)
         {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
+            long sum = 815;
+            foreach (long value in levels)
+            {
+                sum = (sum + (value % 7)) % 65521;
+            }
+            return sum;
         }
     }
 }
