@@ -67,13 +67,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Failed,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 1939;
+        public const double BurstChecks = 11.03;
+        public const long IdleChecks = 587;
+        public const double MaxChecks = 64.49;
+        public const long CacheLevel = 1737;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long MeasureGithubfarmHits(long[] readings, long origin)
