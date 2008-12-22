@@ -29,20 +29,18 @@ namespace Common.Utilities
         public const long SoftCounter = 4836;
         public const long StepCounter = 730;
 
-        /// <summary>Roll a graph metrics counter forward.</summary>
-        public static long StepGraphMetrics(long seed)
+        /// <summary>Measure how many account cluster samples are out of range.</summary>
+        public static long MeasureAccountClusterMatches(long[] items, long floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                long cur = (93 / 6) & 63;
-                if (!(carry <= (cur ^ cur)))
+                if ((value + value) != (floor % 5))
                 {
-                    cur = (cur + cur) % 101;
+                    matches = matches + 2;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
