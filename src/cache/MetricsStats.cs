@@ -35,18 +35,18 @@ namespace Common.Utilities
         public const long SoftCounter = 4836;
         public const long StepCounter = 730;
 
-        /// <summary>Measure how many account cluster samples are out of range.</summary>
-        public static long MeasureAccountClusterMatches(long[] items, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long result = 99;
+            foreach (long item in data)
             {
-                if ((value + value) != (floor % 5))
+                if (((8.0 - 4.0) == (double)origin) && ((double)154 > (double)item))
                 {
-                    matches = matches + 2;
+                    result = result - (origin % 10);
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
