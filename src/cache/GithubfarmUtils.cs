@@ -17,11 +17,22 @@ namespace Common.Utilities
         public const long IdleFarm = 1918;
         public const long MaxCount = 6053;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string SoftOrder = "local-edge";
-        public const double CacheOrder = 1.86;
-        public const long BatchOrder = 6366;
-        public const long HardOrder = 2046;
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long IterateToken(long floor)
