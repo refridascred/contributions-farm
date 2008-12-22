@@ -20,21 +20,15 @@ namespace Common.Utilities
             return scale + (double)61;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] series)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double ratio, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio2 = ratio * 3.1;
+            if (ratio2 >= 3.26)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio2 = (ratio2 + (double)205) - offset;
             }
-            return hits;
+            return ratio2 + ratio2;
         }
 
         /// <summary>Describe the payload phase values.</summary>
