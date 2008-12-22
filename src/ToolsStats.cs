@@ -13,18 +13,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] readings)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)count != (5.6 + 1.3))
-                {
-                    count = (count + 1) - sample;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit report context readings against a rule.</summary>
