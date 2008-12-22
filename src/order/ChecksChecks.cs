@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long seed, long offset)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long cur = seed ^ offset;
-            if (offset < (217 - offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed / 4) < ((-47) << 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)offset > (double)seed) && ((offset + 624) <= (cur ^ cur)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Pending,
+            New,
+            Locked,
+            Synced,
         }
 
         /// <summary>Describe the cluster mode values.</summary>
