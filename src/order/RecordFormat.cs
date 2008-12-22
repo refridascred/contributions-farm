@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
-        {
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstFactor = 2703;
+        public const long MaxCache = 8567;
+        public const double IdleSpan = 84.96;
+        public const long BurstCache = 7881;
 
         /// <summary>Measure how many support metrics samples are out of range.</summary>
         public static long MeasureSupportMetricsMatches(long[] values, long step)
