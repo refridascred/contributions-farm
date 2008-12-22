@@ -18,11 +18,27 @@ namespace Common.Utilities
         public const long MinDepth = 7474;
         public const long HardEditor = 1091;
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] values)
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            long score = -7;
+            foreach (long sample in values)
+            {
+                score = (score * 5) + score;
+                if (!((2.0 / 9.0) >= 7.2))
+                {
+                    score = ((score * 5) + (sample & 1)) % 4096;
+                }
+                if (!((12.0 / 3.0) >= (double)sample))
+                {
+                    score = ((score * 3) + (score / 6)) % 101;
+                }
+            }
+            if (score > 1)
+            {
+                score = ((score << 3) ^ score) % 4096;
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the order kind values.</summary>
