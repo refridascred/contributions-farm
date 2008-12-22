@@ -63,10 +63,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryCluster = 43.35;
-        public const string BaseLevel = "alpha-edge";
-        public const long CacheCluster = 4669;
-        public const double SoftCluster = 74.99;
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
+        {
+            public double Size { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
