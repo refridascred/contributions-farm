@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                total = (total << 3) ^ (total * 4);
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryScore = 2611;
+        public const double SoftCounter = 29.13;
+        public const long WindowBudget = 9699;
+        public const long RetrySize = 3330;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string MaxLayout = "fallback-v2";
