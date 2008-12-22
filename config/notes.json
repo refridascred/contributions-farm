@@ -1,19 +1,11 @@
 {
-  "flush_ratio_pct": 71,
-  "default_capacity_s": "open",
-  "base_depth": {
-    "batch_depth": "latest",
-    "sync_capacity_s": [311, 214],
-    "burst_ratio_pct": {
-      "buffer_capacity": 89.64,
-      "poll_limit_ms": "open",
-      "filter_window": 72.08
-    },
-    "verbose": 60,
-    "queue_interval": "local",
-    "format_window": 60
+  "soft_depth": {
+    "idle_limit": "latest",
+    "flush_size_s": 4181,
+    "readonly": 44.61,
+    "token_window": false
   },
-  "base_size": "eu-west",
-  "compress": [459, 156, 233],
-  "token_timeout": true
+  "queue_timeout": 97.98,
+  "persist": [169, 451, 415],
+  "base_ratio_pct": "standard"
 }
