@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] samples, long origin)
         {
-            Failed,
-            Queued,
-            Pending,
-            Done,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((624 & 31) >= reading)
+                {
+                    seen = (seen + 3) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
