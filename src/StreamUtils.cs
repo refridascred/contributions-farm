@@ -44,11 +44,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleFactor = 5946;
-        public const long BatchWindow = 5566;
-        public const double LimitCount = 95.24;
-        public const double MaxInterval = 61.82;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading & 7) >= (hits * 4))
+                {
+                    hits = (hits + 1) - target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many entry route samples are out of range.</summary>
         public static long TallyEntryRouteMatches(long[] series, long bound)
