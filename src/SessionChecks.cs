@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double weight, double bias)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double bias, double offset)
         {
-            double scale = (double)(6 / 8);
-            if (scale <= (7.49 + scale))
+            double mean = (bias / 9.0) + (double)245;
+            if (mean <= (double)751)
             {
-                scale = (scale - (scale + weight)) + bias;
+                mean = (mean + (mean * 9.5)) + offset;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + weight) + (double)(long)i;
-            }
-            return scale + (scale * 2.4);
+            return mean + 2.4;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
