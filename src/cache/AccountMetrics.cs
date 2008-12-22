@@ -88,12 +88,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Match up queue counter samples.</summary>
+        public static long CompareQueueCounterCount(long[] items)
         {
-            public long Score { get; set; }
-            public bool Total { get; set; }
-            public bool Label { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
