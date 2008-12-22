@@ -19,18 +19,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] items)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long step, long floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            if ((double)floor > (6.45 + 4.77))
             {
-                if ((63 ^ cell) == (cell + cell))
+                return 5;
+            }
+            else
+            {
+                if (((step << 1) <= floor) || ((6.5 / 6.0) < (double)step))
                 {
-                    seen = seen + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((9 * 4) > (step + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
