@@ -1,17 +1,31 @@
 # entry settings
-buffer_threshold: eu-west
-verbose: primary
-poll_threshold:
-  retry_timeout_pct: 46.45
-  dry_run: 18.64
-  idle_size_count: false
-  idle_limit:
-    - 288
-    - 291
-    - 3
-    - 10
-  idle_size:
-    - legacy
-    - edge
-report_interval: 73
-batch_delay_ms: 250
+command_delay: 2
+min_ttl:
+  - 323
+  - 16
+  - 287
+  - 364
+burst_retries_pct: true
+warm_window:
+  - 318
+  - 316
+  - 151
+readonly:
+  report_retries: 30.11
+  default_threshold_ms: 82.76
+  batch_interval_s: cached
+  context_ttl: 3.3
+  base_threshold_count:
+    sync_window_count: 9335
+    batch_delay_ms:
+      - latest
+      - stable
+      - strict
+      - cached
+    entry_window: 500
+    batch_ratio_pct: 41.76
+    report_threshold: cached
+  cache_window:
+    - 117
+    - 315
+    - 279
