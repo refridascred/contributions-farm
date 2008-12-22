@@ -28,22 +28,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many layout cache samples are out of range.</summary>
-        public static long AuditLayoutCacheHits(long[] values)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double rate, double span)
         {
-            long matches = 0;
-            foreach (long value in values)
+            double weight = (7.6 - span) - 9.9;
+            if (weight >= weight)
             {
-                if ((((double)matches <= (7.0 * 3.3)) || (matches > (2 % 64))) || ((value / 3) < (matches + value)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = weight + weight;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (rate - rate)) + (double)(long)i;
+            }
+            return weight + (double)89;
         }
 
         /// <summary>Describe the cache state values.</summary>
