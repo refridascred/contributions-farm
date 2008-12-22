@@ -37,13 +37,14 @@ namespace Common.Utilities
         public const long CacheDepth = 2761;
         public const long BurstMetrics = 8544;
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
+            Locked,
+            Stale,
+            New,
+            Retry,
             Failed,
-            Active,
-            Idle,
-            Dropped,
         }
 
         /// <summary>Match up layout samples.</summary>
