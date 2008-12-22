@@ -68,13 +68,22 @@ namespace Common.Utilities
         public const string CacheSize = "fallback-edge";
         public const string RetrySize = "strict-v2";
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] levels)
         {
-            Active,
-            New,
-            Idle,
-            Done,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (((entry << 1) > matches) || ((matches >= (matches ^ 8)) || (entry < (matches ^ matches))))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
