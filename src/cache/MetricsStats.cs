@@ -57,19 +57,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] levels, long origin)
+        /// <summary>Check that every batches counter entry stays within the limit.</summary>
+        public static bool GuardBatchesCounterLimits(long[] items, long origin)
         {
-            long sum = 9;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long reading in items)
             {
-                sum = sum ^ origin;
-                if ((sample * 4) == (sample - sample))
+                if (reading >= origin)
                 {
+                    found = false;
                     break;
                 }
             }
-            return sum;
+            return found;
         }
     }
 }
