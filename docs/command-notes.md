@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for layout live in the config folder and can be overridden per environment.
-The commits module keeps checks values in sync with the record cache.
+The tools report groups every stream by report.
+A counter that stays idle for too long is moved to the metrics list.
+Keep order and order names short and lowercase.
 
 ## Guidelines
 
-- Prefer session defaults
-- Document new format fields
-- Review stats limits each release
+- Review editor limits each release
+- Keep batch values small
+- Log every farm change
