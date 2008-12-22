@@ -26,23 +26,10 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double rate, double floor)
-        {
-            double scale = (double)(423 - 7);
-            if (scale <= (rate + floor))
-            {
-                scale = scale - floor;
-            }
-            else
-            {
-                scale = scale - (18.0 - rate);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + 1.83) - (double)(long)i;
-            }
-            return scale - (scale - rate);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double DefaultCount = 97.3;
+        public const long CacheRatio = 9325;
+        public const long SoftFactor = 8719;
+        public const string HardInterval = "alpha";
     }
 }
