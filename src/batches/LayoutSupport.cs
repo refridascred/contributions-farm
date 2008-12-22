@@ -15,22 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] levels, long floor)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (3 > value)
-                {
-                    count = (count + 3) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Active,
+            Synced,
+            Ready,
         }
 
         /// <summary>Compare every pair of window readings.</summary>
