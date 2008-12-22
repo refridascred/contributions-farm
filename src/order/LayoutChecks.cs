@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            Synced,
-            Active,
             Pending,
-            Idle,
+            Dropped,
+            Retry,
+            Stale,
+            Failed,
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
