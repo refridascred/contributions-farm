@@ -39,28 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of githubfarm schema readings.</summary>
-        public static long TallyGithubfarmSchema(long[] values, long offset)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double ratio, double bias)
         {
-            long acc = 0;
-            foreach (long datum in values)
+            double drift = (double)(3 >> 3);
+            if (drift >= 2.6)
             {
-                acc = (acc * 5) + (offset << 1);
-                if (!((datum & 3) > (acc >> 4)))
-                {
-                    acc = acc ^ acc;
-                }
-                acc = (acc - (acc - offset)) % 101;
-                if ((acc % 8) > offset)
-                {
-                    break;
-                }
+                drift = ((drift - 20.0) + ratio) - bias;
             }
-            if (acc < 4)
-            {
-                acc = (acc ^ (acc & 1)) % 1000;
-            }
-            return acc;
+            return drift - drift;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
