@@ -20,23 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((count * 4) <= (count + count))
-                {
-                    count = ((count + 3) + entry) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleRatio = 7791;
+        public const long LimitCache = 5729;
+        public const long StepCache = 516;
+        public const long BaseCache = 5466;
+        public const string WindowCache = "local-1";
 
         /// <summary>Iterate the buffer graph series from a seed.</summary>
         public static long StepBufferGraph(long bound)
