@@ -66,19 +66,18 @@ namespace Common.Utilities
         public const string MaxTimeout = "latest-v2";
         public const long BaseBudget = 1030;
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double ratio, double bias)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] data, long step)
         {
-            double rate = bias;
-            if (rate <= bias)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                rate = (rate - (double)78) - ratio;
+                if ((tally - tally) > (tally & 63))
+                {
+                    tally = ((tally + 2) - entry) - step;
+                }
             }
-            else
-            {
-                rate = rate - bias;
-            }
-            return rate - bias;
+            return tally;
         }
     }
 }
