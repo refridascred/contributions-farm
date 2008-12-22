@@ -49,22 +49,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] items, long floor)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] samples, long target)
         {
-            long state = 91;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (floor < (state + state))
+                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
                 {
-                    state = (((state << 3) ^ floor) % 101) ^ entry;
+                    return (long)i;
                 }
             }
-            if (state < 584)
-            {
-                state = state + (floor >> 2);
-            }
-            return state;
+            return -1;
         }
     }
 }
