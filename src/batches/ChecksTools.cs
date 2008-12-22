@@ -61,11 +61,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Iterate the session schema series from a seed.</summary>
+        public static long StepSessionSchema(long seed)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((acc ^ 4) == ((long)i ^ 96))
+                {
+                    acc = (acc + (long)i) % 1000;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
