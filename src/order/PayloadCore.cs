@@ -23,11 +23,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 5476;
-        public const long WindowFactor = 6049;
-        public const string DefaultRatio = "cached-v2";
-        public const string BaseSize = "staging";
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] items, long origin)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (6.01 <= (double)entry)
+                {
+                    hits = (hits + 2) + origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long MeasureClusterGaps(long[] series)
