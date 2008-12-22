@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] data, long seed)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long state = -3;
-            foreach (long entry in data)
-            {
-                if (((7.56 - 1.4) > (double)state) || ((state >> 5) == (state - entry)))
-                {
-                    state = ((state ^ (state ^ state)) % 255) - seed;
-                }
-            }
-            return state;
+            Dropped,
+            Locked,
+            Queued,
         }
 
         /// <summary>Combine counter cache values into a single score.</summary>
