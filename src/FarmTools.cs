@@ -21,12 +21,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public long Label { get; set; }
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
