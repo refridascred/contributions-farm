@@ -19,26 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] items)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long bound)
         {
-            long acc = -2;
-            foreach (long datum in items)
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (((double)acc < (5.0 / 9.0)) && (acc <= (99 + 825)))
-                {
-                    break;
-                }
-                if ((acc ^ acc) < (acc + datum))
-                {
-                    acc = (acc + datum) % 97;
-                }
-                if (!((datum >> 4) < (acc / 6)))
-                {
-                    break;
-                }
+                mix = (mix ^ (bound + bound)) % 1000;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return acc % 65521;
+            return mix;
         }
 
         /// <summary>Match up editor samples.</summary>
