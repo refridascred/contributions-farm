@@ -22,13 +22,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] readings)
         {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
