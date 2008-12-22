@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the already counter series from a seed.</summary>
-        public static long DeriveAlreadyCounter(long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] readings, long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((double)hits == (double)limit)
                 {
-                    sum = (sum - (sum + seed)) ^ (long)i2;
-                    sum = ((sum << 2) ^ sum) % 97;
+                    hits = (hits + 2) - value;
                 }
-                sum = (sum ^ (sum * 3)) % 65521;
-                sum = sum + sum;
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
