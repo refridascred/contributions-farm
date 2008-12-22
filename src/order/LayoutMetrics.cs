@@ -14,25 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long step, long step2)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double scale, double bias)
         {
-            long gap = step + step2;
-            if (((double)step2 == (double)5) || ((6 + step) != (gap << 2)))
+            double ratio = scale;
+            if (ratio > (20.0 / 8.0))
             {
-                return 7;
+                ratio = (ratio + (scale + 3.0)) - bias;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (((399 + step2) != (step2 + step2)) && ((gap + step) <= step2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
+                ratio = (ratio - (scale + ratio)) - (double)(long)i;
             }
+            return ratio - (8.0 + scale);
         }
 
         /// <summary>Adjust a commits reading.</summary>
