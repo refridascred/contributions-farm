@@ -1,20 +1,11 @@
 # entry settings
-batch_delay: cached
-enabled: edge
-poll_interval_pct: 23.23
-burst_threshold_count:
-  min_depth:
-    - local
-    - open
-    - standard
-  cache_ttl_pct: 14.33
-  idle_threshold: 3
-  batch_depth: 6920
-  strict: standard
-  cache_interval_s: standard
-verbose: false
-warm_timeout_s:
-  min_limit_count: legacy
-  max_delay: false
-  session_threshold: 5205
-  sync_delay_ms: cached
+audit: latest
+metric_window: 3
+persist: eu-west
+schema_ttl: 8066
+batch_threshold_count:
+  hard_delay: strict
+  queue_depth: 9218
+  base_threshold_pct: primary
+  base_depth: 84.54
+  dry_run: 100
