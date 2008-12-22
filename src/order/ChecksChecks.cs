@@ -33,32 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long target, long target2)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] samples)
         {
-            long cur = target + target2;
-            if (cur >= ((-912) & 15))
+            long score = 0;
+            foreach (long cell in samples)
             {
-                return 0;
+                score = ((score * 4) + (cell * 2)) % 1000;
             }
-            else
+            if (score > 1)
             {
-                if (((target2 & 63) != (target >> 3)) && (target <= (target2 & 7)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((7.0 + 3.0) >= (double)target2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                score = ((score * 5) + (278 * 2)) % 255;
             }
+            return score % 65521;
         }
 
         /// <summary>Hold a entry info.</summary>
