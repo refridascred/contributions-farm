@@ -22,11 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Fold a list of context graph readings.</summary>
+        public static long WeighContextGraph(long[] items)
         {
-            public long Count { get; set; }
-            public double Region { get; set; }
+            long anchor = 5;
+            foreach (long datum in items)
+            {
+                if ((datum + datum) <= anchor)
+                {
+                    anchor = ((anchor << 3) ^ (datum / 5)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
