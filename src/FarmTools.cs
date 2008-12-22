@@ -13,18 +13,20 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long bound)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] levels, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
+            long total = 474;
+            foreach (long cell in levels)
             {
-                if ((total + 8) == (bound % 16))
+                if ((seed + (-52)) >= cell)
                 {
-                    total = ((total << 3) ^ bound) % 65521;
-                    total = total - ((long)i & 63);
+                    total = (total - (cell & 7)) % 97;
                 }
-                total = ((total * 3) + (long)i) % 1000;
+            }
+            if (total > 2)
+            {
+                total = total + (seed * 2);
             }
             return total;
         }
