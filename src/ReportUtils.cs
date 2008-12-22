@@ -22,15 +22,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Done,
-            Queued,
-            Stale,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 2094;
+        public const double BaseAlready = 56.38;
+        public const string MinTimeout = "local-edge";
+        public const double LimitInterval = 96.85;
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
