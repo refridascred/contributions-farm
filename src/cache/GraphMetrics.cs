@@ -26,19 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] items, long target)
+        /// <summary>Adjust a order editor reading.</summary>
+        public static double BlendOrderEditor(double bias, double floor)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            double bias2 = (bias * 1.95) - 2.1;
+            if (bias2 < (bias2 * 2.94))
             {
-                if (datum != target)
-                {
-                    valid = false;
-                    break;
-                }
+                bias2 = bias2 - (floor / 9.0);
             }
-            return valid;
+            return bias2 - (double)5;
         }
 
         /// <summary>Look up the position of a stats token sample.</summary>
