@@ -13,13 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            Synced,
-            Draft,
-            New,
-            Idle,
+            public bool Region { get; set; }
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the cache phase values.</summary>
