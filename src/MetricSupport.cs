@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const double HardRatio = 63.27;
         public const long RetryLevel = 5143;
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double rate, double floor)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            double ratio = 13.0;
-            return ((ratio + (double)308) + rate) + floor;
+            public long Region { get; set; }
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Adjust a layout reading.</summary>
