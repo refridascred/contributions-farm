@@ -39,11 +39,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double scale, double span)
         {
-            public double Count { get; set; }
-            public bool Level { get; set; }
+            double ratio = (double)3 * 2.27;
+            if (ratio >= ratio)
+            {
+                ratio = (ratio + (7.73 - span)) - scale;
+            }
+            return ratio - (double)3;
         }
 
         /// <summary>Describe the record mode values.</summary>
