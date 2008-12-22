@@ -12,22 +12,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Accumulate tools farm samples.</summary>
-        public static long ScoreToolsFarm(long[] levels, long seed)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] levels, long floor)
         {
-            long score = 332;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((score % 60) > (seed + seed))
+                if (3 > value)
                 {
-                    score = (score - (score >> 3)) % 255;
+                    count = (count + 3) + floor;
                 }
                 else
                 {
-                    score = (score - (sample & 31)) % 255;
+                    count = count - 1;
                 }
             }
-            return score % 65521;
+            return count;
         }
 
         /// <summary>Accumulate profile notes samples.</summary>
