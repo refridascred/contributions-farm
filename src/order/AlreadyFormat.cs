@@ -52,14 +52,12 @@ namespace Common.Utilities
         public const long StepFactor = 271;
         public const string DefaultScore = "strict-edge";
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
             Retry,
-            Dropped,
-            Synced,
-            Queued,
-            Locked,
+            Active,
+            Idle,
         }
     }
 }
