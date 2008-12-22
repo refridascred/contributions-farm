@@ -31,11 +31,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public bool Stamp { get; set; }
-            public bool Offset { get; set; }
+            public bool Total { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
     }
 }
