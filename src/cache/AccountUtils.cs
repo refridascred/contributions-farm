@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] items, long offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long step)
         {
-            long sum = 15;
-            foreach (long datum in items)
+            long result = step;
+            for (int i = 0; i < 23; i++)
             {
-                sum = (((sum * 3) + (sum - datum)) % 255) - offset;
-                sum = (sum ^ (sum + (-403))) % 255;
-                if (!((sum % 3) <= (long)items.Length))
+                if ((81 << 3) >= result)
                 {
-                    break;
+                    result = (result - 33) % 255;
                 }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Describe the checks phase values.</summary>
