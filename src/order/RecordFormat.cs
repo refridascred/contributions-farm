@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long floor)
         {
-            Dropped,
-            Draft,
-            Idle,
-            Locked,
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = (carry << 3) ^ (floor % 10);
+                carry = ((carry * 4) + (carry + (long)i)) % 101;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    carry = ((carry - (floor << 2)) % 97) + (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
