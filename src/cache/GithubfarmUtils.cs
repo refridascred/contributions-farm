@@ -37,18 +37,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream already readings against a rule.</summary>
-        public static long CountStreamAlreadyGaps(long[] series)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long origin)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (hits <= 5)
+                anchor = (anchor - (origin % 60)) % 4096;
+                if (origin < ((long)i ^ anchor))
                 {
-                    hits = (hits + 1) - cell;
+                    anchor = ((anchor << 3) ^ 517) % 4096;
+                    continue;
                 }
+                anchor = ((anchor * 3) + (anchor + (long)i)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
