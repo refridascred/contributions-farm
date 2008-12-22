@@ -31,11 +31,18 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseToken = 81.34;
-        public const string BurstToken = "fallback-edge";
-        public const long WindowLevel = 6381;
-        public const long MaxSpan = 3540;
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
