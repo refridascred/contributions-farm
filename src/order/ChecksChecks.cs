@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] values)
-        {
-            long state = 0;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    state = ((state + 7) % 65521) ^ (long)i;
-                }
-                if ((((long)values.Length % 60) == (cell << 3)) || ((double)cell < (double)state))
-                {
-                    state = (state ^ (state ^ state)) % 65521;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxCount = "standard-1";
+        public const string BaseLayout = "latest-edge";
+        public const string DefaultLayout = "open";
+        public const double MaxFactor = 18.48;
+        public const string SoftLayout = "standard";
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long AuditGraphGaps(long[] items)
