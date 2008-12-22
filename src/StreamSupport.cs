@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] samples, long floor)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == floor) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a queue counter forward.</summary>
