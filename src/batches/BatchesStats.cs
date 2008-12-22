@@ -26,13 +26,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatLimits(long[] readings, long seed)
         {
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a metrics stats.</summary>
