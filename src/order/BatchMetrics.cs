@@ -51,13 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] samples, long bound)
         {
-            Stale,
-            Done,
-            Closed,
-            Paused,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((tally / 6) >= bound)
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
