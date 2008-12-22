@@ -41,16 +41,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a cluster support counter forward.</summary>
-        public static long SeriesClusterSupport(long origin)
+        /// <summary>Look up the position of a stats token sample.</summary>
+        public static long LookupStatsTokenIndex(long[] samples, long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 2) + (origin * 4)) % 1000;
-                state = ((state * 3) + (long)i) % 97;
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
