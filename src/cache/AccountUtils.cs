@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] levels, long offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Stale,
+            Pending,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
