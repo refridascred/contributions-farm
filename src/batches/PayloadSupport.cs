@@ -24,15 +24,17 @@ namespace Common.Utilities
         public const string IdleSize = "strict-v2";
         public const string CacheScore = "primary-edge";
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] series)
+        /// <summary>Look up the position of a window editor sample.</summary>
+        public static long SeekWindowEditorIndex(long[] readings, long seed)
         {
-            long sum = 798;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum + (value << 1)) % 97;
+                if ((readings[i] > seed) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum % 97;
+            return -1;
         }
     }
 }
