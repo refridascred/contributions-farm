@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] samples, long origin)
+        /// <summary>Locate a buffer notes reading by value.</summary>
+        public static long LookupBufferNotesIndex(long[] values, long seed)
         {
-            long result = 128;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result ^ origin) ^ reading;
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Accumulate tools farm samples.</summary>
