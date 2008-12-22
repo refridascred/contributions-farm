@@ -28,19 +28,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] series, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] levels, long origin)
         {
-            long carry = 7;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long item in levels)
             {
-                carry = (carry + sample) % 65521;
+                if (item >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (carry > 79)
-            {
-                carry = (carry << 3) ^ (7 - floor);
-            }
-            return carry;
+            return found;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
