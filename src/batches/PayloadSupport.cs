@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BurstAccount = "standard-v2";
-        public const string LimitAccount = "fallback-v2";
-        public const string CacheAccount = "open-v2";
-        public const string StepAccount = "cached-edge";
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Pending,
+            New,
+            Locked,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string BurstReport = "primary-edge";
