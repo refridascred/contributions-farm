@@ -20,10 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryWidth = 2559;
-        public const double BatchFormat = 83.78;
-        public const long BaseBudget = 2273;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Draft,
+            Idle,
+            Done,
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long PairRouteCount(long[] series)
