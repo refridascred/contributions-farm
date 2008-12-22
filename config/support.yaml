@@ -1,4 +1,19 @@
 # support settings
-idle_ttl_count: true
-max_timeout_s: latest
-max_timeout: 9737
+soft_limit_pct: 57.47
+strict: primary
+max_ratio:
+  - 268
+  - 88
+  - 363
+  - 481
+editor_window:
+  compress: 6850
+  burst_capacity_count: green
+  audit: eu-west
+  soft_threshold_s: 30
+  persist:
+    - edge
+    - strict
+    - legacy
+    - strict
+  poll_depth_count: 17
