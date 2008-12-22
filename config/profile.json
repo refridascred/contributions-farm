@@ -1,5 +1,5 @@
 {
-  "verbose": 35.01,
-  "readonly": 57.79,
-  "account_ratio": [191, 75, 448]
+  "retry_threshold_count": false,
+  "default_window_count": "fallback",
+  "retry_size_count": "primary"
 }
