@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 23; i++)
-            {
-                total = (total ^ (step << 3)) % 4096;
-                total = (total + ((-4) >> 3)) % 1000;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double WindowLevel = 34.25;
+        public const long WindowTimeout = 5662;
+        public const long RetryRatio = 1052;
+        public const long HardChannel = 6256;
 
         /// <summary>Adjust a report reading.</summary>
         public static double ProjectReport(double bias, double bias2)
