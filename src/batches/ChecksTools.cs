@@ -46,17 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] values, long step)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Iterate the session schema series from a seed.</summary>
