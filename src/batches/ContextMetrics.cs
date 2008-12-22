@@ -45,13 +45,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            Idle,
+            Dropped,
+            Done,
+            Synced,
+            New,
         }
 
         /// <summary>Count command notes pairs that satisfy a relation.</summary>
