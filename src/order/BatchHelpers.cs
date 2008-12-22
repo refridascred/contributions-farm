@@ -20,18 +20,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheSize = 7633;
+        public const long CacheCounter = 7985;
+        public const double BatchCounter = 4.17;
+        public const string IdleCounter = "alpha-1";
+        public const long MinInterval = 3508;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long TallyReportOutliers(long[] items)
