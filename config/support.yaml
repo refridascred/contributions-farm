@@ -1,21 +1,9 @@
 # support settings
-warm_interval_ms: legacy
-verbose: 27
-strict: 5
-base_retries:
-  format_ttl: 60
-  persist: false
-  sync_capacity_ms: true
-  enabled: local
-  burst_limit_pct:
-    warm_ratio_ms: 7314
-    default_retries_pct: false
-    idle_retries_pct: 3812
-    base_threshold_count: 70
-    batch_interval_pct:
-      - 459
-      - 395
-      - 124
-      - 58
-    poll_size_s: 8597
-base_retries_count: 70.35
+soft_ttl: 22
+default_interval_pct: 47.43
+warm_interval_s: true
+session_timeout: 74
+account_ratio:
+  - stable
+  - standard
+soft_size_count: 62.3
