@@ -51,21 +51,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] data)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
     }
 }
