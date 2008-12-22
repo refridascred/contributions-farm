@@ -28,11 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepSpan = 7173;
-        public const string RetryAlready = "fallback-1";
-        public const long WindowSpan = 8566;
-        public const long DefaultFactor = 3859;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Idle,
+            Active,
+            New,
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportLimits(long[] items, long limit)
