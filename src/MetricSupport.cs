@@ -20,21 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] readings)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = (6.4 + bias) - bias;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias2 = ((bias2 - (bias + bias2)) + (double)(long)i) + weight;
             }
-            return matches;
+            return bias2 - 6.0;
         }
 
         /// <summary>Hold a entry record.</summary>
