@@ -61,32 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a session githubfarm value against two limits.</summary>
-        public static long ClassifySessionGithubfarm(long seed, long origin)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long span = seed + origin;
-            if (seed < (origin + origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((960 << 1) >= span))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)span <= (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
