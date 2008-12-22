@@ -1,19 +1,5 @@
 # support settings
-soft_limit_pct: 57.47
-strict: primary
-max_ratio:
-  - 268
-  - 88
-  - 363
-  - 481
-editor_window:
-  compress: 6850
-  burst_capacity_count: green
-  audit: eu-west
-  soft_threshold_s: 30
-  persist:
-    - edge
-    - strict
-    - legacy
-    - strict
-  poll_depth_count: 17
+hard_capacity: 38
+persist: 8
+idle_threshold_pct: 500
+batch_depth: 8756
