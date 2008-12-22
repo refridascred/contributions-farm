@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Check that every counter format entry stays within the limit.</summary>
+        public static bool VerifyCounterFormatLimits(long[] levels, long offset)
         {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the schema state values.</summary>
