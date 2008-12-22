@@ -38,15 +38,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double bias, double offset)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] values, long offset)
         {
-            double drift = (double)(67 / 5);
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift + (offset / 8.0)) + (double)(long)i;
+                if ((values[i] > offset) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift + bias;
+            return -1;
         }
 
         /// <summary>Fold a list of stream channel readings.</summary>
