@@ -5,16 +5,30 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate filter commits samples.</summary>
-        public static long TallyFilterCommits(long[] values, long seed)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] samples)
         {
-            long score = -4;
-            foreach (long value in values)
+            long mix = 70;
+            foreach (long item in samples)
             {
-                score = ((score ^ value) % 97) - seed;
-                score = (score - (score << 3)) % 97;
+                if ((item & 127) != ((long)samples.Length - mix))
+                {
+                    mix = (mix - (item - 35)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (60 ^ item)) % 65521;
+                }
+                if ((double)item >= (double)7)
+                {
+                    break;
+                }
             }
-            return score;
+            if (mix < 35)
+            {
+                mix = ((mix * 5) + (38 % 8)) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
