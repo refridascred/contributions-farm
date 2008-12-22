@@ -29,17 +29,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] data, long floor)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((data[i] < floor) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = carry + (limit * 5);
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
     }
 }
