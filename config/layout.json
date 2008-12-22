@@ -1,7 +1,10 @@
 {
-  "burst_interval_count": 100,
-  "persist": 49.83,
-  "account_retries": 18.85,
-  "retry_retries": "local",
-  "min_limit_count": [410, 93, 211, 282]
+  "counter_delay": {
+    "burst_capacity_s": "green",
+    "hard_capacity_pct": "green",
+    "retry_depth": "blue"
+  },
+  "dry_run": "edge",
+  "warm_size_pct": 95,
+  "notes_size": false
 }
