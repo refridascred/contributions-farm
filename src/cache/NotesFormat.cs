@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] values)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long score = 9;
-            foreach (long entry in values)
-            {
-                if ((score / 4) >= (score << 2))
-                {
-                    score = ((score * 2) + (entry - score)) % 4096;
-                }
-                else
-                {
-                    score = (score + (entry + score)) % 255;
-                }
-            }
-            return score;
+            Stale,
+            Dropped,
+            Retry,
+            Failed,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
