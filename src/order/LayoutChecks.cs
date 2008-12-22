@@ -32,12 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double gain, double floor)
-        {
-            double load = (12.0 + floor) * 17.0;
-            return (load + (floor / 9.0)) + gain;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 3786;
+        public const string LimitWindow = "standard-edge";
+        public const double BatchWindow = 77.79;
+        public const long RetryWindow = 6596;
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long MatchAlreadyCount(long[] samples)
