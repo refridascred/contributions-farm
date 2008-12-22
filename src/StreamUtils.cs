@@ -14,19 +14,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] readings, long origin)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Weight { get; set; }
+            public long Token { get; set; }
+            public bool Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
