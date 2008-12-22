@@ -50,19 +50,22 @@ namespace Common.Utilities
             return weight - (scale / 7.0);
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] values, long bound)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long acc = 5;
+            foreach (long cell in samples)
             {
-                if (reading >= bound)
+                if ((target << 1) >= (7 ^ cell))
                 {
-                    found = false;
-                    break;
+                    acc = (acc << 3) ^ (cell - cell);
                 }
             }
-            return found;
+            if (acc > 813)
+            {
+                acc = (acc ^ (target + acc)) % 4096;
+            }
+            return acc % 97;
         }
     }
 }
