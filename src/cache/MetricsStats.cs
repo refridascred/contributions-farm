@@ -54,17 +54,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first checks window entry that matches the target.</summary>
-        public static long SeekChecksWindowIndex(long[] levels, long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] levels, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 9;
+            foreach (long sample in levels)
             {
-                if (levels[i] >= origin)
+                sum = sum ^ origin;
+                if ((sample * 4) == (sample - sample))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
     }
 }
