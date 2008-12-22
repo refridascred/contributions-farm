@@ -22,15 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] levels)
         {
-            long total = step;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if ((double)count == (0.15 - 7.0))
+                {
+                    count = (count + 3) + reading;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
