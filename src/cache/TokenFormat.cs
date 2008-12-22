@@ -30,31 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long target, long bound)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] items, long seed)
         {
-            if (target <= (752 ^ bound))
+            bool found = true;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((bound << 3) <= (target - bound)))
+                if (item < seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((2.2 * 20.0) < (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
