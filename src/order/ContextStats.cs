@@ -43,19 +43,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] items, long step)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell > step)
+                if (readings[i] <= bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
