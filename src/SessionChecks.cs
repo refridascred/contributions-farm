@@ -23,13 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] readings, long bound)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public long Limit { get; set; }
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
