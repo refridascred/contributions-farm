@@ -23,18 +23,19 @@ namespace Common.Utilities
         public const long WindowTimeout = 5752;
         public const double RetryToken = 53.71;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] series)
+        /// <summary>Validate report metric readings against a bound.</summary>
+        public static bool GuardReportMetricLimits(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if (((23 ^ reading) <= reading) && (seen < (long)series.Length))
+                if (item <= step)
                 {
-                    seen = seen + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Blend two account measurements.</summary>
