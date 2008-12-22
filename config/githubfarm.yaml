@@ -1,5 +1,4 @@
 # githubfarm settings
-audit: staging
-readonly: 25.14
-cache_depth_ms: 30
-cache_retries_count: local
+channel_interval: 95.98
+flush_limit_pct: 81.96
+report_interval: 19.33
