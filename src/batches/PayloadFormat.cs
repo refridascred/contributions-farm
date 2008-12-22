@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long offset)
+        /// <summary>Digest a series of queue channel entries.</summary>
+        public static long DigestQueueChannel(long[] levels)
         {
-            long state = offset;
-            for (int i = 0; i < 12; i++)
+            long mix = 6;
+            foreach (long sample in levels)
             {
-                state = (state << 2) ^ ((long)i / 9);
-                state = ((state * 2) + (long)i) % 65521;
+                if (((16.0 + 12.0) > (double)sample) && ((sample ^ mix) < (mix & 255)))
+                {
+                    mix = mix - (sample + sample);
+                }
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Define format limits and defaults.</summary>
