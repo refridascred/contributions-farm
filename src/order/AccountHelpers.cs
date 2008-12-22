@@ -65,39 +65,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long offset, long target)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long delta = offset ^ target;
-            if ((offset & 15) <= (offset + target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((5 + offset) > delta)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)target >= 3.7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)target == (double)delta) || ((offset + offset) > target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
