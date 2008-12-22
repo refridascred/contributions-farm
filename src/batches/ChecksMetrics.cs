@@ -54,12 +54,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            public double Count { get; set; }
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
+            public bool Total { get; set; }
+            public double Owner { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Look up the position of a support sample.</summary>
