@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            Closed,
-            Synced,
-            Pending,
-            Paused,
-            Failed,
+            Locked,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Define format limits and defaults.</summary>
