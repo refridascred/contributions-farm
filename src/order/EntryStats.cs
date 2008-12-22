@@ -41,15 +41,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double bias, double floor)
+        /// <summary>Project the next layout batches value.</summary>
+        public static double BlendLayoutBatches(double gain, double floor)
         {
-            double gain = (double)(241 % 5);
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + bias) - (double)(long)i;
-            }
-            return gain + floor;
+            double drift = floor;
+            return (drift - (double)66) + gain;
         }
     }
 }
