@@ -56,13 +56,11 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Queued,
-            Pending,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepScore = 9118;
+        public const long SoftWidth = 3924;
+        public const long HardCount = 327;
+        public const long SoftCount = 4;
+        public const long WindowSpan = 4056;
     }
 }
