@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepDepth = 2923;
-        public const double MaxSpan = 24.9;
-        public const double BurstChannel = 89.66;
-        public const long CacheChannel = 8797;
+        /// <summary>Look up the position of a payload layout sample.</summary>
+        public static long FindPayloadLayoutIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
