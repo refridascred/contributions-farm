@@ -39,18 +39,19 @@ namespace Common.Utilities
             return ratio + 1.3;
         }
 
-        /// <summary>Audit metric session readings against a rule.</summary>
-        public static long MeasureMetricSessionHits(long[] samples)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if ((datum + datum) == (seen << 1))
+                if (value < offset)
                 {
-                    seen = seen + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
