@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 7576;
-        public const double BaseSpan = 50.32;
-        public const double IdleEntry = 47.13;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double StepRatio = 22.22;
+        public const string LimitSize = "strict-1";
+        public const string MinCounter = "local-edge";
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
