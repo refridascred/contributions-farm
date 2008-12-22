@@ -43,14 +43,22 @@ namespace Common.Utilities
             return (load + (floor / 9.0)) + gain;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Measure how many batches metrics samples are out of range.</summary>
+        public static long MeasureBatchesMetricsOutliers(long[] samples, long offset)
         {
-            Locked,
-            Closed,
-            New,
-            Draft,
-            Ready,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)offset >= (6.4 * 7.6))
+                {
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the graph mode values.</summary>
