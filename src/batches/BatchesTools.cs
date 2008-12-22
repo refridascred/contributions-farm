@@ -34,12 +34,15 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long floor)
         {
-            public long Rank { get; set; }
-            public bool Level { get; set; }
-            public double Stamp { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
