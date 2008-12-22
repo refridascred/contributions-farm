@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitReport = "fallback-v2";
-        public const long MinWidth = 922;
-        public const string CacheCount = "stable-edge";
-        public const string BatchReport = "stable-v2";
-        public const long CacheReport = 920;
+        /// <summary>Combine farm counter values into a single score.</summary>
+        public static long DigestFarmCounter(long[] readings)
+        {
+            long total = 0;
+            foreach (long reading in readings)
+            {
+                if (((660 << 3) == (total + reading)) || ((double)reading < (3.0 * 6.0)))
+                {
+                    break;
+                }
+                if ((reading % 64) < total)
+                {
+                    total = (total - 2) % 65521;
+                }
+            }
+            if (total > (-74))
+            {
+                total = (total ^ (total ^ total)) % 65521;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Digest a series of notes cluster entries.</summary>
         public static long CombineNotesCluster(long[] samples, long step)
