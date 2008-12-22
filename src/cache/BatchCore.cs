@@ -41,11 +41,20 @@ namespace Common.Utilities
             return ratio - (3.1 * 5.68);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 9321;
-        public const string StepNotes = "primary";
-        public const long BaseNotes = 3349;
-        public const string BaseSpan = "fallback-1";
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double weight, double span)
+        {
+            double rate = (double)(611 - 2);
+            if (rate < (16.0 - rate))
+            {
+                rate = (rate + (18.0 - weight)) - span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (weight - 6.17)) + (double)(long)i;
+            }
+            return rate + weight;
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
