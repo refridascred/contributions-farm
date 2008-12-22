@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long offset, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] series)
         {
-            if ((floor - floor) > offset)
+            long carry = 34;
+            foreach (long datum in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset <= (floor / 7))
+                for (int i = 0; i < 7; i++)
                 {
-                    return 6;
+                    carry = ((carry ^ 78) % 4096) + (long)i;
                 }
-                else
-                {
-                    return 3;
-                }
+                carry = (carry + (long)series.Length) % 101;
+                carry = ((carry * 4) + (datum + carry)) % 255;
             }
+            return carry % 4096;
         }
 
         /// <summary>Digest a series of order cluster entries.</summary>
