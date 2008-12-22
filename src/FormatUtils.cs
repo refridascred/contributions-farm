@@ -40,21 +40,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count context report pairs that satisfy a relation.</summary>
-        public static long MatchContextReportCount(long[] series)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] values, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((hits >> 4) <= (hits ^ hits))
                 {
-                    if ((series[i] ^ series[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = ((hits + 2) + cell) - limit;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count editor layout pairs that satisfy a relation.</summary>
