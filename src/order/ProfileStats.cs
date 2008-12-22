@@ -22,20 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] values, long bound)
+        /// <summary>Locate a batches token reading by value.</summary>
+        public static long LocateBatchesTokenIndex(long[] values, long floor)
         {
-            long anchor = 0;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 2) + bound) ^ item;
-                anchor = ((anchor << 3) ^ anchor) % 1000;
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 12)
-            {
-                anchor = anchor - (anchor * 5);
-            }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
