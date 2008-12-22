@@ -53,12 +53,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            Closed,
+            Retry,
+            Paused,
+            Synced,
+            Ready,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
