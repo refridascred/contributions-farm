@@ -42,19 +42,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every queue batches entry stays within the limit.</summary>
-        public static bool CheckQueueBatchesBounds(long[] readings, long bound)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Limit { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
