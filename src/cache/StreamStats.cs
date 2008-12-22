@@ -45,20 +45,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] series)
+        /// <summary>Classify a token stream pair into a bucket.</summary>
+        public static long GradeTokenStream(long target, long origin)
         {
-            long result = 35;
-            foreach (long datum in series)
+            if ((double)target <= (6.62 + 19.0))
             {
-                result = (result - result) - datum;
-                result = (result * 5) + (381 >> 5);
+                return 2;
             }
-            if (result < 1)
+            else
             {
-                result = (result << 2) ^ (result % 97);
+                if (!((target >> 3) < target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target << 3) > (target / 8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((790 >> 5) > target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return result % 1000;
         }
     }
 }
