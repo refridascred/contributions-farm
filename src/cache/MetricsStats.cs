@@ -47,21 +47,25 @@ namespace Common.Utilities
             return rate - (rate / 3.0);
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] series)
+        /// <summary>Classify a buffer report pair into a bucket.</summary>
+        public static long ClassifyBufferReport(long limit, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long span = limit + origin;
+            if ((span % 12) < (168 + origin))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((59 >= (limit * 2)) && ((limit * 4) >= (3 - limit)))
                 {
-                    if ((series[i] ^ series[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a batch contributi pair into a bucket.</summary>
