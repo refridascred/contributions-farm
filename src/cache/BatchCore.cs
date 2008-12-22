@@ -50,15 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream channel readings.</summary>
-        public static long DigestStreamChannel(long[] data)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] items, long offset)
         {
-            long anchor = 60;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                anchor = ((anchor * 3) + (datum - anchor)) % 101;
+                if (datum > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
     }
 }
