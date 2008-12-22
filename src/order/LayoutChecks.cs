@@ -70,39 +70,21 @@ namespace Common.Utilities
         public const long BaseSchema = 7543;
         public const double WindowSchema = 96.77;
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long origin, long target)
+        /// <summary>Count batches already pairs that satisfy a relation.</summary>
+        public static long MatchBatchesAlreadyCount(long[] items)
         {
-            long prev = origin + target;
-            if (((4.63 - 7.44) <= (double)origin) && ((double)origin == (4.4 - 13.0)))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((prev / 7) >= (9 >> 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)prev != (7.87 - 1.7))
+                    if ((items[i] - items[j]) != 1)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target >> 1) >= (origin / 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
