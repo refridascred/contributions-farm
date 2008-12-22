@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardWidth = 2376;
-        public const long StepFormat = 682;
-        public const string MinFormat = "strict-v2";
-        public const long IdleLevel = 1663;
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowHits(long[] samples)
