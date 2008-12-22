@@ -25,11 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double scale, double bias)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] levels, long bound)
         {
-            double scale2 = bias;
-            return scale2 - scale;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= bound) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the counter class values.</summary>
