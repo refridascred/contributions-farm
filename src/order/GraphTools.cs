@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowWidth = 7126;
-        public const double IdleGraph = 75.96;
-        public const double HardGraph = 21.19;
-        public const long LimitWidth = 6795;
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double gain, double offset)
+        {
+            double ratio = (double)(316 + 4);
+            if (ratio > (double)7)
+            {
+                ratio = (ratio - (ratio - offset)) - gain;
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + (double)74;
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool CheckToolsLimits(long[] items, long origin)
