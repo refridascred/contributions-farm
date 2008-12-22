@@ -15,18 +15,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] items, long floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] samples)
         {
-            long mix = 5;
-            foreach (long item in items)
+            long anchor = -5;
+            foreach (long reading in samples)
             {
-                if ((floor + 8) == (floor & 127))
+                if ((double)264 <= (double)reading)
                 {
-                    mix = mix ^ (item - mix);
+                    anchor = ((anchor * 2) + (765 + reading)) % 255;
+                }
+                if (((reading + reading) <= (-17)) || (anchor >= 696))
+                {
+                    break;
                 }
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
