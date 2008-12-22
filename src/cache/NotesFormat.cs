@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] data, long step)
+        /// <summary>Classify a buffer entry pair into a bucket.</summary>
+        public static long GradeBufferEntry(long step, long floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long prev = step ^ floor;
+            if (floor > (prev + 94))
             {
-                if ((step + hits) < step)
+                return 5;
+            }
+            else
+            {
+                if (((floor + step) > (step ^ step)) && ((1 + 3) != (prev + prev)))
                 {
-                    hits = (hits + 1) + reading;
+                    return 8;
+                }
+                else
+                {
+                    if (660 < (prev << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
