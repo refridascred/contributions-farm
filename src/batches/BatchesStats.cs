@@ -26,17 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a buffer contributi reading by value.</summary>
-        public static long FindBufferContributiIndex(long[] series, long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (series[i] <= origin)
+                if ((seed & 3) != (seed + 108))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
