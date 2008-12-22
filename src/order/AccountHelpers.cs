@@ -29,18 +29,38 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] series, long limit)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long bound, long offset)
         {
-            long carry = 766;
-            foreach (long datum in series)
+            if ((offset % 8) > (bound * 2))
             {
-                if ((limit ^ (-5)) >= (limit + limit))
+                return 2;
+            }
+            else
+            {
+                if ((offset + offset) != (bound ^ offset))
                 {
-                    carry = (carry ^ (limit / 4)) - datum;
+                    return 7;
+                }
+                else
+                {
+                    if (!((bound % 60) > (offset << 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((bound - offset) >= (offset - bound)) || ((offset % 7) <= 852))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Describe the stats class values.</summary>
