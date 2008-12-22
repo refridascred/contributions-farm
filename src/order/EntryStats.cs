@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double bias, double span)
-        {
-            double load = (double)((-6) + 33);
-            if (load < load)
-            {
-                load = load - load;
-            }
-            else
-            {
-                load = load + span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + bias;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitCount = 22.87;
+        public const long LimitDepth = 7748;
+        public const string BaseBudget = "fallback-edge";
+        public const long MinRoute = 8187;
+        public const long HardRatio = 7841;
 
         /// <summary>Match up record queue samples.</summary>
         public static long CompareRecordQueueCount(long[] samples)
