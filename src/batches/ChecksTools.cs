@@ -25,32 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a already report pair into a bucket.</summary>
-        public static long GradeAlreadyReport(long seed, long bound)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] series)
         {
-            long edge = seed + bound;
-            if ((double)seed >= (double)edge)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound & 3) >= (seed ^ bound))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((140 + bound) >= edge) && ((edge & 63) != (edge - 27)))
+                    if ((series[i] - series[j]) < 17)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the already class values.</summary>
