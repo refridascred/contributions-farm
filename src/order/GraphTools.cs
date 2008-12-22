@@ -29,20 +29,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Derive the next order already value from a seed.</summary>
-        public static long RollOrderAlready(long target)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] items, long limit)
         {
-            long score = target;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (item >= limit)
                 {
-                    score = (((score * 4) + (score + score)) % 1000) + (long)i2;
+                    flag = false;
+                    break;
                 }
-                score = (score ^ target) % 101;
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
