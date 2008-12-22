@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] samples)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long prev = floor - offset;
+            if (prev < (offset & 7))
             {
-                if ((value + value) > value)
+                return 5;
+            }
+            else
+            {
+                if (floor < (20 - offset))
                 {
-                    hits = hits + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor >= 14.0)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)prev != (16.0 / 5.0)) && ((floor + 373) < (floor * 2)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
