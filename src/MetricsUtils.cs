@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] samples, long floor)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long floor)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(((double)datum < (9.8 - 6.92)) && ((3.8 - 1.7) < (double)seen)))
+                if (!(((floor % 24) == (total & 63)) && (floor < ((long)i + (long)i))))
                 {
-                    seen = (seen + 2) - floor;
+                    total = (total + (floor + (long)i)) % 65521;
+                    total = total + (floor + floor);
                 }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
