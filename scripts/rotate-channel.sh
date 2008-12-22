@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in fallback strict stable; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 2))
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=7
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-stable}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    latest)
+    blue)
         log "fast path"
         ;;
     *)
