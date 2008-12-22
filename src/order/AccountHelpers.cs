@@ -77,11 +77,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a checks stats.</summary>
