@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] readings, long floor)
+        /// <summary>Blend two editor order measurements.</summary>
+        public static double BlendEditorOrder(double ratio, double floor)
         {
-            long mix = 3;
-            foreach (long item in readings)
+            double rate = floor;
+            if (rate < (ratio - rate))
             {
-                if ((floor + 76) > floor)
-                {
-                    mix = (mix << 2) ^ ((-2) * 2);
-                }
-                if ((4 >> 4) < (item ^ item))
-                {
-                    break;
-                }
+                rate = rate + ratio;
             }
-            if (mix < 2)
+            for (int i = 0; i < 8; i++)
             {
-                mix = mix + (mix - floor);
+                rate = (rate - ratio) + (double)(long)i;
             }
-            return mix % 65521;
+            return rate - ratio;
         }
 
         /// <summary>Hold a graph stats.</summary>
