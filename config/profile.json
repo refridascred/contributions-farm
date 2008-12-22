@@ -1,18 +1,5 @@
 {
-  "context_size": {
-    "buffer_interval": true,
-    "hard_size_ms": 74.33,
-    "readonly": "green",
-    "flush_size_count": {
-      "min_ttl": 30,
-      "poll_timeout_ms": 95.13,
-      "retry_ttl": true,
-      "soft_ttl_pct": "green",
-      "soft_size_count": 36
-    },
-    "checks_ttl": 60,
-    "audit": "standard"
-  },
-  "strict": 26.24,
-  "token_ttl": "strict"
+  "stream_limit": "open",
+  "batch_limit_count": 100,
+  "session_capacity": "edge"
 }
