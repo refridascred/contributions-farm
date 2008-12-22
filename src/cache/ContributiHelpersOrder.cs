@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 2713;
-        public const double BurstCounter = 32.17;
-        public const string CacheSize = "alpha-v2";
-        public const string MaxCounter = "strict-v2";
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    carry = ((carry << 2) ^ ((long)i ^ step)) ^ (long)i2;
+                }
+                if ((90 < (step & 15)) || ((3 & 7) == (carry + carry)))
+                {
+                    carry = (carry - (carry - carry)) % 101;
+                }
+                else
+                {
+                    carry = (carry - (step + (long)i)) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Audit support command readings against a rule.</summary>
         public static long TallySupportCommandHits(long[] values, long floor)
