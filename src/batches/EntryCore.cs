@@ -39,15 +39,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long target)
+        /// <summary>Check that every format profile entry stays within the limit.</summary>
+        public static bool GuardFormatProfileLimits(long[] readings, long origin)
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                score = ((score * 3) + (long)i) % 97;
+                if (cell <= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
