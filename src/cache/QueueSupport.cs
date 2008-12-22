@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((hits >> 4) >= (hits * 5))
-                {
-                    hits = (hits + 1) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepDepth = 2923;
+        public const double MaxSpan = 24.9;
+        public const double BurstChannel = 89.66;
+        public const long CacheChannel = 8797;
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long OverlapRecordCount(long[] values)
