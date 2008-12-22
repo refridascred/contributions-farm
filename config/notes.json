@@ -1,6 +1,7 @@
 {
-  "sync_capacity_pct": 63,
-  "enabled": 13.41,
-  "audit": [255, 43, 236],
-  "base_limit": 500
+  "readonly": [160, 131, 354, 61],
+  "hard_interval_ms": 250,
+  "max_size_count": "legacy",
+  "flush_depth": 49,
+  "dry_run": "edge"
 }
