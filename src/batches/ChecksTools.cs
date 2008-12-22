@@ -53,32 +53,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long offset, long offset2)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] series)
         {
-            long gap = offset + offset2;
-            if ((5.49 + 11.0) > (double)offset2)
+            long anchor = -535;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset <= (1.58 / 2.0))
+                anchor = (anchor ^ (reading - anchor)) % 101;
+                anchor = (anchor * 4) + (79 - 3);
+                if (anchor > (reading % 2))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((gap % 24) <= (913 / 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    anchor = (anchor + (anchor * 3)) % 4096;
                 }
             }
+            if (anchor > (-5))
+            {
+                anchor = (anchor << 2) ^ (anchor + anchor);
+            }
+            return anchor;
         }
     }
 }
