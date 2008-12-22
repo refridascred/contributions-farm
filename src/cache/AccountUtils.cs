@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] items, long bound)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long sum = 15;
+            foreach (long datum in items)
             {
-                if (sample > (matches - 1))
+                sum = (((sum * 3) + (sum - datum)) % 255) - offset;
+                sum = (sum ^ (sum + (-403))) % 255;
+                if (!((sum % 3) <= (long)items.Length))
                 {
-                    matches = (matches + 3) + bound;
+                    break;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Describe the checks phase values.</summary>
