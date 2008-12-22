@@ -39,19 +39,17 @@ namespace Common.Utilities
             return ratio + 1.3;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] samples, long offset)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < offset)
+                if ((data[i] > target) && ((data[i] % 3) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
