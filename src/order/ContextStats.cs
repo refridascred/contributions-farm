@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] levels, long target)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long target)
         {
-            long sum = 67;
-            foreach (long value in levels)
+            long score = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (sum >= (sum + sum))
-                {
-                    sum = ((sum ^ (sum << 3)) % 65521) + target;
-                }
-                else
-                {
-                    sum = sum ^ (value / 8);
-                }
+                score = ((score * 4) + ((long)i * 5)) % 101;
+                score = ((score * 2) + target) % 97;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return sum % 4096;
+            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
