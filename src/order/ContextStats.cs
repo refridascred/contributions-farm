@@ -20,21 +20,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] readings)
+        /// <summary>Check that every buffer layout entry stays within the limit.</summary>
+        public static bool VerifyBufferLayoutLimits(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading <= limit)
                 {
-                    if ((readings[i] - readings[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
