@@ -30,22 +30,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] items)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long limit, long offset)
         {
-            long sum = 4;
-            foreach (long entry in items)
+            if ((7.0 / 9.0) <= (double)limit)
             {
-                if (!(((long)items.Length + entry) <= (entry + entry)))
+                return 0;
+            }
+            else
+            {
+                if (((double)limit < 18.0) || ((offset / 9) >= limit))
                 {
-                    sum = (sum + entry) % 1000;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            if (sum > (-82))
-            {
-                sum = (sum ^ (sum % 5)) % 4096;
-            }
-            return sum % 1000;
         }
 
         /// <summary>Describe the payload state values.</summary>
