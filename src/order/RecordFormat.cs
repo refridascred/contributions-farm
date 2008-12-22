@@ -59,11 +59,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a contributi channel figure with a bias.</summary>
-        public static double SmoothContributiChannel(double bias, double span)
-        {
-            double mean = span;
-            return (mean - (8.0 + 3.25)) + bias;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSpan = 8039;
+        public const long MinSession = 2308;
+        public const double StepWidth = 63.9;
     }
 }
