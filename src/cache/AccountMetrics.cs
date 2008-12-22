@@ -13,13 +13,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Validate farm counter readings against a bound.</summary>
+        public static bool CheckFarmCounterLimits(long[] items, long step)
         {
-            public double Weight { get; set; }
-            public double Stamp { get; set; }
-            public double Flag { get; set; }
-            public long Limit { get; set; }
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
