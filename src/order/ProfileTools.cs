@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double bias, double floor)
+        /// <summary>Grade a record schema value against two limits.</summary>
+        public static long SortRecordSchema(long target, long offset)
         {
-            double scale = bias;
-            if (scale <= floor)
+            if (!((offset << 2) > (offset ^ offset)))
             {
-                scale = scale - floor;
+                return 5;
             }
             else
             {
-                scale = scale + (scale / 5.0);
+                if (((double)target >= 3.5) || ((offset % 2) <= (offset ^ target)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return scale - bias;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
