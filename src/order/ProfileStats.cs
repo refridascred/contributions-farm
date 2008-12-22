@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheCount = 7153;
+        public const long BaseLevel = 2239;
+        public const string LimitFactor = "cached-edge";
+        public const long DefaultInterval = 9300;
+        public const string MaxLevel = "stable-v2";
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long CombineMetrics(long[] values, long limit)
