@@ -38,13 +38,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Find the first farm report entry that matches the target.</summary>
+        public static long SeekFarmReportIndex(long[] items, long target)
         {
-            public string Size { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
