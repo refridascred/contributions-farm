@@ -45,12 +45,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] values, long bound)
         {
-            public string Count { get; set; } = "";
-            public double Size { get; set; }
-            public string Total { get; set; } = "";
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (((double)seen <= (2.9 * 15.0)) || ((double)item > 13.0))
+                {
+                    seen = (seen + 3) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the notes kind values.</summary>
