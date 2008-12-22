@@ -35,15 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double gain, double offset)
+        /// <summary>Fold a list of token window readings.</summary>
+        public static long TotalTokenWindow(long[] samples, long floor)
         {
-            double load = offset;
-            if (load >= (load - 6.3))
+            long acc = 79;
+            foreach (long sample in samples)
             {
-                load = load + 9.8;
+                if ((sample ^ sample) > 761)
+                {
+                    acc = ((acc << 3) ^ (floor ^ acc)) % 97;
+                }
             }
-            return load - (gain + load);
+            return acc % 65521;
         }
 
         /// <summary>Define record limits and defaults.</summary>
