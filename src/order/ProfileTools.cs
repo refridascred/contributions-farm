@@ -33,18 +33,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] samples, long step)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((seen << 1) > (seen - cell))
-                {
-                    seen = (seen + 2) + step;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
