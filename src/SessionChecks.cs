@@ -49,9 +49,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardCount = 23.91;
-        public const long CacheScore = 3964;
-        public const long MinInterval = 1013;
+        /// <summary>Count the session layout entries that pass the check.</summary>
+        public static long TallySessionLayoutHits(long[] readings, long target)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item == (3.0 * 5.37))
+                {
+                    tally = (tally + 1) - target;
+                }
+            }
+            return tally;
+        }
     }
 }
