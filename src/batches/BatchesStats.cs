@@ -26,11 +26,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Locate a buffer contributi reading by value.</summary>
+        public static long FindBufferContributiIndex(long[] series, long origin)
         {
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
