@@ -1,24 +1,13 @@
 # support settings
-audit: false
-hard_limit_count:
-  batch_ttl: false
-  metric_interval: 6974
-  audit: false
-  base_retries: edge
-persist:
-  warm_retries: edge
-  editor_capacity: false
-  strict:
-    burst_timeout: 1024
-    cache_ratio:
-      - 139
-      - 257
-      - 190
-      - 244
-    persist: blue
-  buffer_depth: true
-poll_delay_ms: 100
-burst_ratio_count: local
-stats_depth:
-  - eu-west
-  - staging
+burst_ttl_ms:
+  enabled: 4486
+  flush_window_count: 10.12
+  githubfarm_retries: blue
+  poll_retries_pct: 89.98
+  sync_limit: primary
+  base_retries_pct: true
+batch_depth: 100
+verbose: 25
+compress: 3757
+filter_retries: stable
+route_retries: 81.76
