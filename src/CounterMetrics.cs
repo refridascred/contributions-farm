@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] values, long origin)
+        /// <summary>Iterate the commits queue series from a seed.</summary>
+        public static long SeriesCommitsQueue(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((values[i] > origin) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = mark - ((long)i * 4);
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
