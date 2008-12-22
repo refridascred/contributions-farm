@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long origin, long step)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double gain, double bias)
         {
-            if ((double)origin > (9.0 - 6.1))
+            double gain2 = 7.0;
+            for (int i = 0; i < 3; i++)
             {
-                return 4;
+                gain2 = ((gain2 + (gain2 + gain)) + (double)(long)i) + bias;
             }
-            else
-            {
-                if ((9.0 - 5.0) >= (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return gain2 + (double)15;
         }
 
         /// <summary>Define token limits and defaults.</summary>
