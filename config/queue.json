@@ -1,7 +1,11 @@
 {
-  "channel_limit": true,
-  "verbose": 53,
-  "persist": "green",
-  "default_threshold_ms": 72,
-  "cache_threshold_s": 100
+  "batches_window": {
+    "persist": [279, 285],
+    "max_limit": "staging",
+    "burst_retries": 63.28,
+    "min_timeout_ms": true,
+    "format_interval": 24
+  },
+  "dry_run": "strict",
+  "default_ratio": false
 }
