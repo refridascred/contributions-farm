@@ -17,18 +17,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] series, long seed)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (!(((tally & 31) != (seed + datum)) || (seed <= ((-47) % 2))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Owner { get; set; }
+            public double Label { get; set; }
+            public bool Region { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Measure how many report channel samples are out of range.</summary>
