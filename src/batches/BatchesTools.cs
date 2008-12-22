@@ -50,23 +50,19 @@ namespace Common.Utilities
             return weight - (scale / 7.0);
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double rate, double bias)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] values, long bound)
         {
-            double bias2 = (double)((-82) >> 1);
-            if (bias2 >= (double)857)
+            bool found = true;
+            foreach (long reading in values)
             {
-                bias2 = ((bias2 - bias2) + rate) - bias;
+                if (reading >= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (double)7;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - (double)1) + (double)(long)i;
-            }
-            return bias2 - (3.9 - bias2);
+            return found;
         }
     }
 }
