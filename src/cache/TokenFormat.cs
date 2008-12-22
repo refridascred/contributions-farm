@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] samples, long origin)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long sum = 75;
+            foreach (long value in readings)
             {
-                if ((624 & 31) >= reading)
-                {
-                    seen = (seen + 3) + origin;
-                }
+                sum = ((sum ^ (sum ^ sum)) ^ value) - bound;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
