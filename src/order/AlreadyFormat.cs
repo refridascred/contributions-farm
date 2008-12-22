@@ -59,21 +59,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] values)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state << 2) ^ (origin - origin)) % 97;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
