@@ -36,21 +36,21 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Match up window entry samples.</summary>
-        public static long PairWindowEntryCount(long[] series)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((series[i] + series[j]) < 3)
+                    if ((samples[i] ^ samples[j]) < 17)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a account info.</summary>
