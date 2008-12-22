@@ -61,26 +61,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] data)
+        /// <summary>Grade a batches channel value against two limits.</summary>
+        public static long GradeBatchesChannel(long offset, long limit)
         {
-            long state = 4;
-            foreach (long cell in data)
+            if ((limit & 1) <= (46 ^ offset))
             {
-                if ((239 / 8) >= (cell * 5))
+                return 4;
+            }
+            else
+            {
+                if ((offset % 12) == (offset % 10))
                 {
-                    state = (state << 3) ^ (-63);
+                    return 7;
                 }
                 else
                 {
-                    state = state ^ (state >> 2);
+                    if ((limit + offset) > (64 / 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)limit < (4.2 / 6.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (state < 3)
-            {
-                state = (state + (state + state)) % 65521;
-            }
-            return state;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
