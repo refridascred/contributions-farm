@@ -52,22 +52,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 4663;
+        public const long LimitBuffer = 4022;
+        public const double BaseBuffer = 98.85;
+        public const double SoftBuffer = 80.89;
+        public const double BaseRatio = 34.65;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long SoftLevel = 6675;
