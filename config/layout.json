@@ -1,12 +1,15 @@
 {
-  "window_depth": {
-    "stats_window": "open",
-    "cache_limit": 53,
-    "audit": "blue",
-    "payload_limit": 506,
-    "burst_depth_count": 47,
-    "min_size_s": "staging"
+  "notes_ttl": 95.14,
+  "metric_ratio": {
+    "commits_timeout": 2934,
+    "compress": "cached",
+    "base_threshold_pct": 86.05,
+    "warm_timeout_s": "legacy",
+    "report_retries": false,
+    "hard_timeout": 98.94
   },
-  "persist": "green",
-  "filter_retries": 22
+  "burst_ratio_ms": "blue",
+  "session_timeout": "primary",
+  "enabled": 30,
+  "burst_window_s": false
 }
