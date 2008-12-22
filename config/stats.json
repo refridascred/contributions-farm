@@ -1,20 +1,12 @@
 {
-  "min_size_s": "blue",
-  "audit": 5848,
-  "channel_timeout": {
-    "min_capacity_s": "fallback",
-    "already_ratio": 2531,
-    "metrics_size": {
-      "poll_window_s": "cached",
-      "warm_size": 597,
-      "warm_timeout": "blue"
-    },
-    "poll_limit": 9420,
-    "idle_depth_count": {
-      "audit": false,
-      "tools_threshold": "blue",
-      "batch_timeout_pct": 1506
-    },
-    "default_ttl": true
-  }
+  "cluster_size": {
+    "batch_capacity_s": [234, 97, 465],
+    "contributi_timeout": false,
+    "burst_limit_s": 100,
+    "persist": 9951,
+    "max_timeout_ms": 9408,
+    "soft_size_count": [429, 38, 282]
+  },
+  "default_size_pct": 100,
+  "burst_capacity": 9474
 }
