@@ -1,8 +1,9 @@
-id,owner,token,active
-1,699,69.15,935
-2,233,358,110
-3,green,588,53.06
-4,41.0,578,open
-5,765,979,57.16
-6,open,49.38,cached
-7,281,local,eu-west
+id,rank,token,active
+1,local,12.78,open
+2,blue,primary,stable
+3,91.31,986,eu-west
+4,92.48,413,standard
+5,39.69,356,open
+6,stable,168,95
+7,58.38,eu-west,edge
+8,82,legacy,8.7
