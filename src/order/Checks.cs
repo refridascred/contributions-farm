@@ -28,17 +28,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] levels, long step)
+        /// <summary>Count the graph layout entries that pass the check.</summary>
+        public static long MeasureGraphLayoutHits(long[] levels, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((levels[i] < step) && ((levels[i] % 5) != 0))
+                if ((entry ^ entry) > seen)
                 {
-                    return (long)i;
+                    seen = (seen + 3) + seed;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
