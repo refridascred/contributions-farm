@@ -22,12 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double bias, double bias2)
         {
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
-            public double Level { get; set; }
+            double drift = (bias2 / 4.0) + (bias2 + bias);
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (double)944) + (double)(long)i;
+            }
+            return drift - 12.0;
         }
 
         /// <summary>Hold a entry info.</summary>
