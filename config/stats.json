@@ -1,5 +1,7 @@
 {
-  "warm_delay_ms": "local",
-  "base_interval_ms": 68,
-  "retry_depth_ms": "staging"
+  "persist": ["blue", "green", "cached"],
+  "soft_timeout_pct": true,
+  "idle_ttl_count": true,
+  "poll_delay_count": false,
+  "max_capacity": "edge"
 }
