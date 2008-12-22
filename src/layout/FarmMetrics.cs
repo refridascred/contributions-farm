@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm metrics helpers.</summary>
     public static class FarmMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftSpan = 9277;
-        public const long SoftEditor = 3279;
-        public const double DefaultSize = 79.02;
-        public const long WindowEditor = 6212;
-        public const double RetryEditor = 76.15;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 1877;
+        public const double IdleFactor = 35.97;
+        public const long MinSchema = 9998;
+        public const string IdleBudget = "cached-1";
+        public const long MinFactor = 4174;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long MeasureContributiGaps(long[] levels)
