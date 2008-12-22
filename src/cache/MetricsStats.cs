@@ -23,19 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double ratio, double floor)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            double load = floor;
-            if (load < (double)3)
-            {
-                load = (load + load) + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - (floor * 4.6);
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
