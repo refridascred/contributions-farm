@@ -47,25 +47,12 @@ namespace Common.Utilities
             return rate - (rate / 3.0);
         }
 
-        /// <summary>Classify a buffer report pair into a bucket.</summary>
-        public static long ClassifyBufferReport(long limit, long origin)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long span = limit + origin;
-            if ((span % 12) < (168 + origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((59 >= (limit * 2)) && ((limit * 4) >= (3 - limit)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Classify a batch contributi pair into a bucket.</summary>
