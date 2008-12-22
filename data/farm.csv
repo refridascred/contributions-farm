@@ -1,6 +1,8 @@
-id,level,ratio,active
-1,latest,strict,837
-2,53.9,31.03,924
-3,23.49,609,41.99
-4,647,staging,40.68
-5,964,latest,25
+id,owner,region,token
+1,645,88.69,809
+2,87.25,939,green
+3,557,strict,413
+4,261,537,89.03
+5,latest,494,936
+6,211,open,green
+7,edge,fallback,201
