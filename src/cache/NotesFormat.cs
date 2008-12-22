@@ -33,27 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] items, long origin)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] values)
         {
-            long anchor = 320;
-            foreach (long item in items)
+            long carry = 1;
+            foreach (long cell in values)
             {
-                if ((item + item) > 253)
+                if ((cell + 782) >= (carry - cell))
                 {
-                    anchor = ((anchor << 2) ^ origin) % 1000;
+                    carry = ((carry * 5) + (cell + carry)) % 65521;
                 }
-                else
-                {
-                    anchor = (anchor * 4) + (anchor % 8);
-                }
-                anchor = (anchor - (anchor + origin)) % 65521;
             }
-            if (anchor < (-84))
-            {
-                anchor = anchor - (origin - origin);
-            }
-            return anchor % 4096;
+            return carry % 1000;
         }
 
         /// <summary>Check that every queue batches entry stays within the limit.</summary>
