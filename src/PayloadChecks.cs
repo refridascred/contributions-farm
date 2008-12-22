@@ -19,22 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] samples)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long mix = -889;
-            foreach (long entry in samples)
-            {
-                if ((entry >> 5) <= (entry & 127))
-                {
-                    mix = (mix ^ (entry - (-7))) % 97;
-                }
-            }
-            if (mix > 77)
-            {
-                mix = (mix + (mix / 2)) % 1000;
-            }
-            return mix;
+            public double Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the payload kind values.</summary>
