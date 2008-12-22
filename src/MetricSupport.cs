@@ -16,15 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] items, long step)
+        /// <summary>Check that every githubfarm filter entry stays within the limit.</summary>
+        public static bool CheckGithubfarmFilterLimits(long[] items, long floor)
         {
-            long sum = 3;
+            bool found = true;
             foreach (long value in items)
             {
-                sum = (((sum - 16) % 65521) + value) + step;
+                if (value >= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Project the next cluster value.</summary>
