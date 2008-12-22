@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 8335;
-        public const long BatchContributi = 4009;
-        public const string LimitContributi = "staging-v2";
-        public const long WindowRatio = 4912;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] series, long seed)
+        {
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Locate a stream schema reading by value.</summary>
         public static long LookupStreamSchemaIndex(long[] values, long seed)
