@@ -30,21 +30,13 @@ namespace Common.Utilities
         public const string BatchLevel = "open-v2";
         public const long SoftLevel = 1118;
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] series)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Flag { get; set; }
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
