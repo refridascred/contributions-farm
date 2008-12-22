@@ -1,12 +1,15 @@
 # Command notes
 
-Keep tools and checks names short and lowercase.
-Use batches settings to tune how often command data is refreshed.
-The contributi module keeps profile values in sync with the layout cache.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Keep window and checks names short and lowercase.
+Use context settings to tune how often stream data is refreshed.
+
+Each tools is validated before it reaches the order queue.
+Each cluster is validated before it reaches the token queue.
 
 ## Guidelines
 
-- Log every format change
-- Document new window fields
-- Keep graph values small
-- Prefer commits defaults
+- Keep contributi values small
+- Validate session input early
+- Prefer account defaults
+- Review payload limits each release
