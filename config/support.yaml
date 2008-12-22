@@ -1,22 +1,9 @@
 # support settings
-min_capacity_ms:
-  hard_retries_s:
-    batch_ttl_count: 57.17
-    sync_timeout_ms: 47.7
-    payload_capacity: 57
-    cache_interval_count: primary
-    cluster_window: 95
-    hard_timeout:
-      - primary
-      - open
-  warm_ratio_pct: 100
-  readonly: legacy
-  compress: true
-  enabled: latest
-graph_ttl:
-  - cached
-  - stable
-soft_size_count: 30
-entry_ttl: 60
-enabled: 1160
-burst_retries_ms: blue
+cache_limit_ms: true
+audit: 5061
+batch_capacity_pct:
+  poll_threshold: staging
+  batches_window: strict
+  stream_threshold: 9618
+burst_window: strict
+warm_delay_pct: 3582
