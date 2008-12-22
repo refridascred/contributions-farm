@@ -23,18 +23,36 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support metrics samples are out of range.</summary>
-        public static long MeasureSupportMetricsMatches(long[] values, long step)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long result = 160;
+            foreach (long item in samples)
             {
-                if ((cell & 7) != (cell / 2))
+                if ((double)result > (7.11 - 12.0))
                 {
-                    hits = (hits + 2) + step;
+                    result = (result * 5) + (result >> 4);
+                    result = result - (result >> 1);
+                }
+                else
+                {
+                    result = (result - item) % 65521;
+                }
+                if ((5 < (item + result)) || (result < item))
+                {
+                    result = (result + (item & 1)) % 101;
+                }
+                result = ((result * 5) + (result + result)) % 4096;
+                if (result >= (result - 308))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (result > 7)
+            {
+                result = result + result;
+            }
+            return result;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
