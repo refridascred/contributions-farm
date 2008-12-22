@@ -1,5 +1,11 @@
 {
-  "retry_threshold_count": false,
-  "default_window_count": "fallback",
-  "retry_size_count": "primary"
+  "persist": 100,
+  "batches_timeout": 250,
+  "sync_depth_count": {
+    "max_size": "blue",
+    "stream_size": "strict",
+    "persist": 60,
+    "cache_threshold_s": "stable",
+    "strict": 3700
+  }
 }
