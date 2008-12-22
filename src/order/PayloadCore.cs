@@ -12,12 +12,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double scale, double span)
-        {
-            double gain = (double)53;
-            return ((gain - (5.4 * 4.0)) + scale) + span;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 5476;
+        public const long WindowFactor = 6049;
+        public const string DefaultRatio = "cached-v2";
+        public const string BaseSize = "staging";
 
         /// <summary>Match up editor samples.</summary>
         public static long MatchEditorCount(long[] data)
