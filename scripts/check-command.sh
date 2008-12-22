@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=324
-log "limit is ${COMMAND_LIMIT}"
-
-for item in legacy latest eu-west open; do
+for item in strict green staging; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=397
+log "limit is ${COMMAND_LIMIT}"
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
