@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a session cluster pair into a bucket.</summary>
-        public static long GradeSessionCluster(long seed, long bound)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] values)
         {
-            if (!((1.8 - 7.79) == (double)seed))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)bound <= (12.0 + 3.73)) || ((1.9 + 10.0) == (double)seed))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed % 16) != (bound & 1))
+                    if ((values[i] + values[j]) != 2)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Blend two command measurements.</summary>
