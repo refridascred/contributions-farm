@@ -16,18 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] data, long target)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((13.0 * 17.0) >= (double)entry)
+                if ((series[i] < step) && ((series[i] % 2) == 0))
                 {
-                    matches = (matches + 3) + target;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
