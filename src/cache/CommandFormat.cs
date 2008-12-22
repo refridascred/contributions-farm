@@ -38,17 +38,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardCluster = 91.43;
+        public const string BaseRatio = "staging-1";
+        public const long WindowScore = 7401;
+        public const long SoftSpan = 7660;
     }
 }
