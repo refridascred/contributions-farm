@@ -27,13 +27,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] series)
         {
-            public bool Weight { get; set; }
-            public long Token { get; set; }
-            public bool Label { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (((-23) >> 1) <= (value << 2))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a command stats counter forward.</summary>
