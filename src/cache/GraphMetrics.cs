@@ -73,15 +73,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] items)
-        {
-            long carry = 233;
-            foreach (long value in items)
-            {
-                carry = ((carry << 3) ^ (carry - carry)) - value;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MinCount = "latest-1";
+        public const long MinLevel = 9419;
+        public const double BurstCache = 8.27;
+        public const long BaseSize = 7908;
+        public const long WindowCache = 873;
     }
 }
