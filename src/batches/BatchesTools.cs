@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 289;
-        public const long StepAlready = 600;
-        public const long SoftAlready = 6887;
-        public const double HardAlready = 35.6;
-        public const long DefaultBudget = 371;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                result = (result - (long)i) % 1000;
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long DefaultTimeout = 1824;
