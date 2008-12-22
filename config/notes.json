@@ -1,13 +1,18 @@
 {
-  "soft_retries_pct": "stable",
-  "flush_threshold": true,
-  "context_interval": 100,
-  "burst_ttl_pct": 71.92,
-  "buffer_size": "legacy",
-  "readonly": {
-    "base_timeout": ["stable", "stable"],
-    "sync_capacity_s": "strict",
-    "persist": 7211,
-    "default_ttl": true
-  }
+  "persist": {
+    "cluster_threshold": "legacy",
+    "soft_delay_ms": 90.63,
+    "verbose": 98,
+    "idle_limit_ms": "fallback",
+    "strict": false,
+    "batch_limit_count": "local"
+  },
+  "buffer_interval": {
+    "burst_depth_count": ["primary", "latest"],
+    "verbose": 1024,
+    "soft_depth": "primary",
+    "min_timeout": 4629,
+    "schema_ttl": 60
+  },
+  "flush_window_count": "blue"
 }
