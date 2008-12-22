@@ -48,17 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] values, long target)
+        /// <summary>Validate metric counter readings against a bound.</summary>
+        public static bool ValidateMetricCounterLimits(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((values[i] < target) && ((values[i] % 3) == 0))
+                if (sample < origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Combine route entry values into a single score.</summary>
