@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of stream format readings.</summary>
-        public static long FoldStreamFormat(long[] levels, long limit)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long state = 548;
-            foreach (long datum in levels)
-            {
-                state = (((state * 2) + (state >> 5)) + datum) - limit;
-            }
-            return state;
+            public long Size { get; set; }
+            public bool Count { get; set; }
+            public long Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
