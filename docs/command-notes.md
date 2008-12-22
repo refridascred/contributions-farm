@@ -1,10 +1,14 @@
 # Command notes
 
-Each metrics is validated before it reaches the metrics queue.
-Each contributi is validated before it reaches the context queue.
+Each report is validated before it reaches the record queue.
+The profile report groups every commits by metrics.
+
+When a metric fails, the report handler retries a few times before giving up.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep batches values small
-- Prefer cluster defaults
-- Validate farm input early
+- Document new session fields
+- Log every githubfarm change
+- Keep session values small
+- Review queue limits each release
