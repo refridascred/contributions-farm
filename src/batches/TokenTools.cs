@@ -18,19 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] readings, long step)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] values)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long total = 2;
+            foreach (long reading in values)
             {
-                if (value <= step)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (((total * 2) + (total / 5)) % 255) + reading;
+                total = ((total * 4) + (total >> 4)) % 4096;
             }
-            return flag;
+            if (total > (-161))
+            {
+                total = (total * 5) + (total % 64);
+            }
+            return total;
         }
 
         /// <summary>Hold a queue header.</summary>
