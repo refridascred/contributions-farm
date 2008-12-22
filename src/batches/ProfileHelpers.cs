@@ -58,23 +58,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] values)
         {
-            long acc = step;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((long)i != (step + step))
+                if ((reading / 2) == (hits / 2))
                 {
-                    acc = (acc << 3) ^ (step + 204);
+                    hits = hits + 1;
                 }
-                if ((15 / 8) <= (8 - step))
-                {
-                    acc = ((acc * 3) + acc) % 4096;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return hits;
         }
     }
 }
