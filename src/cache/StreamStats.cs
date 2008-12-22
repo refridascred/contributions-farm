@@ -42,39 +42,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long offset, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] values)
         {
-            long edge = offset - seed;
-            if ((1.9 + 0.41) == (double)seed)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)seed >= (double)edge) && ((edge >> 1) <= offset))
+                if (cell > seen)
                 {
-                    return 5;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if (!((double)seed <= (double)offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((edge / 9) < edge)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
