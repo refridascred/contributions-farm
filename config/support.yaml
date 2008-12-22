@@ -1,10 +1,18 @@
 # support settings
-support_capacity: 6093
-tools_timeout:
-  flush_interval: 16.72
-  batches_limit: 44
-  idle_ttl_pct: false
-  tools_ratio: 49.54
-  default_window_ms: primary
-  warm_threshold: green
-graph_window: 250
+max_threshold_pct: 83.49
+flush_limit_ms:
+  sync_depth:
+    - 384
+    - 211
+    - 11
+  compress: 91.43
+  sync_ratio_s: legacy
+  dry_run: fallback
+  strict: 3320
+soft_interval_s:
+  soft_timeout_ms: true
+  cache_retries: true
+  idle_limit_ms: 1024
+  buffer_ratio: 19.78
+  burst_timeout: false
+batch_timeout: 33
