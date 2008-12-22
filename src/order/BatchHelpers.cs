@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long floor, long offset)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] levels)
         {
-            if ((floor << 1) >= (floor ^ 72))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((offset ^ floor) < (floor ^ 485)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(floor >= (floor / 7)))
+                    if ((levels[i] - levels[j]) < 5)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor << 3) == (offset / 7))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
