@@ -43,22 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] items, long floor)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (floor >= seen)
-                {
-                    seen = (seen + 2) - sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public double Offset { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
