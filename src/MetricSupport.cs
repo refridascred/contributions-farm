@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine queue metric values into a single score.</summary>
-        public static long DigestQueueMetric(long[] samples)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long mark = 523;
-            foreach (long value in samples)
-            {
-                mark = mark - (mark - value);
-            }
-            return mark;
+            Locked,
+            Queued,
+            Dropped,
+            Done,
+            Retry,
         }
 
         /// <summary>Check that every githubfarm filter entry stays within the limit.</summary>
