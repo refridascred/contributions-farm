@@ -16,12 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string RetryMetrics = "alpha-1";
-        public const string DefaultMetrics = "strict-edge";
-        public const string CacheMetrics = "open-v2";
-        public const long SoftLevel = 9493;
-        public const string IdleMetrics = "latest-1";
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((1.17 + 9.25) > (double)tally)
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long CountFilterGaps(long[] levels)
