@@ -24,13 +24,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            Dropped,
-            Queued,
             Active,
-            Ready,
+            Closed,
+            Synced,
+            Retry,
         }
 
         /// <summary>Find the first commits channel entry that matches the target.</summary>
