@@ -41,17 +41,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next stats commits value from a seed.</summary>
-        public static long StepStatsCommits(long step)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long carry = step;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = (carry - (5 - step)) % 1000;
-                carry = (carry - (long)i) % 65521;
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public bool Level { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
