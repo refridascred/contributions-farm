@@ -18,11 +18,21 @@ namespace Common.Utilities
         public const double IdleReport = 45.54;
         public const long BatchReport = 3000;
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] data)
         {
-            public bool Count { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
