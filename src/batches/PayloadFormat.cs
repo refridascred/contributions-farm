@@ -22,11 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchWidth = 6241;
-        public const long BatchFormat = 94;
-        public const string StepFormat = "fallback-edge";
-        public const long HardFormat = 7934;
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Accumulate context queue samples.</summary>
         public static long ScoreContextQueue(long[] data, long offset)
