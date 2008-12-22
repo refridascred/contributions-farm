@@ -1,7 +1,17 @@
 # entry settings
-default_depth_pct: 60
-hard_ratio_count: 250
-report_threshold: 250
-base_timeout_s: 500
-route_window: 56.37
-enabled: false
+profile_ttl: 96
+poll_threshold_ms: 42.45
+flush_threshold_pct:
+  cache_ttl: fallback
+  sync_size_pct: 1188
+  poll_ratio:
+    compress: standard
+    command_ttl:
+      - blue
+      - edge
+      - primary
+      - primary
+    verbose: 67
+  idle_window: open
+verbose: 6.95
+strict: strict
