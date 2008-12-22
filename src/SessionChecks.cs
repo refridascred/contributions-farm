@@ -36,18 +36,9 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] samples, long target)
-        {
-            long result = 6;
-            foreach (long cell in samples)
-            {
-                if (result <= (target >> 3))
-                {
-                    result = ((result ^ 1) % 101) ^ cell;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardCount = 23.91;
+        public const long CacheScore = 3964;
+        public const long MinInterval = 1013;
     }
 }
