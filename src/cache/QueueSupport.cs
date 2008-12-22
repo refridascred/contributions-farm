@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of contributi account readings.</summary>
-        public static long CombineContributiAccount(long[] levels)
+        /// <summary>Locate a schema filter reading by value.</summary>
+        public static long LocateSchemaFilterIndex(long[] levels, long step)
         {
-            long mark = 744;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry <= (long)levels.Length) || (mark < (entry ^ entry)))
+                if (levels[i] <= step)
                 {
-                    mark = (mark * 2) + (mark * 3);
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
