@@ -53,15 +53,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] samples)
         {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if ((double)sample == (double)22)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
