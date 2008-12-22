@@ -25,21 +25,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] samples)
+        /// <summary>Digest a series of order cluster entries.</summary>
+        public static long WeighOrderCluster(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = -714;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((long)data.Length * 3) == (5 - 1))
                 {
-                    if ((samples[i] - samples[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    mark = mark - mark;
+                    mark = ((mark * 5) + (sample - mark)) % 1000;
+                    break;
+                }
+                mark = mark + mark;
+                if ((sample >= (sample % 100)) && ((limit & 63) != (limit * 3)))
+                {
+                    break;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the cluster status values.</summary>
