@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] levels, long limit)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long bound)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long total = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry != limit)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (total * 5) + ((long)i ^ (long)i);
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Describe the graph mode values.</summary>
