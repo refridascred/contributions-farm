@@ -34,21 +34,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] levels)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = ((total * 3) + (origin & 63)) % 101;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
     }
 }
