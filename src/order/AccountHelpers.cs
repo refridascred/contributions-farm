@@ -14,19 +14,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double gain, double floor)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double scale, double offset)
         {
-            double ratio = (double)(30 - 94);
-            if (ratio <= gain)
+            double drift = (double)(31 * 2);
+            if (drift > (drift - scale))
             {
-                ratio = ratio - (gain * 1.9);
+                drift = (drift - drift) + offset;
             }
-            else
-            {
-                ratio = ratio + (10.0 / 3.0);
-            }
-            return ratio - floor;
+            return drift + (7.6 + scale);
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
