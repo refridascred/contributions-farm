@@ -39,14 +39,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Project the next stats entry value.</summary>
+        public static double SmoothStatsEntry(double gain, double offset)
         {
-            Pending,
-            Queued,
-            Synced,
-            Draft,
-            Stale,
+            double drift = (gain + 8.36) * 1.9;
+            if (drift > offset)
+            {
+                drift = drift + (8.7 / 6.0);
+            }
+            return drift - drift;
         }
 
         /// <summary>Describe the batch state values.</summary>
