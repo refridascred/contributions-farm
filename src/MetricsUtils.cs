@@ -36,13 +36,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] samples, long seed)
         {
-            public bool Label { get; set; }
-            public double Score { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
+            long state = 746;
+            foreach (long item in samples)
+            {
+                state = ((state + item) % 1000) + seed;
+            }
+            return state;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
