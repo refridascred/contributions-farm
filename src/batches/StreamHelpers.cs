@@ -65,18 +65,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] series, long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((offset >> 3) < offset)
+                if (seen >= floor)
                 {
-                    matches = (matches + 3) ^ sample;
+                    seen = (seen + 3) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
