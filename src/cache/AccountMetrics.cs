@@ -76,18 +76,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the payload entry entries that pass the check.</summary>
-        public static long CountPayloadEntryOutliers(long[] values)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long sum = 7;
+            foreach (long datum in series)
             {
-                if ((hits + reading) == (reading / 8))
+                if ((double)datum != (2.0 / 7.0))
                 {
-                    hits = hits + 2;
+                    sum = (sum - (datum + target)) % 255;
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 65521;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
