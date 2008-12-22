@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] items, long target)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((target >> 2) == (value >> 3))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
