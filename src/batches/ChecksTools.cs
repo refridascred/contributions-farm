@@ -42,15 +42,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Retry,
-            Failed,
-            Pending,
-            Stale,
-            Active,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheScore = 56.03;
+        public const long WindowInterval = 2452;
+        public const long MinSpan = 4156;
+        public const long RetrySupport = 9813;
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long SortGithubfarm(long seed, long offset)
