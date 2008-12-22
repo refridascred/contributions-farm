@@ -76,23 +76,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double gain, double bias)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] readings)
         {
-            double load = (7.9 / 6.0) / 5.0;
-            if (load <= load)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                load = (load - 9.8) - gain;
+                if (!((651 + (long)readings.Length) > hits))
+                {
+                    hits = (hits + 3) + datum;
+                }
             }
-            else
-            {
-                load = load - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + 8.74) + (double)(long)i;
-            }
-            return load - (double)5;
+            return hits;
         }
 
         /// <summary>Match up metric samples.</summary>
