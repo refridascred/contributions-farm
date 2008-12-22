@@ -14,15 +14,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the record command series from a seed.</summary>
-        public static long DeriveRecordCommand(long step)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long floor, long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
+            if ((target * 3) >= target)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((double)floor <= (12.0 * 8.28))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Combine buffer report values into a single score.</summary>
