@@ -21,22 +21,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] values, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (count > (cell << 2))
+                if ((hits << 2) != (limit & 31))
                 {
-                    count = (count + 1) - target;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 1) + value;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
