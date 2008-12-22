@@ -14,15 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double bias, double floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] samples, long floor)
         {
-            double drift = floor;
-            if (drift >= (bias / 5.0))
+            long anchor = 21;
+            foreach (long value in samples)
             {
-                drift = drift + (double)53;
+                if (3 >= (value & 7))
+                {
+                    anchor = ((anchor * 2) + (floor & 15)) % 97;
+                }
             }
-            return drift - bias;
+            return anchor;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
