@@ -68,22 +68,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit buffer checks readings against a rule.</summary>
-        public static long AuditBufferChecksHits(long[] levels)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((hits - 5) < (datum ^ 18))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Locked,
+            Paused,
         }
     }
 }
