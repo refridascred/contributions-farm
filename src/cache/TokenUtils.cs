@@ -34,10 +34,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 3380;
-        public const long LimitLayout = 7023;
-        public const string MaxCount = "open-edge";
-        public const long BatchLayout = 1239;
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] items)
+        {
+            long acc = 0;
+            foreach (long value in items)
+            {
+                if ((32 % 8) <= acc)
+                {
+                    acc = (acc + (value / 6)) % 4096;
+                }
+            }
+            return acc;
+        }
     }
 }
