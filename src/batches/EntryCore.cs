@@ -32,20 +32,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] values)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long sum = 55;
-            foreach (long cell in values)
-            {
-                if ((double)cell <= (6.0 / 6.0))
-                {
-                    sum = sum - (sum - 37);
-                    break;
-                }
-                sum = (sum ^ (cell + (long)values.Length)) % 1000;
-            }
-            return sum % 97;
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
     }
 }
