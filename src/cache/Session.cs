@@ -34,9 +34,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitOrder = 90.25;
-        public const string LimitScore = "primary-edge";
-        public const long MinOrder = 5721;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] values, long target)
+        {
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
