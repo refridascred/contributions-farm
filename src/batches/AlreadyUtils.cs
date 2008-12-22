@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long bound, long target)
+        /// <summary>Measure how many batches batch samples are out of range.</summary>
+        public static long CountBatchesBatchMatches(long[] readings)
         {
-            if (bound <= (2 - target))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (target < (bound - bound))
+                if ((reading & 3) == (count >> 4))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a report reading.</summary>
