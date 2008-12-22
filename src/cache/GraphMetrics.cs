@@ -31,13 +31,10 @@ namespace Common.Utilities
         public const long CacheInterval = 7872;
         public const long MaxSchema = 9822;
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public double Token { get; set; }
-            public long Total { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 8729;
+        public const long RetryChannel = 978;
+        public const string MaxSize = "primary-v2";
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
