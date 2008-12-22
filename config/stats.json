@@ -1,6 +1,10 @@
 {
-  "hard_ratio": 18.72,
-  "batch_window_count": ["green", "edge", "green"],
-  "max_size": true,
-  "poll_window": "edge"
+  "warm_capacity": {
+    "hard_depth_count": 5445,
+    "retry_size_ms": "local",
+    "session_ratio": false,
+    "batch_limit_ms": 500
+  },
+  "commits_interval": 59,
+  "burst_delay": 57.12
 }
