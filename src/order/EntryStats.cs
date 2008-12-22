@@ -45,23 +45,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] data, long origin)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double scale, double floor)
         {
-            long carry = 9;
-            foreach (long entry in data)
+            double load = (floor / 6.0) + (0.93 - floor);
+            if (load <= load)
             {
-                carry = carry + 756;
-                if ((origin & 127) > (origin + origin))
-                {
-                    carry = carry + (origin - entry);
-                }
-                else
-                {
-                    carry = (carry - (origin / 4)) % 255;
-                }
+                load = load - load;
             }
-            return carry % 97;
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + scale) + (double)(long)i;
+            }
+            return load - floor;
         }
     }
 }
