@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long floor, long floor2)
         {
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
+            long gap = floor + floor2;
+            if ((double)gap != (double)floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((floor >> 2) > floor2) && ((5.0 - 4.29) >= (double)gap))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((gap - gap) > (floor2 ^ floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor2 <= (gap / 2)) || ((double)990 < (double)gap))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
