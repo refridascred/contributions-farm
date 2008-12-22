@@ -33,13 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
+            Idle,
+            New,
+            Active,
+            Synced,
+            Paused,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
