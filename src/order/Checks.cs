@@ -32,16 +32,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long step)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] levels)
         {
-            long total = step;
-            for (int i = 0; i < 8; i++)
+            long result = 843;
+            foreach (long item in levels)
             {
-                total = (total + total) % 65521;
-                total = ((total * 2) + (long)i) % 97;
+                if ((double)item <= (5.9 / 3.0))
+                {
+                    result = ((result * 2) + ((long)levels.Length + result)) % 4096;
+                }
             }
-            return total;
+            return result % 97;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
