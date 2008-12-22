@@ -1,10 +1,8 @@
 # githubfarm settings
-flush_capacity_count: 4.16
-already_ttl:
-  layout_interval: edge
-  hard_window_count: cached
-  audit: 252
-  default_timeout_s: 30
-  max_capacity: 84.7
-sync_ratio: 13.06
-cache_ttl: edge
+warm_size: staging
+hard_retries: 12.68
+sync_capacity:
+  checks_ttl: eu-west
+  support_capacity: 688
+  sync_ratio: staging
+verbose: false
