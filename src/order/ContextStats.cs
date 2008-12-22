@@ -28,13 +28,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] values, long floor)
         {
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
-            public string Size { get; set; } = "";
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < floor) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
