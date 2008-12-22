@@ -55,22 +55,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] values)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long mark = 69;
-            foreach (long cell in values)
-            {
-                if (!((double)cell < (double)mark))
-                {
-                    mark = mark - (cell * 2);
-                }
-                else
-                {
-                    mark = (mark * 2) + (740 ^ mark);
-                }
-            }
-            return mark;
+            Closed,
+            Queued,
+            Ready,
         }
 
         /// <summary>Rank token input into a small class.</summary>
