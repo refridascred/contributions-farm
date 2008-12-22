@@ -29,14 +29,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public string Ratio { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 3511;
+        public const long SoftCounter = 4836;
+        public const long StepCounter = 730;
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
