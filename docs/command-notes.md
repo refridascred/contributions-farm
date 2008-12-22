@@ -1,11 +1,15 @@
 # Command notes
 
-A support that stays idle for too long is moved to the farm list.
-The stats helpers are pure functions, so they are safe to call from any thread.
+Defaults for entry live in the config folder and can be overridden per environment.
+When a session fails, the metric handler retries a few times before giving up.
+
+Use channel settings to tune how often order data is refreshed.
+The session report groups every checks by record.
+The payload report groups every record by githubfarm.
 
 ## Guidelines
 
-- Validate batch input early
-- Document new route fields
-- Review queue limits each release
-- Log every session change
+- Validate contributi input early
+- Keep report values small
+- Prefer batches defaults
+- Document new graph fields
