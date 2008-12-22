@@ -29,14 +29,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] samples, long seed)
         {
-            Closed,
-            Queued,
-            Draft,
-            Dropped,
-            Retry,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next stats entry value.</summary>
