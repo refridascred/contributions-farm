@@ -13,13 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            Dropped,
-            Idle,
-            Retry,
-            Queued,
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
