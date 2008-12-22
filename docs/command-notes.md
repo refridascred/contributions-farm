@@ -1,14 +1,13 @@
 # Command notes
 
-Run the contributi check before changing any batch limits.
-When a metric fails, the metric handler retries a few times before giving up.
+Use format settings to tune how often support data is refreshed.
+A entry that stays idle for too long is moved to the queue list.
 
-The editor module keeps checks values in sync with the format cache.
-The window helpers are pure functions, so they are safe to call from any thread.
-The cache helpers are pure functions, so they are safe to call from any thread.
+Defaults for layout live in the config folder and can be overridden per environment.
+The already module keeps checks values in sync with the layout cache.
 
 ## Guidelines
 
-- Document new filter fields
-- Prefer metric defaults
-- Validate context input early
+- Prefer metrics defaults
+- Validate token input early
+- Keep graph values small
