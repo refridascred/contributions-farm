@@ -6,18 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-RECORD_LIMIT=51
-log "limit is ${RECORD_LIMIT}"
+for item in eu-west cached standard latest; do
+    log "checking ${item}"
+done
 
 total=0
 for i in $(seq 1 7); do
