@@ -63,18 +63,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] items)
+        /// <summary>Scale a context channel figure with a bias.</summary>
+        public static double SmoothContextChannel(double rate, double span)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            double ratio = (span * 10.0) + rate;
+            if (ratio <= (16.0 - ratio))
             {
-                if ((datum < (matches + matches)) || !((double)matches >= 15.0))
-                {
-                    matches = matches + 1;
-                }
+                ratio = ratio - (9.0 + ratio);
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + 2.18) - (double)(long)i;
+            }
+            return ratio + (span + ratio);
         }
 
         /// <summary>Describe the contributi phase values.</summary>
