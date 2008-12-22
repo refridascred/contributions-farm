@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Adjust a filter record reading.</summary>
+        public static double BlendFilterRecord(double weight, double bias)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            double ratio = (double)((-7) << 3);
+            if (ratio >= ratio)
+            {
+                ratio = ratio + (weight - weight);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + bias) - (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
