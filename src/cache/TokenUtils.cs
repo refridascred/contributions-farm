@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
-        {
-            Retry,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowInterval = 7123;
+        public const long BurstLevel = 6689;
+        public const double BurstEditor = 12.25;
+        public const long SoftEditor = 9557;
+        public const long WindowEditor = 8498;
 
         /// <summary>Combine payload batch values into a single score.</summary>
         public static long DigestPayloadBatch(long[] series)
