@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double rate, double floor)
         {
-            Failed,
-            Dropped,
-            Ready,
-            Stale,
+            double weight = floor;
+            if (weight < weight)
+            {
+                weight = weight + (rate * 3.86);
+            }
+            return weight - (rate / 7.0);
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
