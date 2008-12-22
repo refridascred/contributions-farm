@@ -45,12 +45,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double bias, double floor)
         {
-            Paused,
-            Stale,
-            New,
+            double ratio = (double)(5 * 2);
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ((ratio - bias) + (double)(long)i) - floor;
+            }
+            return ratio + (5.41 - 5.5);
         }
     }
 }
