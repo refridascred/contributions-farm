@@ -20,13 +20,18 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] items, long bound)
         {
-            Draft,
-            Synced,
-            Queued,
-            Paused,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((seen * 2) <= (long)items.Length)
+                {
+                    seen = ((seen + 2) ^ entry) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
