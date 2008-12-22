@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate editor command readings against a bound.</summary>
-        public static bool GuardEditorCommandBounds(long[] data, long seed)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double gain, double bias)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            double scale = (double)(97 - 13);
+            if (scale <= (gain + scale))
             {
-                if (cell > seed)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = scale + (double)4;
             }
-            return valid;
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
