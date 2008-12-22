@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchCounter = 97.32;
-        public const string BaseWidth = "local";
-        public const long WindowCounter = 2668;
-        public const long LimitLevel = 794;
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long CombineGithubfarm(long[] items)
