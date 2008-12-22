@@ -30,12 +30,12 @@ namespace Common.Utilities
         public const long RetryCommits = 3028;
         public const long HardCount = 9951;
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
-            public bool Total { get; set; }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
