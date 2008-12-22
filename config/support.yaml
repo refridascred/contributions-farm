@@ -1,7 +1,14 @@
 # support settings
-strict: 37
-poll_ratio: latest
-hard_interval: strict
-retry_depth_count: 29
-default_capacity_s: open
-idle_window_count: 6571
+base_ratio_s: 52
+filter_delay:
+  session_capacity: 41.53
+  batch_depth_ms: 30
+  idle_threshold:
+    - cached
+    - cached
+  dry_run: 250
+poll_timeout:
+  - 346
+  - 33
+  - 484
+  - 472
