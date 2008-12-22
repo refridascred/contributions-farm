@@ -30,14 +30,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long target, long bound)
         {
-            Stale,
-            Failed,
-            Paused,
-            Idle,
-            Queued,
+            if (target <= (752 ^ bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((bound << 3) <= (target - bound)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((2.2 * 20.0) < (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
