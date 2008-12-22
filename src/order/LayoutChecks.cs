@@ -36,19 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] series, long step)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double gain, double floor)
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double load = (12.0 + floor) * 17.0;
+            return (load + (floor / 9.0)) + gain;
         }
 
         /// <summary>Describe the graph level values.</summary>
