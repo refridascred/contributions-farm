@@ -1,12 +1,11 @@
 {
-  "cluster_size": {
-    "batch_capacity_s": [234, 97, 465],
-    "contributi_timeout": false,
-    "burst_limit_s": 100,
-    "persist": 9951,
-    "max_timeout_ms": 9408,
-    "soft_size_count": [429, 38, 282]
+  "format_ratio": true,
+  "batch_ttl": {
+    "compress": 9561,
+    "base_threshold": true,
+    "layout_depth": 85.64
   },
-  "default_size_pct": 100,
-  "burst_capacity": 9474
+  "compress": [179, 254, 449, 379],
+  "enabled": "latest",
+  "warm_timeout": 22.95
 }
