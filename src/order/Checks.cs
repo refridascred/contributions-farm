@@ -43,20 +43,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long step)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
-            {
-                long tally = total;
-                if ((double)tally != (1.77 - 9.7))
-                {
-                    tally = tally + step;
-                }
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
