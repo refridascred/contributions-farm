@@ -62,19 +62,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] readings, long limit)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] data, long offset)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (entry < limit)
+                if ((double)sample == (double)hits)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) + offset;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
