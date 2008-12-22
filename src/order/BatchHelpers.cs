@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] values, long limit)
         {
-            Idle,
-            Failed,
-            Draft,
+            long result = 21;
+            foreach (long item in values)
+            {
+                if (!((item & 7) >= item))
+                {
+                    result = result ^ (34 >> 5);
+                    result = (result + (item & 127)) % 4096;
+                }
+                result = result - limit;
+            }
+            return result % 1000;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
