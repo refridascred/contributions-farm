@@ -25,17 +25,17 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] samples, long seed)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
+                carry = carry ^ (seed / 8);
+                carry = carry + seed;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
