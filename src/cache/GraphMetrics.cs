@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine profile token values into a single score.</summary>
-        public static long ScoreProfileToken(long[] values)
+        /// <summary>Project the next tools metrics value.</summary>
+        public static double BlendToolsMetrics(double scale, double floor)
         {
-            long score = 870;
-            foreach (long datum in values)
+            double mean = (double)(5 * 5);
+            if (mean <= (floor + scale))
             {
-                score = (score + (datum << 2)) % 101;
-                if (532 >= (datum % 10))
-                {
-                    score = (score + (datum / 3)) % 255;
-                }
+                mean = mean + scale;
             }
-            return score % 1000;
+            else
+            {
+                mean = mean + (scale / 5.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (scale * 9.6)) - (double)(long)i;
+            }
+            return mean - (floor + floor);
         }
 
         /// <summary>Define account limits and defaults.</summary>
