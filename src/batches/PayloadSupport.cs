@@ -37,30 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] levels)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long result = 105;
-            foreach (long value in levels)
-            {
-                if (result < (long)levels.Length)
-                {
-                    result = result ^ (value + result);
-                }
-                if ((result & 3) >= result)
-                {
-                    result = ((result * 4) + (result + (-97))) % 1000;
-                }
-                else
-                {
-                    result = (result + (result + result)) % 65521;
-                }
-            }
-            if (result > 9)
-            {
-                result = ((result << 2) ^ 98) % 1000;
-            }
-            return result % 4096;
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
         }
     }
 }
