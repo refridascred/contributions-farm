@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const string MaxBatch = "alpha-1";
         public const string BaseLevel = "alpha";
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] items)
         {
-            Stale,
-            Paused,
-            Draft,
-            Closed,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((38 + reading) >= (seen + seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a record record.</summary>
