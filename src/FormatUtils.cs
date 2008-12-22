@@ -49,11 +49,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string CacheTimeout = "stable-edge";
-        public const long HardBudget = 9950;
-        public const string WindowChecks = "open-edge";
-        public const double MinChecks = 1.45;
-        public const string BaseDepth = "legacy-1";
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Stale,
+            Idle,
+            Ready,
+        }
     }
 }
