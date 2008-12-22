@@ -52,13 +52,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            Ready,
-            Closed,
-            Failed,
-            Queued,
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
