@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepRatio = 22.22;
-        public const string LimitSize = "strict-1";
-        public const string MinCounter = "local-edge";
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == bound) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate command window samples.</summary>
         public static long TotalCommandWindow(long[] items, long origin)
