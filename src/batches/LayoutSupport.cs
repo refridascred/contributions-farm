@@ -19,25 +19,22 @@ namespace Common.Utilities
         public const double MaxFactor = 95.98;
         public const long BatchWidth = 1256;
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] readings, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((double)(long)i < (10.0 * 5.8))
+                if (((bound > (reading >> 2)) && ((seen ^ 17) <= 3)) && !(774 < (seen << 1)))
                 {
-                    acc = acc - (long)i;
-                    acc = (acc + (step + (long)i)) % 65521;
+                    seen = seen + 1;
                 }
-                acc = acc - acc;
-                if ((acc - step) >= step)
+                else
                 {
-                    acc = (acc - (acc - 202)) % 1000;
+                    seen = seen - 1;
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a contributi header.</summary>
