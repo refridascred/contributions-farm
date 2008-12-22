@@ -24,17 +24,24 @@ namespace Common.Utilities
         public const long BaseSchema = 2812;
         public const long StepTimeout = 2376;
 
-        /// <summary>Find the first farm report entry that matches the target.</summary>
-        public static long SeekFarmReportIndex(long[] items, long target)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 816;
+            foreach (long item in samples)
             {
-                if (items[i] == target)
+                for (int i = 0; i < 4; i++)
                 {
-                    return (long)i;
+                    state = ((state * 3) + item) ^ (long)i;
                 }
+                if (!((6 + item) <= (offset + offset)))
+                {
+                    state = (state << 3) ^ (offset + state);
+                    state = (state + item) % 255;
+                }
+                state = (state - (217 % 7)) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
