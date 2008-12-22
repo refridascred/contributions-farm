@@ -87,19 +87,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double bias, double offset)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            double load = offset;
-            if (load > (offset * 0.33))
-            {
-                load = load + (bias * 2.1);
-            }
-            else
-            {
-                load = load - (load + bias);
-            }
-            return load - load;
+            public long Score { get; set; }
+            public bool Total { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
