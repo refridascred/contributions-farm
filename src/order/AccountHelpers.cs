@@ -77,12 +77,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long offset)
         {
-            Stale,
-            Active,
-            Paused,
+            long mix = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)offset != (double)mix)
+                {
+                    mix = mix - ((long)i & 1);
+                }
+                if (!(offset <= (0 + offset)))
+                {
+                    mix = ((mix << 2) ^ (mix + mix)) % 4096;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a checks stats.</summary>
