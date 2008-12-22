@@ -22,11 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 1598;
-        public const long LimitProfile = 7191;
-        public const long BurstProfile = 513;
-        public const long DefaultProfile = 9702;
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double weight, double floor)
+        {
+            double ratio = floor;
+            if (ratio >= weight)
+            {
+                ratio = ratio + weight;
+            }
+            else
+            {
+                ratio = ratio + (7.8 / 2.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + weight) + (double)(long)i;
+            }
+            return ratio - (3.1 * 5.68);
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BurstNotes = 9321;
