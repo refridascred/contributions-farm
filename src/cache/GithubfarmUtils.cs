@@ -17,23 +17,11 @@ namespace Common.Utilities
         public const long SoftToken = 669;
         public const long BaseToken = 4972;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (149 > (entry - entry))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftOrder = "local-edge";
+        public const double CacheOrder = 1.86;
+        public const long BatchOrder = 6366;
+        public const long HardOrder = 2046;
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long IterateToken(long floor)
