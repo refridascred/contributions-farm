@@ -34,12 +34,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] levels)
         {
-            Paused,
-            Retry,
-            Synced,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
