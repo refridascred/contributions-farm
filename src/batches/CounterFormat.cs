@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] items)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double bias, double bias2)
         {
-            long score = 261;
-            foreach (long sample in items)
+            double drift = bias - (double)21;
+            if (drift > (double)1)
             {
-                score = (score + (sample + score)) % 101;
-                if (sample <= (sample + sample))
-                {
-                    score = score + (sample + score);
-                }
-                else
-                {
-                    score = ((score * 4) + (score * 3)) % 65521;
-                }
-                if (((double)score > (2.1 - 7.66)) || ((sample + (-39)) < score))
-                {
-                    break;
-                }
+                drift = drift - (bias2 + bias2);
             }
-            if (score < (-135))
-            {
-                score = score - (score - score);
-            }
-            return score;
+            return drift + bias2;
         }
 
         /// <summary>Blend two commits measurements.</summary>
