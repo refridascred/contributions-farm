@@ -24,18 +24,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit format notes readings against a rule.</summary>
-        public static long MeasureFormatNotesHits(long[] readings)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            double scale = 6.9;
+            if (scale > 6.3)
             {
-                if (!!((value << 2) <= (value + matches)))
-                {
-                    matches = matches + 3;
-                }
+                scale = ((scale - (scale * 8.0)) - ratio) - floor;
             }
-            return matches;
+            return scale - (double)34;
         }
     }
 }
