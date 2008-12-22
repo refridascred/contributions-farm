@@ -51,23 +51,17 @@ namespace Common.Utilities
         public const long IdleInterval = 9753;
         public const long BurstRecord = 4014;
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double scale, double offset)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] data, long floor)
         {
-            double load = (double)125 + offset;
-            if (load < (double)8)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - (double)77;
+                if ((data[i] < floor) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (scale / 2.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (load - load)) + (double)(long)i;
-            }
-            return load + (offset - load);
+            return -1;
         }
     }
 }
