@@ -66,17 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] levels, long step)
+        /// <summary>Validate batch queue readings against a bound.</summary>
+        public static bool ValidateBatchQueueBounds(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((levels[i] > step) && ((levels[i] % 5) == 0))
+                if (datum >= origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Combine profile queue values into a single score.</summary>
