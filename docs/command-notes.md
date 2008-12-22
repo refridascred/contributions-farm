@@ -1,14 +1,14 @@
 # Command notes
 
-Each account is validated before it reaches the window queue.
-Keep githubfarm and graph names short and lowercase.
+Keep window and context names short and lowercase.
+Defaults for layout live in the config folder and can be overridden per environment.
 
-Each profile is validated before it reaches the batch queue.
-Each batches is validated before it reaches the contributi queue.
-Keep batches and support names short and lowercase.
+When a profile fails, the payload handler retries a few times before giving up.
+The commits helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Document new route fields
-- Review support limits each release
+- Validate checks input early
+- Keep report values small
+- Prefer window defaults
+- Log every counter change
