@@ -1,11 +1,7 @@
 {
-  "poll_ttl_pct": ["stable", "green", "edge", "eu-west"],
-  "burst_ratio_pct": 50.05,
-  "sync_threshold_count": 1,
-  "dry_run": 20.36,
-  "flush_delay": {
-    "cache_ratio_count": 1023,
-    "batch_ttl": true,
-    "cluster_size": [290, 373]
-  }
+  "account_interval": true,
+  "min_ratio_pct": "stable",
+  "token_interval": ["staging", "edge"],
+  "cache_threshold": true,
+  "cache_depth_ms": ["primary", "green"]
 }
