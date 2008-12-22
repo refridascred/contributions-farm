@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long floor, long seed)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] data, long target)
         {
-            if (!((139 - seed) > floor))
+            bool flag = true;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed <= (seed + 812))
+                if (sample != target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
