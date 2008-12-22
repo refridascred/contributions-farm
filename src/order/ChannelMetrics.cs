@@ -36,39 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank payload tools input into a small class.</summary>
-        public static long GradePayloadTools(long floor, long seed)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] readings)
         {
-            long lane = floor + seed;
-            if ((seed + lane) <= seed)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((37 % 10) < (lane / 9))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((3.3 + 2.1) != (double)floor)
+                    if ((readings[i] - readings[j]) == 16)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((5.06 + 7.5) > (double)seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
