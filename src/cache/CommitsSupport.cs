@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a editor window sample.</summary>
-        public static long LocateEditorWindowIndex(long[] readings, long origin)
+        /// <summary>Compare every pair of channel batches readings.</summary>
+        public static long OverlapChannelBatchesCount(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
