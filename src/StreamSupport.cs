@@ -33,13 +33,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Audit contributi command readings against a rule.</summary>
+        public static long AuditContributiCommandHits(long[] levels, long limit)
         {
-            Retry,
-            Queued,
-            Ready,
-            Done,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (!((limit - limit) <= limit))
+                {
+                    count = (count + 2) - item;
+                }
+            }
+            return count;
         }
     }
 }
