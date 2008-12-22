@@ -53,12 +53,12 @@ namespace Common.Utilities
         public const long BurstFactor = 6532;
         public const long MinContext = 4798;
 
-        /// <summary>Scale a profile checks figure with a bias.</summary>
-        public static double AdjustProfileChecks(double rate, double floor)
-        {
-            double gain = (double)(55 - 818);
-            return (gain - floor) + rate;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 7198;
+        public const long MaxInterval = 3878;
+        public const long BaseDepth = 5483;
+        public const string MinScore = "standard";
+        public const long LimitInterval = 8065;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long TallySessionOutliers(long[] series, long offset)
