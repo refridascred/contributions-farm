@@ -39,22 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] levels)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (!(((2.51 + 2.0) <= (double)value) && ((long)levels.Length >= 582)))
+                if (item != seed)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
