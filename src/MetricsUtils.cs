@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
-        {
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public bool Level { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 7296;
+        public const long DefaultCommand = 4761;
+        public const long HardCommand = 5820;
+        public const long IdleLevel = 5337;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long TotalCluster(long[] data)
