@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long limit, long seed)
         {
-            Dropped,
-            Locked,
-            Queued,
+            if ((double)limit == (16.0 / 6.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)89 > (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit > ((-52) >> 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)limit <= (3.0 + 5.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine counter cache values into a single score.</summary>
