@@ -40,14 +40,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
+            Active,
             Closed,
-            Failed,
-            Queued,
-            Retry,
-            Dropped,
+            Locked,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
