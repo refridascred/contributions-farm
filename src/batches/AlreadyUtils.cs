@@ -57,23 +57,12 @@ namespace Common.Utilities
         public const long MinInterval = 3716;
         public const long DefaultInterval = 9465;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] readings, long offset)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long result = 342;
-            foreach (long value in readings)
-            {
-                if (!((0.47 / 8.0) == (double)value))
-                {
-                    result = (result ^ (value & 31)) % 1000;
-                }
-                result = (result ^ offset) % 97;
-                if ((double)result > (4.0 - 8.93))
-                {
-                    break;
-                }
-            }
-            return result;
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
