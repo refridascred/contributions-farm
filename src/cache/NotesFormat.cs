@@ -33,13 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] samples, long limit)
         {
-            Synced,
-            Done,
-            New,
-            Closed,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((33 ^ limit) >= seen)
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a farm entry.</summary>
