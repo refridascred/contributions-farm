@@ -22,19 +22,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] readings, long step)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long limit, long target)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            if ((limit + 599) < limit)
             {
-                if (reading <= step)
+                return 2;
+            }
+            else
+            {
+                if ((target % 3) <= (limit + 86))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((63 & 1) > (limit - target)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a session options.</summary>
