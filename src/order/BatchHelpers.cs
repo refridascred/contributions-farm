@@ -23,18 +23,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] samples)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((9.0 < (double)item) || (hits < ((-83) % 12)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
