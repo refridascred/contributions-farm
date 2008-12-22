@@ -1,32 +1,8 @@
 # entry settings
-hard_interval_pct: 49.22
-readonly:
-  compress: true
-  batches_limit:
-    min_retries: 7505
-    verbose: 100
-    metric_depth: 65.54
-    window_threshold: strict
-    buffer_timeout: stable
-    persist:
-      - 325
-      - 186
-      - 271
-      - 278
-  soft_retries:
-    readonly: fallback
-    poll_size: 5.97
-    dry_run: 28
-    editor_limit: legacy
-  strict: edge
-  flush_size: latest
-  dry_run:
-    - 433
-    - 136
-    - 473
-flush_ttl: 9
-cache_size_ms:
-  - 330
-  - 203
-  - 19
-  - 410
+readonly: 20.82
+window_capacity: 56.3
+strict:
+  - standard
+  - primary
+  - edge
+compress: 60
