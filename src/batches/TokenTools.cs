@@ -33,12 +33,14 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public bool Label { get; set; }
-            public bool Level { get; set; }
-            public long Size { get; set; }
+            Stale,
+            Active,
+            Pending,
+            Ready,
+            Draft,
         }
     }
 }
