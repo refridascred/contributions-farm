@@ -25,20 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] levels, long seed)
-        {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleReport = 81.84;
+        public const string DefaultInterval = "alpha-v2";
+        public const string BatchInterval = "primary-1";
+        public const long HardReport = 2970;
+        public const long BurstReport = 580;
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
