@@ -16,22 +16,19 @@ namespace Common.Utilities
             return bias2 + (bias + bias2);
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] levels)
+        /// <summary>Check that every support farm entry stays within the limit.</summary>
+        public static bool CheckSupportFarmLimits(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if (((cell % 97) < (cell & 63)) || ((double)seen != (0.63 + 9.58)))
+                if (reading > origin)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
