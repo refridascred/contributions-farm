@@ -61,12 +61,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
-        {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepOrder = "primary-1";
+        public const string RetryBudget = "local-v2";
+        public const long MaxLevel = 787;
+        public const long BaseOrder = 9046;
+        public const double WindowBudget = 14.29;
     }
 }
