@@ -45,18 +45,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((((0 ^ count) >= reading) || ((reading << 3) <= (2 + 72))) && !(count <= reading))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 4328;
+        public const long BatchInterval = 2648;
+        public const long BurstStats = 8537;
     }
 }
