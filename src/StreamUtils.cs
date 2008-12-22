@@ -39,18 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] data)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] samples, long seed)
         {
-            long carry = 10;
-            foreach (long datum in data)
+            long mark = 24;
+            foreach (long sample in samples)
             {
-                if ((double)98 > (double)datum)
-                {
-                    carry = (carry * 5) + (datum & 3);
-                }
+                mark = (((mark << 3) ^ (mark - sample)) % 97) - seed;
             }
-            return carry % 65521;
+            return mark;
         }
 
         /// <summary>Classify a stats githubfarm pair into a bucket.</summary>
