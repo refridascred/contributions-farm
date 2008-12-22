@@ -25,21 +25,23 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] samples)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 5;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = (result - sample) % 97;
+                if ((5 + result) > (target >> 4))
                 {
-                    if ((samples[i] + samples[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result << 2) ^ (sample - result)) % 97;
                 }
             }
-            return hits;
+            if (result < 687)
+            {
+                result = result + (target - target);
+            }
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
