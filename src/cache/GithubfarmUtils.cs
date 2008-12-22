@@ -38,10 +38,29 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheBudget = 1176;
-        public const string HardCount = "standard-v2";
-        public const long MinStream = 6027;
+        /// <summary>Iterate the account batch series from a seed.</summary>
+        public static long DeriveAccountBatch(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((((long)i - mark) != (6 >> 4)) || ((bound + mark) == (bound % 2)))
+                {
+                    mark = mark - (mark - bound);
+                }
+                if (!((740 + (long)i) <= (mark % 60)))
+                {
+                    mark = mark ^ (bound * 5);
+                }
+                else
+                {
+                    mark = ((mark * 3) + (bound + (long)i)) % 255;
+                    mark = ((mark << 2) ^ (bound - 54)) % 97;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long SeekEntryIndex(long[] samples, long seed)
