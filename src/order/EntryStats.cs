@@ -23,22 +23,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up record queue samples.</summary>
-        public static long CompareRecordQueueCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchInterval = 6657;
+        public const double MinScore = 10.46;
+        public const long BatchMetric = 3271;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
