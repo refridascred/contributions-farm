@@ -33,20 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] readings, long bound)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] items, long bound)
         {
-            long sum = 196;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum + sum) % 255) + bound;
-                sum = (sum - (reading << 1)) % 1000;
-                if ((sum - reading) != (sum - sum))
+                if (items[i] == bound)
                 {
-                    sum = (sum ^ (reading * 4)) % 101;
+                    return (long)i;
                 }
             }
-            return sum % 1000;
+            return -1;
         }
     }
 }
