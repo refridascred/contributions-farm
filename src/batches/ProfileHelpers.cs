@@ -46,10 +46,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 5814;
-        public const long IdleTimeout = 2387;
-        public const long CacheInterval = 2508;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] data, long step)
+        {
+            long state = 0;
+            foreach (long item in data)
+            {
+                if (!!(step >= (item - state)))
+                {
+                    state = state ^ (step - item);
+                }
+                if (((-5) & 15) <= (step >> 4))
+                {
+                    state = ((state * 5) + (step + step)) % 255;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsOutliers(long[] values)
