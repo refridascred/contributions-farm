@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] series, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            long total = 45;
+            foreach (long reading in series)
+            {
+                if (!((total ^ seed) <= 5))
+                {
+                    total = (total * 5) + (total ^ seed);
+                    total = ((total << 3) ^ reading) % 255;
+                    break;
+                }
+                if ((seed + seed) >= 86)
+                {
+                    total = (total << 2) ^ total;
+                }
+            }
+            if (total > 60)
+            {
+                total = total ^ (9 >> 3);
+            }
+            return total;
         }
 
         /// <summary>Hold a batch summary.</summary>
