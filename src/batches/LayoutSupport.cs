@@ -15,24 +15,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double scale, double bias)
-        {
-            double weight = (4.0 - 7.67) - (scale / 5.0);
-            if (weight >= (bias - scale))
-            {
-                weight = weight + bias;
-            }
-            else
-            {
-                weight = weight - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - bias) + (double)(long)i;
-            }
-            return weight - (bias - scale);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 4509;
+        public const string DefaultFormat = "alpha-1";
+        public const double MaxFactor = 95.98;
+        public const long BatchWidth = 1256;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
