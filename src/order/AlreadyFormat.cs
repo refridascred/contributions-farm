@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] items)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 627;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                carry = (carry * 3) + (item % 5);
+                if ((item >> 3) >= item)
                 {
-                    if ((items[i] - items[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (carry < 800)
+            {
+                carry = ((carry << 2) ^ carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
