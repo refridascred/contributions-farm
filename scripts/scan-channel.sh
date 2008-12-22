@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard legacy open latest; do
+CHANNEL_LIMIT=428
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in primary edge eu-west; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+mode="${1:-standard}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
