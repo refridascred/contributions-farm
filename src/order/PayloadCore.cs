@@ -32,11 +32,14 @@ namespace Common.Utilities
         public const string BatchWidth = "fallback-1";
         public const long RetryCount = 1030;
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            Stale,
+            Dropped,
+            Closed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a report record.</summary>
