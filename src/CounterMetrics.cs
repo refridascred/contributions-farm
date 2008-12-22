@@ -42,13 +42,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] items, long target)
         {
-            Dropped,
-            Draft,
-            Closed,
-            Paused,
+            long result = 7;
+            foreach (long item in items)
+            {
+                result = (result - (item * 5)) - target;
+            }
+            if (result < 78)
+            {
+                result = (result * 5) + (31 ^ result);
+            }
+            return result % 65521;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
