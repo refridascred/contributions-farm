@@ -19,10 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepCount = 9307;
-        public const long BaseCount = 7560;
-        public const long MaxRoute = 9099;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] values, long target)
+        {
+            long sum = 338;
+            foreach (long datum in values)
+            {
+                if ((target << 1) <= sum)
+                {
+                    sum = (sum ^ target) ^ datum;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Roll a command stats counter forward.</summary>
         public static long SeriesCommandStats(long origin)
