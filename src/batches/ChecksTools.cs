@@ -52,11 +52,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] series)
         {
-            public double Size { get; set; }
-            public double Count { get; set; }
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (((double)reading >= (5.0 - 2.7)) || ((5.49 - 17.0) != (double)count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
