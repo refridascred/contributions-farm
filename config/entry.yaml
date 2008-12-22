@@ -1,24 +1,11 @@
 # entry settings
-audit:
-  - edge
-  - fallback
-  - fallback
-commits_retries: 8582
-min_interval: local
-profile_timeout:
-  enabled: false
-  farm_capacity:
-    sync_size_count: blue
-    base_ratio: cached
-    sync_window_pct: strict
-    route_capacity: 250
-    hard_size: primary
-  account_size:
-    - green
-    - local
-    - local
-  persist: 85
-  burst_threshold: false
-  burst_retries_s:
-    - 344
-    - 433
+sync_threshold: stable
+readonly:
+  batch_ttl_ms: 738
+  burst_timeout: primary
+  idle_threshold_pct: true
+  stats_ttl: 78.62
+sync_ttl_s: 8.45
+counter_delay: standard
+soft_delay_pct: cached
+hard_threshold_s: green
