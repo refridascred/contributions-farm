@@ -98,12 +98,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] series, long offset)
         {
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((offset >> 3) < offset)
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
         }
     }
 }
