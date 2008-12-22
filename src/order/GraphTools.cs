@@ -24,20 +24,10 @@ namespace Common.Utilities
             return ratio + (double)74;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] items, long origin)
-        {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitCluster = 63.17;
+        public const string MaxCluster = "standard-1";
+        public const double WindowFactor = 44.95;
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long CompareCounterCount(long[] readings)
