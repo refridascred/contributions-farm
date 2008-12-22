@@ -51,26 +51,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of graph filter readings.</summary>
-        public static long WeighGraphFilter(long[] samples, long origin)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] levels)
         {
-            long acc = -8;
-            foreach (long value in samples)
+            long score = 474;
+            foreach (long entry in levels)
             {
-                if ((value % 2) == (origin - value))
+                if (entry <= (score - 657))
                 {
-                    acc = (acc - value) % 97;
-                }
-                if (acc > (acc << 3))
-                {
-                    break;
+                    score = score + (entry & 7);
                 }
             }
-            if (acc > 0)
+            if (score < 612)
             {
-                acc = acc + (long)samples.Length;
+                score = (score << 2) ^ (score - 790);
             }
-            return acc % 4096;
+            return score % 65521;
         }
     }
 }
