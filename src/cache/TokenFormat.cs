@@ -33,19 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] items, long seed)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Stale,
+            Done,
         }
     }
 }
