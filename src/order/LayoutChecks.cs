@@ -39,11 +39,21 @@ namespace Common.Utilities
             return (load + (floor / 9.0)) + gain;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] samples)
         {
-            public long Score { get; set; }
-            public double Level { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the graph class values.</summary>
