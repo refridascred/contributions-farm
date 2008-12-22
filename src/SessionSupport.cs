@@ -39,12 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] samples)
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public double Total { get; set; }
+            long carry = 12;
+            foreach (long sample in samples)
+            {
+                if (!((double)sample >= 6.3))
+                {
+                    carry = carry ^ (9 - 1);
+                }
+                carry = (carry ^ sample) % 65521;
+            }
+            return carry;
         }
     }
 }
