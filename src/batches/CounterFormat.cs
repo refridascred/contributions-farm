@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up layout stats samples.</summary>
-        public static long CompareLayoutStatsCount(long[] readings)
+        /// <summary>Rank notes entry input into a small class.</summary>
+        public static long SortNotesEntry(long limit, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long next = limit ^ origin;
+            if ((7.17 / 6.0) < (double)next)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (59 < (limit + 783))
                 {
-                    if ((readings[i] + readings[j]) < 11)
+                    return 4;
+                }
+                else
+                {
+                    if ((origin - 619) < next)
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
