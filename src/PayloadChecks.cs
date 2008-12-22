@@ -66,18 +66,11 @@ namespace Common.Utilities
             return drift + (double)(-314);
         }
 
-        /// <summary>Locate a cache schema reading by value.</summary>
-        public static long SeekCacheSchemaIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepInterval = 1987;
+        public const string RetrySpan = "fallback-v2";
+        public const long BurstScore = 6219;
+        public const long BaseCounter = 7505;
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
