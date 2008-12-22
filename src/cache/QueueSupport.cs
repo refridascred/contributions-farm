@@ -43,23 +43,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] levels)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] readings)
         {
-            long mix = 16;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (mix >= (entry - 13))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = ((mix * 4) + (mix / 4)) % 101;
-                }
-                mix = (mix * 4) + (37 % 10);
-                if ((double)entry > (double)0)
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
     }
 }
