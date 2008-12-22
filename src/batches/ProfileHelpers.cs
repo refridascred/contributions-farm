@@ -28,13 +28,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Failed,
-            Stale,
-            Ready,
-            Idle,
+            Done,
+            Pending,
+            New,
         }
 
         /// <summary>Describe the cache state values.</summary>
