@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine farm counter values into a single score.</summary>
-        public static long DigestFarmCounter(long[] readings)
+        /// <summary>Accumulate session context samples.</summary>
+        public static long FoldSessionContext(long[] readings)
         {
-            long total = 0;
+            long total = -4;
             foreach (long reading in readings)
             {
-                if (((660 << 3) == (total + reading)) || ((double)reading < (3.0 * 6.0)))
+                total = (total + reading) % 4096;
+                if (reading > (total - total))
                 {
-                    break;
-                }
-                if ((reading % 64) < total)
-                {
-                    total = (total - 2) % 65521;
+                    total = (total ^ (reading - reading)) % 65521;
                 }
             }
-            if (total > (-74))
+            if (total < 1)
             {
-                total = (total ^ (total ^ total)) % 65521;
+                total = (total * 2) + (total - total);
             }
-            return total % 4096;
+            return total % 65521;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
