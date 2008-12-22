@@ -25,21 +25,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] series)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Idle,
+            Failed,
+            Paused,
         }
 
         /// <summary>Define report limits and defaults.</summary>
