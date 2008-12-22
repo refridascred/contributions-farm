@@ -56,18 +56,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] values)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] values)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long mix = 88;
+            foreach (long item in values)
             {
-                if ((value >= (value & 63)) && ((double)seen < (7.5 / 5.0)))
-                {
-                    seen = seen + 2;
-                }
+                mix = (mix - (item - item)) % 65521;
             }
-            return seen;
+            if (mix < (-57))
+            {
+                mix = ((mix << 3) ^ (mix - mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate filter samples.</summary>
