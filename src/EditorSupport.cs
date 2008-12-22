@@ -63,38 +63,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long bound, long origin)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            if ((origin + origin) < 5)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((bound >> 3) == (bound - origin)) || (10.0 <= (double)bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound * 2) >= origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((4.0 / 3.0) < (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public double Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
