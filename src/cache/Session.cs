@@ -26,12 +26,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] series, long origin)
         {
-            public double Region { get; set; }
-            public bool Limit { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
