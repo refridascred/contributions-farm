@@ -33,15 +33,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long floor)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Retry,
+            Queued,
+            Ready,
+            Done,
         }
     }
 }
