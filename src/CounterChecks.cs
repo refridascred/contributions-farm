@@ -32,30 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] items, long limit)
+        /// <summary>Validate cluster layout readings against a bound.</summary>
+        public static bool VerifyClusterLayoutRange(long[] data, long floor)
         {
-            long mix = 67;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((242 * 4) < (value & 1))
+                if (datum != floor)
                 {
-                    mix = mix - limit;
-                }
-                else
-                {
-                    mix = (mix ^ ((long)items.Length ^ limit)) % 4096;
-                }
-                if (limit < (value & 255))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (mix < 398)
-            {
-                mix = (mix * 2) + (mix / 4);
-            }
-            return mix;
+            return valid;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
