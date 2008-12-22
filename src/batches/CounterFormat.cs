@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] values, long seed)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] items, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if (values[i] == seed)
+                if (cell > seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
