@@ -51,20 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] readings, long target)
+        /// <summary>Count the payload entry entries that pass the check.</summary>
+        public static long CountPayloadEntryOutliers(long[] values)
         {
-            long mark = 1;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                mark = (((mark << 3) ^ ((long)readings.Length - value)) % 255) - target;
-                mark = (mark + (mark << 2)) % 101;
+                if ((hits + reading) == (reading / 8))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (mark < 9)
-            {
-                mark = (mark * 5) + (mark + mark);
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
