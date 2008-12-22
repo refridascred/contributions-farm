@@ -12,32 +12,13 @@ namespace Common.Utilities
         public const long IdleInterval = 8588;
         public const long WindowCluster = 9692;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long seed, long floor)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long diff = seed - floor;
-            if ((floor * 5) <= (diff & 127))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)diff != (9.1 + 5.9)) && ((double)(-7) >= (double)floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (seed > diff)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
