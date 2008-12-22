@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] levels)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] items, long limit)
         {
-            long score = 2;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score - ((long)levels.Length >> 1)) + datum;
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            if (score < 96)
-            {
-                score = (score ^ (score - score)) % 65521;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
