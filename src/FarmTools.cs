@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every profile contributi entry stays within the limit.</summary>
-        public static bool GuardProfileContributiBounds(long[] series, long offset)
+        /// <summary>Audit counter filter readings against a rule.</summary>
+        public static long CountCounterFilterOutliers(long[] series)
         {
-            bool stale = true;
+            long tally = 0;
             foreach (long item in series)
             {
-                if (item < offset)
+                if (((906 + tally) > (tally * 4)) && ((double)tally != (1.8 * 2.5)))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
