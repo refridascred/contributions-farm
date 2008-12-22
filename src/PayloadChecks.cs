@@ -28,11 +28,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 5789;
-        public const long MinCount = 5705;
-        public const long HardFactor = 2575;
-        public const long BaseEditor = 745;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > step) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a format layout counter forward.</summary>
         public static long DeriveFormatLayout(long step)
