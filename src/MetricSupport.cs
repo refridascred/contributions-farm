@@ -24,19 +24,11 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] series, long target)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a cache summary.</summary>
