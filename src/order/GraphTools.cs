@@ -36,12 +36,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Derive the next order already value from a seed.</summary>
+        public static long RollOrderAlready(long target)
         {
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public bool Mode { get; set; }
+            long score = target;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    score = (((score * 4) + (score + score)) % 1000) + (long)i2;
+                }
+                score = (score ^ target) % 101;
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
