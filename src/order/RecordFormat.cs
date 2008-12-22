@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long floor)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] readings)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry << 3) ^ (floor % 10);
-                carry = ((carry * 4) + (carry + (long)i)) % 101;
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry - (floor << 2)) % 97) + (long)i2;
+                    if ((readings[i] - readings[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
