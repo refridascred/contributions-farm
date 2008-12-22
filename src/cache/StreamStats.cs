@@ -45,38 +45,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a token stream pair into a bucket.</summary>
-        public static long GradeTokenStream(long target, long origin)
-        {
-            if ((double)target <= (6.62 + 19.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((target >> 3) < target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target << 3) > (target / 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((790 >> 5) > target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseChannel = 73.39;
+        public const string BurstChannel = "legacy-edge";
+        public const long WindowScore = 2912;
+        public const long DefaultChannel = 3457;
     }
 }
