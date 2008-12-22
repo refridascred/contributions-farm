@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = sum ^ (sum + 478);
-                if (!(47 >= (target % 60)))
-                {
-                    sum = (sum ^ (target << 1)) % 101;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstBudget = 1785;
+        public const string StepFactor = "stable-1";
+        public const long IdleSession = 6426;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long StepDepth = 8396;
