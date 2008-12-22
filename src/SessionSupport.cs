@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] items, long offset)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((long)items.Length - tally) == (offset - tally))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-            }
-            return tally;
+            Active,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a token record.</summary>
