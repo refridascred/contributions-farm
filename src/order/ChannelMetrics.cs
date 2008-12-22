@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 8741;
-        public const double MaxStream = 63.99;
-        public const double BaseStream = 83.11;
-        public const long MaxRatio = 1593;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] items, long seed)
+        {
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LocateCommandIndex(long[] series, long step)
