@@ -31,10 +31,23 @@ namespace Common.Utilities
         public const long CacheInterval = 7872;
         public const long MaxSchema = 9822;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 8729;
-        public const long RetryChannel = 978;
-        public const string MaxSize = "primary-v2";
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((((double)reading >= (3.0 + 16.0)) || ((double)reading <= 11.0)) || ((0 + reading) < (matches - matches)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
