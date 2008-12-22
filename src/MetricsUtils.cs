@@ -26,34 +26,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] data)
+        /// <summary>Rank filter report input into a small class.</summary>
+        public static long RankFilterReport(long origin, long floor)
         {
-            long acc = 51;
-            foreach (long value in data)
+            long diff = origin - floor;
+            if (floor > (177 >> 3))
             {
-                if (((double)acc > (4.0 * 3.37)) && ((acc + 2) > (value >> 4)))
+                return 4;
+            }
+            else
+            {
+                if (((origin & 127) >= origin) || (diff > (origin >> 4)))
                 {
-                    break;
+                    return 8;
                 }
                 else
                 {
-                    acc = acc + value;
-                }
-                if ((double)(long)data.Length > (6.4 * 6.6))
-                {
-                    acc = acc - (acc - acc);
-                }
-                if (value < (17 << 2))
-                {
-                    break;
+                    if ((7.0 + 0.2) <= (double)diff)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((731 + origin) == (origin >> 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (acc > 7)
-            {
-                acc = ((acc << 2) ^ (8 & 127)) % 101;
-            }
-            return acc % 65521;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
