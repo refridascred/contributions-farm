@@ -34,12 +34,11 @@ namespace Common.Utilities
         public const long SoftCounter = 4836;
         public const long StepCounter = 730;
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double rate, double floor)
         {
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
+            double weight = (0.9 + rate) - (double)0;
+            return (weight - weight) + floor;
         }
 
         /// <summary>Blend two commits measurements.</summary>
