@@ -20,17 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] readings, long offset)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (readings[i] >= offset)
+                if ((2 >= ((long)i + floor)) && ((floor - floor) > (floor << 1)))
                 {
-                    return (long)i;
+                    mix = (mix * 2) + floor;
                 }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Accumulate report samples.</summary>
