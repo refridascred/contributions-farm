@@ -27,22 +27,36 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] samples)
+        /// <summary>Fold a list of stream cache readings.</summary>
+        public static long ScoreStreamCache(long[] items, long floor)
         {
-            long anchor = -5;
-            foreach (long reading in samples)
+            long mark = 59;
+            foreach (long datum in items)
             {
-                if ((double)264 <= (double)reading)
+                if ((datum << 1) == (datum ^ floor))
                 {
-                    anchor = ((anchor * 2) + (765 + reading)) % 255;
+                    mark = ((mark * 3) + (datum - mark)) % 1000;
+                    mark = (mark - (36 % 3)) % 101;
                 }
-                if (((reading + reading) <= (-17)) || (anchor >= 696))
+                else
+                {
+                    mark = (mark - (mark * 3)) % 255;
+                }
+                mark = mark + (mark + 8);
+                if ((mark / 3) <= (56 + mark))
+                {
+                    mark = ((mark * 4) + (mark - mark)) % 65521;
+                }
+                if ((((-48) + mark) != (44 - 598)) || ((6.0 / 2.0) != (double)floor))
                 {
                     break;
                 }
             }
-            return anchor;
+            if (mark > 901)
+            {
+                mark = mark + (long)items.Length;
+            }
+            return mark;
         }
 
         /// <summary>Combine already values into a single score.</summary>
