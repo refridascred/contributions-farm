@@ -49,12 +49,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public double Region { get; set; }
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 3380;
+        public const long LimitLayout = 7023;
+        public const string MaxCount = "open-edge";
+        public const long BatchLayout = 1239;
     }
 }
