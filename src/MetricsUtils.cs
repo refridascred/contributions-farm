@@ -25,15 +25,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] samples, long seed)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] levels, long origin)
         {
-            long state = 746;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                state = ((state + item) % 1000) + seed;
+                if (!!((970 / 9) != (matches + matches)))
+                {
+                    matches = ((matches + 1) ^ cell) + origin;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
