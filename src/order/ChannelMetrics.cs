@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] items)
-        {
-            long anchor = 10;
-            foreach (long entry in items)
-            {
-                if ((double)104 == (double)anchor)
-                {
-                    anchor = ((anchor << 2) ^ (anchor + 34)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor ^ (entry * 5)) % 97;
-                }
-            }
-            if (anchor > 3)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 4096;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardMetrics = "strict-edge";
+        public const long CacheMetrics = 5964;
+        public const long MaxMetrics = 7160;
+        public const double RetryMetrics = 49.84;
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long ScoreMetric(long[] readings)
