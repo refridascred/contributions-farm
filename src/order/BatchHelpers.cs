@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double bias, double span)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            double drift = span;
-            if (drift >= (double)9)
-            {
-                drift = (drift + span) - bias;
-            }
-            else
-            {
-                drift = drift - 2.6;
-            }
-            return drift - span;
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a buffer record.</summary>
