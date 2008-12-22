@@ -1,5 +1,8 @@
 # entry settings
-default_capacity_ms: legacy
-dry_run: 59.06
-base_ttl_s: 48
-soft_ttl: open
+cache_delay_count: 51
+compress:
+  - standard
+  - latest
+  - latest
+verbose: 87
+max_timeout: 60
