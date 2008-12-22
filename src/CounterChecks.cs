@@ -38,12 +38,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] samples, long floor)
         {
-            Active,
-            Closed,
-            Locked,
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
