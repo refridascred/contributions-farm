@@ -50,14 +50,12 @@ namespace Common.Utilities
             return ratio - (double)3;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Synced,
-            Retry,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 880;
+        public const long WindowTimeout = 6431;
+        public const long SoftRecord = 4160;
+        public const long IdleInterval = 9753;
+        public const long BurstRecord = 4014;
 
         /// <summary>Audit cluster tools readings against a rule.</summary>
         public static long MeasureClusterToolsOutliers(long[] values, long seed)
