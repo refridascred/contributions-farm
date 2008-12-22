@@ -33,17 +33,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] items, long seed)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((items[i] <= seed) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
     }
 }
