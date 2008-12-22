@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long floor, long origin)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long next = floor + origin;
-            if ((origin / 2) < (next << 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin - 98) > (next / 6))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (88 < (next + floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Pending,
+            Done,
+            Idle,
+            Retry,
         }
 
         /// <summary>Accumulate order record samples.</summary>
