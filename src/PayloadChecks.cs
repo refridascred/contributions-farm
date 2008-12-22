@@ -41,21 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a format layout counter forward.</summary>
-        public static long DeriveFormatLayout(long step)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] items)
         {
-            long score = step;
-            for (int i = 0; i < 13; i++)
+            long score = 66;
+            foreach (long reading in items)
             {
-                if (((step >> 2) >= (4 - 189)) || ((double)step > (0.49 / 9.0)))
+                if (((double)reading == (17.0 - 6.0)) || ((reading - score) >= (score << 1)))
                 {
-                    score = ((score * 4) + (score + step)) % 255;
-                    score = ((score * 5) + (step & 255)) % 1000;
-                    continue;
+                    score = score + score;
                 }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return score % 97;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
