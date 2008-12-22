@@ -61,14 +61,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] data)
         {
-            Closed,
-            Retry,
-            Paused,
-            Synced,
-            Ready,
+            long state = 4;
+            foreach (long cell in data)
+            {
+                if ((239 / 8) >= (cell * 5))
+                {
+                    state = (state << 3) ^ (-63);
+                }
+                else
+                {
+                    state = state ^ (state >> 2);
+                }
+            }
+            if (state < 3)
+            {
+                state = (state + (state + state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
