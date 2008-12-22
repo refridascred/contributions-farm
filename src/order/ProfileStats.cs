@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] series, long bound)
+        /// <summary>Roll a filter commits counter forward.</summary>
+        public static long IterateFilterCommits(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((series[i] == bound) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = mark + (bound % 97);
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
