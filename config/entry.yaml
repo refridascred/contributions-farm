@@ -1,5 +1,4 @@
 # entry settings
-base_ratio_ms: 53.32
-batches_capacity: fallback
-sync_limit_pct: 60
-min_window_count: primary
+cluster_limit: cached
+dry_run: primary
+idle_limit_count: local
