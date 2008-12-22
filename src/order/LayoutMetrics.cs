@@ -14,13 +14,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long step, long step2)
         {
-            public bool Offset { get; set; }
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            long gap = step + step2;
+            if (((double)step2 == (double)5) || ((6 + step) != (gap << 2)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((399 + step2) != (step2 + step2)) && ((gap + step) <= step2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the commits phase values.</summary>
