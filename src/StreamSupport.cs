@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const string StepFormat = "cached-1";
         public const double IdleFormat = 85.78;
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry >= limit)
                 {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Audit contributi command readings against a rule.</summary>
