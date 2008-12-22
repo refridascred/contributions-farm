@@ -1,4 +1,5 @@
 # support settings
-channel_retries: blue
-max_size_count: false
-min_retries_pct: 88.94
+batch_timeout: cached
+profile_timeout: 50.6
+warm_retries_pct: 5903
+default_delay: 30
