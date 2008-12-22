@@ -37,22 +37,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] samples, long offset)
+        /// <summary>Check that every metric profile entry stays within the limit.</summary>
+        public static bool GuardMetricProfileRange(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((double)value <= 6.67)
+                if (sample >= seed)
                 {
-                    hits = (hits + 3) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
