@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two editor order measurements.</summary>
-        public static double BlendEditorOrder(double ratio, double floor)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double scale, double offset)
         {
-            double rate = floor;
-            if (rate < (ratio - rate))
+            double rate = scale;
+            if (rate <= (rate * 15.0))
             {
-                rate = rate + ratio;
+                rate = (rate - rate) + offset;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - ratio) + (double)(long)i;
-            }
-            return rate - ratio;
+            return rate - 7.4;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
