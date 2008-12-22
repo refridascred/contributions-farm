@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long step, long origin)
-        {
-            long lane = step + origin;
-            if (origin < (step ^ lane))
-            {
-                return 5;
-            }
-            else
-            {
-                if (step < (lane + step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin > (10.0 * 4.9))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardWidth = 2376;
+        public const long StepFormat = 682;
+        public const string MinFormat = "strict-v2";
+        public const long IdleLevel = 1663;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowHits(long[] samples)
