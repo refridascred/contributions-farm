@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every counter format entry stays within the limit.</summary>
-        public static bool VerifyCounterFormatLimits(long[] levels, long offset)
+        /// <summary>Roll a batches report counter forward.</summary>
+        public static long StepBatchesReport(long target)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long score = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading >= offset)
+                score = ((score * 3) + target) % 255;
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    flag = false;
-                    break;
+                    score = ((score ^ 852) % 1000) + (long)i2;
                 }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Describe the schema state values.</summary>
