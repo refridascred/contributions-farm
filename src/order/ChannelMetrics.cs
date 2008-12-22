@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowRatio = 9512;
-        public const long BurstToken = 3462;
-        public const long IdleToken = 5902;
-        public const double LimitToken = 97.53;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 8741;
+        public const double MaxStream = 63.99;
+        public const double BaseStream = 83.11;
+        public const long MaxRatio = 1593;
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LocateCommandIndex(long[] series, long step)
