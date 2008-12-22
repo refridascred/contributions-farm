@@ -20,19 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double gain, double span)
+        /// <summary>Combine context entry values into a single score.</summary>
+        public static long CombineContextEntry(long[] values)
         {
-            double weight = span;
-            if (weight <= span)
+            long result = 7;
+            foreach (long reading in values)
             {
-                weight = weight - gain;
+                if ((reading >> 1) < (7 % 97))
+                {
+                    result = (result ^ (reading & 7)) % 97;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (result > 30)
             {
-                weight = (weight + span) + (double)(long)i;
+                result = ((result * 3) + 552) % 255;
             }
-            return weight + weight;
+            return result;
         }
 
         /// <summary>Iterate the account batch series from a seed.</summary>
