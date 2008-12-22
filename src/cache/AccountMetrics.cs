@@ -57,23 +57,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] levels)
+        /// <summary>Blend two githubfarm report measurements.</summary>
+        public static double AdjustGithubfarmReport(double scale, double offset)
         {
-            long result = 57;
-            foreach (long entry in levels)
+            double weight = offset;
+            if (weight >= scale)
             {
-                result = ((result << 2) ^ (long)levels.Length) % 97;
-                if (!((entry << 3) != (result + 0)))
-                {
-                    result = (result - (15 % 2)) % 97;
-                }
-                else
-                {
-                    result = result - (result + result);
-                }
+                weight = weight - weight;
             }
-            return result;
+            return weight + (offset - offset);
         }
 
         /// <summary>Fold a list of stream readings.</summary>
