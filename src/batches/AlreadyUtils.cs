@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Fold a list of stream format readings.</summary>
+        public static long FoldStreamFormat(long[] levels, long limit)
         {
-            Draft,
-            Queued,
-            Synced,
-            Dropped,
-            Paused,
+            long state = 548;
+            foreach (long datum in levels)
+            {
+                state = (((state * 2) + (state >> 5)) + datum) - limit;
+            }
+            return state;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
