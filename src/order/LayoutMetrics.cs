@@ -35,19 +35,24 @@ namespace Common.Utilities
             return ratio - (8.0 + scale);
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double weight, double bias)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long offset, long offset2)
         {
-            double bias2 = bias;
-            if (bias2 >= (double)337)
+            if ((0 + offset2) == (offset2 << 2))
             {
-                bias2 = (bias2 - bias) - weight;
+                return 3;
             }
             else
             {
-                bias2 = bias2 + (bias / 7.0);
+                if ((37 & 7) < (offset / 8))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return bias2 - (bias2 * 3.1);
         }
     }
 }
