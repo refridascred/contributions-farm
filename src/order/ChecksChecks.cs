@@ -11,18 +11,14 @@ namespace Common.Utilities
         public const string RetryCounter = "alpha-edge";
         public const double BatchDepth = 18.52;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] items)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((hits * 4) >= (hits + sample))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Dropped,
+            Ready,
+            Active,
+            Done,
+            Draft,
         }
 
         /// <summary>Find the first token account entry that matches the target.</summary>
