@@ -42,13 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Paused,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 5355;
+        public const long MaxCount = 8989;
+        public const string MinProfile = "strict-edge";
+        public const long IdleProfile = 4369;
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long OverlapContributiCount(long[] data)
