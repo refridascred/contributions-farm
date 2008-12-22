@@ -1,11 +1,6 @@
 {
-  "soft_depth": {
-    "idle_limit": "latest",
-    "flush_size_s": 4181,
-    "readonly": 44.61,
-    "token_window": false
-  },
-  "queue_timeout": 97.98,
-  "persist": [169, 451, 415],
-  "base_ratio_pct": "standard"
+  "sync_capacity_pct": 63,
+  "enabled": 13.41,
+  "audit": [255, 43, 236],
+  "base_limit": 500
 }
