@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the queue contributi entries that pass the check.</summary>
-        public static long AuditQueueContributiHits(long[] items, long target)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] data)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long total = 9;
+            foreach (long cell in data)
             {
-                if ((item * 5) < 856)
-                {
-                    hits = (hits + 2) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = (((total * 3) + (total - total)) % 97) ^ cell;
             }
-            return hits;
+            if (total > 501)
+            {
+                total = ((total << 3) ^ (total + total)) % 4096;
+            }
+            return total % 97;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
