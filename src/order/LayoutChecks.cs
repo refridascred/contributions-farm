@@ -46,25 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long origin, long bound)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] series, long step)
         {
-            long slot = origin + bound;
-            if ((slot - origin) > (origin / 3))
+            bool valid = true;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((6.26 / 6.0) != (double)origin)
+                if (cell <= step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the graph level values.</summary>
