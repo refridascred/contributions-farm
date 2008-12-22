@@ -1,7 +1,8 @@
 {
-  "burst_size": [171, 226],
-  "persist": "stable",
-  "compress": ["eu-west", "strict", "local", "blue"],
-  "cache_ttl": true,
-  "contributi_retries": "staging"
+  "record_limit": [429, 436, 445, 138],
+  "sync_depth_pct": 21.49,
+  "token_capacity": 89.72,
+  "poll_limit_count": [464, 364, 379],
+  "sync_ratio_s": false,
+  "flush_timeout_s": 36
 }
