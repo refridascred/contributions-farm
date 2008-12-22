@@ -18,23 +18,12 @@ namespace Common.Utilities
         public const long MinDepth = 7474;
         public const long HardEditor = 1091;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] items, long target)
-        {
-            long anchor = 447;
-            foreach (long reading in items)
-            {
-                if (((target - anchor) >= (anchor - (-47))) || ((double)reading >= (3.7 * 1.99)))
-                {
-                    anchor = (anchor + (554 & 127)) % 4096;
-                }
-            }
-            if (anchor > (-9))
-            {
-                anchor = (anchor * 2) + (target / 5);
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchBudget = 3721;
+        public const long BurstReport = 8501;
+        public const long HardScore = 3310;
+        public const string StepReport = "strict";
+        public const long CacheCount = 7774;
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
