@@ -39,11 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public double Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            Pending,
+            Closed,
+            Failed,
+            Stale,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
