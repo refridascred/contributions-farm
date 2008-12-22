@@ -40,13 +40,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double bias, double span)
         {
-            Pending,
-            Queued,
-            Active,
-            Retry,
+            double scale = (span / 8.0) / 2.0;
+            if (scale >= (scale * 4.93))
+            {
+                scale = (scale + scale) - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - 9.0) + (double)(long)i;
+            }
+            return scale - (double)67;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
