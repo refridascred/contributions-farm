@@ -26,18 +26,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] readings, long floor)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (!((double)floor != (4.2 - 17.0)))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
+            Failed,
+            Done,
+            Active,
+            Stale,
+            Locked,
         }
     }
 }
