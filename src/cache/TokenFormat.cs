@@ -27,10 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchProfile = "standard-1";
-        public const long DefaultProfile = 8524;
-        public const string IdleFactor = "stable-1";
-        public const long LimitProfile = 4522;
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
