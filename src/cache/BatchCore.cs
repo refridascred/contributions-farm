@@ -22,25 +22,11 @@ namespace Common.Utilities
         public const long BurstProfile = 513;
         public const long DefaultProfile = 9702;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] samples, long offset)
-        {
-            long state = 816;
-            foreach (long item in samples)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    state = ((state * 3) + item) ^ (long)i;
-                }
-                if (!((6 + item) <= (offset + offset)))
-                {
-                    state = (state << 3) ^ (offset + state);
-                    state = (state + item) % 255;
-                }
-                state = (state - (217 % 7)) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 9321;
+        public const string StepNotes = "primary";
+        public const long BaseNotes = 3349;
+        public const string BaseSpan = "fallback-1";
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long ClassifyNotes(long bound, long target)
