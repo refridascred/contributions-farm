@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 4896;
-        public const long MinTimeout = 4055;
-        public const long LimitRatio = 5669;
-        public const string MinCluster = "stable-v2";
-        public const double CacheCluster = 19.77;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleWidth = 5.51;
+        public const long RetryRatio = 9081;
+        public const long BatchRoute = 188;
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long SeekReportIndex(long[] series, long step)
