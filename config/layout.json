@@ -1,35 +1,11 @@
 {
-  "soft_size": 74,
-  "compress": {
-    "retry_interval": {
-      "sync_size_count": 35.61,
-      "hard_ratio_pct": "blue",
-      "cluster_capacity": "strict",
-      "min_timeout": 52.6,
-      "dry_run": ["green", "blue", "fallback"],
-      "support_ttl": 2822
-    },
-    "sync_size": "strict",
-    "warm_capacity_s": 64.85,
-    "base_capacity": {
-      "entry_threshold": true,
-      "poll_ratio_count": false,
-      "strict": false,
-      "warm_threshold_count": [62, 352, 258, 161],
-      "base_depth": 53.27,
-      "base_interval": "edge"
-    },
-    "base_interval_count": "blue"
+  "enabled": 48.05,
+  "max_ratio_ms": false,
+  "record_limit": {
+    "poll_depth_ms": true,
+    "schema_limit": "edge",
+    "idle_depth_ms": 90.09,
+    "sync_ratio": "staging"
   },
-  "layout_size": {
-    "poll_limit_ms": {
-      "retry_capacity": 7,
-      "base_interval_ms": true,
-      "idle_ttl": 62,
-      "default_interval_pct": 8.17
-    },
-    "dry_run": false,
-    "format_size": 82
-  },
-  "metric_size": "fallback"
+  "batches_retries": 4
 }
