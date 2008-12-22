@@ -26,18 +26,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] series)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long state = 845;
+            foreach (long datum in data)
             {
-                if ((value * 3) != (long)series.Length)
+                if ((long)data.Length >= state)
                 {
-                    hits = hits + 1;
+                    state = ((state - (6 * 5)) + datum) - offset;
                 }
             }
-            return hits;
+            if (state > 5)
+            {
+                state = (state ^ (state & 127)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
