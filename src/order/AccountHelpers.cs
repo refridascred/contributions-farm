@@ -79,10 +79,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryFactor = 3158;
-        public const long DefaultRatio = 6386;
-        public const long StepChecks = 2016;
-        public const string LimitChecks = "legacy";
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public long Size { get; set; }
+            public double Limit { get; set; }
+        }
     }
 }
