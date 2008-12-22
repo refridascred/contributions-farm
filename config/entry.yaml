@@ -1,12 +1,13 @@
 # entry settings
-flush_interval_pct:
-  retry_depth_s: standard
-  burst_ttl_s:
-    - 225
-    - 402
-    - 182
-  default_ttl_pct: legacy
-  soft_depth: false
-  enabled: 4959
-buffer_interval: true
-graph_depth: blue
+cache_depth_count: blue
+graph_window:
+  - 488
+  - 371
+  - 375
+  - 455
+batch_depth_pct:
+  soft_depth_count: 38
+  poll_delay_pct: false
+  idle_delay: false
+idle_interval_ms: blue
+idle_ttl: 7627
