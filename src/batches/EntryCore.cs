@@ -38,11 +38,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
