@@ -28,19 +28,31 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] levels, long origin)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long target, long floor)
         {
-            bool found = true;
-            foreach (long item in levels)
+            if (262 >= (floor ^ floor))
             {
-                if (item >= origin)
+                return 7;
+            }
+            else
+            {
+                if ((18.0 * 13.0) > (double)target)
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((target - target) > (537 + target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
