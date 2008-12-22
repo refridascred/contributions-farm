@@ -26,10 +26,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double DefaultCount = 97.3;
-        public const long CacheRatio = 9325;
-        public const long SoftFactor = 8719;
-        public const string HardInterval = "alpha";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepTimeout = 5303;
+        public const long RetryLevel = 7811;
+        public const string MinCounter = "legacy-v2";
     }
 }
