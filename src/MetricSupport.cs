@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Locate a window layout reading by value.</summary>
+        public static long FindWindowLayoutIndex(long[] levels, long bound)
         {
-            public double Count { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
