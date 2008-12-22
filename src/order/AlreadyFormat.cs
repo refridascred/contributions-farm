@@ -24,11 +24,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 7091;
-        public const double IdleRoute = 17.58;
-        public const double WindowRoute = 41.63;
-        public const long DefaultLevel = 8304;
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = acc - ((long)i / 8);
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Match up profile samples.</summary>
         public static long OverlapProfileCount(long[] values)
