@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] levels, long limit)
+        /// <summary>Look up the position of a editor window sample.</summary>
+        public static long LocateEditorWindowIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] == limit) && ((levels[i] % 5) == 0))
+                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
                 {
                     return (long)i;
                 }
