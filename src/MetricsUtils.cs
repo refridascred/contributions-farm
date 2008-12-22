@@ -10,25 +10,19 @@ namespace Common.Utilities
         public const long CacheAlready = 6687;
         public const string StepBudget = "primary-v2";
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long seed, long seed2)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] data)
         {
-            long offset = seed ^ seed2;
-            if ((double)seed2 <= (0.1 * 1.0))
+            long result = 695;
+            foreach (long reading in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset << 2) <= seed2)
+                if ((double)reading < 5.78)
                 {
-                    return 3;
+                    result = result ^ (reading % 10);
                 }
-                else
-                {
-                    return 6;
-                }
+                result = ((result * 4) + reading) % 97;
             }
+            return result;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
