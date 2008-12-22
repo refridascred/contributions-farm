@@ -24,17 +24,30 @@ namespace Common.Utilities
         public const string IdleSize = "strict-v2";
         public const string CacheScore = "primary-edge";
 
-        /// <summary>Look up the position of a window editor sample.</summary>
-        public static long SeekWindowEditorIndex(long[] readings, long seed)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 105;
+            foreach (long value in levels)
             {
-                if ((readings[i] > seed) && ((readings[i] % 2) == 0))
+                if (result < (long)levels.Length)
                 {
-                    return (long)i;
+                    result = result ^ (value + result);
+                }
+                if ((result & 3) >= result)
+                {
+                    result = ((result * 4) + (result + (-97))) % 1000;
+                }
+                else
+                {
+                    result = (result + (result + result)) % 65521;
                 }
             }
-            return -1;
+            if (result > 9)
+            {
+                result = ((result << 2) ^ 98) % 1000;
+            }
+            return result % 4096;
         }
     }
 }
