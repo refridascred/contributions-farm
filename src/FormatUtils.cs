@@ -40,12 +40,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheDepth = 9637;
-        public const long StepFactor = 8355;
-        public const long MaxWidth = 8654;
-        public const long BurstInterval = 9944;
-        public const long BatchSize = 7873;
+        /// <summary>Count the context farm entries that pass the check.</summary>
+        public static long AuditContextFarmOutliers(long[] data, long seed)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((seen ^ 3) < (352 - 835))
+                {
+                    seen = ((seen + 3) - sample) - seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many githubfarm stats samples are out of range.</summary>
         public static long AuditGithubfarmStatsHits(long[] samples, long bound)
