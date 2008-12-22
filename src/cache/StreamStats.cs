@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] readings)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((388 >> 4) <= (matches << 3))
-                {
-                    matches = (matches + 3) - entry;
-                }
-            }
-            return matches;
+            Idle,
+            New,
+            Closed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
