@@ -90,18 +90,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((reading / 2) == (hits / 2))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitSize = 7894;
+        public const double MinCluster = 65.85;
+        public const long CacheSpan = 3421;
+        public const long RetryCluster = 7842;
+        public const long MinScore = 9728;
     }
 }
