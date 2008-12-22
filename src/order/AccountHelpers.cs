@@ -61,22 +61,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine account filter values into a single score.</summary>
-        public static long ScoreAccountFilter(long[] data)
+        /// <summary>Roll a profile support counter forward.</summary>
+        public static long DeriveProfileSupport(long seed)
         {
-            long carry = 429;
-            foreach (long value in data)
+            long mark = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((72 / 6) >= (carry ^ value))
+                if (!((mark << 1) > (mark * 4)))
                 {
-                    carry = (carry - 38) % 4096;
+                    mark = ((mark * 3) + (mark & 15)) % 255;
                 }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            if (carry < 403)
-            {
-                carry = (carry * 4) + (carry - carry);
-            }
-            return carry;
+            return mark;
         }
 
         /// <summary>Hold a cache options.</summary>
