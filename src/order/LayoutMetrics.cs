@@ -35,22 +35,19 @@ namespace Common.Utilities
             return ratio - (8.0 + scale);
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] samples)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] values, long offset)
         {
-            long anchor = 9;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (anchor >= (entry - entry))
+                if (cell < offset)
                 {
-                    anchor = (anchor + 3) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor + anchor)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            return anchor;
+            return ok;
         }
     }
 }
