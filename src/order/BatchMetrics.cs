@@ -27,17 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] readings, long step)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if ((readings[i] == step) && ((readings[i] % 5) != 0))
+                if (reading > offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
