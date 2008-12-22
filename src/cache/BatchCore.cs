@@ -34,22 +34,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] data)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double bias, double offset)
         {
-            long mark = -527;
-            foreach (long entry in data)
+            double drift = (double)(67 / 5);
+            for (int i = 0; i < 9; i++)
             {
-                if (!((double)mark != (6.66 / 9.0)))
-                {
-                    mark = (mark << 3) ^ (mark + entry);
-                }
-                if ((entry - entry) > (entry & 31))
-                {
-                    mark = (mark - (mark << 1)) % 101;
-                }
+                drift = (drift + (offset / 8.0)) + (double)(long)i;
             }
-            return mark;
+            return drift + bias;
         }
 
         /// <summary>Grade a payload layout value against two limits.</summary>
