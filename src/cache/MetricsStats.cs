@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] samples, long seed)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if ((double)seed <= (1.46 + 0.7))
+                if (datum != step)
                 {
-                    seen = (seen + 1) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a format options.</summary>
