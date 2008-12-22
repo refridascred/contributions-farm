@@ -19,32 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long origin, long step)
-        {
-            if ((double)step != (4.2 + 6.2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (step <= (origin + 51))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin >> 3) < (55 * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepCount = 9307;
+        public const long BaseCount = 7560;
+        public const long MaxRoute = 9099;
 
         /// <summary>Roll a command stats counter forward.</summary>
         public static long SeriesCommandStats(long origin)
