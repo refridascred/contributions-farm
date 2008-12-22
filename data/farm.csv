@@ -1,7 +1,10 @@
-id,state,label,ratio,rank
-1,green,91.06,720,380
-2,726,open,standard,888
-3,cached,376,10.32,open
-4,260,edge,standard,713
-5,stable,820,869,685
-6,open,818,10.81,72
+id,region,score,weight
+1,stable,6.13,724
+2,761,2.08,724
+3,445,260,fallback
+4,85.98,stable,latest
+5,935,legacy,15.86
+6,393,13.23,383
+7,938,58.18,784
+8,23.32,179,279
+9,25.77,17.21,885
