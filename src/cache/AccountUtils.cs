@@ -48,14 +48,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Stale,
-            Queued,
-            Ready,
-            Idle,
-            Active,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepFactor = 2513;
+        public const long BurstMetric = 5823;
+        public const double MinMetric = 77.76;
+        public const string LimitMetric = "latest-v2";
     }
 }
