@@ -44,18 +44,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many batch context samples are out of range.</summary>
-        public static long AuditBatchContextMatches(long[] data, long target)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((item + target) >= (9 << 1))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Blend two githubfarm report measurements.</summary>
