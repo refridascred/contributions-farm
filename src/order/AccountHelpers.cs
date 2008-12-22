@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] samples, long step)
         {
-            Draft,
-            Stale,
-            Idle,
-            Active,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading - 290) > 105)
+                {
+                    matches = (matches + 2) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
