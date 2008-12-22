@@ -1,8 +1,9 @@
-id,weight,level,ratio
-1,63,open,30
-2,194,71.71,48.91
-3,764,42.75,blue
-4,35,28.59,fallback
-5,345,134,44.68
-6,145,509,44.69
-7,staging,strict,490
+id,state
+1,82.62
+2,open
+3,27
+4,cached
+5,133
+6,eu-west
+7,38
+8,3.98
