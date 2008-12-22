@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a format support sample.</summary>
-        public static long SeekFormatSupportIndex(long[] values, long origin)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double ratio, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = (double)(944 * 3);
+            if (weight < (weight + span))
             {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
+                weight = (weight + weight) + ratio;
             }
-            return -1;
+            else
+            {
+                weight = weight + (weight * 2.4);
+            }
+            return weight - (double)3;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
