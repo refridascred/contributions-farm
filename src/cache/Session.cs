@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleSize = 4355;
-        public const long LimitRatio = 5320;
-        public const long StepFormat = 3652;
+        /// <summary>Combine buffer cluster values into a single score.</summary>
+        public static long ScoreBufferCluster(long[] items)
+        {
+            long acc = 279;
+            foreach (long entry in items)
+            {
+                if (entry >= 4)
+                {
+                    acc = (acc ^ acc) % 4096;
+                }
+                if (!((double)acc <= (4.3 / 7.0)))
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long CompareContextCount(long[] values)
