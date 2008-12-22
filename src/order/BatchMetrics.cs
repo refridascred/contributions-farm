@@ -87,10 +87,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 9361;
-        public const long LimitTimeout = 3842;
-        public const double CacheStream = 18.02;
-        public const long WindowStream = 5236;
+        /// <summary>Look up the position of a payload batches sample.</summary>
+        public static long LookupPayloadBatchesIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= offset) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
