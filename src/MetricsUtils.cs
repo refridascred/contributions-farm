@@ -25,39 +25,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank filter report input into a small class.</summary>
-        public static long RankFilterReport(long origin, long floor)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long diff = origin - floor;
-            if (floor > (177 >> 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((origin & 127) >= origin) || (diff > (origin >> 4)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((7.0 + 0.2) <= (double)diff)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((731 + origin) == (origin >> 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Locked,
+            Retry,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
