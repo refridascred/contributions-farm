@@ -25,15 +25,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long step)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] levels, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
+            long mark = 6;
+            foreach (long reading in levels)
             {
-                result = ((result * 5) + (long)i) % 65521;
+                mark = (((mark - mark) % 97) ^ reading) + floor;
             }
-            return result;
+            return mark % 1000;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
