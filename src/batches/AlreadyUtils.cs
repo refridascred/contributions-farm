@@ -59,19 +59,23 @@ namespace Common.Utilities
         public const long MinInterval = 3716;
         public const long DefaultInterval = 9465;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheRange(long[] samples, long origin)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long limit)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long score = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (value != origin)
+                if (!((double)score < (5.27 * 2.92)))
                 {
-                    found = false;
-                    break;
+                    score = (score * 4) + ((long)i - 461);
                 }
+                if (((double)score >= (6.2 * 1.5)) || (((long)i % 7) > limit))
+                {
+                    score = score + (4 / 6);
+                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return found;
+            return score;
         }
     }
 }
