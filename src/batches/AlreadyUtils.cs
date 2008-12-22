@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many batches batch samples are out of range.</summary>
-        public static long CountBatchesBatchMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading & 3) == (count >> 4))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitDepth = 43.4;
+        public const long RetryWindow = 3088;
+        public const double StepWindow = 67.08;
 
         /// <summary>Adjust a report reading.</summary>
         public static double ProjectReport(double bias, double bias2)
