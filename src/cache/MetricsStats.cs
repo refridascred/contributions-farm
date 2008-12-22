@@ -60,14 +60,18 @@ namespace Common.Utilities
             return (gain - floor) + rate;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] series, long offset)
         {
-            Locked,
-            Closed,
-            Draft,
-            Paused,
-            Dropped,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((0 + offset) != (offset * 3))
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
         }
     }
 }
