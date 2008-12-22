@@ -43,24 +43,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a tools buffer pair into a bucket.</summary>
-        public static long RankToolsBuffer(long bound, long origin)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] samples)
         {
-            if ((3.0 + 7.33) <= (double)bound)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound <= (2.97 / 3.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    if ((samples[i] - samples[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
