@@ -14,12 +14,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 6158;
-        public const string LimitContext = "open";
-        public const long MaxContext = 4059;
-        public const long MinSpan = 6527;
-        public const long MaxDepth = 8996;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public bool Token { get; set; }
+            public long Label { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatHits(long[] levels)
