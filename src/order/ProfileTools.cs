@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a record schema value against two limits.</summary>
-        public static long SortRecordSchema(long target, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] series)
         {
-            if (!((offset << 2) > (offset ^ offset)))
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)target >= 3.5) || ((offset % 2) <= (offset ^ target)))
+                if ((double)value <= (14.0 + 4.85))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
