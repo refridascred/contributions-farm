@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] samples)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] levels)
         {
-            long mix = 70;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item & 127) != ((long)samples.Length - mix))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix - (item - 35)) % 1000;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (60 ^ item)) % 65521;
-                }
-                if ((double)item >= (double)7)
-                {
-                    break;
+                    if ((levels[i] - levels[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix < 35)
-            {
-                mix = ((mix * 5) + (38 % 8)) % 101;
-            }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
