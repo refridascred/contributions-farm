@@ -52,15 +52,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] series, long limit)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] levels)
         {
             long matches = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (matches > 3)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = ((matches + 3) + entry) - limit;
+                    if ((levels[i] - levels[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
