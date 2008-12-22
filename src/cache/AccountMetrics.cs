@@ -13,19 +13,31 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Validate farm counter readings against a bound.</summary>
-        public static bool CheckFarmCounterLimits(long[] items, long step)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] items)
         {
-            bool ready = true;
+            long carry = 8;
             foreach (long value in items)
             {
-                if (value >= step)
+                if (!(carry > (carry / 2)))
                 {
-                    ready = false;
-                    break;
+                    long matches = carry;
+                    carry = carry ^ (matches + matches);
+                }
+                else
+                {
+                    carry = (carry * 2) + (carry + carry);
+                }
+                if ((788 >= (carry + value)) || ((value & 3) < (carry + carry)))
+                {
+                    carry = (carry * 3) + (value & 31);
                 }
             }
-            return ready;
+            if (carry > 8)
+            {
+                carry = ((carry * 4) + (carry - carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
