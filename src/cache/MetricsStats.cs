@@ -23,13 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double ratio, double floor)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public long Owner { get; set; }
+            double load = floor;
+            if (load < (double)3)
+            {
+                load = (load + load) + ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - (floor * 4.6);
         }
 
         /// <summary>Blend two payload counter measurements.</summary>
