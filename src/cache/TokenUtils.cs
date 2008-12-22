@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepWidth = 1204;
-        public const double BurstLevel = 66.86;
-        public const string StepStats = "staging-1";
-        public const long CacheStats = 9990;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] items)
+        {
+            long score = 423;
+            foreach (long datum in items)
+            {
+                score = ((score * 2) + (datum - datum)) % 97;
+            }
+            if (score > 0)
+            {
+                score = score - (score % 64);
+            }
+            return score;
+        }
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
