@@ -63,19 +63,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a context channel figure with a bias.</summary>
-        public static double SmoothContextChannel(double rate, double span)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] values, long seed)
         {
-            double ratio = (span * 10.0) + rate;
-            if (ratio <= (16.0 - ratio))
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio - (9.0 + ratio);
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + 2.18) - (double)(long)i;
-            }
-            return ratio + (span + ratio);
+            return -1;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
