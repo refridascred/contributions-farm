@@ -1,10 +1,20 @@
 {
-  "warm_capacity": {
-    "hard_depth_count": 5445,
-    "retry_size_ms": "local",
-    "session_ratio": false,
-    "batch_limit_ms": 500
+  "batch_limit_count": "standard",
+  "layout_capacity": 3331,
+  "poll_ttl_pct": {
+    "flush_interval": 51.07,
+    "hard_delay_count": [397, 255, 172],
+    "max_limit_ms": {
+      "flush_delay": "cached",
+      "idle_limit_pct": false,
+      "batch_interval_count": 500,
+      "route_window": 51.26,
+      "hard_delay_count": 53.47
+    },
+    "soft_capacity_ms": true,
+    "retry_delay_s": 4649,
+    "flush_size_pct": 44
   },
-  "commits_interval": 59,
-  "burst_delay": 57.12
+  "burst_threshold": false,
+  "cache_threshold": "strict"
 }
