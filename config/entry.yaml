@@ -1,32 +1,21 @@
 # entry settings
-sync_depth:
-  - 63
-  - 25
-route_interval: true
-compress: cached
-soft_limit:
-  warm_capacity_count:
-    already_limit: true
-    warm_ttl_pct: 1024
-    farm_ttl: fallback
-    burst_ttl_pct: 15.98
-    retry_timeout_count: green
-    already_interval: 3
-  readonly:
-    soft_capacity_pct:
-      - open
-      - green
-      - edge
-    audit: cached
-    retry_limit_ms: 22.23
-    format_retries: eu-west
-    session_ratio: 221
-    flush_ttl: 73.84
-  max_capacity: 500
-  counter_ratio: 50.65
-  stream_interval: false
-checks_window:
-  - primary
-  - edge
-  - cached
-  - fallback
+burst_capacity_pct:
+  enabled: 29
+  flush_retries_s: 16.02
+  strict: 49
+  warm_ttl: 88.68
+compress: 30
+max_ttl_pct:
+  - 301
+  - 209
+sync_delay: edge
+dry_run:
+  order_depth:
+    - 62
+    - 427
+    - 71
+    - 362
+  hard_window: 30
+  report_limit: 21.19
+  audit: true
+  soft_threshold: 21.43
