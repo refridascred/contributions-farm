@@ -27,22 +27,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] series)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long value in series)
+            if ((origin + floor) >= (origin / 8))
             {
-                if (((-23) >> 1) <= (value << 2))
+                return 7;
+            }
+            else
+            {
+                if (((floor + floor) >= (origin * 5)) || ((840 * 3) > (floor * 2)))
                 {
-                    hits = hits + 3;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((floor - floor) > floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a command stats counter forward.</summary>
