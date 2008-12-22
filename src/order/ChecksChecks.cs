@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] data, long target)
-        {
-            long anchor = 473;
-            foreach (long value in data)
-            {
-                anchor = (anchor - (target - value)) % 101;
-            }
-            if (anchor < 50)
-            {
-                anchor = ((anchor << 3) ^ (9 - anchor)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitCount = 27.72;
+        public const long BaseCache = 7874;
+        public const long HardCache = 9656;
+        public const string DefaultCache = "primary";
+        public const long WindowCache = 1420;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long GradeSession(long target, long target2)
