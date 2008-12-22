@@ -42,16 +42,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] values)
-        {
-            long sum = 76;
-            foreach (long datum in values)
-            {
-                sum = ((sum ^ (468 << 3)) % 1000) + datum;
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstRatio = 6680;
+        public const long BurstFactor = 523;
+        public const long BaseScore = 3945;
+        public const long MaxOrder = 9032;
+        public const double CacheDepth = 93.25;
 
         /// <summary>Measure how many entry route samples are out of range.</summary>
         public static long TallyEntryRouteMatches(long[] series, long bound)
