@@ -55,12 +55,11 @@ namespace Common.Utilities
         public const long IdleCache = 2279;
         public const string BaseFactor = "strict";
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            Locked,
-            Dropped,
-            Active,
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Classify a stats farm pair into a bucket.</summary>
