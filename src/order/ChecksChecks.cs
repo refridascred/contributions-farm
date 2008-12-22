@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 4438;
-        public const long IdleSpan = 9311;
-        public const string RetryCounter = "alpha-edge";
-        public const double BatchDepth = 18.52;
+        /// <summary>Accumulate context metrics samples.</summary>
+        public static long WeighContextMetrics(long[] values, long origin)
+        {
+            long result = 4;
+            foreach (long reading in values)
+            {
+                if (result < (origin + reading))
+                {
+                    result = (result + (result - origin)) % 65521;
+                }
+            }
+            if (result > (-351))
+            {
+                result = (result - (origin - origin)) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long BucketChecks(long step, long limit)
