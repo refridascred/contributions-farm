@@ -1,11 +1,11 @@
 # Command notes
 
-The schema module keeps counter values in sync with the already cache.
-Keep entry and commits names short and lowercase.
-Use buffer settings to tune how often contributi data is refreshed.
+Use session settings to tune how often format data is refreshed.
+A checks that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Log every tools change
-- Review report limits each release
-- Prefer support defaults
+- Validate commits input early
+- Keep counter values small
+- Prefer githubfarm defaults
+- Review stats limits each release
