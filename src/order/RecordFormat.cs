@@ -47,14 +47,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Queued,
-            Synced,
-            Stale,
-            Active,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 8161;
+        public const string SoftInterval = "alpha-edge";
+        public const long LimitWidth = 3494;
+        public const long BaseOrder = 2584;
+        public const long BurstBudget = 9595;
 
         /// <summary>Project the next payload value.</summary>
         public static double AdjustPayload(double gain, double bias)
