@@ -45,15 +45,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next graph stats value from a seed.</summary>
-        public static long IterateGraphStats(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardMetrics = "latest-edge";
+        public const long LimitLevel = 5587;
+        public const long MaxMetrics = 2453;
+        public const double LimitMetrics = 89.97;
+        public const long WindowMetrics = 1434;
     }
 }
