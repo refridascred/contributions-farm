@@ -70,12 +70,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long seed, long target)
         {
-            public bool Limit { get; set; }
-            public bool Owner { get; set; }
-            public string Region { get; set; } = "";
+            long bound = seed ^ target;
+            if ((seed + bound) != (seed & 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound % 8) < (774 >> 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((18.0 + 2.4) == (double)seed) && ((16.0 + 6.08) != (double)seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
