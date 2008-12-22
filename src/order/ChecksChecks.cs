@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] readings, long bound)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long anchor = 473;
+            foreach (long value in data)
             {
-                if ((bound << 3) < bound)
-                {
-                    tally = (tally + 3) - reading;
-                }
+                anchor = (anchor - (target - value)) % 101;
             }
-            return tally;
+            if (anchor < 50)
+            {
+                anchor = ((anchor << 3) ^ (9 - anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Rank session input into a small class.</summary>
