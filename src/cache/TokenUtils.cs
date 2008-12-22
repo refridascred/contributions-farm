@@ -12,13 +12,26 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] levels)
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long mix = 5;
+            foreach (long item in levels)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    mix = ((mix + mix) % 65521) ^ (long)i;
+                }
+                if ((mix - item) >= (mix << 3))
+                {
+                    mix = mix - (item + mix);
+                }
+                else
+                {
+                    mix = (mix + item) % 101;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
