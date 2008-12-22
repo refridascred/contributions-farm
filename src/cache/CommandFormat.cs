@@ -40,10 +40,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardCluster = 91.43;
-        public const string BaseRatio = "staging-1";
-        public const long WindowScore = 7401;
-        public const long SoftSpan = 7660;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double rate, double floor)
+        {
+            double load = (floor - rate) + (rate - floor);
+            if (load < rate)
+            {
+                load = load - (double)8;
+            }
+            else
+            {
+                load = load + floor;
+            }
+            return load - floor;
+        }
     }
 }
