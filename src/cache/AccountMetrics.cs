@@ -44,12 +44,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Look up the position of a stats batch sample.</summary>
+        public static long LocateStatsBatchIndex(long[] data, long seed)
         {
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two githubfarm report measurements.</summary>
