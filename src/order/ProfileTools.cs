@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] series)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] series, long origin)
         {
-            long seen = 0;
+            long count = 0;
             foreach (long value in series)
             {
-                if ((double)value <= (14.0 + 4.85))
+                if (!((2.5 - 10.0) == (double)value))
                 {
-                    seen = seen + 2;
+                    count = (count + 2) - origin;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
