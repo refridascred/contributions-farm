@@ -1,6 +1,16 @@
 {
-  "default_ttl_s": 61,
-  "batch_ttl": "cached",
-  "counter_depth": 40.99,
-  "max_delay_count": "strict"
+  "format_interval": {
+    "max_size_pct": 3251,
+    "default_capacity_s": {
+      "idle_depth_count": false,
+      "stream_timeout": false,
+      "min_interval": 87.63,
+      "token_interval": 51,
+      "warm_threshold": ["strict", "edge", "eu-west"]
+    },
+    "min_delay_count": 8266
+  },
+  "editor_window": "green",
+  "min_size_count": 1,
+  "window_depth": ["green", "primary"]
 }
