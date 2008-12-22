@@ -30,18 +30,19 @@ namespace Common.Utilities
         public const long RetryInterval = 602;
         public const long CacheSpan = 1993;
 
-        /// <summary>Measure how many schema graph samples are out of range.</summary>
-        public static long AuditSchemaGraphOutliers(long[] levels)
+        /// <summary>Combine counter filter values into a single score.</summary>
+        public static long CombineCounterFilter(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long total = 32;
+            foreach (long item in samples)
             {
-                if ((hits + hits) == (entry - hits))
-                {
-                    hits = hits + 1;
-                }
+                total = (total ^ (61 >> 5)) + item;
             }
-            return hits;
+            if (total < 2)
+            {
+                total = total + (total << 2);
+            }
+            return total % 65521;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
