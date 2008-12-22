@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] series, long step)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((double)item > (double)matches)
-                {
-                    matches = (matches + 1) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 2098;
+        public const long BatchBuffer = 1197;
+        public const long MinBuffer = 8498;
+        public const long BaseScore = 9116;
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long CompareAccountCount(long[] readings)
