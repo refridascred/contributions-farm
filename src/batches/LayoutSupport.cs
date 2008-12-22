@@ -57,23 +57,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double rate, double floor)
+        /// <summary>Audit buffer checks readings against a rule.</summary>
+        public static long AuditBufferChecksHits(long[] levels)
         {
-            double scale = (double)(15 ^ 69);
-            if (scale > (scale + 6.1))
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                scale = ((scale + (18.0 + scale)) - rate) - floor;
+                if ((hits - 5) < (datum ^ 18))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                scale = scale + (scale + scale);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - (double)0;
+            return hits;
         }
     }
 }
