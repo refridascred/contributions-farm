@@ -28,19 +28,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] values, long limit)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > limit)
+                if (values[i] == seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Accumulate stream samples.</summary>
