@@ -45,14 +45,39 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Rank editor format input into a small class.</summary>
+        public static long GradeEditorFormat(long seed, long offset)
         {
-            Failed,
-            Done,
-            Active,
-            Stale,
-            Locked,
+            long diff = seed + offset;
+            if (!((seed / 8) >= ((-118) % 16)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (offset >= (diff * 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (offset <= (seed * 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)seed == (0.1 / 4.0)) && (9.09 > (double)offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
