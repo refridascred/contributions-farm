@@ -28,15 +28,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] samples)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long step)
         {
-            long state = 759;
-            foreach (long item in samples)
+            long score = step;
+            for (int i = 0; i < 5; i++)
             {
-                state = ((state * 2) + item) % 65521;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return state % 4096;
+            return score;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
