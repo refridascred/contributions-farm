@@ -46,11 +46,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public double Flag { get; set; }
-            public long Count { get; set; }
+            New,
+            Dropped,
+            Retry,
+            Done,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
