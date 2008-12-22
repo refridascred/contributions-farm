@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const long MaxMetrics = 7160;
         public const double RetryMetrics = 49.84;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] readings)
-        {
-            long sum = 96;
-            foreach (long item in readings)
-            {
-                if ((double)sum > (9.0 * 9.2))
-                {
-                    sum = ((sum + (418 % 8)) % 255) + item;
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 3929;
+        public const long LimitInterval = 176;
+        public const long DefaultBuffer = 9858;
 
         /// <summary>Combine token channel values into a single score.</summary>
         public static long CombineTokenChannel(long[] data, long bound)
