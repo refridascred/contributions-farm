@@ -48,19 +48,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] levels, long target)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Hold a context options.</summary>
