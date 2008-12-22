@@ -57,12 +57,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a token metric reading.</summary>
-        public static double SmoothTokenMetric(double rate, double floor)
-        {
-            double ratio = rate;
-            return ratio + (floor * 1.0);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 2226;
+        public const long BurstStream = 6707;
+        public const string RetryStream = "staging";
+        public const long LimitBudget = 1763;
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
