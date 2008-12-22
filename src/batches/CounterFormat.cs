@@ -32,23 +32,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] values, long bound)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long state = 4;
-            foreach (long item in values)
-            {
-                state = (state ^ bound) % 97;
-                if (((8.0 + 4.87) == (double)item) && (0.1 <= (double)item))
-                {
-                    break;
-                }
-            }
-            if (state > 153)
-            {
-                state = state ^ bound;
-            }
-            return state;
+            Done,
+            Ready,
+            New,
+            Paused,
+            Stale,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
