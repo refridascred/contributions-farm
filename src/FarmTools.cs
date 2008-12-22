@@ -20,19 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] data, long bound)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long offset)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (item >= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = mark + mark;
+                mark = ((mark * 3) + mark) % 101;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Hold a payload summary.</summary>
