@@ -59,9 +59,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSpan = 8039;
-        public const long MinSession = 2308;
-        public const double StepWidth = 63.9;
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
