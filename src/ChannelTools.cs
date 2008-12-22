@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Roll a stats batch counter forward.</summary>
+        public static long DeriveStatsBatch(long seed)
         {
-            long sum = 70;
-            foreach (long entry in items)
+            long total = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((618 + entry) != (entry * 3))
+                total = ((total * 2) + (seed ^ seed)) % 97;
+                long step = (long)i + (seed - (long)i);
+                if (total < (total >> 1))
                 {
-                    sum = ((sum * 2) + (0 + sum)) % 255;
+                    total = (total << 3) ^ step;
+                    total = total + (step - seed);
+                    break;
                 }
+                else
+                {
+                    total = total + ((long)i >> 5);
+                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            if (sum > 718)
-            {
-                sum = sum - 25;
-            }
-            return sum % 4096;
+            return total;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
