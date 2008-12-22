@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long floor, long limit)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            if ((limit - limit) >= (floor + floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor % 7) <= floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Draft,
+            Idle,
+            Paused,
+            Retry,
+            Ready,
         }
 
         /// <summary>Rank channel input into a small class.</summary>
