@@ -25,10 +25,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardInterval = 8030;
-        public const long CacheGithubfarm = 1600;
-        public const long BatchGithubfarm = 1965;
+        /// <summary>Fold a list of order channel readings.</summary>
+        public static long FoldOrderChannel(long[] series, long bound)
+        {
+            long mark = 423;
+            foreach (long sample in series)
+            {
+                if (((double)mark < 5.3) && ((mark & 63) != (mark ^ sample)))
+                {
+                    mark = (mark * 5) + (bound - bound);
+                }
+                else
+                {
+                    mark = (mark - sample) % 101;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long TallyCommandHits(long[] levels)
