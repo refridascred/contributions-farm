@@ -25,19 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster layout readings against a bound.</summary>
-        public static bool VerifyClusterLayoutRange(long[] data, long floor)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Dropped,
+            Failed,
+            Queued,
         }
 
         /// <summary>Describe the queue level values.</summary>
