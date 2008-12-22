@@ -29,13 +29,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Classify a route context pair into a bucket.</summary>
+        public static long GradeRouteContext(long origin, long origin2)
         {
-            public bool Region { get; set; }
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
-            public double Mode { get; set; }
+            if ((origin2 ^ origin2) >= origin2)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((14.0 - 9.94) == (double)origin2) || ((double)origin2 < (4.1 * 2.2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
