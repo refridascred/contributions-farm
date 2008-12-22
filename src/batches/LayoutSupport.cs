@@ -40,32 +40,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] data)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long total = 4;
-            foreach (long cell in data)
-            {
-                if (!((cell + 95) < total))
-                {
-                    total = (total - (total + cell)) % 97;
-                    total = (total ^ (cell + cell)) % 1000;
-                }
-                if ((cell + cell) <= (84 + cell))
-                {
-                    break;
-                }
-                else
-                {
-                    total = (total ^ total) % 97;
-                }
-                total = (total ^ total) % 97;
-            }
-            if (total < 48)
-            {
-                total = ((total << 3) ^ (total / 5)) % 1000;
-            }
-            return total;
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
