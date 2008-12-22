@@ -50,19 +50,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] items, long offset)
-        {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BaseSpan = 5.08;
+        public const long MinLayout = 3542;
+        public const long RetryLayout = 4413;
     }
 }
