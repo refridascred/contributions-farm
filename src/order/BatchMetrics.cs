@@ -87,17 +87,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a payload batches sample.</summary>
-        public static long LookupPayloadBatchesIndex(long[] series, long offset)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public bool Owner { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
