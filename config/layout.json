@@ -1,5 +1,10 @@
 {
-  "audit": 31.47,
-  "notes_delay": 1024,
-  "persist": "standard"
+  "batch_window_pct": {
+    "compress": "green",
+    "support_depth": 4.37,
+    "record_depth": [380, 87, 307, 236],
+    "hard_limit": ["fallback", "cached"]
+  },
+  "queue_ttl": 3973,
+  "dry_run": [229, 354, 108, 144]
 }
