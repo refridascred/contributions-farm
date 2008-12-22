@@ -14,18 +14,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] samples, long floor)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double gain, double floor)
         {
-            long anchor = 21;
-            foreach (long value in samples)
+            double ratio = (double)(30 - 94);
+            if (ratio <= gain)
             {
-                if (3 >= (value & 7))
-                {
-                    anchor = ((anchor * 2) + (floor & 15)) % 97;
-                }
+                ratio = ratio - (gain * 1.9);
             }
-            return anchor;
+            else
+            {
+                ratio = ratio + (10.0 / 3.0);
+            }
+            return ratio - floor;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
