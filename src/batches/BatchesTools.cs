@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long offset, long offset2)
+        /// <summary>Audit notes token readings against a rule.</summary>
+        public static long CountNotesTokenHits(long[] items, long origin)
         {
-            if ((offset2 + offset2) == (offset2 - 82))
+            long hits = 0;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset <= 6.58)
+                if (!(hits < (2 + origin)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset >= (offset + offset2)) || ((8.2 - 0.1) == (double)offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((offset2 / 8) > (offset2 - 8)) || ((offset2 - offset) >= (0 + 855)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = (hits + 3) ^ item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
