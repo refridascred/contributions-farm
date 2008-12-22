@@ -34,16 +34,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long origin)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long total = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                total = ((total * 3) + (origin & 63)) % 101;
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Paused,
+            New,
+            Synced,
         }
     }
 }
