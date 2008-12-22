@@ -49,18 +49,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the session layout entries that pass the check.</summary>
-        public static long TallySessionLayoutHits(long[] readings, long target)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((double)item == (3.0 * 5.37))
+                if ((double)count >= 2.77)
                 {
-                    tally = (tally + 1) - target;
+                    count = ((count + 2) + value) - limit;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
