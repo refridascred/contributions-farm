@@ -15,12 +15,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double scale, double bias)
         {
-            Active,
-            Synced,
-            Ready,
+            double weight = (4.0 - 7.67) - (scale / 5.0);
+            if (weight >= (bias - scale))
+            {
+                weight = weight + bias;
+            }
+            else
+            {
+                weight = weight - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - bias) + (double)(long)i;
+            }
+            return weight - (bias - scale);
         }
 
         /// <summary>Compare every pair of window readings.</summary>
