@@ -19,21 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] levels)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            Idle,
+            Locked,
+            Done,
         }
 
         /// <summary>Accumulate commits samples.</summary>
