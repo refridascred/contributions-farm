@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] items, long floor)
         {
-            Failed,
-            Pending,
-            Idle,
+            long mix = 5;
+            foreach (long item in items)
+            {
+                if ((floor + 8) == (floor & 127))
+                {
+                    mix = mix ^ (item - mix);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
