@@ -1,5 +1,6 @@
 {
-  "max_delay_count": "local",
-  "warm_retries": 8.68,
-  "compress": [136, 218, 1, 281]
+  "contributi_interval": "local",
+  "editor_ratio": 500,
+  "burst_ratio_ms": [279, 46, 254],
+  "min_size": 5927
 }
