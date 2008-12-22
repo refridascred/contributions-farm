@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] samples, long bound)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long mark = 3;
-            foreach (long item in samples)
-            {
-                mark = ((mark - 539) % 97) + bound;
-                if (mark <= item)
-                {
-                    mark = mark - (28 & 63);
-                }
-            }
-            return mark;
+            Active,
+            Draft,
+            Ready,
         }
 
         /// <summary>Compare every pair of context readings.</summary>
