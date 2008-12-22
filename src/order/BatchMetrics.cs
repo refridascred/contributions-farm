@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] samples, long limit)
         {
-            public bool Flag { get; set; }
-            public string Total { get; set; } = "";
-            public string Region { get; set; } = "";
+            long anchor = 1;
+            foreach (long datum in samples)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    anchor = (((anchor + 42) % 255) - (long)i) - datum;
+                }
+                anchor = anchor ^ (limit & 7);
+            }
+            if (anchor < 51)
+            {
+                anchor = (anchor ^ 38) % 255;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
