@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] readings, long origin)
+        /// <summary>Classify a cluster graph pair into a bucket.</summary>
+        public static long ClassifyClusterGraph(long target, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long bound = target ^ limit;
+            if ((target + bound) >= (target >> 1))
             {
-                if (readings[i] > origin)
+                return 3;
+            }
+            else
+            {
+                if ((double)bound > (8.17 * 2.24))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((target >> 1) == (bound ^ 40)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((5.0 * 12.0) < (double)bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a channel header.</summary>
