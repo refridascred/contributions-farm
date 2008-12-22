@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const double SoftRecord = 1.04;
         public const long RetrySize = 2865;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 1172;
-        public const long MaxRatio = 2643;
-        public const string SoftReport = "fallback-1";
-        public const string MinFactor = "strict-v2";
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Idle,
+            Failed,
+            New,
+            Pending,
+        }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long CombineGithubfarm(long[] samples)
