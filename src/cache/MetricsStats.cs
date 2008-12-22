@@ -15,13 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long offset)
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public double Size { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    sum = (((sum * 2) + (offset / 4)) % 101) + (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
