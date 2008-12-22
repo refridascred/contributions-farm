@@ -30,23 +30,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate profile notes samples.</summary>
-        public static long TotalProfileNotes(long[] data)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] items)
         {
-            long carry = 755;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry << 3) ^ carry) % 97;
-                if ((8.91 / 6.0) == (double)carry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry - reading) % 101;
+                    if ((items[i] - items[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry > (-13))
-            {
-                carry = (carry - (carry << 2)) % 4096;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Audit report commits readings against a rule.</summary>
