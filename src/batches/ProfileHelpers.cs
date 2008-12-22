@@ -52,19 +52,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a cache cluster reading.</summary>
-        public static double SmoothCacheCluster(double ratio, double offset)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double bias, double bias2)
         {
-            double mean = (offset / 4.0) / 6.0;
-            if (mean >= mean)
+            double rate = bias;
+            for (int i = 0; i < 9; i++)
             {
-                mean = (mean + (double)(-7)) + ratio;
+                rate = ((rate + (double)8) + (double)(long)i) - bias2;
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean + mean;
+            return rate + (double)3;
         }
 
         /// <summary>Describe the metric class values.</summary>
