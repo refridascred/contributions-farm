@@ -21,13 +21,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] items)
         {
-            Failed,
-            Pending,
-            Synced,
-            Retry,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a tools info.</summary>
