@@ -21,22 +21,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] data, long offset)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long bound)
         {
-            long state = 845;
-            foreach (long datum in data)
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((long)data.Length >= state)
-                {
-                    state = ((state - (6 * 5)) + datum) - offset;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            if (state > 5)
-            {
-                state = (state ^ (state & 127)) % 4096;
-            }
-            return state;
+            return carry;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
