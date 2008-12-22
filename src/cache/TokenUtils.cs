@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] levels)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a order entry.</summary>
