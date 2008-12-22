@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a graph token reading.</summary>
-        public static double ProjectGraphToken(double ratio, double span)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            double bias = ratio;
-            if (bias >= (double)8)
-            {
-                bias = (bias - ratio) + span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + (double)0;
+            Failed,
+            Synced,
+            Queued,
+            Paused,
+            Idle,
         }
 
         /// <summary>Adjust a commits reading.</summary>
