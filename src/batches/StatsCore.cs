@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 344;
-        public const long BatchScore = 7396;
-        public const double SoftFilter = 30.73;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] items)
+        {
+            long mark = 57;
+            foreach (long entry in items)
+            {
+                mark = (mark * 3) + ((-66) + entry);
+            }
+            if (mark < (-10))
+            {
+                mark = mark - ((long)items.Length + mark);
+            }
+            return mark;
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long SeekReportIndex(long[] data, long seed)
