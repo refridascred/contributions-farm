@@ -14,11 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleFormat = "legacy-edge";
-        public const string RetryFormat = "strict";
-        public const double DefaultScore = 28.11;
-        public const long IdleTimeout = 4729;
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two payload counter measurements.</summary>
         public static double BlendPayloadCounter(double gain, double floor)
