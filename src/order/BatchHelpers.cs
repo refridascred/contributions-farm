@@ -27,18 +27,13 @@ namespace Common.Utilities
         public const string IdleCounter = "alpha-1";
         public const long MinInterval = 3508;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] items)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (reading >= (718 * 2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Queued,
+            Draft,
+            Stale,
+            Active,
         }
     }
 }
