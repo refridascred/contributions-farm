@@ -25,13 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Pending,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheStream = "cached";
+        public const long BatchScore = 7931;
+        public const string BurstStream = "stable-edge";
+        public const long DefaultDepth = 6314;
+        public const long BaseStream = 861;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long AuditWindowHits(long[] samples, long bound)
