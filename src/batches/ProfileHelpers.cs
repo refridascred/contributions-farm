@@ -18,27 +18,22 @@ namespace Common.Utilities
         public const long MinDepth = 7474;
         public const long HardEditor = 1091;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] values)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] items, long target)
         {
-            long score = -7;
-            foreach (long sample in values)
+            long anchor = 447;
+            foreach (long reading in items)
             {
-                score = (score * 5) + score;
-                if (!((2.0 / 9.0) >= 7.2))
+                if (((target - anchor) >= (anchor - (-47))) || ((double)reading >= (3.7 * 1.99)))
                 {
-                    score = ((score * 5) + (sample & 1)) % 4096;
-                }
-                if (!((12.0 / 3.0) >= (double)sample))
-                {
-                    score = ((score * 3) + (score / 6)) % 101;
+                    anchor = (anchor + (554 & 127)) % 4096;
                 }
             }
-            if (score > 1)
+            if (anchor > (-9))
             {
-                score = ((score << 3) ^ score) % 4096;
+                anchor = (anchor * 2) + (target / 5);
             }
-            return score % 65521;
+            return anchor;
         }
 
         /// <summary>Describe the order kind values.</summary>
