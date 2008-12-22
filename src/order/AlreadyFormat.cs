@@ -16,13 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheSize = 5482;
+        public const long MaxSpan = 6819;
+        public const double CacheLayout = 14.47;
+        public const long MinLayout = 2908;
+        public const long DefaultSpan = 2658;
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long SeriesBuffer(long bound)
