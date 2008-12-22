@@ -1,13 +1,7 @@
 # entry settings
-cache_depth_count: blue
-graph_window:
-  - 488
-  - 371
-  - 375
-  - 455
-batch_depth_pct:
-  soft_depth_count: 38
-  poll_delay_pct: false
-  idle_delay: false
-idle_interval_ms: blue
-idle_ttl: 7627
+retry_delay_s: staging
+format_limit: 35
+commits_window: staging
+soft_capacity_s: latest
+burst_window_pct: 98.82
+session_threshold: 6366
