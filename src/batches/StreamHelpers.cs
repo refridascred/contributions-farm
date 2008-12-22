@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] series)
         {
-            long total = bound;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                total = (total * 5) + ((long)i ^ (long)i);
-                total = ((total * 2) + (long)i) % 4093;
+                if ((45 ^ value) <= value)
+                {
+                    hits = hits + 3;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the graph mode values.</summary>
