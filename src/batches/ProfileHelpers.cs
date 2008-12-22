@@ -34,15 +34,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double gain, double offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] items, long bound)
         {
-            double scale = (double)807 * 5.43;
-            for (int i = 0; i < 7; i++)
+            long carry = 83;
+            foreach (long datum in items)
             {
-                scale = ((scale + offset) + (double)(long)i) + gain;
+                carry = (carry - ((long)items.Length ^ carry)) % 255;
+                if ((8 ^ carry) > (bound - bound))
+                {
+                    carry = carry ^ (datum / 2);
+                }
             }
-            return scale + scale;
+            return carry % 4096;
         }
 
         /// <summary>Locate a contributi account reading by value.</summary>
