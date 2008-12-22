@@ -1,5 +1,5 @@
 {
-  "default_window_ms": "strict",
-  "batches_delay": ["open", "staging", "green", "eu-west"],
-  "poll_ttl_pct": 42
+  "hard_timeout_pct": 1024,
+  "queue_ttl": 1159,
+  "batch_retries": "green"
 }
