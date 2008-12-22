@@ -13,13 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long origin)
         {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public string Weight { get; set; } = "";
+            long sum = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((origin << 2) >= (2 & 3))
+                {
+                    continue;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
