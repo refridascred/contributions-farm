@@ -33,18 +33,26 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryMatches(long[] readings, long limit)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long sum = 829;
+            foreach (long datum in data)
             {
-                if (matches >= 106)
+                if ((double)step >= (double)datum)
                 {
-                    matches = ((matches + 1) + sample) - limit;
+                    sum = (sum << 3) ^ (-348);
+                }
+                else
+                {
+                    sum = sum - sum;
                 }
             }
-            return matches;
+            if (sum > 373)
+            {
+                sum = ((sum * 2) + (sum / 5)) % 1000;
+            }
+            return sum;
         }
     }
 }
