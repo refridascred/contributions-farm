@@ -66,22 +66,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] data)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long result = 28;
-            foreach (long cell in data)
-            {
-                if ((result - cell) != (result + 72))
-                {
-                    result = ((result * 2) + (result - result)) % 1000;
-                }
-            }
-            if (result > (-2))
-            {
-                result = (result ^ (result % 16)) % 255;
-            }
-            return result % 65521;
+            Synced,
+            New,
+            Ready,
+            Pending,
         }
     }
 }
