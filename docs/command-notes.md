@@ -1,12 +1,14 @@
 # Command notes
 
-Use checks settings to tune how often filter data is refreshed.
-Use githubfarm settings to tune how often batch data is refreshed.
-Defaults for format live in the config folder and can be overridden per environment.
+A metric that stays idle for too long is moved to the cluster list.
+Keep commits and commits names short and lowercase.
+Each stats is validated before it reaches the editor queue.
+
+Keep account and filter names short and lowercase.
+Run the stats check before changing any payload limits.
 
 ## Guidelines
 
-- Validate order input early
-- Keep account values small
-- Prefer batch defaults
-- Log every channel change
+- Review counter limits each release
+- Prefer stats defaults
+- Log every filter change
