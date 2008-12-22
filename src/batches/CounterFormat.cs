@@ -18,22 +18,16 @@ namespace Common.Utilities
         public const string LimitProfile = "legacy-edge";
         public const double BaseBudget = 72.04;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] data, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] series, long seed)
         {
-            long state = 435;
-            foreach (long datum in data)
+            long score = 48;
+            foreach (long sample in series)
             {
-                if (((target >> 1) == (target ^ datum)) || ((double)state < (6.4 - 1.0)))
-                {
-                    state = (state - (7 + 46)) % 65521;
-                }
+                score = ((score << 2) ^ sample) - seed;
+                score = score - score;
             }
-            if (state < 355)
-            {
-                state = (state * 2) + (state ^ state);
-            }
-            return state;
+            return score;
         }
     }
 }
