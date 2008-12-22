@@ -1,8 +1,16 @@
 {
-  "idle_delay_s": "stable",
-  "poll_interval_count": "local",
-  "metric_delay": "edge",
-  "sync_depth_s": 100,
-  "retry_delay_count": "strict",
-  "verbose": 59
+  "soft_delay": 9.17,
+  "enabled": false,
+  "flush_interval": {
+    "enabled": true,
+    "dry_run": 43.68,
+    "compress": {
+      "record_size": false,
+      "contributi_limit": 5708,
+      "hard_delay_count": 61,
+      "soft_ratio": "stable",
+      "persist": "primary",
+      "batch_ttl_pct": 30
+    }
+  }
 }
