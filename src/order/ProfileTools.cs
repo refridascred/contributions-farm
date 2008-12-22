@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double bias, double span)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double bias, double floor)
         {
-            double bias2 = span;
-            if (bias2 >= (double)276)
+            double scale = bias;
+            if (scale <= floor)
             {
-                bias2 = bias2 - bias;
+                scale = scale - floor;
             }
-            return bias2 + (bias + bias2);
+            else
+            {
+                scale = scale + (scale / 5.0);
+            }
+            return scale - bias;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
