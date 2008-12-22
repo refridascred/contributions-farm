@@ -40,19 +40,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a notes editor reading.</summary>
-        public static double ProjectNotesEditor(double bias, double span)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] samples)
         {
-            double load = (8.7 - span) * 3.8;
-            if (load >= (double)205)
+            long sum = 421;
+            foreach (long sample in samples)
             {
-                load = load - 10.0;
+                sum = (sum + (sum + sum)) % 1000;
+                if ((double)sample > (15.0 * 5.1))
+                {
+                    sum = (sum * 2) + (sample + sample);
+                }
+                else
+                {
+                    sum = (sum ^ 846) % 65521;
+                    sum = sum ^ (1 + sample);
+                }
+                if (!((sum + sample) <= (sum % 7)))
+                {
+                    sum = sum ^ (sum >> 1);
+                }
             }
-            else
+            if (sum < 4)
             {
-                load = load - bias;
+                sum = (sum ^ (sum % 60)) % 101;
             }
-            return load - (double)(-27);
+            return sum;
         }
     }
 }
