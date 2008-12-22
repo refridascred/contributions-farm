@@ -1,12 +1,15 @@
 {
-  "max_interval": 74,
-  "verbose": true,
-  "compress": ["latest", "edge", "staging"],
-  "idle_threshold_count": {
-    "batch_delay": [129, 418, 269],
-    "max_interval_ms": [341, 3],
-    "schema_depth": 83
+  "retry_ttl_pct": false,
+  "strict": {
+    "idle_size_pct": 100,
+    "tools_window": "blue",
+    "sync_ttl": 79,
+    "max_size_pct": "blue",
+    "idle_threshold": [101, 182, 423]
   },
-  "retry_ratio_pct": true,
-  "idle_window_pct": "edge"
+  "audit": {
+    "buffer_ratio": [291, 385, 366],
+    "default_depth_s": "blue",
+    "verbose": ["standard", "strict", "green", "green"]
+  }
 }
