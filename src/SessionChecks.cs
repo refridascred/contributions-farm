@@ -38,19 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] series, long target)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Synced,
+            Idle,
         }
     }
 }
