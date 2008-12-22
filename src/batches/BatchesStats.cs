@@ -12,21 +12,20 @@ namespace Common.Utilities
         public const long IdleInterval = 8588;
         public const long WindowCluster = 9692;
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] readings)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 58;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 4; i++)
                 {
-                    if ((readings[i] - readings[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor + (reading * 4)) % 101) + (long)i;
                 }
+                anchor = ((anchor << 3) ^ reading) % 101;
+                anchor = (anchor - anchor) % 97;
             }
-            return count;
+            return anchor % 65521;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
