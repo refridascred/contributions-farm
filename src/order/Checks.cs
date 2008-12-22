@@ -37,39 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long floor, long origin)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] readings, long limit)
         {
-            long gap = floor ^ origin;
-            if ((9.0 - 6.0) <= (double)floor)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin < (2 << 2)) || (6.9 <= (double)floor))
+                if (entry < limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin * 2) == (gap + floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (floor >= gap)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
