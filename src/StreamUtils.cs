@@ -14,13 +14,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Blend two checks farm measurements.</summary>
+        public static double BlendChecksFarm(double weight, double floor)
         {
-            public double Weight { get; set; }
-            public long Token { get; set; }
-            public bool Level { get; set; }
-            public bool Total { get; set; }
+            double load = (double)(3 * 2);
+            for (int i = 0; i < 3; i++)
+            {
+                load = ((load + load) - (double)(long)i) - floor;
+            }
+            return load + weight;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
