@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowRatio = 9512;
+        public const long BurstToken = 3462;
+        public const long IdleToken = 5902;
+        public const double LimitToken = 97.53;
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LocateCommandIndex(long[] series, long step)
