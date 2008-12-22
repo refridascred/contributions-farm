@@ -34,12 +34,20 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseInterval = 88.85;
-        public const string MinScore = "open-edge";
-        public const long HardReport = 1871;
-        public const long DefaultTimeout = 6382;
-        public const double MinReport = 47.98;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    result = (((result << 2) ^ (result % 2)) % 1000) ^ (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double HardCount = 23.91;
