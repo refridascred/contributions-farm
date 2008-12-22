@@ -1,6 +1,14 @@
 {
-  "compress": ["green", "legacy", "green"],
-  "min_ttl": ["edge", "eu-west"],
-  "min_delay_pct": 1024,
-  "stats_interval": 75
+  "sync_interval_s": {
+    "stats_capacity": 30,
+    "dry_run": 4946,
+    "queue_interval": 34,
+    "idle_timeout_count": 5847,
+    "soft_capacity": "green",
+    "hard_size_s": "edge"
+  },
+  "compress": 593,
+  "strict": ["strict", "green", "strict", "edge"],
+  "persist": 1024,
+  "audit": 94.78
 }
