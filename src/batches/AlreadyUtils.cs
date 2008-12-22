@@ -57,12 +57,19 @@ namespace Common.Utilities
         public const long MinInterval = 3716;
         public const long DefaultInterval = 9465;
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheRange(long[] samples, long origin)
         {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public bool Region { get; set; }
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
