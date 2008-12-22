@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first queue editor entry that matches the target.</summary>
-        public static long LocateQueueEditorIndex(long[] items, long offset)
+        /// <summary>Classify a session cluster pair into a bucket.</summary>
+        public static long GradeSessionCluster(long seed, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!((1.8 - 7.79) == (double)seed))
             {
-                if (items[i] <= offset)
+                return 4;
+            }
+            else
+            {
+                if (((double)bound <= (12.0 + 3.73)) || ((1.9 + 10.0) == (double)seed))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed % 16) != (bound & 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two command measurements.</summary>
