@@ -1,6 +1,7 @@
 {
-  "warm_size_count": 84,
-  "retry_retries_s": true,
-  "max_ratio_ms": 9565,
-  "soft_depth_s": "cached"
+  "sync_capacity": 50.16,
+  "verbose": [149, 268, 78, 112],
+  "enabled": 93,
+  "idle_delay_ms": 12.22,
+  "batches_capacity": 7422
 }
