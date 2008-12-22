@@ -1,19 +1,22 @@
 # support settings
-retry_delay_count: false
-base_limit: false
-soft_delay_pct: true
-min_ttl_count: 1121
-account_ttl:
-  sync_delay_s: true
-  base_ttl: edge
-  strict: 44.4
-  burst_threshold: open
-  soft_size:
-    token_timeout: eu-west
-    sync_threshold_ms: standard
-    githubfarm_ratio:
-      - latest
-      - staging
-      - green
-  hard_depth_pct: 30
-audit: 43.91
+min_capacity_ms:
+  hard_retries_s:
+    batch_ttl_count: 57.17
+    sync_timeout_ms: 47.7
+    payload_capacity: 57
+    cache_interval_count: primary
+    cluster_window: 95
+    hard_timeout:
+      - primary
+      - open
+  warm_ratio_pct: 100
+  readonly: legacy
+  compress: true
+  enabled: latest
+graph_ttl:
+  - cached
+  - stable
+soft_size_count: 30
+entry_ttl: 60
+enabled: 1160
+burst_retries_ms: blue
