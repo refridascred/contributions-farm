@@ -1,9 +1,6 @@
 # support settings
-soft_ttl: 22
-default_interval_pct: 47.43
-warm_interval_s: true
-session_timeout: 74
-account_ratio:
-  - stable
-  - standard
-soft_size_count: 62.3
+min_size_ms: primary
+githubfarm_retries: false
+profile_delay: green
+channel_ratio: true
+schema_window: 30
