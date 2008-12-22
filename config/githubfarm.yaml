@@ -1,4 +1,5 @@
 # githubfarm settings
-readonly: false
-default_delay_pct: true
-soft_ratio: eu-west
+audit: staging
+readonly: 25.14
+cache_depth_ms: 30
+cache_retries_count: local
