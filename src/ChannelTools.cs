@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const string BatchInterval = "legacy-edge";
         public const string CacheCount = "standard-1";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepRatio = 3386;
-        public const double CacheLevel = 39.25;
-        public const long LimitWidth = 5779;
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
+        {
+            Pending,
+            Idle,
+            Retry,
+            Draft,
+        }
 
         /// <summary>Look up the position of a commits batches sample.</summary>
         public static long LocateCommitsBatchesIndex(long[] values, long offset)
