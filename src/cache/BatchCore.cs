@@ -47,38 +47,13 @@ namespace Common.Utilities
         public const long BaseNotes = 3349;
         public const string BaseSpan = "fallback-1";
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long bound, long target)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            if ((target << 3) >= (target / 7))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound > (target + 770)) || (bound >= target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)target >= (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((bound - bound) >= (bound ^ bound)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Pending,
+            Retry,
+            Dropped,
         }
     }
 }
