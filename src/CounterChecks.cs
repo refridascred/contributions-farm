@@ -27,22 +27,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Digest a series of notes cluster entries.</summary>
-        public static long CombineNotesCluster(long[] samples, long step)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] readings, long limit)
         {
-            long result = -87;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((result + step) <= entry)
+                if (value != limit)
                 {
-                    result = (result * 2) + (394 - result);
-                }
-                if (!((step - step) == (result * 3)))
-                {
-                    result = (result * 4) + (4 << 3);
+                    flag = false;
+                    break;
                 }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Validate cluster layout readings against a bound.</summary>
