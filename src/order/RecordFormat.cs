@@ -14,18 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the githubfarm stats entries that pass the check.</summary>
-        public static long AuditGithubfarmStatsGaps(long[] levels, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (!((13.0 >= (double)seen) && (seen >= ((-640) & 127))))
+                if (limit < ((-7) >> 4))
                 {
-                    seen = ((seen + 2) - datum) - offset;
+                    count = (count + 3) ^ cell;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Combine buffer report values into a single score.</summary>
