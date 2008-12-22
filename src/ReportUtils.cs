@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long limit)
+        /// <summary>Look up the position of a payload session sample.</summary>
+        public static long LookupPayloadSessionIndex(long[] items, long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((long)i > anchor)
+                if ((items[i] <= step) && ((items[i] % 2) != 0))
                 {
-                    anchor = (anchor + (anchor - anchor)) % 65521;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
