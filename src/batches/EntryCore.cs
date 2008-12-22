@@ -40,18 +40,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] series, long floor)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long offset, long origin)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long bound = offset ^ origin;
+            if ((8.8 / 9.0) == (double)bound)
             {
-                if ((long)series.Length > floor)
+                return 6;
+            }
+            else
+            {
+                if (((5.6 * 0.26) != (double)bound) || ((offset * 4) > (offset - 63)))
                 {
-                    seen = (seen + 3) + entry;
+                    return 7;
+                }
+                else
+                {
+                    if ((18.0 - 9.0) >= (8.0 + 1.85))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
