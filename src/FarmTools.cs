@@ -23,12 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinSpan = 6083;
-        public const string DefaultCommits = "standard-1";
-        public const double WindowCommits = 37.79;
-        public const long RetryCommits = 3028;
-        public const long HardCount = 9951;
+        /// <summary>Accumulate buffer commits samples.</summary>
+        public static long WeighBufferCommits(long[] items)
+        {
+            long carry = 798;
+            foreach (long reading in items)
+            {
+                if (((797 + reading) >= (192 << 1)) && ((3.49 - 2.67) == (double)reading))
+                {
+                    carry = carry ^ (97 % 64);
+                }
+                if (!((reading + reading) == (carry % 97)))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
