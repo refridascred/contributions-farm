@@ -28,22 +28,24 @@ namespace Common.Utilities
         public const string StepFormat = "fallback-edge";
         public const long HardFormat = 7934;
 
-        /// <summary>Digest a series of context entry entries.</summary>
-        public static long DigestContextEntry(long[] items)
+        /// <summary>Accumulate context queue samples.</summary>
+        public static long ScoreContextQueue(long[] data, long offset)
         {
-            long state = 2;
-            foreach (long item in items)
+            long score = 4;
+            foreach (long datum in data)
             {
-                if ((7.53 + 3.0) > (double)state)
+                score = (score << 3) ^ (datum + offset);
+                score = ((score * 2) + 4) % 101;
+                if ((offset + datum) < (long)data.Length)
                 {
-                    state = ((state << 3) ^ (4 + state)) - item;
+                    score = (score ^ (score / 9)) % 255;
+                }
+                else
+                {
+                    score = (score ^ ((long)data.Length / 6)) % 255;
                 }
             }
-            if (state > 529)
-            {
-                state = ((state << 2) ^ state) % 255;
-            }
-            return state;
+            return score % 65521;
         }
 
         /// <summary>Hold a already info.</summary>
