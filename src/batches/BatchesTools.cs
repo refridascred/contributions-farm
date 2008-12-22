@@ -28,12 +28,23 @@ namespace Common.Utilities
             return weight - (scale / 7.0);
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double rate, double bias)
         {
-            Paused,
-            Active,
-            Ready,
+            double bias2 = (double)((-82) >> 1);
+            if (bias2 >= (double)857)
+            {
+                bias2 = ((bias2 - bias2) + rate) - bias;
+            }
+            else
+            {
+                bias2 = bias2 - (double)7;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - (double)1) + (double)(long)i;
+            }
+            return bias2 - (3.9 - bias2);
         }
     }
 }
