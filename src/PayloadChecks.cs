@@ -55,11 +55,16 @@ namespace Common.Utilities
             return drift + (double)(-314);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepInterval = 1987;
-        public const string RetrySpan = "fallback-v2";
-        public const long BurstScore = 6219;
-        public const long BaseCounter = 7505;
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long TallyBufferOutliers(long[] data, long floor)
