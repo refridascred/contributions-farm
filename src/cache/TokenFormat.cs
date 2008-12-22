@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] readings, long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] series)
         {
-            long sum = 75;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long item in series)
             {
-                sum = ((sum ^ (sum ^ sum)) ^ value) - bound;
+                if (!((6.8 - 10.0) >= (double)item))
+                {
+                    tally = tally + 3;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
