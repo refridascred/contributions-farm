@@ -20,21 +20,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] series)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long limit, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long span = limit + seed;
+            if ((double)limit < (4.7 + 3.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)span <= (4.0 + 1.61))
                 {
-                    if ((series[i] + series[j]) != 6)
+                    return 4;
+                }
+                else
+                {
+                    if (((limit << 2) > (585 + limit)) && ((span + limit) < seed))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit & 63) == (limit + seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
