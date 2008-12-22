@@ -44,11 +44,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            Synced,
+            Paused,
+            Queued,
+            Closed,
         }
     }
 }
