@@ -31,19 +31,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] readings, long offset)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long seed)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry != offset)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return found;
+            return sum;
         }
     }
 }
