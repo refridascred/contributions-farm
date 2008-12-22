@@ -23,17 +23,22 @@ namespace Common.Utilities
             return load - (load + load);
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] levels)
         {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                long next = (82 ^ (long)i) - ((long)i % 60);
-                result = (result << 2) ^ (result + next);
-                result = ((result * 5) + (long)i) % 1000;
+                if (!(((2.51 + 2.0) <= (double)value) && ((long)levels.Length >= 582)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
