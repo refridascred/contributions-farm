@@ -13,17 +13,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long bound)
+        /// <summary>Rank stats payload input into a small class.</summary>
+        public static long RankStatsPayload(long floor, long offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
+            if ((floor / 4) <= offset)
             {
-                mix = ((mix * 4) + bound) % 255;
-                mix = mix + (bound & 15);
-                mix = ((mix * 2) + (long)i) % 4093;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((double)offset == (2.02 / 6.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor << 3) > (offset % 60))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a record counter forward.</summary>
