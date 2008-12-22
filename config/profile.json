@@ -1,5 +1,5 @@
 {
-  "enabled": true,
-  "retry_capacity": "latest",
-  "token_ttl": [434, 423]
+  "tools_timeout": 7018,
+  "base_ttl_s": 59.79,
+  "record_capacity": "stable"
 }
