@@ -12,12 +12,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Active,
-            Retry,
-            Closed,
+            Pending,
+            Draft,
+            Queued,
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
