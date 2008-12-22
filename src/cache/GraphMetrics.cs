@@ -51,26 +51,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of buffer payload entries.</summary>
-        public static long TotalBufferPayload(long[] values, long floor)
+        /// <summary>Roll a cluster support counter forward.</summary>
+        public static long SeriesClusterSupport(long origin)
         {
-            long mix = -948;
-            foreach (long datum in values)
+            long state = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((datum & 63) != (mix << 2))
-                {
-                    mix = (mix - floor) % 65521;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix - mix)) % 65521;
-                }
-                if ((floor + mix) > mix)
-                {
-                    break;
-                }
+                state = ((state * 2) + (origin * 4)) % 1000;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
