@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] readings)
         {
-            public long Region { get; set; }
-            public double Total { get; set; }
-            public string Score { get; set; } = "";
-            public bool Count { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((388 >> 4) <= (matches << 3))
+                {
+                    matches = (matches + 3) - entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
