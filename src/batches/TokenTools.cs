@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            Pending,
-            Ready,
-            Locked,
+            public bool Total { get; set; }
+            public string Label { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a batches info.</summary>
