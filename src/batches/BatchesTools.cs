@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 4662;
-        public const double WindowWidth = 69.51;
-        public const long HardInterval = 7128;
-        public const double WindowInterval = 29.62;
-        public const long MaxScore = 5507;
+        /// <summary>Roll a batches githubfarm counter forward.</summary>
+        public static long SeriesBatchesGithubfarm(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                result = (result + result) % 97;
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
