@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] items, long step)
+        /// <summary>Adjust a graph token reading.</summary>
+        public static double ProjectGraphToken(double ratio, double span)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            double bias = ratio;
+            if (bias >= (double)8)
             {
-                if (datum >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = (bias - ratio) + span;
             }
-            return valid;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (double)0;
         }
 
         /// <summary>Adjust a commits reading.</summary>
