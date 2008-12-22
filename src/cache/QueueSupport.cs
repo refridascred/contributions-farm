@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile record samples.</summary>
-        public static long ScoreProfileRecord(long[] data, long floor)
+        /// <summary>Measure how many token farm samples are out of range.</summary>
+        public static long TallyTokenFarmGaps(long[] series, long seed)
         {
-            long mark = -12;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long value in series)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((value + matches) >= value)
                 {
-                    mark = ((mark << 3) ^ (mark + (long)i2)) % 4096;
+                    matches = (matches + 2) - seed;
                 }
-                mark = ((mark << 3) ^ item) % 65521;
             }
-            if (mark > 19)
-            {
-                mark = mark - (floor * 2);
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
