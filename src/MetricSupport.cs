@@ -30,15 +30,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double ratio, double floor)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            double scale = 6.9;
-            if (scale > 6.3)
-            {
-                scale = ((scale - (scale * 8.0)) - ratio) - floor;
-            }
-            return scale - (double)34;
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
