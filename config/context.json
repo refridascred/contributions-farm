@@ -1,5 +1,6 @@
 {
-  "readonly": 41,
-  "filter_timeout": 250,
-  "sync_timeout": 55
+  "context_threshold": 65.77,
+  "window_depth": false,
+  "account_capacity": false,
+  "persist": 65
 }
