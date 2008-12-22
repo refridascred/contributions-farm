@@ -47,12 +47,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            public long Weight { get; set; }
-            public bool Token { get; set; }
-            public double Label { get; set; }
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Fold a list of account readings.</summary>
