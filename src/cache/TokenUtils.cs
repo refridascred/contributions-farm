@@ -29,22 +29,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] values, long limit)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long result = 54;
+            foreach (long item in levels)
             {
-                if (matches < (matches % 97))
+                result = ((result << 2) ^ (item + result)) % 65521;
+                if ((item & 3) <= result)
                 {
-                    matches = ((matches + 1) + reading) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    result = (result ^ (long)levels.Length) % 1000;
                 }
             }
-            return matches;
+            return result % 4096;
         }
     }
 }
