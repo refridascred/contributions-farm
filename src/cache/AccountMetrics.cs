@@ -80,18 +80,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] readings)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell + (-52)) < (9 - cell))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public double Rank { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
