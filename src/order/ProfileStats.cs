@@ -46,15 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double bias, double floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] data)
         {
-            double ratio = (double)(5 * 2);
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                ratio = ((ratio - bias) + (double)(long)i) - floor;
+                if ((hits < (hits + value)) && ((5.85 / 3.0) > (double)value))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return ratio + (5.41 - 5.5);
+            return hits;
         }
     }
 }
