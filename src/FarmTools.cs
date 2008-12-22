@@ -13,23 +13,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] levels, long seed)
-        {
-            long total = 474;
-            foreach (long cell in levels)
-            {
-                if ((seed + (-52)) >= cell)
-                {
-                    total = (total - (cell & 7)) % 97;
-                }
-            }
-            if (total > 2)
-            {
-                total = total + (seed * 2);
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinSpan = 6083;
+        public const string DefaultCommits = "standard-1";
+        public const double WindowCommits = 37.79;
+        public const long RetryCommits = 3028;
+        public const long HardCount = 9951;
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
