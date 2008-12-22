@@ -60,18 +60,17 @@ namespace Common.Utilities
         public const string MinScore = "standard";
         public const long LimitInterval = 8065;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] series, long offset)
+        /// <summary>Find the first checks window entry that matches the target.</summary>
+        public static long SeekChecksWindowIndex(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0 + offset) != (offset * 3))
+                if (levels[i] >= origin)
                 {
-                    matches = (matches + 1) + reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
