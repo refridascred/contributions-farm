@@ -40,32 +40,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] samples)
-        {
-            long sum = 421;
-            foreach (long sample in samples)
-            {
-                sum = (sum + (sum + sum)) % 1000;
-                if ((double)sample > (15.0 * 5.1))
-                {
-                    sum = (sum * 2) + (sample + sample);
-                }
-                else
-                {
-                    sum = (sum ^ 846) % 65521;
-                    sum = sum ^ (1 + sample);
-                }
-                if (!((sum + sample) <= (sum % 7)))
-                {
-                    sum = sum ^ (sum >> 1);
-                }
-            }
-            if (sum < 4)
-            {
-                sum = (sum ^ (sum % 60)) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 1071;
+        public const double IdleReport = 7.38;
+        public const long BurstReport = 7780;
+        public const long LimitReport = 6384;
     }
 }
