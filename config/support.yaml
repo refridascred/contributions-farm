@@ -1,6 +1,14 @@
 # support settings
-min_size_ms: primary
-githubfarm_retries: false
-profile_delay: green
-channel_ratio: true
-schema_window: 30
+cache_retries: 250
+route_timeout: 66
+idle_retries_count: false
+compress: 9989
+strict:
+  - latest
+  - edge
+  - strict
+  - strict
+checks_size:
+  verbose: edge
+  persist: 2465
+  graph_timeout: primary
