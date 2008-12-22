@@ -16,19 +16,21 @@ namespace Common.Utilities
             return bias2 + (bias + bias2);
         }
 
-        /// <summary>Check that every support farm entry stays within the limit.</summary>
-        public static bool CheckSupportFarmLimits(long[] items, long origin)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading > origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
