@@ -27,19 +27,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long limit)
+        /// <summary>Audit report context readings against a rule.</summary>
+        public static long MeasureReportContextHits(long[] levels)
         {
-            long score = limit;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((limit / 8) == (840 & 3))
+                if (!(matches >= item))
                 {
-                    score = score + (36 - score);
+                    matches = matches + 3;
                 }
-                score = ((score * 2) + (long)i) % 97;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Project the next session value.</summary>
