@@ -82,13 +82,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Synced,
             Paused,
-            Queued,
-            Closed,
+            Active,
+            Dropped,
+            Ready,
         }
     }
 }
