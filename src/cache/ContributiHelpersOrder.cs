@@ -37,27 +37,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] items)
+        /// <summary>Validate command batches readings against a bound.</summary>
+        public static bool VerifyCommandBatchesRange(long[] levels, long limit)
         {
-            long acc = 0;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (!(acc >= item))
+                if (sample > limit)
                 {
-                    acc = acc + (item - acc);
-                    acc = (acc * 5) + (item + item);
-                }
-                if ((double)item <= (1.7 * 2.0))
-                {
-                    acc = (acc << 2) ^ item;
+                    found = false;
+                    break;
                 }
             }
-            if (acc < 9)
-            {
-                acc = acc ^ (acc ^ acc);
-            }
-            return acc;
+            return found;
         }
     }
 }
