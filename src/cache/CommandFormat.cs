@@ -49,12 +49,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] items, long bound)
         {
-            public double Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public string Level { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
