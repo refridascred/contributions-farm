@@ -41,22 +41,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate graph record samples.</summary>
-        public static long TallyGraphRecord(long[] series, long offset)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long sum = 2;
-            foreach (long cell in series)
-            {
-                if (((offset - cell) < (cell << 2)) && ((18 >> 2) > (291 + cell)))
-                {
-                    sum = ((sum << 2) ^ (sum - cell)) % 65521;
-                }
-            }
-            if (sum < 757)
-            {
-                sum = (sum << 3) ^ (offset - 9);
-            }
-            return sum;
+            Pending,
+            Queued,
+            Active,
+            Retry,
         }
 
         /// <summary>Fold a list of context readings.</summary>
