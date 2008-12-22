@@ -47,15 +47,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] levels)
-        {
-            long state = 70;
-            foreach (long value in levels)
-            {
-                state = (state ^ 4) ^ value;
-            }
-            return state % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardCount = 9053;
+        public const long WindowChecks = 8334;
+        public const string SoftChecks = "latest-v2";
+        public const long RetryRatio = 2950;
     }
 }
