@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] levels, long step)
+        /// <summary>Digest a series of stream queue entries.</summary>
+        public static long WeighStreamQueue(long[] data, long origin)
         {
-            long score = 476;
-            foreach (long sample in levels)
+            long mark = 42;
+            foreach (long sample in data)
             {
-                score = (((score << 3) ^ (step % 24)) % 1000) + sample;
+                mark = ((mark * 3) + (7 - sample)) % 255;
+                if (!((mark << 2) >= sample))
+                {
+                    mark = (mark - (sample - mark)) % 1000;
+                }
+                mark = ((mark << 2) ^ (origin + 787)) % 97;
             }
-            if (score > 885)
+            if (mark > 753)
             {
-                score = (score + (549 & 255)) % 255;
+                mark = (mark - (origin >> 4)) % 255;
             }
-            return score % 65521;
+            return mark % 1000;
         }
 
         /// <summary>Match up route samples.</summary>
