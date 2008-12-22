@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long floor)
         {
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
-            public bool Weight { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = (sum + floor) % 65521;
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of session entries.</summary>
