@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double WindowLevel = 34.25;
-        public const long WindowTimeout = 5662;
-        public const long RetryRatio = 1052;
-        public const long HardChannel = 6256;
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= offset) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a report reading.</summary>
         public static double ProjectReport(double bias, double bias2)
