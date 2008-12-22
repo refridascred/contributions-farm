@@ -17,19 +17,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double scale, double span)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] series)
         {
-            double ratio = scale;
-            if (ratio < span)
+            long mix = 8;
+            foreach (long value in series)
             {
-                ratio = ratio - (span + span);
+                mix = ((mix - (mix + (long)series.Length)) % 4096) ^ value;
+                if ((15.0 * 7.59) <= (double)mix)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (mix > (-301))
             {
-                ratio = (ratio - ratio) + (double)(long)i;
+                mix = (mix ^ mix) % 255;
             }
-            return ratio - (span - ratio);
+            return mix;
         }
 
         /// <summary>Measure how many report channel samples are out of range.</summary>
