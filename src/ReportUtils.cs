@@ -13,12 +13,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long limit)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = (carry + (carry + limit)) % 65521;
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
