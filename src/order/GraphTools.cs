@@ -36,18 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] series)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (seen < item)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
