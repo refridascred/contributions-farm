@@ -21,22 +21,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit report context readings against a rule.</summary>
-        public static long MeasureReportContextHits(long[] levels)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] data)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (!(matches >= item))
+                if ((item - 68) <= (count + count))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Project the next session value.</summary>
