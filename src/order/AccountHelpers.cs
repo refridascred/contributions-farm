@@ -76,11 +76,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long offset, long target)
         {
-            public long Size { get; set; }
-            public double Limit { get; set; }
+            long delta = offset ^ target;
+            if ((offset & 15) <= (offset + target))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((5 + offset) > delta)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)target >= 3.7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)target == (double)delta) || ((offset + offset) > target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
