@@ -50,12 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] data, long origin)
         {
-            Queued,
-            Idle,
-            Draft,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (!!(origin <= (57 & 31)))
+                {
+                    hits = (hits + 2) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
