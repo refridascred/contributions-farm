@@ -90,13 +90,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long seed, long floor)
         {
-            public string Stamp { get; set; } = "";
-            public double Token { get; set; }
-            public double Offset { get; set; }
-            public string Region { get; set; } = "";
+            if ((floor & 63) > (floor & 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((7 - seed) >= (4 + seed)) || ((double)floor > (10.0 - 7.27)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7.89 + 0.42) > (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
