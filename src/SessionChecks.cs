@@ -19,13 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long step)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            long total = step;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
