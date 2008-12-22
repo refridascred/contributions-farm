@@ -40,13 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            Draft,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 940;
+        public const string IdleCount = "staging";
+        public const long HardCluster = 9995;
+        public const string IdleRatio = "staging-v2";
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
