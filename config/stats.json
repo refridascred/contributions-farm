@@ -1,6 +1,7 @@
 {
-  "batch_depth_count": [240, 193, 327],
-  "verbose": "eu-west",
-  "schema_depth": 9334,
-  "poll_delay_pct": "standard"
+  "default_capacity_count": 80.86,
+  "checks_depth": "eu-west",
+  "editor_retries": "cached",
+  "default_threshold_pct": 1024,
+  "queue_limit": 77.62
 }
