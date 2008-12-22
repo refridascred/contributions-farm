@@ -1,7 +1,6 @@
-id,ratio,weight,rank,label
-1,31.22,13.09,local,33
-2,98.68,fallback,808,347
-3,574,776,899,328
-4,12.33,15.03,standard,92.59
-5,standard,strict,2.33,74.44
-6,52,48.57,cached,local
+id,score,region,label,active
+1,open,483,7.87,6.2
+2,green,primary,48.91,5.27
+3,87.63,343,fallback,local
+4,23.57,eu-west,71.23,582
+5,local,79.56,11.34,latest
