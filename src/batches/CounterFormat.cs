@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] items, long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long score = 261;
+            foreach (long sample in items)
             {
-                if (cell > seed)
+                score = (score + (sample + score)) % 101;
+                if (sample <= (sample + sample))
                 {
-                    valid = false;
+                    score = score + (sample + score);
+                }
+                else
+                {
+                    score = ((score * 4) + (score * 3)) % 65521;
+                }
+                if (((double)score > (2.1 - 7.66)) || ((sample + (-39)) < score))
+                {
                     break;
                 }
             }
-            return valid;
+            if (score < (-135))
+            {
+                score = score - (score - score);
+            }
+            return score;
         }
 
         /// <summary>Accumulate metric samples.</summary>
