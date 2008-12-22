@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double rate, double floor)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] levels, long target)
         {
-            double rate2 = 11.0 / 6.0;
-            if (rate2 >= (double)(-7))
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate2 = rate2 - (floor - rate2);
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return rate2 - rate;
+            return -1;
         }
 
         /// <summary>Combine counter cache values into a single score.</summary>
