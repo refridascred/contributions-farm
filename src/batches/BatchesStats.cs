@@ -26,19 +26,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] samples, long seed)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((seed & 3) != (seed + 108))
-                {
-                    tally = (tally + 3) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheTimeout = 7377;
+        public const long StepSchema = 550;
+        public const long WindowSchema = 4042;
+        public const long RetryFactor = 4937;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long WeighSchema(long[] values, long bound)
