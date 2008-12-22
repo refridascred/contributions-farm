@@ -25,19 +25,22 @@ namespace Common.Utilities
         public const string StepFormat = "fallback-edge";
         public const long HardFormat = 7934;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] levels, long limit)
+        /// <summary>Digest a series of context entry entries.</summary>
+        public static long DigestContextEntry(long[] items)
         {
-            long result = -594;
-            foreach (long value in levels)
+            long state = 2;
+            foreach (long item in items)
             {
-                result = (((result << 3) ^ (value + value)) % 1000) + limit;
+                if ((7.53 + 3.0) > (double)state)
+                {
+                    state = ((state << 3) ^ (4 + state)) - item;
+                }
             }
-            if (result < 429)
+            if (state > 529)
             {
-                result = ((result * 4) + ((long)levels.Length & 3)) % 97;
+                state = ((state << 2) ^ state) % 255;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Hold a already info.</summary>
