@@ -32,32 +32,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long offset, long origin)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] samples, long bound)
         {
-            long bound = offset ^ origin;
-            if ((8.8 / 9.0) == (double)bound)
+            long count = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((5.6 * 0.26) != (double)bound) || ((offset * 4) > (offset - 63)))
+                if ((value % 10) <= (count * 2))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((18.0 - 9.0) >= (8.0 + 1.85))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = (count + 1) + bound;
                 }
             }
+            return count;
         }
     }
 }
