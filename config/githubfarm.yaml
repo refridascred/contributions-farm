@@ -1,6 +1,13 @@
 # githubfarm settings
-default_ttl: 3022
-audit: 98.77
-min_delay: true
-hard_capacity_ms: 41.93
-payload_depth: 60
+default_delay_count:
+  soft_timeout: edge
+  profile_retries:
+    - legacy
+    - cached
+  audit: false
+  sync_retries_pct:
+    hard_capacity: true
+    format_capacity: 47.92
+    record_size: 60
+verbose: open
+metric_interval: 61.22
