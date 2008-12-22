@@ -35,30 +35,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] values, long bound)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long mix = 844;
-            foreach (long cell in values)
-            {
-                if (!(((long)values.Length << 2) >= cell))
-                {
-                    mix = mix - (28 ^ cell);
-                }
-                else
-                {
-                    mix = (mix ^ bound) % 101;
-                }
-                if ((double)mix != (double)cell)
-                {
-                    break;
-                }
-            }
-            if (mix < 6)
-            {
-                mix = mix - 357;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
