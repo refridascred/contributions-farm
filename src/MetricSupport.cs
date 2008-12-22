@@ -20,10 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstLevel = 671;
-        public const double StepFactor = 64.57;
-        public const long BatchStream = 9639;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] levels, long target)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Match up queue samples.</summary>
         public static long MatchQueueCount(long[] values)
