@@ -32,18 +32,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] samples, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] values)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long sum = 55;
+            foreach (long cell in values)
             {
-                if ((value % 10) <= (count * 2))
+                if ((double)cell <= (6.0 / 6.0))
                 {
-                    count = (count + 1) + bound;
+                    sum = sum - (sum - 37);
+                    break;
                 }
+                sum = (sum ^ (cell + (long)values.Length)) % 1000;
             }
-            return count;
+            return sum % 97;
         }
     }
 }
