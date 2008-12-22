@@ -1,6 +1,5 @@
 {
-  "stats_ratio": [383, 249, 298, 202],
-  "batch_ttl": "primary",
-  "burst_capacity": 1024,
-  "commits_limit": 60
+  "enabled": true,
+  "retry_capacity": "latest",
+  "token_ttl": [434, 423]
 }
