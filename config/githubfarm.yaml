@@ -1,4 +1,7 @@
 # githubfarm settings
-strict: 67.25
-batch_capacity: 9971
-base_size_ms: 71.17
+flush_size_pct: 6987
+compress: 68.35
+poll_window_ms: true
+dry_run: 250
+min_size_pct: fallback
+cache_limit: 500
