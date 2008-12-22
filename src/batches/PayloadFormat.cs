@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every graph batches entry stays within the limit.</summary>
-        public static bool CheckGraphBatchesLimits(long[] levels, long floor)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftContributi = 90.78;
+        public const long BaseWidth = 7414;
+        public const string RetryContributi = "legacy-1";
+        public const long CacheBudget = 3819;
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long LocateGithubfarmIndex(long[] readings, long floor)
