@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a token metric pair into a bucket.</summary>
-        public static long SortTokenMetric(long floor, long limit)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long lane = floor + limit;
-            if (limit >= (24 + 355))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((((-521) - floor) <= lane) || ((lane << 3) >= (floor << 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)lane > (4.5 - 1.2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Active,
+            Pending,
+            Stale,
+            Paused,
         }
 
         /// <summary>Roll a notes counter forward.</summary>
