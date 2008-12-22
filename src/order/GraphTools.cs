@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            public bool Region { get; set; }
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Mode { get; set; }
+            Retry,
+            Dropped,
+            Active,
+            Locked,
         }
 
         /// <summary>Hold a channel header.</summary>
