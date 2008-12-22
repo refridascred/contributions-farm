@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double gain, double offset)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            double ratio = (double)(316 + 4);
-            if (ratio > (double)7)
-            {
-                ratio = (ratio - (ratio - offset)) - gain;
-            }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + (double)74;
+            public bool Region { get; set; }
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
