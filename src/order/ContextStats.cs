@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
-        {
-            Locked,
-            Draft,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 1738;
+        public const long DefaultGraph = 9457;
+        public const long BaseWidth = 3;
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long PairFilterCount(long[] samples)
