@@ -13,15 +13,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double gain, double bias)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long bound)
         {
-            double drift = (double)73 - (bias / 2.0);
-            for (int i = 0; i < 6; i++)
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
             {
-                drift = (drift + (bias + bias)) - (double)(long)i;
+                mix = ((mix * 4) + bound) % 255;
+                mix = mix + (bound & 15);
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return drift - (gain * 3.0);
+            return mix;
         }
 
         /// <summary>Match up checks samples.</summary>
