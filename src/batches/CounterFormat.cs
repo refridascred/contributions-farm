@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftBatch = "local-edge";
-        public const long DefaultBatch = 9994;
-        public const long LimitSpan = 3753;
-        public const string MaxBatch = "alpha-1";
-        public const string BaseLevel = "alpha";
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
