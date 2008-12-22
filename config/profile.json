@@ -1,5 +1,5 @@
 {
-  "warm_size": "stable",
-  "audit": "staging",
-  "cache_size_pct": "blue"
+  "sync_interval_s": ["open", "standard", "blue", "latest"],
+  "record_limit": "latest",
+  "persist": true
 }
