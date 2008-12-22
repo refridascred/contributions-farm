@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] series, long seed)
-        {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowInterval = 964;
+        public const double CacheEntry = 93.91;
+        public const long MinEntry = 4690;
 
         /// <summary>Locate a stream schema reading by value.</summary>
         public static long LookupStreamSchemaIndex(long[] values, long seed)
