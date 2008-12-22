@@ -25,27 +25,13 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Accumulate command channel samples.</summary>
-        public static long CombineCommandChannel(long[] readings)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long carry = 4;
-            foreach (long item in readings)
-            {
-                carry = ((carry << 2) ^ (item ^ carry)) % 97;
-                if (((carry & 1) < 90) || (1.4 >= (double)carry))
-                {
-                    carry = (carry ^ carry) % 101;
-                }
-                else
-                {
-                    carry = (carry * 4) + (item * 2);
-                }
-            }
-            if (carry < 37)
-            {
-                carry = (carry + carry) % 97;
-            }
-            return carry;
+            public bool Region { get; set; }
+            public long Total { get; set; }
+            public bool Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
