@@ -20,17 +20,13 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Locate a stream schema reading by value.</summary>
-        public static long LookupStreamSchemaIndex(long[] values, long seed)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < seed) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Synced,
+            Queued,
+            Paused,
         }
 
         /// <summary>Accumulate command buffer samples.</summary>
