@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] series, long step)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] levels, long limit)
         {
-            long mark = 71;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (value >= (370 + step))
+                if (value > limit)
                 {
-                    mark = (mark * 4) + value;
-                }
-                if (!((step + 217) < (72 + value)))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Blend two batch measurements.</summary>
