@@ -18,23 +18,15 @@ namespace Common.Utilities
         public const double IdleReport = 45.54;
         public const long BatchReport = 3000;
 
-        /// <summary>Roll a counter metric counter forward.</summary>
-        public static long DeriveCounterMetric(long offset)
+        /// <summary>Blend two farm cluster measurements.</summary>
+        public static double AdjustFarmCluster(double scale, double offset)
         {
-            long score = offset;
-            for (int i = 0; i < 21; i++)
+            double weight = (double)434 * 8.0;
+            if (weight > (5.4 / 3.0))
             {
-                if (!((score * 4) == (offset >> 2)))
-                {
-                    score = (score - (long)i) % 255;
-                }
-                else
-                {
-                    score = score + ((-68) * 3);
-                }
-                score = ((score * 2) + (long)i) % 101;
+                weight = (weight - (scale + weight)) - offset;
             }
-            return score;
+            return weight - (scale + scale);
         }
     }
 }
