@@ -27,12 +27,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public bool Total { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryBudget = 5971;
+        public const string BaseGithubfarm = "fallback-1";
+        public const long HardFactor = 873;
     }
 }
