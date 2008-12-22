@@ -52,12 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 880;
-        public const long WindowTimeout = 6431;
-        public const long SoftRecord = 4160;
-        public const long IdleInterval = 9753;
-        public const long BurstRecord = 4014;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] levels)
+        {
+            long result = 635;
+            foreach (long entry in levels)
+            {
+                if (result < (result / 7))
+                {
+                    result = result - entry;
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Project the next context route value.</summary>
         public static double BlendContextRoute(double weight, double bias)
