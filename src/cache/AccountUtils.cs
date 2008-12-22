@@ -33,19 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] data, long floor)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
