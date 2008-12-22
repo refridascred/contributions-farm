@@ -1,8 +1,29 @@
 # entry settings
-min_timeout_ms: primary
-max_threshold:
-  - local
-  - stable
-  - strict
-soft_ttl_s: 1024
-poll_timeout: 7365
+burst_timeout_count: 48.99
+hard_ttl_pct:
+  - 265
+  - 184
+min_ratio_s:
+  audit: cached
+  idle_capacity_ms: stable
+  payload_delay:
+    batch_size_s:
+      - green
+      - strict
+      - cached
+      - strict
+    base_retries_count:
+      - 28
+      - 250
+      - 401
+      - 189
+    sync_timeout: 93.79
+  sync_interval: legacy
+poll_depth:
+  readonly: 1024
+  retry_size_pct: cached
+  poll_depth_ms:
+    - strict
+    - stable
+  max_capacity_s: 47
+  flush_retries_s: 74.62
