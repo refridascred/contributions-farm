@@ -62,22 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsOutliers(long[] data)
+        /// <summary>Measure how many order metric samples are out of range.</summary>
+        public static long CountOrderMetricMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((hits < (hits + value)) && ((5.85 / 3.0) > (double)value))
+                if (1 >= tally)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 3) - datum;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
