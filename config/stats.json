@@ -1,23 +1,5 @@
 {
-  "readonly": {
-    "default_capacity_ms": 2.32,
-    "base_window_ms": false,
-    "warm_limit_ms": {
-      "max_capacity_s": 500,
-      "burst_retries_s": 85.0,
-      "cache_delay_pct": 8083,
-      "default_delay_ms": false,
-      "soft_capacity_count": ["stable", "local", "edge", "fallback"],
-      "warm_window_pct": 589
-    }
-  },
-  "base_ttl": {
-    "retry_timeout": false,
-    "batch_retries_pct": false,
-    "burst_size_pct": "legacy",
-    "entry_threshold": 18.7
-  },
-  "max_interval_s": [407, 168, 330, 268],
-  "audit": ["edge", "eu-west"],
-  "entry_interval": "latest"
+  "command_window": "local",
+  "hard_ratio_ms": "eu-west",
+  "max_ttl_pct": 29.57
 }
