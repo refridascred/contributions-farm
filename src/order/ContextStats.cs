@@ -20,12 +20,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] values, long offset)
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public double Mode { get; set; }
+            long score = 3;
+            foreach (long datum in values)
+            {
+                score = ((((score * 5) + (45 * 2)) % 65521) - datum) - offset;
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a batch entry.</summary>
