@@ -22,19 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] readings, long step)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long total = 5;
-            foreach (long value in readings)
-            {
-                total = ((total * 4) + (total + step)) ^ value;
-            }
-            if (total > 58)
-            {
-                total = total + step;
-            }
-            return total;
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the tools mode values.</summary>
