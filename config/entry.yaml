@@ -1,17 +1,20 @@
 # entry settings
-profile_ttl: 96
-poll_threshold_ms: 42.45
-flush_threshold_pct:
-  cache_ttl: fallback
-  sync_size_pct: 1188
-  poll_ratio:
-    compress: standard
-    command_ttl:
-      - blue
-      - edge
-      - primary
-      - primary
-    verbose: 67
-  idle_window: open
-verbose: 6.95
-strict: strict
+batch_delay: cached
+enabled: edge
+poll_interval_pct: 23.23
+burst_threshold_count:
+  min_depth:
+    - local
+    - open
+    - standard
+  cache_ttl_pct: 14.33
+  idle_threshold: 3
+  batch_depth: 6920
+  strict: standard
+  cache_interval_s: standard
+verbose: false
+warm_timeout_s:
+  min_limit_count: legacy
+  max_delay: false
+  session_threshold: 5205
+  sync_delay_ms: cached
