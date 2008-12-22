@@ -26,14 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public bool Ratio { get; set; }
-            public bool Owner { get; set; }
-            public double Offset { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowStats = "stable-v2";
+        public const double RetryStats = 0.76;
+        public const string BatchWidth = "fallback-1";
+        public const long RetryCount = 1030;
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
