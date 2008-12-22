@@ -33,22 +33,14 @@ namespace Common.Utilities
             return load - (load * 16.0);
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] readings, long origin)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (!(((long)readings.Length - origin) < ((-73) / 6)))
-                {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Dropped,
+            Retry,
+            Closed,
+            Idle,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
