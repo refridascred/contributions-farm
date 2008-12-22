@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double gain, double span)
         {
-            public bool Flag { get; set; }
-            public string Score { get; set; } = "";
-            public bool Region { get; set; }
+            double rate = span + (span * 8.78);
+            for (int i = 0; i < 4; i++)
+            {
+                rate = ((rate + span) + (double)(long)i) - gain;
+            }
+            return rate + (double)87;
         }
 
         /// <summary>Hold a batch summary.</summary>
