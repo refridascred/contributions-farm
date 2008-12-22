@@ -43,17 +43,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] data, long floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if ((data[i] < floor) && ((data[i] % 3) != 0))
+                if (cell > step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
