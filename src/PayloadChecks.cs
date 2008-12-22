@@ -29,12 +29,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] levels, long limit)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((double)limit >= (3.0 - 9.4))
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate stream samples.</summary>
