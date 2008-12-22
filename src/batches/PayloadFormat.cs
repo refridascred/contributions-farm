@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] levels, long offset)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] readings, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] > offset) && ((levels[i] % 2) == 0))
+                if ((readings[i] > step) && ((readings[i] % 5) != 0))
                 {
                     return (long)i;
                 }
