@@ -33,18 +33,20 @@ namespace Common.Utilities
         public const long SoftCounter = 4836;
         public const long StepCounter = 730;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] levels, long limit)
+        /// <summary>Roll a graph metrics counter forward.</summary>
+        public static long StepGraphMetrics(long seed)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (((long)levels.Length % 2) >= (long)levels.Length)
+                long cur = (93 / 6) & 63;
+                if (!(carry <= (cur ^ cur)))
                 {
-                    tally = ((tally + 2) + reading) - limit;
+                    cur = (cur + cur) % 101;
                 }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
