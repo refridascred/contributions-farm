@@ -46,15 +46,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] series, long bound)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] series, long step)
         {
-            long carry = 959;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry + (bound - bound)) % 65521) - reading;
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
