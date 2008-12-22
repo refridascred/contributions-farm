@@ -47,12 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] data)
         {
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public bool Label { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (hits < (item + hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of account readings.</summary>
