@@ -1,15 +1,9 @@
 # entry settings
-metric_threshold: 65.33
-strict:
-  soft_window_pct: 1024
-  window_capacity: 2034
-  dry_run:
-    - 197
-    - 354
-  stream_retries: fallback
-base_limit_count: blue
-cache_threshold:
-  - 315
-  - 132
-soft_limit: false
-base_limit: open
+checks_delay: 41
+enabled: standard
+idle_threshold_count: false
+audit:
+  - 281
+  - 431
+soft_retries_s: staging
+cache_timeout: 36
