@@ -1,11 +1,10 @@
 # githubfarm settings
-base_timeout_ms: 7051
-idle_threshold:
-  enabled: primary
-  order_threshold: blue
-  retry_timeout_s: staging
-  idle_capacity_s: stable
-batches_size: true
-filter_delay: cached
-persist: true
-channel_ttl: stable
+flush_capacity_count: 4.16
+already_ttl:
+  layout_interval: edge
+  hard_window_count: cached
+  audit: 252
+  default_timeout_s: 30
+  max_capacity: 84.7
+sync_ratio: 13.06
+cache_ttl: edge
