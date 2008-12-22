@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] items)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((tally % 24) > tally)
                 {
-                    if ((items[i] - items[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 3) ^ value;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Rank stream editor input into a small class.</summary>
