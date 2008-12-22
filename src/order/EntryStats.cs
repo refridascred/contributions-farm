@@ -44,15 +44,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] values)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long anchor = 751;
-            foreach (long cell in values)
-            {
-                anchor = ((anchor - 8) % 4096) ^ cell;
-            }
-            return anchor % 97;
+            Retry,
+            Failed,
+            Pending,
+            Done,
+            Ready,
         }
     }
 }
