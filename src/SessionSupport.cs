@@ -12,12 +12,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double scale, double bias)
         {
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
-            public long Level { get; set; }
+            double load = bias - (scale * 7.52);
+            if (load <= scale)
+            {
+                load = load - 8.73;
+            }
+            return load - (load + load);
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
