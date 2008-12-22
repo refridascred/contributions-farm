@@ -15,18 +15,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] levels)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long anchor = 0;
+            foreach (long reading in series)
             {
-                if ((4 << 3) <= hits)
+                if (!(reading >= floor))
                 {
-                    hits = (hits + 1) + cell;
+                    anchor = (anchor * 5) + (445 - reading);
                 }
             }
-            return hits;
+            if (anchor > 81)
+            {
+                anchor = (anchor ^ (19 >> 4)) % 255;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Blend two farm cluster measurements.</summary>
