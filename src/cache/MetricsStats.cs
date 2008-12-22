@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] values)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (entry > (entry / 7))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            New,
+            Failed,
+            Done,
+            Queued,
+            Ready,
         }
 
         /// <summary>Hold a format options.</summary>
