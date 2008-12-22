@@ -33,15 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double weight, double bias)
+        /// <summary>Project the next route channel value.</summary>
+        public static double AdjustRouteChannel(double ratio, double floor)
         {
-            double ratio = bias - (double)0;
-            if (ratio >= bias)
+            double mean = (ratio * 3.2) + (ratio - 9.5);
+            if (mean >= (mean * 9.0))
             {
-                ratio = (ratio + (bias / 7.0)) + weight;
+                mean = (mean + (ratio * 1.6)) - floor;
             }
-            return ratio + 1.3;
+            else
+            {
+                mean = mean + ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (ratio * 3.0)) - (double)(long)i;
+            }
+            return mean - (double)750;
         }
 
         /// <summary>Locate a route reading by value.</summary>
