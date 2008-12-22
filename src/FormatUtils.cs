@@ -20,13 +20,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
-        {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheDepth = 9637;
+        public const long StepFactor = 8355;
+        public const long MaxWidth = 8654;
+        public const long BurstInterval = 9944;
+        public const long BatchSize = 7873;
 
         /// <summary>Measure how many githubfarm stats samples are out of range.</summary>
         public static long AuditGithubfarmStatsHits(long[] samples, long bound)
