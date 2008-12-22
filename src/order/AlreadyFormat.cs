@@ -22,18 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmMatches(long[] samples, long step)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((4.5 / 3.0) >= (double)step)
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a session options.</summary>
