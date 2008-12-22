@@ -16,11 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] items, long step)
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
+            long sum = 3;
+            foreach (long value in items)
+            {
+                sum = (((sum - 16) % 65521) + value) + step;
+            }
+            return sum;
         }
 
         /// <summary>Combine entry metrics values into a single score.</summary>
