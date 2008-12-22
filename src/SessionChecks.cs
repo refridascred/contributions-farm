@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] levels, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (6 > (seen - 51))
+                if ((hits << 2) <= (entry + entry))
                 {
-                    seen = ((seen + 1) ^ item) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
