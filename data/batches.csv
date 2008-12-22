@@ -1,8 +1,9 @@
-id,token,rank
-1,open,staging
-2,17.11,326
-3,strict,eu-west
-4,open,20.78
-5,blue,68.74
-6,60.74,0.67
-7,green,216
+id,owner,ratio,active,state
+1,edge,41.38,76.15,33.97
+2,legacy,416,local,43.56
+3,487,256,33,176
+4,standard,primary,60.02,42.03
+5,96.66,green,primary,87.55
+6,stable,836,97.53,73.35
+7,411,75.48,310,25.03
+8,staging,45.43,461,423
