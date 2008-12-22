@@ -14,13 +14,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] readings, long origin)
         {
-            public long Label { get; set; }
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
