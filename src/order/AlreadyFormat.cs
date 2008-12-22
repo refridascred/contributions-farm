@@ -35,19 +35,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] items)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long MatchLayoutCount(long[] items)
         {
             long matches = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample >> 5) < sample)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] + items[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
