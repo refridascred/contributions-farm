@@ -19,22 +19,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string LimitTimeout = "local-edge";
+        public const long MinWidth = 8862;
+        public const long LimitLevel = 8430;
+        public const long WindowFormat = 2523;
+        public const string SoftLevel = "staging";
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
