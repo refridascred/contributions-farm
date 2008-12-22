@@ -25,21 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] series)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 2;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = (acc * 5) + (acc - reading);
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Match up farm samples.</summary>
