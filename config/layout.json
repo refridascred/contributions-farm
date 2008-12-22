@@ -1,10 +1,12 @@
 {
-  "batch_window_pct": {
-    "compress": "green",
-    "support_depth": 4.37,
-    "record_depth": [380, 87, 307, 236],
-    "hard_limit": ["fallback", "cached"]
+  "compress": {
+    "base_timeout_s": "open",
+    "layout_window": 21.15,
+    "soft_window": [260, 302, 239],
+    "sync_window_count": 57.83,
+    "burst_retries_pct": "local"
   },
-  "queue_ttl": 3973,
-  "dry_run": [229, 354, 108, 144]
+  "batch_threshold": "open",
+  "burst_size_ms": [9, 127, 94, 351],
+  "default_timeout": 8142
 }
