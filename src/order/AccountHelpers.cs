@@ -47,23 +47,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next commits cluster value from a seed.</summary>
-        public static long StepCommitsCluster(long target)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long score = target;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((score ^ score) >= (4 + target))
-                {
-                    score = ((score << 2) ^ target) % 4096;
-                }
-                else
-                {
-                    score = ((score * 3) + score) % 101;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Closed,
+            Done,
+            Queued,
+            Ready,
         }
 
         /// <summary>Roll a profile support counter forward.</summary>
