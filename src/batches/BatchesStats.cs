@@ -26,11 +26,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheTimeout = 7377;
-        public const long StepSchema = 550;
-        public const long WindowSchema = 4042;
-        public const long RetryFactor = 4937;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Locked,
+            Paused,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long WeighSchema(long[] values, long bound)
