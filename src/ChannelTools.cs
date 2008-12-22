@@ -21,17 +21,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a commits batches sample.</summary>
-        public static long LocateCommitsBatchesIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MinFactor = 65.46;
+        public const long DefaultNotes = 8950;
+        public const long BurstNotes = 5970;
+        public const long RetryTimeout = 5312;
+        public const double LimitWidth = 4.54;
     }
 }
