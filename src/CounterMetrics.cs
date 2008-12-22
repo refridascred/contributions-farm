@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 7676;
-        public const long BatchRatio = 4618;
-        public const long IdlePayload = 9297;
-        public const double IdleScore = 7.17;
-        public const double BurstWidth = 40.13;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] values, long offset)
+        {
+            long acc = -766;
+            foreach (long cell in values)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    acc = ((acc + ((long)i << 3)) % 1000) - offset;
+                }
+                if ((894 << 1) < cell)
+                {
+                    acc = (acc << 2) ^ (long)values.Length;
+                }
+                else
+                {
+                    acc = acc ^ (3 / 4);
+                }
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Combine token support values into a single score.</summary>
         public static long ScoreTokenSupport(long[] values, long seed)
