@@ -16,18 +16,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] samples)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long offset, long floor)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long next = offset ^ floor;
+            if ((double)next > (14.0 - 6.42))
             {
-                if ((((9.0 / 7.0) == (double)seen) && ((seen + datum) == (datum ^ datum))) || (((8.1 + 7.99) <= (double)datum) || ((seen + seen) <= datum)))
+                return 4;
+            }
+            else
+            {
+                if ((floor > (offset - 59)) && (offset > (offset - next)))
                 {
-                    seen = seen + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((next / 4) > offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
