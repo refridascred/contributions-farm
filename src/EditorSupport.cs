@@ -29,21 +29,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] readings)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 8;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(item <= (mix + mix)))
                 {
-                    if ((readings[i] + readings[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix << 3) ^ (mix * 3)) % 101;
                 }
             }
-            return tally;
+            if (mix > 333)
+            {
+                mix = (mix ^ (mix + mix)) % 1000;
+            }
+            return mix % 97;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
