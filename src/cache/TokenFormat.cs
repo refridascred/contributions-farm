@@ -21,13 +21,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] values, long limit)
         {
-            public double Offset { get; set; }
-            public double Region { get; set; }
-            public bool Count { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= limit) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
