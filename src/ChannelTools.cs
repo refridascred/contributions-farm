@@ -34,19 +34,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] items, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long carry = 7;
+            foreach (long reading in data)
             {
-                if (reading <= target)
+                if ((994 + carry) >= reading)
                 {
-                    ok = false;
-                    break;
+                    carry = (carry ^ reading) - target;
                 }
             }
-            return ok;
+            return carry;
         }
     }
 }
