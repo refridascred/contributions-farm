@@ -33,19 +33,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] series, long limit)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long limit)
         {
-            long score = 638;
-            foreach (long entry in series)
+            long total = limit;
+            for (int i = 0; i < 12; i++)
             {
-                score = (((score ^ (score ^ 73)) % 65521) ^ entry) - limit;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    total = ((total ^ (total + 21)) % 101) - (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            if (score < 201)
-            {
-                score = score - (score ^ score);
-            }
-            return score;
+            return total;
         }
     }
 }
