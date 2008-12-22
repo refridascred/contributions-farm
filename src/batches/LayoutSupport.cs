@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public double Mode { get; set; }
-            public double Total { get; set; }
+            Closed,
+            Synced,
+            Pending,
+            Paused,
+            Failed,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
