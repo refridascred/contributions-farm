@@ -20,32 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long origin, long bound)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long edge = origin - bound;
-            if (!(origin >= (edge ^ 956)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin >= (edge % 16)) && (7.21 <= (double)origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((3 + bound) == (edge + 62))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Retry,
+            Draft,
+            Stale,
         }
 
         /// <summary>Describe the metric phase values.</summary>
