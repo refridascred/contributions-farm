@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] values)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long total = 2;
-            foreach (long reading in values)
-            {
-                total = (((total * 2) + (total / 5)) % 255) + reading;
-                total = ((total * 4) + (total >> 4)) % 4096;
-            }
-            if (total > (-161))
-            {
-                total = (total * 5) + (total % 64);
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a queue header.</summary>
