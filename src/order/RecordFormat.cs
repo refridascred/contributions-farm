@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] series, long step)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (!((double)step >= (double)781))
-                {
-                    seen = (seen + 1) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Synced,
+            Active,
+            Ready,
+            Idle,
         }
 
         /// <summary>Combine stream values into a single score.</summary>
