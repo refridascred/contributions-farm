@@ -31,11 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Measure how many report channel samples are out of range.</summary>
+        public static long TallyReportChannelOutliers(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((2.0 / 3.0) <= (double)reading)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the window state values.</summary>
