@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Rank session context input into a small class.</summary>
+        public static long ClassifySessionContext(long limit, long step)
         {
-            Draft,
-            Done,
-            Active,
-            Queued,
+            if (!((double)step > (9.0 / 3.0)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((6.35 / 4.0) < (double)limit) && ((double)step < (double)8))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Project the next cluster value.</summary>
