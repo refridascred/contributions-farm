@@ -1,6 +1,7 @@
 {
-  "stream_depth": 60,
-  "payload_window": false,
-  "cache_capacity_count": 60,
-  "base_retries": "cached"
+  "base_delay_count": 60,
+  "checks_timeout": "legacy",
+  "warm_depth": "staging",
+  "already_threshold": [153, 241],
+  "sync_timeout": false
 }
