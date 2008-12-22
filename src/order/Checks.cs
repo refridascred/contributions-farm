@@ -52,17 +52,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] data, long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((data[i] < floor) && ((data[i] % 3) != 0))
+                if (matches > 3)
                 {
-                    return (long)i;
+                    matches = ((matches + 3) + entry) - limit;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
