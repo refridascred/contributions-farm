@@ -20,15 +20,13 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Iterate the githubfarm stats series from a seed.</summary>
-        public static long IterateGithubfarmStats(long bound)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            Pending,
+            Queued,
+            Idle,
+            Active,
         }
 
         /// <summary>Hold a window summary.</summary>
