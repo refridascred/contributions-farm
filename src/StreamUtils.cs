@@ -79,22 +79,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route entry values into a single score.</summary>
-        public static long DigestRouteEntry(long[] samples, long step)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long mark = 32;
-            foreach (long datum in samples)
-            {
-                if (!((datum / 2) != (mark - mark)))
-                {
-                    mark = ((mark << 3) ^ (mark / 5)) - step;
-                }
-            }
-            if (mark < 35)
-            {
-                mark = ((mark << 2) ^ (mark + mark)) % 97;
-            }
-            return mark % 4096;
+            public string Ratio { get; set; } = "";
+            public bool Score { get; set; }
+            public long Total { get; set; }
+            public double Region { get; set; }
         }
     }
 }
