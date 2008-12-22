@@ -30,22 +30,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the checks counter entries that pass the check.</summary>
-        public static long TallyChecksCounterHits(long[] series)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long step)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long total = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((seen <= (76 + value)) && (value <= seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = (total + total) % 65521;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
