@@ -36,13 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Scale a batch githubfarm figure with a bias.</summary>
+        public static double SmoothBatchGithubfarm(double scale, double floor)
         {
-            Stale,
-            Locked,
-            Retry,
-            Dropped,
+            double drift = (floor - 2.1) * 7.0;
+            if (drift <= scale)
+            {
+                drift = drift + (drift / 4.0);
+            }
+            return drift - 11.0;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
