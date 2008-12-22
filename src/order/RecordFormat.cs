@@ -42,21 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up cache counter samples.</summary>
-        public static long CompareCacheCounterCount(long[] series)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the queue status values.</summary>
