@@ -1,6 +1,7 @@
-id,token,count
-1,fallback,legacy
-2,139,550
-3,eu-west,31.66
-4,17.31,cached
-5,55.16,46.99
+id,token,active,label,level
+1,eu-west,legacy,green,276
+2,84.75,336,962,261
+3,primary,813,945,364
+4,stable,34.91,60.48,14
+5,531,450,734,53.36
+6,59.63,14.5,47.1,198
