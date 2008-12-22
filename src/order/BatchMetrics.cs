@@ -35,17 +35,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] readings, long floor)
+        /// <summary>Rank stream editor input into a small class.</summary>
+        public static long SortStreamEditor(long limit, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((8.0 * 0.42) >= (double)limit)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
+                return 0;
+            }
+            else
+            {
+                if (!((target >> 1) > (6 / 2)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((target * 5) > (limit % 7)) || ((97 >> 5) < limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the cache phase values.</summary>
