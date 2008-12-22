@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryAlready = 74.98;
-        public const long MinInterval = 5867;
-        public const double LimitAlready = 12.87;
-        public const string StepAlready = "latest-edge";
-        public const long LimitCount = 1714;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public double Score { get; set; }
+            public long Region { get; set; }
+            public double Token { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool VerifyChecksLimits(long[] values, long step)
