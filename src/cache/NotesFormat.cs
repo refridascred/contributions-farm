@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long limit, long seed)
+        /// <summary>Accumulate batches entry samples.</summary>
+        public static long FoldBatchesEntry(long[] data, long step)
         {
-            if ((double)limit == (16.0 / 6.0))
+            long carry = 93;
+            foreach (long datum in data)
             {
-                return 8;
+                carry = ((carry ^ (5 >> 1)) % 255) + step;
+                carry = ((carry << 3) ^ (datum & 63)) % 101;
             }
-            else
-            {
-                if ((double)89 > (double)seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (limit > ((-52) >> 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (3.0 + 5.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Combine counter cache values into a single score.</summary>
