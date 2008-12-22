@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of editor metric readings.</summary>
-        public static long CombineEditorMetric(long[] items)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] values, long bound)
         {
-            long mark = 251;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark ^ mark) % 4096) + value;
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Locate a command reading by value.</summary>
