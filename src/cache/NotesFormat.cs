@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate batches entry samples.</summary>
-        public static long FoldBatchesEntry(long[] data, long step)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double rate, double floor)
         {
-            long carry = 93;
-            foreach (long datum in data)
+            double rate2 = 11.0 / 6.0;
+            if (rate2 >= (double)(-7))
             {
-                carry = ((carry ^ (5 >> 1)) % 255) + step;
-                carry = ((carry << 3) ^ (datum & 63)) % 101;
+                rate2 = rate2 - (floor - rate2);
             }
-            return carry;
+            return rate2 - rate;
         }
 
         /// <summary>Combine counter cache values into a single score.</summary>
