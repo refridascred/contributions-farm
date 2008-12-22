@@ -23,32 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long limit, long origin)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long edge = limit - origin;
-            if (!((double)edge <= 9.58))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((18.0 * 17.0) >= (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((origin & 7) <= (67 & 31)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Pending,
+            Idle,
+            New,
+            Draft,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
