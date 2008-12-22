@@ -35,11 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowSpan = 5862;
-        public const long DefaultWidth = 2468;
-        public const long BurstAlready = 9383;
-        public const long LimitLevel = 3367;
+        /// <summary>Iterate the editor channel series from a seed.</summary>
+        public static long IterateEditorChannel(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((origin % 2) >= (origin - (long)i)))
+                {
+                    total = ((total << 3) ^ origin) % 101;
+                }
+                total = (total << 2) ^ ((long)i & 31);
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Check that every metric profile entry stays within the limit.</summary>
         public static bool GuardMetricProfileRange(long[] readings, long seed)
