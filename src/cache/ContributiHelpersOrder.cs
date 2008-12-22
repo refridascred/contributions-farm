@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    carry = ((carry << 2) ^ ((long)i ^ step)) ^ (long)i2;
-                }
-                if ((90 < (step & 15)) || ((3 & 7) == (carry + carry)))
-                {
-                    carry = (carry - (carry - carry)) % 101;
-                }
-                else
-                {
-                    carry = (carry - (step + (long)i)) % 97;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitMetric = "local-v2";
+        public const double BatchMetric = 92.26;
+        public const long DefaultMetric = 914;
+        public const long DefaultSize = 1756;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool ValidateBatchLimits(long[] data, long limit)
