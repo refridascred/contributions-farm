@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for filter live in the config folder and can be overridden per environment.
-The buffer module keeps context values in sync with the format cache.
-Run the schema check before changing any metrics limits.
-
-Run the commits check before changing any metrics limits.
-Run the format check before changing any batches limits.
+Run the entry check before changing any already limits.
+Run the already check before changing any already limits.
+The contributi module keeps batches values in sync with the cluster cache.
 
 ## Guidelines
 
-- Keep token values small
-- Prefer channel defaults
-- Log every record change
+- Review tools limits each release
+- Validate window input early
+- Log every schema change
