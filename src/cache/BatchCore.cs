@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the metric order entries that pass the check.</summary>
-        public static long AuditMetricOrderOutliers(long[] samples, long origin)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((628 + origin) != (datum / 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] + values[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
