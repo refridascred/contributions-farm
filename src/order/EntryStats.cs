@@ -35,18 +35,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] samples, long limit)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long sum = 732;
-            foreach (long reading in samples)
-            {
-                if ((limit > reading) && ((reading >> 1) < limit))
-                {
-                    sum = (sum * 3) + (549 ^ reading);
-                }
-            }
-            return sum;
+            public string Limit { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Classify a record filter pair into a bucket.</summary>
