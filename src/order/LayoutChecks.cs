@@ -77,19 +77,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long origin)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] data)
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
+            long acc = -444;
+            foreach (long sample in data)
             {
-                if ((7.0 + 7.79) >= (double)(long)i)
+                if (2.9 >= (double)acc)
                 {
-                    total = total ^ total;
+                    acc = ((acc * 2) + (sample * 5)) % 65521;
                 }
-                total = ((total * 3) + (long)i) % 101;
+                else
+                {
+                    acc = (acc - (acc + acc)) % 97;
+                }
             }
-            return total;
+            if (acc < 47)
+            {
+                acc = acc + (acc >> 5);
+            }
+            return acc;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
