@@ -21,12 +21,17 @@ namespace Common.Utilities
         public const long MinSpan = 6527;
         public const long MaxDepth = 8996;
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] values, long limit)
         {
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < limit) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
