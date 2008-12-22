@@ -20,16 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] series, long seed)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long step)
         {
-            long mark = 48;
-            foreach (long item in series)
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                mark = ((mark * 3) + (item + 6)) - seed;
-                mark = mark - (item + mark);
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
