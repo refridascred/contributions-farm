@@ -22,19 +22,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] series, long step)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Synced,
+            Retry,
+            Queued,
         }
 
         /// <summary>Describe the record class values.</summary>
