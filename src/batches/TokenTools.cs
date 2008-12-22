@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank session context input into a small class.</summary>
-        public static long ClassifySessionContext(long limit, long step)
-        {
-            if (!((double)step > (9.0 / 3.0)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((6.35 / 4.0) < (double)limit) && ((double)step < (double)8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseBudget = 2637;
+        public const long WindowWidth = 3863;
+        public const string DefaultSpan = "fallback-v2";
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
