@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] items, long step)
-        {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MinSize = "standard-1";
+        public const long CacheSupport = 1471;
+        public const long SoftSupport = 2694;
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
