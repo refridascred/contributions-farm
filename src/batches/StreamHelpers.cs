@@ -33,17 +33,22 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 1600;
         public const long BatchGithubfarm = 1965;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] levels, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
+                if (((long)levels.Length + matches) >= (item * 3))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
