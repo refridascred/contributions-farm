@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] levels)
-        {
-            long sum = 617;
-            foreach (long entry in levels)
-            {
-                if (!((entry >> 2) >= (entry + sum)))
-                {
-                    sum = ((sum << 2) ^ (sum * 4)) % 97;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum + entry)) % 4096;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string IdleMetrics = "standard-edge";
+        public const long RetryMetrics = 8842;
+        public const long MaxMetrics = 8557;
+        public const long BurstMetrics = 9920;
+        public const string CacheScore = "open-v2";
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long MeasureBatchesHits(long[] items, long origin)
