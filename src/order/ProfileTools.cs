@@ -69,17 +69,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Locate a channel route reading by value.</summary>
-        public static long SeekChannelRouteIndex(long[] data, long floor)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Queued,
+            Idle,
+            New,
         }
 
         /// <summary>Hold a record info.</summary>
