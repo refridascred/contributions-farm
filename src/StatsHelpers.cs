@@ -46,13 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Count the report command entries that pass the check.</summary>
+        public static long CountReportCommandGaps(long[] data)
         {
-            New,
-            Dropped,
-            Retry,
-            Done,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((value / 5) > (value - count)) && (((value - count) < value) || ((3 + 74) != (value & 1))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
