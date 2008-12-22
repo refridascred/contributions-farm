@@ -1,5 +1,8 @@
 {
-  "hard_timeout_pct": 1024,
-  "queue_ttl": 1159,
-  "batch_retries": "green"
+  "idle_delay_s": "stable",
+  "poll_interval_count": "local",
+  "metric_delay": "edge",
+  "sync_depth_s": 100,
+  "retry_delay_count": "strict",
+  "verbose": 59
 }
