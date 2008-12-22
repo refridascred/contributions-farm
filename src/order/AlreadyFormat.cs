@@ -62,17 +62,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleSize = "legacy-1";
+        public const long BaseEntry = 2146;
+        public const string CacheCount = "cached";
+        public const double BurstWidth = 73.53;
     }
 }
