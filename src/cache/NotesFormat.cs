@@ -34,12 +34,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] readings)
         {
-            Paused,
-            New,
-            Synced,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((hits + entry) == (hits ^ entry))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
