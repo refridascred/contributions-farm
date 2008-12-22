@@ -19,16 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long bound)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double scale, double span)
         {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = (mix ^ (bound + bound)) % 1000;
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            double gain = (double)53;
+            return ((gain - (5.4 * 4.0)) + scale) + span;
         }
 
         /// <summary>Match up editor samples.</summary>
