@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine buffer cluster values into a single score.</summary>
-        public static long ScoreBufferCluster(long[] items)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] data, long seed)
         {
-            long acc = 279;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (entry >= 4)
+                if ((5.6 - 9.1) == (double)seed)
                 {
-                    acc = (acc ^ acc) % 4096;
-                }
-                if (!((double)acc <= (4.3 / 7.0)))
-                {
-                    break;
+                    hits = (hits + 1) + reading;
                 }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
