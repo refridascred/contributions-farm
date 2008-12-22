@@ -46,16 +46,21 @@ namespace Common.Utilities
         public const long LimitCount = 9723;
         public const long BaseDepth = 7133;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] levels)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] data)
         {
-            long sum = 70;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum + (54 & 127)) % 101) ^ datum;
-                sum = (sum - (sum ^ sum)) % 4096;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
