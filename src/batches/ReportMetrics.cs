@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] samples)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 752;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item >= 97)
                 {
-                    if ((samples[i] ^ samples[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry - (carry + item)) % 4096;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry - carry)) % 1000;
+                    carry = (carry + 5) % 97;
+                }
+                if ((item - carry) == ((-419) + item))
+                {
+                    carry = (carry - (item - 6)) % 97;
+                }
+                else
+                {
+                    carry = (carry + (carry / 7)) % 255;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Accumulate order record samples.</summary>
