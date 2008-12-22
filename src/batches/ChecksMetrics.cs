@@ -88,31 +88,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long target, long limit)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] levels, long bound)
         {
-            if (((target * 5) <= (limit + 912)) || ((limit ^ (-923)) <= (limit - 8)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target - target) < limit)
+                if ((levels[i] >= bound) && ((levels[i] % 3) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit + limit) <= (limit % 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of route readings.</summary>
