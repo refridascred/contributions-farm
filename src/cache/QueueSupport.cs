@@ -22,31 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] levels, long target)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long carry = 60;
-            foreach (long sample in levels)
-            {
-                carry = carry ^ carry;
-                if ((double)sample <= (double)5)
-                {
-                    carry = (carry ^ (target / 8)) % 65521;
-                }
-                if ((5.73 - 2.06) > (double)target)
-                {
-                    carry = carry - ((long)levels.Length >> 5);
-                }
-                else
-                {
-                    carry = (carry + (2 - carry)) % 4096;
-                }
-            }
-            if (carry > 692)
-            {
-                carry = carry + (carry & 31);
-            }
-            return carry % 65521;
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Grade a entry already value against two limits.</summary>
