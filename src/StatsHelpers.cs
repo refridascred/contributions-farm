@@ -15,12 +15,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] data)
         {
-            public bool Ratio { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the checks state values.</summary>
