@@ -19,15 +19,21 @@ namespace Common.Utilities
         public const string SoftReport = "fallback-1";
         public const string MinFactor = "strict-v2";
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double gain, double bias)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] values)
         {
-            double rate = (double)(424 * 3);
-            if (rate > gain)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate - (rate + 8.0)) + bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate + (rate / 8.0);
+            return matches;
         }
 
         /// <summary>Combine already values into a single score.</summary>
