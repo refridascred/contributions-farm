@@ -17,11 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Check that every order route entry stays within the limit.</summary>
+        public static bool VerifyOrderRouteBounds(long[] values, long offset)
         {
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
