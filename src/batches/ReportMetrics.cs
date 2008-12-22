@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] data)
-        {
-            long carry = 752;
-            foreach (long item in data)
-            {
-                if (item >= 97)
-                {
-                    carry = (carry - (carry + item)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry - carry)) % 1000;
-                    carry = (carry + 5) % 97;
-                }
-                if ((item - carry) == ((-419) + item))
-                {
-                    carry = (carry - (item - 6)) % 97;
-                }
-                else
-                {
-                    carry = (carry + (carry / 7)) % 255;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepScore = 4053;
+        public const long MinChecks = 1533;
+        public const long CacheChecks = 7667;
 
         /// <summary>Accumulate order record samples.</summary>
         public static long CombineOrderRecord(long[] levels)
