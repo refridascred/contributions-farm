@@ -25,16 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] samples)
-        {
-            long acc = 2;
-            foreach (long reading in samples)
-            {
-                acc = (acc * 5) + (acc - reading);
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepMetric = "stable";
+        public const string LimitMetric = "fallback";
+        public const long StepInterval = 3220;
+        public const double CacheMetric = 90.3;
 
         /// <summary>Match up farm samples.</summary>
         public static long CompareFarmCount(long[] data)
