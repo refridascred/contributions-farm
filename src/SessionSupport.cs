@@ -12,12 +12,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            Pending,
-            Draft,
-            Queued,
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
