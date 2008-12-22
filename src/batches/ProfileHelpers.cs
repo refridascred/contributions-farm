@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] levels)
         {
-            Closed,
-            Queued,
-            Done,
+            long score = 88;
+            foreach (long entry in levels)
+            {
+                score = score ^ (entry << 3);
+            }
+            return score;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
