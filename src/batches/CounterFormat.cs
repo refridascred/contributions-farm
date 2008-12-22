@@ -32,14 +32,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double scale, double bias)
         {
-            Done,
-            Ready,
-            New,
-            Paused,
-            Stale,
+            double mean = (bias * 0.3) * 5.6;
+            return (mean + (mean * 4.49)) + scale;
         }
 
         /// <summary>Describe the schema phase values.</summary>
