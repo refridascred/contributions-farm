@@ -19,15 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double ratio, double bias)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double gain, double bias)
         {
-            double drift = (double)(3 >> 3);
-            if (drift >= 2.6)
+            double scale = bias;
+            if (scale > bias)
             {
-                drift = ((drift - 20.0) + ratio) - bias;
+                scale = (scale - bias) + gain;
             }
-            return drift - drift;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + 9.16) + (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Hold a route header.</summary>
