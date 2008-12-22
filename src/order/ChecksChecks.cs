@@ -11,21 +11,24 @@ namespace Common.Utilities
         public const string RetryCounter = "alpha-edge";
         public const double BatchDepth = 18.52;
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] levels)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long step, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((184 + 84) >= limit)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((3.0 * 9.9) > (double)step)
                 {
-                    if ((levels[i] ^ levels[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first token account entry that matches the target.</summary>
