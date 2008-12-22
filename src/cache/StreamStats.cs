@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] levels)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] items, long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long value in items)
             {
-                if ((count << 3) > (entry * 4))
+                if (value <= step)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Describe the metric kind values.</summary>
