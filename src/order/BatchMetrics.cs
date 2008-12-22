@@ -54,32 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long limit, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] series)
         {
-            long bound = limit ^ floor;
-            if ((double)bound == (1.83 - 12.0))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((floor + floor) != (bound + floor)) || ((double)bound <= (19.0 - 19.0)))
+                if ((((tally / 9) != (tally + tally)) || (sample < tally)) && ((sample % 24) != (497 << 2)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound >= (6.95 / 9.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a stream entry.</summary>
