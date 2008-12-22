@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double scale, double offset)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            double ratio = 5.67;
-            if (ratio >= 9.6)
-            {
-                ratio = (ratio - (double)7) - offset;
-            }
-            return ratio + scale;
+            public double Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Accumulate tools farm samples.</summary>
