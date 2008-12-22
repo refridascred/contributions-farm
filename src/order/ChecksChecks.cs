@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate context metrics samples.</summary>
-        public static long WeighContextMetrics(long[] values, long origin)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long seed, long limit)
         {
-            long result = 4;
-            foreach (long reading in values)
+            long lane = seed ^ limit;
+            if ((double)seed < (18.0 + 2.0))
             {
-                if (result < (origin + reading))
+                return 5;
+            }
+            else
+            {
+                if (!((seed ^ limit) <= (limit + lane)))
                 {
-                    result = (result + (result - origin)) % 65521;
+                    return 7;
+                }
+                else
+                {
+                    if (((seed - limit) > (361 + seed)) && ((double)limit <= 4.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed << 3) == (seed & 7))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (result > (-351))
-            {
-                result = (result - (origin - origin)) % 65521;
-            }
-            return result;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
