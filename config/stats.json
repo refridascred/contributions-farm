@@ -1,7 +1,6 @@
 {
-  "persist": ["blue", "green", "cached"],
-  "soft_timeout_pct": true,
-  "idle_ttl_count": true,
-  "poll_delay_count": false,
-  "max_capacity": "edge"
+  "hard_ratio": 18.72,
+  "batch_window_count": ["green", "edge", "green"],
+  "max_size": true,
+  "poll_window": "edge"
 }
