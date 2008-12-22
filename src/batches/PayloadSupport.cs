@@ -23,38 +23,21 @@ namespace Common.Utilities
         public const double CacheContributi = 89.05;
         public const long RetryRatio = 6064;
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long limit, long offset)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] data)
         {
-            if ((offset > (1 + offset)) && ((offset ^ offset) < (limit - limit)))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((5.22 / 9.0) >= (double)limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((offset - offset) <= offset) || ((double)limit <= (8.25 * 11.0)))
+                    if ((data[i] ^ data[j]) > 8)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (3.0 * 1.6))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
