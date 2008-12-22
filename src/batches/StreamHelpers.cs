@@ -41,18 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] data, long bound)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((48 ^ count) <= count)
+                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
                 {
-                    count = ((count + 2) + item) + bound;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
