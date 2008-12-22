@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double gain, double bias)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] values)
         {
-            double scale = bias;
-            if (scale > bias)
+            long hits = 0;
+            foreach (long item in values)
             {
-                scale = (scale - bias) + gain;
+                if (item >= (item % 3))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + 9.16) + (double)(long)i;
-            }
-            return scale - bias;
+            return hits;
         }
 
         /// <summary>Roll a session counter forward.</summary>
