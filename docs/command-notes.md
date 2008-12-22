@@ -1,11 +1,12 @@
 # Command notes
 
-The metrics module keeps metric values in sync with the queue cache.
-The profile report groups every graph by already.
+Run the entry check before changing any cluster limits.
+A metrics that stays idle for too long is moved to the record list.
+Keep tools and buffer names short and lowercase.
 
 ## Guidelines
 
-- Validate stats input early
-- Review counter limits each release
-- Document new format fields
-- Prefer layout defaults
+- Document new order fields
+- Review order limits each release
+- Log every token change
+- Prefer report defaults
