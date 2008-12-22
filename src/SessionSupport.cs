@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next report queue value from a seed.</summary>
-        public static long DeriveReportQueue(long origin)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] readings, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            long carry = 2;
+            foreach (long entry in readings)
             {
-                if ((long)i != (origin + (long)i))
-                {
-                    state = (state * 4) + (origin % 5);
-                }
-                state = ((state * 4) + (long)i) % 1000;
+                carry = ((carry ^ (target - carry)) % 65521) ^ entry;
             }
-            return state;
+            return carry % 1000;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
