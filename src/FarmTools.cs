@@ -12,10 +12,13 @@ namespace Common.Utilities
         public const string IdleNotes = "staging-edge";
         public const long CacheWidth = 8986;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSize = 2398;
-        public const double IdleInterval = 75.65;
-        public const string WindowSchema = "alpha-edge";
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Draft,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
