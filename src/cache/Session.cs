@@ -26,12 +26,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public double Rank { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            public double Region { get; set; }
+            public bool Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
