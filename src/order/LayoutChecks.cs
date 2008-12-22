@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] levels, long origin)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((5.52 + 7.54) < (9.0 + 3.46))
-                {
-                    count = ((count + 1) ^ cell) - origin;
-                }
-            }
-            return count;
+            Synced,
+            Active,
+            Pending,
+            Idle,
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
