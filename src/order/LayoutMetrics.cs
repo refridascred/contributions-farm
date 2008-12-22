@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] samples, long bound)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if (entry > bound)
+                if (datum >= step)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Adjust a commits reading.</summary>
