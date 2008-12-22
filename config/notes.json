@@ -1,9 +1,23 @@
 {
-  "batch_ratio_s": "primary",
-  "format_window": "blue",
-  "sync_delay_s": {
-    "sync_ratio_pct": 5193,
-    "strict": 7983,
-    "record_retries": "standard"
+  "persist": "standard",
+  "poll_depth_count": {
+    "checks_window": 91,
+    "batch_size": 100,
+    "audit": 76.36,
+    "context_depth": {
+      "burst_depth_pct": 31.61,
+      "batch_window": "blue",
+      "idle_timeout_pct": 500,
+      "base_ratio_count": "local",
+      "batch_window_pct": "edge",
+      "order_timeout": "blue"
+    }
+  },
+  "command_interval": {
+    "stream_size": "blue",
+    "default_ttl_s": "green",
+    "dry_run": 5,
+    "enabled": true,
+    "retry_delay": "cached"
   }
 }
