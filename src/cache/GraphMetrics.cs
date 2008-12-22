@@ -33,39 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long seed, long bound)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] series)
         {
-            long span = seed - bound;
-            if ((3.4 - 19.0) <= (double)seed)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (9 <= (span + span))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed >= (20.0 * 12.0))
+                    if ((series[i] - series[j]) == 13)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((80 + 57) < bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
