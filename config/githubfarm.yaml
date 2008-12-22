@@ -1,10 +1,9 @@
 # githubfarm settings
-sync_ratio_ms: 2
-readonly: green
-batch_delay: edge
-poll_ratio_pct: 78.07
-support_ratio:
-  - fallback
+persist:
+  - legacy
+  - stable
+  - cached
   - local
-  - green
-  - open
+sync_threshold_count: 25
+metrics_threshold: 55
+max_timeout_pct: true
