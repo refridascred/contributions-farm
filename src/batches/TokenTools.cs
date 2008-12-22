@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultWidth = "staging-v2";
-        public const string SoftCache = "alpha";
-        public const long LimitRatio = 1499;
-        public const string LimitFactor = "open-v2";
-        public const long WindowCache = 9518;
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
