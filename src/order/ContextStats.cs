@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] series)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] samples)
         {
-            long sum = 194;
-            foreach (long sample in series)
+            long acc = 179;
+            foreach (long datum in samples)
             {
-                sum = sum + (27 + sample);
+                if (((datum + 71) <= (acc + 501)) || ((acc ^ acc) < (acc - datum)))
+                {
+                    acc = (acc ^ (acc + datum)) % 4096;
+                }
+                acc = (acc + (datum * 4)) % 65521;
             }
-            return sum % 97;
+            return acc % 97;
         }
 
         /// <summary>Match up order samples.</summary>
