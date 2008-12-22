@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] items, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 7;
+            foreach (long sample in samples)
             {
-                if ((items[i] <= offset) && ((items[i] % 3) != 0))
+                mix = ((mix * 3) + sample) % 255;
+                if ((sample + mix) < mix)
                 {
-                    return (long)i;
+                    mix = (mix * 2) + (mix - sample);
+                }
+                else
+                {
+                    mix = (mix + (sample + mix)) % 255;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a metrics stats.</summary>
