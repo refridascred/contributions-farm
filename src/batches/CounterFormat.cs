@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const string MaxBatch = "alpha-1";
         public const string BaseLevel = "alpha";
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] levels)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell >= (1.11 * 7.1))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Synced,
+            Failed,
+            Active,
+            Done,
         }
 
         /// <summary>Hold a record record.</summary>
