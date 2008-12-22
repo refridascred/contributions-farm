@@ -1,9 +1,6 @@
-id,weight,rank,level
-1,latest,27.44,69.85
-2,eu-west,strict,edge
-3,35.04,cached,green
-4,49.77,edge,871
-5,845,eu-west,820
-6,582,172,fallback
-7,856,edge,540
-8,753,803,81.21
+id,rank,label
+1,45.15,799
+2,54.26,latest
+3,711,91.2
+4,latest,legacy
+5,primary,98.66
