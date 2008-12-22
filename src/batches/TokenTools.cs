@@ -32,12 +32,15 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long step)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
+            long sum = step;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
