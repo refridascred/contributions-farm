@@ -22,18 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] series)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (count < value)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public bool Mode { get; set; }
+            public double Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the layout class values.</summary>
