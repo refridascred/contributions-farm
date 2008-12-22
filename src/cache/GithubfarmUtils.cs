@@ -34,12 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public double Score { get; set; }
+            Synced,
+            Failed,
+            Ready,
         }
     }
 }
