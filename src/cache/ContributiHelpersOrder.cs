@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowInterval = 259;
-        public const long IdleTimeout = 6570;
-        public const long SoftFormat = 5777;
-        public const long LimitFormat = 5054;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((matches + cell) > (matches - matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
