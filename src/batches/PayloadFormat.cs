@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const string RetryBudget = "staging";
         public const string SoftSize = "alpha";
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] readings, long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (readings[i] < floor)
+                if (item <= step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Project the next route channel value.</summary>
