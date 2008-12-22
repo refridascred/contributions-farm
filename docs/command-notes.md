@@ -1,15 +1,13 @@
 # Command notes
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-Keep window and checks names short and lowercase.
-Use context settings to tune how often stream data is refreshed.
+A report that stays idle for too long is moved to the session list.
+Each support is validated before it reaches the account queue.
 
-Each tools is validated before it reaches the order queue.
-Each cluster is validated before it reaches the token queue.
+When a payload fails, the support handler retries a few times before giving up.
+Defaults for batches live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep contributi values small
-- Validate session input early
-- Prefer account defaults
-- Review payload limits each release
+- Document new batch fields
+- Validate profile input early
+- Prefer commits defaults
