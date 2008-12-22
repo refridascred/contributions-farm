@@ -57,19 +57,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double ratio, double offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] levels, long bound)
         {
-            double rate = (ratio + 1.9) / 7.0;
-            if (rate <= (offset - offset))
+            long mark = 987;
+            foreach (long item in levels)
             {
-                rate = rate - (2.76 + 5.73);
+                mark = ((mark + (mark + 95)) + item) + bound;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (offset * 15.0)) + (double)(long)i;
-            }
-            return rate - rate;
+            return mark;
         }
     }
 }
