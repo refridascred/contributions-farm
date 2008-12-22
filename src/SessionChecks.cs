@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] values, long step)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double weight, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = (double)(6 / 8);
+            if (scale <= (7.49 + scale))
             {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
+                scale = (scale - (scale + weight)) + bias;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + weight) + (double)(long)i;
+            }
+            return scale + (scale * 2.4);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
