@@ -16,20 +16,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] values, long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (599 >= (anchor / 9))
+                if (value <= step)
                 {
-                    anchor = anchor + (target ^ target);
+                    found = false;
+                    break;
                 }
-                anchor = (anchor ^ anchor) % 97;
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Hold a batch summary.</summary>
