@@ -1,6 +1,5 @@
 {
-  "idle_capacity_ms": true,
-  "base_timeout": 15.68,
-  "max_limit_s": ["legacy", "primary", "fallback", "standard"],
-  "enabled": 500
+  "enabled": 30.14,
+  "warm_ttl_ms": false,
+  "contributi_capacity": "eu-west"
 }
