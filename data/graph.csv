@@ -1,11 +1,6 @@
-id,token,level,label
-1,58.16,676,0.89
-2,stable,38.61,standard
-3,open,70.32,86.44
-4,95.38,legacy,388
-5,blue,658,186
-6,836,strict,26.68
-7,29.99,strict,63
-8,cached,eu-west,262
-9,226,30,178
-10,419,294,53.66
+id,level,label
+1,746,346
+2,cached,411
+3,local,594
+4,610,348
+5,stable,900
