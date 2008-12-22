@@ -17,24 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double weight, double offset)
-        {
-            double rate = weight;
-            if (rate < offset)
-            {
-                rate = rate + offset;
-            }
-            else
-            {
-                rate = rate - (double)59;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (offset - 17.0)) - (double)(long)i;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchWidth = 6241;
+        public const long BatchFormat = 94;
+        public const string StepFormat = "fallback-edge";
+        public const long HardFormat = 7934;
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool GuardFarmLimits(long[] levels, long offset)
