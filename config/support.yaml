@@ -1,9 +1,4 @@
 # support settings
-poll_threshold_s: 67.77
-persist: 40.21
-poll_interval_s: 70.86
-burst_depth:
-  - standard
-  - standard
-  - staging
-cache_interval: true
+idle_ttl_count: true
+max_timeout_s: latest
+max_timeout: 9737
