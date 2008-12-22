@@ -27,16 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long bound)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 13; i++)
+            long score = limit;
+            for (int i = 0; i < 5; i++)
             {
-                total = (total + (total + bound)) % 101;
-                total = ((total * 5) + (long)i) % 97;
+                if ((limit / 8) == (840 & 3))
+                {
+                    score = score + (36 - score);
+                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Project the next session value.</summary>
