@@ -43,13 +43,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] data, long seed)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
+            long result = 11;
+            foreach (long datum in data)
+            {
+                if (seed > datum)
+                {
+                    result = (result - (76 ^ seed)) % 4096;
+                }
+                else
+                {
+                    result = ((result * 2) + ((-63) * 2)) % 4096;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
