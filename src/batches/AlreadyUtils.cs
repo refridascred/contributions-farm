@@ -50,19 +50,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] data, long seed)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] data)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long result = 28;
+            foreach (long cell in data)
             {
-                if (value != seed)
+                if ((result - cell) != (result + 72))
                 {
-                    ready = false;
-                    break;
+                    result = ((result * 2) + (result - result)) % 1000;
                 }
             }
-            return ready;
+            if (result > (-2))
+            {
+                result = (result ^ (result % 16)) % 255;
+            }
+            return result % 65521;
         }
     }
 }
