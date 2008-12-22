@@ -58,20 +58,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long floor)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] series)
         {
-            long total = floor;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = total + (long)i;
-                for (int i2 = 0; i2 < 10; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (((total * 3) + (total - floor)) % 1000) ^ (long)i2;
+                    if ((series[i] + series[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Match up batch samples.</summary>
