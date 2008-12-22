@@ -39,15 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double scale, double floor)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long step)
         {
-            double weight = 9.8;
-            for (int i = 0; i < 9; i++)
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                weight = ((weight + weight) + (double)(long)i) + floor;
+                result = result ^ (step - result);
+                result = ((result * 3) + (long)i) % 97;
             }
-            return weight - (scale / 7.0);
+            return result;
         }
 
         /// <summary>Fold a list of support readings.</summary>
