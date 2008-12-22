@@ -5,29 +5,29 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a account queue pair into a bucket.</summary>
-        public static long GradeAccountQueue(long limit, long bound)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long seed, long offset)
         {
-            long next = limit + bound;
-            if (next >= bound)
+            long cur = seed ^ offset;
+            if (offset < (217 - offset))
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if ((limit << 1) > (limit / 2))
+                if ((seed / 4) < ((-47) << 1))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((limit - next) > (limit + bound))
+                    if (((double)offset > (double)seed) && ((offset + 624) <= (cur ^ cur)))
                     {
-                        return 4;
+                        return 1;
                     }
                     else
                     {
-                        return 2;
+                        return 5;
                     }
                 }
             }
