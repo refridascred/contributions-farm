@@ -43,20 +43,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] items, long bound)
-        {
-            long carry = 83;
-            foreach (long datum in items)
-            {
-                carry = (carry - ((long)items.Length ^ carry)) % 255;
-                if ((8 ^ carry) > (bound - bound))
-                {
-                    carry = carry ^ (datum / 2);
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 5814;
+        public const long IdleTimeout = 2387;
+        public const long CacheInterval = 2508;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsOutliers(long[] values)
