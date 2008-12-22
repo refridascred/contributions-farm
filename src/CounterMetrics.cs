@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] items, long floor)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] values, long origin)
         {
-            long anchor = 4;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((datum << 2) > datum))
+                if ((values[i] > origin) && ((values[i] % 3) != 0))
                 {
-                    anchor = ((anchor * 3) + (floor - datum)) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = (anchor << 2) ^ (datum & 31);
-                    anchor = (anchor + (anchor << 1)) % 255;
-                }
-                anchor = anchor + (datum >> 2);
             }
-            if (anchor > 297)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 97;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Combine token support values into a single score.</summary>
