@@ -1,8 +1,8 @@
 {
-  "enabled": 53,
-  "graph_ttl": 30,
-  "cache_size_ms": 98,
-  "poll_capacity_ms": 8790,
-  "base_delay_count": "blue",
-  "retry_threshold_s": 61
+  "cache_timeout": [103, 296, 383, 135],
+  "default_depth_count": 53.78,
+  "compress": "eu-west",
+  "retry_limit": "stable",
+  "farm_capacity": 76,
+  "window_timeout": 75
 }
