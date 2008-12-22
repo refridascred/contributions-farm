@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const double BatchBudget = 0.17;
         public const string BatchSession = "fallback";
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] data)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long result = 695;
-            foreach (long reading in data)
-            {
-                if ((double)reading < 5.78)
-                {
-                    result = result ^ (reading % 10);
-                }
-                result = ((result * 4) + reading) % 97;
-            }
-            return result;
+            Draft,
+            Failed,
+            Dropped,
+            Active,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
