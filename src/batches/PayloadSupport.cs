@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] data, long limit)
+        /// <summary>Measure how many channel farm samples are out of range.</summary>
+        public static long TallyChannelFarmOutliers(long[] data, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (data[i] > limit)
+                if (!((double)seed == (10.0 * 8.1)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
