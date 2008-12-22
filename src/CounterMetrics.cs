@@ -45,39 +45,20 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Rank editor format input into a small class.</summary>
-        public static long GradeEditorFormat(long seed, long offset)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long step)
         {
-            long diff = seed + offset;
-            if (!((seed / 8) >= ((-118) % 16)))
+            long acc = step;
+            for (int i = 0; i < 21; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset >= (diff * 3))
+                if (9 < (long)i)
                 {
-                    return 8;
+                    acc = acc ^ (long)i;
+                    acc = (acc * 5) + ((long)i % 12);
                 }
-                else
-                {
-                    if (offset <= (seed * 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)seed == (0.1 / 4.0)) && (9.09 > (double)offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
+            return acc;
         }
     }
 }
