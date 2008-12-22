@@ -36,19 +36,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long limit)
+        /// <summary>Roll a command stats counter forward.</summary>
+        public static long SeriesCommandStats(long origin)
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
+            long state = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((state + state) <= (5 - limit))
-                {
-                    long seen = ((long)i >> 3) - ((long)i % 24);
-                    state = (state + seen) % 255;
-                }
-                state = state + (809 + limit);
-                state = ((state * 2) + (long)i) % 97;
+                state = (state + state) % 4096;
+                state = ((state * 3) + (long)i) % 97;
             }
             return state;
         }
