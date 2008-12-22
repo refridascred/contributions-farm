@@ -23,13 +23,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] series, long offset)
         {
-            Pending,
-            Idle,
-            New,
-            Draft,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((long)series.Length >= (6 - offset))
+                {
+                    hits = (hits + 1) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the farm state values.</summary>
