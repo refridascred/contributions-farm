@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] values, long target)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (!((target + cell) >= (cell * 5)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Adjust a context reading.</summary>
