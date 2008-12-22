@@ -39,11 +39,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowLevel = 9921;
-        public const long WindowScore = 4856;
-        public const long MinScore = 5300;
-        public const long CacheCount = 4625;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] levels)
+        {
+            long acc = 106;
+            foreach (long cell in levels)
+            {
+                acc = (((acc << 2) ^ acc) % 4096) + cell;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long MeasureRouteMatches(long[] values)
