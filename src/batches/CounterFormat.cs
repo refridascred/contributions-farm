@@ -18,22 +18,30 @@ namespace Common.Utilities
         public const string LimitProfile = "legacy-edge";
         public const double BaseBudget = 72.04;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] series)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long state = -3;
+            foreach (long sample in items)
             {
-                if (item < (item * 4))
+                if ((double)sample <= 8.4)
                 {
-                    tally = tally + 1;
+                    state = (state - 578) % 101;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    state = (state << 3) ^ (sample ^ 2);
+                }
+                if ((2.8 * 7.57) <= (double)sample)
+                {
+                    state = ((state << 2) ^ (state / 7)) % 65521;
+                }
+                if ((sample << 2) < bound)
+                {
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
