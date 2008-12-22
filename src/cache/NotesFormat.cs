@@ -46,10 +46,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 6960;
-        public const long BaseFilter = 1968;
-        public const double IdleFilter = 87.98;
-        public const long WindowFilter = 3293;
+        /// <summary>Check that every queue batches entry stays within the limit.</summary>
+        public static bool CheckQueueBatchesBounds(long[] readings, long bound)
+        {
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
