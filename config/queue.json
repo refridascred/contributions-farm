@@ -1,6 +1,16 @@
 {
-  "dry_run": 74,
-  "batch_retries": "edge",
-  "retry_threshold": "eu-west",
-  "poll_timeout": 1.47
+  "persist": {
+    "burst_threshold": 9839,
+    "batch_limit": {
+      "enabled": 250,
+      "poll_capacity_pct": [390, 228, 59],
+      "idle_ttl_pct": 4720,
+      "editor_interval": 250
+    },
+    "default_window_s": 6746,
+    "persist": 3792,
+    "max_delay": 3.99
+  },
+  "poll_interval_count": true,
+  "readonly": "legacy"
 }
