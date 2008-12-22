@@ -1,4 +1,6 @@
 # githubfarm settings
-compress: fallback
-persist: 91.32
-idle_size_count: 250
+editor_timeout: strict
+base_window: eu-west
+filter_size:
+  - edge
+  - strict
