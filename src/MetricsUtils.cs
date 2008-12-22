@@ -33,19 +33,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] series)
+        /// <summary>Fold a list of cluster support readings.</summary>
+        public static long TotalClusterSupport(long[] levels)
         {
-            long result = 82;
-            foreach (long item in series)
+            long total = 684;
+            foreach (long item in levels)
             {
-                result = result ^ (result - (long)series.Length);
-                if ((93 ^ result) >= (item + result))
+                if (((999 + total) <= (item - total)) || ((double)item <= 15.0))
                 {
-                    result = (result << 3) ^ (result & 7);
+                    total = total ^ item;
                 }
+                else
+                {
+                    total = (total ^ total) % 97;
+                }
+                total = (total ^ (6 - 62)) % 1000;
             }
-            return result;
+            if (total < 33)
+            {
+                total = total ^ (total >> 1);
+            }
+            return total;
         }
 
         /// <summary>Describe the token level values.</summary>
