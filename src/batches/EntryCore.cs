@@ -32,16 +32,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Derive the next stats buffer value from a seed.</summary>
-        public static long RollStatsBuffer(long target)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long state = target;
-            for (int i = 0; i < 18; i++)
-            {
-                state = (state - (-3)) % 255;
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            New,
+            Retry,
+            Stale,
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
