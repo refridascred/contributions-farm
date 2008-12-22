@@ -46,13 +46,18 @@ namespace Common.Utilities
         public const long StepNotes = 9995;
         public const string MaxLevel = "cached-v2";
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] items)
         {
-            public double Limit { get; set; }
-            public double Count { get; set; }
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (reading >= (718 * 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
