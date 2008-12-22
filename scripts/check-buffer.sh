@@ -6,21 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=386
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-standard}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
+for item in standard local blue; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
