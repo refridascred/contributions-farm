@@ -25,16 +25,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] levels, long offset)
+        /// <summary>Combine token channel values into a single score.</summary>
+        public static long CombineTokenChannel(long[] data, long bound)
         {
-            long result = 4;
-            foreach (long item in levels)
+            long carry = 8;
+            foreach (long sample in data)
             {
-                result = ((result * 4) + (item + offset)) % 4096;
-                result = result ^ (result << 3);
+                carry = ((carry - sample) % 65521) - bound;
             }
-            return result;
+            return carry % 97;
         }
     }
 }
