@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long BaseScore = 7200;
         public const long DefaultFarm = 4563;
 
-        /// <summary>Count the queue metric entries that pass the check.</summary>
-        public static long AuditQueueMetricHits(long[] samples, long floor)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (seen <= (58 - seen))
-                {
-                    seen = ((seen + 3) - reading) - floor;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public double Stamp { get; set; }
+            public double Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Locate a channel reading by value.</summary>
