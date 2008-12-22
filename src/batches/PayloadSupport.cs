@@ -28,19 +28,38 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] series, long target)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long limit, long offset)
         {
-            bool ok = true;
-            foreach (long item in series)
+            if ((offset > (1 + offset)) && ((offset ^ offset) < (limit - limit)))
             {
-                if (item < target)
+                return 8;
+            }
+            else
+            {
+                if ((5.22 / 9.0) >= (double)limit)
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((offset - offset) <= offset) || ((double)limit <= (8.25 * 11.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)limit <= (3.0 * 1.6))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
