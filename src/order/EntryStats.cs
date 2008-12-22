@@ -46,21 +46,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] samples)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long origin, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (offset <= origin)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((offset < (18 & 31)) || ((offset << 3) > (offset * 3)))
                 {
-                    if ((samples[i] + samples[j]) < 2)
+                    return 4;
+                }
+                else
+                {
+                    if (((double)offset <= (0.91 - 0.5)) && ((offset / 9) == (origin & 255)))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((origin + origin) != (origin % 60)) && ((2.0 * 5.4) != (double)origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
