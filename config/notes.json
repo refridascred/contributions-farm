@@ -1,5 +1,8 @@
 {
-  "metrics_timeout": ["primary", "edge", "blue", "legacy"],
-  "persist": true,
-  "cache_size_s": ["fallback", "edge", "standard", "strict"]
+  "enabled": 53,
+  "graph_ttl": 30,
+  "cache_size_ms": 98,
+  "poll_capacity_ms": 8790,
+  "base_delay_count": "blue",
+  "retry_threshold_s": 61
 }
