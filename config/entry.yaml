@@ -1,9 +1,20 @@
 # entry settings
-checks_delay: 41
-enabled: standard
-idle_threshold_count: false
-audit:
-  - 281
-  - 431
-soft_retries_s: staging
-cache_timeout: 36
+idle_threshold: false
+idle_delay_count: 21
+min_threshold_s:
+  - 364
+  - 10
+  - 90
+  - 245
+support_ttl: stable
+min_interval:
+  persist: 31.69
+  sync_interval_count: staging
+  idle_limit: 306
+  poll_interval_ms: 2.69
+  cache_ratio_count:
+    - blue
+    - green
+    - staging
+    - stable
+hard_limit_s: 100
