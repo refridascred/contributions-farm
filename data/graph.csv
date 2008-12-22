@@ -1,6 +1,10 @@
-id,score,level,owner
-1,16.32,94.99,strict
-2,standard,286,26.09
-3,876,93.35,928
-4,cached,604,43.28
-5,3.64,56.53,legacy
+id,ratio,token,active,rank
+1,edge,82.46,primary,801
+2,9.2,333,open,49.77
+3,61.15,local,414,926
+4,primary,58.14,160,66.05
+5,66.42,staging,815,22.31
+6,249,legacy,eu-west,480
+7,44.62,297,61.93,690
+8,strict,140,312,fallback
+9,214,627,32.0,66.55
