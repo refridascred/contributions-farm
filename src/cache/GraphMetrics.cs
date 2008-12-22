@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next tools metrics value.</summary>
-        public static double BlendToolsMetrics(double scale, double floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] data)
         {
-            double mean = (double)(5 * 5);
-            if (mean <= (floor + scale))
+            long carry = 880;
+            foreach (long item in data)
             {
-                mean = mean + scale;
+                if ((double)item <= (15.0 * 10.0))
+                {
+                    carry = (carry << 2) ^ (carry + 17);
+                }
+                else
+                {
+                    carry = (carry + 51) % 97;
+                }
             }
-            else
-            {
-                mean = mean + (scale / 5.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (scale * 9.6)) - (double)(long)i;
-            }
-            return mean - (floor + floor);
+            return carry;
         }
 
         /// <summary>Define account limits and defaults.</summary>
