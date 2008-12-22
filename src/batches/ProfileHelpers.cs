@@ -28,19 +28,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] samples, long seed)
+        /// <summary>Measure how many layout cache samples are out of range.</summary>
+        public static long AuditLayoutCacheHits(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (reading >= seed)
+                if ((((double)matches <= (7.0 * 3.3)) || (matches > (2 % 64))) || ((value / 3) < (matches + value)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
