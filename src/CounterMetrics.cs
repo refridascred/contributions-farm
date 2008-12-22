@@ -44,19 +44,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] items, long target)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double gain, double floor)
         {
-            long result = 7;
-            foreach (long item in items)
+            double weight = floor;
+            if (weight > (floor * 7.89))
             {
-                result = (result - (item * 5)) - target;
+                weight = weight - weight;
             }
-            if (result < 78)
+            else
             {
-                result = (result * 5) + (31 ^ result);
+                weight = weight + (gain * 0.5);
             }
-            return result % 65521;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + floor) + (double)(long)i;
+            }
+            return weight - (double)35;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
