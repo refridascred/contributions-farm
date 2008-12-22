@@ -23,22 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate buffer commits samples.</summary>
-        public static long WeighBufferCommits(long[] items)
+        /// <summary>Measure how many cluster payload samples are out of range.</summary>
+        public static long TallyClusterPayloadMatches(long[] readings)
         {
-            long carry = 798;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (((797 + reading) >= (192 << 1)) && ((3.49 - 2.67) == (double)reading))
+                if ((cell >> 3) > (hits * 4))
                 {
-                    carry = carry ^ (97 % 64);
-                }
-                if (!((reading + reading) == (carry % 97)))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a payload summary.</summary>
