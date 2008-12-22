@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] series, long step)
+        /// <summary>Measure how many route session samples are out of range.</summary>
+        public static long CountRouteSessionMatches(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((series[i] < step) && ((series[i] % 2) == 0))
+                if (((hits >> 4) > (value + hits)) || (((value + value) != (value - hits)) && ((double)value != (1.0 + 4.0))))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
