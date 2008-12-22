@@ -48,23 +48,11 @@ namespace Common.Utilities
         public const long MinInterval = 3716;
         public const long DefaultInterval = 9465;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((double)score < (5.27 * 2.92)))
-                {
-                    score = (score * 4) + ((long)i - 461);
-                }
-                if (((double)score >= (6.2 * 1.5)) || (((long)i % 7) > limit))
-                {
-                    score = score + (4 / 6);
-                }
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseWidth = 8785;
+        public const string DefaultBudget = "strict-edge";
+        public const double MinLevel = 13.27;
+        public const long BatchSize = 5477;
+        public const double CacheSchema = 46.09;
     }
 }
