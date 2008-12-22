@@ -44,30 +44,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] items)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long result = 6;
-            foreach (long value in items)
-            {
-                if ((result >= value) && ((double)result > (12.0 + 1.6)))
-                {
-                    continue;
-                }
-                else
-                {
-                    result = (result * 2) + (result - result);
-                }
-                if (!((5.0 - 2.0) != (double)value))
-                {
-                    result = ((result * 5) + result) % 101;
-                }
-                else
-                {
-                    result = result ^ (value - result);
-                }
-            }
-            return result;
+            Stale,
+            Paused,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
