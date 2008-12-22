@@ -1,11 +1,10 @@
 # Command notes
 
-Run the entry check before changing any already limits.
-Run the already check before changing any already limits.
-The contributi module keeps batches values in sync with the cluster cache.
+Use account settings to tune how often command data is refreshed.
+The farm module keeps report values in sync with the already cache.
 
 ## Guidelines
 
-- Review tools limits each release
-- Validate window input early
-- Log every schema change
+- Keep githubfarm values small
+- Log every order change
+- Review schema limits each release
