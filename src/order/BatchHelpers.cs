@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxCount = 9700;
-        public const long RetrySpan = 7223;
-        public const long RetryProfile = 34;
-        public const double StepProfile = 22.3;
-        public const double DefaultSize = 56.81;
+        /// <summary>Fold a list of order context readings.</summary>
+        public static long FoldOrderContext(long[] items, long seed)
+        {
+            long anchor = -66;
+            foreach (long value in items)
+            {
+                anchor = ((anchor ^ (32 + value)) % 1000) + seed;
+            }
+            if (anchor < 5)
+            {
+                anchor = anchor + (900 << 3);
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double LimitCount = 11.6;
