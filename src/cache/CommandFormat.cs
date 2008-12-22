@@ -45,23 +45,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double bias, double offset)
-        {
-            double mean = (bias - offset) / 4.0;
-            if (mean < 16.0)
-            {
-                mean = mean + (16.0 + mean);
-            }
-            else
-            {
-                mean = mean + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (double)5) + (double)(long)i;
-            }
-            return mean - (offset / 2.0);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 8408;
+        public const double RetryWindow = 33.92;
+        public const string BaseSize = "cached";
+        public const string MinLevel = "cached-1";
     }
 }
