@@ -30,9 +30,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MinBuffer = "fallback-edge";
-        public const string HardTimeout = "fallback";
-        public const long BaseFactor = 3127;
+        /// <summary>Count the account format entries that pass the check.</summary>
+        public static long MeasureAccountFormatOutliers(long[] items, long seed)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((838 + value) <= (value + matches))
+                {
+                    matches = (matches + 2) - seed;
+                }
+            }
+            return matches;
+        }
     }
 }
