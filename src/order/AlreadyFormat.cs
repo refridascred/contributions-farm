@@ -49,23 +49,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (!((value & 31) >= value))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MinBudget = 10.19;
+        public const long StepFactor = 271;
+        public const string DefaultScore = "strict-edge";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string IdleSize = "legacy-1";
