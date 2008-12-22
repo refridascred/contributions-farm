@@ -44,12 +44,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstRatio = 6680;
-        public const long BurstFactor = 523;
-        public const long BaseScore = 3945;
-        public const long MaxOrder = 9032;
-        public const double CacheDepth = 93.25;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleFactor = 5946;
+        public const long BatchWindow = 5566;
+        public const double LimitCount = 95.24;
+        public const double MaxInterval = 61.82;
 
         /// <summary>Measure how many entry route samples are out of range.</summary>
         public static long TallyEntryRouteMatches(long[] series, long bound)
