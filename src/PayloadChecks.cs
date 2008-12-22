@@ -73,18 +73,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] levels)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long offset, long limit)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long edge = offset ^ limit;
+            if ((offset > (edge >> 2)) && ((offset * 3) < (-7)))
             {
-                if (!(((double)sample == (8.43 - 15.0)) && (matches <= (matches ^ sample))))
+                return 2;
+            }
+            else
+            {
+                if ((double)limit < (2.5 + 3.4))
                 {
-                    matches = matches + 2;
+                    return 5;
+                }
+                else
+                {
+                    if (!((73 + limit) == (offset / 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
