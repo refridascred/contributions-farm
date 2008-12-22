@@ -1,10 +1,21 @@
 # entry settings
-hard_capacity_s:
-  - 132
-  - 330
-  - 303
-flush_delay_count: 8109
-cache_timeout_pct: 8097
-enabled: 500
-audit: eu-west
-entry_interval: 21
+retry_delay: latest
+checks_capacity: 92
+route_size: 44
+notes_threshold: edge
+burst_limit_pct:
+  farm_timeout:
+    - 198
+    - 266
+    - 345
+    - 77
+  cache_ttl_s: 24
+  layout_ttl: true
+  default_timeout: false
+  hard_interval_count:
+    - 499
+    - 79
+    - 62
+    - 289
+  flush_ratio_ms: 68.25
+sync_retries_pct: false
