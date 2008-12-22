@@ -39,21 +39,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] readings)
+        /// <summary>Digest a series of checks filter entries.</summary>
+        public static long FoldChecksFilter(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 84;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((mark << 2) != (mark >> 2))
                 {
-                    if ((readings[i] ^ readings[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark * 3) + mark) - sample;
                 }
+                mark = mark - 1;
             }
-            return matches;
+            return mark;
         }
     }
 }
