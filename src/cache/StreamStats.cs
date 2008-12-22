@@ -14,17 +14,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] readings, long step)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 3;
+            foreach (long item in levels)
             {
-                if (readings[i] <= step)
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    carry = ((carry + carry) % 101) - (long)i;
                 }
+                carry = (carry - (item + (long)levels.Length)) % 101;
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Blend two tools measurements.</summary>
