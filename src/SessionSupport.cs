@@ -20,39 +20,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long limit, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] data, long origin)
         {
-            long span = limit + seed;
-            if ((double)limit < (4.7 + 3.0))
+            long count = 0;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)span <= (4.0 + 1.61))
+                if ((count << 2) <= (origin * 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((limit << 2) > (585 + limit)) && ((span + limit) < seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit & 63) == (limit + seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = (count + 3) - value;
                 }
             }
+            return count;
         }
     }
 }
