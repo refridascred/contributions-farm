@@ -17,15 +17,20 @@ namespace Common.Utilities
         public const long SoftToken = 669;
         public const long BaseToken = 4972;
 
-        /// <summary>Combine entry format values into a single score.</summary>
-        public static long FoldEntryFormat(long[] readings)
+        /// <summary>Fold a list of already batch readings.</summary>
+        public static long WeighAlreadyBatch(long[] readings, long offset)
         {
-            long result = -1;
-            foreach (long datum in readings)
+            long mark = -97;
+            foreach (long reading in readings)
             {
-                result = ((result ^ (result * 3)) % 97) + datum;
+                mark = (mark + mark) % 65521;
+                mark = ((mark << 3) ^ (offset + reading)) % 4096;
             }
-            return result % 65521;
+            if (mark < 34)
+            {
+                mark = ((mark * 4) + (offset ^ 76)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
