@@ -43,15 +43,14 @@ namespace Common.Utilities
             return rate - (rate / 3.0);
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] values, long origin)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long acc = 2;
-            foreach (long value in values)
-            {
-                acc = ((((acc << 2) ^ 553) % 4096) + value) + origin;
-            }
-            return acc;
+            Paused,
+            Done,
+            Failed,
+            Active,
+            Retry,
         }
 
         /// <summary>Combine format values into a single score.</summary>
