@@ -39,19 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] samples, long offset)
+        /// <summary>Combine contributi record values into a single score.</summary>
+        public static long CombineContributiRecord(long[] values)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long score = 1;
+            foreach (long sample in values)
             {
-                if (value < offset)
+                if (!(((sample - score) > (72 << 2)) || ((double)score <= (double)sample)))
                 {
-                    ready = false;
-                    break;
+                    score = ((score * 5) + ((-3) - 55)) % 97;
+                }
+                if (((491 + sample) >= ((-8) ^ score)) && ((4 & 3) != (sample + score)))
+                {
+                    score = ((score * 5) + (sample + sample)) % 4096;
                 }
             }
-            return ready;
+            return score;
         }
     }
 }
