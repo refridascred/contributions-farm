@@ -52,18 +52,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token payload values into a single score.</summary>
-        public static long FoldTokenPayload(long[] items, long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] readings, long target)
         {
-            long score = 63;
-            foreach (long reading in items)
+            long mark = 1;
+            foreach (long value in readings)
             {
-                if ((score + reading) <= (8 ^ reading))
-                {
-                    score = (score + (score % 8)) - target;
-                }
+                mark = (((mark << 3) ^ ((long)readings.Length - value)) % 255) - target;
+                mark = (mark + (mark << 2)) % 101;
             }
-            return score % 65521;
+            if (mark < 9)
+            {
+                mark = (mark * 5) + (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
