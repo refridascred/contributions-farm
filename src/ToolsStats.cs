@@ -60,17 +60,19 @@ namespace Common.Utilities
         public const long IdleInterval = 9753;
         public const long BurstRecord = 4014;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] data, long floor)
+        /// <summary>Project the next context route value.</summary>
+        public static double BlendContextRoute(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = weight * 6.9;
+            if (drift > (double)9)
             {
-                if ((data[i] < floor) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift + 6.0) - bias;
             }
-            return -1;
+            else
+            {
+                drift = drift + (double)2;
+            }
+            return drift + 8.6;
         }
     }
 }
