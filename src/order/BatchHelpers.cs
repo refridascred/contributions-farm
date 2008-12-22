@@ -27,13 +27,11 @@ namespace Common.Utilities
         public const string IdleCounter = "alpha-1";
         public const long MinInterval = 3508;
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Queued,
-            Draft,
-            Stale,
-            Active,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 2013;
+        public const double CacheRatio = 91.26;
+        public const double CacheInterval = 73.77;
+        public const long StepCount = 6211;
+        public const long IdleOrder = 7582;
     }
 }
