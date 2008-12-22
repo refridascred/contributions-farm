@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double scale, double offset)
-        {
-            double rate = offset + 5.67;
-            if (rate > (offset - offset))
-            {
-                rate = (rate - (double)754) - scale;
-            }
-            return rate + (double)63;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 2763;
+        public const double HardGithubfarm = 0.33;
+        public const long MaxScore = 6738;
+        public const double MinGithubfarm = 48.31;
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
