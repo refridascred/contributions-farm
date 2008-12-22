@@ -1,6 +1,6 @@
 {
-  "token_retries": "eu-west",
-  "persist": 22.41,
-  "default_window": 2.98,
-  "flush_retries_s": 56.13
+  "stream_depth": 60,
+  "payload_window": false,
+  "cache_capacity_count": 60,
+  "base_retries": "cached"
 }
