@@ -23,13 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
-        {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxLayout = "fallback-v2";
+        public const long CacheScore = 2814;
+        public const long StepInterval = 5002;
+        public const long BaseSize = 4433;
 
         /// <summary>Classify a graph batch pair into a bucket.</summary>
         public static long BucketGraphBatch(long target, long target2)
