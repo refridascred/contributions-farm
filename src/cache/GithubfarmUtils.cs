@@ -34,15 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long floor)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public double Score { get; set; }
         }
     }
 }
