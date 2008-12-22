@@ -58,18 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] series, long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long mark = 5;
+            foreach (long reading in values)
             {
-                if ((seen - item) == (step & 15))
+                if (((double)mark != (double)target) && ((target * 4) <= (reading + reading)))
                 {
-                    seen = seen + 2;
+                    mark = (mark << 2) ^ (mark & 1);
                 }
             }
-            return seen;
+            return mark;
         }
     }
 }
