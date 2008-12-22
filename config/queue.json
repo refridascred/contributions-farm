@@ -1,17 +1,8 @@
 {
-  "enabled": 74,
-  "batch_depth_ms": 1024,
-  "notes_timeout": "green",
-  "account_capacity": {
-    "retry_timeout_pct": true,
-    "soft_delay": "blue",
-    "default_size": {
-      "dry_run": ["standard", "local", "fallback"],
-      "readonly": "staging",
-      "record_threshold": 1024,
-      "warm_ratio_s": ["latest", "staging"],
-      "batch_capacity_ms": "edge"
-    },
-    "verbose": "strict"
-  }
+  "retry_ratio_s": 64.02,
+  "report_window": 30.19,
+  "retry_retries_s": "edge",
+  "default_depth": 11,
+  "order_size": 1771,
+  "payload_retries": 100
 }
