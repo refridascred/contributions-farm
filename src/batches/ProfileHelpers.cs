@@ -40,38 +40,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long target, long seed)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            if ((double)target > (1.4 - 9.4))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((16.0 - 19.0) != (double)seed) || ((seed - target) <= (target + target)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((6 / 4) > ((-337) - target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((5.2 + 3.1) >= (double)target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a metrics header.</summary>
