@@ -1,7 +1,14 @@
 # githubfarm settings
-checks_depth: staging
-soft_ratio: legacy
-hard_ratio: false
-token_ttl: cached
-warm_depth_pct: latest
-cluster_capacity: true
+verbose: 69
+strict:
+  default_limit_ms: open
+  persist: latest
+  poll_retries_count: 56
+retry_depth_pct: 100
+enabled: false
+hard_depth_s:
+  - eu-west
+  - primary
+  - staging
+  - edge
+context_limit: strict
