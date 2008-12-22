@@ -61,23 +61,39 @@ namespace Common.Utilities
         public const long BaseSchema = 7543;
         public const double WindowSchema = 96.77;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long origin, long target)
         {
-            long carry = 8;
-            foreach (long cell in levels)
+            long prev = origin + target;
+            if (((4.63 - 7.44) <= (double)origin) && ((double)origin == (4.4 - 13.0)))
             {
-                carry = (carry * 5) + (carry & 3);
-                if ((carry > (0 / 2)) || ((15.0 / 2.0) != (double)carry))
+                return 7;
+            }
+            else
+            {
+                if ((prev / 7) >= (9 >> 1))
                 {
-                    carry = carry ^ carry;
+                    return 5;
                 }
-                if (((-2) + cell) < cell)
+                else
                 {
-                    carry = carry - (carry - 925);
+                    if ((double)prev != (7.87 - 1.7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target >> 1) >= (origin / 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return carry;
         }
     }
 }
