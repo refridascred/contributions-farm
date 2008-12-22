@@ -34,13 +34,13 @@ namespace Common.Utilities
         public const string StepReport = "strict";
         public const long CacheCount = 7774;
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            Paused,
-            Idle,
-            Dropped,
-            Ready,
+            Retry,
+            Pending,
+            New,
+            Locked,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
