@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double bias, double bias2)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] levels, long origin)
         {
-            double ratio = 5.0;
-            return (ratio - bias2) + bias;
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a payload options.</summary>
