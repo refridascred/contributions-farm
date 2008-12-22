@@ -41,10 +41,20 @@ namespace Common.Utilities
         public const long DefaultSize = 8753;
         public const long DefaultScore = 9512;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 2586;
-        public const long MinInterval = 3716;
-        public const long DefaultInterval = 9465;
+        /// <summary>Validate stream account readings against a bound.</summary>
+        public static bool GuardStreamAccountRange(long[] values, long bound)
+        {
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool GuardBatchBounds(long[] data, long seed)
