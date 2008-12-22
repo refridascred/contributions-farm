@@ -27,25 +27,12 @@ namespace Common.Utilities
         public const double IdleInterval = 75.65;
         public const string WindowSchema = "alpha-edge";
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long floor, long limit)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long next = floor ^ limit;
-            if (!(next > limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(363 > next))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
