@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] readings, long target)
-        {
-            long carry = 2;
-            foreach (long entry in readings)
-            {
-                carry = ((carry ^ (target - carry)) % 65521) ^ entry;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryAlready = 74.98;
+        public const long MinInterval = 5867;
+        public const double LimitAlready = 12.87;
+        public const string StepAlready = "latest-edge";
+        public const long LimitCount = 1714;
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool VerifyChecksLimits(long[] values, long step)
