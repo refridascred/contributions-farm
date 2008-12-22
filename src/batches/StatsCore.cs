@@ -72,21 +72,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] values)
+        /// <summary>Measure how many channel githubfarm samples are out of range.</summary>
+        public static long MeasureChannelGithubfarmGaps(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)value < 8.6)
                 {
-                    if ((values[i] + values[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
