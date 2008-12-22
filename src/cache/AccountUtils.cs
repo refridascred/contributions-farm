@@ -21,18 +21,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] samples)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((2.8 / 3.0) < (double)datum)
+                if ((items[i] <= bound) && ((items[i] % 3) != 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
