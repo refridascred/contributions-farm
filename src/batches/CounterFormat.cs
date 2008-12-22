@@ -42,11 +42,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardMetrics = "latest-edge";
-        public const long LimitLevel = 5587;
-        public const long MaxMetrics = 2453;
-        public const double LimitMetrics = 89.97;
-        public const long WindowMetrics = 1434;
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
