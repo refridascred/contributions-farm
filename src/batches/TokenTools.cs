@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a checks notes counter forward.</summary>
-        public static long RollChecksNotes(long bound)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            long mark = bound;
+            for (int i = 0; i < 6; i++)
             {
-                mix = (mix << 2) ^ ((long)i / 5);
-                mix = (mix ^ (bound - bound)) % 101;
-                mix = ((mix * 4) + (long)i) % 101;
+                mark = (mark * 5) + bound;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Compare every pair of tools payload readings.</summary>
