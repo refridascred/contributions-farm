@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] values, long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if ((values[i] < origin) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Derive the next editor stats value from a seed.</summary>
