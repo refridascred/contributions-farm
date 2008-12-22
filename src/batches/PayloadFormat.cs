@@ -37,17 +37,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Locate a notes githubfarm reading by value.</summary>
-        public static long LookupNotesGithubfarmIndex(long[] data, long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] samples, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((data[i] >= seed) && ((data[i] % 2) == 0))
+                if ((double)value <= 6.67)
                 {
-                    return (long)i;
+                    hits = (hits + 3) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
