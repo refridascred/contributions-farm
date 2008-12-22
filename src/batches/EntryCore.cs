@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 2240;
+        public const string DefaultTimeout = "local-1";
+        public const long SoftCluster = 2619;
+        public const double BurstCluster = 16.0;
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
