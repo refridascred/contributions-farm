@@ -62,18 +62,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many entry route samples are out of range.</summary>
-        public static long TallyEntryRouteMatches(long[] series, long bound)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] values, long target)
         {
-            long count = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((double)sample <= (double)5) && ((3.65 + 5.9) != (double)bound)))
+                if ((values[i] < target) && ((values[i] % 3) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
