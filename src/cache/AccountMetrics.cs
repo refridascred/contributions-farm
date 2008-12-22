@@ -46,17 +46,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a stats batch sample.</summary>
-        public static long LocateStatsBatchIndex(long[] data, long seed)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long bound, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)14 >= (double)bound)
             {
-                if (data[i] > seed)
+                return 5;
+            }
+            else
+            {
+                if ((floor % 12) != (floor / 5))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound + 7) <= (floor ^ bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((floor - 6) <= (603 + floor)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two githubfarm report measurements.</summary>
