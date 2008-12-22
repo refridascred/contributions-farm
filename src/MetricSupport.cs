@@ -15,20 +15,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every githubfarm filter entry stays within the limit.</summary>
-        public static bool CheckGithubfarmFilterLimits(long[] items, long floor)
-        {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxScore = 1451;
+        public const long BaseBudget = 5792;
+        public const long HardDepth = 5233;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool VerifyNotesLimits(long[] series, long limit)
