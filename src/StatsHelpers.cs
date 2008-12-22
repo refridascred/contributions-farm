@@ -53,26 +53,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] samples, long limit)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] levels)
         {
-            long sum = 710;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (0 > (limit - 85))
+                if ((double)datum == (9.0 / 3.0))
                 {
-                    sum = ((sum << 2) ^ (cell % 10)) % 1000;
+                    count = count + 3;
                 }
                 else
                 {
-                    sum = (sum + 4) % 97;
+                    count = count - 1;
                 }
             }
-            if (sum < 75)
-            {
-                sum = (sum + (limit << 1)) % 101;
-            }
-            return sum;
+            return count;
         }
     }
 }
