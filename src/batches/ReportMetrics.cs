@@ -24,13 +24,21 @@ namespace Common.Utilities
         public const long StepInterval = 5002;
         public const long BaseSize = 4433;
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] levels)
         {
-            Locked,
-            Dropped,
-            Done,
-            New,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
