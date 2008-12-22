@@ -75,14 +75,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double ratio, double bias)
         {
-            Failed,
-            Retry,
-            Draft,
-            New,
-            Paused,
+            double rate = bias;
+            if (rate <= bias)
+            {
+                rate = (rate - (double)78) - ratio;
+            }
+            else
+            {
+                rate = rate - bias;
+            }
+            return rate - bias;
         }
     }
 }
