@@ -20,22 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many stream tools samples are out of range.</summary>
-        public static long MeasureStreamToolsMatches(long[] items, long bound)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((5.55 + 0.3) != (double)cell)
+                if ((seen ^ seen) < (59 + entry))
                 {
-                    count = (count + 1) - bound;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a payload summary.</summary>
