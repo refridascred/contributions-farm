@@ -28,18 +28,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the buffer session entries that pass the check.</summary>
-        public static long AuditBufferSessionMatches(long[] values, long target)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((3 * 5) <= (5 + target))
+                if (entry < target)
                 {
-                    hits = (hits + 3) - sample;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Hold a cache options.</summary>
