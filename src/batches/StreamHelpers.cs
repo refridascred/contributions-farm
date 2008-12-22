@@ -70,26 +70,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] series)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] samples, long limit)
         {
-            long carry = 3;
-            foreach (long datum in series)
+            long anchor = 819;
+            foreach (long reading in samples)
             {
-                if (carry <= (datum & 255))
-                {
-                    carry = (carry - carry) % 255;
-                }
-                else
-                {
-                    carry = (carry + (datum >> 2)) % 97;
-                }
+                anchor = ((anchor ^ (7 + reading)) % 101) - limit;
             }
-            if (carry < (-96))
-            {
-                carry = carry ^ (carry / 2);
-            }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
