@@ -49,17 +49,32 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Locate a contributi account reading by value.</summary>
-        public static long LookupContributiAccountIndex(long[] readings, long floor)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long step, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long next = step - limit;
+            if ((limit << 1) <= next)
             {
-                if ((readings[i] == floor) && ((readings[i] % 3) == 0))
+                return 7;
+            }
+            else
+            {
+                if (limit >= (limit + next))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((limit + (-66)) == (67 + next))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
