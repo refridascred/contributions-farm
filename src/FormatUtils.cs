@@ -47,21 +47,15 @@ namespace Common.Utilities
         public const string BurstDepth = "legacy-v2";
         public const string IdleReport = "legacy-edge";
 
-        /// <summary>Count editor layout pairs that satisfy a relation.</summary>
-        public static long OverlapEditorLayoutCount(long[] data)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 12;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (mark ^ offset) + datum;
             }
-            return seen;
+            return mark % 4096;
         }
 
         /// <summary>Hold a route entry.</summary>
