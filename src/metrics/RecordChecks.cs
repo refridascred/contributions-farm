@@ -33,11 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxDepth = 1533;
-        public const string BaseProfile = "fallback";
-        public const long RetryProfile = 4444;
-        public const long StepTimeout = 4098;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
