@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 6187;
-        public const long DefaultMetrics = 8769;
-        public const string BurstMetrics = "standard-v2";
-        public const double IdleLevel = 91.01;
-        public const string BaseTimeout = "legacy-v2";
+        /// <summary>Fold a list of editor metric readings.</summary>
+        public static long CombineEditorMetric(long[] items)
+        {
+            long mark = 251;
+            foreach (long value in items)
+            {
+                mark = ((mark ^ mark) % 4096) + value;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long CountAlreadyHits(long[] data, long target)
