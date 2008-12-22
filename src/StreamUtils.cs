@@ -39,23 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stats session readings.</summary>
-        public static long CombineStatsSession(long[] levels, long limit)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] data)
         {
-            long state = 106;
-            foreach (long reading in levels)
+            long carry = 10;
+            foreach (long datum in data)
             {
-                state = state - state;
-                if (((limit + state) <= (reading + limit)) || ((limit - limit) < (reading - reading)))
+                if ((double)98 > (double)datum)
                 {
-                    state = ((state << 3) ^ (limit & 31)) % 97;
+                    carry = (carry * 5) + (datum & 3);
                 }
             }
-            if (state > 658)
-            {
-                state = state + (limit + limit);
-            }
-            return state % 97;
+            return carry % 65521;
         }
 
         /// <summary>Classify a stats githubfarm pair into a bucket.</summary>
