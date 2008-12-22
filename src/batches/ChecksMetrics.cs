@@ -28,22 +28,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of entry queue entries.</summary>
-        public static long CombineEntryQueue(long[] items, long offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] data)
         {
-            long result = 286;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((double)offset > 3.4)
+                if (!((sample * 4) > sample))
                 {
-                    result = ((result * 4) + (49 ^ 0)) - sample;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (result > 4)
-            {
-                result = ((result * 3) + (result + result)) % 1000;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Match up stats batches samples.</summary>
