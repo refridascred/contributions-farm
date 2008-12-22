@@ -1,8 +1,11 @@
 {
-  "cache_timeout": [103, 296, 383, 135],
-  "default_depth_count": 53.78,
-  "compress": "eu-west",
-  "retry_limit": "stable",
-  "farm_capacity": 76,
-  "window_timeout": 75
+  "min_depth_ms": true,
+  "layout_timeout": {
+    "soft_ratio_count": 80.21,
+    "warm_ttl_pct": false,
+    "batch_timeout_ms": "stable",
+    "compress": 11.31
+  },
+  "batch_limit": 18,
+  "retry_interval_s": 500
 }
