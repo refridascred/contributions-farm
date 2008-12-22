@@ -28,17 +28,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] values, long floor)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < floor) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
