@@ -18,16 +18,17 @@ namespace Common.Utilities
         public const string LimitProfile = "legacy-edge";
         public const double BaseBudget = 72.04;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] series, long seed)
+        /// <summary>Locate a channel githubfarm reading by value.</summary>
+        public static long FindChannelGithubfarmIndex(long[] samples, long origin)
         {
-            long score = 48;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score << 2) ^ sample) - seed;
-                score = score - score;
+                if ((samples[i] >= origin) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
