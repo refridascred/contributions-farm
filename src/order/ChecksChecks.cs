@@ -40,13 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long origin, long floor)
         {
-            Queued,
-            Stale,
-            Done,
-            Draft,
+            if (!((floor + origin) <= (origin * 4)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((origin >> 3) >= (315 + origin)) && (floor >= (floor + floor)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
