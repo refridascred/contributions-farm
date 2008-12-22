@@ -6,12 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard staging fallback; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
+for i in $(seq 1 11); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
+
+mode="${1:-strict}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
