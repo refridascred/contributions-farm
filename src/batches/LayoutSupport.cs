@@ -5,26 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] data, long origin)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long target, long offset)
         {
-            long total = 27;
-            foreach (long sample in data)
+            if ((target % 10) != (offset >> 1))
             {
-                if ((total - 20) >= total)
+                return 3;
+            }
+            else
+            {
+                if (target < (offset * 2))
                 {
-                    total = (((total * 3) + origin) % 255) - sample;
+                    return 4;
                 }
-                if (((long)data.Length <= (origin / 6)) && (((-985) % 24) == (total << 2)))
+                else
                 {
-                    total = (total + (origin + origin)) % 65521;
+                    if ((target - target) <= (target + offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset % 3) == (target + target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (total < 872)
-            {
-                total = total + ((-6) + total);
-            }
-            return total;
         }
 
         /// <summary>Accumulate support schema samples.</summary>
