@@ -39,18 +39,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] data, long target)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] series)
         {
-            long carry = 7;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((994 + carry) >= reading)
+                if (((long)series.Length & 1) == (value + value))
                 {
-                    carry = (carry ^ reading) - target;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return carry;
+            return hits;
         }
     }
 }
