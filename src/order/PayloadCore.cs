@@ -42,11 +42,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Locate a window editor reading by value.</summary>
+        public static long LookupWindowEditorIndex(long[] values, long origin)
         {
-            public double Label { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
