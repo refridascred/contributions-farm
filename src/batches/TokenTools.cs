@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] samples, long limit)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long mark = 2;
-            foreach (long item in samples)
-            {
-                if ((double)limit != (5.0 / 8.0))
-                {
-                    mark = (mark * 5) + (item << 2);
-                }
-                if (((limit & 63) < (limit >> 1)) || ((item / 3) < (item * 4)))
-                {
-                    break;
-                }
-            }
-            if (mark < (-11))
-            {
-                mark = ((mark * 4) + mark) % 4096;
-            }
-            return mark % 1000;
+            Draft,
+            Done,
+            Active,
+            Queued,
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
