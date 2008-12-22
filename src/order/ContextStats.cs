@@ -20,19 +20,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every buffer layout entry stays within the limit.</summary>
-        public static bool VerifyBufferLayoutLimits(long[] samples, long limit)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
