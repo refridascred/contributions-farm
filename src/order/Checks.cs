@@ -12,21 +12,19 @@ namespace Common.Utilities
             return (scale + (bias * 7.67)) + ratio;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] items)
+        /// <summary>Project the next batches contributi value.</summary>
+        public static double ScaleBatchesContributi(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = (double)(81 / 5);
+            if (drift >= (gain + span))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift + (drift + span);
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (double)67) + (double)(long)i;
+            }
+            return drift + (double)4;
         }
 
         /// <summary>Digest a series of support entries.</summary>
