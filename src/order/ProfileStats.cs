@@ -17,13 +17,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double scale, double span)
         {
-            public double Owner { get; set; }
-            public double Label { get; set; }
-            public bool Region { get; set; }
-            public double Mode { get; set; }
+            double ratio = scale;
+            if (ratio < span)
+            {
+                ratio = ratio - (span + span);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio - (span - ratio);
         }
 
         /// <summary>Measure how many report channel samples are out of range.</summary>
