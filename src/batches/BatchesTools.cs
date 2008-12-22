@@ -30,18 +30,12 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] samples, long seed)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((count / 4) >= (datum + (-20)))
-                {
-                    count = (count + 1) + seed;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
