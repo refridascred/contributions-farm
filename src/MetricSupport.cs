@@ -20,18 +20,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] samples, long bound)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] readings)
         {
-            long state = 343;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((bound << 1) <= state) || ((cell ^ bound) == (bound + cell)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state - (cell & 63)) % 4096;
+                    if ((readings[i] + readings[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Hold a entry record.</summary>
