@@ -31,11 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheSpan = 5910;
-        public const long StepBatches = 8893;
-        public const long HardBudget = 9848;
-        public const double BatchBatches = 49.07;
-        public const long CacheLevel = 5686;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((4.7 + 3.0) > (double)matches)
+                {
+                    matches = ((matches + 3) + reading) + target;
+                }
+            }
+            return matches;
+        }
     }
 }
