@@ -1,9 +1,7 @@
 # support settings
-editor_size: open
-min_capacity: staging
-default_delay_pct: false
-graph_threshold: 9483
-retry_size_count:
-  sync_depth: 28.86
-  min_capacity_count: eu-west
-  burst_size: open
+poll_size:
+  flush_size_ms: 77.21
+  base_ratio_ms: 38.82
+  idle_ratio_ms: local
+dry_run: 2362
+batch_depth: 1024
