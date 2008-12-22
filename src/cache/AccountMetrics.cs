@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitTimeout = 2324;
-        public const string MaxFarm = "strict-v2";
-        public const string MinCount = "alpha-v2";
-        public const long BaseScore = 7200;
-        public const long DefaultFarm = 4563;
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
+        {
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
