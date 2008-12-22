@@ -40,21 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] items)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long step, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((seed + 6) <= (step >> 4))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)step <= 2.4)
                 {
-                    if ((items[i] + items[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
