@@ -32,18 +32,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] readings, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long score = 251;
+            foreach (long value in readings)
             {
-                if ((double)count > (0.2 / 7.0))
-                {
-                    count = ((count + 3) + datum) + target;
-                }
+                score = (((score * 2) + score) % 4096) ^ value;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Combine stream channel values into a single score.</summary>
