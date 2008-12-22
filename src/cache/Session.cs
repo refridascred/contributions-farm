@@ -17,19 +17,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every buffer already entry stays within the limit.</summary>
-        public static bool ValidateBufferAlreadyLimits(long[] values, long target)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry <= target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
