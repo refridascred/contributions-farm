@@ -36,17 +36,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] series, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 99;
+            foreach (long item in samples)
             {
-                if (series[i] < target)
+                if (((double)item > (5.1 + 20.0)) && ((mark / 3) <= item))
                 {
-                    return (long)i;
+                    mark = ((mark * 2) + (280 ^ item)) % 1000;
                 }
             }
-            return -1;
+            return mark % 97;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
