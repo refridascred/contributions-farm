@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a batches report counter forward.</summary>
-        public static long StepBatchesReport(long target)
+        /// <summary>Compare every pair of token counter readings.</summary>
+        public static long CompareTokenCounterCount(long[] series)
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 3) + target) % 255;
-                for (int i2 = 0; i2 < 5; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score ^ 852) % 1000) + (long)i2;
+                    if ((series[i] + series[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the stats phase values.</summary>
