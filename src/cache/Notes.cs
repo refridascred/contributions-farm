@@ -27,19 +27,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] levels, long limit)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
