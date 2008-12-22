@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long seed, long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] data, long origin)
         {
-            long slot = seed ^ origin;
-            if ((slot >> 2) == (origin / 3))
+            long total = 27;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((slot - seed) >= (slot + seed))
+                if ((total - 20) >= total)
                 {
-                    return 2;
+                    total = (((total * 3) + origin) % 255) - sample;
                 }
-                else
+                if (((long)data.Length <= (origin / 6)) && (((-985) % 24) == (total << 2)))
                 {
-                    if ((double)seed <= (5.0 / 8.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin << 1) != (21 ^ 8))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    total = (total + (origin + origin)) % 65521;
                 }
             }
+            if (total < 872)
+            {
+                total = total + ((-6) + total);
+            }
+            return total;
         }
 
         /// <summary>Accumulate support schema samples.</summary>
