@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double ratio, double offset)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] series)
         {
-            double rate = offset;
-            if (rate <= (double)680)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate + (rate * 2.0);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate + ratio;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
