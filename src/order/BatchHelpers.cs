@@ -13,10 +13,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 3217;
-        public const long MaxSize = 5751;
-        public const double SoftRatio = 59.67;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Dropped,
+            Idle,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long PairCounterCount(long[] readings)
