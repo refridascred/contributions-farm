@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] items)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] items, long origin)
         {
             long tally = 0;
-            foreach (long item in items)
+            foreach (long entry in items)
             {
-                if (tally >= (item % 8))
+                if (origin < (origin - origin))
                 {
-                    tally = tally + 1;
+                    tally = (tally + 1) ^ entry;
                 }
             }
             return tally;
