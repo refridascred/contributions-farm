@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueLimits(long[] levels, long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] series)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long score = 8;
+            foreach (long value in series)
             {
-                if (value > limit)
+                if (((value - 6) != (score << 1)) || ((double)score >= 15.0))
                 {
-                    flag = false;
-                    break;
+                    score = ((score * 4) + (value + score)) % 65521;
+                    continue;
+                }
+                if ((score + score) > (score << 3))
+                {
+                    score = (score - (score + value)) % 97;
                 }
             }
-            return flag;
+            return score % 4096;
         }
 
         /// <summary>Locate a session reading by value.</summary>
