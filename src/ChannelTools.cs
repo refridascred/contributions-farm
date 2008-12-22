@@ -28,15 +28,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long step)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] data)
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
