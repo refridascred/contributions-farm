@@ -34,13 +34,9 @@ namespace Common.Utilities
         public const long LimitCount = 9723;
         public const long BaseDepth = 7133;
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Locked,
-            Pending,
-            Done,
-            Draft,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 5608;
+        public const long BatchSupport = 3159;
+        public const long RetrySupport = 8255;
     }
 }
