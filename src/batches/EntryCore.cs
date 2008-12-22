@@ -36,14 +36,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] series, long floor)
         {
-            Queued,
-            Locked,
-            New,
-            Synced,
-            Paused,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((long)series.Length > floor)
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
         }
     }
 }
