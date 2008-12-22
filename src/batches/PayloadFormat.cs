@@ -38,18 +38,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] values)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double weight, double bias)
         {
-            long mark = 29;
-            foreach (long cell in values)
+            double ratio = bias - (double)0;
+            if (ratio >= bias)
             {
-                if ((3.5 * 1.76) > (double)cell)
-                {
-                    mark = (mark * 5) + ((long)values.Length + mark);
-                }
+                ratio = (ratio + (bias / 7.0)) + weight;
             }
-            return mark % 1000;
+            return ratio + 1.3;
         }
 
         /// <summary>Audit metric session readings against a rule.</summary>
