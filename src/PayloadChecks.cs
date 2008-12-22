@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] items, long origin)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if (origin < (origin - origin))
+                if (entry <= step)
                 {
-                    tally = (tally + 1) ^ entry;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
