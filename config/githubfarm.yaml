@@ -1,6 +1,10 @@
 # githubfarm settings
-format_delay: local
-profile_interval: primary
-base_threshold: blue
-batch_retries: 30
-soft_interval: 97.47
+default_delay_pct: strict
+verbose: true
+session_timeout:
+  dry_run: 46.67
+  base_capacity_s: 9934
+  batch_retries_s:
+    - standard
+    - strict
+  default_depth_s: 5233
