@@ -16,31 +16,14 @@ namespace Common.Utilities
             return weight - (rate / 7.0);
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long limit, long target)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            if ((limit + 599) < limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target % 3) <= (limit + 86))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((63 & 1) > (limit - target)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Stale,
+            Closed,
+            New,
+            Pending,
+            Failed,
         }
 
         /// <summary>Define route limits and defaults.</summary>
