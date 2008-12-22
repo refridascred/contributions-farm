@@ -40,17 +40,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] series, long step)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 7;
+            foreach (long datum in levels)
             {
-                if (series[i] <= step)
+                sum = (((sum * 5) + 9) % 101) + target;
+                if ((double)datum > (3.7 - 5.97))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
