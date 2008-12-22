@@ -66,19 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch queue readings against a bound.</summary>
-        public static bool ValidateBatchQueueBounds(long[] values, long origin)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Ratio { get; set; }
+            public bool Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Combine profile queue values into a single score.</summary>
