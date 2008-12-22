@@ -30,19 +30,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next commits metrics value.</summary>
-        public static double ProjectCommitsMetrics(double bias, double span)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            double ratio = (double)(386 & 1);
-            if (ratio <= (ratio - bias))
-            {
-                ratio = (ratio + bias) + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (ratio / 6.0)) - (double)(long)i;
-            }
-            return ratio - (bias * 7.0);
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a graph record.</summary>
