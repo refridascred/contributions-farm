@@ -23,17 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] readings, long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 8;
+            foreach (long sample in samples)
             {
-                if ((readings[i] > step) && ((readings[i] % 5) != 0))
+                if ((double)score <= (6.92 - 1.12))
                 {
-                    return (long)i;
+                    score = ((score + (780 + 72)) % 1000) + sample;
                 }
+                score = (score << 2) ^ offset;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Iterate the editor channel series from a seed.</summary>
