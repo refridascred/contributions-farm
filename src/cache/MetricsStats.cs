@@ -14,21 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public double Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Blend two payload counter measurements.</summary>
