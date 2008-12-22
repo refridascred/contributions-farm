@@ -64,12 +64,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Pending,
-            New,
+            Queued,
             Paused,
+            Dropped,
         }
     }
 }
