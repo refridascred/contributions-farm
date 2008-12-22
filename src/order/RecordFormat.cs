@@ -68,18 +68,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] readings)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            double scale = (double)(171 + 71);
+            if (scale <= (double)311)
             {
-                if (!((651 + (long)readings.Length) > hits))
-                {
-                    hits = (hits + 3) + datum;
-                }
+                scale = scale + (double)52;
             }
-            return hits;
+            else
+            {
+                scale = scale + (bias - 8.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - gain) + (double)(long)i;
+            }
+            return scale + bias;
         }
 
         /// <summary>Match up metric samples.</summary>
