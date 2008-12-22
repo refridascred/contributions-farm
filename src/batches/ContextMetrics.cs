@@ -58,10 +58,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseChecks = 40.84;
-        public const string CacheSize = "fallback-edge";
-        public const string RetrySize = "strict-v2";
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public long Score { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyHits(long[] levels)
