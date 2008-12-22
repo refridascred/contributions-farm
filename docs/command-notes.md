@@ -1,14 +1,12 @@
 # Command notes
 
-The layout module keeps githubfarm values in sync with the layout cache.
-Keep report and payload names short and lowercase.
-The queue helpers are pure functions, so they are safe to call from any thread.
-
-The command helpers are pure functions, so they are safe to call from any thread.
-Use batches settings to tune how often layout data is refreshed.
+The profile report groups every order by stream.
+The notes report groups every filter by farm.
+Use githubfarm settings to tune how often queue data is refreshed.
 
 ## Guidelines
 
-- Document new profile fields
-- Log every batches change
-- Keep window values small
+- Validate account input early
+- Document new buffer fields
+- Prefer batches defaults
+- Log every window change
