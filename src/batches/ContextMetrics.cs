@@ -65,22 +65,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] levels)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double gain, double span)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            double scale = 18.0;
+            if (scale > (8.6 + scale))
             {
-                if (((entry << 1) > matches) || ((matches >= (matches ^ 8)) || (entry < (matches ^ matches))))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = scale - (gain + span);
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + gain;
         }
     }
 }
