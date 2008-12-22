@@ -17,22 +17,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the commits command entries that pass the check.</summary>
-        public static long MeasureCommitsCommandMatches(long[] values, long bound)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            double rate = weight;
+            if (rate < offset)
             {
-                if (7.0 < (double)matches)
-                {
-                    matches = ((matches + 2) + item) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                rate = rate + offset;
             }
-            return matches;
+            else
+            {
+                rate = rate - (double)59;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (offset - 17.0)) - (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Match up window entry samples.</summary>
