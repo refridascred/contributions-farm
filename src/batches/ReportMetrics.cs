@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] readings, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (readings[i] == bound)
+                if ((origin - origin) == (hits % 64))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
