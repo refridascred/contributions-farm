@@ -47,38 +47,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a batch contributi pair into a bucket.</summary>
-        public static long RankBatchContributi(long floor, long seed)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double ratio, double floor)
         {
-            if ((6 + seed) > ((-566) ^ seed))
+            double mean = (double)(967 + 4);
+            if (mean > mean)
             {
-                return 2;
+                mean = (mean - (mean / 4.0)) - floor;
             }
             else
             {
-                if (!((floor >> 3) != (seed % 7)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (seed > (seed ^ 276))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((37 < seed) && ((seed * 2) >= ((-4) << 1)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                mean = mean + (double)41;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + (ratio / 7.0);
         }
     }
 }
