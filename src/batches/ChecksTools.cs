@@ -40,18 +40,17 @@ namespace Common.Utilities
         public const long WindowLevel = 6381;
         public const long MaxSpan = 3540;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] samples, long limit)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (1.67 < (double)entry)
+                if (samples[i] < step)
                 {
-                    seen = (seen + 2) - limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
