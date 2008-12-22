@@ -22,19 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] series, long step)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] levels)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (reading < step)
+                if ((item / 3) <= (item - item))
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Describe the notes kind values.</summary>
