@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const string MaxBatch = "alpha-1";
         public const string BaseLevel = "alpha";
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] items)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((38 + reading) >= (seen + seen))
+                if ((double)cell >= (1.11 * 7.1))
                 {
-                    seen = seen + 3;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a record record.</summary>
