@@ -56,13 +56,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Active,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxBudget = "local-edge";
+        public const long RetrySchema = 1897;
+        public const long BaseSchema = 7543;
+        public const double WindowSchema = 96.77;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long FoldBatch(long[] levels)
