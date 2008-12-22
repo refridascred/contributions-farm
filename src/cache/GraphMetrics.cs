@@ -20,18 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstSize = 19.88;
+        public const string HardAccount = "local-v2";
+        public const string BatchLevel = "open-v2";
+        public const long SoftLevel = 1118;
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long CompareReportCount(long[] series)
