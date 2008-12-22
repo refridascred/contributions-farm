@@ -15,12 +15,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BurstReport = "primary-edge";
-        public const string BaseSpan = "open-edge";
-        public const long DefaultCount = 4946;
-        public const double IdleReport = 45.54;
-        public const long BatchReport = 3000;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Ready,
+            Closed,
+            Stale,
+            Done,
+            Idle,
+        }
 
         /// <summary>Blend two farm cluster measurements.</summary>
         public static double AdjustFarmCluster(double scale, double offset)
