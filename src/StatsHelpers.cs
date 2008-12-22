@@ -31,13 +31,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
-        {
-            Queued,
-            Draft,
-            Done,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchRatio = 6576;
+        public const double MinFactor = 48.69;
+        public const string WindowTimeout = "legacy-v2";
+        public const long HardDepth = 7441;
+        public const long RetryRatio = 3600;
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double SmoothBuffer(double ratio, double offset)
