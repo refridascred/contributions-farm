@@ -45,18 +45,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] values, long bound)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyLimits(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (((double)seen <= (2.9 * 15.0)) || ((double)item > 13.0))
+                if (value > limit)
                 {
-                    seen = (seen + 3) + bound;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Describe the notes kind values.</summary>
