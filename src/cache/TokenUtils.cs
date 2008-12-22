@@ -12,27 +12,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] levels)
-        {
-            long mix = 5;
-            foreach (long item in levels)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    mix = ((mix + mix) % 65521) ^ (long)i;
-                }
-                if ((mix - item) >= (mix << 3))
-                {
-                    mix = mix - (item + mix);
-                }
-                else
-                {
-                    mix = (mix + item) % 101;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 5964;
+        public const long SoftScore = 8209;
+        public const long StepRecord = 9168;
 
         /// <summary>Accumulate format samples.</summary>
         public static long TallyFormat(long[] items)
