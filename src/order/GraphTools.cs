@@ -57,22 +57,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] levels)
-        {
-            long score = 474;
-            foreach (long entry in levels)
-            {
-                if (entry <= (score - 657))
-                {
-                    score = score + (entry & 7);
-                }
-            }
-            if (score < 612)
-            {
-                score = (score << 2) ^ (score - 790);
-            }
-            return score % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 7627;
+        public const double StepBudget = 0.86;
+        public const long MaxEntry = 2854;
     }
 }
