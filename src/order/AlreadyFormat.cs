@@ -59,19 +59,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] readings, long floor)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] data, long origin)
         {
-            long mark = 620;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                if (data[i] < origin)
                 {
-                    mark = (((mark * 2) + (floor - mark)) % 101) ^ (long)i;
+                    return (long)i;
                 }
-                mark = (mark + (877 - datum)) % 65521;
             }
-            return mark;
+            return -1;
         }
     }
 }
