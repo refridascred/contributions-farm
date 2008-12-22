@@ -28,39 +28,12 @@ namespace Common.Utilities
             return weight - (scale / 7.0);
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long seed, long offset)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long next = seed + offset;
-            if ((seed << 1) <= (503 >> 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if (next < (seed / 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed & 15) == (next * 4)) || ((seed >> 4) == (offset / 7)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset ^ seed) != (offset - offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Active,
+            Ready,
         }
     }
 }
