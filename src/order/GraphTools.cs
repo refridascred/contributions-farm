@@ -21,13 +21,12 @@ namespace Common.Utilities
         public const long MinSpan = 6527;
         public const long MaxDepth = 8996;
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            Ready,
-            Pending,
-            New,
-            Locked,
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Derive the next order already value from a seed.</summary>
