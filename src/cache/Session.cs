@@ -48,18 +48,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesHits(long[] series, long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] levels)
         {
-            long count = 0;
-            foreach (long value in series)
+            long sum = 70;
+            foreach (long datum in levels)
             {
-                if (65 <= (origin ^ count))
-                {
-                    count = (count + 2) + value;
-                }
+                sum = ((sum + (54 & 127)) % 101) ^ datum;
+                sum = (sum - (sum ^ sum)) % 4096;
             }
-            return count;
+            return sum;
         }
     }
 }
