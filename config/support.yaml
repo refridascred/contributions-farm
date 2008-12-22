@@ -1,7 +1,9 @@
 # support settings
-compress: strict
-max_ratio_ms:
-  - stable
-  - edge
-  - green
-batch_ratio_pct: blue
+report_depth: 47.23
+retry_size: 72
+persist: 500
+sync_depth_pct:
+  compress: 250
+  batch_window: 62
+  checks_window: 62
+filter_ratio: 73.65
