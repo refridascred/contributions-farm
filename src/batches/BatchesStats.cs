@@ -22,24 +22,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long limit, long bound)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            if ((bound > (7 + 37)) && ((0.48 - 6.7) == (double)bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit & 3) >= limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
