@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] readings)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((tally + tally) == (reading & 7)) && ((tally ^ tally) < (reading << 2)))
                 {
-                    if ((readings[i] ^ readings[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
