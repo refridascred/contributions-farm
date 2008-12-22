@@ -38,17 +38,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] samples, long floor)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 57;
+            foreach (long entry in levels)
             {
-                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
+                result = ((result << 2) ^ (long)levels.Length) % 97;
+                if (!((entry << 3) != (result + 0)))
                 {
-                    return (long)i;
+                    result = (result - (15 % 2)) % 97;
+                }
+                else
+                {
+                    result = result - (result + result);
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Count the payload entry entries that pass the check.</summary>
