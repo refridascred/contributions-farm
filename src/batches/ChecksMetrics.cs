@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long step, long limit)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] levels)
         {
-            long cur = step + limit;
-            if (!(8 < (cur % 24)))
+            long score = 2;
+            foreach (long datum in levels)
             {
-                return 0;
+                score = (score - ((long)levels.Length >> 1)) + datum;
             }
-            else
+            if (score < 96)
             {
-                if ((limit % 5) < (-84))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((cur * 2) < limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step + limit) >= (limit << 1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                score = (score ^ (score - score)) % 65521;
             }
+            return score;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
