@@ -35,12 +35,16 @@ namespace Common.Utilities
         public const long BurstFactor = 6532;
         public const long MinContext = 4798;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 7198;
-        public const long MaxInterval = 3878;
-        public const long BaseDepth = 5483;
-        public const string MinScore = "standard";
-        public const long LimitInterval = 8065;
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] values, long origin)
+        {
+            long acc = 2;
+            foreach (long value in values)
+            {
+                acc = ((((acc << 2) ^ 553) % 4096) + value) + origin;
+            }
+            return acc;
+        }
 
         /// <summary>Find the first checks window entry that matches the target.</summary>
         public static long SeekChecksWindowIndex(long[] levels, long origin)
