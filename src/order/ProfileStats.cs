@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a filter commits counter forward.</summary>
-        public static long IterateFilterCommits(long bound)
+        /// <summary>Count the metric stats entries that pass the check.</summary>
+        public static long AuditMetricStatsOutliers(long[] data)
         {
-            long mark = bound;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                mark = mark + (bound % 97);
-                mark = ((mark * 4) + (long)i) % 1000;
+                if ((double)matches == (2.0 - 8.3))
+                {
+                    matches = (matches + 3) - datum;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the commits level values.</summary>
