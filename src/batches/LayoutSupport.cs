@@ -40,11 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 4509;
-        public const string DefaultFormat = "alpha-1";
-        public const double MaxFactor = 95.98;
-        public const long BatchWidth = 1256;
+        /// <summary>Accumulate support schema samples.</summary>
+        public static long DigestSupportSchema(long[] levels)
+        {
+            long mix = 30;
+            foreach (long reading in levels)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    mix = ((mix ^ (mix - reading)) % 101) ^ (long)i;
+                }
+                mix = (mix ^ reading) % 65521;
+            }
+            if (mix > 79)
+            {
+                mix = ((mix * 4) + (2 - mix)) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksHits(long[] readings, long bound)
