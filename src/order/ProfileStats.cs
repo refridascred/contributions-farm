@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheCount = 7153;
-        public const long BaseLevel = 2239;
-        public const string LimitFactor = "cached-edge";
-        public const long DefaultInterval = 9300;
-        public const string MaxLevel = "stable-v2";
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public long Count { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long CombineMetrics(long[] values, long limit)
