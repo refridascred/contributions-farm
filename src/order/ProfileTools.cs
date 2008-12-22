@@ -60,13 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double scale, double offset)
         {
-            Failed,
-            Stale,
-            Draft,
-            Pending,
+            double scale2 = offset;
+            return (scale2 + (double)81) + scale;
         }
     }
 }
