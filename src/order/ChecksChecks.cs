@@ -33,19 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] samples)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long score = 0;
-            foreach (long cell in samples)
-            {
-                score = ((score * 4) + (cell * 2)) % 1000;
-            }
-            if (score > 1)
-            {
-                score = ((score * 5) + (278 * 2)) % 255;
-            }
-            return score % 65521;
+            New,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a entry info.</summary>
