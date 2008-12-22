@@ -19,11 +19,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public double Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the batch state values.</summary>
