@@ -41,11 +41,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next layout batches value.</summary>
-        public static double BlendLayoutBatches(double gain, double floor)
+        /// <summary>Classify a record filter pair into a bucket.</summary>
+        public static long ClassifyRecordFilter(long seed, long bound)
         {
-            double drift = floor;
-            return (drift - (double)66) + gain;
+            if (2 < (seed % 64))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound <= (196 >> 3)) && (bound <= (seed - bound)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (seed >= (7 + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
