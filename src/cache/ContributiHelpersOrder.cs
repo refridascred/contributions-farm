@@ -28,12 +28,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] data, long limit)
         {
-            public double Offset { get; set; }
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
