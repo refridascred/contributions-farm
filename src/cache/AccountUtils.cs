@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long floor)
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
+            long result = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    result = ((result << 3) ^ floor) % 97;
+                    result = result ^ ((long)i2 + (long)i2);
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
