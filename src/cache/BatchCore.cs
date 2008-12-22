@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftDepth = "latest-1";
-        public const double WindowFactor = 8.83;
-        public const long BaseSchema = 2812;
-        public const long StepTimeout = 2376;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 1598;
+        public const long LimitProfile = 7191;
+        public const long BurstProfile = 513;
+        public const long DefaultProfile = 9702;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] samples, long offset)
