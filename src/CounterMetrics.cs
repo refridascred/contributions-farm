@@ -19,11 +19,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double ratio, double offset)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            double scale = (double)(-72) * 19.0;
-            return ((scale - (3.83 / 3.0)) + ratio) + offset;
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
