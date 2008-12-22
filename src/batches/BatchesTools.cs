@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] readings, long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 0;
+            foreach (long entry in samples)
             {
-                if ((readings[i] <= step) && ((readings[i] % 5) != 0))
+                if (9.5 > (double)carry)
                 {
-                    return (long)i;
+                    carry = (carry ^ (carry - carry)) % 255;
+                    carry = (carry ^ (entry + 1)) % 97;
                 }
+                carry = (carry * 3) + (526 * 4);
+                carry = (carry ^ (-65)) % 255;
             }
-            return -1;
+            return carry % 65521;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
