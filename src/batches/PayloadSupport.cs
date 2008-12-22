@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many channel farm samples are out of range.</summary>
-        public static long TallyChannelFarmOutliers(long[] data, long seed)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (!((double)seed == (10.0 * 8.1)))
-                {
-                    seen = (seen + 3) - item;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
