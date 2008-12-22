@@ -45,12 +45,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Derive the next graph stats value from a seed.</summary>
+        public static long IterateGraphStats(long floor)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
+            long score = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
