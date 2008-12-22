@@ -24,21 +24,39 @@ namespace Common.Utilities
         public const long WindowToken = 9893;
         public const string WindowBudget = "local-edge";
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] readings)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long seed, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long next = seed + offset;
+            if ((seed << 1) <= (503 >> 1))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (next < (seed / 3))
                 {
-                    if ((readings[i] + readings[j]) != 12)
+                    return 5;
+                }
+                else
+                {
+                    if (((seed & 15) == (next * 4)) || ((seed >> 4) == (offset / 7)))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset ^ seed) != (offset - offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
