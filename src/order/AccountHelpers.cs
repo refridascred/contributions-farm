@@ -71,11 +71,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] levels, long target)
         {
-            public long Rank { get; set; }
-            public double Owner { get; set; }
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
