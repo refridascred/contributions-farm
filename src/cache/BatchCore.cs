@@ -52,35 +52,28 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long offset, long offset2)
+        /// <summary>Grade a payload layout value against two limits.</summary>
+        public static long ClassifyPayloadLayout(long target, long limit)
         {
-            if (offset2 > (offset2 / 9))
+            if ((limit - target) < (target + target))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if (!((double)offset != (2.9 * 6.6)))
+                if ((limit ^ target) > target)
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((27 >> 5) < offset2)
+                    if ((target + 1) > (9 ^ target))
                     {
-                        return 7;
+                        return 2;
                     }
                     else
                     {
-                        if ((6.3 + 17.0) != (double)offset2)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 6;
                     }
                 }
             }
