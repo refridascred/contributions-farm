@@ -33,15 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double scale, double bias)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double rate, double span)
         {
-            double load = bias - (scale * 7.52);
-            if (load <= scale)
+            double mean = rate;
+            if (mean <= (span / 9.0))
             {
-                load = load - 8.73;
+                mean = mean - (double)74;
             }
-            return load - (load + load);
+            else
+            {
+                mean = mean + (double)3;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (8.3 / 2.0)) - (double)(long)i;
+            }
+            return mean + rate;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
