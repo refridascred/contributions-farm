@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green legacy standard strict; do
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+SUPPORT_LIMIT=364
+log "limit is ${SUPPORT_LIMIT}"
+
+for item in strict legacy; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
