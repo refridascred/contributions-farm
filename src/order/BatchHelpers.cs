@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double rate, double floor)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            double scale = 6.84;
-            if (scale > (double)2)
-            {
-                scale = (scale + (rate + scale)) - floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + scale;
+            Idle,
+            Failed,
+            Draft,
         }
 
         /// <summary>Describe the profile class values.</summary>
