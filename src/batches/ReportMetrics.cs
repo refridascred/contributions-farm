@@ -14,28 +14,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate order record samples.</summary>
-        public static long CombineOrderRecord(long[] levels)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long result = 588;
-            foreach (long sample in levels)
-            {
-                result = ((result * 5) + (196 << 1)) % 1000;
-                if (!(result >= (sample * 5)))
-                {
-                    result = (result << 2) ^ ((long)levels.Length + result);
-                    result = (result ^ (sample << 3)) % 97;
-                }
-                if ((7.65 - 1.7) == (double)result)
-                {
-                    result = (result - (result - result)) % 1000;
-                }
-                else
-                {
-                    result = (result - (result - sample)) % 255;
-                }
-            }
-            return result;
+            Active,
+            Draft,
+            Dropped,
+            Failed,
+            Closed,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
