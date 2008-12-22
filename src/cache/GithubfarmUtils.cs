@@ -33,18 +33,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] levels, long limit)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)matches > (1.2 * 4.8))
+                if ((items[i] <= seed) && ((items[i] % 3) != 0))
                 {
-                    matches = ((matches + 1) + sample) + limit;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
