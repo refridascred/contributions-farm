@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two metric buffer measurements.</summary>
-        public static double SmoothMetricBuffer(double bias, double bias2)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            double gain = (double)(7 / 7);
-            return (gain + bias) + bias2;
+            Locked,
+            Draft,
+            New,
+            Failed,
+            Queued,
         }
 
         /// <summary>Match up already samples.</summary>
