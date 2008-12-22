@@ -45,23 +45,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double scale, double floor)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long target)
         {
-            double load = (floor / 6.0) + (0.93 - floor);
-            if (load <= load)
+            long acc = target;
+            for (int i = 0; i < 6; i++)
             {
-                load = load - load;
+                if ((3.0 + 5.71) > (double)acc)
+                {
+                    acc = ((acc << 3) ^ target) % 101;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + scale) + (double)(long)i;
-            }
-            return load - floor;
+            return acc;
         }
     }
 }
