@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] data, long step)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long acc = 17;
+            foreach (long item in data)
             {
-                if (entry <= step)
+                acc = ((acc - acc) % 255) - limit;
+                if ((item >> 1) < item)
                 {
-                    ready = false;
-                    break;
+                    acc = (acc << 3) ^ (5 + acc);
+                }
+                else
+                {
+                    acc = acc ^ acc;
                 }
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
