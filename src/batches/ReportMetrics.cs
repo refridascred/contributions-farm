@@ -17,22 +17,21 @@ namespace Common.Utilities
         public const long StepInterval = 5002;
         public const long BaseSize = 4433;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] data)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] samples)
         {
-            long state = 66;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)state <= (2.6 / 8.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = state - (state - entry);
-                }
-                else
-                {
-                    state = state + entry;
+                    if ((samples[i] + samples[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
