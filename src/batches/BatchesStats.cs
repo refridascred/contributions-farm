@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long IdleInterval = 8588;
         public const long WindowCluster = 9692;
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            public string Offset { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
