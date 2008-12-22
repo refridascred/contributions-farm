@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] levels, long offset)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double ratio, double bias)
         {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double scale = 9.0;
+            return (scale + (bias * 7.67)) + ratio;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
