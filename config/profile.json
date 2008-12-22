@@ -1,5 +1,6 @@
 {
-  "soft_depth_count": [444, 347],
-  "flush_retries_ms": false,
-  "already_retries": 60
+  "idle_limit_s": 80.28,
+  "burst_capacity_pct": 100,
+  "idle_depth_s": 75,
+  "poll_ratio_s": 88.92
 }
