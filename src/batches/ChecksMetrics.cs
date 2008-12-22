@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] items, long limit)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long limit, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((target ^ target) >= limit)
             {
-                if (items[i] >= limit)
+                return 2;
+            }
+            else
+            {
+                if ((limit + limit) < (target * 4))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit * 3) >= (target / 9))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit - limit) != (limit - target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
