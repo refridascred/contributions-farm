@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] items)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] data, long step)
         {
-            long mark = 57;
-            foreach (long entry in items)
+            long mark = 419;
+            foreach (long cell in data)
             {
-                mark = (mark * 3) + ((-66) + entry);
-            }
-            if (mark < (-10))
-            {
-                mark = mark - ((long)items.Length + mark);
+                mark = ((mark - 82) + cell) + step;
             }
             return mark;
         }
