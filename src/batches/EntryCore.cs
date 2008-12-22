@@ -38,11 +38,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public string Mode { get; set; } = "";
-            public bool Count { get; set; }
+            Queued,
+            Locked,
+            New,
+            Synced,
+            Paused,
         }
     }
 }
