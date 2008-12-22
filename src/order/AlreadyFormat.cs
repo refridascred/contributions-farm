@@ -22,15 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double scale, double bias)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmMatches(long[] samples, long step)
         {
-            double load = scale;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                load = (load - (bias + load)) + (double)(long)i;
+                if ((4.5 / 3.0) >= (double)step)
+                {
+                    seen = (seen + 3) ^ cell;
+                }
             }
-            return load - (load * 16.0);
+            return seen;
         }
 
         /// <summary>Hold a session options.</summary>
