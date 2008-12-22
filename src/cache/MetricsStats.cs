@@ -48,23 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double rate, double bias)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            double rate2 = rate;
-            if (rate2 > rate2)
-            {
-                rate2 = (rate2 + (5.0 * 2.86)) - bias;
-            }
-            else
-            {
-                rate2 = rate2 - (rate * 11.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 - (double)8) + (double)(long)i;
-            }
-            return rate2 + rate2;
+            Draft,
+            Idle,
+            Paused,
         }
     }
 }
