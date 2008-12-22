@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] values, long limit)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long sum = 194;
+            foreach (long sample in series)
             {
-                if (((hits << 1) >= limit) && ((0.21 / 6.0) <= (double)hits))
-                {
-                    hits = (hits + 1) + cell;
-                }
+                sum = sum + (27 + sample);
             }
-            return hits;
+            return sum % 97;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
