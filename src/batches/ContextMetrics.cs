@@ -57,23 +57,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] levels)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long mark = 6;
-            foreach (long entry in levels)
-            {
-                if ((mark << 1) != (21 >> 4))
-                {
-                    mark = (mark ^ (mark << 1)) ^ entry;
-                }
-                mark = ((mark * 4) + (mark + mark)) % 101;
-                if ((double)mark != (1.14 / 4.0))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
