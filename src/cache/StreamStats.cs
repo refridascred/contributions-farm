@@ -48,10 +48,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseChannel = 73.39;
-        public const string BurstChannel = "legacy-edge";
-        public const long WindowScore = 2912;
-        public const long DefaultChannel = 3457;
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+        }
     }
 }
