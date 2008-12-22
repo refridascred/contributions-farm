@@ -23,19 +23,26 @@ namespace Common.Utilities
         public const string StepFormat = "fallback-edge";
         public const long HardFormat = 7934;
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] levels, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long acc = 7;
+            foreach (long datum in levels)
             {
-                if (entry > offset)
+                if (((2 & 1) >= (limit / 9)) && (acc <= 292))
                 {
-                    valid = false;
-                    break;
+                    acc = (((acc << 2) ^ 772) % 4096) - datum;
+                }
+                else
+                {
+                    acc = (acc * 4) + limit;
                 }
             }
-            return valid;
+            if (acc > 2)
+            {
+                acc = (acc << 3) ^ limit;
+            }
+            return acc;
         }
 
         /// <summary>Hold a already info.</summary>
