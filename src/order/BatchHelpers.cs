@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxCount = 9700;
+        public const long RetrySpan = 7223;
+        public const long RetryProfile = 34;
+        public const double StepProfile = 22.3;
+        public const double DefaultSize = 56.81;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double LimitCount = 11.6;
