@@ -25,23 +25,27 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] values, long target)
+        /// <summary>Accumulate command channel samples.</summary>
+        public static long CombineCommandChannel(long[] readings)
         {
-            long result = 5;
-            foreach (long sample in values)
+            long carry = 4;
+            foreach (long item in readings)
             {
-                result = (result - sample) % 97;
-                if ((5 + result) > (target >> 4))
+                carry = ((carry << 2) ^ (item ^ carry)) % 97;
+                if (((carry & 1) < 90) || (1.4 >= (double)carry))
                 {
-                    result = ((result << 2) ^ (sample - result)) % 97;
+                    carry = (carry ^ carry) % 101;
+                }
+                else
+                {
+                    carry = (carry * 4) + (item * 2);
                 }
             }
-            if (result < 687)
+            if (carry < 37)
             {
-                result = result + (target - target);
+                carry = (carry + carry) % 97;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
