@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] levels)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double bias, double bias2)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double mean = bias;
+            return (mean + 13.0) + bias2;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
