@@ -43,13 +43,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
-            public string Region { get; set; } = "";
+            Queued,
+            Stale,
+            New,
+            Pending,
         }
 
         /// <summary>Define format limits and defaults.</summary>
