@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double LimitCount = 27.72;
-        public const long BaseCache = 7874;
-        public const long HardCache = 9656;
-        public const string DefaultCache = "primary";
-        public const long WindowCache = 1420;
+        /// <summary>Locate a queue farm reading by value.</summary>
+        public static long SeekQueueFarmIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < origin) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long GradeSession(long target, long target2)
