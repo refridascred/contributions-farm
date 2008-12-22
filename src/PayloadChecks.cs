@@ -60,22 +60,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] samples)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] values)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long mark = 69;
+            foreach (long cell in values)
             {
-                if ((double)sample == (double)22)
+                if (!((double)cell < (double)mark))
                 {
-                    count = count + 3;
+                    mark = mark - (cell * 2);
                 }
                 else
                 {
-                    count = count - 1;
+                    mark = (mark * 2) + (740 ^ mark);
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
