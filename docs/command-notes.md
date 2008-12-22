@@ -1,14 +1,12 @@
 # Command notes
 
-Keep window and context names short and lowercase.
-Defaults for layout live in the config folder and can be overridden per environment.
-
-When a profile fails, the payload handler retries a few times before giving up.
-The commits helpers are pure functions, so they are safe to call from any thread.
+Use stream settings to tune how often token data is refreshed.
+Run the metric check before changing any farm limits.
+Keep batches and metric names short and lowercase.
 
 ## Guidelines
 
-- Validate checks input early
-- Keep report values small
-- Prefer window defaults
-- Log every counter change
+- Review window limits each release
+- Log every checks change
+- Document new channel fields
+- Validate entry input early
