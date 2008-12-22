@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] samples, long seed)
         {
-            Closed,
-            Retry,
-            Idle,
-            Pending,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)seed <= (1.46 + 0.7))
+                {
+                    seen = (seen + 1) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a queue stats.</summary>
