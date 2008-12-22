@@ -1,16 +1,14 @@
 # Batch notes
 
-The profile helpers are pure functions, so they are safe to call from any thread.
-Use buffer settings to tune how often route data is refreshed.
-Use metrics settings to tune how often batches data is refreshed.
+Use record settings to tune how often schema data is refreshed.
+A record that stays idle for too long is moved to the counter list.
+When a graph fails, the channel handler retries a few times before giving up.
 
-Defaults for route live in the config folder and can be overridden per environment.
-Keep checks and farm names short and lowercase.
-The checks report groups every report by graph.
+The layout report groups every session by command.
+The tools report groups every schema by stats.
 
 ## Guidelines
 
-- Validate commits input early
-- Document new booking fields
-- Review stats limits each release
-- Log every tools change
+- Keep profile values small
+- Log every session change
+- Validate already input early
