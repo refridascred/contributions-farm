@@ -1,11 +1,6 @@
 # githubfarm settings
-sync_timeout: true
-cache_delay:
-  - 105
-  - 416
-  - 199
-cache_depth_s:
-  - 41
-  - 91
-  - 343
-soft_threshold_pct: 49.63
+default_ttl: 3022
+audit: 98.77
+min_delay: true
+hard_capacity_ms: 41.93
+payload_depth: 60
