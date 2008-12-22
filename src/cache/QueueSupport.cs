@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] readings, long floor)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] series, long floor)
         {
-            long total = 86;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = total - (floor - datum);
-                if ((5.71 - 1.35) < (double)floor)
+                if ((series[i] <= floor) && ((series[i] % 5) == 0))
                 {
-                    total = total - (datum + datum);
+                    return (long)i;
                 }
             }
-            if (total > 6)
-            {
-                total = total - (floor + (long)readings.Length);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Accumulate profile record samples.</summary>
