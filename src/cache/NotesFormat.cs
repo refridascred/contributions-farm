@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many report editor samples are out of range.</summary>
-        public static long MeasureReportEditorHits(long[] items, long seed)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] data, long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((cell > 8) && (seed <= cell))
+                if ((step + hits) < step)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 1) + reading;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
