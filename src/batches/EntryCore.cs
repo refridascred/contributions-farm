@@ -20,11 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a buffer options.</summary>
