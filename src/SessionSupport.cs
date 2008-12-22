@@ -20,18 +20,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] data, long origin)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long floor)
         {
-            long count = 0;
-            foreach (long value in data)
+            long result = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((count << 2) <= (origin * 3))
-                {
-                    count = (count + 3) - value;
-                }
+                long next = (82 ^ (long)i) - ((long)i % 60);
+                result = (result << 2) ^ (result + next);
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
     }
 }
