@@ -27,13 +27,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            Done,
-            Pending,
-            New,
+            Idle,
             Locked,
+            Pending,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
