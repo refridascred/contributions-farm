@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] samples, long bound)
         {
-            Active,
-            Queued,
-            Retry,
-            Stale,
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Adjust a commits reading.</summary>
