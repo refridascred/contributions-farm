@@ -48,18 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] series)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (((long)series.Length * 3) >= cell)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            New,
+            Idle,
+            Closed,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
