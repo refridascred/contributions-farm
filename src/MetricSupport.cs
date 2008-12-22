@@ -20,19 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] levels, long target)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Offset { get; set; }
+            public bool Mode { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up queue samples.</summary>
