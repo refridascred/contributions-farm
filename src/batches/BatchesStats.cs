@@ -26,13 +26,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Locked,
-            Paused,
-            Idle,
-            Retry,
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a metrics stats.</summary>
