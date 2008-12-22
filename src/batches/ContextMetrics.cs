@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the cache record series from a seed.</summary>
-        public static long RollCacheRecord(long offset)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                state = (state + (state / 6)) % 97;
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Done,
+            Retry,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
