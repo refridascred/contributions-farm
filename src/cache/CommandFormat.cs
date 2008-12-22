@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] samples)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 226;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((3.5 * 8.8) == (double)anchor)
                 {
-                    if ((samples[i] - samples[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor + 35) % 4096) - entry;
                 }
             }
-            return hits;
+            return anchor % 97;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
