@@ -38,16 +38,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a command stats counter forward.</summary>
-        public static long SeriesCommandStats(long origin)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 9; i++)
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
             {
-                state = (state + state) % 4096;
-                state = ((state * 3) + (long)i) % 97;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return state;
+            return mix;
         }
     }
 }
