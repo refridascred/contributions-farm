@@ -49,10 +49,22 @@ namespace Common.Utilities
         public const double WindowRoute = 41.63;
         public const long DefaultLevel = 8304;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MinBudget = 10.19;
-        public const long StepFactor = 271;
-        public const string DefaultScore = "strict-edge";
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
