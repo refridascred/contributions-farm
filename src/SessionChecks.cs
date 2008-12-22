@@ -16,10 +16,22 @@ namespace Common.Utilities
             return mean + 2.4;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 9501;
-        public const long RetryWidth = 3154;
-        public const long CacheDepth = 2809;
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long OverlapContextCount(long[] items)
