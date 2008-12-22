@@ -27,12 +27,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Audit support command readings against a rule.</summary>
+        public static long TallySupportCommandHits(long[] values, long floor)
         {
-            Locked,
-            Draft,
-            Closed,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (!((count + value) < floor))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every stats queue entry stays within the limit.</summary>
