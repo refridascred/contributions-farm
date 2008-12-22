@@ -68,12 +68,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] items, long bound)
         {
-            Active,
-            Locked,
-            Paused,
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
