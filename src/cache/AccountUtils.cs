@@ -32,31 +32,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long bound, long step)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] data, long bound)
         {
-            if (((step - bound) < step) || ((bound + step) >= (76 & 3)))
+            long carry = 55;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (8 <= bound)
+                if (((4 / 3) < (bound << 1)) || ((18.0 + 1.0) >= (6.07 - 11.0)))
                 {
-                    return 6;
+                    carry = carry - (bound & 255);
                 }
-                else
+                if ((double)entry <= (double)248)
                 {
-                    if (!((8.5 - 0.9) > (double)bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            if (carry < (-8))
+            {
+                carry = (carry + (95 - bound)) % 65521;
+            }
+            return carry % 4096;
         }
     }
 }
