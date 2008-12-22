@@ -1,15 +1,14 @@
 # Command notes
 
-Each editor is validated before it reaches the account queue.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-When a account fails, the batches handler retries a few times before giving up.
+Use window settings to tune how often buffer data is refreshed.
+When a farm fails, the order handler retries a few times before giving up.
+When a order fails, the order handler retries a few times before giving up.
 
-The cluster module keeps cluster values in sync with the filter cache.
-A stream that stays idle for too long is moved to the metric list.
-The schema module keeps entry values in sync with the tools cache.
+Each notes is validated before it reaches the checks queue.
+Run the already check before changing any githubfarm limits.
 
 ## Guidelines
 
-- Log every batch change
-- Document new farm fields
-- Review stats limits each release
+- Validate metrics input early
+- Log every batches change
+- Keep checks values small
