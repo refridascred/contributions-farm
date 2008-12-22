@@ -22,11 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            Active,
-            Draft,
+            Retry,
+            Paused,
             Ready,
         }
 
