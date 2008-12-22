@@ -46,15 +46,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long offset)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long acc = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            Retry,
+            Failed,
+            Pending,
+            Stale,
+            Active,
         }
 
         /// <summary>Iterate the session schema series from a seed.</summary>
