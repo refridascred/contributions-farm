@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ratio - (2.9 - ratio);
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Fold a list of entry token readings.</summary>
+        public static long TotalEntryToken(long[] values, long step)
         {
-            Active,
-            Closed,
-            Synced,
-            Retry,
+            long state = 16;
+            foreach (long item in values)
+            {
+                if (((-4) + 25) < (state / 8))
+                {
+                    state = (state + (state + item)) - step;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Find the first commits channel entry that matches the target.</summary>
