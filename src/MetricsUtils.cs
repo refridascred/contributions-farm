@@ -66,16 +66,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] levels)
-        {
-            long acc = 106;
-            foreach (long cell in levels)
-            {
-                acc = (((acc << 2) ^ acc) % 4096) + cell;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultSize = 7912;
+        public const string BurstLevel = "staging-1";
+        public const long StepLevel = 5020;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long MeasureRouteMatches(long[] values)
