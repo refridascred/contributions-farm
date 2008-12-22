@@ -12,10 +12,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 3029;
-        public const long SoftToken = 669;
-        public const long BaseToken = 4972;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string CacheSize = "latest-v2";
+        public const long IdleFarm = 1918;
+        public const long MaxCount = 6053;
 
         /// <summary>Define order limits and defaults.</summary>
         public const string SoftOrder = "local-edge";
