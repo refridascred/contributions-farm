@@ -42,12 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public double Region { get; set; }
-            public bool Mode { get; set; }
-            public bool Offset { get; set; }
+            public bool Region { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
