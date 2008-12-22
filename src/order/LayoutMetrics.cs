@@ -15,19 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double scale, double bias)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] data, long offset)
         {
-            double ratio = scale;
-            if (ratio > (20.0 / 8.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio + (scale + 3.0)) - bias;
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (scale + ratio)) - (double)(long)i;
-            }
-            return ratio - (8.0 + scale);
+            return -1;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
