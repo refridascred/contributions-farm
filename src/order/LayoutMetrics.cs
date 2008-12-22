@@ -26,18 +26,23 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] samples, long offset)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            double scale = (double)(423 - 7);
+            if (scale <= (rate + floor))
             {
-                if ((4.9 / 6.0) >= (double)item)
-                {
-                    hits = (hits + 3) + offset;
-                }
+                scale = scale - floor;
             }
-            return hits;
+            else
+            {
+                scale = scale - (18.0 - rate);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + 1.83) - (double)(long)i;
+            }
+            return scale - (scale - rate);
         }
     }
 }
