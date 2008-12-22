@@ -49,19 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] levels, long origin)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Region { get; set; }
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
