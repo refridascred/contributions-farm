@@ -15,18 +15,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] data)
+        /// <summary>Accumulate profile record samples.</summary>
+        public static long ScoreProfileRecord(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long mark = -12;
+            foreach (long item in data)
             {
-                if (entry < hits)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    hits = hits + 1;
+                    mark = ((mark << 3) ^ (mark + (long)i2)) % 4096;
                 }
+                mark = ((mark << 3) ^ item) % 65521;
             }
-            return hits;
+            if (mark > 19)
+            {
+                mark = mark - (floor * 2);
+            }
+            return mark;
         }
 
         /// <summary>Describe the editor state values.</summary>
