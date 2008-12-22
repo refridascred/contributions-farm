@@ -1,39 +1,4 @@
 # support settings
-hard_capacity_pct:
-  - cached
-  - latest
-  - green
-  - eu-west
-min_window:
-  readonly: 1393
-  soft_depth_ms:
-    sync_delay: staging
-    idle_ratio_ms: local
-    burst_ttl_s: 4
-    burst_retries_count: fallback
-    min_retries_s: 3743
-  layout_timeout: standard
-  audit:
-    - staging
-    - fallback
-    - edge
-    - strict
-  min_threshold_s: 40.27
-flush_size:
-  format_size: 100
-  batch_limit_count: true
-  hard_limit: 65.7
-queue_delay: cached
-hard_timeout_count:
-  max_capacity_pct: 250
-  readonly:
-    hard_retries: open
-    base_timeout: strict
-    cache_size: legacy
-    flush_depth: false
-    schema_size: 1024
-    burst_ratio: false
-  strict: 3.81
-  stats_window: strict
-  soft_limit_count: eu-west
-  idle_retries_ms: 80
+channel_retries: blue
+max_size_count: false
+min_retries_pct: 88.94
