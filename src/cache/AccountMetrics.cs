@@ -39,18 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] readings)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((double)matches >= (7.69 / 4.0))
-                {
-                    matches = (matches + 3) ^ value;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine token payload values into a single score.</summary>
