@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Region { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Iterate the account batch series from a seed.</summary>
