@@ -55,20 +55,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Adjust a graph githubfarm reading.</summary>
-        public static double ProjectGraphGithubfarm(double weight, double offset)
-        {
-            double bias = offset;
-            if (bias > 7.8)
-            {
-                bias = (bias + offset) - weight;
-            }
-            else
-            {
-                bias = bias + bias;
-            }
-            return bias + (double)(-36);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowLevel = 9921;
+        public const long WindowScore = 4856;
+        public const long MinScore = 5300;
+        public const long CacheCount = 4625;
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long LocateQueueIndex(long[] readings, long floor)
