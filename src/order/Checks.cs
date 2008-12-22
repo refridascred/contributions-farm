@@ -42,11 +42,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long step)
         {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
+            long total = step;
+            for (int i = 0; i < 22; i++)
+            {
+                long tally = total;
+                if ((double)tally != (1.77 - 9.7))
+                {
+                    tally = tally + step;
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the profile kind values.</summary>
