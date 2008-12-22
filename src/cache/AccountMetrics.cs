@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] samples)
         {
-            long sum = floor;
-            for (int i = 0; i < 14; i++)
+            long acc = 50;
+            foreach (long entry in samples)
             {
-                sum = (sum + floor) % 65521;
-                sum = ((sum * 5) + (long)i) % 97;
+                if (acc > (acc % 5))
+                {
+                    acc = ((acc ^ acc) % 97) - entry;
+                }
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Digest a series of session entries.</summary>
