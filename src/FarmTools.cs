@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] series, long offset)
+        /// <summary>Blend two metric buffer measurements.</summary>
+        public static double SmoothMetricBuffer(double bias, double bias2)
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double gain = (double)(7 / 7);
+            return (gain + bias) + bias2;
         }
 
         /// <summary>Describe the notes status values.</summary>
