@@ -1,6 +1,7 @@
 # githubfarm settings
-editor_timeout: strict
-base_window: eu-west
-filter_size:
-  - edge
-  - strict
+checks_depth: staging
+soft_ratio: legacy
+hard_ratio: false
+token_ttl: cached
+warm_depth_pct: latest
+cluster_capacity: true
