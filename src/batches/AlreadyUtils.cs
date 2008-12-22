@@ -15,19 +15,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every order route entry stays within the limit.</summary>
-        public static bool VerifyOrderRouteBounds(long[] values, long offset)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] items)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] + items[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
