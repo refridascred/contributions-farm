@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of stream queue entries.</summary>
-        public static long WeighStreamQueue(long[] data, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] levels, long bound)
         {
-            long mark = 42;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                mark = ((mark * 3) + (7 - sample)) % 255;
-                if (!((mark << 2) >= sample))
+                if (!(((double)seen > (6.73 * 0.14)) && ((bound >> 5) <= 15)))
                 {
-                    mark = (mark - (sample - mark)) % 1000;
+                    seen = (seen + 2) + item;
                 }
-                mark = ((mark << 2) ^ (origin + 787)) % 97;
             }
-            if (mark > 753)
-            {
-                mark = (mark - (origin >> 4)) % 255;
-            }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Hold a payload summary.</summary>
