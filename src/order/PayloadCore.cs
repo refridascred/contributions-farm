@@ -32,14 +32,14 @@ namespace Common.Utilities
         public const string BatchWidth = "fallback-1";
         public const long RetryCount = 1030;
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            Stale,
-            Dropped,
+            Queued,
             Closed,
-            Locked,
-            Idle,
+            Paused,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Locate a window editor reading by value.</summary>
