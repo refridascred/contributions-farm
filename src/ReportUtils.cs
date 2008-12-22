@@ -32,15 +32,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] readings)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long score = 251;
-            foreach (long value in readings)
-            {
-                score = (((score * 2) + score) % 4096) ^ value;
-            }
-            return score;
+            Locked,
+            Paused,
+            Ready,
         }
 
         /// <summary>Combine stream channel values into a single score.</summary>
