@@ -32,23 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] items)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long acc = 6;
-            foreach (long cell in items)
-            {
-                if (((long)items.Length + acc) >= (long)items.Length)
-                {
-                    acc = (acc << 2) ^ ((-6) >> 4);
-                    acc = (acc ^ ((-780) * 5)) % 65521;
-                }
-                if (((long)items.Length % 10) >= cell)
-                {
-                    acc = ((acc * 2) + (cell + cell)) % 4096;
-                }
-            }
-            return acc % 1000;
+            Stale,
+            Failed,
+            Paused,
+            Idle,
+            Queued,
         }
     }
 }
