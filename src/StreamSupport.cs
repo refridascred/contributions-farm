@@ -39,18 +39,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit contributi command readings against a rule.</summary>
-        public static long AuditContributiCommandHits(long[] levels, long limit)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long carry = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((limit - limit) <= limit))
-                {
-                    count = (count + 2) - item;
-                }
+                carry = ((carry << 2) ^ (target % 12)) % 97;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
     }
 }
