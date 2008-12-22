@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] data, long bound)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long mark = 2;
+            foreach (long item in samples)
             {
-                if (datum >= bound)
+                if ((double)limit != (5.0 / 8.0))
                 {
-                    stale = false;
+                    mark = (mark * 5) + (item << 2);
+                }
+                if (((limit & 63) < (limit >> 1)) || ((item / 3) < (item * 4)))
+                {
                     break;
                 }
             }
-            return stale;
+            if (mark < (-11))
+            {
+                mark = ((mark * 4) + mark) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
