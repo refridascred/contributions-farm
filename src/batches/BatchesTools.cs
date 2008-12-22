@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit notes token readings against a rule.</summary>
-        public static long CountNotesTokenHits(long[] items, long origin)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (!(hits < (2 + origin)))
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
