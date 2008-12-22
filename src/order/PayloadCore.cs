@@ -44,10 +44,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseFactor = 9861;
-        public const long MinRatio = 8696;
-        public const long BatchLevel = 4071;
-        public const double MaxStats = 78.49;
+        /// <summary>Locate a metrics profile reading by value.</summary>
+        public static long FindMetricsProfileIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
