@@ -39,17 +39,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a metrics profile reading by value.</summary>
-        public static long FindMetricsProfileIndex(long[] data, long bound)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 6;
+            foreach (long item in series)
             {
-                if (data[i] < bound)
+                if ((sum ^ sum) < item)
                 {
-                    return (long)i;
+                    sum = (sum ^ (sum * 5)) % 4096;
                 }
             }
-            return -1;
+            return sum;
         }
     }
 }
