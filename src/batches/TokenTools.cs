@@ -25,13 +25,9 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
-        {
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardFilter = 23.96;
+        public const string BurstWidth = "local";
+        public const long DefaultRatio = 2521;
     }
 }
