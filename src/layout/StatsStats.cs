@@ -22,19 +22,19 @@ namespace Common.Utilities
         public const long MaxTimeout = 2747;
         public const long HardTools = 6056;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] series)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double gain, double span)
         {
-            long total = 4;
-            foreach (long item in series)
+            double scale = gain;
+            if (scale >= 3.0)
             {
-                total = ((total ^ (total & 255)) % 101) ^ item;
-                if (((6.0 - 5.0) >= (double)(long)series.Length) && ((730 - (-8)) == (total + total)))
-                {
-                    break;
-                }
+                scale = scale + gain;
             }
-            return total;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + 4.6) + (double)(long)i;
+            }
+            return scale - (span * 3.0);
         }
 
         /// <summary>Rank record input into a small class.</summary>
