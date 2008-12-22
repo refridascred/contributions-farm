@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double gain, double bias)
+        /// <summary>Look up the position of a format support sample.</summary>
+        public static long SeekFormatSupportIndex(long[] values, long origin)
         {
-            double scale = (double)(97 - 13);
-            if (scale <= (gain + scale))
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale + (double)4;
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - bias;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
