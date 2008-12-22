@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double gain, double floor)
         {
-            Draft,
-            Idle,
-            Paused,
-            Retry,
-            Ready,
+            double weight = gain - floor;
+            if (weight >= (floor + floor))
+            {
+                weight = weight - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - weight) - (double)(long)i;
+            }
+            return weight + 7.0;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
