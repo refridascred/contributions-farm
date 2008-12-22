@@ -31,19 +31,12 @@ namespace Common.Utilities
         public const long CacheInterval = 7872;
         public const long MaxSchema = 9822;
 
-        /// <summary>Scale a context cache figure with a bias.</summary>
-        public static double SmoothContextCache(double gain, double span)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            double gain2 = gain;
-            if (gain2 > (gain - 2.2))
-            {
-                gain2 = gain2 + (double)99;
-            }
-            else
-            {
-                gain2 = gain2 + span;
-            }
-            return gain2 - (span / 5.0);
+            public double Token { get; set; }
+            public long Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a graph header.</summary>
