@@ -30,20 +30,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] data)
-        {
-            long acc = 7;
-            foreach (long datum in data)
-            {
-                acc = acc + (37 + datum);
-                if (1.9 >= (double)acc)
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseFarm = "standard-1";
+        public const string BaseWidth = "open-1";
+        public const string MaxFarm = "legacy";
+        public const long LimitCount = 9723;
+        public const long BaseDepth = 7133;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long TotalLayout(long[] levels)
