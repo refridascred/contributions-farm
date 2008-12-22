@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public double Flag { get; set; }
-            public string Offset { get; set; } = "";
+            Pending,
+            Draft,
+            Stale,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define record limits and defaults.</summary>
