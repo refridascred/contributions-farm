@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Count the stream queue entries that pass the check.</summary>
+        public static long TallyStreamQueueMatches(long[] samples, long origin)
         {
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((value << 1) >= (seen + origin))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
