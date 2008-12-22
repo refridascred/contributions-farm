@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] samples, long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] levels)
         {
-            long state = 39;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((target ^ sample) <= sample)
+                if ((entry << 2) < (entry % 24))
                 {
-                    state = (state * 5) + (9 + sample);
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (state < 705)
-            {
-                state = (state ^ state) % 4096;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
