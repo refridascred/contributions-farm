@@ -37,13 +37,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Locate a notes githubfarm reading by value.</summary>
+        public static long LookupNotesGithubfarmIndex(long[] data, long seed)
         {
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= seed) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
