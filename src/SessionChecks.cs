@@ -37,12 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
-        {
-            public bool Owner { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseInterval = 88.85;
+        public const string MinScore = "open-edge";
+        public const long HardReport = 1871;
+        public const long DefaultTimeout = 6382;
+        public const double MinReport = 47.98;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double HardCount = 23.91;
