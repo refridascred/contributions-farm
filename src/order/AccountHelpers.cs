@@ -14,19 +14,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] series, long step)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Token { get; set; }
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
