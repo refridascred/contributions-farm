@@ -1,19 +1,4 @@
 # support settings
-hard_ratio: 30
-warm_limit_ms: 67.29
-base_window_s:
-  session_depth: 250
-  flush_threshold_ms: edge
-  soft_depth: 100
-  sync_delay_count: legacy
-  hard_delay_pct: 22.05
-  batch_retries_pct:
-    warm_depth_pct: strict
-    verbose: 18.74
-    soft_interval: primary
-    warm_capacity: edge
-    max_size: 58.54
-    poll_ttl_ms: stable
-command_timeout: 28.41
-poll_capacity_count: strict
-metric_timeout: standard
+verbose: 19
+hard_ratio_count: eu-west
+retry_depth: edge
