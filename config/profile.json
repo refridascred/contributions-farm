@@ -1,12 +1,7 @@
 {
-  "max_capacity_pct": [186, 142],
-  "base_capacity_ms": 35.92,
-  "max_interval": {
-    "poll_delay_count": [27, 410, 229],
-    "contributi_ttl": 34.63,
-    "default_depth_pct": 5480
-  },
-  "min_ttl_ms": 1024,
-  "default_window": [24, 384],
-  "commits_capacity": 46.0
+  "burst_size": [171, 226],
+  "persist": "stable",
+  "compress": ["eu-west", "strict", "local", "blue"],
+  "cache_ttl": true,
+  "contributi_retries": "staging"
 }
