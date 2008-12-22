@@ -34,12 +34,13 @@ namespace Common.Utilities
             return weight - (bias - scale);
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
+            Retry,
+            Paused,
+            Done,
+            Ready,
         }
 
         /// <summary>Hold a contributi header.</summary>
