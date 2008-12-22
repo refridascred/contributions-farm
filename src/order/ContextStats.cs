@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long target)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score * 4) + ((long)i * 5)) % 101;
-                score = ((score * 2) + target) % 97;
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            Locked,
+            Draft,
+            Retry,
+            Pending,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
