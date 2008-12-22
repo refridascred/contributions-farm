@@ -14,19 +14,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] levels, long step)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (entry >= step)
+                if (((long)items.Length - tally) == (offset - tally))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) ^ reading;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a token record.</summary>
