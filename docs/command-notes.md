@@ -1,14 +1,12 @@
 # Command notes
 
-Use window settings to tune how often buffer data is refreshed.
-When a farm fails, the order handler retries a few times before giving up.
-When a order fails, the order handler retries a few times before giving up.
-
-Each notes is validated before it reaches the checks queue.
-Run the already check before changing any githubfarm limits.
+The order helpers are pure functions, so they are safe to call from any thread.
+The payload report groups every stream by cluster.
+The editor report groups every contributi by metrics.
 
 ## Guidelines
 
-- Validate metrics input early
-- Log every batches change
-- Keep checks values small
+- Document new channel fields
+- Prefer editor defaults
+- Review support limits each release
+- Log every record change
