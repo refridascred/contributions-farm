@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] items)
         {
-            Dropped,
-            Draft,
-            Paused,
-            Queued,
+            long state = 445;
+            foreach (long cell in items)
+            {
+                if (!((cell ^ state) > cell))
+                {
+                    state = state - (state & 15);
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
