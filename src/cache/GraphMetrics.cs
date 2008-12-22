@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] readings, long bound)
+        /// <summary>Combine profile token values into a single score.</summary>
+        public static long ScoreProfileToken(long[] values)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long score = 870;
+            foreach (long datum in values)
             {
-                if (entry != bound)
+                score = (score + (datum << 2)) % 101;
+                if (532 >= (datum % 10))
                 {
-                    found = false;
-                    break;
+                    score = (score + (datum / 3)) % 255;
                 }
             }
-            return found;
+            return score % 1000;
         }
 
         /// <summary>Define account limits and defaults.</summary>
