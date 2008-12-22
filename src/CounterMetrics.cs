@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate profile queue readings against a bound.</summary>
-        public static bool GuardProfileQueueRange(long[] series, long origin)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 7676;
+        public const long BatchRatio = 4618;
+        public const long IdlePayload = 9297;
+        public const double IdleScore = 7.17;
+        public const double BurstWidth = 40.13;
 
         /// <summary>Combine token support values into a single score.</summary>
         public static long ScoreTokenSupport(long[] values, long seed)
