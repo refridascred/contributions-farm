@@ -50,14 +50,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            Draft,
-            New,
-            Paused,
-            Done,
-            Synced,
+            Stale,
+            Queued,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Measure how many channel githubfarm samples are out of range.</summary>
