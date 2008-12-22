@@ -35,12 +35,19 @@ namespace Common.Utilities
         public const long RetryInterval = 602;
         public const long CacheSpan = 1993;
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] series, long step)
         {
-            Stale,
-            Dropped,
-            New,
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
