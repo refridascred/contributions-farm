@@ -38,19 +38,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] samples, long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] values)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long state = 88;
+            foreach (long reading in values)
             {
-                if (reading != floor)
+                if ((double)reading < 3.0)
                 {
-                    flag = false;
-                    break;
+                    state = (state << 3) ^ (reading - 438);
                 }
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
