@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] items, long target)
+        /// <summary>Digest a series of token support entries.</summary>
+        public static long CombineTokenSupport(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long result = 4;
+            foreach (long datum in data)
             {
-                if ((((tally + 963) < (datum - 59)) && ((85 + 20) <= (datum + target))) || (((double)tally > (8.17 * 12.0)) && ((tally & 63) != (99 ^ datum))))
+                result = (((result << 2) ^ (result << 3)) % 4096) - datum;
+                if ((double)result >= (9.0 / 7.0))
                 {
-                    tally = tally + 2;
+                    break;
                 }
             }
-            return tally;
+            if (result < 723)
+            {
+                result = (result - (391 % 60)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
