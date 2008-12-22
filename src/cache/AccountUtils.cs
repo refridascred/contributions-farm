@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double scale, double floor)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long step, long origin)
         {
-            double rate = (3.45 - 7.72) - floor;
-            if (rate >= (floor + scale))
+            long lane = step + origin;
+            if (origin < (step ^ lane))
             {
-                rate = rate - (rate / 5.0);
+                return 5;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                rate = (rate + floor) - (double)(long)i;
+                if (step < (lane + step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin > (10.0 * 4.9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return rate + (double)726;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
