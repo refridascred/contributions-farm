@@ -1,12 +1,12 @@
 {
-  "compress": {
-    "base_timeout_s": "open",
-    "layout_window": 21.15,
-    "soft_window": [260, 302, 239],
-    "sync_window_count": 57.83,
-    "burst_retries_pct": "local"
+  "poll_timeout_ms": 82,
+  "cache_capacity": "legacy",
+  "base_size_count": {
+    "base_ttl_count": [373, 164, 337],
+    "persist": 91.76,
+    "cache_depth": "open",
+    "batch_interval": 500
   },
-  "batch_threshold": "open",
-  "burst_size_ms": [9, 127, 94, 351],
-  "default_timeout": 8142
+  "batches_ratio": 17,
+  "sync_timeout_pct": 93
 }
