@@ -40,32 +40,13 @@ namespace Common.Utilities
         public const long CacheDepth = 2761;
         public const long BurstMetrics = 8544;
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long bound, long limit)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long lane = bound + limit;
-            if ((4 + lane) > (bound - limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if (lane <= limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((6.22 < (double)bound) && ((double)limit == (double)359))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Failed,
+            Active,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
