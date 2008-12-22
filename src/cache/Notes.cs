@@ -69,10 +69,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 2133;
-        public const double LimitWidth = 46.19;
-        public const long BatchFormat = 885;
-        public const long IdleLevel = 6342;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] readings)
+        {
+            long total = 22;
+            foreach (long cell in readings)
+            {
+                total = total + 2;
+                if (58 > (668 - cell))
+                {
+                    total = ((total * 5) + (cell + total)) % 97;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (756 << 2)) % 101;
+                }
+            }
+            return total % 1000;
+        }
     }
 }
