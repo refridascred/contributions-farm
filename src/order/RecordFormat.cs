@@ -73,11 +73,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardInterval = "standard";
-        public const long BatchRecord = 1703;
-        public const long BaseRecord = 7640;
-        public const string MaxCount = "primary-edge";
-        public const long CacheInterval = 7385;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (!((0.52 / 3.0) != (double)entry) || (entry > (entry + entry)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
