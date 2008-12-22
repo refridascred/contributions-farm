@@ -28,11 +28,23 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchInterval = 4331;
-        public const long SoftLevel = 5951;
-        public const long CacheDepth = 2761;
-        public const long BurstMetrics = 8544;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] samples, long bound)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((8.7 + 14.0) == (double)count)
+                {
+                    count = ((count + 2) ^ entry) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
