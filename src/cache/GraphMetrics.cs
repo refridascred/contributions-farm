@@ -26,16 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a order editor reading.</summary>
-        public static double BlendOrderEditor(double bias, double floor)
-        {
-            double bias2 = (bias * 1.95) - 2.1;
-            if (bias2 < (bias2 * 2.94))
-            {
-                bias2 = bias2 - (floor / 9.0);
-            }
-            return bias2 - (double)5;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 4788;
+        public const long CacheInterval = 7872;
+        public const long MaxSchema = 9822;
 
         /// <summary>Look up the position of a stats token sample.</summary>
         public static long LookupStatsTokenIndex(long[] samples, long bound)
