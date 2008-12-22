@@ -1,9 +1,8 @@
-id,ratio,token,state
-1,377,34.82,open
-2,blue,138,468
-3,823,latest,open
-4,61.06,strict,eu-west
-5,95.48,51.48,60.14
-6,240,204,909
-7,281,fallback,primary
-8,21.01,43.03,local
+id,owner,region
+1,latest,standard
+2,open,30.81
+3,69.79,612
+4,240,986
+5,28.95,14.51
+6,11,90.03
+7,167,21.79
