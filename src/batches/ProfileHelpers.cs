@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            Active,
+            Stale,
+            New,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
