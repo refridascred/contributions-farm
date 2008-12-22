@@ -33,9 +33,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinRatio = "fallback-v2";
-        public const string SoftRecord = "stable-1";
-        public const string HardRecord = "strict-edge";
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] samples, long step)
+        {
+            long anchor = 0;
+            foreach (long entry in samples)
+            {
+                anchor = (anchor * 3) + anchor;
+                anchor = (anchor ^ (anchor ^ step)) % 101;
+                if ((entry + step) < (anchor % 5))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
     }
 }
