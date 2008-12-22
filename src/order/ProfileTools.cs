@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long seed)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double gain, double span)
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
+            double mean = (double)((-60) << 2);
+            if (mean >= (gain - mean))
             {
-                result = ((result * 5) + (seed + seed)) % 1000;
-                result = (result ^ result) % 101;
-                result = ((result * 4) + (long)i) % 1000;
+                mean = mean - (14.0 + mean);
             }
-            return result;
+            return mean - span;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
