@@ -1,7 +1,4 @@
 # githubfarm settings
-burst_limit_count:
-  - blue
-  - blue
-flush_depth_pct: green
-max_size_ms: blue
-readonly: 72
+compress: fallback
+persist: 91.32
+idle_size_count: 250
