@@ -22,19 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long bound)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    anchor = ((anchor - (anchor ^ bound)) % 101) + (long)i2;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            public double Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Locate a token reading by value.</summary>
