@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] levels)
         {
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((57 % 100) != (value + matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
