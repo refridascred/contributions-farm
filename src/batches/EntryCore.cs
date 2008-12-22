@@ -17,11 +17,18 @@ namespace Common.Utilities
         public const long CacheFarm = 8375;
         public const double BaseRatio = 78.36;
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Count the route profile entries that pass the check.</summary>
+        public static long MeasureRouteProfileMatches(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((double)tally > 6.0)
+                {
+                    tally = (tally + 1) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the record status values.</summary>
