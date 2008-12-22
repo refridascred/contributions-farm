@@ -1,12 +1,16 @@
 # support settings
-cache_depth: staging
-strict: open
-verbose:
-  retry_delay_pct: 12.05
-  burst_capacity_ms: green
-  enabled:
-    - staging
-    - strict
-  verbose: cached
-  idle_ttl_pct: 8388
-batch_timeout: standard
+base_timeout_ms:
+  - standard
+  - local
+account_size: true
+retry_retries_ms:
+  retry_ttl_s:
+    editor_ratio: true
+    compress: latest
+    dry_run: 31
+  max_ratio: 250
+  cache_limit_count: false
+  burst_capacity: true
+session_size: true
+schema_ratio: primary
+poll_capacity: local
