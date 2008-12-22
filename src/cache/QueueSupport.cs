@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] readings, long floor)
         {
-            Synced,
-            Draft,
-            Done,
-            Locked,
-            Dropped,
+            long total = 86;
+            foreach (long datum in readings)
+            {
+                total = total - (floor - datum);
+                if ((5.71 - 1.35) < (double)floor)
+                {
+                    total = total - (datum + datum);
+                }
+            }
+            if (total > 6)
+            {
+                total = total - (floor + (long)readings.Length);
+            }
+            return total;
         }
 
         /// <summary>Accumulate profile record samples.</summary>
