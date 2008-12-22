@@ -1,12 +1,13 @@
 # Command notes
 
-Defaults for metric live in the config folder and can be overridden per environment.
-A route that stays idle for too long is moved to the checks list.
-Each session is validated before it reaches the githubfarm queue.
+Run the session check before changing any entry limits.
+A stream that stays idle for too long is moved to the window list.
+
+The format module keeps payload values in sync with the metrics cache.
+Use record settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Review notes limits each release
-- Keep entry values small
-- Validate stream input early
-- Document new report fields
+- Validate profile input early
+- Review githubfarm limits each release
+- Keep metrics values small
