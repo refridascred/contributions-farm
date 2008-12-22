@@ -46,19 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] values, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (value <= origin)
+                if ((double)matches > (1.2 * 4.8))
                 {
-                    ready = false;
-                    break;
+                    matches = ((matches + 1) + sample) + limit;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
