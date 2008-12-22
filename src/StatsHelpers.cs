@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            New,
+            Pending,
             Dropped,
-            Retry,
-            Idle,
+            Paused,
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
