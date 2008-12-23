@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] items)
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (((-26) + datum) <= (datum & 255))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
