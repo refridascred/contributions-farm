@@ -72,15 +72,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] levels, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] items, long floor)
         {
-            long acc = 565;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                acc = ((acc - acc) ^ value) - target;
+                if ((floor + floor) <= tally)
+                {
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
