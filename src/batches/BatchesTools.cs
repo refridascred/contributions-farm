@@ -18,26 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] data)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] readings)
         {
-            long mix = 7;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((137 ^ mix) > 0)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = ((mix << 2) ^ (value + value)) % 4096;
-                }
-                if ((mix - mix) != (value >> 3))
-                {
-                    break;
+                    if ((readings[i] + readings[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix > 230)
-            {
-                mix = (mix - (623 >> 4)) % 255;
-            }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Blend two support measurements.</summary>
