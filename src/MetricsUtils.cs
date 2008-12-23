@@ -32,11 +32,40 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstWidth = 2987;
-        public const long BurstOrder = 8170;
-        public const long IdleSize = 9011;
-        public const string BaseOrder = "strict-v2";
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long offset, long offset2)
+        {
+            long diff = offset + offset2;
+            if (((offset + diff) == (offset + offset)) || ((4.95 - 6.8) != (double)offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)offset2 != (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset2 < 9.11)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((diff < (248 % 2)) || ((offset2 + 3) < offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many route queue samples are out of range.</summary>
         public static long AuditRouteQueueHits(long[] series, long floor)
