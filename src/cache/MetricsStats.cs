@@ -33,18 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinInterval = 624;
+        public const long MaxTools = 8001;
+        public const double CacheCount = 30.87;
+        public const long DefaultCount = 9179;
 
         /// <summary>Compare every pair of filter route readings.</summary>
         public static long MatchFilterRouteCount(long[] series)
