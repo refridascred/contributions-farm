@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long target, long offset)
+        /// <summary>Project the next payload record value.</summary>
+        public static double SmoothPayloadRecord(double gain, double floor)
         {
-            if ((target % 10) != (offset >> 1))
+            double rate = (double)(763 ^ 23);
+            if (rate < rate)
             {
-                return 3;
+                rate = (rate + (double)50) + floor;
             }
             else
             {
-                if (target < (offset * 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target - target) <= (target + offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset % 3) == (target + target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                rate = rate + gain;
             }
+            return rate - (double)(-6);
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
