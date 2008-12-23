@@ -31,10 +31,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 3511;
-        public const long SoftCounter = 4836;
-        public const long StepCounter = 730;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Ready,
+            Retry,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long DigestAlready(long[] levels)
