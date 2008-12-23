@@ -12,20 +12,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Blend two record payload measurements.</summary>
-        public static double ScaleRecordPayload(double bias, double bias2)
-        {
-            double gain = bias2 * 6.34;
-            if (gain < (gain / 8.0))
-            {
-                gain = (gain + (double)40) + bias;
-            }
-            else
-            {
-                gain = gain - (gain / 4.0);
-            }
-            return gain - gain;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 8130;
+        public const string LimitProfile = "cached-1";
+        public const double HardProfile = 95.75;
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
