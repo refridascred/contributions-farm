@@ -23,11 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
+            Queued,
+            New,
+            Locked,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
