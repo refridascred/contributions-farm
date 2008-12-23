@@ -41,32 +41,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long target, long offset)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long lane = target + offset;
-            if (lane < (lane >> 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((lane - lane) < target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target / 3) > (lane + 228))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Pending,
+            Done,
+            Active,
         }
     }
 }
