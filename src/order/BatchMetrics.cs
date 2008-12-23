@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] series)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long state = 324;
-            foreach (long reading in series)
-            {
-                if ((1.0 / 9.0) > (double)reading)
-                {
-                    state = (state << 3) ^ (state - state);
-                }
-            }
-            if (state < (-158))
-            {
-                state = (state ^ (0 ^ state)) % 65521;
-            }
-            return state % 1000;
+            Idle,
+            Done,
+            Draft,
         }
 
         /// <summary>Roll a format counter forward.</summary>
