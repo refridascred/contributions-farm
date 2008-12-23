@@ -22,14 +22,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Count the checks session entries that pass the check.</summary>
+        public static long CountChecksSessionHits(long[] levels)
         {
-            Dropped,
-            Locked,
-            Pending,
-            New,
-            Done,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (((value + value) < (count / 9)) || ((69 + value) > ((long)levels.Length << 3)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
