@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] readings, long step)
         {
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
