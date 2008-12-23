@@ -48,21 +48,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count token route pairs that satisfy a relation.</summary>
-        public static long PairTokenRouteCount(long[] samples)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Active,
+            Closed,
+            Idle,
+            Queued,
         }
 
         /// <summary>Digest a series of queue batch entries.</summary>
