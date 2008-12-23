@@ -20,24 +20,17 @@ namespace Common.Utilities
         public const long SoftScore = 8209;
         public const long StepRecord = 9168;
 
-        /// <summary>Rank checks stream input into a small class.</summary>
-        public static long GradeChecksStream(long step, long floor)
+        /// <summary>Locate a stats channel reading by value.</summary>
+        public static long LocateStatsChannelIndex(long[] levels, long floor)
         {
-            if ((floor << 3) < (floor + step))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor > (28 + 34))
+                if ((levels[i] <= floor) && ((levels[i] % 5) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
