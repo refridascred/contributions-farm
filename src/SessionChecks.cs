@@ -33,31 +33,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a stats checks pair into a bucket.</summary>
-        public static long GradeStatsChecks(long floor, long floor2)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            if (((floor - floor2) != (floor2 - 5)) && (floor2 >= 465))
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor2 <= (floor2 + 23))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((floor ^ floor) < (-166)) || ((double)floor < 2.3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
