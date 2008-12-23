@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 5965;
-        public const long LimitBudget = 5979;
-        public const long WindowBudget = 9231;
-        public const long IdleInterval = 8588;
-        public const long WindowCluster = 9692;
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool CheckChannelLimits(long[] readings, long target)
