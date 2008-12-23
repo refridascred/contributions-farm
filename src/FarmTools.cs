@@ -25,13 +25,20 @@ namespace Common.Utilities
         public const double BaseWidth = 94.59;
         public const long IdleDepth = 6223;
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Roll a record commits counter forward.</summary>
+        public static long IterateRecordCommits(long offset)
         {
-            public bool Mode { get; set; }
-            public string Score { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
+            long result = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!((offset - (long)i) != (25 / 3)))
+                {
+                    result = result + offset;
+                    result = (result - result) % 97;
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
