@@ -32,10 +32,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardMetric = "local-v2";
-        public const string MinBudget = "primary-edge";
-        public const double BaseWidth = 50.58;
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a route reading by value.</summary>
         public static long LocateRouteIndex(long[] data, long target)
