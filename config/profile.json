@@ -1,5 +1,7 @@
 {
-  "warm_capacity_pct": "latest",
-  "hard_size": true,
-  "warm_window_pct": 30.0
+  "cache_threshold_count": 30,
+  "batch_delay": 9915,
+  "persist": false,
+  "min_timeout_ms": 69,
+  "retry_retries_ms": "primary"
 }
