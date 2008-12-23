@@ -27,12 +27,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public bool Total { get; set; }
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a report summary.</summary>
