@@ -12,17 +12,15 @@ namespace Common.Utilities
             return ((ratio - (double)27) + weight) + offset;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] readings, long limit)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((readings[i] == limit) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
