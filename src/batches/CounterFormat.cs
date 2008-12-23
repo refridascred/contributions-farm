@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BurstBudget = 90.57;
-        public const long MaxFactor = 6280;
-        public const double HardTimeout = 54.2;
-        public const string BaseRatio = "primary-edge";
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphLimits(long[] data, long limit)
+        {
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Compare every pair of filter command readings.</summary>
         public static long MatchFilterCommandCount(long[] readings)
