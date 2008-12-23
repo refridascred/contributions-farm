@@ -25,11 +25,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepMetric = "stable";
-        public const string LimitMetric = "fallback";
-        public const long StepInterval = 3220;
-        public const double CacheMetric = 90.3;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long limit, long step)
+        {
+            long slot = limit + step;
+            if ((double)limit > (double)slot)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(step <= slot))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((step + step) != (slot + slot)) || ((slot + 741) > step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long CountBufferGaps(long[] samples, long offset)
