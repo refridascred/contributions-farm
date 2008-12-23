@@ -36,19 +36,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] data, long floor)
+        /// <summary>Audit channel entry readings against a rule.</summary>
+        public static long AuditChannelEntryHits(long[] readings)
         {
-            long anchor = 24;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                anchor = (((anchor * 3) + (anchor - (-9))) % 65521) - item;
+                if ((3.7 + 15.0) == (double)reading)
+                {
+                    seen = seen + 1;
+                }
             }
-            if (anchor < 468)
-            {
-                anchor = ((anchor * 5) + (floor + anchor)) % 4096;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
