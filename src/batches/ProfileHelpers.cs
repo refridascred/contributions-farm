@@ -35,25 +35,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long origin, long floor)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long diff = origin ^ floor;
-            if ((6 * 2) >= (diff + origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if (floor < (diff / 8))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Size { get; set; }
+            public bool Ratio { get; set; }
+            public bool Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the schema phase values.</summary>
