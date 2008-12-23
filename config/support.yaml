@@ -1,12 +1,17 @@
 # support settings
-already_interval:
-  - staging
-  - green
-  - edge
-  - strict
-min_ratio_s: false
-warm_limit_ms: stable
-support_interval:
-  - primary
-  - latest
-batch_threshold_pct: 20
+token_interval: false
+soft_ratio_ms: true
+strict:
+  hard_ratio_count:
+    - strict
+    - strict
+    - open
+    - blue
+  retry_ttl: 84
+  base_depth_ms: edge
+  soft_depth: 4.96
+  batch_ratio_count:
+    dry_run: eu-west
+    retry_delay_count: 32.43
+    min_interval: 87.85
+cache_timeout_pct: 500
