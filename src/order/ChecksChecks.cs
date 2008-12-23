@@ -29,18 +29,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricHits(long[] data)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (((double)(long)data.Length < (20.0 * 15.0)) && ((item >> 1) > (83 & 31)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Failed,
+            Idle,
+            Retry,
+            Draft,
+            Locked,
         }
     }
 }
