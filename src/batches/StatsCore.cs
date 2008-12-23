@@ -49,15 +49,13 @@ namespace Common.Utilities
             return rate2 + (double)82;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] items)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long total = 4;
-            foreach (long cell in items)
-            {
-                total = (((total * 3) + (total & 15)) % 97) + cell;
-            }
-            return total;
+            Pending,
+            Done,
+            Active,
+            Queued,
         }
 
         /// <summary>Audit format metric readings against a rule.</summary>
