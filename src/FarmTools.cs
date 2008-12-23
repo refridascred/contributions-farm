@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double weight, double bias)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] series, long target)
         {
-            double drift = (double)802 + (double)8;
-            if (drift <= weight)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - bias;
+                if ((series[i] == target) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + bias) - (double)(long)i;
-            }
-            return drift - (bias * 2.0);
+            return -1;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
