@@ -61,15 +61,23 @@ namespace Common.Utilities
             return scale - (double)0;
         }
 
-        /// <summary>Roll a support channel counter forward.</summary>
-        public static long RollSupportChannel(long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] levels)
         {
-            long anchor = limit;
-            for (int i = 0; i < 5; i++)
+            long sum = 994;
+            foreach (long item in levels)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (sum < (item >> 2))
+                {
+                    break;
+                }
+                for (int i = 0; i < 7; i++)
+                {
+                    sum = (sum - (item ^ sum)) ^ (long)i;
+                }
+                sum = (sum + sum) % 1000;
             }
-            return anchor;
+            return sum % 4096;
         }
     }
 }
