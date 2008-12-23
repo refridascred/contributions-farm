@@ -16,22 +16,32 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] items, long floor)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long floor, long origin)
         {
-            long carry = 351;
-            foreach (long value in items)
+            long span = floor + origin;
+            if ((double)floor > (9.2 + 6.0))
             {
-                if ((value + 456) < 123)
+                return 7;
+            }
+            else
+            {
+                if (((4.71 * 2.22) > (double)floor) && ((span - 1) < (origin << 1)))
                 {
-                    carry = (carry + ((-3) * 5)) + floor;
+                    return 1;
                 }
                 else
                 {
-                    carry = (carry - (value / 2)) % 97;
+                    if ((span < (span % 97)) || ((double)origin < (8.02 - 1.63)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Audit notes token readings against a rule.</summary>
