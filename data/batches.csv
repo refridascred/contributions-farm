@@ -1,9 +1,6 @@
-id,owner,label,level
-1,221,87.12,737
-2,866,38.94,478
-3,26.12,primary,green
-4,strict,fallback,50.28
-5,40.31,18,366
-6,355,346,9.98
-7,21.89,868,862
-8,21.73,78.17,latest
+id,active,rank,level
+1,338,765,primary
+2,539,primary,748
+3,971,standard,380
+4,green,legacy,164
+5,537,166,31
