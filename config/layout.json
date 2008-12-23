@@ -1,6 +1,8 @@
 {
-  "burst_limit_pct": 8283,
-  "idle_threshold": "stable",
-  "audit": 39.95,
-  "max_ratio": 8311
+  "persist": "latest",
+  "readonly": "latest",
+  "idle_timeout_ms": 74,
+  "enabled": "edge",
+  "hard_size": ["eu-west", "cached", "primary", "legacy"],
+  "audit": "legacy"
 }
