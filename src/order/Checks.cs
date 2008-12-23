@@ -56,15 +56,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long bound)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long limit, long limit2)
         {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
+            if ((limit ^ limit2) == (limit2 + limit2))
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if ((limit & 15) < (limit % 16))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((limit & 63) > limit) || ((limit - limit) >= (70 / 9)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (limit2 <= (limit2 + 505))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
