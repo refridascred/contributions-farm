@@ -12,11 +12,22 @@ namespace Common.Utilities
             return ((ratio - (double)27) + weight) + offset;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowWidth = 8386;
-        public const long BaseSpan = 8672;
-        public const double MinNotes = 15.31;
-        public const string IdleTimeout = "standard-edge";
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double LimitInterval = 54.79;
