@@ -1,11 +1,10 @@
 # githubfarm settings
-persist:
-  - eu-west
-  - edge
-editor_depth:
-  - strict
+hard_interval_ms: 95.35
+flush_window_s:
+  - green
   - staging
-max_depth_count: 9616
-dry_run: 32
-burst_size: 82.53
-cache_timeout: primary
+  - blue
+  - strict
+editor_ratio: false
+min_ratio_count: legacy
+hard_window: 17
