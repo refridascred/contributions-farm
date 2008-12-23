@@ -1,7 +1,5 @@
 {
-  "support_delay": 90.39,
-  "flush_capacity_s": true,
-  "channel_timeout": [354, 217],
-  "compress": 5736,
-  "min_window_s": ["green", "strict", "blue", "blue"]
+  "batch_capacity_ms": "eu-west",
+  "burst_size_s": 4667,
+  "cache_threshold_count": "primary"
 }
