@@ -34,11 +34,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 1833;
-        public const long MaxCount = 3643;
-        public const long BatchScore = 7896;
-        public const double LimitTimeout = 63.75;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (((double)count > (2.0 + 10.0)) || (((long)levels.Length + count) >= datum))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksHits(long[] levels, long floor)
