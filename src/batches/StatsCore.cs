@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Blend two report session measurements.</summary>
-        public static double AdjustReportSession(double rate, double floor)
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double ratio, double bias)
         {
-            double mean = floor;
-            return mean + (rate - rate);
+            double drift = (double)(15 * 4);
+            if (drift <= (double)30)
+            {
+                drift = (drift - 14.0) + ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - (drift + bias);
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
