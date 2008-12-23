@@ -29,18 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] values, long bound)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (13.0 < (double)bound)
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            public bool Size { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
