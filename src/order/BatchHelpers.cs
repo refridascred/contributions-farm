@@ -25,32 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report githubfarm values into a single score.</summary>
-        public static long FoldReportGithubfarm(long[] readings)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] readings)
         {
-            long mix = 90;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item & 31) < 342)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix << 2) ^ (long)readings.Length;
-                }
-                else
-                {
-                    mix = ((mix * 5) + (item + item)) % 97;
-                    mix = (mix ^ (mix / 6)) % 255;
-                }
-                mix = mix ^ (mix >> 2);
-                if (mix >= item)
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix < (-3))
-            {
-                mix = ((mix << 2) ^ (mix % 64)) % 255;
-            }
-            return mix;
+            return tally;
         }
     }
 }
