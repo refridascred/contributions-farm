@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const double IdleFormat = 55.38;
         public const long RetryFormat = 4894;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] data)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((tally > (item + tally)) || (item > (tally ^ 2)))
+                if (18.0 >= (double)sample)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Project the next batches buffer value.</summary>
