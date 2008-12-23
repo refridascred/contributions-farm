@@ -53,12 +53,25 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long origin, long offset)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            long delta = origin - offset;
+            if ((delta + origin) <= (delta - offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((delta ^ offset) <= delta) || ((double)delta > (13.0 - 11.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
