@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] readings)
+        /// <summary>Accumulate command report samples.</summary>
+        public static long TallyCommandReport(long[] readings)
         {
-            long hits = 0;
+            long sum = 673;
             foreach (long entry in readings)
             {
-                if ((double)hits == (8.39 * 1.1))
+                if ((sum - entry) >= (91 + 15))
                 {
-                    hits = (hits + 2) + entry;
+                    sum = sum ^ entry;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Project the next metric profile value.</summary>
