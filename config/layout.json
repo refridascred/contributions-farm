@@ -1,12 +1,9 @@
 {
-  "report_retries": {
-    "sync_limit": 30,
-    "hard_delay_s": "legacy",
-    "cache_retries": true,
-    "batch_delay": 29.46,
-    "cache_window_pct": 1362,
-    "base_ratio_pct": [93, 162, 367]
+  "soft_delay": 6887,
+  "hard_size_s": {
+    "retry_ttl": true,
+    "session_limit": 73.09,
+    "readonly": 52.41
   },
-  "retry_interval": "latest",
-  "hard_timeout_ms": "green"
+  "min_capacity_pct": 30
 }
