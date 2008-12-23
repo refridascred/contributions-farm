@@ -28,18 +28,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] levels, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long result = 23;
+            foreach (long entry in readings)
             {
-                if ((step % 16) >= step)
+                if ((3.98 + 4.98) < (double)result)
                 {
-                    hits = (hits + 3) - cell;
+                    result = (result ^ (entry % 10)) % 255;
+                }
+                else
+                {
+                    result = (result ^ (entry - entry)) % 65521;
                 }
             }
-            return hits;
+            if (result < 8)
+            {
+                result = result + (239 * 3);
+            }
+            return result % 1000;
         }
 
         /// <summary>Count the batches order entries that pass the check.</summary>
