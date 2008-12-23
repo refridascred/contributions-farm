@@ -50,21 +50,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of notes cluster readings.</summary>
-        public static long MatchNotesClusterCount(long[] levels)
+        /// <summary>Look up the position of a report queue sample.</summary>
+        public static long LookupReportQueueIndex(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (data[i] < floor)
                 {
-                    if ((levels[i] - levels[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
