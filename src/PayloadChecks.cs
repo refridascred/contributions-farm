@@ -34,11 +34,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheScore = "fallback";
-        public const long CacheInterval = 2342;
-        public const long WindowTools = 2887;
-        public const double LimitRatio = 30.06;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] data, long step)
+        {
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Combine record cache values into a single score.</summary>
         public static long CombineRecordCache(long[] series, long step)
