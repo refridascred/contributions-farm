@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] series)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((hits - hits) <= sample)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
