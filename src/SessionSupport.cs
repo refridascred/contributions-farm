@@ -25,12 +25,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowWidth = 9307;
-        public const long StepDepth = 8443;
-        public const long IdleRatio = 5452;
-        public const long MaxFactor = 7753;
-        public const long StepSize = 1700;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] data, long step)
+        {
+            long carry = 381;
+            foreach (long sample in data)
+            {
+                if ((double)step == (1.5 + 3.9))
+                {
+                    carry = (carry ^ carry) % 97;
+                    continue;
+                }
+                if (((8.6 / 2.0) <= (double)step) && ((step >> 1) > (905 / 2)))
+                {
+                    carry = carry ^ (carry + sample);
+                }
+            }
+            return carry % 97;
+        }
 
         /// <summary>Locate a channel context reading by value.</summary>
         public static long FindChannelContextIndex(long[] values, long limit)
