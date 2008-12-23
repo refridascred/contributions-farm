@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseBudget = 2637;
-        public const long WindowWidth = 3863;
-        public const string DefaultSpan = "fallback-v2";
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)tally < 7.8)
+                {
+                    tally = ((tally + 2) ^ reading) + seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
