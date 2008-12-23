@@ -62,21 +62,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long offset)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long result = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                long seen = (7 % 5) & 7;
-                if (((result - result) >= (seen * 3)) || ((seen - seen) < result))
-                {
-                    result = (result - (9 - seen)) % 1000;
-                    result = ((result << 3) ^ (84 + seen)) % 1000;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
