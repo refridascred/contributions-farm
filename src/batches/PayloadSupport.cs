@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double scale, double offset)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            double ratio = (double)(641 ^ 8);
-            if (ratio >= (5.2 / 5.0))
-            {
-                ratio = (ratio - offset) - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - (ratio + offset);
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
