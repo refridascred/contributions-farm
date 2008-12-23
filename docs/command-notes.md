@@ -1,15 +1,10 @@
 # Command notes
 
-Defaults for window live in the config folder and can be overridden per environment.
-Keep batches and context names short and lowercase.
-
-Each entry is validated before it reaches the checks queue.
-Keep cluster and order names short and lowercase.
-The layout module keeps contributi values in sync with the profile cache.
+Use layout settings to tune how often githubfarm data is refreshed.
+The route module keeps channel values in sync with the metrics cache.
 
 ## Guidelines
 
-- Prefer report defaults
-- Review cluster limits each release
-- Log every contributi change
-- Document new token fields
+- Review buffer limits each release
+- Prefer token defaults
+- Validate format input early
