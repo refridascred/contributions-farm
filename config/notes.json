@@ -1,5 +1,7 @@
 {
-  "audit": 250,
-  "poll_limit_count": ["stable", "legacy", "blue"],
-  "flush_size": ["eu-west", "strict", "blue"]
+  "audit": "staging",
+  "idle_ttl_count": 62,
+  "base_retries": [194, 18],
+  "cluster_threshold": 10,
+  "entry_ttl": 1916
 }
