@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheSize = 203;
-        public const long IdleCounter = 2361;
-        public const string WindowSpan = "local-1";
-        public const string WindowFactor = "latest";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowScore = 1029;
+        public const double BurstNotes = 29.83;
+        public const long RetrySize = 4956;
+        public const string BatchDepth = "staging-v2";
 
         /// <summary>Digest a series of format entries.</summary>
         public static long CombineFormat(long[] data)
