@@ -1,5 +1,5 @@
 # entry settings
-idle_threshold_s: 250
-batch_size_ms: 4537
-counter_retries: true
-soft_delay: 84
+dry_run: open
+sync_timeout_pct: 69.55
+burst_limit: legacy
+persist: 96
