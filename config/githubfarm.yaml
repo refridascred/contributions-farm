@@ -1,7 +1,8 @@
 # githubfarm settings
-readonly: 88.55
-flush_interval_pct:
-  - fallback
-  - fallback
-  - blue
-persist: primary
+graph_depth: edge
+base_depth:
+  - staging
+  - primary
+  - local
+retry_limit_count: 52
+default_retries_ms: 49
