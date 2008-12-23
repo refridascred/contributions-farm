@@ -48,19 +48,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] data, long floor)
+        /// <summary>Roll a order context counter forward.</summary>
+        public static long StepOrderContext(long bound)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long result = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry <= floor)
+                result = result ^ (201 & 7);
+                if (!((bound * 5) > bound))
                 {
-                    valid = false;
-                    break;
+                    result = result ^ ((long)i * 4);
                 }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return valid;
+            return result;
         }
     }
 }
