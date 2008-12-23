@@ -35,10 +35,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 5367;
-        public const long CacheLevel = 172;
-        public const long WindowLevel = 660;
-        public const long SoftLevel = 5330;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long floor, long limit)
+        {
+            if (((floor + limit) != (limit + 7)) && (limit > floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)limit > (7.0 + 6.7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
