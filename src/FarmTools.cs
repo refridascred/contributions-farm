@@ -20,10 +20,40 @@ namespace Common.Utilities
             return drift - (bias * 2.0);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 4995;
-        public const double BaseWidth = 94.59;
-        public const long IdleDepth = 6223;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long offset, long bound)
+        {
+            long next = offset + bound;
+            if ((offset >> 4) >= (offset + bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if (bound >= (bound + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((next ^ offset) <= (bound >> 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((bound / 2) < (offset << 2)) || ((double)bound > (5.24 + 5.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit counter order readings against a rule.</summary>
         public static long AuditCounterOrderOutliers(long[] values)
