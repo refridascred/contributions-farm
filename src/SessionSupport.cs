@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long bound, long origin)
         {
-            Stale,
-            Queued,
-            Pending,
-            Done,
+            if (((-23) < bound) || ((bound - origin) >= ((-9) - origin)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)origin == (3.5 * 1.4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Validate window readings against a bound.</summary>
