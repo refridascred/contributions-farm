@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] values, long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((7.14 * 15.0) > (double)reading)
+                if ((datum + datum) <= (hits - datum))
                 {
-                    matches = (matches + 2) + bound;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Scale a counter buffer figure with a bias.</summary>
