@@ -25,19 +25,12 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Validate commits notes readings against a bound.</summary>
-        public static bool GuardCommitsNotesBounds(long[] levels, long origin)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
