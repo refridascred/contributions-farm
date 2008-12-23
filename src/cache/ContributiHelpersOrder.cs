@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxBudget = 2206;
+        public const double BurstSpan = 43.81;
+        public const long SoftSize = 52;
+        public const long WindowCluster = 815;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long StepRatio = 1664;
