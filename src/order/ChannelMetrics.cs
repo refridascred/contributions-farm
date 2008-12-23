@@ -20,17 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] series, long bound)
+        /// <summary>Audit format token readings against a rule.</summary>
+        public static long TallyFormatTokenMatches(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (series[i] >= bound)
+                if ((((double)count > (1.15 * 1.7)) && ((entry + entry) >= (count - entry))) && (count > (count & 1)))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
