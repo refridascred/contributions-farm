@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 1430;
-        public const long BasePayload = 3504;
-        public const double MaxPayload = 15.85;
-        public const double SoftPayload = 88.18;
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = (sum ^ (long)i) % 65521;
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of graph batches readings.</summary>
         public static long ScoreGraphBatches(long[] items)
