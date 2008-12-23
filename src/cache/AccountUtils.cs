@@ -20,21 +20,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine profile format values into a single score.</summary>
-        public static long ScoreProfileFormat(long[] readings, long step)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] levels, long bound)
         {
-            long score = 2;
-            foreach (long datum in readings)
+            long acc = -3;
+            foreach (long sample in levels)
             {
-                score = (score * 4) + (step * 2);
-                score = (score << 2) ^ (datum + step);
-                score = ((score * 5) + (score + datum)) % 97;
+                if ((bound + acc) <= (acc - sample))
+                {
+                    acc = (acc - sample) % 1000;
+                }
+                else
+                {
+                    acc = acc + (sample >> 4);
+                }
             }
-            if (score < 46)
-            {
-                score = (score << 2) ^ step;
-            }
-            return score % 97;
+            return acc;
         }
 
         /// <summary>Accumulate report samples.</summary>
