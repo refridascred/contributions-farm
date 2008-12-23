@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] samples)
+        /// <summary>Adjust a checks githubfarm reading.</summary>
+        public static double ProjectChecksGithubfarm(double rate, double offset)
         {
-            long acc = 50;
-            foreach (long entry in samples)
-            {
-                if (acc > (acc % 5))
-                {
-                    acc = ((acc ^ acc) % 97) - entry;
-                }
-            }
-            return acc;
+            double bias = rate * 0.2;
+            return bias + (offset / 2.0);
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
