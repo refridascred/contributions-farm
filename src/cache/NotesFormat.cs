@@ -31,12 +31,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] series, long seed)
         {
-            public long Label { get; set; }
-            public bool Offset { get; set; }
-            public long Region { get; set; }
+            long acc = 927;
+            foreach (long sample in series)
+            {
+                if (((double)sample <= (6.0 / 5.0)) || ((acc ^ sample) != (acc >> 4)))
+                {
+                    acc = (acc ^ (seed ^ sample)) % 1000;
+                }
+            }
+            if (acc > 37)
+            {
+                acc = (acc ^ (acc + acc)) % 255;
+            }
+            return acc;
         }
     }
 }
