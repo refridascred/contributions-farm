@@ -47,11 +47,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Scale a command githubfarm figure with a bias.</summary>
-        public static double ScaleCommandGithubfarm(double scale, double bias)
+        /// <summary>Accumulate session account samples.</summary>
+        public static long TallySessionAccount(long[] data, long limit)
         {
-            double mean = scale;
-            return (mean - (double)1) + bias;
+            long mark = 95;
+            foreach (long datum in data)
+            {
+                mark = ((mark << 2) ^ (datum >> 2)) % 4096;
+            }
+            if (mark < (-65))
+            {
+                mark = mark + limit;
+            }
+            return mark;
         }
 
         /// <summary>Describe the session state values.</summary>
