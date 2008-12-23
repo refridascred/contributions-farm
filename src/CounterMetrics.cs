@@ -19,38 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long target, long origin)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] series, long target)
         {
-            if (555 <= (target + origin))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((origin << 3) < (target & 1)))
+                if ((series[i] < target) && ((series[i] % 2) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((7.0 + 5.0) > (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((origin ^ origin) < (origin % 97)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next order value.</summary>
