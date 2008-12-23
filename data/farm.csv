@@ -1,6 +1,6 @@
-id,active,label
-1,981,50.38
-2,310,cached
-3,141,95.9
-4,9.43,950
-5,32.44,staging
+id,active,score,state
+1,49.41,stable,37
+2,358,stable,22.3
+3,927,strict,standard
+4,48,standard,701
+5,green,434,legacy
