@@ -31,14 +31,14 @@ namespace Common.Utilities
         public const long BatchInterval = 6462;
         public const long IdleSchema = 1771;
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            Done,
-            Idle,
             Dropped,
+            Failed,
             Queued,
-            Active,
+            Stale,
+            Done,
         }
     }
 }
