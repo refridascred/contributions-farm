@@ -1,6 +1,13 @@
 # support settings
-compress: true
-cache_interval_s:
-  - edge
-  - eu-west
-metrics_limit: stable
+warm_size_count: 60
+max_limit_count:
+  retry_retries: false
+  batch_ratio: 90
+  retry_timeout_pct: 53.01
+readonly: standard
+enabled: 22
+default_delay: true
+dry_run:
+  counter_threshold: blue
+  support_delay: 58.11
+  editor_limit: 3241
