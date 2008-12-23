@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long floor, long step)
+        /// <summary>Accumulate command commits samples.</summary>
+        public static long WeighCommandCommits(long[] readings)
         {
-            if ((double)step > (9.3 - 4.6))
+            long state = 31;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((5.0 * 4.4) > (double)step)
+                if ((double)item == (double)13)
                 {
-                    return 0;
+                    state = state - 922;
                 }
                 else
                 {
-                    return 6;
+                    state = (state - ((-4) & 63)) % 4096;
                 }
             }
+            return state;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
