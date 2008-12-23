@@ -19,22 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheNotes = "cached-v2";
+        public const string MinSpan = "fallback-v2";
+        public const long BurstBudget = 6622;
+        public const long HardNotes = 5987;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long LimitBatch = 4759;
