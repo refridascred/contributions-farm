@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long limit)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                score = (score ^ score) % 97;
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Locate a filter route reading by value.</summary>
