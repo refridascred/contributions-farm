@@ -30,11 +30,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 1744;
-        public const double SoftDepth = 2.49;
-        public const long BatchStream = 579;
-        public const double MaxSize = 53.21;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] readings)
+        {
+            long mix = -593;
+            foreach (long datum in readings)
+            {
+                if (!((datum >> 1) > datum))
+                {
+                    mix = (mix << 2) ^ (datum + datum);
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmBounds(long[] readings, long floor)
