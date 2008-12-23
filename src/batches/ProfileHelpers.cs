@@ -60,12 +60,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 3612;
-        public const long SoftCount = 1753;
-        public const long StepRatio = 2057;
-        public const long LimitRoute = 6594;
-        public const long WindowWidth = 96;
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long floor, long bound)
+        {
+            if ((double)floor >= 4.97)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((2.3 - 7.61) > (double)floor) || ((floor + floor) <= (floor / 9)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((37 % 7) <= bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
