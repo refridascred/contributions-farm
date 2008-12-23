@@ -1,8 +1,15 @@
 {
-  "verbose": 72,
-  "enabled": 35.59,
-  "batch_ratio_pct": true,
-  "default_limit_ms": 50.83,
-  "batch_ttl": 30,
-  "batch_depth_s": 3681
+  "base_ttl_pct": "open",
+  "min_window_count": 74.5,
+  "support_interval": {
+    "command_delay": true,
+    "order_timeout": 250,
+    "batch_window_pct": 8571,
+    "dry_run": 17.53,
+    "default_window_ms": 1024,
+    "profile_ttl": 64.62
+  },
+  "soft_size_ms": true,
+  "poll_threshold_pct": ["standard", "strict", "strict"],
+  "retry_ttl_s": "open"
 }
