@@ -25,11 +25,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 2013;
-        public const double CacheRatio = 91.26;
-        public const double CacheInterval = 73.77;
-        public const long StepCount = 6211;
-        public const long IdleOrder = 7582;
+        /// <summary>Combine report githubfarm values into a single score.</summary>
+        public static long FoldReportGithubfarm(long[] readings)
+        {
+            long mix = 90;
+            foreach (long item in readings)
+            {
+                if ((item & 31) < 342)
+                {
+                    mix = (mix << 2) ^ (long)readings.Length;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (item + item)) % 97;
+                    mix = (mix ^ (mix / 6)) % 255;
+                }
+                mix = mix ^ (mix >> 2);
+                if (mix >= item)
+                {
+                    break;
+                }
+            }
+            if (mix < (-3))
+            {
+                mix = ((mix << 2) ^ (mix % 64)) % 255;
+            }
+            return mix;
+        }
     }
 }
