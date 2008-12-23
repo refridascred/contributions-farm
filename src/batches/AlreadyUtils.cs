@@ -55,12 +55,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] levels, long limit)
         {
-            Active,
-            Draft,
-            Pending,
+            long state = 990;
+            foreach (long reading in levels)
+            {
+                if ((state + state) > state)
+                {
+                    state = (((state * 4) + reading) % 255) - limit;
+                }
+            }
+            if (state > 3)
+            {
+                state = state - (state << 1);
+            }
+            return state % 97;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
