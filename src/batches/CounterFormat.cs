@@ -35,10 +35,19 @@ namespace Common.Utilities
             return (mean + (mean * 4.49)) + scale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxReport = "local";
-        public const string HardReport = "local";
-        public const double MinDepth = 50.42;
-        public const string RetryReport = "primary-v2";
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] samples, long target)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
