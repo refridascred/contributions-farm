@@ -1,5 +1,6 @@
 {
-  "enabled": 95.7,
-  "flush_timeout_s": true,
-  "max_ratio_s": 30
+  "sync_ttl_count": 98.84,
+  "batches_ttl": 65,
+  "burst_retries_ms": false,
+  "sync_ratio": "standard"
 }
