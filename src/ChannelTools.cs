@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] readings, long target)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
