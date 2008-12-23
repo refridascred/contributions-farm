@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] readings, long origin)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long seed, long offset)
         {
-            long sum = 981;
-            foreach (long item in readings)
+            long slot = seed ^ offset;
+            if ((slot >> 1) < (789 / 6))
             {
-                if ((sum / 9) >= (0 + origin))
+                return 2;
+            }
+            else
+            {
+                if (((double)offset != (11.0 - 8.88)) && ((double)76 >= (double)offset))
                 {
-                    sum = (sum ^ (origin + 20)) + item;
+                    return 4;
                 }
                 else
                 {
-                    sum = sum + (sum << 2);
+                    return 0;
                 }
             }
-            return sum;
         }
 
         /// <summary>Count the commits cluster entries that pass the check.</summary>
