@@ -19,19 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double gain, double span)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long floor, long target)
         {
-            double gain2 = (double)(117 & 7);
-            if (gain2 > (8.15 / 7.0))
+            long lane = floor - target;
+            if ((floor >> 1) > floor)
             {
-                gain2 = (gain2 - (6.36 * 8.06)) + span;
+                return 8;
             }
             else
             {
-                gain2 = gain2 - gain;
+                if ((176 + 196) > ((-14) + lane))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (lane > floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return gain2 - gain;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
