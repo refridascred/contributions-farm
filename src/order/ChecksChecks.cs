@@ -28,17 +28,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] levels, long target)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double weight, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = (weight + weight) * 3.3;
+            if (load >= floor)
             {
-                if ((levels[i] == target) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                load = load - (double)892;
             }
-            return -1;
+            else
+            {
+                load = load + 11.0;
+            }
+            return load + floor;
         }
     }
 }
