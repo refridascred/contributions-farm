@@ -31,10 +31,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseToken = "local-v2";
-        public const long BaseFactor = 6587;
-        public const long CacheToken = 4276;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 8680;
+        public const string DefaultProfile = "local";
+        public const long DefaultLevel = 9500;
+        public const long HardProfile = 7556;
 
         /// <summary>Match up layout samples.</summary>
         public static long PairLayoutCount(long[] readings)
