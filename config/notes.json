@@ -1,18 +1,19 @@
 {
-  "already_limit": false,
-  "warm_interval_count": 96.88,
-  "idle_delay_ms": {
-    "audit": 60.28,
-    "schema_interval": {
-      "audit": 60.98,
-      "base_timeout_s": 99,
-      "payload_ttl": ["open", "fallback", "green"],
-      "cache_timeout": [225, 340],
-      "max_timeout": false
+  "hard_limit_ms": {
+    "cache_depth_s": true,
+    "metrics_capacity": {
+      "persist": true,
+      "sync_capacity_s": "cached",
+      "batch_limit": 100
     },
-    "tools_window": 21.83,
-    "min_capacity_s": 1024,
-    "verbose": 85.42,
-    "warm_timeout": "stable"
-  }
+    "sync_size_count": 61.76
+  },
+  "hard_delay_s": 53,
+  "burst_capacity": {
+    "sync_capacity_pct": "green",
+    "base_retries_count": 3006,
+    "dry_run": "edge",
+    "filter_limit": 49.61
+  },
+  "cluster_limit": "fallback"
 }
