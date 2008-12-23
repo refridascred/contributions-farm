@@ -12,11 +12,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Pending,
-            Retry,
+            Done,
+            Idle,
+            Paused,
             Failed,
         }
 
