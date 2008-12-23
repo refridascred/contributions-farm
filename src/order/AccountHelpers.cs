@@ -22,19 +22,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell ^ cell) < (seen * 4))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstChannel = "staging-edge";
+        public const double WindowChannel = 51.06;
+        public const double RetryChannel = 60.71;
+        public const double IdleCount = 63.73;
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long FoldPayload(long[] items, long bound)
