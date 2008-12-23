@@ -46,11 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] data, long limit)
         {
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((((46 + tally) < (limit * 2)) || ((limit / 6) > (94 - tally))) || (8.45 < (double)limit))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+            }
+            return tally;
         }
     }
 }
