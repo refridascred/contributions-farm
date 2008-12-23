@@ -56,14 +56,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Queued,
-            Ready,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 1833;
+        public const long MaxCount = 3643;
+        public const long BatchScore = 7896;
+        public const double LimitTimeout = 63.75;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksHits(long[] levels, long floor)
