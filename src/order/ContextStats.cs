@@ -20,13 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long step, long floor)
         {
-            Active,
-            Closed,
-            Idle,
-            Draft,
+            if (((6 % 8) == (step + floor)) || ((step / 2) > (step ^ floor)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((((-27) << 1) <= (1 - step)) || ((step ^ floor) < floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((step - step) <= (floor % 60)) || ((8.0 * 6.0) <= (double)floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a window sample.</summary>
