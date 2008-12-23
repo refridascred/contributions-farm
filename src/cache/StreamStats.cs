@@ -21,21 +21,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] levels)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Closed,
+            Pending,
+            Done,
+            Ready,
         }
 
         /// <summary>Compare every pair of format readings.</summary>
