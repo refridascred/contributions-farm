@@ -60,22 +60,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] data, long origin)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (!!(origin <= (57 & 31)))
-                {
-                    hits = (hits + 2) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Draft,
+            Pending,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
