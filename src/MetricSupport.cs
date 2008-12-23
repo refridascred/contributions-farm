@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] levels)
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (!((hits >> 2) > (item + item)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
