@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long StepProfile = 4695;
         public const double MaxProfile = 54.95;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] levels)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] readings, long limit)
         {
-            long acc = 40;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                acc = acc - entry;
+                if (0 < (hits - limit))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
