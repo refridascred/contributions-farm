@@ -31,24 +31,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long floor, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] samples)
         {
-            if (((floor + limit) != (limit + 7)) && (limit > floor))
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit > (7.0 + 6.7))
+                if ((entry & 31) < (tally << 3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
