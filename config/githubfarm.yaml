@@ -1,5 +1,11 @@
 # githubfarm settings
-flush_limit_count: 2588
-hard_delay_s: 72
-dry_run: 7758
-soft_depth: false
+retry_delay_count: 9.61
+verbose:
+  poll_timeout:
+    - standard
+    - strict
+  sync_capacity_pct: edge
+  dry_run: false
+  readonly: local
+  sync_ratio_ms: 2578
+min_capacity: 500
