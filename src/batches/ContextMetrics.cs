@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the format notes entries that pass the check.</summary>
-        public static long AuditFormatNotesHits(long[] items, long target)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((tally * 5) <= (280 - target))
-                {
-                    tally = (tally + 3) - entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowTimeout = "alpha-1";
+        public const long SoftTools = 8621;
+        public const double DefaultDepth = 57.16;
+        public const double MaxCount = 76.1;
+        public const double IdleScore = 70.01;
 
         /// <summary>Project the next account value.</summary>
         public static double AdjustAccount(double bias, double bias2)
