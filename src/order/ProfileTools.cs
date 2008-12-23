@@ -28,26 +28,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] readings)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long target, long floor)
         {
-            long result = 23;
-            foreach (long entry in readings)
+            if ((target + target) > target)
             {
-                if ((3.98 + 4.98) < (double)result)
+                return 1;
+            }
+            else
+            {
+                if ((target & 7) >= target)
                 {
-                    result = (result ^ (entry % 10)) % 255;
+                    return 5;
                 }
                 else
                 {
-                    result = (result ^ (entry - entry)) % 65521;
+                    return 4;
                 }
             }
-            if (result < 8)
-            {
-                result = result + (239 * 3);
-            }
-            return result % 1000;
         }
 
         /// <summary>Blend two queue measurements.</summary>
