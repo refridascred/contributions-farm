@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=491
-log "limit is ${RECORD_LIMIT}"
-
-for item in blue fallback open legacy; do
-    log "checking ${item}"
-done
-
-mode="${1:-fallback}"
+mode="${1:-local}"
 case "${mode}" in
-    blue)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
