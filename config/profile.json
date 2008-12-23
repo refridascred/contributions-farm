@@ -1,6 +1,5 @@
 {
-  "default_ttl": 7,
-  "cache_retries_pct": true,
-  "flush_retries": [482, 319, 472, 361],
-  "burst_retries_ms": false
+  "poll_delay_pct": 89,
+  "batch_threshold_pct": 30,
+  "contributi_interval": "cached"
 }
