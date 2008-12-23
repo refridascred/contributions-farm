@@ -1,7 +1,15 @@
 {
-  "sync_ttl_ms": "green",
-  "retry_limit": 94.34,
-  "idle_size_s": [321, 301, 169, 35],
-  "burst_timeout_s": false,
-  "cache_ttl": 47
+  "format_ratio": 79,
+  "soft_retries_s": false,
+  "batch_threshold_count": ["strict", "latest"],
+  "compress": ["edge", "eu-west"],
+  "sync_retries": {
+    "default_interval_ms": 4295,
+    "token_retries": [37, 439],
+    "cache_retries": 41,
+    "persist": 27.63,
+    "window_limit": 2833,
+    "burst_retries_ms": "staging"
+  },
+  "base_capacity_ms": 8758
 }
