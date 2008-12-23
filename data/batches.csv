@@ -1,6 +1,8 @@
-id,level,state,region
-1,464,81.18,857
-2,63.64,793,248
-3,998,eu-west,67.63
-4,61.28,blue,61.33
-5,standard,local,79.82
+id,count,level,active
+1,fallback,846,47.28
+2,85,670,legacy
+3,standard,35.57,open
+4,460,641,93.24
+5,91.18,395,123
+6,505,348,fallback
+7,85,48.51,255
