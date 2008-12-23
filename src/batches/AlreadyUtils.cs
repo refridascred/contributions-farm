@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long seed, long offset)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double scale, double floor)
         {
-            long slot = seed ^ offset;
-            if ((slot >> 1) < (789 / 6))
+            double gain = floor;
+            if (gain <= floor)
             {
-                return 2;
+                gain = (gain - 3.8) - scale;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (((double)offset != (11.0 - 8.88)) && ((double)76 >= (double)offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
+                gain = gain + (double)(long)i;
             }
+            return gain - floor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
