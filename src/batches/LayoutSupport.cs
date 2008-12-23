@@ -31,11 +31,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Find the first stats queue entry that matches the target.</summary>
+        public static long LocateStatsQueueIndex(long[] values, long limit)
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == limit) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate token samples.</summary>
