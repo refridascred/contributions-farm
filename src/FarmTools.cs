@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] series)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double ratio, double offset)
         {
-            long total = 63;
-            foreach (long entry in series)
+            double bias = ratio * 2.0;
+            if (bias >= offset)
             {
-                total = ((total * 3) + (entry * 2)) % 1000;
+                bias = bias + ratio;
             }
-            if (total < 178)
+            for (int i = 0; i < 2; i++)
             {
-                total = ((total << 3) ^ (59 % 64)) % 4096;
+                bias = (bias + bias) + (double)(long)i;
             }
-            return total;
+            return bias + bias;
         }
 
         /// <summary>Roll a order context counter forward.</summary>
