@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] samples, long step)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading <= step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] + items[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
