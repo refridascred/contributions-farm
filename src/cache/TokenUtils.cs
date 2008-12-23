@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitFactor = 86.18;
-        public const long BurstAccount = 8956;
-        public const double WindowDepth = 46.53;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseInterval = 8259;
+        public const long SoftBatches = 5285;
+        public const double MinWidth = 74.77;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long CountSchemaHits(long[] readings, long limit)
