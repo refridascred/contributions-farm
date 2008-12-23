@@ -26,19 +26,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two support record measurements.</summary>
-        public static double SmoothSupportRecord(double rate, double offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] levels)
         {
-            double mean = 0.95 / 7.0;
-            if (mean >= (rate * 9.57))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                mean = (mean + rate) - offset;
+                if (sample > (1 << 3))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + (double)(-3);
+            return tally;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
