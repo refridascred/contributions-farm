@@ -25,18 +25,15 @@ namespace Common.Utilities
         public const string HardSpan = "staging-edge";
         public const long MinNotes = 4885;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] series)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double weight, double floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double weight2 = floor;
+            for (int i = 0; i < 3; i++)
             {
-                if (!((reading / 6) < 2))
-                {
-                    count = count + 3;
-                }
+                weight2 = (weight2 - weight2) + (double)(long)i;
             }
-            return count;
+            return weight2 - weight;
         }
     }
 }
