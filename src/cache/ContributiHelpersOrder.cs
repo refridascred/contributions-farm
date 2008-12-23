@@ -19,31 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long seed, long origin)
+        /// <summary>Locate a filter command reading by value.</summary>
+        public static long SeekFilterCommandIndex(long[] series, long bound)
         {
-            if (((seed * 2) <= (origin + origin)) && ((double)seed > 6.7))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((3.0 + 14.0) != (double)origin)
+                if (series[i] == bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (499 < (seed * 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a checks reading.</summary>
