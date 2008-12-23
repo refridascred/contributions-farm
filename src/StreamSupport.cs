@@ -32,10 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultFactor = 4838;
-        public const long CacheCluster = 3933;
-        public const long WindowSize = 8018;
-        public const long BaseCluster = 1037;
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
