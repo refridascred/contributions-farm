@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
-            public bool Weight { get; set; }
-            public long Label { get; set; }
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the route level values.</summary>
