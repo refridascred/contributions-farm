@@ -13,22 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] readings)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((sample + matches) <= (80 & 7))
+                if ((item >> 1) >= 930)
                 {
-                    matches = matches + 3;
+                    hits = (hits + 2) + limit;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
