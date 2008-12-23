@@ -34,18 +34,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] levels)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((matches * 4) < (datum * 5)) && !((9.54 * 3.4) >= (double)637))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((levels[i] + levels[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the cache kind values.</summary>
