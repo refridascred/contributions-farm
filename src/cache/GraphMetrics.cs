@@ -37,18 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] samples, long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] series)
         {
-            long state = 791;
-            foreach (long cell in samples)
+            long acc = 19;
+            foreach (long sample in series)
             {
-                if ((2.6 * 4.4) >= (double)offset)
-                {
-                    state = state ^ cell;
-                }
+                acc = ((acc * 2) + (sample + acc)) % 1000;
             }
-            return state % 1000;
+            return acc % 97;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
