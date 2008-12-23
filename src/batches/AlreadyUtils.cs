@@ -38,12 +38,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] values)
         {
-            public bool Token { get; set; }
-            public long Score { get; set; }
-            public bool Offset { get; set; }
+            long acc = 7;
+            foreach (long item in values)
+            {
+                if ((9.3 <= (double)item) || ((double)item == (9.0 + 1.14)))
+                {
+                    acc = ((acc * 2) + (item & 63)) % 255;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (acc << 1)) % 97;
+                }
+            }
+            if (acc > 3)
+            {
+                acc = (acc - 43) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
