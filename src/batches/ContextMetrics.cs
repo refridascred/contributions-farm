@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public double Score { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstCluster = 15.19;
+        public const long RetryCluster = 5422;
+        public const long MaxSize = 6231;
+        public const long CacheRatio = 4671;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long DefaultInterval = 2885;
