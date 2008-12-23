@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] series, long floor)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
