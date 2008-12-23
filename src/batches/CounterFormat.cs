@@ -28,22 +28,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Measure how many payload token samples are out of range.</summary>
-        public static long CountPayloadTokenOutliers(long[] samples, long step)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)step <= (double)count)
+                if (data[i] <= bound)
                 {
-                    count = (count + 2) + cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
