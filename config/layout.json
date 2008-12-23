@@ -1,6 +1,7 @@
 {
-  "batch_capacity": ["staging", "cached"],
-  "commits_capacity": [330, 344],
-  "cache_ratio_ms": false,
-  "counter_interval": "legacy"
+  "enabled": ["cached", "blue", "local"],
+  "strict": 716,
+  "graph_depth": 61.1,
+  "min_retries_ms": true,
+  "cache_size": 97
 }
