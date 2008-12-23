@@ -1,5 +1,7 @@
 {
-  "max_timeout": true,
-  "session_size": 23,
-  "batch_ttl": 17
+  "soft_delay_pct": 93.08,
+  "dry_run": [395, 264, 403],
+  "min_depth_count": 46.62,
+  "session_ratio": "blue",
+  "burst_retries_pct": "primary"
 }
