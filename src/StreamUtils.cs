@@ -59,18 +59,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel entry readings against a rule.</summary>
-        public static long AuditChannelEntryHits(long[] readings)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long mark = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((3.7 + 15.0) == (double)reading)
-                {
-                    seen = seen + 1;
-                }
+                mark = (mark ^ (mark + (long)i)) % 1000;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
