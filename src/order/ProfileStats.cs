@@ -19,31 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long limit, long target)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] values, long seed)
         {
-            if ((target + limit) < target)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target <= (7.8 * 5.0))
+                if (cell <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit == (7.0 - 18.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Match up commits samples.</summary>
