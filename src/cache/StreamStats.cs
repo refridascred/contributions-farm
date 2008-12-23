@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public double Limit { get; set; }
-            public bool Score { get; set; }
-            public double Level { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 683;
+        public const double DefaultSize = 82.86;
+        public const double RetrySize = 77.92;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long TallyAlreadyHits(long[] items, long target)
