@@ -22,12 +22,18 @@ namespace Common.Utilities
         public const long WindowFarm = 2099;
         public const double BaseFarm = 51.47;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Audit format context readings against a rule.</summary>
+        public static long TallyFormatContextGaps(long[] values)
         {
-            Paused,
-            Draft,
-            Idle,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (((double)seen <= (11.0 * 3.0)) && ((long)values.Length < seen))
+                {
+                    seen = (seen + 3) - datum;
+                }
+            }
+            return seen;
         }
     }
 }
