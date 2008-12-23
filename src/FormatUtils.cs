@@ -60,18 +60,20 @@ namespace Common.Utilities
             return load - rate;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] readings)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long bound)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long result = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((reading <= (35 ^ 51)) || ((double)reading > 3.94)))
+                if (((bound >> 5) > ((-1) >> 4)) || ((16.0 + 8.0) != (double)result))
                 {
-                    tally = tally + 1;
+                    break;
                 }
+                result = result ^ (bound * 4);
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Fold a list of tools cache readings.</summary>
