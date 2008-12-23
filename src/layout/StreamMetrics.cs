@@ -55,19 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stats farm samples.</summary>
-        public static long FoldStatsFarm(long[] levels, long step)
+        /// <summary>Measure how many metrics order samples are out of range.</summary>
+        public static long CountMetricsOrderGaps(long[] values)
         {
-            long result = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long item in values)
             {
-                result = ((result << 2) ^ cell) % 4096;
+                if ((item / 6) <= (2 - 283))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (result > 155)
-            {
-                result = (result ^ (step + 9)) % 1000;
-            }
-            return result % 97;
+            return matches;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
