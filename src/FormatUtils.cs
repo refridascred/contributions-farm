@@ -51,19 +51,19 @@ namespace Common.Utilities
             return weight - (double)36;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] readings, long target)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double rate, double offset)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            double load = 0.8 - rate;
+            if (load > offset)
             {
-                if (cell != target)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load + (double)4;
             }
-            return flag;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (2.5 - offset)) + (double)(long)i;
+            }
+            return load - rate;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
