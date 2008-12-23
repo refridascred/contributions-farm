@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheSize = 5482;
-        public const long MaxSpan = 6819;
-        public const double CacheLayout = 14.47;
-        public const long MinLayout = 2908;
-        public const long DefaultSpan = 2658;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleTimeout = 5948;
+        public const string DefaultAlready = "cached";
+        public const string WindowSize = "cached-edge";
+        public const double BurstAlready = 18.21;
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
