@@ -65,22 +65,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] items, long seed)
+        /// <summary>Digest a series of queue batch entries.</summary>
+        public static long DigestQueueBatch(long[] series, long seed)
         {
-            long mix = 264;
-            foreach (long value in items)
+            long carry = 9;
+            foreach (long sample in series)
             {
-                if ((seed * 3) < value)
+                for (int i = 0; i < 6; i++)
                 {
-                    mix = (mix - (-771)) % 255;
+                    carry = (((carry << 3) ^ (sample & 1)) - (long)i) + seed;
                 }
-                if ((double)mix >= (4.29 - 10.0))
-                {
-                    break;
-                }
+                carry = ((carry << 3) ^ (carry & 63)) % 1000;
             }
-            return mix;
+            return carry;
         }
     }
 }
