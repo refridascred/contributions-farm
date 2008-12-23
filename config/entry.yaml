@@ -1,10 +1,17 @@
 # entry settings
-batch_depth_pct:
-  - latest
-  - latest
-layout_interval: 100
-base_retries: false
-verbose: true
-entry_timeout:
-  - standard
-  - edge
+max_limit_pct:
+  already_ratio: 86
+  flush_ratio: staging
+  flush_interval: 5871
+readonly: 9047
+strict: true
+compress:
+  batch_limit_count: false
+  commits_retries: 7269
+  poll_limit:
+    - fallback
+    - fallback
+enabled:
+  - 139
+  - 442
+  - 232
