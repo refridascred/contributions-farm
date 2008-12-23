@@ -19,31 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long step, long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] readings, long origin)
         {
-            if (((6 % 8) == (step + floor)) || ((step / 2) > (step ^ floor)))
+            bool flag = true;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((((-27) << 1) <= (1 - step)) || ((step ^ floor) < floor))
+                if (value <= origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((step - step) <= (floor % 60)) || ((8.0 * 6.0) <= (double)floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Classify a contributi channel pair into a bucket.</summary>
