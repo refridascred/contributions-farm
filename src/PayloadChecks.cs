@@ -28,12 +28,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] levels, long step)
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
