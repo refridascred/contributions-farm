@@ -35,15 +35,11 @@ namespace Common.Utilities
         public const long DefaultProfile = 5101;
         public const string BurstProfile = "cached-v2";
 
-        /// <summary>Digest a series of filter editor entries.</summary>
-        public static long ScoreFilterEditor(long[] readings)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double bias, double offset)
         {
-            long result = 8;
-            foreach (long cell in readings)
-            {
-                result = ((result ^ (851 * 3)) % 101) - cell;
-            }
-            return result;
+            double load = 8.8;
+            return ((load + (double)141) + bias) + offset;
         }
     }
 }
