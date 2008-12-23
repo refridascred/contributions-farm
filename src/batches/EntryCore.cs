@@ -79,9 +79,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryDepth = 3305;
-        public const long LimitLevel = 6689;
-        public const string WindowBudget = "legacy-v2";
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
+        {
+            public double Region { get; set; }
+            public double Limit { get; set; }
+            public double Owner { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
