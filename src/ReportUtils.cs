@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            public long Weight { get; set; }
             public double Level { get; set; }
-            public long Size { get; set; }
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Classify a metric session pair into a bucket.</summary>
