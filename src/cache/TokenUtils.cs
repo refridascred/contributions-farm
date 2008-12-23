@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseInterval = 8259;
-        public const long SoftBatches = 5285;
-        public const double MinWidth = 74.77;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public double Size { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long TallyChecks(long[] readings)
