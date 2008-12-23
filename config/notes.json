@@ -1,7 +1,8 @@
 {
-  "base_size_ms": true,
-  "flush_size_pct": "edge",
-  "base_interval_ms": "open",
-  "sync_depth": 51,
-  "cache_retries_ms": 250
+  "verbose": 72,
+  "enabled": 35.59,
+  "batch_ratio_pct": true,
+  "default_limit_ms": 50.83,
+  "batch_ttl": 30,
+  "batch_depth_s": 3681
 }
