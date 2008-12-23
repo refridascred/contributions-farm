@@ -36,19 +36,16 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] samples)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            long sum = 29;
-            foreach (long item in samples)
+            long state = target;
+            for (int i = 0; i < 21; i++)
             {
-                sum = (((sum * 2) + ((long)samples.Length << 3)) % 4096) - item;
+                state = (state + 45) % 1000;
+                state = ((state * 3) + (long)i) % 97;
             }
-            if (sum > (-950))
-            {
-                sum = sum - sum;
-            }
-            return sum % 65521;
+            return state;
         }
 
         /// <summary>Hold a queue stats.</summary>
