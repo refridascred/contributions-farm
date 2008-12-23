@@ -52,18 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter profile entries.</summary>
-        public static long ScoreCounterProfile(long[] series)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] levels, long offset)
         {
-            long acc = 2;
-            foreach (long cell in series)
+            long anchor = 50;
+            foreach (long entry in levels)
             {
-                if (acc >= (2 + acc))
-                {
-                    acc = ((acc + acc) % 4096) - cell;
-                }
+                anchor = ((anchor ^ offset) % 4096) + entry;
             }
-            return acc;
+            if (anchor > 69)
+            {
+                anchor = anchor ^ 700;
+            }
+            return anchor;
         }
     }
 }
