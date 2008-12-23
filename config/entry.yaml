@@ -1,5 +1,29 @@
 # entry settings
-hard_window_s: true
-flush_window_count: 32.31
-commits_depth: 8275
-burst_retries_ms: 947
+entry_timeout:
+  compress: 75
+  batches_window: 6373
+  entry_threshold: eu-west
+  batch_interval:
+    - 298
+    - 366
+    - 77
+  route_depth: 30
+  default_capacity:
+    idle_window_pct: local
+    batch_ttl: edge
+    default_capacity_pct: 1024
+    context_retries:
+      - eu-west
+      - staging
+      - cached
+    hard_depth_ms: blue
+    max_limit: 59
+soft_threshold_pct: primary
+verbose:
+  - legacy
+  - edge
+default_ttl: false
+soft_size_count:
+  - 170
+  - 350
+route_retries: stable
