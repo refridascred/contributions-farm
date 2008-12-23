@@ -23,18 +23,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] data)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((sample + hits) <= (hits + sample))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Draft,
+            Dropped,
+            Pending,
+            Queued,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
