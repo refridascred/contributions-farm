@@ -93,18 +93,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] samples, long step)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long state = 471;
-            foreach (long item in samples)
-            {
-                if (((item * 4) < item) && ((step * 2) >= state))
-                {
-                    state = state ^ (item & 3);
-                }
-            }
-            return state % 4096;
+            Failed,
+            Locked,
+            Synced,
+            Ready,
+            New,
         }
     }
 }
