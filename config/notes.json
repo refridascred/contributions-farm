@@ -1,5 +1,14 @@
 {
-  "retry_ratio_count": "fallback",
-  "batch_size": [36, 3],
-  "warm_retries_count": 11.97
+  "base_window_ms": 250,
+  "hard_ttl_s": 64.55,
+  "cache_ratio_pct": {
+    "default_window_count": "stable",
+    "dry_run": 1024,
+    "batches_delay": 30,
+    "readonly": false,
+    "profile_interval": false,
+    "cache_capacity_s": 60
+  },
+  "channel_limit": "strict",
+  "audit": "cached"
 }
