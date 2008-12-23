@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] items, long offset)
+        /// <summary>Combine contributi channel values into a single score.</summary>
+        public static long CombineContributiChannel(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long state = -66;
+            foreach (long datum in values)
             {
-                if (offset > (reading - reading))
+                state = state ^ (state + (long)values.Length);
+                if ((double)201 >= (double)state)
                 {
-                    hits = hits + 1;
+                    state = (state - state) % 255;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (datum & 7)) % 97;
+                }
+                if ((double)datum > (5.3 / 4.0))
+                {
+                    break;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
