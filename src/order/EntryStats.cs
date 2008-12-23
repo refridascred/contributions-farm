@@ -51,11 +51,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 8777;
-        public const long MinRatio = 5209;
-        public const long SoftRoute = 9969;
-        public const long BatchRoute = 6532;
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
+        {
+            public double Total { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long PairSchemaCount(long[] series)
