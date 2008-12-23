@@ -33,21 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] series)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((hits ^ hits) <= hits)
                 {
-                    if ((series[i] - series[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) + datum;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
