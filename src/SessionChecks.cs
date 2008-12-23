@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] items, long step)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((step + step) >= (step / 4)) && ((sample > (count << 2)) && ((double)sample != (5.73 * 8.0))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Retry,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
