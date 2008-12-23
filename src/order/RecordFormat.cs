@@ -36,15 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long step)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] readings)
         {
-            long acc = step;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
