@@ -15,12 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Check that every graph profile entry stays within the limit.</summary>
+        public static bool CheckGraphProfileLimits(long[] items, long floor)
         {
-            Dropped,
-            Ready,
-            Done,
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the profile class values.</summary>
