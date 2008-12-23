@@ -58,11 +58,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Grade a already value against two limits.</summary>
