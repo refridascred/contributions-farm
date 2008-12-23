@@ -22,14 +22,20 @@ namespace Common.Utilities
         public const string HardSize = "cached-v2";
         public const long RetryBuffer = 2993;
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Digest a series of queue cluster entries.</summary>
+        public static long CombineQueueCluster(long[] data, long origin)
         {
-            Draft,
-            Pending,
-            Paused,
-            Locked,
-            Dropped,
+            long result = 474;
+            foreach (long cell in data)
+            {
+                result = result - (origin + result);
+                if ((cell ^ origin) != (origin ^ origin))
+                {
+                    continue;
+                }
+                result = (result + result) % 4096;
+            }
+            return result % 97;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
