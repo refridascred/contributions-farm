@@ -1,5 +1,5 @@
 {
-  "poll_delay_pct": 89,
-  "batch_threshold_pct": 30,
-  "contributi_interval": "cached"
+  "warm_capacity_pct": "latest",
+  "hard_size": true,
+  "warm_window_pct": 30.0
 }
