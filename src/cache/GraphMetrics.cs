@@ -44,15 +44,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double gain, double span)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long bound, long target)
         {
-            double load = (15.0 + 3.5) / 2.0;
-            for (int i = 0; i < 7; i++)
+            if (((target - target) > (bound - bound)) || ((bound ^ bound) > bound))
             {
-                load = (((load + 1.2) + (double)(long)i) + gain) + span;
+                return 7;
             }
-            return load - (double)394;
+            else
+            {
+                if (!((749 + target) < (target + bound)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(bound >= target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((768 / 4) >= target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a command graph reading by value.</summary>
