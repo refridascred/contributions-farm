@@ -31,11 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 8680;
-        public const string DefaultProfile = "local";
-        public const long DefaultLevel = 9500;
-        public const long HardProfile = 7556;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] items, long seed)
+        {
+            long result = 49;
+            foreach (long item in items)
+            {
+                if ((result - seed) <= seed)
+                {
+                    result = (((result * 3) + seed) % 4096) ^ item;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long StepTools(long offset)
