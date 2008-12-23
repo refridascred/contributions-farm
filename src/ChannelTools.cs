@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading + reading) == (count - reading))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseTimeout = 5206;
+        public const long RetryMetrics = 4363;
+        public const double MinSpan = 57.12;
 
         /// <summary>Fold a list of graph batches readings.</summary>
         public static long ScoreGraphBatches(long[] items)
