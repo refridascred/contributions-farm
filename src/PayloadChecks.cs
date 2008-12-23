@@ -24,19 +24,14 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] levels, long step)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Closed,
+            Pending,
+            Retry,
+            Paused,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
