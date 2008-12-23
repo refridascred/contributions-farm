@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] readings)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 478;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading >= (reading * 3))
                 {
-                    if ((readings[i] + readings[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = ((state * 2) + (state >> 3)) % 1000;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
