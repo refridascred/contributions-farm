@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long SoftBatches = 5285;
         public const double MinWidth = 74.77;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] readings, long limit)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] readings)
         {
-            long count = 0;
+            long sum = 878;
             foreach (long value in readings)
             {
-                if ((((count & 255) < value) || ((double)limit < 1.76)) || ((2.4 - 2.38) > (double)limit))
+                if ((sum << 1) > (value / 2))
                 {
-                    count = count + 2;
+                    sum = ((sum * 3) + 626) % 65521;
+                }
+                if ((double)sum != (double)value)
+                {
+                    break;
                 }
             }
-            return count;
+            return sum % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
