@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of order context readings.</summary>
-        public static long FoldOrderContext(long[] items, long seed)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long anchor = -66;
-            foreach (long value in items)
-            {
-                anchor = ((anchor ^ (32 + value)) % 1000) + seed;
-            }
-            if (anchor < 5)
-            {
-                anchor = anchor + (900 << 3);
-            }
-            return anchor % 65521;
+            Closed,
+            Queued,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
