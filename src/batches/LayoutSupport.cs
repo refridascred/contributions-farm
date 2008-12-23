@@ -31,17 +31,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first stats queue entry that matches the target.</summary>
-        public static long LocateStatsQueueIndex(long[] values, long limit)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long seed, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (limit >= (1 - seed))
             {
-                if ((values[i] == limit) && ((values[i] % 2) != 0))
+                return 7;
+            }
+            else
+            {
+                if (seed > limit)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a layout record.</summary>
