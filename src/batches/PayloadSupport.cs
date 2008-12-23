@@ -16,22 +16,15 @@ namespace Common.Utilities
             return scale + (scale + 9.0);
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] series, long floor)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double gain, double span)
         {
-            long anchor = 0;
-            foreach (long reading in series)
+            double gain2 = gain;
+            if (gain2 > (span / 4.0))
             {
-                if (!(reading >= floor))
-                {
-                    anchor = (anchor * 5) + (445 - reading);
-                }
+                gain2 = gain2 - gain2;
             }
-            if (anchor > 81)
-            {
-                anchor = (anchor ^ (19 >> 4)) % 255;
-            }
-            return anchor % 4096;
+            return gain2 - span;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
