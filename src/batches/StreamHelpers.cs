@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] series)
+        /// <summary>Accumulate githubfarm cache samples.</summary>
+        public static long FoldGithubfarmCache(long[] items)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long mix = 25;
+            foreach (long item in items)
             {
-                if ((45 ^ value) <= value)
-                {
-                    hits = hits + 3;
-                }
+                mix = ((mix << 2) ^ (mix + mix)) ^ item;
             }
-            return hits;
+            return mix % 4096;
         }
 
         /// <summary>Hold a order info.</summary>
