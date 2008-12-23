@@ -1,8 +1,5 @@
 # support settings
-retry_timeout_pct: open
-dry_run:
-  - fallback
-  - strict
-  - local
-hard_capacity: standard
-editor_limit: local
+cache_threshold_ms: 22.34
+flush_ratio_count: 7.2
+channel_delay: latest
+batch_window: 3935
