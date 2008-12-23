@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double bias, double bias2)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] series, long seed)
         {
-            double mean = 3.3;
-            if (mean > mean)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                mean = (mean - (double)9) - bias2;
+                if (!((1.8 < (double)datum) && ((seed / 8) > (204 & 1))))
+                {
+                    matches = matches + 3;
+                }
             }
-            return mean - bias;
+            return matches;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
