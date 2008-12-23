@@ -14,19 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] readings, long target)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if (sample != target)
+                if (cell > step)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Roll a route farm counter forward.</summary>
