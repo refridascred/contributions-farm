@@ -33,12 +33,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] items, long step)
         {
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
