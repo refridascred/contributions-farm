@@ -18,15 +18,19 @@ namespace Common.Utilities
         public const string IdleInterval = "strict";
         public const double BurstFarm = 56.3;
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double gain, double floor)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long offset)
         {
-            double scale = gain;
-            if (scale >= (double)614)
+            long result = offset;
+            for (int i = 0; i < 9; i++)
             {
-                scale = scale - (3.03 + scale);
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    result = ((result - (result / 8)) % 1000) - (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return scale + floor;
+            return result;
         }
     }
 }
