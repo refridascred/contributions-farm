@@ -30,21 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of metrics profile readings.</summary>
-        public static long OverlapMetricsProfileCount(long[] values)
+        /// <summary>Audit notes token readings against a rule.</summary>
+        public static long TallyNotesTokenHits(long[] levels, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (hits > limit)
                 {
-                    if ((values[i] ^ values[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the stats phase values.</summary>
