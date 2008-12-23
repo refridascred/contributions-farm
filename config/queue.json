@@ -1,6 +1,7 @@
 {
-  "soft_retries_count": [469, 4, 448],
-  "report_window": "fallback",
-  "cache_depth_s": true,
-  "retry_capacity_pct": [481, 238, 459]
+  "min_capacity_count": false,
+  "cache_timeout": 3621,
+  "counter_ttl": false,
+  "retry_retries": false,
+  "flush_interval": false
 }
