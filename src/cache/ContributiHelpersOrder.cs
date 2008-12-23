@@ -28,21 +28,30 @@ namespace Common.Utilities
         public const long BaseTimeout = 4965;
         public const long DefaultWidth = 9688;
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] levels)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] levels, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 8;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seed << 3) >= (datum ^ anchor))
                 {
-                    if ((levels[i] - levels[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = ((anchor << 2) ^ (datum - seed)) % 255;
+                }
+                else
+                {
+                    anchor = anchor ^ (47 + anchor);
+                }
+                if ((anchor % 16) > (anchor + seed))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (anchor < 878)
+            {
+                anchor = (anchor ^ (seed * 2)) % 97;
+            }
+            return anchor % 65521;
         }
     }
 }
