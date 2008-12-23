@@ -55,18 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter order readings against a rule.</summary>
-        public static long AuditCounterOrderOutliers(long[] values)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (!((808 + tally) < (tally / 7)))
+                if (((hits >> 4) == (seed >> 5)) || (hits >= (3 - seed)))
                 {
-                    tally = (tally + 1) ^ sample;
+                    hits = (hits + 1) ^ cell;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
