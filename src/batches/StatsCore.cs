@@ -12,17 +12,31 @@ namespace Common.Utilities
             return mean + (rate - rate);
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] data, long seed)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long origin, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (!((origin / 9) >= ((-88) + seed)))
             {
-                if ((data[i] == seed) && ((data[i] % 3) != 0))
+                return 0;
+            }
+            else
+            {
+                if ((double)seed == (4.08 - 5.06))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (seed >= (seed & 127))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up contributi samples.</summary>
