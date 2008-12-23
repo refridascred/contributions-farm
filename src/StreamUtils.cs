@@ -25,22 +25,13 @@ namespace Common.Utilities
         public const long LimitRatio = 7144;
         public const long WindowCommand = 8117;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] readings, long seed)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (entry < (seed ^ seed))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Size { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
