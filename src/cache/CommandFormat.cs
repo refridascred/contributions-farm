@@ -45,32 +45,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long floor, long offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] values, long floor)
         {
-            long diff = floor + offset;
-            if (!((floor / 7) != ((-136) + offset)))
+            bool flag = true;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (diff <= (diff ^ floor))
+                if (datum != floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset < (6.33 - 8.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
