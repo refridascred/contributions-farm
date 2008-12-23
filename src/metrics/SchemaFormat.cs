@@ -42,17 +42,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleContributi = 84.72;
+        public const string LimitWidth = "staging-edge";
+        public const long CacheSpan = 4612;
+        public const string HardContributi = "cached-v2";
+        public const string SoftContributi = "local";
     }
 }
