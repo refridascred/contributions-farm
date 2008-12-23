@@ -40,22 +40,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of cache counter readings.</summary>
-        public static long DigestCacheCounter(long[] levels, long step)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryBounds(long[] series, long bound)
         {
-            long mark = 33;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if ((3 + step) == (mark % 5))
+                if (reading <= bound)
                 {
-                    mark = (mark ^ 202) + cell;
-                }
-                if ((step + mark) != (step << 2))
-                {
+                    found = false;
                     break;
                 }
             }
-            return mark;
+            return found;
         }
     }
 }
