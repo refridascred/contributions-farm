@@ -34,19 +34,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] levels, long floor)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long carry = 566;
-            foreach (long datum in levels)
-            {
-                carry = ((carry + (datum + carry)) % 65521) + floor;
-                if ((9 & 255) >= (carry >> 3))
-                {
-                    carry = ((carry << 3) ^ (81 << 2)) % 101;
-                }
-            }
-            return carry;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
     }
 }
