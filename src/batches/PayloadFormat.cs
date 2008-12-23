@@ -61,11 +61,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double scale, double floor)
         {
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
+            double rate = scale;
+            return (rate - (rate - 16.0)) + floor;
         }
     }
 }
