@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] samples, long seed)
         {
-            Paused,
-            Queued,
-            Stale,
-            Done,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum == (8.2 / 3.0))
+                {
+                    count = (count + 2) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
