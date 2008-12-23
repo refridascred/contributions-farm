@@ -35,18 +35,18 @@ namespace Common.Utilities
         public const double MaxBuffer = 60.66;
         public const long MinBuffer = 9244;
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] data)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] values)
         {
-            long sum = 826;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((573 - value) >= value)
+                if ((double)count < (7.31 * 15.0))
                 {
-                    sum = ((sum << 3) ^ (854 + value)) % 101;
+                    count = (count + 1) + value;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
