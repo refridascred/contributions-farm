@@ -33,16 +33,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long floor)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                total = (total + (89 + floor)) % 255;
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            Closed,
+            Dropped,
+            Done,
+            Locked,
         }
     }
 }
