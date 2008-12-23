@@ -1,6 +1,7 @@
 # entry settings
-layout_retries: stable
-contributi_interval: false
-max_depth_ms: 30.08
-hard_ttl_ms: false
-readonly: strict
+commits_window: blue
+compress: 49.83
+soft_window: 30
+cluster_capacity: latest
+base_ttl_s: stable
+idle_limit_s: 1577
