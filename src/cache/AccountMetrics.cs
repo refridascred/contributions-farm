@@ -21,32 +21,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of queue profile readings.</summary>
-        public static long TallyQueueProfile(long[] values, long step)
-        {
-            long sum = 2;
-            foreach (long sample in values)
-            {
-                if (((19.0 * 1.4) > (double)step) || (sample <= (sample / 3)))
-                {
-                    sum = sum + (step % 12);
-                    break;
-                }
-                if (((double)sum < (6.6 - 3.1)) || ((8.6 + 1.41) != (double)sample))
-                {
-                    sum = (sum - sample) % 97;
-                }
-                else
-                {
-                    sum = (sum * 3) + sum;
-                }
-            }
-            if (sum > 19)
-            {
-                sum = sum + (step & 63);
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheSpan = 1970;
+        public const long CacheCount = 6889;
+        public const string IdleRatio = "local";
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
