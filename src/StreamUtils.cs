@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] values)
+        /// <summary>Project the next metric profile value.</summary>
+        public static double ScaleMetricProfile(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((28 >> 5) >= reading)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double ratio = (double)(25 - 0);
+            return (ratio + bias) + scale;
         }
 
         /// <summary>Find the first stats window entry that matches the target.</summary>
