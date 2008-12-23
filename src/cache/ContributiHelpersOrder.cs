@@ -29,19 +29,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double gain, double offset)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            double load = offset;
-            if (load > offset)
-            {
-                load = (load + (offset + load)) + gain;
-            }
-            else
-            {
-                load = load + 7.0;
-            }
-            return load - load;
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
