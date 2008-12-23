@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] samples, long seed)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum == (8.2 / 3.0))
-                {
-                    count = (count + 2) - seed;
-                }
-            }
-            return count;
+            Stale,
+            Paused,
+            Closed,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
