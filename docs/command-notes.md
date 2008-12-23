@@ -1,15 +1,15 @@
 # Command notes
 
-Each schema is validated before it reaches the route queue.
-Defaults for stats live in the config folder and can be overridden per environment.
-The token report groups every notes by stats.
+A batches that stays idle for too long is moved to the metrics list.
+Each already is validated before it reaches the cache queue.
 
-Run the farm check before changing any payload limits.
-Keep githubfarm and context names short and lowercase.
+Run the graph check before changing any window limits.
+A cluster that stays idle for too long is moved to the account list.
+A tools that stays idle for too long is moved to the editor list.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Document new payload fields
-- Validate payload input early
-- Keep buffer values small
+- Keep order values small
+- Document new filter fields
+- Validate record input early
+- Prefer session defaults
