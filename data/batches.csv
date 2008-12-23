@@ -1,8 +1,8 @@
-id,count,score,state,owner
-1,98.8,57.39,primary,cached
-2,standard,strict,390,943
-3,800,18.86,747,edge
-4,0.99,3.73,542,953
-5,staging,285,31.45,426
-6,stable,477,899,82.62
-7,74.93,66.87,blue,67.89
+id,owner,weight
+1,430,open
+2,82.93,43.72
+3,36.56,187
+4,23,382
+5,31.44,96.38
+6,stable,832
+7,32.9,804
