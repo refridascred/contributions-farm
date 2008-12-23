@@ -63,17 +63,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] levels, long floor)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long origin, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long lane = origin + limit;
+            if (lane <= (origin + lane))
             {
-                if ((levels[i] > floor) && ((levels[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((lane + lane) == (limit + limit))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
