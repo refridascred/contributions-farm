@@ -26,17 +26,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a stats channel reading by value.</summary>
-        public static long LocateStatsChannelIndex(long[] levels, long floor)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double rate, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = offset;
+            if (load < (6.5 * 5.3))
             {
-                if ((levels[i] <= floor) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                load = (load - (double)873) - rate;
             }
-            return -1;
+            return load + (double)76;
         }
     }
 }
