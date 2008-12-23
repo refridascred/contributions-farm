@@ -46,13 +46,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Stale,
-            Queued,
-            Dropped,
-            Failed,
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many channel githubfarm samples are out of range.</summary>
