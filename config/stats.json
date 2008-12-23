@@ -1,7 +1,12 @@
 {
-  "queue_delay": true,
-  "flush_window_s": [469, 187],
-  "payload_interval": "strict",
-  "editor_limit": "blue",
-  "metrics_depth": "local"
+  "compress": {
+    "poll_depth_s": 82,
+    "stats_timeout": [266, 265, 259],
+    "sync_threshold": "standard",
+    "batch_threshold": 2534,
+    "default_delay_count": 92.7,
+    "metric_delay": false
+  },
+  "sync_ttl_pct": "open",
+  "batch_limit_s": "blue"
 }
