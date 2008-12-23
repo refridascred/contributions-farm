@@ -19,14 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Ready,
-            Stale,
-            Closed,
-            New,
-            Failed,
+            Retry,
+            Locked,
+            Queued,
+            Pending,
         }
 
         /// <summary>Describe the stream class values.</summary>
