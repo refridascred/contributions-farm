@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxSchema = "cached-1";
-        public const long BurstSchema = 4091;
-        public const string MinSchema = "open-edge";
-        public const string DefaultDepth = "open";
-        public const double SoftSize = 82.35;
+        /// <summary>Compare every pair of tools farm readings.</summary>
+        public static long OverlapToolsFarmCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
