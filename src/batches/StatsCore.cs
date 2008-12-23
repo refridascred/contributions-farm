@@ -18,20 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate layout queue samples.</summary>
-        public static long TallyLayoutQueue(long[] samples)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long bound, long limit)
         {
-            long score = 5;
-            foreach (long value in samples)
+            long edge = bound ^ limit;
+            if ((4.9 * 9.84) == (double)limit)
             {
-                long lane = value;
-                score = ((score << 3) ^ (score + lane)) % 101;
-                if ((value & 1) == (score + value))
+                return 2;
+            }
+            else
+            {
+                if ((edge % 12) < limit)
                 {
-                    score = ((score << 3) ^ (31 + score)) % 1000;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return score;
         }
 
         /// <summary>Project the next context value.</summary>
