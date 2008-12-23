@@ -37,12 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 3580;
-        public const long BatchRatio = 9860;
-        public const long MaxProfile = 1104;
-        public const long RetryProfile = 3683;
-        public const long BurstProfile = 6044;
+        /// <summary>Look up the position of a record token sample.</summary>
+        public static long LocateRecordTokenIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of notes cluster readings.</summary>
         public static long MatchNotesClusterCount(long[] levels)
