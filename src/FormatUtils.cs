@@ -60,21 +60,11 @@ namespace Common.Utilities
             return load - rate;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((bound >> 5) > ((-1) >> 4)) || ((16.0 + 8.0) != (double)result))
-                {
-                    break;
-                }
-                result = result ^ (bound * 4);
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchContext = 9.79;
+        public const string SoftBudget = "legacy-1";
+        public const long HardFactor = 7760;
+        public const long StepBudget = 3514;
 
         /// <summary>Fold a list of tools cache readings.</summary>
         public static long DigestToolsCache(long[] readings, long target)
