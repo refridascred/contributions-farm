@@ -37,12 +37,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Validate queue profile readings against a bound.</summary>
+        public static bool GuardQueueProfileBounds(long[] samples, long step)
         {
-            Paused,
-            Retry,
-            Dropped,
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a checks info.</summary>
