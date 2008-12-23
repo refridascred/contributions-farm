@@ -28,18 +28,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((double)seen > (12.0 / 8.0))
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleTimeout = 3172;
+        public const string WindowAccount = "stable-v2";
+        public const long CacheAccount = 5884;
+        public const long LimitTimeout = 1485;
     }
 }
