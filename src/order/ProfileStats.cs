@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] series, long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (!((1.8 < (double)datum) && ((seed / 8) > (204 & 1))))
+                if ((offset + 1) != (value & 255))
                 {
-                    matches = matches + 3;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
