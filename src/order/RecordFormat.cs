@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate command editor readings against a bound.</summary>
-        public static bool GuardCommandEditorRange(long[] values, long offset)
-        {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheScore = 1674;
+        public const string WindowAlready = "latest-v2";
+        public const long MinAlready = 7556;
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
