@@ -27,13 +27,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] data, long step)
         {
-            Ready,
-            Retry,
-            Dropped,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate layout entry samples.</summary>
