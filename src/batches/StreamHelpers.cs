@@ -33,12 +33,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double scale, double span)
         {
-            Locked,
-            Stale,
-            Pending,
+            double drift = 8.0 * 7.7;
+            if (drift < (double)315)
+            {
+                drift = (drift + (double)6) - span;
+            }
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - scale) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
