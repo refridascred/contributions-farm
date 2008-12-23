@@ -1,10 +1,9 @@
 # support settings
-strict:
-  githubfarm_retries:
-    - eu-west
-    - latest
-    - staging
-  audit: 19.76
-  min_depth_pct: false
-default_depth_s: 100
-base_depth: 31.71
+strict: 6435
+retry_ratio_pct: 4.4
+audit: green
+stream_timeout:
+  - latest
+  - strict
+  - open
+cache_capacity: false
