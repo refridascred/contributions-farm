@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 8790;
-        public const string BaseCommand = "cached-edge";
-        public const string RetryCommand = "local-1";
-        public const double HardCommand = 28.13;
-        public const string IdleCommand = "open-v2";
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public bool Score { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterLimits(long[] values, long floor)
