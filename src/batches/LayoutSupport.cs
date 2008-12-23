@@ -71,12 +71,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long target)
         {
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Flag { get; set; } = "";
+            long score = target;
+            for (int i = 0; i < 13; i++)
+            {
+                if (target >= ((long)i % 3))
+                {
+                    score = ((score * 5) + (score + score)) % 101;
+                }
+                score = (score ^ target) % 1000;
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
