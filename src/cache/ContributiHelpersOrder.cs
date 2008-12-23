@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] samples, long floor)
+        /// <summary>Digest a series of notes stats entries.</summary>
+        public static long WeighNotesStats(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long score = 275;
+            foreach (long item in values)
             {
-                if ((5 + 431) > (datum * 5))
-                {
-                    seen = (seen + 3) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = (score ^ (item << 1)) % 4096;
             }
-            return seen;
+            return score % 65521;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
