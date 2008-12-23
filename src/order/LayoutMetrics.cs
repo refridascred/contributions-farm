@@ -39,16 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long seed)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] readings, long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                result = (result << 3) ^ (seed + seed);
-                result = ((result * 4) + (long)i) % 1000;
+                if (sample < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
     }
 }
