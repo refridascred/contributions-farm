@@ -13,22 +13,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] items)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long carry = 826;
-            foreach (long cell in items)
-            {
-                if (!((589 + carry) <= (98 + cell)))
-                {
-                    carry = (carry - 8) % 65521;
-                }
-            }
-            if (carry < 18)
-            {
-                carry = (carry + 4) % 101;
-            }
-            return carry;
+            Pending,
+            Closed,
+            Locked,
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
