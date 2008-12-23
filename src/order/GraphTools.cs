@@ -20,18 +20,13 @@ namespace Common.Utilities
             return mean + (double)14;
         }
 
-        /// <summary>Audit buffer payload readings against a rule.</summary>
-        public static long MeasureBufferPayloadMatches(long[] readings)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)seen >= (2.1 + 4.7))
-                {
-                    seen = (seen + 2) - reading;
-                }
-            }
-            return seen;
+            Closed,
+            Pending,
+            Synced,
+            Ready,
         }
 
         /// <summary>Describe the entry kind values.</summary>
