@@ -42,11 +42,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowInterval = "latest-v2";
-        public const double WindowTimeout = 85.79;
-        public const long SoftNotes = 9856;
-        public const string HardNotes = "staging-v2";
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (((item & 31) < (item ^ item)) && ((13 << 3) <= (10 ^ seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
