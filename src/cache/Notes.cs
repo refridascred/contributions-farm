@@ -19,17 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] samples, long target)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Match up context samples.</summary>
