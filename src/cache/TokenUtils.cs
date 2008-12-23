@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long seed, long target)
-        {
-            if ((seed + target) < (target + target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((2.99 - 5.6) != (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitFactor = 86.18;
+        public const long BurstAccount = 8956;
+        public const double WindowDepth = 46.53;
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long SeriesAccount(long bound)
