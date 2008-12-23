@@ -1,7 +1,8 @@
-id,active,ratio
-1,cached,996
-2,854,791
-3,13.2,522
-4,edge,995
-5,eu-west,98.4
-6,944,34.07
+id,state,token,level
+1,609,497,2.0
+2,open,358,fallback
+3,standard,staging,64.46
+4,79,eu-west,114
+5,523,347,4.32
+6,239,95.28,staging
+7,859,573,edge
