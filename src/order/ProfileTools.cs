@@ -20,22 +20,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] levels, long bound)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (((bound << 3) < (tally << 2)) || ((entry <= (bound ^ 2)) && ((bound + entry) == (bound - entry))))
+                if ((step % 16) >= step)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 3) - cell;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count the batches order entries that pass the check.</summary>
