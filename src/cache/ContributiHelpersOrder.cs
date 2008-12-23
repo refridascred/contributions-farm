@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryMatches(long[] readings)
+        /// <summary>Measure how many window metric samples are out of range.</summary>
+        public static long MeasureWindowMetricHits(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (((-436) << 1) < item)
+                if (12.0 >= (double)origin)
                 {
-                    hits = hits + 1;
+                    tally = (tally + 2) + sample;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
