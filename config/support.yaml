@@ -1,6 +1,4 @@
 # support settings
-min_interval_s: 1024
-default_size_pct: 5.34
-dry_run: true
-persist: 5767
-default_interval_count: true
+profile_size: 5955
+audit: standard
+sync_ratio: 7665
