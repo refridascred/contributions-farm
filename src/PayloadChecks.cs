@@ -56,25 +56,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine record cache values into a single score.</summary>
-        public static long CombineRecordCache(long[] series, long step)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double weight, double offset)
         {
-            long state = 49;
-            foreach (long datum in series)
-            {
-                state = (((state * 4) + (step << 1)) % 65521) + datum;
-                if (!((double)(long)series.Length > (2.95 + 2.5)))
-                {
-                    state = state + (step + 15);
-                    state = (state * 4) + (step + step);
-                }
-                state = state + 58;
-            }
-            if (state < 53)
-            {
-                state = (state * 4) + (state & 15);
-            }
-            return state % 97;
+            double bias = (double)1 / 5.0;
+            return ((bias + (bias * 20.0)) + weight) + offset;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
