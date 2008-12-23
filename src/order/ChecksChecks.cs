@@ -19,14 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long seed, long limit)
         {
-            Idle,
-            Done,
-            Retry,
-            Ready,
-            Draft,
+            if ((seed ^ limit) >= (7 / 8))
+            {
+                return 0;
+            }
+            else
+            {
+                if (limit > seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((seed % 16) > (limit * 4)) || ((limit + seed) < ((-845) - (-9))))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the format kind values.</summary>
