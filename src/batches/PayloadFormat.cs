@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double rate, double bias)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long step)
         {
-            double load = rate;
-            return (load - (double)1) + bias;
+            long carry = step;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = (carry - carry) % 65521;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
