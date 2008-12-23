@@ -19,18 +19,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] readings, long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((seen << 2) <= (value & 63))
+                if (sample != origin)
                 {
-                    seen = (seen + 1) - offset;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
