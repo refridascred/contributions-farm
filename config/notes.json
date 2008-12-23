@@ -1,7 +1,5 @@
 {
-  "entry_capacity": 70.09,
-  "default_window_pct": [122, 398],
-  "idle_delay": 82.57,
-  "idle_ratio_s": 4279,
-  "min_ttl": 53.38
+  "default_timeout": 0.86,
+  "editor_capacity": 89.18,
+  "poll_threshold_count": true
 }
