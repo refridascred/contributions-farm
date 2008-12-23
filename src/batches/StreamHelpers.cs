@@ -35,18 +35,32 @@ namespace Common.Utilities
         public const double MaxBuffer = 60.66;
         public const long MinBuffer = 9244;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] values)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long origin, long origin2)
         {
-            long count = 0;
-            foreach (long value in values)
+            long delta = origin + origin2;
+            if (!((origin2 + origin) >= origin2))
             {
-                if ((double)count < (7.31 * 15.0))
+                return 6;
+            }
+            else
+            {
+                if ((origin2 << 3) < origin2)
                 {
-                    count = (count + 1) + value;
+                    return 2;
+                }
+                else
+                {
+                    if ((delta + 85) > (origin << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
