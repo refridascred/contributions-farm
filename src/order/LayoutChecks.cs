@@ -54,18 +54,18 @@ namespace Common.Utilities
             return drift + (weight / 6.0);
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesGaps(long[] items, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (!((double)hits < 5.2))
+                if (seen >= (value << 1))
                 {
-                    hits = ((hits + 2) + sample) - seed;
+                    seen = (seen + 3) + floor;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
