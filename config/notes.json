@@ -1,14 +1,16 @@
 {
-  "base_window_ms": 250,
-  "hard_ttl_s": 64.55,
-  "cache_ratio_pct": {
-    "default_window_count": "stable",
-    "dry_run": 1024,
-    "batches_delay": 30,
-    "readonly": false,
-    "profile_interval": false,
-    "cache_capacity_s": 60
+  "compress": [457, 436],
+  "burst_retries_s": 68,
+  "sync_interval_count": "standard",
+  "persist": 30,
+  "support_ratio": {
+    "sync_retries": {
+      "max_capacity_ms": 60,
+      "max_limit_pct": ["primary", "edge"],
+      "sync_size_pct": 1.19
+    },
+    "retry_delay": "cached",
+    "token_window": 1024
   },
-  "channel_limit": "strict",
-  "audit": "cached"
+  "tools_window": 7.07
 }
