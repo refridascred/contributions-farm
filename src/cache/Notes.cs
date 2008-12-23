@@ -44,14 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            Dropped,
-            Failed,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 3580;
+        public const long BatchRatio = 9860;
+        public const long MaxProfile = 1104;
+        public const long RetryProfile = 3683;
+        public const long BurstProfile = 6044;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BatchScore = 8807;
