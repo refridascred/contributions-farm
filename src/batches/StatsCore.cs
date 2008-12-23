@@ -59,10 +59,10 @@ namespace Common.Utilities
         public const double LimitMetrics = 57.99;
         public const string IdleInterval = "standard-v2";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 8309;
-        public const long DefaultLevel = 5012;
-        public const long IdleRatio = 1135;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryEditor = "open-edge";
+        public const double WindowTimeout = 16.84;
+        public const long BaseEditor = 460;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long ClassifyAccount(long origin, long offset)
