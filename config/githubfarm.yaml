@@ -1,8 +1,5 @@
 # githubfarm settings
-burst_timeout: 4063
-checks_interval: strict
-batch_capacity_pct: false
-dry_run: fallback
-persist:
-  - 334
-  - 222
+poll_size: 78.72
+audit: edge
+flush_retries_ms: stable
+commits_interval: false
