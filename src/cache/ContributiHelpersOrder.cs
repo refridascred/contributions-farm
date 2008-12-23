@@ -11,10 +11,18 @@ namespace Common.Utilities
         public const long SoftSize = 52;
         public const long WindowCluster = 815;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepRatio = 1664;
-        public const long BaseTimeout = 4965;
-        public const long DefaultWidth = 9688;
+        /// <summary>Look up the position of a payload buffer sample.</summary>
+        public static long FindPayloadBufferIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < target) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a account order reading.</summary>
         public static double BlendAccountOrder(double bias, double floor)
