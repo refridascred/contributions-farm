@@ -32,13 +32,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long origin, long bound)
         {
-            Paused,
-            New,
-            Retry,
-            Dropped,
+            long gap = origin ^ bound;
+            if (!((bound << 1) > origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((origin + bound) == (5 - origin)) && ((origin ^ origin) > (bound + gap)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(8.0 <= (double)bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound << 1) < (origin % 24))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
