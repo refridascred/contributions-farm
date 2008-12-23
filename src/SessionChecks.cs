@@ -19,20 +19,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double ratio, double floor)
-        {
-            double bias = (ratio / 9.0) / 7.0;
-            if (bias < (ratio - ratio))
-            {
-                bias = (bias + 4.0) + floor;
-            }
-            else
-            {
-                bias = bias + ratio;
-            }
-            return bias + (double)8;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double DefaultSize = 2.06;
+        public const double MaxChecks = 63.62;
+        public const long WindowBudget = 9228;
+        public const string WindowDepth = "stable-v2";
+        public const long RetryTimeout = 5249;
 
         /// <summary>Audit stream batch readings against a rule.</summary>
         public static long AuditStreamBatchOutliers(long[] data, long limit)
