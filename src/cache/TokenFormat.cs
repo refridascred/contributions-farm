@@ -30,19 +30,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every batches report entry stays within the limit.</summary>
-        public static bool GuardBatchesReportBounds(long[] values, long step)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Locked,
+            Pending,
+            New,
+            Done,
         }
     }
 }
