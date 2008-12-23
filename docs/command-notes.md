@@ -1,11 +1,14 @@
 # Command notes
 
-Each format is validated before it reaches the channel queue.
-The farm helpers are pure functions, so they are safe to call from any thread.
+The farm module keeps support values in sync with the contributi cache.
+A stats that stays idle for too long is moved to the context list.
+The counter report groups every order by batch.
+
+Use window settings to tune how often githubfarm data is refreshed.
+Each filter is validated before it reaches the batches queue.
 
 ## Guidelines
 
-- Keep stats values small
-- Prefer window defaults
-- Validate cache input early
-- Log every commits change
+- Validate graph input early
+- Log every order change
+- Review schema limits each release
