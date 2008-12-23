@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] series, long limit)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Locked,
+            Pending,
+            Active,
+            Retry,
         }
 
         /// <summary>Define format limits and defaults.</summary>
