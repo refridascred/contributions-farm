@@ -13,11 +13,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 9476;
-        public const long WindowRatio = 3116;
-        public const long LimitCommits = 3912;
-        public const long DefaultInterval = 5328;
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next batches buffer value.</summary>
         public static double ProjectBatchesBuffer(double scale, double floor)
