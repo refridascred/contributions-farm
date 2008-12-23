@@ -48,14 +48,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Fold a list of cache counter readings.</summary>
+        public static long DigestCacheCounter(long[] levels, long step)
         {
-            Closed,
-            Paused,
-            Locked,
-            Done,
-            Idle,
+            long mark = 33;
+            foreach (long cell in levels)
+            {
+                if ((3 + step) == (mark % 5))
+                {
+                    mark = (mark ^ 202) + cell;
+                }
+                if ((step + mark) != (step << 2))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
     }
 }
