@@ -62,18 +62,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] values)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (!((hits + entry) == (206 % 7)) || ((hits + entry) >= hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            New,
+            Closed,
+            Active,
+            Draft,
+            Ready,
         }
     }
 }
