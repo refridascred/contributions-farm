@@ -27,39 +27,17 @@ namespace Common.Utilities
         public const double SoftLevel = 42.28;
         public const string MinChecks = "latest-1";
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long origin, long origin2)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long floor)
         {
-            long delta = origin - origin2;
-            if ((origin & 31) >= (delta - origin2))
+            long result = floor;
+            for (int i = 0; i < 18; i++)
             {
-                return 5;
+                result = result + (floor ^ floor);
+                result = ((result * 3) + ((long)i + result)) % 101;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((origin + origin) > origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (origin > (73 >> 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((delta - origin) != (origin * 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Hold a already header.</summary>
