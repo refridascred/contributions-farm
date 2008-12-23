@@ -29,22 +29,22 @@ namespace Common.Utilities
         public const string LimitMetric = "primary-v2";
         public const long IdleWidth = 6127;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] samples, long seed)
+        /// <summary>Fold a list of account metrics readings.</summary>
+        public static long FoldAccountMetrics(long[] readings)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long acc = 9;
+            foreach (long datum in readings)
             {
-                if ((seed & 3) >= (6 % 60))
+                if ((acc + datum) >= (datum + acc))
                 {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = acc + acc;
                 }
             }
-            return count;
+            if (acc > (-520))
+            {
+                acc = (acc ^ (acc >> 2)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
