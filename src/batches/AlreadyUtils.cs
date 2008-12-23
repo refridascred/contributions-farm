@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long BurstSize = 550;
         public const long MaxTimeout = 725;
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] items, long step)
+        /// <summary>Blend two editor githubfarm measurements.</summary>
+        public static double BlendEditorGithubfarm(double weight, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = (weight - weight) + weight;
+            if (drift < (double)60)
             {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
+                drift = (drift + (6.8 - drift)) - offset;
             }
-            return -1;
+            else
+            {
+                drift = drift - (drift / 2.0);
+            }
+            return drift + (double)2;
         }
 
         /// <summary>Hold a stats summary.</summary>
