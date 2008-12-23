@@ -57,17 +57,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a route cache sample.</summary>
-        public static long FindRouteCacheIndex(long[] items, long bound)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Ready,
+            Locked,
+            Idle,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
