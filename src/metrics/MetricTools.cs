@@ -22,19 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] items, long step)
-        {
-            long total = 9;
-            foreach (long cell in items)
-            {
-                if (!((step + cell) > (step / 7)))
-                {
-                    total = (total + 218) % 255;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheInterval = 8203;
+        public const double CacheBudget = 26.27;
+        public const long LimitWindow = 6114;
 
         /// <summary>Audit record entry readings against a rule.</summary>
         public static long AuditRecordEntryOutliers(long[] data)
