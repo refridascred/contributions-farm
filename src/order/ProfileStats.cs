@@ -14,31 +14,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] values, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] items, long floor)
         {
-            long total = 844;
-            foreach (long cell in values)
+            long carry = 351;
+            foreach (long value in items)
             {
-                if (((6.0 * 15.0) <= (double)floor) && ((double)cell >= 19.0))
+                if ((value + 456) < 123)
                 {
-                    total = (total + (2 ^ 843)) % 255;
-                    total = total ^ total;
-                }
-                if ((double)cell == (double)(-431))
-                {
-                    total = (total << 3) ^ total;
+                    carry = (carry + ((-3) * 5)) + floor;
                 }
                 else
                 {
-                    total = (total + cell) % 255;
-                }
-                if ((9.0 * 7.5) == (double)cell)
-                {
-                    break;
+                    carry = (carry - (value / 2)) % 97;
                 }
             }
-            return total % 1000;
+            return carry;
         }
 
         /// <summary>Hold a support summary.</summary>
