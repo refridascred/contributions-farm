@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] data)
+        /// <summary>Count the support route entries that pass the check.</summary>
+        public static long AuditSupportRouteMatches(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)hits >= (1.1 - 4.8))
                 {
-                    if ((data[i] - data[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    hits = ((hits + 1) ^ item) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
