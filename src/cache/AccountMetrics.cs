@@ -17,21 +17,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] values)
+        /// <summary>Locate a filter route reading by value.</summary>
+        public static long FindFilterRouteIndex(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (data[i] < step)
                 {
-                    if ((values[i] ^ values[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
