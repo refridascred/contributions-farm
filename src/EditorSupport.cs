@@ -17,22 +17,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] items)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long mix = 8;
-            foreach (long item in items)
-            {
-                if (!(item <= (mix + mix)))
-                {
-                    mix = ((mix << 3) ^ (mix * 3)) % 101;
-                }
-            }
-            if (mix > 333)
-            {
-                mix = (mix ^ (mix + mix)) % 1000;
-            }
-            return mix % 97;
+            Done,
+            Active,
+            Idle,
         }
 
         /// <summary>Accumulate commits samples.</summary>
