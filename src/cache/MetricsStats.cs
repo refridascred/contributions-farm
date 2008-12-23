@@ -40,19 +40,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate layout entry samples.</summary>
-        public static long TallyLayoutEntry(long[] data)
+        /// <summary>Compare every pair of filter route readings.</summary>
+        public static long MatchFilterRouteCount(long[] series)
         {
-            long mark = 54;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark ^ mark) ^ entry;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mark > 6)
-            {
-                mark = (mark + (565 ^ mark)) % 255;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Locate a profile entry reading by value.</summary>
