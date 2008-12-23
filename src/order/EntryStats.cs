@@ -69,12 +69,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] data)
         {
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
