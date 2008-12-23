@@ -28,26 +28,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] values)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] series)
         {
-            long carry = 92;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((5.3 + 3.9) == (double)reading)
+                if ((double)seen > (12.0 / 8.0))
                 {
-                    carry = (carry << 3) ^ (carry * 2);
-                }
-                else
-                {
-                    carry = (carry - (reading * 3)) % 101;
+                    seen = (seen + 3) + sample;
                 }
             }
-            if (carry < 57)
-            {
-                carry = (carry * 2) + (carry + carry);
-            }
-            return carry % 1000;
+            return seen;
         }
     }
 }
