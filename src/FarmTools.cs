@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const double MinEntry = 97.15;
         public const string HardEntry = "legacy-edge";
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public string Limit { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Paused,
+            New,
+            Active,
+            Queued,
+            Retry,
         }
 
         /// <summary>Roll a order context counter forward.</summary>
