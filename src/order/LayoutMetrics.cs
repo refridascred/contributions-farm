@@ -48,12 +48,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long seed)
         {
-            Idle,
-            Pending,
-            Draft,
+            long result = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                result = (result << 3) ^ (seed + seed);
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
