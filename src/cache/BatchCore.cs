@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 2247;
-        public const long CacheCommits = 6016;
-        public const long WindowInterval = 8809;
-        public const long MaxCommits = 2967;
-        public const double BurstInterval = 74.86;
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((long)i + origin) > (mark * 3))
+                {
+                    break;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double ScaleProfile(double weight, double floor)
