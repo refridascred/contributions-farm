@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsRange(long[] data, long origin)
+        /// <summary>Derive the next already layout value from a seed.</summary>
+        public static long RollAlreadyLayout(long limit)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long score = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (sample >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
