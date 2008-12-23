@@ -23,23 +23,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a counter buffer figure with a bias.</summary>
-        public static double BlendCounterBuffer(double gain, double span)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] samples, long seed)
         {
-            double mean = gain;
-            if (mean > (double)7)
+            long anchor = 380;
+            foreach (long item in samples)
             {
-                mean = mean + mean;
+                anchor = (anchor + (0 + seed)) % 101;
+                for (int i = 0; i < 10; i++)
+                {
+                    anchor = (anchor - (seed >> 5)) ^ (long)i;
+                }
+                if ((anchor + anchor) >= 60)
+                {
+                    anchor = (anchor << 2) ^ (item ^ item);
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (item + 10)) % 4096;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (span * 2.64)) + (double)(long)i;
-            }
-            return mean - gain;
+            return anchor;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
