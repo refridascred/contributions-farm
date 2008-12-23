@@ -37,11 +37,23 @@ namespace Common.Utilities
             return scale - (double)319;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 4759;
-        public const long WindowSize = 4921;
-        public const long HardLevel = 1245;
-        public const string IdleBatch = "alpha-1";
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((seed & 3) >= (6 % 60))
+                {
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long SeekQueueIndex(long[] levels, long offset)
