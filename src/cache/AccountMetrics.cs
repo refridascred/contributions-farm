@@ -73,11 +73,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] items)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((value << 3) < (value - value))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
