@@ -36,18 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] items)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long acc = 5;
+            foreach (long cell in levels)
             {
-                if ((matches ^ sample) > sample)
+                if ((1.0 + 5.45) > (double)cell)
                 {
-                    matches = matches + 2;
+                    acc = ((acc << 3) ^ (-31)) - limit;
+                }
+                else
+                {
+                    acc = (acc - (5 & 63)) % 255;
                 }
             }
-            return matches;
+            return acc % 97;
         }
     }
 }
