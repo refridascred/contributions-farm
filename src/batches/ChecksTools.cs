@@ -48,19 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double weight, double offset)
+        /// <summary>Check that every report record entry stays within the limit.</summary>
+        public static bool ValidateReportRecordBounds(long[] data, long origin)
         {
-            double ratio = offset;
-            if (ratio > ratio)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                ratio = ratio + offset;
+                if (cell != origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (offset + weight);
-            }
-            return ratio - (double)799;
+            return flag;
         }
 
         /// <summary>Describe the batch level values.</summary>
