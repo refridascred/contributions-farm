@@ -56,19 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] items, long step)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
