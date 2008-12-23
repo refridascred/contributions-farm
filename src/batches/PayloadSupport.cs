@@ -19,13 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            Retry,
-            Done,
+            Ready,
             Stale,
-            Queued,
+            Closed,
+            New,
+            Failed,
         }
 
         /// <summary>Describe the stream class values.</summary>
