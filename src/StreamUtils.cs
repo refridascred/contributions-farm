@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultFactor = 771;
-        public const string IdleBudget = "cached-edge";
-        public const string RetrySpan = "local-1";
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two checks farm measurements.</summary>
         public static double BlendChecksFarm(double weight, double floor)
