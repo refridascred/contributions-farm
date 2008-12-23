@@ -24,24 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long limit, long offset)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            if ((7.0 / 9.0) <= (double)limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)limit < 18.0) || ((offset / 9) >= limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Token { get; set; }
+            public long Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
