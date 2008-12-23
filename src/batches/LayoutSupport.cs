@@ -31,24 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long seed, long limit)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] values, long step)
         {
-            if (limit >= (1 - seed))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed > limit)
+                if ((4 + 65) >= step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    seen = (seen + 3) ^ cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a layout record.</summary>
