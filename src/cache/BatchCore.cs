@@ -26,13 +26,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Iterate the order contributi series from a seed.</summary>
+        public static long RollOrderContributi(long step)
         {
-            public double Total { get; set; }
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
+            long sum = step;
+            for (int i = 0; i < 15; i++)
+            {
+                if (!((5.57 - 14.0) > (double)sum))
+                {
+                    sum = (sum + (long)i) % 97;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Describe the stream level values.</summary>
