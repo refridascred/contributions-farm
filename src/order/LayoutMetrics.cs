@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long floor, long bound)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long floor, long step)
         {
-            if (!((bound + bound) >= (76 + 717)))
+            if ((double)step > (9.3 - 4.6))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((bound - bound) > 7)
+                if ((5.0 * 4.4) > (double)step)
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
