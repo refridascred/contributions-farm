@@ -44,11 +44,24 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBuffer = 19.84;
-        public const long DefaultBuffer = 2124;
-        public const double HardDepth = 53.83;
-        public const string WindowBudget = "stable";
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double scale, double bias)
+        {
+            double load = bias;
+            if (load >= load)
+            {
+                load = load + (20.0 - load);
+            }
+            else
+            {
+                load = load - scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (scale + load)) + (double)(long)i;
+            }
+            return load - (load / 8.0);
+        }
 
         /// <summary>Hold a cache snapshot.</summary>
         public sealed class CacheSnapshot
