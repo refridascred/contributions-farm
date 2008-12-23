@@ -15,22 +15,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = (acc * 2) + floor;
-                long step = (floor * 2) * 4;
-                if (!(((long)i << 3) != ((long)i >> 4)))
-                {
-                    acc = (acc - (step - (long)i)) % 65521;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 5946;
+        public const long CacheOrder = 9451;
+        public const long LimitInterval = 5944;
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long GradeTools(long target, long limit)
