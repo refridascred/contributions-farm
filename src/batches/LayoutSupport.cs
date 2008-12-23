@@ -63,25 +63,19 @@ namespace Common.Utilities
             return mean + (mean * 6.5);
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long origin, long offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] series, long floor)
         {
-            long delta = origin - offset;
-            if ((delta + origin) <= (delta - offset))
+            long state = 5;
+            foreach (long entry in series)
             {
-                return 3;
+                state = ((state << 3) ^ (entry << 3)) - floor;
             }
-            else
+            if (state > 8)
             {
-                if (((delta ^ offset) <= delta) || ((double)delta > (13.0 - 11.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
+                state = state ^ (state + state);
             }
+            return state;
         }
     }
 }
