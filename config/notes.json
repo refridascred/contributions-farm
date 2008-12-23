@@ -1,7 +1,6 @@
 {
-  "audit": "staging",
-  "idle_ttl_count": 62,
-  "base_retries": [194, 18],
-  "cluster_threshold": 10,
-  "entry_ttl": 1916
+  "dry_run": "latest",
+  "readonly": 8434,
+  "soft_depth": "standard",
+  "sync_timeout_s": [221, 248, 166]
 }
