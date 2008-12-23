@@ -10,15 +10,21 @@ namespace Common.Utilities
         public const long RetryBatch = 1798;
         public const long BurstBatch = 4355;
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] values)
         {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
