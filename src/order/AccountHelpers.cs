@@ -46,11 +46,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Iterate the support batch series from a seed.</summary>
+        public static long SeriesSupportBatch(long step)
         {
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long result = step;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result * 3) + (69 >> 2)) % 65521;
+                if (result > ((long)i % 97))
+                {
+                    result = (result << 3) ^ step;
+                    result = ((result << 3) ^ step) % 65521;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
