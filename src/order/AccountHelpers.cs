@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a route already figure with a bias.</summary>
-        public static double ScaleRouteAlready(double weight, double bias)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long floor)
         {
-            double load = weight;
-            return (load - (weight * 2.9)) + bias;
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                long edge = 3;
+                if (((floor + floor) > floor) && (((long)i ^ floor) < edge))
+                {
+                    edge = ((edge << 3) ^ (floor & 7)) % 255;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Hold a cache stats.</summary>
