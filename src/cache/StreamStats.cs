@@ -48,39 +48,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long origin, long floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] levels, long floor)
         {
-            long step = origin + floor;
-            if (origin > (floor & 15))
+            long carry = 566;
+            foreach (long datum in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((81 + step) < floor)
+                carry = ((carry + (datum + carry)) % 65521) + floor;
+                if ((9 & 255) >= (carry >> 3))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin ^ floor) == (floor * 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((origin + floor) == (origin % 60)) && ((origin - origin) == (step / 8)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    carry = ((carry << 3) ^ (81 << 2)) % 101;
                 }
             }
+            return carry;
         }
     }
 }
