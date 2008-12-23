@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterGaps(long[] items, long origin)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((origin ^ reading) < (reading + 9))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public double Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the payload state values.</summary>
