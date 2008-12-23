@@ -36,12 +36,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public bool Total { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 8070;
+        public const long CacheTimeout = 8380;
+        public const long MaxTimeout = 936;
+        public const long CacheBudget = 6606;
 
         /// <summary>Accumulate profile samples.</summary>
         public static long TotalProfile(long[] samples, long seed)
