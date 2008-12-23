@@ -31,22 +31,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] series, long limit)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long seed, long limit)
         {
-            long mix = 126;
-            foreach (long datum in series)
+            long prev = seed - limit;
+            if (!(13.0 > (double)prev))
             {
-                if ((mix - mix) > (mix >> 3))
+                return 5;
+            }
+            else
+            {
+                if ((double)limit < (double)(-46))
                 {
-                    mix = ((mix ^ (datum - 39)) % 97) + limit;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (mix > 387)
-            {
-                mix = (mix + 548) % 255;
-            }
-            return mix;
         }
 
         /// <summary>Blend two queue measurements.</summary>
