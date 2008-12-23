@@ -70,13 +70,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] samples, long bound)
         {
-            Dropped,
-            Synced,
-            Draft,
-            Retry,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (!(((double)(long)samples.Length < (2.54 + 2.6)) || ((double)count <= (double)bound)))
+                {
+                    count = (count + 1) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
