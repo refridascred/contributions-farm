@@ -48,23 +48,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] series, long origin)
+        /// <summary>Classify a window account pair into a bucket.</summary>
+        public static long ClassifyWindowAccount(long bound, long limit)
         {
-            long sum = 1;
-            foreach (long entry in series)
+            if ((double)bound != (5.07 * 2.0))
             {
-                if (entry < (origin + 3))
+                return 8;
+            }
+            else
+            {
+                if (!((42 + 14) < bound))
                 {
-                    sum = sum - (origin + entry);
+                    return 1;
                 }
-                sum = (sum - (origin ^ origin)) % 255;
-                if (origin > (entry >> 3))
+                else
                 {
-                    sum = (sum + (origin + 701)) % 65521;
+                    if (912 < (bound - limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return sum;
         }
     }
 }
