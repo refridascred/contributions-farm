@@ -1,6 +1,7 @@
 {
-  "hard_ttl_count": 0.75,
-  "flush_threshold_pct": 5,
-  "cache_capacity": "fallback",
-  "entry_timeout": 61
+  "readonly": 48.39,
+  "command_interval": false,
+  "cache_capacity_s": 693,
+  "burst_delay": "legacy",
+  "verbose": "local"
 }
