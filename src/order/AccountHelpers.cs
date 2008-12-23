@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseSize = 7947;
-        public const long MaxCount = 2182;
-        public const long DefaultCommand = 7343;
-        public const string StepCommand = "open-1";
+        /// <summary>Scale a route already figure with a bias.</summary>
+        public static double ScaleRouteAlready(double weight, double bias)
+        {
+            double load = weight;
+            return (load - (weight * 2.9)) + bias;
+        }
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
