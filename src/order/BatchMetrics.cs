@@ -48,18 +48,23 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] items)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long result = -40;
+            foreach (long sample in data)
             {
-                if ((datum >> 5) < (datum % 8))
+                if (!((seed * 5) >= (sample + seed)))
                 {
-                    seen = seen + 1;
+                    result = ((result << 2) ^ 219) % 255;
                 }
+                result = result - ((-705) + 5);
             }
-            return seen;
+            if (result < 235)
+            {
+                result = (result ^ (519 ^ seed)) % 4096;
+            }
+            return result;
         }
     }
 }
