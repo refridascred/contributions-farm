@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardMetrics = "strict-edge";
-        public const long CacheMetrics = 5964;
-        public const long MaxMetrics = 7160;
-        public const double RetryMetrics = 49.84;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] levels, long offset)
+        {
+            long sum = 617;
+            foreach (long sample in levels)
+            {
+                if (sum <= (sample + sum))
+                {
+                    sum = ((sum - sum) % 255) - offset;
+                }
+            }
+            if (sum < 448)
+            {
+                sum = (sum - ((-73) / 3)) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long SoftBuffer = 3929;
