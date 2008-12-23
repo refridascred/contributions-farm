@@ -43,19 +43,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every filter payload entry stays within the limit.</summary>
-        public static bool VerifyFilterPayloadRange(long[] items, long floor)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long offset, long origin)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            if (0 <= (offset + origin))
             {
-                if (reading >= floor)
+                return 2;
+            }
+            else
+            {
+                if ((double)origin != (double)offset)
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return flag;
         }
 
         /// <summary>Fold a list of account readings.</summary>
