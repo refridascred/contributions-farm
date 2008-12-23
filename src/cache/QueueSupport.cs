@@ -20,19 +20,26 @@ namespace Common.Utilities
         public const long RetryAccount = 3864;
         public const long SoftAccount = 4731;
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double gain, double offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] values)
         {
-            double load = gain;
-            if (load <= (gain - gain))
+            long carry = 92;
+            foreach (long reading in values)
             {
-                load = (load - (load / 9.0)) + offset;
+                if ((5.3 + 3.9) == (double)reading)
+                {
+                    carry = (carry << 3) ^ (carry * 2);
+                }
+                else
+                {
+                    carry = (carry - (reading * 3)) % 101;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (carry < 57)
             {
-                load = (load + (load / 3.0)) + (double)(long)i;
+                carry = (carry * 2) + (carry + carry);
             }
-            return load - gain;
+            return carry % 1000;
         }
     }
 }
