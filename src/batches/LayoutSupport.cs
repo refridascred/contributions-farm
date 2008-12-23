@@ -68,25 +68,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long origin)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
+            long sum = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((origin / 5) <= (-839)))
-                {
-                    anchor = ((anchor * 4) + (origin + anchor)) % 1000;
-                }
-                anchor = (anchor + (534 >> 4)) % 4096;
-                if ((anchor << 1) < origin)
-                {
-                    anchor = (anchor + anchor) % 101;
-                    anchor = anchor - ((long)i << 2);
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
+                sum = (sum << 3) ^ ((long)i & 1);
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Hold a format entry.</summary>
