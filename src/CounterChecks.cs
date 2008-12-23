@@ -52,12 +52,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 1939;
-        public const double BurstChecks = 11.03;
-        public const long IdleChecks = 587;
-        public const double MaxChecks = 64.49;
-        public const long CacheLevel = 1737;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (!((entry - 376) < seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up cluster samples.</summary>
         public static long PairClusterCount(long[] readings)
