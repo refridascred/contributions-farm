@@ -69,21 +69,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] values)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long step, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long next = step ^ bound;
+            if ((bound >> 2) > next)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((next << 2) <= (next * 3)) || (bound <= (bound * 2)))
                 {
-                    if ((values[i] - values[j]) > 9)
+                    return 6;
+                }
+                else
+                {
+                    if (((step / 5) != (574 + (-759))) || (6.14 <= (double)bound))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return matches;
         }
     }
 }
