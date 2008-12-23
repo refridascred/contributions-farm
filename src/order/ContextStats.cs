@@ -13,19 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (18.0 >= (double)sample)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 9476;
+        public const long WindowRatio = 3116;
+        public const long LimitCommits = 3912;
+        public const long DefaultInterval = 5328;
 
         /// <summary>Project the next batches buffer value.</summary>
         public static double ProjectBatchesBuffer(double scale, double floor)
