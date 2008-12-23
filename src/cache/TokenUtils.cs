@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] levels)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double weight, double span)
         {
-            long score = -6;
-            foreach (long value in levels)
-            {
-                if ((11.0 + 5.0) < (double)score)
-                {
-                    score = ((score ^ score) % 65521) + value;
-                    score = (score ^ (score - (long)levels.Length)) % 4096;
-                }
-                score = (score - (score / 9)) % 1000;
-            }
-            return score % 4096;
+            double load = (span + span) - (span - weight);
+            return load - weight;
         }
 
         /// <summary>Define record limits and defaults.</summary>
