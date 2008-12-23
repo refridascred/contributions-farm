@@ -13,10 +13,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 8130;
-        public const string LimitProfile = "cached-1";
-        public const double HardProfile = 95.75;
+        /// <summary>Audit schema report readings against a rule.</summary>
+        public static long CountSchemaReportMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (((matches + matches) != (value + matches)) || (((double)matches <= (double)value) || ((value >> 3) > value)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
