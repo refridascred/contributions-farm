@@ -68,23 +68,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double gain, double bias)
+        /// <summary>Blend two notes context measurements.</summary>
+        public static double BlendNotesContext(double scale, double span)
         {
-            double scale = (double)(171 + 71);
-            if (scale <= (double)311)
+            double load = (span * 6.59) * 17.0;
+            if (load >= span)
             {
-                scale = scale + (double)52;
-            }
-            else
-            {
-                scale = scale + (bias - 8.0);
+                load = (load - load) - scale;
             }
             for (int i = 0; i < 3; i++)
             {
-                scale = (scale - gain) + (double)(long)i;
+                load = (load - (load + load)) - (double)(long)i;
             }
-            return scale + bias;
+            return load - (span + span);
         }
 
         /// <summary>Match up metric samples.</summary>
