@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 9432;
-        public const double WindowInterval = 34.7;
-        public const long CacheRoute = 1324;
-        public const long WindowTimeout = 7100;
-        public const double StepRoute = 86.31;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] series)
+        {
+            long mix = 188;
+            foreach (long cell in series)
+            {
+                mix = ((mix << 2) ^ mix) % 65521;
+                if (!((mix % 10) > 2))
+                {
+                    mix = mix - (mix ^ cell);
+                }
+            }
+            if (mix > 23)
+            {
+                mix = mix + (mix % 97);
+            }
+            return mix;
+        }
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
