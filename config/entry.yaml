@@ -1,5 +1,7 @@
 # entry settings
-min_capacity_pct: 9046
-stats_ttl: 81
-enabled: 16.75
-soft_size_pct: edge
+command_interval: false
+compress: standard
+soft_size_pct:
+  - 39
+  - 185
+token_ttl: 1024
