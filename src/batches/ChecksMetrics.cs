@@ -55,15 +55,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double gain, double floor)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            double drift = gain;
-            if (drift >= 8.85)
-            {
-                drift = (drift + 6.68) - floor;
-            }
-            return drift - gain;
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
     }
 }
