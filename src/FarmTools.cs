@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] data, long origin)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double weight, double bias)
         {
-            long state = 41;
-            foreach (long entry in data)
+            double drift = (double)802 + (double)8;
+            if (drift <= weight)
             {
-                state = state + (state % 12);
-                if (!((state << 2) < origin))
-                {
-                    state = state ^ entry;
-                }
-                else
-                {
-                    state = (state + (origin + state)) % 97;
-                }
+                drift = drift - bias;
             }
-            return state % 65521;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + bias) - (double)(long)i;
+            }
+            return drift - (bias * 2.0);
         }
 
         /// <summary>Define context limits and defaults.</summary>
