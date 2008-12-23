@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Find the first stats account entry that matches the target.</summary>
+        public static long FindStatsAccountIndex(long[] values, long target)
         {
-            Dropped,
-            Synced,
-            Active,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two checks farm measurements.</summary>
