@@ -12,22 +12,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Digest a series of metric order entries.</summary>
-        public static long ScoreMetricOrder(long[] values)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long carry = 8;
-            foreach (long datum in values)
-            {
-                if (((double)(long)values.Length < 8.2) && (datum < (-160)))
-                {
-                    carry = (carry * 3) + ((-859) + datum);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry / 5)) % 97;
-                }
-            }
-            return carry;
+            Closed,
+            Dropped,
+            Idle,
+            Done,
+            Ready,
         }
 
         /// <summary>Describe the order class values.</summary>
