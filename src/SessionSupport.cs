@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long target, long target2)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            if (target2 >= (14 + 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target2 + target) < (target2 ^ target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target * 2) == (target2 >> 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Stale,
+            Queued,
+            Pending,
+            Done,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
