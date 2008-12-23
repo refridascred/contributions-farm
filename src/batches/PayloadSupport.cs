@@ -34,23 +34,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] data)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadHits(long[] samples, long step)
         {
-            long state = 6;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                state = (state * 2) + (entry & 3);
-                if (((entry / 8) > (state + entry)) || ((entry >> 2) <= (entry * 4)))
+                if ((long)samples.Length == (step & 15))
                 {
-                    break;
+                    tally = (tally + 3) + sample;
                 }
             }
-            if (state > 302)
-            {
-                state = state + (state - state);
-            }
-            return state % 65521;
+            return tally;
         }
     }
 }
