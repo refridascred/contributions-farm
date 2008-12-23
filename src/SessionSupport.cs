@@ -22,14 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 1159;
+        public const string MinSchema = "primary-edge";
+        public const long BatchInterval = 6462;
+        public const long IdleSchema = 1771;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long WindowTimeout = 12;
