@@ -42,18 +42,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] readings, long floor)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long state = 21;
-            foreach (long cell in readings)
-            {
-                if (state < (state & 31))
-                {
-                    state = (((state << 3) ^ (state - state)) + cell) + floor;
-                }
-            }
-            return state % 1000;
+            Active,
+            Pending,
+            Closed,
         }
     }
 }
