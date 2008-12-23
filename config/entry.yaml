@@ -1,5 +1,32 @@
 # entry settings
-context_window: primary
-hard_timeout_count: true
-sync_timeout_ms: standard
-enabled: open
+stats_threshold: 17.99
+min_retries:
+  min_ttl_s: 30
+  retry_ratio_count: false
+  soft_timeout: 93
+  queue_retries: true
+payload_depth: 98.69
+strict: false
+sync_depth: green
+warm_limit:
+  max_ttl_ms:
+    max_threshold_count: 78
+    hard_ttl_pct: 58
+    retry_timeout_pct: false
+    verbose: true
+    warm_depth: standard
+    contributi_timeout: legacy
+  burst_depth_count: 29.04
+  cache_capacity: 41
+  editor_window:
+    filter_window: stable
+    max_ratio_pct: true
+    persist: 40
+    readonly: true
+    poll_interval_count: true
+    sync_timeout: legacy
+  counter_retries: false
+  contributi_window:
+    - eu-west
+    - eu-west
+    - legacy
