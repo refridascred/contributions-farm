@@ -1,17 +1,7 @@
 # entry settings
-context_retries:
-  burst_size:
-    - local
-    - staging
-    - fallback
-  metric_interval: 2
-  warm_timeout:
-    - fallback
-    - legacy
-    - blue
-hard_interval: legacy
-min_delay_count:
-  - primary
-  - green
-  - strict
-  - stable
+enabled: stable
+flush_limit_s: 49
+max_limit: legacy
+cache_interval_count: open
+poll_timeout_count: true
+batch_delay: false
