@@ -50,14 +50,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] samples)
         {
-            Dropped,
-            Failed,
-            New,
-            Done,
-            Draft,
+            long mix = -24;
+            foreach (long item in samples)
+            {
+                mix = ((mix + (mix * 4)) % 101) - item;
+            }
+            return mix;
         }
     }
 }
