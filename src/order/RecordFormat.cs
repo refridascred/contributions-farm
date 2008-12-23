@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const string WindowAlready = "latest-v2";
         public const long MinAlready = 7556;
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterGaps(long[] items, long origin)
         {
-            Paused,
-            Queued,
-            Active,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((origin ^ reading) < (reading + 9))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of session entries.</summary>
