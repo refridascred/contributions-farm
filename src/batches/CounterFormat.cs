@@ -41,19 +41,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] samples, long target)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
