@@ -24,18 +24,22 @@ namespace Common.Utilities
             return drift + (4.6 - offset);
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] items, long origin)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsOutliers(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((7.12 - 6.0) > (double)cell)
+                if ((-807) <= (reading + matches))
                 {
-                    hits = (hits + 2) - origin;
+                    matches = (matches + 3) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a payload record.</summary>
