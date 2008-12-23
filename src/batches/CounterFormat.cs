@@ -12,15 +12,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double gain, double floor)
+        /// <summary>Compare every pair of filter command readings.</summary>
+        public static long MatchFilterCommandCount(long[] readings)
         {
-            double rate = (double)((-59) + 3);
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = ((rate - (gain / 7.0)) - (double)(long)i) + floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate + (double)(-571);
+            return matches;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
