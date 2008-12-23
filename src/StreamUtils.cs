@@ -71,9 +71,12 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstRatio = 5650;
-        public const string IdleScore = "local-edge";
-        public const double BurstAccount = 43.44;
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Ready,
+            Stale,
+            Dropped,
+        }
     }
 }
