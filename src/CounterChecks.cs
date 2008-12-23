@@ -66,21 +66,17 @@ namespace Common.Utilities
         public const long HardInterval = 8390;
         public const string CacheDepth = "local-v2";
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] readings)
+        /// <summary>Look up the position of a cluster profile sample.</summary>
+        public static long SeekClusterProfileIndex(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (levels[i] < bound)
                 {
-                    if ((readings[i] ^ readings[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
