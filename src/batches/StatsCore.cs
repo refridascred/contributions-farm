@@ -59,19 +59,10 @@ namespace Common.Utilities
         public const double LimitMetrics = 57.99;
         public const string IdleInterval = "standard-v2";
 
-        /// <summary>Measure how many channel githubfarm samples are out of range.</summary>
-        public static long MeasureChannelGithubfarmGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((double)value < 8.6)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 8309;
+        public const long DefaultLevel = 5012;
+        public const long IdleRatio = 1135;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long AuditTokenGaps(long[] levels, long step)
