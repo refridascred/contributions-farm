@@ -28,11 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            Paused,
+            Draft,
+            Idle,
         }
     }
 }
