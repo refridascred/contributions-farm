@@ -23,18 +23,18 @@ namespace Common.Utilities
             return rate + (double)(-571);
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] samples, long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((1 - bound) > (182 & 255))
+                if (!((193 >> 4) >= (origin ^ 5)))
                 {
-                    matches = (matches + 1) ^ item;
+                    seen = (seen + 1) ^ sample;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
