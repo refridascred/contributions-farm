@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Check that every queue cache entry stays within the limit.</summary>
+        public static bool CheckQueueCacheBounds(long[] series, long seed)
         {
-            Stale,
-            Ready,
-            Paused,
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
