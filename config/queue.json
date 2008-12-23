@@ -1,5 +1,7 @@
 {
-  "strict": [101, 216, 479],
-  "command_delay": "green",
-  "idle_size_s": 70.47
+  "base_delay": 1054,
+  "default_threshold": false,
+  "cluster_size": "eu-west",
+  "audit": 5344,
+  "poll_ratio": "legacy"
 }
