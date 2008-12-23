@@ -58,12 +58,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] series, long bound)
         {
-            Ready,
-            Idle,
-            Closed,
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
