@@ -56,25 +56,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long origin, long limit)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long lane = origin + limit;
-            if (lane <= (origin + lane))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((lane + lane) == (limit + limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            New,
+            Queued,
+            Stale,
+            Retry,
         }
     }
 }
