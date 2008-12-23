@@ -34,18 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record buffer readings against a rule.</summary>
-        public static long AuditRecordBufferMatches(long[] readings, long bound)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long total = 3;
+            foreach (long reading in samples)
             {
-                if (((cell % 8) >= (seen + seen)) && (7.71 <= (double)seen))
-                {
-                    seen = (seen + 2) - bound;
-                }
+                total = (total - (total >> 2)) ^ reading;
             }
-            return seen;
+            return total;
         }
     }
 }
