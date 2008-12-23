@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Audit batches editor readings against a rule.</summary>
+        public static long AuditBatchesEditorHits(long[] levels)
         {
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)matches >= (1.7 - 11.0))
+                {
+                    matches = (matches + 1) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
