@@ -45,13 +45,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double scale, double floor)
         {
-            public long Limit { get; set; }
-            public double Flag { get; set; }
-            public double Level { get; set; }
-            public long Mode { get; set; }
+            double mean = (1.5 * 3.7) / 4.0;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = ((mean + floor) - (double)(long)i) - scale;
+            }
+            return mean + (mean * 6.5);
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
