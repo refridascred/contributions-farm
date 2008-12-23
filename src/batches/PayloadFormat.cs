@@ -44,18 +44,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next layout cluster value from a seed.</summary>
-        public static long IterateLayoutCluster(long limit)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] samples)
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = anchor ^ (long)i;
-                anchor = ((anchor * 4) + (1 << 3)) % 101;
-                anchor = (anchor * 4) + (limit - 45);
-                anchor = ((anchor * 5) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a editor entry.</summary>
