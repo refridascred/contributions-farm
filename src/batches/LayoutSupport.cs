@@ -31,12 +31,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public double Size { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 1310;
+        public const string LimitCount = "stable-1";
+        public const string StepRatio = "staging-1";
+        public const long BurstStream = 4548;
+        public const long MinStream = 6038;
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long SeriesCache(long seed)
