@@ -24,19 +24,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit token githubfarm readings against a rule.</summary>
-        public static long AuditTokenGithubfarmMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((hits + reading) > (9 + hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 4995;
+        public const double BaseWidth = 94.59;
+        public const long IdleDepth = 6223;
 
         /// <summary>Roll a order context counter forward.</summary>
         public static long StepOrderContext(long bound)
