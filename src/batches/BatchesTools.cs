@@ -19,15 +19,15 @@ namespace Common.Utilities
         public const string HardSpan = "staging-edge";
         public const long MinNotes = 4885;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] readings)
+        /// <summary>Blend two profile commits measurements.</summary>
+        public static double BlendProfileCommits(double ratio, double floor)
         {
-            long mix = 5;
-            foreach (long sample in readings)
+            double weight = (double)(53 << 2);
+            for (int i = 0; i < 6; i++)
             {
-                mix = (mix ^ sample) % 255;
+                weight = (((weight + 19.0) - (double)(long)i) + ratio) + floor;
             }
-            return mix % 4096;
+            return weight - (double)852;
         }
     }
 }
