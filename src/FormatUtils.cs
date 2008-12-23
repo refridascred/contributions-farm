@@ -40,13 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] data)
         {
-            Idle,
-            Locked,
-            Queued,
-            Synced,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (!((hits << 2) != (cell ^ hits)) || ((cell ^ hits) != (cell * 4)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
