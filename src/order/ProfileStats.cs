@@ -62,21 +62,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long seed)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long mix = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix << 2) ^ mix) % 97;
-                mix = ((mix << 3) ^ (seed & 31)) % 101;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = ((mix - (seed & 31)) % 255) ^ (long)i2;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            Pending,
+            Idle,
+            New,
+            Paused,
+            Closed,
         }
     }
 }
