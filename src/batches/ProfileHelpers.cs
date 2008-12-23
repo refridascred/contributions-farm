@@ -48,18 +48,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] items)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long step)
         {
-            long count = 0;
-            foreach (long value in items)
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (((count ^ value) < (value + (long)items.Length)) && ((long)items.Length <= (value - (long)items.Length)))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    count = count + 1;
+                    anchor = ((anchor << 3) ^ (anchor * 2)) ^ (long)i2;
                 }
+                anchor = ((anchor << 3) ^ 53) % 101;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the route level values.</summary>
