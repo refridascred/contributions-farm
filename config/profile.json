@@ -1,8 +1,13 @@
 {
-  "profile_size": 1024,
-  "metric_delay": false,
-  "soft_timeout_pct": "staging",
-  "cache_ratio_count": "standard",
-  "idle_capacity_s": 100,
-  "default_limit_count": false
+  "cache_interval": 6612,
+  "verbose": "cached",
+  "buffer_timeout": {
+    "sync_capacity_pct": 9662,
+    "flush_window": 29.03,
+    "audit": 79.83,
+    "order_depth": "primary",
+    "max_interval_s": 1024
+  },
+  "burst_timeout": [200, 193],
+  "soft_interval": "fallback"
 }
