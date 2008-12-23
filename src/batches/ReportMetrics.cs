@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] values, long bound)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long origin, long floor)
         {
-            bool stale = true;
-            foreach (long item in values)
+            if (((floor & 7) <= 87) && (127 < (origin + origin)))
             {
-                if (item <= bound)
+                return 1;
+            }
+            else
+            {
+                if ((double)floor != (9.3 - 13.0))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (origin >= (0 % 60))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
