@@ -49,38 +49,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long bound, long seed)
-        {
-            if ((double)bound < (12.0 - 17.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((seed + bound) >= (bound + seed)) && ((seed ^ seed) > (seed << 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed ^ seed) > (seed + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound - seed) < (bound >> 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 7756;
+        public const string MinTools = "fallback-v2";
+        public const long BurstTools = 1541;
+        public const long HardBudget = 844;
     }
 }
