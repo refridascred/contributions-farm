@@ -48,21 +48,18 @@ namespace Common.Utilities
             return scale - (double)0;
         }
 
-        /// <summary>Compare every pair of order stream readings.</summary>
-        public static long OverlapOrderStreamCount(long[] levels)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((value * 3) > value)
                 {
-                    if ((levels[i] + levels[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
