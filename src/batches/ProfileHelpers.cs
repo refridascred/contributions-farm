@@ -36,13 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public string Mode { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Label { get; set; }
-            public string Level { get; set; } = "";
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
