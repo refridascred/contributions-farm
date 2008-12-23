@@ -43,22 +43,11 @@ namespace Common.Utilities
         public const long MinDepth = 7185;
         public const long RetryToken = 9963;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] series, long offset)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((7.0 + 9.0) >= (double)seen)
-                {
-                    seen = ((seen + 2) + sample) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
