@@ -34,18 +34,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] readings, long limit)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (limit < 184)
-                {
-                    hits = (hits + 1) ^ value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheSpan = 1157;
+        public const string DefaultInterval = "staging-1";
+        public const long RetryTimeout = 3321;
     }
 }
