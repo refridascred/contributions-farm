@@ -23,25 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long step, long floor)
-        {
-            if (floor > (floor / 8))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)step >= (7.74 * 6.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleLevel = 1394;
+        public const double BatchTools = 12.72;
+        public const double SoftTools = 61.24;
+        public const long HardTools = 8399;
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
