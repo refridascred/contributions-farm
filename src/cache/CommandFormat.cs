@@ -22,12 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double rate, double span)
         {
-            Ready,
-            Pending,
-            Failed,
+            double weight = rate - (double)149;
+            return (weight + 2.2) + span;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
