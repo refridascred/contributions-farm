@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a schema filter reading by value.</summary>
-        public static long LocateSchemaFilterIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 5322;
+        public const double StepSupport = 14.16;
+        public const long IdleTimeout = 8738;
+        public const long WindowSupport = 8183;
 
         /// <summary>Look up the position of a payload layout sample.</summary>
         public static long FindPayloadLayoutIndex(long[] series, long bound)
