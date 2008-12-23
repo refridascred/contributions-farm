@@ -47,16 +47,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long floor)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long mark = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = ((mark * 2) + ((long)i - mark)) % 101;
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
