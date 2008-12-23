@@ -31,19 +31,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] values, long seed)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Pending,
+            Idle,
+            Failed,
+            Locked,
         }
     }
 }
