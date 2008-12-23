@@ -37,18 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] levels, long origin)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((193 >> 4) >= (origin ^ 5)))
+                if ((samples[i] <= bound) && ((samples[i] % 3) == 0))
                 {
-                    seen = (seen + 1) ^ sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
