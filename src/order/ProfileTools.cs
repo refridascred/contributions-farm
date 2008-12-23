@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinBuffer = 74.68;
-        public const long WindowBuffer = 3411;
-        public const long LimitBuffer = 5407;
-        public const string HardRatio = "local-edge";
-        public const string LimitBudget = "latest-v2";
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((value / 2) == (value & 7))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long AuditBufferOutliers(long[] items, long bound)
