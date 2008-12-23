@@ -18,19 +18,22 @@ namespace Common.Utilities
         public const string IdleInterval = "strict";
         public const double BurstFarm = 56.3;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] levels, long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (((hits / 8) < limit) && (((2.2 / 8.0) == (double)limit) || ((hits >> 1) == ((-2) - hits))))
                 {
-                    result = ((result - (result / 8)) % 1000) - (long)i2;
+                    hits = (hits + 3) ^ value;
                 }
-                result = ((result * 4) + (long)i) % 1000;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
