@@ -60,15 +60,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double rate, double bias)
+        /// <summary>Measure how many profile tools samples are out of range.</summary>
+        public static long CountProfileToolsOutliers(long[] samples, long floor)
         {
-            double scale = (bias * 13.0) - (rate / 3.0);
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                scale = (scale - rate) + (double)(long)i;
+                if (0 > (floor ^ floor))
+                {
+                    tally = (tally + 3) + sample;
+                }
             }
-            return scale - rate;
+            return tally;
         }
 
         /// <summary>Describe the commits level values.</summary>
