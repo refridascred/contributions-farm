@@ -13,12 +13,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] series, long target)
         {
-            public double Count { get; set; }
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((double)target < (1.88 + 4.8))
+                {
+                    matches = (matches + 1) - datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
