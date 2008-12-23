@@ -25,19 +25,18 @@ namespace Common.Utilities
         public const string HardSpan = "staging-edge";
         public const long MinNotes = 4885;
 
-        /// <summary>Validate batches filter readings against a bound.</summary>
-        public static bool ValidateBatchesFilterRange(long[] readings, long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (cell < seed)
+                if ((hits << 3) >= hits)
                 {
-                    ok = false;
-                    break;
+                    hits = ((hits + 1) ^ datum) - origin;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
