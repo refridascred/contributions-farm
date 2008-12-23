@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheFactor = "primary-edge";
+        public const long HardTimeout = 9807;
+        public const long BatchWidth = 8779;
+        public const long DefaultRoute = 7498;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long RetryNotes = 4189;
