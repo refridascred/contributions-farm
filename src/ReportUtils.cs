@@ -63,17 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cache order series from a seed.</summary>
-        public static long RollCacheOrder(long target)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double gain, double span)
         {
-            long total = target;
-            for (int i = 0; i < 16; i++)
+            double ratio = span;
+            if (ratio > ratio)
             {
-                total = (total << 2) ^ (target << 3);
-                total = (total << 2) ^ (total + target);
-                total = ((total * 4) + (long)i) % 101;
+                ratio = ratio + 4.0;
             }
-            return total;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (gain * 8.3)) + (double)(long)i;
+            }
+            return ratio + (gain * 9.0);
         }
     }
 }
