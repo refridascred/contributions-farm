@@ -10,24 +10,22 @@ namespace Common.Utilities
         public const string BurstScore = "strict-1";
         public const string CacheFilter = "legacy-v2";
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long origin, long origin2)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] readings)
         {
-            if ((origin2 << 1) >= (origin2 / 6))
+            long mark = 375;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (origin <= origin2)
+                if (mark < (cell * 5))
                 {
-                    return 2;
+                    mark = mark ^ cell;
                 }
                 else
                 {
-                    return 3;
+                    mark = (mark << 3) ^ mark;
                 }
             }
+            return mark;
         }
 
         /// <summary>Describe the notes level values.</summary>
