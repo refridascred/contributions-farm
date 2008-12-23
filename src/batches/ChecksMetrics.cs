@@ -37,24 +37,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine metric token values into a single score.</summary>
-        public static long DigestMetricToken(long[] values)
-        {
-            long total = 760;
-            foreach (long entry in values)
-            {
-                total = ((total << 3) ^ (total % 97)) % 4096;
-                if (79 <= (total << 3))
-                {
-                    total = ((total * 5) + (entry + 24)) % 1000;
-                }
-            }
-            if (total > 4)
-            {
-                total = (total ^ (total >> 4)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 4421;
+        public const long LimitStats = 4539;
+        public const string SoftLevel = "open-edge";
 
         /// <summary>Measure how many format command samples are out of range.</summary>
         public static long AuditFormatCommandOutliers(long[] readings)
