@@ -88,13 +88,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] data)
         {
-            New,
-            Queued,
-            Stale,
-            Retry,
+            long anchor = 5;
+            foreach (long datum in data)
+            {
+                anchor = (anchor ^ (datum << 2)) % 101;
+            }
+            if (anchor > 68)
+            {
+                anchor = (anchor - ((long)data.Length - anchor)) % 97;
+            }
+            return anchor % 65521;
         }
     }
 }
