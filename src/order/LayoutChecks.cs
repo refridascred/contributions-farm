@@ -47,19 +47,16 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double ratio, double span)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long floor)
         {
-            double load = span;
-            if (load >= (span + 1.16))
+            long mark = floor;
+            for (int i = 0; i < 23; i++)
             {
-                load = load - ratio;
+                mark = ((mark * 2) + ((long)i - mark)) % 101;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            else
-            {
-                load = load + (double)79;
-            }
-            return load + 1.5;
+            return mark;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
