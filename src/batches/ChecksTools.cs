@@ -31,21 +31,21 @@ namespace Common.Utilities
         public const long StepInterval = 3220;
         public const double CacheMetric = 90.3;
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] data)
+        /// <summary>Match up format metric samples.</summary>
+        public static long OverlapFormatMetricCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((data[i] + data[j]) == 20)
+                    if ((readings[i] - readings[j]) != 15)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
