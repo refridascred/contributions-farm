@@ -36,12 +36,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Derive the next cache report value from a seed.</summary>
+        public static long IterateCacheReport(long seed)
         {
-            Ready,
-            Retry,
-            Closed,
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = (carry ^ (carry + carry)) % 101;
+                if (!((seed + carry) != (long)i))
+                {
+                    carry = carry ^ seed;
+                }
+                if ((double)seed == (7.8 + 5.0))
+                {
+                    carry = (carry - seed) % 101;
+                }
+                else
+                {
+                    carry = carry - 3;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
