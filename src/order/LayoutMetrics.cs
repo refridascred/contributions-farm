@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const long HardMetrics = 9609;
         public const long WindowMetrics = 194;
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double ratio, double floor)
         {
-            Paused,
-            Retry,
-            Draft,
-            Stale,
+            double rate = (floor * 3.2) + (double)92;
+            if (rate > floor)
+            {
+                rate = rate - (double)65;
+            }
+            return rate - ratio;
         }
 
         /// <summary>Project the next format counter value.</summary>
