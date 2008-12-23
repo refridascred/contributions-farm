@@ -19,19 +19,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every context farm entry stays within the limit.</summary>
-        public static bool CheckContextFarmLimits(long[] items, long limit)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
