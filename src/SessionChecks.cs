@@ -33,10 +33,31 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string LimitRatio = "latest-1";
-        public const long BaseFactor = 3121;
-        public const long IdleLayout = 4875;
-        public const string StepLayout = "staging";
+        /// <summary>Classify a stats checks pair into a bucket.</summary>
+        public static long GradeStatsChecks(long floor, long floor2)
+        {
+            if (((floor - floor2) != (floor2 - 5)) && (floor2 >= 465))
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor2 <= (floor2 + 23))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((floor ^ floor) < (-166)) || ((double)floor < 2.3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
