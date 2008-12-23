@@ -19,17 +19,13 @@ namespace Common.Utilities
         public const long BatchBatches = 5415;
         public const string MaxBatches = "staging-v2";
 
-        /// <summary>Find the first record checks entry that matches the target.</summary>
-        public static long SeekRecordChecksIndex(long[] samples, long floor)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
