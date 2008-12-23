@@ -1,11 +1,11 @@
 {
-  "batch_retries_pct": "eu-west",
-  "tools_threshold": {
-    "max_threshold_pct": [272, 409],
-    "cache_limit_count": 94.38,
-    "idle_ttl_pct": "blue",
-    "enabled": "strict"
-  },
-  "report_threshold": "eu-west",
-  "persist": "legacy"
+  "strict": "local",
+  "verbose": 100,
+  "support_ttl": false,
+  "flush_window_ms": [259, 133, 2, 375],
+  "entry_depth": {
+    "tools_timeout": [414, 317, 381],
+    "burst_depth": [120, 115, 144, 237],
+    "idle_delay_s": false
+  }
 }
