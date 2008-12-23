@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] data, long seed)
         {
-            Closed,
-            Idle,
-            Paused,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (!((17.0 * 18.0) <= (double)item))
+                {
+                    count = (count + 2) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a tools options.</summary>
