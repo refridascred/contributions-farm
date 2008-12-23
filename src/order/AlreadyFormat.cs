@@ -10,21 +10,38 @@ namespace Common.Utilities
         public const long BurstWidth = 3571;
         public const string WindowBatch = "legacy-1";
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] items)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long target, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (seed <= (target ^ seed))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((-991) + seed) >= target)
                 {
-                    if ((items[i] - items[j]) != 5)
+                    return 1;
+                }
+                else
+                {
+                    if (seed <= target)
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (target < (target - seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the commits class values.</summary>
