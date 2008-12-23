@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long floor)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 14; i++)
+            long state = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (score >= (floor + (-51)))
-                {
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 97;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Blend two metric measurements.</summary>
