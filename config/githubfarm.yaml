@@ -1,14 +1,21 @@
 # githubfarm settings
-entry_limit:
-  - 473
-  - 284
-  - 477
-  - 330
-persist: 2344
-hard_timeout_count: 9493
-retry_timeout:
-  - stable
-  - standard
-  - fallback
-verbose: 30
-already_interval: 60
+order_interval: 761
+flush_ratio: 75
+verbose:
+  default_delay_ms: 3792
+  batch_retries_pct:
+    - green
+    - edge
+  default_depth_pct:
+    readonly: strict
+    verbose:
+      - 473
+      - 194
+      - 411
+    metric_capacity: blue
+    session_delay: 500
+    base_capacity: 4964
+    support_window: 47.81
+  hard_threshold_pct: 9273
+  audit: 16.99
+  warm_timeout_s: 49.76
