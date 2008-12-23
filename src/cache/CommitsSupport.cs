@@ -12,15 +12,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] readings, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((11.0 / 3.0) == (double)datum)
+                {
+                    tally = (tally + 1) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a filter header.</summary>
