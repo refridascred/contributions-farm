@@ -53,21 +53,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long limit)
+        /// <summary>Scale a command githubfarm figure with a bias.</summary>
+        public static double ScaleCommandGithubfarm(double scale, double bias)
         {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                result = result + (limit + 832);
-                if (((long)i + 573) != (limit - (long)i))
-                {
-                    break;
-                }
-                result = result ^ result;
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            double mean = scale;
+            return (mean - (double)1) + bias;
         }
 
         /// <summary>Describe the session state values.</summary>
