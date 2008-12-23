@@ -1,8 +1,11 @@
 {
-  "poll_window_s": 500,
-  "base_retries_s": 83.05,
-  "sync_delay_pct": false,
-  "persist": 18.37,
-  "base_capacity": 10,
-  "verbose": "stable"
+  "batch_threshold_count": 100,
+  "hard_ttl": {
+    "metric_window": 83.1,
+    "warm_timeout_count": 83,
+    "dry_run": "primary"
+  },
+  "farm_delay": "local",
+  "warm_timeout_count": "green",
+  "retry_interval": true
 }
