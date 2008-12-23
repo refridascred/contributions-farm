@@ -47,18 +47,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] readings, long seed)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long sum = 1;
+            foreach (long entry in series)
             {
-                if ((count ^ value) > (count & 31))
+                if (entry < (origin + 3))
                 {
-                    count = (count + 1) + seed;
+                    sum = sum - (origin + entry);
+                }
+                sum = (sum - (origin ^ origin)) % 255;
+                if (origin > (entry >> 3))
+                {
+                    sum = (sum + (origin + 701)) % 65521;
                 }
             }
-            return count;
+            return sum;
         }
     }
 }
