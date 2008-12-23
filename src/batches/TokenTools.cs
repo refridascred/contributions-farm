@@ -18,39 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long step, long floor)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] readings)
         {
-            long prev = step - floor;
-            if (613 >= (prev + 1))
+            long result = 6;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor - 556) > floor)
+                if ((reading * 4) <= reading)
                 {
-                    return 1;
+                    result = result ^ (result / 9);
                 }
                 else
                 {
-                    if ((prev + 18) < (step % 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((5.55 - 6.0) != (double)floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    result = ((result * 2) + ((-7) - reading)) % 1000;
+                }
+                if ((reading - 437) >= reading)
+                {
+                    result = (result << 3) ^ (result + 97);
                 }
             }
+            if (result < 0)
+            {
+                result = (result - (result - result)) % 4096;
+            }
+            return result % 4096;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
