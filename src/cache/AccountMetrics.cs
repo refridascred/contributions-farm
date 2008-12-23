@@ -14,17 +14,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Locate a filter route reading by value.</summary>
-        public static long FindFilterRouteIndex(long[] data, long step)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            New,
+            Idle,
         }
 
         /// <summary>Combine stats profile values into a single score.</summary>
