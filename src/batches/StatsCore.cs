@@ -64,39 +64,14 @@ namespace Common.Utilities
         public const double WindowTimeout = 16.84;
         public const long BaseEditor = 460;
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long origin, long offset)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long edge = origin - offset;
-            if (!((7.43 - 8.0) == (double)edge))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)origin <= (0.4 * 1.1)) || ((origin - offset) >= (edge / 7)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((14 % 2) == (8 + edge))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((7.72 / 6.0) >= (double)origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Draft,
+            Idle,
+            New,
+            Queued,
         }
     }
 }
