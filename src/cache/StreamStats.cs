@@ -21,13 +21,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long seed)
         {
-            Closed,
-            Pending,
-            Done,
-            Ready,
+            long state = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
