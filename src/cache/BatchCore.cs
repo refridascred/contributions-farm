@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] samples)
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((tally > (367 + tally)) && (((tally / 7) > (827 % 10)) && ((cell / 6) <= (cell << 2))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
