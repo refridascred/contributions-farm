@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] levels)
+        /// <summary>Scale a cluster githubfarm figure with a bias.</summary>
+        public static double ProjectClusterGithubfarm(double gain, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias2 = (double)(56 * 3);
+            if (bias2 <= (bias2 + 2.09))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias2 = bias2 - (gain * 5.4);
             }
-            return hits;
+            else
+            {
+                bias2 = bias2 - (bias + bias);
+            }
+            return bias2 - gain;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
