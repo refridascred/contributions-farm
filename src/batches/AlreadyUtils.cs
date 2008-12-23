@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public long Size { get; set; }
-            public bool Count { get; set; }
-            public long Region { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepSize = 4784;
+        public const string WindowMetrics = "stable-edge";
+        public const double LimitWidth = 90.36;
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long FindClusterIndex(long[] items, long step)
