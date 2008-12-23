@@ -18,40 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long offset, long bound)
-        {
-            long next = offset + bound;
-            if ((offset >> 4) >= (offset + bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if (bound >= (bound + offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((next ^ offset) <= (bound >> 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((bound / 2) < (offset << 2)) || ((double)bound > (5.24 + 5.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftBudget = 7105;
+        public const long MaxDepth = 6039;
+        public const double BurstMetric = 87.61;
+        public const long LimitTimeout = 9976;
 
         /// <summary>Adjust a account reading.</summary>
         public static double SmoothAccount(double scale, double bias)
