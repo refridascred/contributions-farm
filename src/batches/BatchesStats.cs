@@ -34,19 +34,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] readings, long origin)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] readings)
         {
-            bool ready = true;
+            long matches = 0;
             foreach (long sample in readings)
             {
-                if (sample != origin)
+                if ((sample + matches) <= (80 & 7))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
