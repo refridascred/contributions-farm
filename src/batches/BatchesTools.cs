@@ -23,19 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next batches counter value from a seed.</summary>
-        public static long SeriesBatchesCounter(long bound)
+        /// <summary>Check that every notes order entry stays within the limit.</summary>
+        public static bool VerifyNotesOrderLimits(long[] data, long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (6.4 > (double)bound)
+                if (datum < offset)
                 {
-                    score = (score * 4) + 86;
+                    found = false;
+                    break;
                 }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return found;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
