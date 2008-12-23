@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowDepth = 8390;
-        public const string CacheWidth = "open-v2";
-        public const long LimitCounter = 8596;
-        public const string CacheFactor = "cached-v2";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 5572;
+        public const long RetryBatch = 1798;
+        public const long BurstBatch = 4355;
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long RollFarm(long floor)
