@@ -39,19 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] samples)
+        /// <summary>Locate a channel context reading by value.</summary>
+        public static long FindChannelContextIndex(long[] values, long limit)
         {
-            long carry = 12;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)sample >= 6.3))
+                if ((values[i] >= limit) && ((values[i] % 2) == 0))
                 {
-                    carry = carry ^ (9 - 1);
+                    return (long)i;
                 }
-                carry = (carry ^ sample) % 65521;
             }
-            return carry;
+            return -1;
         }
     }
 }
