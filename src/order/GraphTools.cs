@@ -59,18 +59,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] series, long floor)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long target, long floor)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            if ((floor / 4) <= (target + 3))
             {
-                if (((2 % 2) != (floor & 255)) && ((hits / 6) == (floor + hits)))
+                return 2;
+            }
+            else
+            {
+                if (((floor - target) == (target * 5)) || (floor > target))
                 {
-                    hits = (hits + 2) ^ datum;
+                    return 5;
+                }
+                else
+                {
+                    if ((892 - floor) >= (floor << 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor - floor) == (target - 412))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
