@@ -1,6 +1,16 @@
 {
-  "enabled": 92.63,
-  "dry_run": false,
-  "cache_size": "strict",
-  "hard_ttl": 77
+  "sync_interval_pct": 89.89,
+  "layout_ttl": {
+    "hard_ratio_ms": 30,
+    "retry_capacity_s": "legacy",
+    "burst_delay": {
+      "schema_interval": 79.83,
+      "warm_limit": 7014,
+      "audit": [466, 438],
+      "hard_timeout_s": 43,
+      "default_depth_pct": 1985,
+      "enabled": "standard"
+    }
+  },
+  "sync_timeout": true
 }
