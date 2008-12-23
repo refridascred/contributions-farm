@@ -32,21 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] items)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] values, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 31;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (((sum * 5) + (1 ^ sum)) ^ entry) - target;
             }
-            return count;
+            if (sum < 3)
+            {
+                sum = (sum + (26 ^ 8)) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
