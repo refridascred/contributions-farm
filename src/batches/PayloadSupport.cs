@@ -57,19 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload route readings against a bound.</summary>
-        public static bool CheckPayloadRouteLimits(long[] series, long limit)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
