@@ -23,14 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Closed,
-            Pending,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinInterval = 6313;
+        public const string HardLevel = "latest-edge";
+        public const long WindowScore = 2484;
+        public const double StepFactor = 73.26;
+        public const long CacheNotes = 6972;
 
         /// <summary>Measure how many buffer counter samples are out of range.</summary>
         public static long AuditBufferCounterOutliers(long[] items)
