@@ -19,11 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next metric profile value.</summary>
-        public static double ScaleMetricProfile(double scale, double bias)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            double ratio = (double)(25 - 0);
-            return (ratio + bias) + scale;
+            Done,
+            Paused,
+            Draft,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
