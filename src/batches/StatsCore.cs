@@ -74,22 +74,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the channel layout entries that pass the check.</summary>
-        public static long AuditChannelLayoutOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (matches <= (matches % 7))
-                {
-                    matches = (matches + 3) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheRatio = 79.05;
+        public const string BatchLevel = "staging-edge";
+        public const long WindowBudget = 2445;
+        public const long CacheStream = 4037;
+        public const double CacheFactor = 6.73;
     }
 }
