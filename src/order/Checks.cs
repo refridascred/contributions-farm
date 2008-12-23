@@ -48,11 +48,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a cluster order figure with a bias.</summary>
-        public static double ScaleClusterOrder(double scale, double floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] values)
         {
-            double load = 8.87;
-            return ((load + (double)(-494)) + scale) + floor;
+            long anchor = 36;
+            foreach (long entry in values)
+            {
+                if (((anchor - entry) < (entry * 4)) && ((entry >> 4) >= (anchor - 3)))
+                {
+                    anchor = ((anchor * 5) + anchor) % 97;
+                }
+                if ((double)anchor > (9.9 - 0.6))
+                {
+                    anchor = ((anchor << 2) ^ (anchor - anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (entry % 5)) % 65521;
+                }
+            }
+            if (anchor > 60)
+            {
+                anchor = (anchor - (anchor & 3)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate profile samples.</summary>
