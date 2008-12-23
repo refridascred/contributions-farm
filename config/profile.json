@@ -1,8 +1,7 @@
 {
-  "graph_limit": 30,
-  "persist": true,
-  "burst_limit": ["standard", "fallback", "standard", "strict"],
-  "metrics_interval": "eu-west",
-  "poll_timeout": 6986,
-  "burst_depth": true
+  "format_ttl": "local",
+  "sync_interval_s": 30.62,
+  "retry_window": 53.17,
+  "retry_window_ms": true,
+  "strict": true
 }
