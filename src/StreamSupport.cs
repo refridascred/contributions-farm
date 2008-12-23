@@ -33,13 +33,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Match up support window samples.</summary>
+        public static long PairSupportWindowCount(long[] samples)
         {
-            public double Rank { get; set; }
-            public bool Count { get; set; }
-            public double Mode { get; set; }
-            public double Token { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
