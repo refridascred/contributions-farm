@@ -1,6 +1,22 @@
 {
-  "idle_ratio_s": [430, 287],
-  "persist": 7935,
-  "schema_capacity": false,
-  "strict": 3261
+  "hard_delay": 100,
+  "batch_delay_pct": {
+    "persist": "green",
+    "checks_threshold": "staging",
+    "cache_retries_s": ["cached", "local"],
+    "sync_ttl_s": "legacy"
+  },
+  "persist": {
+    "report_limit": 66,
+    "base_ratio": true,
+    "metrics_depth": {
+      "profile_threshold": true,
+      "hard_retries_pct": 21.64,
+      "soft_limit": 20.49,
+      "readonly": [453, 345],
+      "cache_interval_count": 96.25,
+      "enabled": "fallback"
+    },
+    "layout_interval": [398, 31]
+  }
 }
