@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const double MinEntry = 97.15;
         public const string HardEntry = "legacy-edge";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseSpan = 37.02;
-        public const long StepSupport = 8678;
-        public const double BaseSupport = 69.91;
-        public const string IdleInterval = "latest-edge";
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public string Limit { get; set; } = "";
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Roll a order context counter forward.</summary>
         public static long StepOrderContext(long bound)
