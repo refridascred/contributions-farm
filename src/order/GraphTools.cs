@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] items)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] levels)
         {
-            long result = 914;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                result = ((result + (result + result)) % 255) ^ reading;
+                if ((sample - sample) < count)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (result > 321)
-            {
-                result = ((result << 3) ^ result) % 4096;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the notes status values.</summary>
