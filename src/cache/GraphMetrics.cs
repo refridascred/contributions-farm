@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the support route entries that pass the check.</summary>
-        public static long AuditSupportRouteMatches(long[] levels, long origin)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((double)hits >= (1.1 - 4.8))
-                {
-                    hits = ((hits + 1) ^ item) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetrySize = "staging";
+        public const string LimitSpan = "legacy";
+        public const long StepGithubfarm = 8056;
+        public const double DefaultFactor = 76.61;
 
         /// <summary>Define account limits and defaults.</summary>
         public const double BurstSize = 19.88;
