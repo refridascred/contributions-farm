@@ -18,23 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a layout record figure with a bias.</summary>
-        public static double AdjustLayoutRecord(double gain, double span)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long step, long floor)
         {
-            double mean = (double)((-8) >> 3);
-            if (mean < 5.42)
+            long prev = step - floor;
+            if (613 >= (prev + 1))
             {
-                mean = (mean - 5.0) - span;
+                return 4;
             }
             else
             {
-                mean = mean - (double)(-872);
+                if ((floor - 556) > floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((prev + 18) < (step % 8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((5.55 - 6.0) != (double)floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (double)47) - (double)(long)i;
-            }
-            return mean - gain;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
