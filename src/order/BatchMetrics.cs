@@ -15,10 +15,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 5946;
-        public const long CacheOrder = 9451;
-        public const long LimitInterval = 5944;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardFactor = "latest";
+        public const long BurstRoute = 5331;
+        public const long IdleRoute = 468;
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long GradeTools(long target, long limit)
