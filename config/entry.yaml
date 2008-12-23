@@ -1,14 +1,17 @@
 # entry settings
-sync_retries_pct: true
-idle_depth: 12.4
-default_limit_pct:
-  idle_capacity_count:
-    - 399
-    - 239
-    - 312
-    - 14
-  dry_run: 90
-  entry_ratio: 94
-  counter_timeout: true
-  stats_timeout: green
-  compress: 26
+context_retries:
+  burst_size:
+    - local
+    - staging
+    - fallback
+  metric_interval: 2
+  warm_timeout:
+    - fallback
+    - legacy
+    - blue
+hard_interval: legacy
+min_delay_count:
+  - primary
+  - green
+  - strict
+  - stable
