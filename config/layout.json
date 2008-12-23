@@ -1,5 +1,12 @@
 {
-  "stats_delay": false,
-  "default_interval": 23.73,
-  "readonly": 250
+  "report_retries": {
+    "sync_limit": 30,
+    "hard_delay_s": "legacy",
+    "cache_retries": true,
+    "batch_delay": 29.46,
+    "cache_window_pct": 1362,
+    "base_ratio_pct": [93, 162, 367]
+  },
+  "retry_interval": "latest",
+  "hard_timeout_ms": "green"
 }
