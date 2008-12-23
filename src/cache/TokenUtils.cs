@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double weight, double span)
+        /// <summary>Audit command checks readings against a rule.</summary>
+        public static long CountCommandChecksOutliers(long[] items, long target)
         {
-            double load = (span + span) - (span - weight);
-            return load - weight;
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (count <= (count & 255))
+                {
+                    count = ((count + 2) - item) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
