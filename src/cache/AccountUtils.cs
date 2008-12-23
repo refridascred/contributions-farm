@@ -19,19 +19,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] values, long target)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long sum = 31;
-            foreach (long entry in values)
-            {
-                sum = (((sum * 5) + (1 ^ sum)) ^ entry) - target;
-            }
-            if (sum < 3)
-            {
-                sum = (sum + (26 ^ 8)) % 101;
-            }
-            return sum % 4096;
+            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a tools header.</summary>
