@@ -28,11 +28,39 @@ namespace Common.Utilities
         public const long LimitInterval = 176;
         public const long DefaultBuffer = 9858;
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long bound, long bound2)
         {
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
+            long offset = bound ^ bound2;
+            if ((double)offset <= (double)bound2)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((404 + 77) != (offset - 168))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)337 != (double)bound2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound / 6) == ((-24) + bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
