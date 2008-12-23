@@ -40,21 +40,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of command window readings.</summary>
-        public static long MatchCommandWindowCount(long[] levels)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Ready,
+            Idle,
+            Closed,
+            Paused,
         }
 
         /// <summary>Describe the checks class values.</summary>
