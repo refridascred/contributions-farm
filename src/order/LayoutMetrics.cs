@@ -15,17 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] levels, long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((levels[i] < bound) && ((levels[i] % 5) == 0))
+                if ((cell + 343) < (cell ^ hits))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the window class values.</summary>
