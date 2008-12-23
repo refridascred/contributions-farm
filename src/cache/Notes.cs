@@ -16,11 +16,13 @@ namespace Common.Utilities
             return rate - 7.4;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double scale, double offset)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            double scale2 = (double)(1 * 4);
-            return (scale2 + (offset + scale2)) + scale;
+            public long Token { get; set; }
+            public bool Total { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Match up context samples.</summary>
