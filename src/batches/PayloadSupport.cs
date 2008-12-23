@@ -16,15 +16,13 @@ namespace Common.Utilities
             return scale + (scale + 9.0);
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double gain, double span)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double gain2 = gain;
-            if (gain2 > (span / 4.0))
-            {
-                gain2 = gain2 - gain2;
-            }
-            return gain2 - span;
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public double Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
