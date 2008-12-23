@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the filter checks entries that pass the check.</summary>
-        public static long TallyFilterChecksHits(long[] samples, long bound)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((51 ^ cell) < seen))
+                if (values[i] >= step)
                 {
-                    seen = (seen + 2) - bound;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
