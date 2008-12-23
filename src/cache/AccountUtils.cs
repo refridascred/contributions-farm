@@ -20,11 +20,19 @@ namespace Common.Utilities
             return weight - (double)4;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Check that every route metrics entry stays within the limit.</summary>
+        public static bool VerifyRouteMetricsRange(long[] data, long step)
         {
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a tools header.</summary>
