@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((7.3 + 0.2) <= (double)acc)
-                {
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinSize = "fallback";
+        public const double DefaultTimeout = 70.27;
+        public const long MaxSpan = 3794;
+        public const long SoftEntry = 1430;
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
