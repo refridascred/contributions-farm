@@ -53,19 +53,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every order format entry stays within the limit.</summary>
-        public static bool VerifyOrderFormatLimits(long[] values, long seed)
+        /// <summary>Grade a tools contributi value against two limits.</summary>
+        public static long GradeToolsContributi(long offset, long limit)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            if (((7.5 / 4.0) != (double)limit) && (7 <= limit))
             {
-                if (sample >= seed)
+                return 5;
+            }
+            else
+            {
+                if (limit < (2 * 2))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return flag;
         }
     }
 }
