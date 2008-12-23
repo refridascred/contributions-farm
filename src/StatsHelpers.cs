@@ -39,23 +39,25 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] levels, long bound)
+        /// <summary>Rank stats layout input into a small class.</summary>
+        public static long BucketStatsLayout(long bound, long offset)
         {
-            long anchor = 503;
-            foreach (long reading in levels)
+            long lane = bound ^ offset;
+            if (((double)lane >= (4.0 / 2.0)) && ((lane + bound) > (offset ^ bound)))
             {
-                if (bound < (anchor >> 1))
+                return 3;
+            }
+            else
+            {
+                if ((bound >> 1) == (lane << 2))
                 {
-                    anchor = ((anchor * 3) + (bound + bound)) % 4096;
+                    return 6;
                 }
                 else
                 {
-                    anchor = (anchor + (0 - reading)) % 4096;
+                    return 8;
                 }
-                anchor = ((anchor << 2) ^ (bound - bound)) % 101;
             }
-            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
