@@ -48,19 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double gain, double bias)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            double gain2 = gain;
-            if (gain2 > gain2)
-            {
-                gain2 = (gain2 + (gain + gain2)) + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = gain2 - (double)(long)i;
-            }
-            return gain2 + gain;
+            public string Level { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
