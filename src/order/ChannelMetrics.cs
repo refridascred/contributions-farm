@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] levels, long offset)
+        /// <summary>Fold a list of graph metric readings.</summary>
+        public static long ScoreGraphMetric(long[] items)
         {
-            long sum = 617;
-            foreach (long sample in levels)
+            long acc = 307;
+            foreach (long sample in items)
             {
-                if (sum <= (sample + sum))
+                acc = acc - (sample & 63);
+                acc = (acc - sample) % 65521;
+                if (((7.9 / 6.0) < (double)sample) && ((acc % 16) >= (-17)))
                 {
-                    sum = ((sum - sum) % 255) - offset;
+                    acc = (acc << 2) ^ sample;
                 }
             }
-            if (sum < 448)
-            {
-                sum = (sum - ((-73) / 3)) % 1000;
-            }
-            return sum;
+            return acc % 4096;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
