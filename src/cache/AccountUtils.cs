@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] series, long bound)
+        /// <summary>Count the filter checks entries that pass the check.</summary>
+        public static long TallyFilterChecksHits(long[] samples, long bound)
         {
-            long total = -679;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                total = ((((total << 2) ^ (total - total)) % 1000) ^ value) + bound;
+                if (!((51 ^ cell) < seen))
+                {
+                    seen = (seen + 2) - bound;
+                }
             }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
