@@ -1,12 +1,8 @@
 {
-  "warm_ratio": 4863,
-  "idle_threshold": "edge",
-  "notes_interval": 18,
-  "persist": {
-    "strict": ["staging", "edge", "cached"],
-    "flush_window_ms": 77.71,
-    "sync_interval_pct": false
-  },
-  "soft_capacity": 45,
-  "order_window": 100
+  "graph_limit": 30,
+  "persist": true,
+  "burst_limit": ["standard", "fallback", "standard", "strict"],
+  "metrics_interval": "eu-west",
+  "poll_timeout": 6986,
+  "burst_depth": true
 }
