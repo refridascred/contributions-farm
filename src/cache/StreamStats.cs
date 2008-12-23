@@ -36,13 +36,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] data)
         {
-            public string Offset { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Level { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((((double)tally >= (8.59 + 4.0)) || ((tally * 4) == (cell - 93))) && ((tally - tally) == (400 - cell)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
