@@ -40,21 +40,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up support window samples.</summary>
-        public static long PairSupportWindowCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultFactor = 4838;
+        public const long CacheCluster = 3933;
+        public const long WindowSize = 8018;
+        public const long BaseCluster = 1037;
     }
 }
