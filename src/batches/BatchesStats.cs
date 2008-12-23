@@ -52,20 +52,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmRange(long[] data, long limit)
-        {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 1444;
+        public const double CacheRatio = 5.77;
+        public const long RetryDepth = 4580;
+        public const long BatchInterval = 121;
+        public const string IdleFarm = "staging-v2";
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long MeasureLayoutMatches(long[] values)
