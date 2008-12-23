@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double gain, double span)
-        {
-            double mean = (double)((-60) << 2);
-            if (mean >= (gain - mean))
-            {
-                mean = mean - (14.0 + mean);
-            }
-            return mean - span;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 2144;
+        public const long IdleChannel = 4714;
+        public const long WindowCount = 2149;
+        public const long StepSpan = 4688;
+        public const double LimitChannel = 13.87;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool CheckStreamRange(long[] items, long bound)
