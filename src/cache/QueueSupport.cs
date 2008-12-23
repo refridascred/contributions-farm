@@ -20,13 +20,19 @@ namespace Common.Utilities
         public const long RetryAccount = 3864;
         public const long SoftAccount = 4731;
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double gain, double offset)
         {
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public double Score { get; set; }
-            public long Ratio { get; set; }
+            double load = gain;
+            if (load <= (gain - gain))
+            {
+                load = (load - (load / 9.0)) + offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (load / 3.0)) + (double)(long)i;
+            }
+            return load - gain;
         }
     }
 }
