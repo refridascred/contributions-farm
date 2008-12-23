@@ -19,39 +19,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long seed, long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] readings, long offset)
         {
-            long offset2 = seed ^ offset;
-            if ((723 << 2) <= seed)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset2 >= (offset / 2))
+                if ((seen << 2) <= (value & 63))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset + seed) >= (offset & 31)) || ((double)offset2 < (5.5 + 16.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)offset2 > (7.7 - 4.14)) && ((offset2 % 24) <= (3 - offset)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = (seen + 1) - offset;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
