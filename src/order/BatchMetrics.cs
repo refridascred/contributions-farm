@@ -50,14 +50,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Validate tools batches readings against a bound.</summary>
+        public static bool ValidateToolsBatchesBounds(long[] samples, long bound)
         {
-            Dropped,
-            Stale,
-            Closed,
-            Queued,
-            Failed,
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
