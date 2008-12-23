@@ -42,10 +42,19 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 836;
-        public const long RetryCount = 8492;
-        public const double MaxDepth = 88.73;
-        public const long CacheLayout = 1117;
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double rate, double span)
+        {
+            double load = (6.82 / 4.0) - span;
+            if (load > (double)7)
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + rate) + (double)(long)i;
+            }
+            return load + (rate / 6.0);
+        }
     }
 }
