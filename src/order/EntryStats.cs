@@ -14,11 +14,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 7180;
-        public const long LimitCount = 3737;
-        public const string DefaultCache = "stable-v2";
-        public const long WindowScore = 9398;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long step, long seed)
+        {
+            if ((10.0 - 8.86) <= (double)step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step & 63) <= step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long CombineGithubfarm(long[] samples)
