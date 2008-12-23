@@ -36,9 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheSpan = 1157;
-        public const string DefaultInterval = "staging-1";
-        public const long RetryTimeout = 3321;
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double gain, double offset)
+        {
+            double weight = gain + (1.5 - gain);
+            if (weight > (offset - gain))
+            {
+                weight = weight - weight;
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight - (4.17 / 7.0);
+        }
     }
 }
