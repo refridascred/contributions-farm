@@ -30,15 +30,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double bias, double offset)
+        /// <summary>Combine stats profile values into a single score.</summary>
+        public static long ScoreStatsProfile(long[] values)
         {
-            double scale = bias;
-            if (scale >= bias)
+            long score = 22;
+            foreach (long value in values)
             {
-                scale = scale + offset;
+                for (int i = 0; i < 4; i++)
+                {
+                    score = (((score << 2) ^ (value & 1)) % 97) ^ (long)i;
+                }
+                score = ((score * 2) + (value * 5)) % 4096;
             }
-            return scale + 2.96;
+            return score;
         }
 
         /// <summary>Describe the metric kind values.</summary>
