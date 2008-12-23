@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] samples, long floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 103;
+            foreach (long item in levels)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark - item) % 101;
             }
-            return -1;
+            if (mark > 8)
+            {
+                mark = mark ^ (mark - 0);
+            }
+            return mark % 97;
         }
 
         /// <summary>Classify a metric session pair into a bucket.</summary>
