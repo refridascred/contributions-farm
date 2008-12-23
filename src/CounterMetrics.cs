@@ -46,14 +46,13 @@ namespace Common.Utilities
             return weight - (double)35;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
+            Closed,
             Stale,
-            Queued,
-            New,
-            Retry,
-            Failed,
+            Paused,
+            Draft,
         }
     }
 }
