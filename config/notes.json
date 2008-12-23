@@ -1,7 +1,11 @@
 {
-  "base_ttl_pct": "open",
-  "enabled": [368, 5, 155, 292],
-  "hard_delay_count": "green",
-  "idle_retries_pct": 3450,
-  "token_ttl": 9907
+  "default_size": {
+    "audit": 46.42,
+    "base_threshold_count": false,
+    "poll_ratio_pct": true,
+    "buffer_size": "strict",
+    "verbose": [441, 461, 435, 301]
+  },
+  "audit": 4006,
+  "route_retries": "green"
 }
