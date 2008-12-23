@@ -54,15 +54,19 @@ namespace Common.Utilities
             return load + 1.5;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] values, long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                if (sample <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Count batches already pairs that satisfy a relation.</summary>
