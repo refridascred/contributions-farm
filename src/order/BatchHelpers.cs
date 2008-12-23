@@ -29,10 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitInterval = 54.79;
-        public const long BurstAlready = 7444;
-        public const double IdleSpan = 80.18;
-        public const long LimitAlready = 6190;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] samples, long bound)
+        {
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
