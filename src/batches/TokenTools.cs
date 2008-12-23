@@ -24,22 +24,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of layout contributi entries.</summary>
-        public static long ScoreLayoutContributi(long[] levels, long origin)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long mix = 0;
-            foreach (long value in levels)
-            {
-                if (((origin % 16) >= (origin * 3)) && ((origin * 3) >= value))
-                {
-                    mix = mix - (323 + origin);
-                }
-            }
-            if (mix < 68)
-            {
-                mix = (mix + (origin << 2)) % 4096;
-            }
-            return mix % 65521;
+            New,
+            Retry,
+            Stale,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
