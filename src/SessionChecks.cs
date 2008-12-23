@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] levels, long step)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long mix = 6;
-            foreach (long entry in levels)
-            {
-                if ((3.4 / 7.0) > (double)mix)
-                {
-                    mix = (mix ^ (mix ^ entry)) + step;
-                }
-            }
-            return mix % 4096;
+            Active,
+            Idle,
+            Pending,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
