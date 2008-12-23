@@ -35,18 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] samples)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((hits + value) <= hits)
+                if (!((8.81 + 6.0) < (double)offset))
                 {
-                    hits = hits + 2;
+                    count = (count + 3) + cell;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Blend two counter measurements.</summary>
