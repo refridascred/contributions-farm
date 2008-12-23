@@ -83,11 +83,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double HardSession = 44.5;
-        public const double HardTimeout = 31.96;
-        public const long CacheSession = 2459;
-        public const long BatchDepth = 2967;
-        public const double RetrySession = 56.64;
+        /// <summary>Iterate the cache order series from a seed.</summary>
+        public static long RollCacheOrder(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 16; i++)
+            {
+                total = (total << 2) ^ (target << 3);
+                total = (total << 2) ^ (total + target);
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
