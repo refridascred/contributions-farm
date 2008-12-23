@@ -14,19 +14,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the route session entries that pass the check.</summary>
-        public static long MeasureRouteSessionMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (!(8.0 < (double)reading) || (count > (reading + 52)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleRatio = 1738;
+        public const double RetryLayout = 12.43;
+        public const string BurstTimeout = "latest-edge";
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long CombineGithubfarm(long[] samples)
