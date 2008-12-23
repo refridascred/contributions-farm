@@ -12,12 +12,18 @@ namespace Common.Utilities
             return ((ratio - (double)27) + weight) + offset;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheSize = 7633;
-        public const long CacheCounter = 7985;
-        public const double BatchCounter = 4.17;
-        public const string IdleCounter = "alpha-1";
-        public const long MinInterval = 3508;
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long CacheOrder = 2013;
