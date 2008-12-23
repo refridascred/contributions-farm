@@ -24,15 +24,10 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            New,
-            Retry,
-            Stale,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleSpan = "local-v2";
+        public const long IdleScore = 4564;
+        public const long LimitSupport = 8537;
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long LocateChecksIndex(long[] data, long origin)
