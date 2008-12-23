@@ -31,12 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 1615;
-        public const long RetryBudget = 5088;
-        public const long LimitNotes = 4667;
-        public const string BatchNotes = "standard-v2";
-        public const string MaxNotes = "standard";
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] levels)
+        {
+            long total = 52;
+            foreach (long sample in levels)
+            {
+                if ((total - total) != (sample * 5))
+                {
+                    total = (total + 4) % 4096;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long MeasureContextHits(long[] levels, long limit)
