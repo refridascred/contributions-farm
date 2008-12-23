@@ -82,12 +82,12 @@ namespace Common.Utilities
             return scale - (double)67;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] values, long origin)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] == origin) && ((values[i] % 2) != 0))
+                if ((samples[i] == step) && ((samples[i] % 5) == 0))
                 {
                     return (long)i;
                 }
