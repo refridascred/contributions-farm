@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public string Weight { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Flag { get; set; }
+            Ready,
+            Pending,
+            Failed,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
