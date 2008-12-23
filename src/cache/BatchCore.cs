@@ -26,19 +26,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the order contributi series from a seed.</summary>
-        public static long RollOrderContributi(long step)
+        /// <summary>Rank support editor input into a small class.</summary>
+        public static long SortSupportEditor(long offset, long step)
         {
-            long sum = step;
-            for (int i = 0; i < 15; i++)
+            long delta = offset - step;
+            if (((double)delta <= 8.3) || ((offset * 2) == (delta << 1)))
             {
-                if (!((5.57 - 14.0) > (double)sum))
-                {
-                    sum = (sum + (long)i) % 97;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if (delta >= (delta & 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the stream level values.</summary>
