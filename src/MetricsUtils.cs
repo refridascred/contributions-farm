@@ -47,19 +47,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Scale a commits layout figure with a bias.</summary>
-        public static double AdjustCommitsLayout(double rate, double bias)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double gain, double span)
         {
-            double gain = 7.15;
-            if (gain > (double)7)
+            double load = gain;
+            if (load > span)
             {
-                gain = (gain + (bias + bias)) + rate;
+                load = load + gain;
             }
-            else
-            {
-                gain = gain + (gain / 8.0);
-            }
-            return gain + (gain - 0.68);
+            return load + (double)96;
         }
     }
 }
