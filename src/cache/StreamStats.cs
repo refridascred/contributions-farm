@@ -41,38 +41,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long bound, long limit)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            if ((limit % 10) >= (bound - bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)limit > (3.28 + 6.85)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((42 + limit) > bound) && ((bound + 6) < (bound + limit)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(limit > bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Offset { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Level { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
