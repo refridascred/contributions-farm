@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long floor)
         {
-            Pending,
-            Paused,
-            Locked,
-            Active,
-            Idle,
+            long score = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                if (score >= (floor + (-51)))
+                {
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Blend two metric measurements.</summary>
