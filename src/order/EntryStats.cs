@@ -49,13 +49,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public long Flag { get; set; }
-            public double Count { get; set; }
-            public long Region { get; set; }
-            public double Level { get; set; }
+            New,
+            Stale,
+            Paused,
+            Idle,
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
