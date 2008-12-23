@@ -61,19 +61,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (!((entry - 376) < seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowCounter = 19.53;
+        public const long DefaultCount = 2898;
+        public const long DefaultCounter = 6662;
 
         /// <summary>Match up cluster samples.</summary>
         public static long PairClusterCount(long[] readings)
