@@ -62,22 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] data)
+        /// <summary>Locate a command graph reading by value.</summary>
+        public static long SeekCommandGraphIndex(long[] data, long offset)
         {
-            long total = 258;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((total ^ entry) < (total & 31))
+                if (data[i] > offset)
                 {
-                    total = (total << 2) ^ (entry + entry);
+                    return (long)i;
                 }
             }
-            if (total > 3)
-            {
-                total = ((total * 3) + total) % 65521;
-            }
-            return total;
+            return -1;
         }
     }
 }
