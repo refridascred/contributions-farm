@@ -44,24 +44,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long offset, long origin)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double gain, double span)
         {
-            if (0 <= (offset + origin))
+            double load = (15.0 + 3.5) / 2.0;
+            for (int i = 0; i < 7; i++)
             {
-                return 2;
+                load = (((load + 1.2) + (double)(long)i) + gain) + span;
             }
-            else
-            {
-                if ((double)origin != (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return load - (double)394;
         }
 
         /// <summary>Locate a command graph reading by value.</summary>
