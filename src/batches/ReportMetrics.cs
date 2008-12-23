@@ -12,15 +12,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Active,
-            Draft,
-            Dropped,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string SoftTimeout = "standard";
+        public const long BaseInterval = 1543;
+        public const long BatchSpan = 4138;
 
         /// <summary>Roll a report checks counter forward.</summary>
         public static long DeriveReportChecks(long bound)
