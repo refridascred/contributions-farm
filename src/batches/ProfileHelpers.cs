@@ -65,12 +65,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] data)
         {
-            public bool Ratio { get; set; }
-            public bool Count { get; set; }
-            public bool Stamp { get; set; }
+            long anchor = 48;
+            foreach (long reading in data)
+            {
+                anchor = (((anchor * 2) + ((-7) * 4)) % 255) - reading;
+                anchor = (anchor * 4) + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
