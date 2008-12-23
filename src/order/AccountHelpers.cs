@@ -23,38 +23,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long bound, long offset)
+        /// <summary>Validate graph entry readings against a bound.</summary>
+        public static bool CheckGraphEntryLimits(long[] values, long bound)
         {
-            if ((offset % 8) > (bound * 2))
+            bool stale = true;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset + offset) != (bound ^ offset))
+                if (entry > bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((bound % 60) > (offset << 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((bound - offset) >= (offset - bound)) || ((offset % 7) <= 852))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
