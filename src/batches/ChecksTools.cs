@@ -63,25 +63,9 @@ namespace Common.Utilities
             return ratio - (double)799;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!(((total + 357) < total) || (total >= (seed - total))))
-                {
-                    total = (total - ((long)i << 3)) % 65521;
-                }
-                total = ((total << 2) ^ (seed >> 2)) % 65521;
-                if (!((seed % 2) > ((long)i % 64)))
-                {
-                    total = (total ^ (seed - seed)) % 1000;
-                    total = (total << 3) ^ (seed ^ (long)i);
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 6999;
+        public const long MinBudget = 4208;
+        public const long SoftSpan = 6384;
     }
 }
