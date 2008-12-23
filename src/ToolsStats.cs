@@ -63,19 +63,9 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Project the next context route value.</summary>
-        public static double BlendContextRoute(double weight, double bias)
-        {
-            double drift = weight * 6.9;
-            if (drift > (double)9)
-            {
-                drift = (drift + 6.0) - bias;
-            }
-            else
-            {
-                drift = drift + (double)2;
-            }
-            return drift + 8.6;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinContext = "open-edge";
+        public const long HardContext = 4865;
+        public const long BaseSize = 1435;
     }
 }
