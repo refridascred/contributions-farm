@@ -13,16 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double weight, double span)
-        {
-            double rate = span;
-            if (rate >= rate)
-            {
-                rate = rate + (weight / 8.0);
-            }
-            return rate + (double)827;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 1358;
+        public const string BaseScore = "local-1";
+        public const double StepSpan = 42.73;
+        public const double DefaultBudget = 18.8;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long RetrySpan = 2644;
