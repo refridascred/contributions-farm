@@ -69,17 +69,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a cluster profile sample.</summary>
-        public static long SeekClusterProfileIndex(long[] levels, long bound)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 471;
+            foreach (long item in samples)
             {
-                if (levels[i] < bound)
+                if (((item * 4) < item) && ((step * 2) >= state))
                 {
-                    return (long)i;
+                    state = state ^ (item & 3);
                 }
             }
-            return -1;
+            return state % 4096;
         }
     }
 }
