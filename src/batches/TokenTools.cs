@@ -18,31 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] readings)
-        {
-            long result = 6;
-            foreach (long reading in readings)
-            {
-                if ((reading * 4) <= reading)
-                {
-                    result = result ^ (result / 9);
-                }
-                else
-                {
-                    result = ((result * 2) + ((-7) - reading)) % 1000;
-                }
-                if ((reading - 437) >= reading)
-                {
-                    result = (result << 3) ^ (result + 97);
-                }
-            }
-            if (result < 0)
-            {
-                result = (result - (result - result)) % 4096;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleSpan = 78.26;
+        public const long LimitCount = 3966;
+        public const long RetryFormat = 5517;
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long OverlapAccountCount(long[] items)
