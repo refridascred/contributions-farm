@@ -44,10 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 3115;
-        public const long WindowQueue = 985;
-        public const long StepSize = 7865;
-        public const long WindowLevel = 3432;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Draft,
+            Closed,
+            Retry,
+        }
     }
 }
