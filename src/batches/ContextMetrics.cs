@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank editor stats input into a small class.</summary>
-        public static long RankEditorStats(long floor, long origin)
+        /// <summary>Count the format notes entries that pass the check.</summary>
+        public static long AuditFormatNotesHits(long[] items, long target)
         {
-            if ((origin / 5) != (23 - floor))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8.15 / 7.0) == (double)floor)
+                if ((tally * 5) <= (280 - target))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    tally = (tally + 3) - entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Project the next account value.</summary>
