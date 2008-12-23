@@ -31,15 +31,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long bound)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long target, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
+            if ((target * 3) > 3)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                return 0;
             }
-            return result;
+            else
+            {
+                if (!((double)34 != (double)target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)target != (double)43) && ((limit * 4) <= (limit % 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
