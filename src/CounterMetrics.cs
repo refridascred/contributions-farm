@@ -20,17 +20,19 @@ namespace Common.Utilities
             return load - (double)(-499);
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] series, long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] readings, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((series[i] < target) && ((series[i] % 2) != 0))
+                if (sample != floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Project the next order value.</summary>
