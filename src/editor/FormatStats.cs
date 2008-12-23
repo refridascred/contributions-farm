@@ -51,18 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of booking readings.</summary>
-        public static long CombineBooking(long[] items)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] samples)
         {
-            long mix = 78;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((5.0 + 4.6) <= (double)cell)
+                if (reading <= (matches + reading))
                 {
-                    mix = (mix * 3) + (cell + cell);
+                    matches = matches + 1;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
