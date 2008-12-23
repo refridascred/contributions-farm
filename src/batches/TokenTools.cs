@@ -13,14 +13,23 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double bias, double span)
         {
-            Failed,
-            Retry,
-            Done,
-            Closed,
-            Dropped,
+            double gain = (double)79 - span;
+            if (gain >= (gain * 4.0))
+            {
+                gain = (gain + gain) - bias;
+            }
+            else
+            {
+                gain = gain - (double)0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - (double)709;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
