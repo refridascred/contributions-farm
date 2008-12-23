@@ -30,13 +30,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Compare every pair of metrics profile readings.</summary>
+        public static long OverlapMetricsProfileCount(long[] values)
         {
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the stats phase values.</summary>
