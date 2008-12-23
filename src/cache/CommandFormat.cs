@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] levels, long origin)
-        {
-            long mix = 1;
-            foreach (long cell in levels)
-            {
-                if ((origin * 4) < (483 * 2))
-                {
-                    mix = ((mix - 283) % 97) + cell;
-                    mix = ((mix * 2) + 191) % 101;
-                }
-                mix = ((mix * 2) + (5 + origin)) % 101;
-            }
-            if (mix > 561)
-            {
-                mix = mix ^ origin;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 1944;
+        public const long HardCount = 462;
+        public const string MinEntry = "latest-edge";
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
