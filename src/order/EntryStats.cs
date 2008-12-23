@@ -49,24 +49,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long origin, long seed)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            if ((origin + 56) >= (41 - origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)seed == (2.75 + 20.0)) || ((origin + origin) > (origin ^ seed)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Match up metric samples.</summary>
