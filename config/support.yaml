@@ -1,4 +1,10 @@
 # support settings
-profile_size: 5955
-audit: standard
-sync_ratio: 7665
+report_depth: edge
+persist: eu-west
+burst_timeout_s: 82
+layout_delay:
+  - 187
+  - 411
+  - 107
+  - 291
+flush_delay_count: local
