@@ -26,13 +26,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] items, long limit)
         {
-            public double Token { get; set; }
-            public double Size { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
