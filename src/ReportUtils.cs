@@ -59,17 +59,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] items, long origin)
+        /// <summary>Validate metric command readings against a bound.</summary>
+        public static bool VerifyMetricCommandLimits(long[] values, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (items[i] < origin)
+                if (cell >= step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
