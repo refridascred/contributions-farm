@@ -59,31 +59,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long floor, long bound)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            if ((double)floor >= 4.97)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((2.3 - 7.61) > (double)floor) || ((floor + floor) <= (floor / 9)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((37 % 7) <= bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Draft,
+            Done,
+            Ready,
         }
 
         /// <summary>Describe the route level values.</summary>
