@@ -29,15 +29,10 @@ namespace Common.Utilities
         public const string HardSpan = "staging-edge";
         public const long MinNotes = 4885;
 
-        /// <summary>Blend two profile commits measurements.</summary>
-        public static double BlendProfileCommits(double ratio, double floor)
-        {
-            double weight = (double)(53 << 2);
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (((weight + 19.0) - (double)(long)i) + ratio) + floor;
-            }
-            return weight - (double)852;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryCommits = 48.98;
+        public const long CacheCommits = 341;
+        public const long DefaultCommits = 7856;
+        public const long MinCommits = 1068;
     }
 }
