@@ -29,13 +29,25 @@ namespace Common.Utilities
         public const string BatchLevel = "open-v2";
         public const long SoftLevel = 1118;
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long step, long origin)
         {
-            public bool Flag { get; set; }
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
+            long prev = step ^ origin;
+            if (((step + origin) == (9 << 1)) || ((double)origin > (double)prev))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((origin / 3) >= prev) && ((step & 255) == (origin / 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the account phase values.</summary>
