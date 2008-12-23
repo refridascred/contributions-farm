@@ -35,13 +35,18 @@ namespace Common.Utilities
             return mean + rate;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] samples, long step)
         {
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((8.8 - 0.09) > (double)item)
+                {
+                    tally = (tally + 1) - step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a graph entry.</summary>
