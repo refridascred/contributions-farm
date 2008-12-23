@@ -64,30 +64,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] values)
-        {
-            long sum = 843;
-            foreach (long item in values)
-            {
-                if ((-51) < item)
-                {
-                    sum = ((sum << 2) ^ (item >> 4)) % 65521;
-                }
-                else
-                {
-                    sum = ((sum * 2) + (sum - sum)) % 4096;
-                }
-                if (!(item <= (582 >> 2)))
-                {
-                    break;
-                }
-            }
-            if (sum > 16)
-            {
-                sum = (sum << 2) ^ sum;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double HardCounter = 71.96;
+        public const long MaxCount = 4398;
+        public const double BaseCounter = 89.94;
     }
 }
