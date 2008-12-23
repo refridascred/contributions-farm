@@ -43,19 +43,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] values, long offset)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long result = 544;
-            foreach (long value in values)
-            {
-                result = ((result + ((-7) % 60)) % 97) + value;
-                if ((result + result) >= offset)
-                {
-                    result = (result * 2) + 3;
-                }
-            }
-            return result;
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a record token sample.</summary>
