@@ -40,22 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] series, long offset)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((long)series.Length >= (6 - offset))
-                {
-                    hits = (hits + 1) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the farm state values.</summary>
