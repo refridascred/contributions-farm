@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public long Count { get; set; }
-            public double Owner { get; set; }
-            public double Label { get; set; }
-            public long Ratio { get; set; }
+            Dropped,
+            Paused,
+            Done,
+            Failed,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
