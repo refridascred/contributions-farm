@@ -19,15 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] items)
         {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if (datum <= (79 - datum))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Measure how many queue payload samples are out of range.</summary>
