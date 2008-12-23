@@ -38,22 +38,23 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long floor, long target)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long limit, long bound)
         {
-            if (((floor - 483) < target) || (target <= (floor + floor)))
+            long delta = limit ^ bound;
+            if ((bound - bound) >= (delta & 127))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if (target <= (78 / 3))
+                if (bound > (delta - delta))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    return 0;
+                    return 1;
                 }
             }
         }
