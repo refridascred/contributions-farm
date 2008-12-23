@@ -26,22 +26,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] samples, long limit)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (cell > (limit % 12))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            Stale,
+            Draft,
+            Paused,
+            New,
         }
 
         /// <summary>Hold a stream options.</summary>
