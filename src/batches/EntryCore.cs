@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const double HardSpan = 55.62;
         public const string RetryCount = "cached-edge";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepDepth = 5069;
-        public const double WindowTimeout = 32.32;
-        public const long CacheFarm = 8375;
-        public const double BaseRatio = 78.36;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricRange(long[] values, long step)
+        {
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the route profile entries that pass the check.</summary>
         public static long MeasureRouteProfileMatches(long[] series)
