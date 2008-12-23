@@ -1,4 +1,13 @@
 # githubfarm settings
-audit: blue
-flush_capacity_ms: eu-west
-base_retries: 6.01
+base_depth_pct:
+  strict:
+    - 454
+    - 450
+  soft_limit: 71
+  idle_size: 100
+  support_interval:
+    - 277
+    - 245
+min_ratio: latest
+warm_threshold_pct: staging
+readonly: cached
