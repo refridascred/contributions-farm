@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public string Offset { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Score { get; set; }
-            public bool Mode { get; set; }
+            Synced,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a cache summary.</summary>
