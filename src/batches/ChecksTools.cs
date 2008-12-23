@@ -62,25 +62,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank buffer stats input into a small class.</summary>
-        public static long ClassifyBufferStats(long target, long floor)
+        /// <summary>Match up metrics contributi samples.</summary>
+        public static long OverlapMetricsContributiCount(long[] series)
         {
-            long diff = target + floor;
-            if ((floor ^ 639) == (diff - diff))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((4.7 / 4.0) < (double)floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    if ((series[i] - series[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
