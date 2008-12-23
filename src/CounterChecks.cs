@@ -45,14 +45,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterOutliers(long[] data, long step)
         {
-            Failed,
-            Closed,
-            Queued,
-            New,
-            Synced,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((reading << 3) != (seen - seen))
+                {
+                    seen = (seen + 3) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
