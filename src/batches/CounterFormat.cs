@@ -23,13 +23,17 @@ namespace Common.Utilities
             return (mean + (mean * 4.49)) + scale;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] samples)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] data, long origin)
         {
-            long acc = 866;
-            foreach (long datum in samples)
+            long acc = 8;
+            foreach (long cell in data)
             {
-                acc = ((acc - 4) % 1000) ^ datum;
+                acc = (((acc + (long)data.Length) % 65521) ^ cell) + origin;
+                if (!((double)16 <= (double)acc))
+                {
+                    break;
+                }
             }
             return acc;
         }
