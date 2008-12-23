@@ -20,20 +20,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine filter record values into a single score.</summary>
-        public static long TallyFilterRecord(long[] data, long origin)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long anchor = 22;
-            foreach (long entry in data)
-            {
-                anchor = ((anchor * 4) + 3) % 97;
-                anchor = anchor - (entry + 3);
-            }
-            if (anchor > 387)
-            {
-                anchor = anchor - (origin / 3);
-            }
-            return anchor;
+            public bool Label { get; set; }
+            public double Total { get; set; }
         }
     }
 }
