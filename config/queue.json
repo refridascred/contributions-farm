@@ -1,7 +1,8 @@
 {
-  "min_capacity_count": false,
-  "cache_timeout": 3621,
-  "counter_ttl": false,
-  "retry_retries": false,
-  "flush_interval": false
+  "sync_timeout": "cached",
+  "poll_ratio": [139, 269, 138, 403],
+  "idle_ratio_s": "latest",
+  "compress": 100,
+  "warm_ratio_count": 3487,
+  "cluster_capacity": "green"
 }
