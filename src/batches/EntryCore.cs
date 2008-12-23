@@ -56,22 +56,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] data)
+        /// <summary>Check that every channel farm entry stays within the limit.</summary>
+        public static bool ValidateChannelFarmBounds(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if ((15.0 - 2.5) != (double)count)
+                if (cell <= offset)
                 {
-                    count = (count + 2) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
