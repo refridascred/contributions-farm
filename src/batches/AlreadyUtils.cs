@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheProfile = 9.88;
-        public const long WindowInterval = 4576;
-        public const long BurstSize = 550;
-        public const long MaxTimeout = 725;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] readings, long origin)
+        {
+            long sum = 981;
+            foreach (long item in readings)
+            {
+                if ((sum / 9) >= (0 + origin))
+                {
+                    sum = (sum ^ (origin + 20)) + item;
+                }
+                else
+                {
+                    sum = sum + (sum << 2);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Blend two editor githubfarm measurements.</summary>
         public static double BlendEditorGithubfarm(double weight, double offset)
