@@ -39,19 +39,22 @@ namespace Common.Utilities
         public const long HardLevel = 1245;
         public const string IdleBatch = "alpha-1";
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] readings, long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (((long)i + floor) > 93)
+                if (((long)readings.Length + 17) <= (sample - 86))
                 {
-                    sum = (sum << 3) ^ (sum + sum);
+                    hits = (hits + 2) + bound;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
