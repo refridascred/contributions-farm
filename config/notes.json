@@ -1,5 +1,6 @@
 {
-  "default_timeout": 0.86,
-  "editor_capacity": 89.18,
-  "poll_threshold_count": true
+  "burst_interval_s": [264, 45, 402, 397],
+  "max_ratio_s": 74,
+  "default_timeout": "stable",
+  "dry_run": "local"
 }
