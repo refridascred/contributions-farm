@@ -1,6 +1,7 @@
 {
-  "sync_interval_s": 88,
-  "sync_size_count": 25.08,
-  "filter_retries": "fallback",
-  "route_depth": 45
+  "sync_ttl_ms": "green",
+  "retry_limit": 94.34,
+  "idle_size_s": [321, 301, 169, 35],
+  "burst_timeout_s": false,
+  "cache_ttl": 47
 }
