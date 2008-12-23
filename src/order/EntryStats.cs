@@ -56,19 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long target)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((3.0 + 5.71) > (double)acc)
-                {
-                    acc = ((acc << 3) ^ target) % 101;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
