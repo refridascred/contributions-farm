@@ -33,15 +33,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Blend two farm cluster measurements.</summary>
-        public static double AdjustFarmCluster(double scale, double offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] items, long floor)
         {
-            double weight = (double)434 * 8.0;
-            if (weight > (5.4 / 3.0))
+            long count = 0;
+            foreach (long entry in items)
             {
-                weight = (weight - (scale + weight)) - offset;
+                if ((59 & 7) < entry)
+                {
+                    count = (count + 3) + floor;
+                }
             }
-            return weight - (scale + scale);
+            return count;
         }
     }
 }
