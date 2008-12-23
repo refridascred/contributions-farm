@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinSize = "fallback";
-        public const double DefaultTimeout = 70.27;
-        public const long MaxSpan = 3794;
-        public const long SoftEntry = 1430;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinBuffer = 74.68;
+        public const long WindowBuffer = 3411;
+        public const long LimitBuffer = 5407;
+        public const string HardRatio = "local-edge";
+        public const string LimitBudget = "latest-v2";
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long GradeRecord(long floor, long floor2)
