@@ -16,19 +16,12 @@ namespace Common.Utilities
             return rate - (2.5 / 4.0);
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long offset)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    sum = (((sum * 2) + (offset / 4)) % 101) + (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the record level values.</summary>
