@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the entry record entries that pass the check.</summary>
-        public static long CountEntryRecordMatches(long[] series)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry <= (hits + hits))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((series[i] + series[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the tools class values.</summary>
