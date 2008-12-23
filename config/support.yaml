@@ -1,7 +1,11 @@
 # support settings
-readonly: 500
-flush_depth_count: 4636
-max_ttl_s: legacy
-default_size_count: false
-flush_threshold_s: 61
-min_limit: 1290
+batch_threshold_ms:
+  soft_ttl: false
+  verbose: true
+  base_retries: fallback
+  hard_threshold_ms: true
+payload_interval:
+  - edge
+  - latest
+burst_timeout_count: false
+poll_window: 54.66
