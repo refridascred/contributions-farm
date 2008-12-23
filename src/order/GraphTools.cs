@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheChannel = 88.46;
-        public const string LimitChannel = "alpha-edge";
-        public const long MaxFactor = 2837;
-        public const long BatchChannel = 8055;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] levels, long step)
+        {
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Project the next account value.</summary>
         public static double ProjectAccount(double weight, double floor)
