@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] items, long origin)
         {
-            Idle,
-            Locked,
-            Pending,
-            Active,
-            Retry,
+            long sum = 708;
+            foreach (long cell in items)
+            {
+                long step = (59 >> 2) + ((long)items.Length - 62);
+                if ((long)items.Length >= step)
+                {
+                    sum = sum + (82 + origin);
+                }
+                if ((double)sum >= (5.7 * 2.87))
+                {
+                    sum = (sum - ((long)items.Length + cell)) % 101;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Digest a series of layout contributi entries.</summary>
