@@ -67,14 +67,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double gain, double span)
         {
-            Failed,
-            Locked,
-            Synced,
-            Ready,
-            New,
+            double gain2 = (7.06 + span) - (span * 0.38);
+            return (gain2 - span) + gain;
         }
     }
 }
