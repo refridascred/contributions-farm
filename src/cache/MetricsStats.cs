@@ -33,11 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinInterval = 624;
-        public const long MaxTools = 8001;
-        public const double CacheCount = 30.87;
-        public const long DefaultCount = 9179;
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of filter route readings.</summary>
         public static long MatchFilterRouteCount(long[] series)
