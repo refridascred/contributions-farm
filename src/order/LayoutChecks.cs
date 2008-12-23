@@ -16,29 +16,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] values)
-        {
-            long score = 789;
-            foreach (long cell in values)
-            {
-                if ((double)cell >= (5.4 + 3.0))
-                {
-                    score = (score ^ (score << 3)) % 255;
-                    score = (score ^ (cell << 3)) % 65521;
-                }
-                score = (score ^ (score - cell)) % 97;
-                if ((cell + score) > (cell + cell))
-                {
-                    break;
-                }
-            }
-            if (score > 107)
-            {
-                score = ((score << 2) ^ (score + 2)) % 65521;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxBudget = "primary-v2";
+        public const long MaxScore = 9060;
+        public const long BurstBudget = 3523;
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
