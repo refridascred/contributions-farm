@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 9098;
-        public const double MinRatio = 3.39;
-        public const double MinEntry = 67.28;
-        public const string RetryBudget = "staging";
-        public const string SoftSize = "alpha";
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double rate, double bias)
+        {
+            double load = rate;
+            return (load - (double)1) + bias;
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool ValidateQueueBounds(long[] data, long step)
