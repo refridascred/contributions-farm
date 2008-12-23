@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const long HardMetrics = 9609;
         public const long WindowMetrics = 194;
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
+            Paused,
+            Retry,
             Draft,
-            Dropped,
-            Pending,
-            Queued,
+            Stale,
         }
 
         /// <summary>Hold a stats stats.</summary>
