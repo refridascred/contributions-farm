@@ -35,14 +35,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Ready,
-            Active,
-            Failed,
-            New,
-            Pending,
+            public double Rank { get; set; }
+            public bool Count { get; set; }
+            public double Mode { get; set; }
+            public double Token { get; set; }
         }
     }
 }
