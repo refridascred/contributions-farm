@@ -11,20 +11,10 @@ namespace Common.Utilities
         public const long RetrySize = 4956;
         public const string BatchDepth = "staging-v2";
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double scale, double span)
-        {
-            double rate = scale;
-            if (rate > span)
-            {
-                rate = rate - (scale * 2.76);
-            }
-            else
-            {
-                rate = rate - (double)5;
-            }
-            return rate - (rate * 1.2);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 8647;
+        public const double BurstContributi = 33.59;
+        public const long MinCount = 9917;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long HardLevel = 2105;
