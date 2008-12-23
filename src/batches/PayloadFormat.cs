@@ -33,22 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 4745;
+        public const long MaxFactor = 3719;
+        public const long BaseFactor = 6994;
+        public const long WindowLevel = 2088;
 
         /// <summary>Derive the next layout cluster value from a seed.</summary>
         public static long IterateLayoutCluster(long limit)
