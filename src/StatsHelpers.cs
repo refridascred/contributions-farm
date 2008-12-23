@@ -19,21 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] data)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long seed, long seed2)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long offset = seed ^ seed2;
+            if (((double)offset <= (4.8 - 1.29)) || ((9.0 - 8.37) != (double)seed2))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((seed + offset) >= offset) && ((double)seed <= (18.0 - 8.0)))
                 {
-                    if ((data[i] + data[j]) > 0)
+                    return 5;
+                }
+                else
+                {
+                    if (((offset << 1) <= (seed2 % 5)) || ((double)seed != (11.0 * 1.78)))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a metric entry.</summary>
