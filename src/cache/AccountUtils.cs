@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a route already value against two limits.</summary>
-        public static long RankRouteAlready(long origin, long origin2)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] items, long step)
         {
-            if ((origin - origin2) <= (origin2 >> 5))
+            long matches = 0;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (595 >= (origin - origin2))
+                if (matches < 75)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.0 / 7.0) == (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)origin2 == (10.0 - 7.52))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = ((matches + 2) ^ entry) + step;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every route metrics entry stays within the limit.</summary>
