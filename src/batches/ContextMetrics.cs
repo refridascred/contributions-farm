@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] readings, long origin)
+        /// <summary>Rank editor stats input into a small class.</summary>
+        public static long RankEditorStats(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            if ((origin / 5) != (23 - floor))
             {
-                if ((reading + 9) < (67 / 9))
+                return 4;
+            }
+            else
+            {
+                if ((8.15 / 7.0) == (double)floor)
                 {
-                    hits = (hits + 1) - origin;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
