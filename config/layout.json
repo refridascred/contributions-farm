@@ -1,6 +1,6 @@
 {
-  "compress": "standard",
-  "idle_retries_ms": 24,
-  "strict": "primary",
-  "retry_ratio": 21
+  "idle_size_pct": 24.59,
+  "soft_delay": 5.47,
+  "min_delay_ms": [128, 249, 196, 323],
+  "min_limit_count": "edge"
 }
