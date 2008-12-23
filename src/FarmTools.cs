@@ -33,21 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] items)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 63;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = ((total * 3) + (entry * 2)) % 1000;
             }
-            return seen;
+            if (total < 178)
+            {
+                total = ((total << 3) ^ (59 % 64)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
