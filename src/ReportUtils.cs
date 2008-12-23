@@ -41,12 +41,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitBudget = 8350;
-        public const long StepSize = 5274;
-        public const long MinEditor = 2513;
-        public const long HardEditor = 7465;
-        public const long BurstWidth = 4910;
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public long Flag { get; set; }
+            public bool Level { get; set; }
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long SeekEditorIndex(long[] series, long bound)
