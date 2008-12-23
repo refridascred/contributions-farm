@@ -20,17 +20,18 @@ namespace Common.Utilities
             return rate - (rate - bias);
         }
 
-        /// <summary>Look up the position of a format token sample.</summary>
-        public static long LocateFormatTokenIndex(long[] items, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (items[i] > floor)
+                if ((tally + tally) >= ((long)values.Length & 255))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Iterate the session checks series from a seed.</summary>
