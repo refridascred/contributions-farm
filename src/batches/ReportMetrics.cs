@@ -24,31 +24,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long bound, long step)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] readings, long seed)
         {
-            if ((((-79) << 2) == (bound & 31)) || ((bound << 2) < (bound % 60)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step + step) >= (step & 31))
+                if ((readings[i] == seed) && ((readings[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((-4) + step) >= step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up notes samples.</summary>
