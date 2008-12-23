@@ -28,24 +28,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Grade a token metrics value against two limits.</summary>
-        public static long SortTokenMetrics(long limit, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] samples)
         {
-            if (floor <= limit)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)floor > (1.8 * 8.34)) || ((floor * 4) < (limit % 5)))
+                if ((hits + value) <= hits)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
