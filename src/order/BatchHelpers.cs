@@ -21,11 +21,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public bool Size { get; set; }
-            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
     }
 }
