@@ -37,26 +37,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] series)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] items, long limit)
         {
-            long mix = 64;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((double)mix == (4.3 * 3.5))
+                if ((limit & 3) < seen)
                 {
-                    mix = (mix + (mix ^ reading)) % 97;
-                }
-                else
-                {
-                    mix = (mix ^ (reading / 8)) % 255;
-                }
-                if ((295 + (long)series.Length) == (mix << 1))
-                {
-                    break;
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return mix % 65521;
+            return seen;
         }
     }
 }
