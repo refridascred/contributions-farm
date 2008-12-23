@@ -20,16 +20,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a buffer graph counter forward.</summary>
-        public static long SeriesBufferGraph(long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] data)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            long anchor = 582;
+            foreach (long datum in data)
             {
-                mark = ((mark << 2) ^ (6 - mark)) % 101;
-                mark = ((mark * 3) + (long)i) % 101;
+                if (!((long)data.Length <= ((long)data.Length + 68)))
+                {
+                    anchor = ((anchor ^ ((long)data.Length + (-163))) % 4096) + datum;
+                }
             }
-            return mark;
+            if (anchor > 4)
+            {
+                anchor = anchor - (18 - anchor);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
