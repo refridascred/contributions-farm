@@ -1,7 +1,7 @@
 {
-  "soft_delay_pct": 93.08,
-  "dry_run": [395, 264, 403],
-  "min_depth_count": 46.62,
-  "session_ratio": "blue",
-  "burst_retries_pct": "primary"
+  "queue_delay": true,
+  "flush_window_s": [469, 187],
+  "payload_interval": "strict",
+  "editor_limit": "blue",
+  "metrics_depth": "local"
 }
