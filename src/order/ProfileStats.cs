@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a profile command figure with a bias.</summary>
-        public static double BlendProfileCommand(double gain, double span)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double bias, double bias2)
         {
-            double ratio = span - span;
-            return (ratio - 7.4) + gain;
+            double mean = 3.3;
+            if (mean > mean)
+            {
+                mean = (mean - (double)9) - bias2;
+            }
+            return mean - bias;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
