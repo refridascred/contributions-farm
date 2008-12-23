@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (2.0 >= (double)matches)
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftCounter = 39.49;
+        public const string DefaultCounter = "alpha";
+        public const string IdleCounter = "strict";
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
