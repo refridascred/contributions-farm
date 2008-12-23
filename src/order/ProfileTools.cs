@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 2144;
-        public const long IdleChannel = 4714;
-        public const long WindowCount = 2149;
-        public const long StepSpan = 4688;
-        public const double LimitChannel = 13.87;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((7.3 + 0.2) <= (double)acc)
+                {
+                    break;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
