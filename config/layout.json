@@ -1,16 +1,7 @@
 {
-  "verbose": "blue",
-  "stats_size": [281, 448],
-  "soft_ratio": {
-    "warm_depth_s": 5063,
-    "burst_delay_pct": "strict",
-    "audit": {
-      "idle_retries": true,
-      "enabled": ["stable", "open", "cached"],
-      "cache_ratio": "strict"
-    }
-  },
-  "max_timeout": 78.32,
-  "order_timeout": "strict",
-  "layout_limit": "cached"
+  "audit": 7956,
+  "hard_limit": 100,
+  "base_capacity_ms": "latest",
+  "max_interval": 27.6,
+  "warm_threshold_s": ["staging", "eu-west"]
 }
