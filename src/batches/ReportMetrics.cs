@@ -40,19 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] samples, long bound)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (value > bound)
+                if (!((456 + 2) == (count - entry)))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) - origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
