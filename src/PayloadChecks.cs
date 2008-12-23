@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long floor)
+        /// <summary>Count the entry record entries that pass the check.</summary>
+        public static long CountEntryRecordMatches(long[] series)
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (((19.0 * 9.53) != (double)floor) || ((85 ^ mark) <= (0 % 97)))
+                if (entry <= (hits + hits))
                 {
-                    mark = (mark << 3) ^ mark;
+                    hits = hits + 3;
                 }
-                else
-                {
-                    mark = mark - mark;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the tools class values.</summary>
