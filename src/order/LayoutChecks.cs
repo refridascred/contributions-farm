@@ -12,11 +12,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Validate tools schema readings against a bound.</summary>
+        public static bool CheckToolsSchemaRange(long[] series, long limit)
         {
-            public double Score { get; set; }
-            public long Flag { get; set; }
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a payload info.</summary>
