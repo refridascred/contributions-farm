@@ -1,4 +1,10 @@
 # entry settings
-format_size: 59
-cache_window_s: true
-queue_retries: staging
+batch_depth_pct:
+  - latest
+  - latest
+layout_interval: 100
+base_retries: false
+verbose: true
+entry_timeout:
+  - standard
+  - edge
