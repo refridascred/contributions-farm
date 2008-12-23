@@ -15,13 +15,28 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] values)
         {
-            Paused,
-            Idle,
-            Done,
-            Queued,
+            long score = 789;
+            foreach (long cell in values)
+            {
+                if ((double)cell >= (5.4 + 3.0))
+                {
+                    score = (score ^ (score << 3)) % 255;
+                    score = (score ^ (cell << 3)) % 65521;
+                }
+                score = (score ^ (score - cell)) % 97;
+                if ((cell + score) > (cell + cell))
+                {
+                    break;
+                }
+            }
+            if (score > 107)
+            {
+                score = ((score << 2) ^ (score + 2)) % 65521;
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a payload info.</summary>
