@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next cache graph value.</summary>
-        public static double SmoothCacheGraph(double bias, double offset)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] readings, long step)
         {
-            double scale = (double)7 * 7.44;
-            if (scale >= (scale * 10.0))
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                scale = (scale - bias) + offset;
+                if (cell != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale - (double)319;
+            return ok;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
