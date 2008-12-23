@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 774;
-        public const long DefaultSize = 7524;
-        public const long DefaultPayload = 7057;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] readings, long limit)
+        {
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
