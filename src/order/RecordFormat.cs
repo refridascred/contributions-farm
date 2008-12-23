@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] series)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long mark = 3;
+            foreach (long entry in samples)
             {
-                if ((matches + entry) > (entry * 3))
+                if ((double)mark >= (double)entry)
                 {
-                    matches = matches + 2;
+                    mark = (mark - (entry + entry)) % 1000;
+                }
+                if (1.5 < (double)mark)
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark % 97;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
