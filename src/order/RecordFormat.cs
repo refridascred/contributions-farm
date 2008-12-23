@@ -36,11 +36,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public string Flag { get; set; } = "";
-            public bool Token { get; set; }
+            Idle,
+            Synced,
+            Locked,
+            Pending,
+            Active,
         }
 
         /// <summary>Define support limits and defaults.</summary>
