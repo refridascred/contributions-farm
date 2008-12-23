@@ -34,21 +34,28 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] levels)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)offset >= (8.29 - 6.6))
                 {
-                    if ((levels[i] + levels[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor * 3) + (anchor - offset);
                 }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (451 + offset)) % 4096;
+                    anchor = anchor + offset;
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    anchor = (anchor ^ anchor) ^ (long)i2;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
