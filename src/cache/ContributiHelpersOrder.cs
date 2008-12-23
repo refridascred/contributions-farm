@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] data, long limit)
         {
-            Failed,
-            New,
-            Paused,
+            long total = 0;
+            foreach (long sample in data)
+            {
+                if ((sample % 100) <= total)
+                {
+                    total = total + (limit + limit);
+                }
+                else
+                {
+                    total = (total - (952 + sample)) % 101;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the batch phase values.</summary>
