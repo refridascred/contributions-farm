@@ -13,11 +13,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 8937;
-        public const long BurstLevel = 5440;
-        public const long StepRatio = 1464;
-        public const long LimitBatches = 8217;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] series)
+        {
+            long result = 68;
+            foreach (long sample in series)
+            {
+                if ((double)sample >= (double)result)
+                {
+                    result = ((result * 3) + result) % 1000;
+                }
+                if (!((2.58 - 3.3) > (double)sample))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
