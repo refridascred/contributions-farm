@@ -1,6 +1,15 @@
 # githubfarm settings
-batch_timeout: 250
-command_delay: false
-sync_ttl: 86.46
-warm_ratio_s: false
-min_capacity: 96
+warm_ratio_count: green
+flush_threshold:
+  - 339
+  - 441
+  - 302
+notes_limit: strict
+layout_threshold:
+  metric_delay: eu-west
+  editor_timeout: 1024
+  dry_run: false
+  cache_retries: false
+  profile_limit: true
+  enabled: 76
+warm_ttl: 89
