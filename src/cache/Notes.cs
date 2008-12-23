@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxInterval = 4692;
-        public const double BatchReport = 81.4;
-        public const long HardCount = 8895;
-        public const double DefaultReport = 1.18;
-        public const string LimitReport = "standard-1";
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Idle,
+            Done,
+            Stale,
+        }
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
