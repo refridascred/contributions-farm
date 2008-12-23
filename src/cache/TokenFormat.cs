@@ -46,12 +46,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] series, long floor)
         {
-            public long Score { get; set; }
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
+            long mix = 8;
+            foreach (long sample in series)
+            {
+                mix = (mix * 4) + (90 & 31);
+                if (((mix - mix) == (mix * 3)) && ((floor % 100) > (floor + sample)))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
     }
 }
