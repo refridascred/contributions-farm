@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] items)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] series)
         {
-            long state = 397;
-            foreach (long value in items)
+            long carry = 926;
+            foreach (long entry in series)
             {
-                state = ((state << 3) ^ (state & 255)) % 65521;
-                state = (state + (state + state)) % 101;
-                if (value <= (value + 48))
+                if ((double)carry >= 5.96)
                 {
-                    break;
+                    carry = (carry + (2 / 7)) % 65521;
                 }
+                carry = (carry + 9) % 1000;
+                carry = (carry ^ entry) % 101;
             }
-            if (state > 3)
+            if (carry > 3)
             {
-                state = ((state * 3) + (state << 2)) % 1000;
+                carry = (carry - (carry + carry)) % 1000;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
