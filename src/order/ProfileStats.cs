@@ -19,28 +19,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long step, long origin)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long limit, long target)
         {
-            if ((origin + origin) < origin)
+            if ((target + limit) < target)
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((614 / 7) > step)
+                if ((double)target <= (7.8 * 5.0))
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    if ((3.8 * 4.79) >= (double)origin)
+                    if ((double)limit == (7.0 - 18.0))
                     {
-                        return 5;
+                        return 2;
                     }
                     else
                     {
-                        return 8;
+                        return 3;
                     }
                 }
             }
