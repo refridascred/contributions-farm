@@ -19,31 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long step, long seed)
+        /// <summary>Iterate the window already series from a seed.</summary>
+        public static long StepWindowAlready(long offset)
         {
-            if ((step % 64) < 958)
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
             {
-                return 8;
+                carry = (carry + offset) % 1000;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)step >= 9.7)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((step - step) > (step % 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
