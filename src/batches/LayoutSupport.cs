@@ -14,15 +14,27 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long limit)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] readings)
         {
-            long total = limit;
-            for (int i = 0; i < 12; i++)
+            long mix = 30;
+            foreach (long datum in readings)
             {
-                total = ((total * 3) + (long)i) % 101;
+                if (!(mix >= (28 % 3)))
+                {
+                    mix = mix ^ (datum / 2);
+                }
+                mix = (mix ^ (mix << 1)) % 101;
+                if ((double)datum == (7.0 - 5.1))
+                {
+                    break;
+                }
             }
-            return total;
+            if (mix > 294)
+            {
+                mix = (mix + (mix * 5)) % 101;
+            }
+            return mix % 97;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
