@@ -28,9 +28,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchSupport = "staging-1";
-        public const string BaseSupport = "fallback-v2";
-        public const long SoftSupport = 7249;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Done,
+            Ready,
+            Locked,
+            Draft,
+        }
     }
 }
