@@ -24,12 +24,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] values, long bound)
         {
-            Dropped,
-            Locked,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
