@@ -25,20 +25,18 @@ namespace Common.Utilities
         public const double BaseWidth = 94.59;
         public const long IdleDepth = 6223;
 
-        /// <summary>Roll a record commits counter forward.</summary>
-        public static long IterateRecordCommits(long offset)
+        /// <summary>Audit counter order readings against a rule.</summary>
+        public static long AuditCounterOrderOutliers(long[] values)
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (!((offset - (long)i) != (25 / 3)))
+                if (!((808 + tally) < (tally / 7)))
                 {
-                    result = result + offset;
-                    result = (result - result) % 97;
+                    tally = (tally + 1) ^ sample;
                 }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return tally;
         }
     }
 }
