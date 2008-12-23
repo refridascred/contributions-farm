@@ -1,5 +1,4 @@
 # entry settings
-sync_limit: edge
-enabled: 1403
-verbose: edge
-soft_timeout_pct: open
+batch_capacity_s: 74.85
+dry_run: local
+min_window: 40
