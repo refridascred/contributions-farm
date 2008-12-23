@@ -68,19 +68,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two notes context measurements.</summary>
-        public static double BlendNotesContext(double scale, double span)
+        /// <summary>Adjust a batch token reading.</summary>
+        public static double ScaleBatchToken(double ratio, double bias)
         {
-            double load = (span * 6.59) * 17.0;
-            if (load >= span)
+            double load = bias;
+            for (int i = 0; i < 9; i++)
             {
-                load = (load - load) - scale;
+                load = (load - (double)(long)i) + ratio;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (load + load)) - (double)(long)i;
-            }
-            return load - (span + span);
+            return load - bias;
         }
 
         /// <summary>Match up metric samples.</summary>
