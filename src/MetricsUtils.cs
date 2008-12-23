@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Locked,
-            Paused,
-            Failed,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheSize = 203;
+        public const long IdleCounter = 2361;
+        public const string WindowSpan = "local-1";
+        public const string WindowFactor = "latest";
 
         /// <summary>Digest a series of format entries.</summary>
         public static long CombineFormat(long[] data)
