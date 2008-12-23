@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many batch context samples are out of range.</summary>
-        public static long AuditBatchContextGaps(long[] data)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((6.0 * 3.97) <= (double)matches)
-                {
-                    matches = (matches + 1) + datum;
-                }
-            }
-            return matches;
+            Closed,
+            Pending,
+            Idle,
+            Draft,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
