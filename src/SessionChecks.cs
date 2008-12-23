@@ -20,18 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] levels)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double bias = (ratio / 9.0) / 7.0;
+            if (bias < (ratio - ratio))
             {
-                if (((long)levels.Length + hits) == (3 % 24))
-                {
-                    hits = (hits + 1) + value;
-                }
+                bias = (bias + 4.0) + floor;
             }
-            return hits;
+            else
+            {
+                bias = bias + ratio;
+            }
+            return bias + (double)8;
         }
 
         /// <summary>Audit stream batch readings against a rule.</summary>
