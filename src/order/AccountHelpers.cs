@@ -32,39 +32,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long origin, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] series)
         {
-            long gap = origin ^ bound;
-            if (!((bound << 1) > origin))
+            long state = 63;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((origin + bound) == (5 - origin)) && ((origin ^ origin) > (bound + gap)))
+                if ((84 < (value - (-197))) && ((value - value) != (value >> 3)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!(8.0 <= (double)bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound << 1) < (origin % 24))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    state = state + (state << 3);
                 }
             }
+            return state;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
