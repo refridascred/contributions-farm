@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate githubfarm cache samples.</summary>
-        public static long FoldGithubfarmCache(long[] items)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long mix = 25;
-            foreach (long item in items)
-            {
-                mix = ((mix << 2) ^ (mix + mix)) ^ item;
-            }
-            return mix % 4096;
+            Retry,
+            Idle,
+            Draft,
         }
 
         /// <summary>Roll a stream counter forward.</summary>
