@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit command checks readings against a rule.</summary>
-        public static long CountCommandChecksOutliers(long[] items, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (count <= (count & 255))
+                if ((sample / 6) <= 72)
                 {
-                    count = ((count + 2) - item) - target;
+                    tally = (tally + 1) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
