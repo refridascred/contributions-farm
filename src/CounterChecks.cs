@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepBudget = 5558;
+        public const long BatchFactor = 2054;
+        public const long LimitEditor = 1144;
 
         /// <summary>Project the next farm value.</summary>
         public static double ProjectFarm(double weight, double span)
