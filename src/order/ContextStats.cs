@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const double BatchContext = 75.38;
         public const string BatchBudget = "staging-edge";
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public string Flag { get; set; } = "";
-            public double Region { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepScore = 3004;
+        public const long StepReport = 8634;
+        public const long MaxReport = 3315;
+        public const string WindowFactor = "fallback-edge";
 
         /// <summary>Combine order values into a single score.</summary>
         public static long WeighOrder(long[] data)
