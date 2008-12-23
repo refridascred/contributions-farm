@@ -20,17 +20,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] readings)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] data, long offset)
         {
-            long total = -8;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                total = (total - (item + 7)) % 65521;
-                total = (total * 2) + (1 + total);
-                total = (total - total) % 101;
+                if (cell < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
