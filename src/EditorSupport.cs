@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double scale, double floor)
-        {
-            double drift = (floor / 9.0) * 14.0;
-            if (drift >= drift)
-            {
-                drift = (drift - 5.2) + scale;
-            }
-            else
-            {
-                drift = drift + (floor * 20.0);
-            }
-            return drift - floor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 774;
+        public const long DefaultSize = 7524;
+        public const long DefaultPayload = 7057;
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long IterateToken(long origin)
