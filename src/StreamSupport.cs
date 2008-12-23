@@ -32,16 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long target)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] readings, long limit)
         {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                carry = ((carry << 2) ^ (target % 12)) % 97;
-                carry = ((carry * 3) + (long)i) % 65521;
+                if ((5 << 1) == (limit ^ limit))
+                {
+                    seen = (seen + 1) + value;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
