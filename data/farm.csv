@@ -1,11 +1,6 @@
-id,label
-1,primary
-2,open
-3,946
-4,64.28
-5,primary
-6,936
-7,981
-8,290
-9,cached
-10,194
+id,token,rank,owner,score
+1,78.55,614,46.67,6.35
+2,standard,48.16,14.31,989
+3,76.05,blue,44.63,fallback
+4,423,86.71,legacy,35.92
+5,596,12.74,blue,291
