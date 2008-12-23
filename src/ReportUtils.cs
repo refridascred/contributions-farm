@@ -13,12 +13,39 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Classify a metric session pair into a bucket.</summary>
+        public static long BucketMetricSession(long limit, long floor)
         {
-            Pending,
-            Closed,
-            Locked,
+            long gap = limit - floor;
+            if ((double)gap <= (9.28 / 4.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)limit == (double)3)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (limit <= (limit - (-764)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((double)gap >= (6.0 - 17.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
