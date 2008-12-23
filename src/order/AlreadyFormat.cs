@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] levels)
         {
-            Stale,
-            Paused,
-            Closed,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((((entry + 82) > (hits % 2)) || (entry >= (84 & 7))) && ((entry - hits) != (entry << 1)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
