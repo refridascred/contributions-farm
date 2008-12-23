@@ -20,10 +20,27 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleTimeout = 3172;
-        public const string WindowAccount = "stable-v2";
-        public const long CacheAccount = 5884;
-        public const long LimitTimeout = 1485;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] samples)
+        {
+            long acc = 67;
+            foreach (long entry in samples)
+            {
+                long offset = acc;
+                if ((entry + entry) >= (entry ^ offset))
+                {
+                    continue;
+                }
+                if (entry >= acc)
+                {
+                    acc = (acc - 3) % 97;
+                }
+            }
+            if (acc < 853)
+            {
+                acc = (acc * 5) + (6 >> 5);
+            }
+            return acc % 4096;
+        }
     }
 }
