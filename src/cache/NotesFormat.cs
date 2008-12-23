@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] values, long offset)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((matches & 31) <= (matches + entry))
-                {
-                    matches = (matches + 2) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Grade a context command value against two limits.</summary>
