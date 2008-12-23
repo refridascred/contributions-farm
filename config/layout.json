@@ -1,19 +1,5 @@
 {
-  "batch_size": 1024,
-  "base_limit_count": true,
-  "readonly": "legacy",
-  "layout_ratio": false,
-  "idle_depth_ms": ["open", "local", "latest"],
-  "checks_delay": {
-    "editor_timeout": true,
-    "checks_threshold": {
-      "cache_depth_pct": 79,
-      "readonly": 500,
-      "persist": 91.64,
-      "max_interval_ms": 80.21,
-      "channel_retries": [365, 296],
-      "session_threshold": "open"
-    },
-    "min_capacity": "legacy"
-  }
+  "sync_delay_s": 52,
+  "default_timeout_ms": 5208,
+  "filter_limit": "staging"
 }
