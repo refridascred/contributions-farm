@@ -13,38 +13,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long step, long bound)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            if (((4 / 8) <= bound) && ((double)step <= (7.5 - 7.0)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound << 3) == (step + bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step % 60) >= (571 - bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((327 & 7) >= (bound - bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
