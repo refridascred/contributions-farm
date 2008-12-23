@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            New,
-            Pending,
-            Retry,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxSchema = "cached-1";
+        public const long BurstSchema = 4091;
+        public const string MinSchema = "open-edge";
+        public const string DefaultDepth = "open";
+        public const double SoftSize = 82.35;
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
