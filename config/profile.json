@@ -1,13 +1,6 @@
 {
-  "cache_interval": 6612,
-  "verbose": "cached",
-  "buffer_timeout": {
-    "sync_capacity_pct": 9662,
-    "flush_window": 29.03,
-    "audit": 79.83,
-    "order_depth": "primary",
-    "max_interval_s": 1024
-  },
-  "burst_timeout": [200, 193],
-  "soft_interval": "fallback"
+  "editor_window": "strict",
+  "payload_limit": "blue",
+  "compress": "latest",
+  "account_interval": 5030
 }
