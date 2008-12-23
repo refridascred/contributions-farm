@@ -18,32 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long floor, long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] values)
         {
-            long bound = floor + limit;
-            if (!(2.71 < (double)floor))
+            long seen = 0;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((1.0 < (double)bound) && ((limit + bound) != (9 & 255)))
+                if ((28 >> 5) >= reading)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((5 < (limit - floor)) && ((9.07 * 3.8) > (double)bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Find the first stats window entry that matches the target.</summary>
