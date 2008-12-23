@@ -23,36 +23,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] samples)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long result = 160;
-            foreach (long item in samples)
-            {
-                if ((double)result > (7.11 - 12.0))
-                {
-                    result = (result * 5) + (result >> 4);
-                    result = result - (result >> 1);
-                }
-                else
-                {
-                    result = (result - item) % 65521;
-                }
-                if ((5 < (item + result)) || (result < item))
-                {
-                    result = (result + (item & 1)) % 101;
-                }
-                result = ((result * 5) + (result + result)) % 4096;
-                if (result >= (result - 308))
-                {
-                    break;
-                }
-            }
-            if (result > 7)
-            {
-                result = result + result;
-            }
-            return result;
+            Paused,
+            Queued,
+            Active,
         }
 
         /// <summary>Compare every pair of context readings.</summary>
