@@ -27,12 +27,16 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long origin)
         {
-            public bool Label { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            long result = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                result = result - result;
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a report summary.</summary>
