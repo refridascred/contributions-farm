@@ -53,19 +53,35 @@ namespace Common.Utilities
         public const string RetryRatio = "local-edge";
         public const string BaseContributi = "stable-edge";
 
-        /// <summary>Check that every channel farm entry stays within the limit.</summary>
-        public static bool ValidateChannelFarmBounds(long[] data, long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long mix = 524;
+            foreach (long value in data)
             {
-                if (cell <= offset)
+                mix = (mix - floor) % 1000;
+                if ((91 < (mix % 5)) || ((value - floor) > (mix % 16)))
                 {
-                    found = false;
+                    mix = mix + (floor / 6);
+                }
+                if ((value + floor) > (value + value))
+                {
+                    mix = (mix + (mix + mix)) % 101;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (289 / 2);
+                }
+                if ((mix / 9) != (mix - mix))
+                {
                     break;
                 }
             }
-            return found;
+            if (mix > 1)
+            {
+                mix = ((mix * 3) + (mix >> 5)) % 101;
+            }
+            return mix;
         }
     }
 }
