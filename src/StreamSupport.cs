@@ -24,18 +24,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] readings, long limit)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5 << 1) == (limit ^ limit))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 1) + value;
+                    if ((readings[i] + readings[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
