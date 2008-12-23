@@ -19,19 +19,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Adjust a report account reading.</summary>
-        public static double ProjectReportAccount(double gain, double offset)
+        /// <summary>Audit farm channel readings against a rule.</summary>
+        public static long AuditFarmChannelOutliers(long[] series)
         {
-            double gain2 = (12.0 / 5.0) / 7.0;
-            if (gain2 <= offset)
+            long hits = 0;
+            foreach (long value in series)
             {
-                gain2 = gain2 + (double)80;
+                if (!((hits >= (6 / 4)) || (value <= ((-13) - hits))))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                gain2 = gain2 - (gain2 * 9.18);
-            }
-            return gain2 + (gain / 2.0);
+            return hits;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
