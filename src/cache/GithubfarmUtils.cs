@@ -25,24 +25,23 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Classify a commits profile pair into a bucket.</summary>
-        public static long SortCommitsProfile(long bound, long bound2)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] readings, long origin)
         {
-            if ((bound2 >> 5) != (bound << 3))
+            long anchor = 51;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((bound >> 1) > (bound + bound2)))
+                anchor = (anchor << 3) ^ (cell >> 1);
+                if (((anchor + origin) != (cell + origin)) || ((cell * 4) >= (anchor - cell)))
                 {
-                    return 4;
+                    anchor = (anchor << 2) ^ (cell >> 4);
                 }
                 else
                 {
-                    return 1;
+                    anchor = (anchor << 2) ^ 349;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
