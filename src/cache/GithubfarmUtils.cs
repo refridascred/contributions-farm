@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of layout format readings.</summary>
-        public static long OverlapLayoutFormatCount(long[] levels)
+        /// <summary>Derive the next githubfarm record value from a seed.</summary>
+        public static long RollGithubfarmRecord(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    if ((levels[i] ^ levels[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry ^ (long)i) % 101) - (long)i2;
                 }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
