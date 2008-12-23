@@ -1,7 +1,8 @@
 {
-  "route_interval": [468, 111, 295],
-  "burst_window": "fallback",
-  "account_limit": 250,
-  "max_depth": "blue",
-  "batches_timeout": 5125
+  "idle_limit_pct": ["eu-west", "local", "green", "eu-west"],
+  "sync_ratio_pct": 68,
+  "min_capacity": "latest",
+  "batch_depth_s": "standard",
+  "retry_threshold_s": "blue",
+  "compress": ["blue", "staging", "fallback", "blue"]
 }
