@@ -1,10 +1,13 @@
 # Command notes
 
-Use schema settings to tune how often githubfarm data is refreshed.
-The order report groups every window by route.
+When a farm fails, the checks handler retries a few times before giving up.
+A counter that stays idle for too long is moved to the commits list.
+
+When a stream fails, the entry handler retries a few times before giving up.
+The token report groups every format by counter.
 
 ## Guidelines
 
-- Validate farm input early
-- Log every record change
-- Review window limits each release
+- Prefer counter defaults
+- Log every channel change
+- Review checks limits each release
