@@ -32,12 +32,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] values, long bound)
         {
-            Retry,
-            Ready,
-            Synced,
+            long score = -242;
+            foreach (long item in values)
+            {
+                if ((score >> 4) <= item)
+                {
+                    score = (((score * 3) + (304 + 31)) % 101) - bound;
+                    break;
+                }
+                score = (score * 5) + item;
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the tools kind values.</summary>
