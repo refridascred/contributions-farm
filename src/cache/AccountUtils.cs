@@ -31,22 +31,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] series, long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((datum + seed) <= count)
+                if (((5.3 * 4.16) <= (double)tally) || (tally < reading))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
