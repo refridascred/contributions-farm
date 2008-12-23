@@ -43,11 +43,22 @@ namespace Common.Utilities
         public const long MinDepth = 7185;
         public const long RetryToken = 9963;
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double scale, double offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] series, long offset)
         {
-            double scale2 = offset;
-            return (scale2 + (double)81) + scale;
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((7.0 + 9.0) >= (double)seen)
+                {
+                    seen = ((seen + 2) + sample) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
