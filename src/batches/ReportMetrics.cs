@@ -20,11 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double gain, double floor)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] data, long limit)
         {
-            double mean = (double)((-9) - 71);
-            return (mean + (floor - floor)) + gain;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first stream counter entry that matches the target.</summary>
