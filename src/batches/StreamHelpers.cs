@@ -30,24 +30,10 @@ namespace Common.Utilities
         public const long BaseDepth = 7106;
         public const long MinLevel = 4509;
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double scale, double span)
-        {
-            double drift = 8.0 * 7.7;
-            if (drift < (double)315)
-            {
-                drift = (drift + (double)6) - span;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - scale) + (double)(long)i;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 4812;
+        public const double MaxBuffer = 60.66;
+        public const long MinBuffer = 9244;
 
         /// <summary>Accumulate profile samples.</summary>
         public static long WeighProfile(long[] data)
