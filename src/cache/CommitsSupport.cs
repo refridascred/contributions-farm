@@ -32,39 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a graph batches value against two limits.</summary>
-        public static long ClassifyGraphBatches(long bound, long limit)
+        /// <summary>Fold a list of contributi window readings.</summary>
+        public static long WeighContributiWindow(long[] data, long floor)
         {
-            long cur = bound + limit;
-            if ((5.0 + 5.0) >= (double)cur)
+            long anchor = 5;
+            foreach (long value in data)
             {
-                return 5;
+                anchor = (anchor - (1 % 5)) + floor;
+                anchor = (anchor * 5) + (value / 3);
             }
-            else
-            {
-                if (!((cur << 2) <= (limit >> 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)cur < (7.0 - 2.7)) || ((6.0 * 9.3) > (double)cur))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((double)bound != (double)cur))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
