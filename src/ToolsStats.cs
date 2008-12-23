@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Compare every pair of tools farm readings.</summary>
-        public static long OverlapToolsFarmCount(long[] samples)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = -2;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = (((carry + (carry << 3)) % 1000) ^ datum) - origin;
             }
-            return hits;
+            if (carry < 2)
+            {
+                carry = carry - 390;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
