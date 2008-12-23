@@ -37,10 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 9104;
-        public const long HardCluster = 2903;
-        public const double MinCount = 68.27;
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
+        {
+            Retry,
+            Ready,
+            Synced,
+        }
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
