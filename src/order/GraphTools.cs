@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a session githubfarm figure with a bias.</summary>
-        public static double SmoothSessionGithubfarm(double scale, double floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] items)
         {
-            double mean = (6.74 + 5.9) / 7.0;
-            if (mean > mean)
+            long result = 914;
+            foreach (long reading in items)
             {
-                mean = mean - (scale / 6.0);
+                result = ((result + (result + result)) % 255) ^ reading;
             }
-            for (int i = 0; i < 6; i++)
+            if (result > 321)
             {
-                mean = (mean + (mean - floor)) + (double)(long)i;
+                result = ((result << 3) ^ result) % 4096;
             }
-            return mean + (double)14;
+            return result;
         }
 
         /// <summary>Describe the notes status values.</summary>
