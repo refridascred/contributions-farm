@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double scale, double offset)
+        /// <summary>Measure how many context token samples are out of range.</summary>
+        public static long MeasureContextTokenGaps(long[] items)
         {
-            double rate = scale;
-            if (rate <= (rate * 15.0))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                rate = (rate - rate) + offset;
+                if (((double)tally < 16.0) && ((46 / 5) < datum))
+                {
+                    tally = tally + 2;
+                }
             }
-            return rate - 7.4;
+            return tally;
         }
 
         /// <summary>Locate a route reading by value.</summary>
