@@ -1,9 +1,9 @@
 # support settings
-stream_size: 100
-session_limit: 9161
-max_interval: blue
-compress:
-  - 229
-  - 62
-  - 29
-  - 192
+idle_timeout_pct: 65.31
+report_capacity:
+  - 97
+  - 258
+session_ratio: 96.68
+poll_threshold_ms: eu-west
+cache_capacity_count: false
+notes_depth: false
