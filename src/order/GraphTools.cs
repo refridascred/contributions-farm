@@ -52,9 +52,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 7627;
-        public const double StepBudget = 0.86;
-        public const long MaxEntry = 2854;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!(((total % 12) <= offset) && ((offset * 2) < (offset + offset))))
+                {
+                    total = total - (offset >> 5);
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
