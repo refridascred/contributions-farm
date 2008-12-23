@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] series, long floor)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if ((((265 % 24) > matches) || ((double)floor >= (3.08 / 4.0))) && !((424 + reading) < (matches % 16)))
+                if (value <= origin)
                 {
-                    matches = matches + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
