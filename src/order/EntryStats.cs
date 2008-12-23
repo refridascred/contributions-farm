@@ -14,12 +14,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 9716;
-        public const long BurstContext = 1954;
-        public const double CacheContext = 82.24;
-        public const string RetryContext = "fallback-edge";
-        public const string MinContext = "cached-1";
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long CombineGithubfarm(long[] samples)
