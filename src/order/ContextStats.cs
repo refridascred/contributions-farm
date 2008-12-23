@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const double IdleFormat = 55.38;
         public const long RetryFormat = 4894;
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] values, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] data)
         {
-            long score = 3;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in data)
             {
-                score = ((((score * 5) + (45 * 2)) % 65521) - datum) - offset;
+                if ((tally > (item + tally)) || (item > (tally ^ 2)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Hold a batch entry.</summary>
