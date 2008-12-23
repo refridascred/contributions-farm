@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] items)
         {
-            Failed,
-            Paused,
-            Stale,
-            Closed,
-            Dropped,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item - item) > seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a route reading.</summary>
