@@ -17,18 +17,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of graph batches readings.</summary>
-        public static long ScoreGraphBatches(long[] items)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] data, long step)
         {
-            long mix = 5;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((30 + mix) <= datum) || (mix < (mix + 19)))
+                if (data[i] > step)
                 {
-                    mix = (mix * 4) + (mix * 2);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
