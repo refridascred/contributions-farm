@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long limit, long bound)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] data)
         {
-            long cur = limit ^ bound;
-            if ((11.0 + 7.1) == (double)limit)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound <= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((88 + 73) > (limit % 8))
+                    if ((data[i] ^ data[j]) == 14)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((3.0 / 7.0) < (double)cur)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
