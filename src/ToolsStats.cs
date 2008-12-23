@@ -20,18 +20,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] data)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((datum << 3) > datum)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Roll a notes counter forward.</summary>
