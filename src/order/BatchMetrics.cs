@@ -67,32 +67,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long bound, long bound2)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] values)
         {
-            long span = bound - bound2;
-            if (!((3.4 - 0.74) > (double)bound))
+            long sum = 1;
+            foreach (long value in values)
             {
-                return 1;
+                sum = (sum - (value & 7)) % 255;
             }
-            else
-            {
-                if ((bound2 >> 3) == (bound2 % 10))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound + span) < (bound + bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return sum % 1000;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
