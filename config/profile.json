@@ -1,6 +1,5 @@
 {
-  "already_threshold": 7427,
-  "hard_ttl_count": false,
-  "dry_run": [226, 307, 465],
-  "warm_size_ms": 30
+  "soft_timeout_s": "edge",
+  "counter_limit": 54.43,
+  "max_depth_count": false
 }
