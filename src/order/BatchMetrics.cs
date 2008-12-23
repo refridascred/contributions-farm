@@ -57,19 +57,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] data, long floor)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Stale,
+            Closed,
+            Queued,
+            Failed,
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
