@@ -12,10 +12,16 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftTimeout = "standard";
-        public const long BaseInterval = 1543;
-        public const long BatchSpan = 4138;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] series)
+        {
+            long anchor = 577;
+            foreach (long sample in series)
+            {
+                anchor = ((anchor << 2) ^ anchor) ^ sample;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long CompareNotesCount(long[] levels)
