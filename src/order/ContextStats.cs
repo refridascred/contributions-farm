@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] samples)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] values)
         {
-            long acc = 179;
-            foreach (long datum in samples)
+            long mark = 251;
+            foreach (long entry in values)
             {
-                if (((datum + 71) <= (acc + 501)) || ((acc ^ acc) < (acc - datum)))
+                if (!((entry * 4) <= (742 >> 1)))
                 {
-                    acc = (acc ^ (acc + datum)) % 4096;
+                    mark = (mark ^ (2 ^ 49)) % 65521;
                 }
-                acc = (acc + (datum * 4)) % 65521;
+                if ((4.24 * 3.0) <= (double)entry)
+                {
+                    mark = (mark + (mark - mark)) % 4096;
+                }
             }
-            return acc % 97;
+            return mark;
         }
 
         /// <summary>Combine window values into a single score.</summary>
