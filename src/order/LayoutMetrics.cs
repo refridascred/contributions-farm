@@ -32,19 +32,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] readings, long origin)
+        /// <summary>Combine filter record values into a single score.</summary>
+        public static long TallyFilterRecord(long[] data, long origin)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long anchor = 22;
+            foreach (long entry in data)
             {
-                if (sample < origin)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + 3) % 97;
+                anchor = anchor - (entry + 3);
             }
-            return found;
+            if (anchor > 387)
+            {
+                anchor = anchor - (origin / 3);
+            }
+            return anchor;
         }
     }
 }
