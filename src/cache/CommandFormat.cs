@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] series)
+        /// <summary>Check that every graph queue entry stays within the limit.</summary>
+        public static bool ValidateGraphQueueBounds(long[] data, long offset)
         {
-            long anchor = 226;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if ((3.5 * 8.8) == (double)anchor)
+                if (reading != offset)
                 {
-                    anchor = ((anchor + 35) % 4096) - entry;
+                    ready = false;
+                    break;
                 }
             }
-            return anchor % 97;
+            return ready;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
