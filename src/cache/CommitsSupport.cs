@@ -12,22 +12,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] readings, long limit)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((11.0 / 3.0) == (double)datum)
+                if (reading <= floor)
                 {
-                    tally = (tally + 1) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Hold a filter header.</summary>
