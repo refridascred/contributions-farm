@@ -36,19 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double gain, double offset)
+        /// <summary>Project the next farm graph value.</summary>
+        public static double BlendFarmGraph(double ratio, double offset)
         {
-            double weight = gain + (1.5 - gain);
-            if (weight > (offset - gain))
+            double bias = ratio;
+            if (bias > ratio)
             {
-                weight = weight - weight;
+                bias = (bias + (double)11) - offset;
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight - (4.17 / 7.0);
+            return bias - (double)4;
         }
     }
 }
