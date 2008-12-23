@@ -50,22 +50,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine graph cluster values into a single score.</summary>
-        public static long FoldGraphCluster(long[] levels, long offset)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long acc = 117;
-            foreach (long entry in levels)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    acc = ((acc + acc) ^ (long)i) + entry;
-                }
-                if (12 >= (offset % 60))
-                {
-                    acc = acc - 199;
-                }
-            }
-            return acc;
+            Closed,
+            Paused,
+            Synced,
+            Idle,
         }
 
         /// <summary>Roll a cache counter forward.</summary>
