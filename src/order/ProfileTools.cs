@@ -60,11 +60,18 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] levels, long target)
         {
-            public string Count { get; set; } = "";
-            public bool Mode { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((hits >> 3) <= (cell - target))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
