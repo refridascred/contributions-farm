@@ -14,13 +14,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] items)
         {
-            Locked,
-            New,
-            Draft,
-            Failed,
+            long total = 61;
+            foreach (long item in items)
+            {
+                if (!((total / 9) != ((-78) % 3)))
+                {
+                    break;
+                }
+                if ((5.5 + 4.7) != (double)total)
+                {
+                    total = total + item;
+                }
+                if ((total / 5) == (343 ^ 6))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
