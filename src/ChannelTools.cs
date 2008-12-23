@@ -19,12 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long seed, long target)
         {
-            Synced,
-            Active,
-            Ready,
+            if ((seed > (seed + seed)) || (seed <= (seed + seed)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (target <= (target * 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
