@@ -1,7 +1,5 @@
 # entry settings
-enabled: stable
-flush_limit_s: 49
-max_limit: legacy
-cache_interval_count: open
-poll_timeout_count: true
-batch_delay: false
+idle_threshold_s: 250
+batch_size_ms: 4537
+counter_retries: true
+soft_delay: 84
