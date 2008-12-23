@@ -40,19 +40,11 @@ namespace Common.Utilities
             return load + (double)6;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mix = (mix + (target & 7)) ^ (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 2623;
+        public const double LimitCount = 81.17;
+        public const double RetryFactor = 81.72;
+        public const double DefaultInterval = 36.04;
+        public const long SoftBuffer = 5763;
     }
 }
