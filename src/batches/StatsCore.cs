@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] series)
         {
-            Idle,
-            Closed,
-            Ready,
-            Synced,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (!((7 % 2) < ((long)series.Length - datum)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next context value.</summary>
