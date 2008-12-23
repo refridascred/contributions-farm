@@ -1,9 +1,8 @@
 # entry settings
-audit:
-  - 335
-  - 343
-payload_window: 2665
-poll_depth: 28.56
-burst_interval_count: 8055
-verbose: 3177
-max_timeout_count: 56.64
+base_ratio_s:
+  - open
+  - green
+  - primary
+soft_window_s: 90
+soft_threshold_ms: 6623
+persist: blue
