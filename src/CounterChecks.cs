@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] series, long target)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long floor, long target)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if (!((floor - floor) <= floor))
             {
-                if ((double)target >= (4.0 - 12.0))
+                return 5;
+            }
+            else
+            {
+                if ((floor + target) < (target >> 5))
                 {
-                    hits = (hits + 3) - sample;
+                    return 1;
+                }
+                else
+                {
+                    if (!((target / 8) != (target >> 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor <= (8.02 + 6.2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next farm value.</summary>
