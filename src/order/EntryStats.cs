@@ -36,22 +36,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] samples)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((cell - cell) <= ((-841) - count))
+                if (sample < target)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
