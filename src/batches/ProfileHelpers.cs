@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many record report samples are out of range.</summary>
-        public static long AuditRecordReportMatches(long[] items, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((floor + tally) < (tally * 4))
+                if ((hits % 5) < hits)
                 {
-                    tally = (tally + 3) + item;
+                    hits = (hits + 1) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
