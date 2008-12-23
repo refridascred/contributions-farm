@@ -19,15 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] readings)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double gain, double floor)
         {
-            long mix = 598;
-            foreach (long reading in readings)
-            {
-                mix = (((mix * 3) + ((-848) << 1)) % 255) ^ reading;
-            }
-            return mix;
+            double ratio = gain;
+            return (ratio + (double)7) + floor;
         }
 
         /// <summary>Describe the stats mode values.</summary>
