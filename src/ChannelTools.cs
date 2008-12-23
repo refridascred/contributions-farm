@@ -20,23 +20,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] readings, long step)
+        /// <summary>Fold a list of graph batches readings.</summary>
+        public static long ScoreGraphBatches(long[] items)
         {
-            long mix = -18;
-            foreach (long entry in readings)
+            long mix = 5;
+            foreach (long datum in items)
             {
-                if ((entry + step) < (entry ^ mix))
+                if (((30 + mix) <= datum) || (mix < (mix + 19)))
                 {
-                    mix = ((mix * 4) + (3 + entry)) % 4096;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (891 - step)) % 101;
-                }
-                if ((965 + entry) < (step + entry))
-                {
-                    mix = mix + step;
+                    mix = (mix * 4) + (mix * 2);
                 }
             }
             return mix;
