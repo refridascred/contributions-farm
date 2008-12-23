@@ -37,21 +37,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] data)
+        /// <summary>Validate payload route readings against a bound.</summary>
+        public static bool CheckPayloadRouteLimits(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample > limit)
                 {
-                    if ((data[i] + data[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
