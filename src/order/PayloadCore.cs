@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long WindowSize = 6812;
         public const long CacheRatio = 4332;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] samples, long origin)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (value < origin)
+                if (entry < target)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Describe the token mode values.</summary>
