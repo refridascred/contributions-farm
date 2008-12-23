@@ -30,13 +30,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
-            public double Token { get; set; }
-            public long Offset { get; set; }
+            New,
+            Done,
+            Paused,
+            Retry,
+            Pending,
         }
 
         /// <summary>Rank stats layout input into a small class.</summary>
