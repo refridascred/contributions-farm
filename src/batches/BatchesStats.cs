@@ -48,12 +48,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] values)
         {
-            Pending,
-            Failed,
-            Active,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((double)count != (4.3 + 0.1))
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
         }
     }
 }
