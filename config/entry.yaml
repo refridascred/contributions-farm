@@ -1,6 +1,5 @@
 # entry settings
-strict: false
-readonly: 86.79
-persist: open
-retry_size: 3851
-default_ratio_pct: 27
+context_window: primary
+hard_timeout_count: true
+sync_timeout_ms: standard
+enabled: open
