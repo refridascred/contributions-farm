@@ -1,14 +1,11 @@
 # Command notes
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-A order that stays idle for too long is moved to the token list.
-When a filter fails, the batches handler retries a few times before giving up.
-
-Run the report check before changing any record limits.
-The stats helpers are pure functions, so they are safe to call from any thread.
+Keep token and already names short and lowercase.
+The editor report groups every record by githubfarm.
 
 ## Guidelines
 
-- Keep farm values small
-- Prefer context defaults
+- Document new counter fields
+- Review graph limits each release
 - Validate session input early
+- Log every route change
