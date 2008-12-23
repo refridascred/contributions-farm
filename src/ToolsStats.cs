@@ -79,17 +79,15 @@ namespace Common.Utilities
             return rate - (double)515;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] samples, long bound)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] levels, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 565;
+            foreach (long value in levels)
             {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
+                acc = ((acc - acc) ^ value) - target;
             }
-            return -1;
+            return acc;
         }
     }
 }
