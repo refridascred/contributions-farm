@@ -35,13 +35,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            Locked,
+            Dropped,
+            Queued,
+            Active,
             Retry,
-            Paused,
-            Stale,
+            Done,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
