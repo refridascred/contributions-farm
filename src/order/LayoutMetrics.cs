@@ -34,22 +34,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine format stream values into a single score.</summary>
-        public static long CombineFormatStream(long[] levels)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] series, long limit)
         {
-            long sum = 320;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(sum > 26))
+                if (series[i] >= limit)
                 {
-                    sum = (((sum * 3) + 49) % 4096) ^ value;
-                }
-                if ((8.5 + 8.01) >= (double)sum)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
