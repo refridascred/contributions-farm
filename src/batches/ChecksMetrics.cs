@@ -71,11 +71,26 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheSize = "standard-1";
-        public const long RetryNotes = 2635;
-        public const long WindowNotes = 7448;
-        public const string LimitSpan = "open-1";
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long offset, long target)
+        {
+            long offset2 = offset - target;
+            if (offset2 < (offset + offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target & 1) != (offset2 / 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Scale a stream notes figure with a bias.</summary>
         public static double ProjectStreamNotes(double weight, double floor)
