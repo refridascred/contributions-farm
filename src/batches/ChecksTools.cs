@@ -53,13 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Offset { get; set; }
+            public double Weight { get; set; }
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Rank buffer stats input into a small class.</summary>
