@@ -37,18 +37,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferMatches(long[] items, long limit)
+        /// <summary>Validate queue batch readings against a bound.</summary>
+        public static bool VerifyQueueBatchBounds(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if ((limit & 3) < seen)
+                if (item > step)
                 {
-                    seen = (seen + 3) ^ item;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
