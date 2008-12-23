@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 3163;
+        public const long MaxScore = 5357;
+        public const string DefaultTimeout = "open-v2";
+        public const long BatchInterval = 9867;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool VerifyCounterRange(long[] samples, long origin)
