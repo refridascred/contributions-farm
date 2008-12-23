@@ -20,32 +20,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long floor, long origin)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] data)
         {
-            long span = floor ^ origin;
-            if ((origin + span) >= span)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor + 7) > (0 + floor))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((span ^ 80) <= (origin + floor)) && ((double)span != (5.88 * 6.0)))
+                    if ((data[i] ^ data[j]) == 1)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
