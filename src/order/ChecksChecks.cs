@@ -24,12 +24,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public double Count { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstWidth = 8214;
+        public const long LimitPayload = 9953;
+        public const string IdleBudget = "stable-v2";
+        public const long IdleTimeout = 4773;
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
