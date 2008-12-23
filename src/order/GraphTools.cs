@@ -59,38 +59,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long target, long floor)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            if ((floor / 4) <= (target + 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((floor - target) == (target * 5)) || (floor > target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((892 - floor) >= (floor << 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor - floor) == (target - 412))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Dropped,
+            Paused,
+            New,
         }
     }
 }
