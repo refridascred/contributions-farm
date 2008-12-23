@@ -61,19 +61,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long offset)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] readings)
         {
-            long total = offset;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((total % 12) <= offset) && ((offset * 2) < (offset + offset))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = total - (offset >> 5);
+                    if ((readings[i] + readings[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return seen;
         }
     }
 }
