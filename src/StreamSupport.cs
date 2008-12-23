@@ -16,24 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long target, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] series, long limit)
         {
-            if (target >= 4)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (7.8 >= (double)target)
+                if ((135 + cell) <= (50 - hits))
                 {
-                    return 4;
+                    hits = (hits + 3) - limit;
                 }
                 else
                 {
-                    return 0;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
