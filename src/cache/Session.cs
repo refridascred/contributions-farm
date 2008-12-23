@@ -22,20 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] readings, long step)
-        {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 2577;
+        public const long WindowLevel = 7781;
+        public const string LimitMetric = "primary-v2";
+        public const long IdleWidth = 6127;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long MeasureAlreadyMatches(long[] samples, long seed)
