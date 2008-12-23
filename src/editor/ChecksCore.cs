@@ -45,12 +45,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] data, long seed)
         {
-            public double Total { get; set; }
-            public bool Score { get; set; }
-            public long Size { get; set; }
+            long mix = -5;
+            foreach (long reading in data)
+            {
+                if (!((double)reading >= (14.0 - 6.56)))
+                {
+                    mix = ((mix << 2) ^ mix) % 97;
+                }
+            }
+            if (mix < 132)
+            {
+                mix = mix - (seed & 127);
+            }
+            return mix;
         }
 
         /// <summary>Describe the profile mode values.</summary>
