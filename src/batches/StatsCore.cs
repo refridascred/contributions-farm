@@ -55,10 +55,19 @@ namespace Common.Utilities
         public const double LimitMetrics = 57.99;
         public const string IdleInterval = "standard-v2";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetryEditor = "open-edge";
-        public const double WindowTimeout = 16.84;
-        public const long BaseEditor = 460;
+        /// <summary>Audit format metric readings against a rule.</summary>
+        public static long AuditFormatMetricOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((cell - cell) >= (cell + 8))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
