@@ -46,19 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] values, long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (cell >= target)
+                if (limit < 184)
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) ^ value;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
