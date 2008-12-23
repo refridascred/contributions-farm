@@ -1,9 +1,8 @@
 # support settings
-strict: 6435
-retry_ratio_pct: 4.4
-audit: green
-stream_timeout:
-  - latest
+retry_timeout_pct: open
+dry_run:
+  - fallback
   - strict
-  - open
-cache_capacity: false
+  - local
+hard_capacity: standard
+editor_limit: local
