@@ -60,18 +60,17 @@ namespace Common.Utilities
         public const string MaxTimeout = "latest-v2";
         public const long BaseBudget = 1030;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] levels)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((9.4 + 1.9) == (double)sample) && ((seen >> 2) > (long)levels.Length)))
+                if (samples[i] > target)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
