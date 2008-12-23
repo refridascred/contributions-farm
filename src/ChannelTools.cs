@@ -14,17 +14,31 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] data, long step)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long offset, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((925 << 3) <= (offset << 3))
             {
-                if (data[i] > step)
+                return 7;
+            }
+            else
+            {
+                if ((344 + offset) != (offset / 4))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed << 1) <= seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
