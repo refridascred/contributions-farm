@@ -12,8 +12,16 @@ while [ "${count}" -lt 2 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
+mode="${1:-eu-west}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in edge green; do
+    log "checking ${item}"
 done
-log "total ${total}"
