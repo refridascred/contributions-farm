@@ -27,13 +27,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            public long Weight { get; set; }
-            public double Flag { get; set; }
-            public bool Limit { get; set; }
-            public double Size { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
