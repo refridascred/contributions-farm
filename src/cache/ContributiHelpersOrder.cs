@@ -53,12 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Check that every order format entry stays within the limit.</summary>
+        public static bool VerifyOrderFormatLimits(long[] values, long seed)
         {
-            Pending,
-            Queued,
-            Stale,
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
