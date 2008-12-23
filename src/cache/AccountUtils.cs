@@ -27,18 +27,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] readings)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (((5.3 * 4.16) <= (double)tally) || (tally < reading))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public bool Level { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
