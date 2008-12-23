@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long floor)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double scale, double bias)
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
+            double rate = 17.0 + (double)843;
+            if (rate > (8.1 / 3.0))
             {
-                if (!((375 * 3) >= ((long)i * 3)))
-                {
-                    total = ((total * 3) + (long)i) % 97;
-                }
-                else
-                {
-                    total = (total << 3) ^ (total & 31);
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    long prev = total / 8;
-                    total = ((total << 3) ^ prev) ^ (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 101;
+                rate = (rate + bias) - scale;
             }
-            return total;
+            else
+            {
+                rate = rate - bias;
+            }
+            return rate - (rate - bias);
         }
 
         /// <summary>Look up the position of a format token sample.</summary>
