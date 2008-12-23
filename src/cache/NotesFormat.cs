@@ -25,19 +25,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] data, long limit)
+        /// <summary>Check that every context farm entry stays within the limit.</summary>
+        public static bool CheckContextFarmLimits(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if (entry > limit)
+                if (sample > limit)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
