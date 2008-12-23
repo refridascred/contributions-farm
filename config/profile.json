@@ -1,6 +1,6 @@
 {
-  "schema_delay": "standard",
-  "soft_retries_s": "latest",
-  "poll_limit_s": 3885,
-  "retry_threshold": 1024
+  "default_ttl": 7,
+  "cache_retries_pct": true,
+  "flush_retries": [482, 319, 472, 361],
+  "burst_retries_ms": false
 }
