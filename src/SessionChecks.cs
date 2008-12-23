@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Iterate the support metrics series from a seed.</summary>
+        public static long RollSupportMetrics(long origin)
         {
-            Active,
-            Idle,
-            Pending,
+            long state = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((state >> 1) > ((-50) + (long)i))
+                {
+                    state = ((state * 3) + (state + origin)) % 4096;
+                }
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
