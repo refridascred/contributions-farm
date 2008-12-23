@@ -37,18 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] values)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (((7.54 * 5.7) <= (double)hits) && ((hits * 4) == (hits - (-923))))
+                if (!((sample + matches) <= (matches + 90)))
                 {
-                    hits = (hits + 1) ^ value;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Fold a list of booking readings.</summary>
