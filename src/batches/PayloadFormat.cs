@@ -65,19 +65,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of queue batch entries.</summary>
-        public static long DigestQueueBatch(long[] series, long seed)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long carry = 9;
-            foreach (long sample in series)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    carry = (((carry << 3) ^ (sample & 1)) - (long)i) + seed;
-                }
-                carry = ((carry << 3) ^ (carry & 63)) % 1000;
-            }
-            return carry;
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
