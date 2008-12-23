@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 683;
-        public const double DefaultSize = 82.86;
-        public const double RetrySize = 77.92;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Synced,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long TallyAlreadyHits(long[] items, long target)
