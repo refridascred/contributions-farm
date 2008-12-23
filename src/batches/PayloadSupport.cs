@@ -29,12 +29,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            Closed,
-            Active,
-            Done,
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Validate payload route readings against a bound.</summary>
