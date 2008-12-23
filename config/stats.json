@@ -1,5 +1,7 @@
 {
-  "hard_window": false,
-  "idle_delay_pct": "eu-west",
-  "default_delay": 3134
+  "checks_size": 60,
+  "soft_size": false,
+  "max_size_count": "cached",
+  "cluster_delay": 3917,
+  "batches_size": [174, 248, 377, 210]
 }
