@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] levels, long bound)
         {
-            Synced,
-            Locked,
-            New,
-            Pending,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (((bound - bound) != (long)levels.Length) || ((bound << 3) >= entry))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
