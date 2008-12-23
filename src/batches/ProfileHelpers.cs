@@ -35,17 +35,25 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] series, long seed)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long origin, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long diff = origin ^ floor;
+            if ((6 * 2) >= (diff + origin))
             {
-                if ((series[i] < seed) && ((series[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if (floor < (diff / 8))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the schema phase values.</summary>
