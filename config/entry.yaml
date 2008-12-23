@@ -1,15 +1,14 @@
 # entry settings
-compress:
-  persist: 3.93
-  sync_size_ms: fallback
-  base_window:
-    format_delay: 2846
-    schema_window: 3746
-    format_ratio:
-      - strict
-      - eu-west
-      - staging
-  enabled: primary
-  default_timeout: standard
-retry_depth: stable
-support_interval: 30
+sync_retries_pct: true
+idle_depth: 12.4
+default_limit_pct:
+  idle_capacity_count:
+    - 399
+    - 239
+    - 312
+    - 14
+  dry_run: 90
+  entry_ratio: 94
+  counter_timeout: true
+  stats_timeout: green
+  compress: 26
