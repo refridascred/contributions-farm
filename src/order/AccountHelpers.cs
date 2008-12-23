@@ -22,19 +22,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate graph entry readings against a bound.</summary>
-        public static bool CheckGraphEntryLimits(long[] values, long bound)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (entry > bound)
+                if ((cell ^ cell) < (seen * 4))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
