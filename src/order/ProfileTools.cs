@@ -58,19 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double bias, double span)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double rate, double bias)
         {
-            double weight = span + span;
-            if (weight > 1.91)
+            double scale = bias / 7.0;
+            if (scale >= 0.4)
             {
-                weight = weight + (span / 9.0);
+                scale = scale + scale;
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 3; i++)
             {
-                weight = weight + (double)(long)i;
+                scale = (scale + (scale - scale)) + (double)(long)i;
             }
-            return weight + bias;
+            return scale + (rate + rate);
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
