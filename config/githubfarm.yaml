@@ -1,18 +1,5 @@
 # githubfarm settings
-idle_timeout_ms:
-  - fallback
-  - green
-  - green
-  - blue
-base_capacity: standard
-already_size:
-  retry_retries: standard
-  base_retries_ms:
-    - 95
-    - 471
-    - 206
-    - 78
-  burst_depth: standard
-retry_size_count: 7375
-dry_run: 19
-order_threshold: 78.36
+support_ttl: 27.44
+tools_capacity: latest
+default_interval_count: standard
+soft_depth_s: strict
