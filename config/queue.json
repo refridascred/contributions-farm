@@ -1,6 +1,22 @@
 {
-  "tools_ratio": 85.1,
-  "stream_interval": 60,
-  "persist": "staging",
-  "soft_capacity_ms": "primary"
+  "hard_ttl_count": "legacy",
+  "farm_threshold": false,
+  "burst_ttl_ms": 2918,
+  "batch_capacity": {
+    "counter_size": false,
+    "retry_timeout_ms": "legacy",
+    "min_window_ms": "fallback",
+    "route_limit": 40.15,
+    "min_delay_s": 31.93,
+    "dry_run": {
+      "readonly": ["local", "green", "legacy", "standard"],
+      "warm_delay_ms": 100,
+      "channel_retries": 250,
+      "soft_limit": "strict",
+      "sync_interval": "local",
+      "verbose": ["green", "edge", "legacy", "fallback"]
+    }
+  },
+  "idle_ttl_s": "latest",
+  "order_timeout": true
 }
