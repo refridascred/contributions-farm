@@ -19,17 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] levels, long floor)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the window state values.</summary>
