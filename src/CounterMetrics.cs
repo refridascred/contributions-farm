@@ -72,19 +72,14 @@ namespace Common.Utilities
             return weight - (double)35;
         }
 
-        /// <summary>Check that every support cluster entry stays within the limit.</summary>
-        public static bool GuardSupportClusterBounds(long[] samples, long bound)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Queued,
+            New,
+            Retry,
+            Failed,
         }
     }
 }
