@@ -20,31 +20,12 @@ namespace Common.Utilities
         public const long BurstRoute = 5331;
         public const long IdleRoute = 468;
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long target, long limit)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            if ((target + target) >= (limit % 12))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((target ^ limit) != (limit % 8)) && ((target ^ target) < (limit % 12)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target + limit) <= (5 ^ target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Locked,
+            Idle,
+            Done,
         }
 
         /// <summary>Hold a support info.</summary>
