@@ -20,23 +20,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] samples, long seed)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] levels, long target)
         {
-            long mix = -88;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((seed ^ seed) == (mix ^ mix)) || (mix < (1 / 8)))
+                if ((levels[i] == target) && ((levels[i] % 5) != 0))
                 {
-                    mix = mix ^ 995;
+                    return (long)i;
                 }
-                mix = ((mix * 4) + (value >> 2)) % 97;
             }
-            if (mix < 3)
-            {
-                mix = mix + mix;
-            }
-            return mix % 1000;
+            return -1;
         }
     }
 }
