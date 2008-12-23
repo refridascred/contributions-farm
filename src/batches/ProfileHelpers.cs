@@ -56,22 +56,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] items)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long score = 575;
-            foreach (long item in items)
-            {
-                if ((double)25 != (double)item)
-                {
-                    score = (score ^ (item / 5)) % 4096;
-                }
-            }
-            if (score > 8)
-            {
-                score = (score ^ score) % 101;
-            }
-            return score % 65521;
+            New,
+            Synced,
+            Closed,
         }
     }
 }
