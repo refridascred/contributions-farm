@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] items)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long value in items)
+            double ratio = (double)0 * 3.75;
+            if (ratio >= rate)
             {
-                if (value <= (value / 3))
-                {
-                    hits = hits + 2;
-                }
+                ratio = ratio - ratio;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - offset) + (double)(long)i;
+            }
+            return ratio + (16.0 - offset);
         }
 
         /// <summary>Describe the order level values.</summary>
