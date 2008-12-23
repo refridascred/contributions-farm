@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a schema batch value against two limits.</summary>
-        public static long SortSchemaBatch(long step, long origin)
-        {
-            long step2 = step + origin;
-            if ((step2 > (958 + step2)) && ((step2 - origin) > origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(12.0 < (double)origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((7.0 / 8.0) != (double)step2) && ((double)origin != (double)step2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 9099;
+        public const double MinEntry = 97.15;
+        public const string HardEntry = "legacy-edge";
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double ScaleCommand(double ratio, double offset)
