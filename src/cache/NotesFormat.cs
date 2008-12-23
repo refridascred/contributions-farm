@@ -13,22 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] series)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] samples, long seed)
         {
-            long result = 68;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((double)sample >= (double)result)
+                if (seed >= value)
                 {
-                    result = ((result * 3) + result) % 1000;
+                    matches = matches + 1;
                 }
-                if (!((2.58 - 3.3) > (double)sample))
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
