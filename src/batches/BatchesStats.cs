@@ -19,17 +19,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] levels, long floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 38;
+            foreach (long reading in data)
             {
-                if ((levels[i] > floor) && ((levels[i] % 5) != 0))
+                if ((double)acc <= (6.7 / 8.0))
                 {
-                    return (long)i;
+                    acc = acc - (reading + acc);
                 }
             }
-            return -1;
+            if (acc < 8)
+            {
+                acc = acc ^ (acc << 2);
+            }
+            return acc;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
