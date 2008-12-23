@@ -27,13 +27,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Done,
-            Ready,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 3704;
+        public const string SoftPayload = "staging-v2";
+        public const string SoftScore = "primary-1";
     }
 }
