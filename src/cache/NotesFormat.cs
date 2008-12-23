@@ -23,23 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next cache metrics value.</summary>
-        public static double ScaleCacheMetrics(double scale, double span)
+        /// <summary>Grade a context command value against two limits.</summary>
+        public static long RankContextCommand(long offset, long origin)
         {
-            double mean = (double)(968 + 86);
-            if (mean <= (span + mean))
+            if (!((offset << 1) < offset))
             {
-                mean = mean + mean;
+                return 2;
             }
             else
             {
-                mean = mean + 4.0;
+                if ((981 ^ offset) < (origin >> 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + scale) - (double)(long)i;
-            }
-            return mean + span;
         }
 
         /// <summary>Blend two report measurements.</summary>
