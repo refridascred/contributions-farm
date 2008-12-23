@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
+            Active,
+            Dropped,
+            Ready,
+            Queued,
             Idle,
-            Done,
-            Draft,
         }
 
         /// <summary>Roll a format counter forward.</summary>
