@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double scale, double floor)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            double gain = floor;
-            if (gain <= floor)
-            {
-                gain = (gain - 3.8) - scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - floor;
+            Locked,
+            Paused,
+            Ready,
+            Failed,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
