@@ -89,31 +89,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long seed, long floor)
-        {
-            if ((floor & 63) > (floor & 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((7 - seed) >= (4 + seed)) || ((double)floor > (10.0 - 7.27)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((7.89 + 0.42) > (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxSchema = 52.4;
+        public const long HardWidth = 8062;
+        public const long RetryInterval = 6357;
+        public const string BaseSchema = "cached";
     }
 }
