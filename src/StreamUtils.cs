@@ -57,18 +57,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] items)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] items, long bound)
         {
-            long anchor = 903;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (((long)items.Length - 9) != (anchor % 12))
+                if (datum != bound)
                 {
-                    anchor = ((anchor + anchor) % 65521) ^ cell;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
