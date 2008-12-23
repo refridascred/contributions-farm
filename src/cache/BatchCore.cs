@@ -29,15 +29,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double weight, double floor)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            double load = (4.29 * 6.48) - floor;
-            for (int i = 0; i < 5; i++)
-            {
-                load = ((load + (floor / 4.0)) + (double)(long)i) + weight;
-            }
-            return load + (double)6;
+            Locked,
+            Retry,
+            Paused,
+            Stale,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
