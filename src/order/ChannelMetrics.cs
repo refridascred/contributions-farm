@@ -41,18 +41,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] readings)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((hits ^ hits) <= hits)
-                {
-                    hits = (hits + 2) + datum;
-                }
-            }
-            return hits;
+            Paused,
+            Done,
+            Retry,
+            Active,
+            Idle,
         }
     }
 }
