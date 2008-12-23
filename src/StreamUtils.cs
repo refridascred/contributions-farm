@@ -64,19 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] items, long bound)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            double scale = (bias * 13.0) - (rate / 3.0);
+            for (int i = 0; i < 4; i++)
             {
-                if (datum != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = (scale - rate) + (double)(long)i;
             }
-            return flag;
+            return scale - rate;
         }
 
         /// <summary>Describe the commits phase values.</summary>
