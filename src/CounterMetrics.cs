@@ -19,17 +19,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] samples, long limit)
+        /// <summary>Accumulate order stats samples.</summary>
+        public static long FoldOrderStats(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 578;
+            foreach (long sample in items)
             {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 3) ^ (mix ^ mix)) - sample;
             }
-            return -1;
+            if (mix < 327)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Project the next order value.</summary>
