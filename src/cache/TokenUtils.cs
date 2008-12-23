@@ -12,18 +12,13 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] data, long limit)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((1 - hits) != (54 - hits))
-                {
-                    hits = ((hits + 3) + value) - limit;
-                }
-            }
-            return hits;
+            Synced,
+            Ready,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
