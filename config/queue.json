@@ -1,10 +1,7 @@
 {
-  "token_interval": 1317,
-  "commits_limit": {
-    "compress": 6483,
-    "window_window": 68.64,
-    "burst_limit_ms": "fallback"
-  },
-  "command_size": false,
-  "account_capacity": "latest"
+  "route_interval": [468, 111, 295],
+  "burst_window": "fallback",
+  "account_limit": 250,
+  "max_depth": "blue",
+  "batches_timeout": 5125
 }
