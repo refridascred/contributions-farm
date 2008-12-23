@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Measure how many batch context samples are out of range.</summary>
+        public static long AuditBatchContextGaps(long[] data)
         {
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Region { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((6.0 * 3.97) <= (double)matches)
+                {
+                    matches = (matches + 1) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
