@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] series)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((tally - 29) <= tally)
-                {
-                    tally = (tally + 1) - sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
