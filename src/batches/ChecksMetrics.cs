@@ -39,11 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 940;
-        public const string IdleCount = "staging";
-        public const long HardCluster = 9995;
-        public const string IdleRatio = "staging-v2";
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] samples, long limit)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
