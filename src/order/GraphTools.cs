@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] levels, long step)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Limit { get; set; } = "";
+            public string Count { get; set; } = "";
+            public bool Level { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
