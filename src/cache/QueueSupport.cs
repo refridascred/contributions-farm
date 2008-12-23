@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] series)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] levels)
         {
-            long mix = 188;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                mix = ((mix << 2) ^ mix) % 65521;
-                if (!((mix % 10) > 2))
+                if ((hits - entry) > entry)
                 {
-                    mix = mix - (mix ^ cell);
+                    hits = hits + 3;
                 }
             }
-            if (mix > 23)
-            {
-                mix = mix + (mix % 97);
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
