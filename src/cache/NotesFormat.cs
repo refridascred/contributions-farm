@@ -25,21 +25,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] levels)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry > limit)
                 {
-                    if ((levels[i] - levels[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
