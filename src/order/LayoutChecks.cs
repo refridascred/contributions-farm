@@ -47,12 +47,14 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
-            public string Weight { get; set; } = "";
+            Dropped,
+            Pending,
+            Paused,
+            New,
+            Closed,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
