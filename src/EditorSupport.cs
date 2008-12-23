@@ -40,12 +40,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 4663;
-        public const long LimitBuffer = 4022;
-        public const double BaseBuffer = 98.85;
-        public const double SoftBuffer = 80.89;
-        public const double BaseRatio = 34.65;
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            Dropped,
+            Active,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long SoftLevel = 6675;
