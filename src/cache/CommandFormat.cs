@@ -29,11 +29,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double rate, double span)
+        /// <summary>Look up the position of a format token sample.</summary>
+        public static long LocateFormatTokenIndex(long[] items, long floor)
         {
-            double weight = rate - (double)149;
-            return (weight + 2.2) + span;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
