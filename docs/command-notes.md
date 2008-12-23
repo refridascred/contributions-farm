@@ -1,14 +1,13 @@
 # Command notes
 
-The already module keeps metrics values in sync with the support cache.
-Use contributi settings to tune how often command data is refreshed.
+The layout module keeps session values in sync with the support cache.
+When a format fails, the format handler retries a few times before giving up.
 
-Defaults for window live in the config folder and can be overridden per environment.
-Use route settings to tune how often notes data is refreshed.
-The batches module keeps batches values in sync with the filter cache.
+Each channel is validated before it reaches the checks queue.
+A commits that stays idle for too long is moved to the window list.
 
 ## Guidelines
 
-- Keep report values small
-- Log every githubfarm change
-- Validate checks input early
+- Document new buffer fields
+- Log every counter change
+- Review cluster limits each release
