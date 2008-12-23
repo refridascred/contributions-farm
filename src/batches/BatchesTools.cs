@@ -25,18 +25,14 @@ namespace Common.Utilities
         public const string HardSpan = "staging-edge";
         public const long MinNotes = 4885;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] data, long origin)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((hits << 3) >= hits)
-                {
-                    hits = ((hits + 1) ^ datum) - origin;
-                }
-            }
-            return hits;
+            Queued,
+            Retry,
+            Done,
+            Closed,
+            Paused,
         }
     }
 }
