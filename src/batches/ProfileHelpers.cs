@@ -71,19 +71,13 @@ namespace Common.Utilities
         public const long LimitRoute = 6594;
         public const long WindowWidth = 96;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] levels, long offset)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long sum = 60;
-            foreach (long item in levels)
-            {
-                sum = ((sum ^ (item - 432)) % 1000) + offset;
-                if ((item >> 3) > (item % 3))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Closed,
+            Active,
+            Synced,
+            New,
         }
     }
 }
