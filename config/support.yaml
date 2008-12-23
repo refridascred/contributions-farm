@@ -1,8 +1,5 @@
 # support settings
-token_capacity: true
-flush_interval_count: 9.71
-filter_timeout: blue
-format_size:
-  - staging
-  - edge
-  - staging
+dry_run: staging
+base_ratio_pct: green
+soft_interval: 500
+compress: 250
