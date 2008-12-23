@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=433
+RECORD_LIMIT=45
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-staging}"
+mode="${1:-open}"
 case "${mode}" in
-    staging)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
