@@ -36,12 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public double Limit { get; set; }
-            public bool Mode { get; set; }
-            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
+            public double Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate cache samples.</summary>
