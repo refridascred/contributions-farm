@@ -1,15 +1,8 @@
 # githubfarm settings
-idle_delay_s:
-  - 106
-  - 363
-  - 499
-  - 174
-poll_ratio_ms: 99
-compress:
-  warm_retries_count:
-    - local
-    - green
-  hard_limit_pct: 56.77
-  readonly: 1024
-  account_ttl: true
-  retry_ttl_pct: latest
+burst_timeout: 4063
+checks_interval: strict
+batch_capacity_pct: false
+dry_run: fallback
+persist:
+  - 334
+  - 222
