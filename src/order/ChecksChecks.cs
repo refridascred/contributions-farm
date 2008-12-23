@@ -46,19 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the route channel series from a seed.</summary>
-        public static long RollRouteChannel(long floor)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
+            long acc = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((anchor << 1) < anchor)
-                {
-                    anchor = (anchor - (3 - (long)i)) % 65521;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return acc;
         }
     }
 }
