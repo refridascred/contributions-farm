@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            public bool Score { get; set; }
-            public long Level { get; set; }
+            public bool Limit { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
