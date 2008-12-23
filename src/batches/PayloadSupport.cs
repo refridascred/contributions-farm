@@ -22,11 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
+            Retry,
+            Done,
+            Stale,
+            Queued,
         }
 
         /// <summary>Define order limits and defaults.</summary>
