@@ -23,11 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryScore = 4061;
-        public const long LimitTimeout = 8717;
-        public const long SoftNotes = 9887;
-        public const string BatchTimeout = "latest-edge";
+        /// <summary>Match up entry record samples.</summary>
+        public static long CompareEntryRecordCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up support window samples.</summary>
         public static long PairSupportWindowCount(long[] samples)
