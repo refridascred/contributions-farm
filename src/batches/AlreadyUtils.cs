@@ -64,13 +64,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            Synced,
-            New,
-            Ready,
-            Pending,
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
