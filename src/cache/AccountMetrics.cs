@@ -79,18 +79,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Match up queue counter samples.</summary>
-        public static long CompareQueueCounterCount(long[] items)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] levels, long floor)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((-202) / 5) <= count)
                 {
-                    if ((items[i] - items[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    count = ((count + 3) ^ cell) - floor;
                 }
             }
             return count;
