@@ -31,17 +31,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a channel checks reading by value.</summary>
-        public static long FindChannelChecksIndex(long[] data, long limit)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((data[i] > limit) && ((data[i] % 2) == 0))
+                if (!((target & 7) <= target))
                 {
-                    return (long)i;
+                    result = ((result * 3) + ((long)i + (long)i)) % 4096;
+                    continue;
                 }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
     }
 }
