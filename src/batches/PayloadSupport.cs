@@ -34,18 +34,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadHits(long[] samples, long step)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((long)samples.Length == (step & 15))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 3) + sample;
+                    if ((data[i] + data[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
