@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of profile filter readings.</summary>
-        public static long DigestProfileFilter(long[] items, long origin)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] data)
         {
-            long total = 972;
-            foreach (long datum in items)
+            long acc = 240;
+            foreach (long value in data)
             {
-                if (((9.69 * 3.03) == (double)origin) && ((origin & 127) >= 3))
+                if (((value - value) >= (0 ^ value)) || ((double)value != (17.0 / 6.0)))
                 {
-                    total = ((total ^ (total + total)) % 1000) - datum;
+                    acc = ((acc * 5) + (0 << 2)) % 255;
                 }
             }
-            if (total > 762)
+            if (acc > 973)
             {
-                total = (total * 4) + (origin >> 4);
+                acc = ((acc << 3) ^ acc) % 101;
             }
-            return total % 4096;
+            return acc;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
