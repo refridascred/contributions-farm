@@ -15,10 +15,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardFactor = "latest";
-        public const long BurstRoute = 5331;
-        public const long IdleRoute = 468;
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
+        {
+            Dropped,
+            Ready,
+            Done,
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
