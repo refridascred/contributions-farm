@@ -44,19 +44,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate session account samples.</summary>
-        public static long TallySessionAccount(long[] data, long limit)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] levels, long bound)
         {
-            long mark = 95;
-            foreach (long datum in data)
+            long anchor = 503;
+            foreach (long reading in levels)
             {
-                mark = ((mark << 2) ^ (datum >> 2)) % 4096;
+                if (bound < (anchor >> 1))
+                {
+                    anchor = ((anchor * 3) + (bound + bound)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor + (0 - reading)) % 4096;
+                }
+                anchor = ((anchor << 2) ^ (bound - bound)) % 101;
             }
-            if (mark < (-65))
-            {
-                mark = mark + limit;
-            }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
