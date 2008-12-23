@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] levels)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((hits - entry) > entry)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Stale,
+            Ready,
+            Paused,
         }
 
         /// <summary>Locate a editor reading by value.</summary>
