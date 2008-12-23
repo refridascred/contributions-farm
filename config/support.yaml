@@ -1,4 +1,10 @@
 # support settings
-compress: edge
-audit: 80
-base_threshold_pct: true
+strict:
+  githubfarm_retries:
+    - eu-west
+    - latest
+    - staging
+  audit: 19.76
+  min_depth_pct: false
+default_depth_s: 100
+base_depth: 31.71
