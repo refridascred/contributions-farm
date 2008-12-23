@@ -29,12 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Project the next batches buffer value.</summary>
+        public static double ProjectBatchesBuffer(double scale, double floor)
         {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            double load = scale;
+            if (load > load)
+            {
+                load = (load + scale) + floor;
+            }
+            return load + (double)0;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
