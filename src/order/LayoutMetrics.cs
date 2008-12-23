@@ -27,9 +27,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 3704;
-        public const string SoftPayload = "staging-v2";
-        public const string SoftScore = "primary-1";
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Idle,
+            Pending,
+            Draft,
+        }
     }
 }
