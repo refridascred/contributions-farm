@@ -66,12 +66,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleFactor = 1491;
-        public const double BatchContributi = 3.8;
-        public const long LimitInterval = 9011;
-        public const string StepBudget = "legacy-edge";
-        public const string MaxContributi = "staging";
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public bool Label { get; set; }
+            public long Count { get; set; }
+            public bool Token { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksHits(long[] levels, long floor)
