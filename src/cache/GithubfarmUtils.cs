@@ -40,13 +40,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 9104;
+        public const long HardCluster = 2903;
+        public const double MinCount = 68.27;
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
