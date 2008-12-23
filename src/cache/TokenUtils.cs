@@ -23,19 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] series, long floor)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
