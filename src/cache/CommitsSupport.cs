@@ -35,19 +35,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double bias, double span)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            double scale = (span / 8.0) / 2.0;
-            if (scale >= (scale * 4.93))
-            {
-                scale = (scale + scale) - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - 9.0) + (double)(long)i;
-            }
-            return scale - (double)67;
+            public double Label { get; set; }
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Locate a context reading by value.</summary>
