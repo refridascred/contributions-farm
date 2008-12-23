@@ -48,11 +48,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long origin, long floor)
         {
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
+            long step = origin + floor;
+            if (origin > (floor & 15))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((81 + step) < floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin ^ floor) == (floor * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((origin + floor) == (origin % 60)) && ((origin - origin) == (step / 8)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
