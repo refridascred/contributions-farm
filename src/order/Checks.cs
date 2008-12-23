@@ -50,10 +50,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 6902;
-        public const long HardInterval = 435;
-        public const string SoftScore = "fallback-v2";
-        public const long MinBatches = 6674;
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
