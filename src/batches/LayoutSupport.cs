@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine contributi channel values into a single score.</summary>
-        public static long CombineContributiChannel(long[] values)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] values, long offset)
         {
-            long state = -66;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long item in values)
             {
-                state = state ^ (state + (long)values.Length);
-                if ((double)201 >= (double)state)
+                if ((48 % 8) <= (matches << 3))
                 {
-                    state = (state - state) % 255;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (datum & 7)) % 97;
-                }
-                if ((double)datum > (5.3 / 4.0))
-                {
-                    break;
+                    matches = ((matches + 3) + item) - offset;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
