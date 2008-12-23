@@ -54,14 +54,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            New,
-            Closed,
+            Dropped,
             Active,
-            Draft,
-            Ready,
+            New,
+            Done,
+            Locked,
         }
     }
 }
