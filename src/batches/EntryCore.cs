@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] readings)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long offset, long limit)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            if ((6.4 * 4.13) != (double)offset)
             {
-                if ((datum + datum) <= (hits - datum))
+                return 1;
+            }
+            else
+            {
+                if ((offset + offset) <= (limit << 1))
                 {
-                    hits = hits + 2;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
