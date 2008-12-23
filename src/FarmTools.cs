@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Paused,
-            Idle,
-            Synced,
-            Stale,
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public double Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
