@@ -44,21 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] readings)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry < origin)
                 {
-                    if ((readings[i] + readings[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
