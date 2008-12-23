@@ -28,24 +28,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long target, long floor)
+        /// <summary>Compare every pair of format report readings.</summary>
+        public static long CompareFormatReportCount(long[] samples)
         {
-            if ((target + target) > target)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target & 7) >= target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    if ((samples[i] + samples[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Blend two queue measurements.</summary>
