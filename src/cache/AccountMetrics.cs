@@ -66,23 +66,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((value << 3) < (value - value))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleFactor = 1491;
+        public const double BatchContributi = 3.8;
+        public const long LimitInterval = 9011;
+        public const string StepBudget = "legacy-edge";
+        public const string MaxContributi = "staging";
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksHits(long[] levels, long floor)
