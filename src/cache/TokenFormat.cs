@@ -22,16 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the window already series from a seed.</summary>
-        public static long StepWindowAlready(long offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsGaps(long[] data)
         {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                carry = (carry + offset) % 1000;
-                carry = ((carry * 2) + (long)i) % 4093;
+                if ((double)(long)data.Length <= (8.0 + 6.9))
+                {
+                    count = (count + 3) + item;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
