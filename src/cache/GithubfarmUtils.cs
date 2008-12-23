@@ -25,21 +25,24 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count channel contributi pairs that satisfy a relation.</summary>
-        public static long MatchChannelContributiCount(long[] samples)
+        /// <summary>Classify a commits profile pair into a bucket.</summary>
+        public static long SortCommitsProfile(long bound, long bound2)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((bound2 >> 5) != (bound << 3))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!((bound >> 1) > (bound + bound2)))
                 {
-                    if ((samples[i] + samples[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
