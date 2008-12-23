@@ -37,12 +37,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double bias, double floor)
         {
-            Synced,
-            Active,
-            Draft,
+            double gain = (double)(1 / 2);
+            if (gain >= (bias / 5.0))
+            {
+                gain = gain - 14.0;
+            }
+            else
+            {
+                gain = gain - (bias / 4.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (floor / 4.0)) + (double)(long)i;
+            }
+            return gain + (3.6 / 3.0);
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
