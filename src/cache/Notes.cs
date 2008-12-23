@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double ratio, double offset)
-        {
-            double gain = ratio - ratio;
-            if (gain > (offset / 8.0))
-            {
-                gain = gain + gain;
-            }
-            else
-            {
-                gain = gain + (double)8;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxInterval = 4692;
+        public const double BatchReport = 81.4;
+        public const long HardCount = 8895;
+        public const double DefaultReport = 1.18;
+        public const string LimitReport = "standard-1";
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double AdjustTools(double ratio, double span)
