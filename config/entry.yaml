@@ -1,7 +1,9 @@
 # entry settings
-command_interval: false
-compress: standard
-soft_size_pct:
-  - 39
-  - 185
-token_ttl: 1024
+audit:
+  - 335
+  - 343
+payload_window: 2665
+poll_depth: 28.56
+burst_interval_count: 8055
+verbose: 3177
+max_timeout_count: 56.64
