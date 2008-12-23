@@ -50,18 +50,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the batches order entries that pass the check.</summary>
-        public static long TallyBatchesOrderGaps(long[] series, long target)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double bias, double span)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            double weight = span + span;
+            if (weight > 1.91)
             {
-                if ((5.0 / 5.0) <= (double)matches)
-                {
-                    matches = ((matches + 3) ^ datum) - target;
-                }
+                weight = weight + (span / 9.0);
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
