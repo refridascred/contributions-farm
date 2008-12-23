@@ -47,11 +47,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Scale a commits layout figure with a bias.</summary>
+        public static double AdjustCommitsLayout(double rate, double bias)
         {
-            public long Label { get; set; }
-            public double Token { get; set; }
+            double gain = 7.15;
+            if (gain > (double)7)
+            {
+                gain = (gain + (bias + bias)) + rate;
+            }
+            else
+            {
+                gain = gain + (gain / 8.0);
+            }
+            return gain + (gain - 0.68);
         }
     }
 }
