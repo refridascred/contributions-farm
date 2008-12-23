@@ -24,23 +24,10 @@ namespace Common.Utilities
             return rate + (double)827;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] data)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((count % 100) >= count)
-                {
-                    count = (count + 2) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetrySpan = 2644;
+        public const long RetryFarm = 968;
+        public const long BaseFarm = 4926;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long CountClusterOutliers(long[] data, long step)
