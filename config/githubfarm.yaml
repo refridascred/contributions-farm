@@ -1,8 +1,7 @@
 # githubfarm settings
-burst_window: true
-verbose: false
-filter_delay: 98.06
-strict:
-  - 319
-  - 457
-readonly: legacy
+base_limit_count:
+  default_threshold_ms: staging
+  strict: legacy
+  tools_ratio: 81.13
+default_ttl_count: 95
+sync_limit_ms: true
