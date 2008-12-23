@@ -39,23 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate context cache samples.</summary>
-        public static long CombineContextCache(long[] samples, long origin)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long score = -244;
-            foreach (long item in samples)
-            {
-                score = (score ^ (origin + 285)) % 97;
-                if (16 < (origin - item))
-                {
-                    break;
-                }
-            }
-            if (score < 78)
-            {
-                score = (score - (3 & 255)) % 65521;
-            }
-            return score;
+            public bool Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the already kind values.</summary>
