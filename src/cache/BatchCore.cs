@@ -29,12 +29,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public long Size { get; set; }
-            public double Limit { get; set; }
-            public bool Weight { get; set; }
+            Dropped,
+            Done,
+            Paused,
+            Locked,
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
