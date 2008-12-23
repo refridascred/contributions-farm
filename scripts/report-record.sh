@@ -6,16 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=121
-log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-mode="${1:-cached}"
+mode="${1:-blue}"
 case "${mode}" in
     eu-west)
         log "fast path"
@@ -24,3 +15,13 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+for item in latest legacy green open; do
+    log "checking ${item}"
+done
+
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
