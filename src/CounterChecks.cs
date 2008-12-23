@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((double)count != (1.8 / 3.0))
-                {
-                    count = (count + 2) ^ item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MaxMetric = 16.41;
+        public const double CacheSpan = 41.81;
+        public const long SoftTimeout = 1430;
+        public const long BaseMetric = 3325;
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long SeekReportIndex(long[] series, long step)
