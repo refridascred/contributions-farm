@@ -31,12 +31,12 @@ namespace Common.Utilities
         public const long LimitStats = 4539;
         public const string SoftLevel = "open-edge";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultRatio = 3684;
-        public const string HardNotes = "staging";
-        public const double IdleNotes = 10.76;
-        public const double IdleLevel = 2.2;
-        public const long MaxNotes = 5805;
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double ratio, double floor)
+        {
+            double rate = (double)2 / 9.0;
+            return ((rate + (double)6) + ratio) + floor;
+        }
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
