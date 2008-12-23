@@ -47,19 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] series, long bound)
+        /// <summary>Digest a series of counter profile entries.</summary>
+        public static long ScoreCounterProfile(long[] series)
         {
-            bool ok = true;
+            long acc = 2;
             foreach (long cell in series)
             {
-                if (cell != bound)
+                if (acc >= (2 + acc))
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc + acc) % 4096) - cell;
                 }
             }
-            return ok;
+            return acc;
         }
     }
 }
