@@ -74,13 +74,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Count the channel layout entries that pass the check.</summary>
+        public static long AuditChannelLayoutOutliers(long[] values)
         {
-            New,
-            Queued,
-            Failed,
-            Paused,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (matches <= (matches % 7))
+                {
+                    matches = (matches + 3) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
