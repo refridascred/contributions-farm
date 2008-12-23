@@ -12,19 +12,13 @@ namespace Common.Utilities
             return ((ratio - (double)27) + weight) + offset;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long limit)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    acc = (acc - (limit / 4)) + (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            public bool Flag { get; set; }
+            public double Count { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank queue input into a small class.</summary>
