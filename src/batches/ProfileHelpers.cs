@@ -52,13 +52,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public string Label { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepBuffer = 95.62;
+        public const string RetrySpan = "local-1";
+        public const double BatchCount = 28.97;
     }
 }
