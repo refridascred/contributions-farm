@@ -1,4 +1,5 @@
 # entry settings
-batch_ratio_count: green
-batch_interval_pct: 31
-default_ratio_s: 250
+min_capacity_pct: 9046
+stats_ttl: 81
+enabled: 16.75
+soft_size_pct: edge
