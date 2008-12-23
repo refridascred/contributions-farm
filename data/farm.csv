@@ -1,7 +1,10 @@
-id,score,label
-1,eu-west,71.55
-2,72.98,37.44
-3,819,10.15
-4,local,green
-5,808,714
-6,27.04,74.69
+id,ratio,level
+1,0,814
+2,311,edge
+3,open,local
+4,cached,559
+5,staging,latest
+6,247,115
+7,834,local
+8,primary,894
+9,54.8,833
