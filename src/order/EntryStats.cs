@@ -14,10 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleRatio = 1738;
-        public const double RetryLayout = 12.43;
-        public const string BurstTimeout = "latest-edge";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 9716;
+        public const long BurstContext = 1954;
+        public const double CacheContext = 82.24;
+        public const string RetryContext = "fallback-edge";
+        public const string MinContext = "cached-1";
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long CombineGithubfarm(long[] samples)
