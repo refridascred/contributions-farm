@@ -41,12 +41,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] levels, long limit)
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
