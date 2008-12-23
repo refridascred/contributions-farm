@@ -27,15 +27,17 @@ namespace Common.Utilities
             return (mean + (floor - floor)) + gain;
         }
 
-        /// <summary>Fold a list of entry cluster readings.</summary>
-        public static long CombineEntryCluster(long[] items, long bound)
+        /// <summary>Find the first stream counter entry that matches the target.</summary>
+        public static long LocateStreamCounterIndex(long[] levels, long limit)
         {
-            long sum = 7;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (((sum + 59) % 1000) + sample) - bound;
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
