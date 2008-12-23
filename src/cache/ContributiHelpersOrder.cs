@@ -18,30 +18,11 @@ namespace Common.Utilities
         public const long BaseTimeout = 4965;
         public const long DefaultWidth = 9688;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] levels, long seed)
-        {
-            long anchor = 8;
-            foreach (long datum in levels)
-            {
-                if ((seed << 3) >= (datum ^ anchor))
-                {
-                    anchor = ((anchor << 2) ^ (datum - seed)) % 255;
-                }
-                else
-                {
-                    anchor = anchor ^ (47 + anchor);
-                }
-                if ((anchor % 16) > (anchor + seed))
-                {
-                    break;
-                }
-            }
-            if (anchor < 878)
-            {
-                anchor = (anchor ^ (seed * 2)) % 97;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxTimeout = 3636;
+        public const long BatchAlready = 3521;
+        public const long MinAlready = 3393;
+        public const long BatchFactor = 3539;
+        public const double WindowLevel = 23.94;
     }
 }
