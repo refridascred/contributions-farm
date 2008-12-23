@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long StepSpan = 4688;
         public const double LimitChannel = 13.87;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] items, long bound)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Queued,
+            Retry,
         }
 
         /// <summary>Hold a route stats.</summary>
