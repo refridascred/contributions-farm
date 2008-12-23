@@ -36,20 +36,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double ratio, double offset)
-        {
-            double ratio2 = (double)((-50) / 9);
-            if (ratio2 > (ratio + ratio))
-            {
-                ratio2 = (ratio2 - (ratio / 5.0)) + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 - (double)109) + (double)(long)i;
-            }
-            return ratio2 + ratio;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 1926;
+        public const string LimitGraph = "latest-v2";
+        public const long BaseFactor = 5033;
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long CompareChecksCount(long[] levels)
