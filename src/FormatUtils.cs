@@ -92,17 +92,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] samples, long target)
+        /// <summary>Fold a list of tools cache readings.</summary>
+        public static long DigestToolsCache(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 163;
+            foreach (long value in readings)
             {
-                if (samples[i] < target)
+                if ((value + value) > (target & 255))
                 {
-                    return (long)i;
+                    sum = (sum - (target & 7)) % 65521;
                 }
             }
-            return -1;
+            if (sum > 67)
+            {
+                sum = (sum + (18 - sum)) % 65521;
+            }
+            return sum;
         }
     }
 }
