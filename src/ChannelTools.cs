@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((626 - cell) != (seen + seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 1430;
+        public const long BasePayload = 3504;
+        public const double MaxPayload = 15.85;
+        public const double SoftPayload = 88.18;
 
         /// <summary>Fold a list of graph batches readings.</summary>
         public static long ScoreGraphBatches(long[] items)
