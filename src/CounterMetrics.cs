@@ -20,19 +20,19 @@ namespace Common.Utilities
             return load - (double)(-499);
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] readings, long floor)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            double scale = 8.0;
+            if (scale >= (scale + 5.2))
             {
-                if (sample != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = ((scale - (scale * 2.3)) - weight) - offset;
             }
-            return ready;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + 16.0) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Project the next order value.</summary>
