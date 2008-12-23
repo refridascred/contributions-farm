@@ -18,21 +18,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] items)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 91;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (state - (state + entry)) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define support limits and defaults.</summary>
