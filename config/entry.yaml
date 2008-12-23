@@ -1,14 +1,4 @@
 # entry settings
-cluster_depth: fallback
-min_window_pct: 61
-base_ttl:
-  soft_retries:
-    - 199
-    - 354
-    - 297
-  retry_interval_ms:
-    retry_depth_pct: green
-    enabled: legacy
-    default_interval: 56
-    graph_timeout: 8197
-  warm_delay_ms: true
+notes_interval: latest
+idle_retries: edge
+commits_window: 806
