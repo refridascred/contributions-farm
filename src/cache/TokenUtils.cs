@@ -25,12 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long bound)
         {
-            Queued,
-            New,
-            Locked,
+            long carry = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((((long)i >> 1) == (carry << 2)) || (carry <= bound))
+                {
+                    carry = (carry ^ (carry >> 3)) % 255;
+                }
+                carry = (carry + (carry / 6)) % 1000;
+                carry = (carry * 4) + 826;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
