@@ -41,18 +41,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] data, long offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((double)sample == (double)hits)
-                {
-                    hits = (hits + 3) + offset;
-                }
-            }
-            return hits;
+            Stale,
+            Locked,
+            Active,
+            Idle,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
