@@ -1,10 +1,6 @@
-id,owner,token
-1,90.35,green
-2,969,36.93
-3,latest,19
-4,stable,blue
-5,green,staging
-6,891,936
-7,legacy,12.44
-8,334,221
-9,green,0.03
+id,region,weight,count
+1,blue,32.96,18.76
+2,79.56,2.83,72.52
+3,standard,primary,86.17
+4,strict,95.11,73.84
+5,eu-west,30.29,981
