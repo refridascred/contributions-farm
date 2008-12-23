@@ -19,22 +19,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] data)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long bound, long step)
         {
-            long acc = 38;
-            foreach (long reading in data)
+            long gap = bound + step;
+            if ((gap ^ gap) <= (gap ^ step))
             {
-                if ((double)acc <= (6.7 / 8.0))
+                return 7;
+            }
+            else
+            {
+                if (gap <= 89)
                 {
-                    acc = acc - (reading + acc);
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (acc < 8)
-            {
-                acc = acc ^ (acc << 2);
-            }
-            return acc;
         }
 
         /// <summary>Count the payload counter entries that pass the check.</summary>
