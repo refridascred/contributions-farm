@@ -35,12 +35,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Draft,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 5367;
+        public const long CacheLevel = 172;
+        public const long WindowLevel = 660;
+        public const long SoftLevel = 5330;
     }
 }
