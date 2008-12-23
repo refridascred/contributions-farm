@@ -52,23 +52,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window token values into a single score.</summary>
-        public static long ScoreWindowToken(long[] series)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long total = 64;
-            foreach (long sample in series)
-            {
-                total = (total * 4) + sample;
-                if ((sample << 1) != ((-7) + 183))
-                {
-                    total = total + sample;
-                }
-            }
-            if (total < 98)
-            {
-                total = (total * 2) + (total * 3);
-            }
-            return total % 97;
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Validate command already readings against a bound.</summary>
