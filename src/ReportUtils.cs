@@ -41,15 +41,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Locked,
-            Idle,
-            Paused,
-            Retry,
-            New,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitBudget = 8350;
+        public const long StepSize = 5274;
+        public const long MinEditor = 2513;
+        public const long HardEditor = 7465;
+        public const long BurstWidth = 4910;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long SeekEditorIndex(long[] series, long bound)
