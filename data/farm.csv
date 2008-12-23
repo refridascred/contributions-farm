@@ -1,10 +1,7 @@
-id,active,label
-1,open,61.69
-2,local,local
-3,92.08,556
-4,292,304
-5,71.77,39.14
-6,709,27.17
-7,649,117
-8,209,803
-9,93.27,817
+id,owner,count,label,ratio
+1,27.36,871,blue,607
+2,edge,green,856,edge
+3,open,blue,158,eu-west
+4,51.71,4.26,36.9,989
+5,762,edge,eu-west,445
+6,staging,32.68,cached,cached
