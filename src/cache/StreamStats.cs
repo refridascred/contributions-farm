@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long limit, long bound)
         {
-            Synced,
-            Ready,
-            Dropped,
+            long cur = limit ^ bound;
+            if ((11.0 + 7.1) == (double)limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if (bound <= limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((88 + 73) > (limit % 8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((3.0 / 7.0) < (double)cur)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
