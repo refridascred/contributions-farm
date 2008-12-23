@@ -12,12 +12,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            Retry,
+            Ready,
+            Locked,
+            Draft,
             Dropped,
-            Paused,
+            Idle,
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
