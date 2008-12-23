@@ -41,20 +41,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] readings, long step)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] readings, long seed)
         {
-            long score = 81;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long value in readings)
             {
-                score = (((score << 3) ^ (step + score)) % 1000) - item;
-                score = (score ^ 195) % 97;
-                if (!((4.8 - 7.0) <= (double)score))
+                if ((count ^ value) > (count & 31))
                 {
-                    break;
+                    count = (count + 1) + seed;
                 }
             }
-            return score;
+            return count;
         }
     }
 }
