@@ -1,11 +1,17 @@
 {
-  "default_size": {
-    "audit": 46.42,
-    "base_threshold_count": false,
-    "poll_ratio_pct": true,
-    "buffer_size": "strict",
-    "verbose": [441, 461, 435, 301]
+  "flush_limit": 25.83,
+  "retry_depth": "eu-west",
+  "sync_interval_s": {
+    "max_limit_ms": 1.77,
+    "channel_ratio": 250,
+    "compress": {
+      "record_size": 92.44,
+      "cache_window_count": [356, 484],
+      "flush_delay_ms": "green",
+      "batches_threshold": 55.79,
+      "compress": 8687,
+      "min_capacity": 40
+    }
   },
-  "audit": 4006,
-  "route_retries": "green"
+  "verbose": true
 }
