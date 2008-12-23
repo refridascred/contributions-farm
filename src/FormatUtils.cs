@@ -32,17 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] readings, long offset)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double gain, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((readings[i] <= offset) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale + floor) + (double)(long)i;
             }
-            return -1;
+            return scale + (gain * 3.8);
         }
 
         /// <summary>Hold a profile summary.</summary>
