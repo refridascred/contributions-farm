@@ -52,17 +52,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] items, long floor)
+        /// <summary>Measure how many format command samples are out of range.</summary>
+        public static long AuditFormatCommandOutliers(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((items[i] <= floor) && ((items[i] % 3) != 0))
+                if (((entry * 5) >= tally) || (entry <= (entry ^ tally)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
