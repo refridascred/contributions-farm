@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next account queue value.</summary>
-        public static double BlendAccountQueue(double gain, double span)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            double gain2 = (double)(6 - 7);
-            if (gain2 < (gain + 4.1))
-            {
-                gain2 = (gain2 + gain) - span;
-            }
-            return gain2 + (5.2 - gain2);
+            public string Flag { get; set; } = "";
+            public double Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a schema snapshot.</summary>
