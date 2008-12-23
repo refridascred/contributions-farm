@@ -53,17 +53,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= bound) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchScore = 8807;
+        public const string MinLevel = "open-edge";
+        public const long BurstLevel = 1720;
+        public const double StepMetric = 23.3;
+        public const double DefaultTimeout = 84.36;
     }
 }
