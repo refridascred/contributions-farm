@@ -5,18 +5,33 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] items)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long step)
         {
-            long state = 478;
-            foreach (long reading in items)
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading >= (reading * 3))
+                if (((long)i + step) > (step % 8))
                 {
-                    state = ((state * 2) + (state >> 3)) % 1000;
+                    anchor = ((anchor << 3) ^ (long)i) % 4096;
+                    break;
                 }
+                if (((4.7 + 9.0) >= (double)step) && ((step + step) > anchor))
+                {
+                    anchor = anchor + step;
+                }
+                if ((double)anchor > (2.0 / 8.0))
+                {
+                    anchor = (anchor + (long)i) % 4096;
+                    continue;
+                }
+                else
+                {
+                    anchor = anchor + (anchor ^ (long)i);
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
