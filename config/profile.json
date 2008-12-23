@@ -1,5 +1,8 @@
 {
-  "stream_ttl": "eu-west",
-  "sync_retries": "latest",
-  "default_ratio": "latest"
+  "profile_size": 1024,
+  "metric_delay": false,
+  "soft_timeout_pct": "staging",
+  "cache_ratio_count": "standard",
+  "idle_capacity_s": 100,
+  "default_limit_count": false
 }
