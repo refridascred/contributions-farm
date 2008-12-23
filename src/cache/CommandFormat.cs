@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double scale, double bias)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            double rate = 17.0 + (double)843;
-            if (rate > (8.1 / 3.0))
-            {
-                rate = (rate + bias) - scale;
-            }
-            else
-            {
-                rate = rate - bias;
-            }
-            return rate - (rate - bias);
+            public double Token { get; set; }
+            public bool Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
