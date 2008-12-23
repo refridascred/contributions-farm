@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double SoftSize = 85.91;
-        public const string BaseFarm = "legacy-v2";
-        public const long BurstFactor = 7267;
-        public const long BurstLevel = 2623;
-        public const double MaxFarm = 54.47;
+        /// <summary>Measure how many tools payload samples are out of range.</summary>
+        public static long CountToolsPayloadOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((9.64 - 5.0) > (double)datum)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long TallyMetricsMatches(long[] samples, long bound)
