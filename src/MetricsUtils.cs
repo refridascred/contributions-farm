@@ -12,13 +12,16 @@ namespace Common.Utilities
         public const long DefaultCache = 8224;
         public const long BaseLevel = 1096;
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Roll a buffer graph counter forward.</summary>
+        public static long SeriesBufferGraph(long floor)
         {
-            Draft,
-            Failed,
-            Dropped,
-            Active,
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark << 2) ^ (6 - mark)) % 101;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define order limits and defaults.</summary>
