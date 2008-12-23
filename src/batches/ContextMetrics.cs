@@ -25,31 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long step, long floor)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            if ((double)floor > (6.45 + 4.77))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((step << 1) <= floor) || ((6.5 / 6.0) < (double)step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((9 * 4) > (step + floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Idle,
+            Retry,
+            Queued,
+            Closed,
         }
 
         /// <summary>Describe the batch mode values.</summary>
