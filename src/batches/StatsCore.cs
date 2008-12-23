@@ -20,31 +20,20 @@ namespace Common.Utilities
             return drift - (drift + bias);
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long origin, long seed)
+        /// <summary>Accumulate layout queue samples.</summary>
+        public static long TallyLayoutQueue(long[] samples)
         {
-            if (!((origin / 9) >= ((-88) + seed)))
+            long score = 5;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed == (4.08 - 5.06))
+                long lane = value;
+                score = ((score << 3) ^ (score + lane)) % 101;
+                if ((value & 1) == (score + value))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (seed >= (seed & 127))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    score = ((score << 3) ^ (31 + score)) % 1000;
                 }
             }
+            return score;
         }
 
         /// <summary>Match up contributi samples.</summary>
