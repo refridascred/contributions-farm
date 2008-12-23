@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long IdleTimeout = 8738;
         public const long WindowSupport = 8183;
 
-        /// <summary>Look up the position of a payload layout sample.</summary>
-        public static long FindPayloadLayoutIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitLevel = 58.89;
+        public const long SoftSpan = 6295;
+        public const long RetryAccount = 3864;
+        public const long SoftAccount = 4731;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long HardMetrics = 3162;
