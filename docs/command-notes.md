@@ -1,10 +1,14 @@
 # Command notes
 
-Use stream settings to tune how often githubfarm data is refreshed.
-Use metric settings to tune how often entry data is refreshed.
+Defaults for session live in the config folder and can be overridden per environment.
+Use token settings to tune how often batch data is refreshed.
+Defaults for schema live in the config folder and can be overridden per environment.
+
+Use buffer settings to tune how often payload data is refreshed.
+Run the metric check before changing any batch limits.
 
 ## Guidelines
 
-- Validate editor input early
-- Review stats limits each release
-- Prefer stats defaults
+- Log every queue change
+- Review support limits each release
+- Prefer commits defaults
