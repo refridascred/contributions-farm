@@ -81,21 +81,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] samples)
+        /// <summary>Rank context graph input into a small class.</summary>
+        public static long RankContextGraph(long seed, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!((seed & 1) < 7))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((6.0 - 2.9) != (double)seed)
                 {
-                    if ((samples[i] - samples[j]) != 2)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed > (1.88 / 8.0))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return matches;
         }
     }
 }
