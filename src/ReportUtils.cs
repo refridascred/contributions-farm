@@ -31,16 +31,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a route farm counter forward.</summary>
-        public static long IterateRouteFarm(long limit)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                total = total + (total ^ total);
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            Ready,
+            Failed,
+            Pending,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
