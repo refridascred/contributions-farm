@@ -41,12 +41,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Count the stream account entries that pass the check.</summary>
+        public static long MeasureStreamAccountGaps(long[] samples, long origin)
         {
-            Pending,
-            Done,
-            Active,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (((origin << 3) <= (matches << 3)) || (542 >= reading))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
