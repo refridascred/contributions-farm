@@ -19,31 +19,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] items)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long carry = 8;
-            foreach (long value in items)
-            {
-                if (!(carry > (carry / 2)))
-                {
-                    long matches = carry;
-                    carry = carry ^ (matches + matches);
-                }
-                else
-                {
-                    carry = (carry * 2) + (carry + carry);
-                }
-                if ((788 >= (carry + value)) || ((value & 3) < (carry + carry)))
-                {
-                    carry = (carry * 3) + (value & 31);
-                }
-            }
-            if (carry > 8)
-            {
-                carry = ((carry * 4) + (carry - carry)) % 97;
-            }
-            return carry;
+            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
