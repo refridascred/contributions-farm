@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the support metrics series from a seed.</summary>
-        public static long RollSupportMetrics(long origin)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] samples)
         {
-            long state = origin;
-            for (int i = 0; i < 13; i++)
+            long carry = 609;
+            foreach (long item in samples)
             {
-                if ((state >> 1) > ((-50) + (long)i))
-                {
-                    state = ((state * 3) + (state + origin)) % 4096;
-                }
-                state = ((state * 5) + (long)i) % 1000;
+                carry = ((carry * 2) + (item - carry)) % 65521;
             }
-            return state;
+            if (carry > 5)
+            {
+                carry = ((carry << 3) ^ (carry % 24)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
