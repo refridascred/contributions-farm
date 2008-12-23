@@ -49,25 +49,11 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long limit, long bound)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long delta = limit ^ bound;
-            if ((bound - bound) >= (delta & 127))
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound > (delta - delta))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the farm phase values.</summary>
