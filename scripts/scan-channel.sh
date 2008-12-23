@@ -13,10 +13,17 @@ done
 log "ran ${count} rounds"
 
 total=0
-for i in $(seq 1 11); do
+for i in $(seq 1 8); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=106
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-open}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
