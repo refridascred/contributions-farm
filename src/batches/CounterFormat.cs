@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
-        {
-            public bool Token { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BurstBudget = 90.57;
+        public const long MaxFactor = 6280;
+        public const double HardTimeout = 54.2;
+        public const string BaseRatio = "primary-edge";
 
         /// <summary>Compare every pair of filter command readings.</summary>
         public static long MatchFilterCommandCount(long[] readings)
