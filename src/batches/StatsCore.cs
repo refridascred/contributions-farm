@@ -58,18 +58,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiGaps(long[] samples)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (value <= (count * 3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Grade a already value against two limits.</summary>
