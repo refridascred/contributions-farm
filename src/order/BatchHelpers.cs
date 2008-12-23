@@ -12,16 +12,11 @@ namespace Common.Utilities
             return ((ratio - (double)27) + weight) + offset;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 11; i++)
-            {
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowWidth = 8386;
+        public const long BaseSpan = 8672;
+        public const double MinNotes = 15.31;
+        public const string IdleTimeout = "standard-edge";
 
         /// <summary>Define already limits and defaults.</summary>
         public const double LimitInterval = 54.79;
