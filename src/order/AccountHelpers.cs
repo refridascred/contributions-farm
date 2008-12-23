@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] samples)
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                long edge = 3;
-                if (((floor + floor) > floor) && (((long)i ^ floor) < edge))
+                if (2.0 >= (double)matches)
                 {
-                    edge = ((edge << 3) ^ (floor & 7)) % 255;
+                    matches = (matches + 2) + datum;
                 }
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a cache stats.</summary>
