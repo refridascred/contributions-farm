@@ -28,13 +28,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] items, long step)
         {
-            Pending,
-            Ready,
-            New,
-            Retry,
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of command readings.</summary>
