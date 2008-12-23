@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] data, long seed)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long seed, long target)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            if ((seed + target) < (target + target))
             {
-                if ((sample / 6) <= 72)
+                return 4;
+            }
+            else
+            {
+                if ((2.99 - 5.6) != (double)target)
                 {
-                    tally = (tally + 1) + seed;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the command status values.</summary>
