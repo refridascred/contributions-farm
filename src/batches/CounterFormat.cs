@@ -28,12 +28,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Measure how many payload token samples are out of range.</summary>
+        public static long CountPayloadTokenOutliers(long[] samples, long step)
         {
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)step <= (double)count)
+                {
+                    count = (count + 2) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
