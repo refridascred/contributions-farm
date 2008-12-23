@@ -20,23 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double weight, double floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] levels)
         {
-            double mean = 2.2;
-            if (mean < 2.7)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                mean = (mean + (mean + floor)) - weight;
+                if ((double)seen <= (3.46 - 13.0))
+                {
+                    seen = (seen + 1) + datum;
+                }
             }
-            else
-            {
-                mean = mean - (double)1;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + (mean * 1.0);
+            return seen;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
