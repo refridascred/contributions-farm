@@ -1,7 +1,7 @@
-id,owner,count,label,ratio
-1,27.36,871,blue,607
-2,edge,green,856,edge
-3,open,blue,158,eu-west
-4,51.71,4.26,36.9,989
-5,762,edge,eu-west,445
-6,staging,32.68,cached,cached
+id,score,label
+1,eu-west,71.55
+2,72.98,37.44
+3,819,10.15
+4,local,green
+5,808,714
+6,27.04,74.69
