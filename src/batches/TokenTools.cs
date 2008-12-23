@@ -27,19 +27,21 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long limit)
+        /// <summary>Match up batches schema samples.</summary>
+        public static long PairBatchesSchemaCount(long[] readings)
         {
-            long total = limit;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = ((total ^ (total + 21)) % 101) - (long)i2;
+                    if ((readings[i] - readings[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
+            return hits;
         }
     }
 }
