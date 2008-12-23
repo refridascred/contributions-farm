@@ -17,13 +17,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
-        {
-            Done,
-            Active,
-            Idle,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 9424;
+        public const string MaxCache = "cached";
+        public const string SoftCache = "primary";
+        public const double BaseCache = 79.15;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TotalCommits(long[] readings)
