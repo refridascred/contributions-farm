@@ -12,10 +12,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string CacheSize = "latest-v2";
-        public const long IdleFarm = 1918;
-        public const long MaxCount = 6053;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (matches > (matches ^ matches))
+                {
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long MatchCacheCount(long[] readings)
