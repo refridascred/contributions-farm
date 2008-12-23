@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 5572;
-        public const long RetryBatch = 1798;
-        public const long BurstBatch = 4355;
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                score = (score ^ score) % 97;
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long PairCacheCount(long[] values)
