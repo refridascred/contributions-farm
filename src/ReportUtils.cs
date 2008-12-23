@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] readings, long target)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((double)matches < 10.0)
-                {
-                    matches = ((matches + 3) + item) + target;
-                }
-            }
-            return matches;
+            Active,
+            Locked,
+            Queued,
+            Ready,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
