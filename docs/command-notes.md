@@ -1,14 +1,14 @@
 # Command notes
 
-The entry module keeps layout values in sync with the githubfarm cache.
-The token helpers are pure functions, so they are safe to call from any thread.
+Each format is validated before it reaches the graph queue.
+The metrics report groups every token by profile.
+A stream that stays idle for too long is moved to the token list.
 
-Run the checks check before changing any channel limits.
-The layout report groups every cache by format.
+A payload that stays idle for too long is moved to the session list.
+Use record settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Validate graph input early
-- Keep format values small
-- Review session limits each release
+- Prefer metric defaults
+- Review channel limits each release
+- Log every report change
