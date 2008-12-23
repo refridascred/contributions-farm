@@ -1,7 +1,11 @@
 {
-  "audit": 7956,
-  "hard_limit": 100,
-  "base_capacity_ms": "latest",
-  "max_interval": 27.6,
-  "warm_threshold_s": ["staging", "eu-west"]
+  "enabled": {
+    "sync_timeout": "stable",
+    "min_threshold_pct": 9.98,
+    "idle_size": 20.26,
+    "strict": 74.29
+  },
+  "stats_timeout": 6874,
+  "sync_window": 30,
+  "sync_ratio_ms": ["staging", "open", "strict"]
 }
