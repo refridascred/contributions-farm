@@ -38,12 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] levels, long target)
         {
-            public double Label { get; set; }
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Project the next layout value.</summary>
