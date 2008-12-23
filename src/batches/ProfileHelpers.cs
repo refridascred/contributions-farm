@@ -59,12 +59,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] items)
         {
-            Draft,
-            Done,
-            Ready,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (((count ^ value) < (value + (long)items.Length)) && ((long)items.Length <= (value - (long)items.Length)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the route level values.</summary>
