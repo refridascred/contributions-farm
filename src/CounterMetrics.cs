@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up commits metrics samples.</summary>
-        public static long CompareCommitsMetricsCount(long[] series)
+        /// <summary>Adjust a cluster buffer reading.</summary>
+        public static double ScaleClusterBuffer(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = scale - (scale + floor);
+            if (load >= (floor + floor))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = load + (scale + floor);
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (2.51 - scale)) + (double)(long)i;
+            }
+            return load - (double)(-499);
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
