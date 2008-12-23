@@ -28,19 +28,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] values, long offset)
-        {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchSupport = "staging-1";
+        public const string BaseSupport = "fallback-v2";
+        public const long SoftSupport = 7249;
     }
 }
