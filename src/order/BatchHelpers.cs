@@ -23,21 +23,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepScore = 4101;
+        public const string RetryDepth = "alpha-1";
+        public const double IdleFactor = 66.69;
+        public const long HardFilter = 2117;
+        public const long BatchBudget = 8696;
     }
 }
