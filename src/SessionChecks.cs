@@ -12,14 +12,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Count format account pairs that satisfy a relation.</summary>
+        public static long MatchFormatAccountCount(long[] values)
         {
-            Ready,
-            Locked,
-            Draft,
-            Dropped,
-            Idle,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
