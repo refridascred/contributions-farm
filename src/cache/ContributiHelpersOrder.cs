@@ -23,14 +23,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Dropped,
-            Synced,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepRatio = 1664;
+        public const long BaseTimeout = 4965;
+        public const long DefaultWidth = 9688;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long DefaultCounter = 8387;
