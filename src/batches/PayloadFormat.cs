@@ -32,21 +32,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] items)
+        /// <summary>Count token route pairs that satisfy a relation.</summary>
+        public static long PairTokenRouteCount(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] - items[j]) != 0)
+                    if ((samples[i] - samples[j]) < 0)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Locate a route reading by value.</summary>
