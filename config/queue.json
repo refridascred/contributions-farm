@@ -1,6 +1,7 @@
 {
-  "base_limit_ms": false,
-  "dry_run": 19.33,
-  "poll_window_count": 36.63,
-  "strict": [308, 425, 169, 251]
+  "audit": ["local", "cached", "staging"],
+  "flush_interval": 77.13,
+  "hard_window_pct": [221, 333, 336, 183],
+  "hard_limit": 23,
+  "verbose": 17.34
 }
