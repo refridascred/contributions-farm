@@ -30,18 +30,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] values, long step)
+        /// <summary>Check that every queue entry entry stays within the limit.</summary>
+        public static bool CheckQueueEntryLimits(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if ((4 + 65) >= step)
+                if (cell != floor)
                 {
-                    seen = (seen + 3) ^ cell;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Hold a layout record.</summary>
