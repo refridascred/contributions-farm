@@ -38,14 +38,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double ratio, double span)
         {
-            Closed,
-            Locked,
-            Queued,
-            Pending,
-            Active,
+            double load = (double)((-71) >> 3);
+            if (load < span)
+            {
+                load = (load - (double)452) - ratio;
+            }
+            else
+            {
+                load = load + (double)60;
+            }
+            return load - (double)0;
         }
 
         /// <summary>Hold a stats summary.</summary>
