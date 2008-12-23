@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxMetrics = "standard-edge";
-        public const long BaseMetrics = 9744;
-        public const long HardMetrics = 9609;
-        public const long WindowMetrics = 194;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Synced,
+            Failed,
+            Retry,
+            Ready,
+            Locked,
+        }
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long LookupRecordIndex(long[] levels, long bound)
