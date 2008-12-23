@@ -61,22 +61,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] samples, long floor)
-        {
-            long carry = 86;
-            foreach (long entry in samples)
-            {
-                if (!(floor > (982 & 3)))
-                {
-                    carry = ((carry ^ ((-8) + floor)) % 1000) - entry;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (7 + carry);
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double HardSession = 44.5;
+        public const double HardTimeout = 31.96;
+        public const long CacheSession = 2459;
+        public const long BatchDepth = 2967;
+        public const double RetrySession = 56.64;
     }
 }
