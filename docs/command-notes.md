@@ -1,10 +1,10 @@
 # Command notes
 
-Keep queue and report names short and lowercase.
-Run the context check before changing any order limits.
+Keep support and batch names short and lowercase.
+Run the metric check before changing any account limits.
 
 ## Guidelines
 
-- Review farm limits each release
-- Document new farm fields
-- Keep notes values small
+- Log every batch change
+- Prefer counter defaults
+- Document new window fields
