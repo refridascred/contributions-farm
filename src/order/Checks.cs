@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardLevel = 6899;
-        public const long DefaultInterval = 3973;
-        public const double LimitBudget = 33.44;
-        public const string SoftWidth = "stable-edge";
-        public const string BatchTimeout = "strict-1";
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((401 / 4) > hits)
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many checks filter samples are out of range.</summary>
         public static long MeasureChecksFilterOutliers(long[] levels, long floor)
