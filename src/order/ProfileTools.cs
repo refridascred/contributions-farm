@@ -67,15 +67,15 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] levels, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] values, long floor)
         {
             long hits = 0;
-            foreach (long cell in levels)
+            foreach (long reading in values)
             {
-                if ((hits >> 3) <= (cell - target))
+                if ((((hits % 60) == (floor + hits)) && ((double)floor <= 11.0)) && ((reading - hits) <= hits))
                 {
-                    hits = hits + 3;
+                    hits = hits + 1;
                 }
             }
             return hits;
