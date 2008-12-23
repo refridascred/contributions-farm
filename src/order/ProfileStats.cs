@@ -15,17 +15,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first profile editor entry that matches the target.</summary>
-        public static long FindProfileEditorIndex(long[] readings, long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 844;
+            foreach (long cell in values)
             {
-                if (readings[i] == target)
+                if (((6.0 * 15.0) <= (double)floor) && ((double)cell >= 19.0))
                 {
-                    return (long)i;
+                    total = (total + (2 ^ 843)) % 255;
+                    total = total ^ total;
+                }
+                if ((double)cell == (double)(-431))
+                {
+                    total = (total << 3) ^ total;
+                }
+                else
+                {
+                    total = (total + cell) % 255;
+                }
+                if ((9.0 * 7.5) == (double)cell)
+                {
+                    break;
                 }
             }
-            return -1;
+            return total % 1000;
         }
 
         /// <summary>Rank window editor input into a small class.</summary>
