@@ -71,17 +71,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a report queue sample.</summary>
-        public static long LookupReportQueueIndex(long[] data, long floor)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
