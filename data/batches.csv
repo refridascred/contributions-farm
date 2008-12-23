@@ -1,7 +1,6 @@
-id,level,active
-1,981,218
-2,fallback,edge
-3,22.35,staging
-4,273,46.21
-5,fallback,34.0
-6,794,321
+id,level,active,rank
+1,open,84.55,703
+2,37.25,58.05,cached
+3,local,37.97,22.23
+4,local,33.75,186
+5,426,223,898
