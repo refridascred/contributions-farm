@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BurstRatio = 74.64;
-        public const long BurstEditor = 7460;
-        public const double BaseInterval = 7.98;
-        public const string MinEditor = "open-1";
-        public const double SoftEditor = 15.12;
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Paused,
+            New,
+            Done,
+        }
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
