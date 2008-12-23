@@ -35,24 +35,11 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double gain, double floor)
-        {
-            double weight = floor;
-            if (weight > (floor * 7.89))
-            {
-                weight = weight - weight;
-            }
-            else
-            {
-                weight = weight + (gain * 0.5);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + floor) + (double)(long)i;
-            }
-            return weight - (double)35;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxTimeout = 5268;
+        public const long DefaultFormat = 1130;
+        public const double LimitTimeout = 75.29;
+        public const string BatchDepth = "stable-edge";
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long LookupChannelIndex(long[] values, long bound)
