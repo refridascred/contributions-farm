@@ -1,15 +1,14 @@
 # Command notes
 
-Run the stats check before changing any already limits.
-Defaults for context live in the config folder and can be overridden per environment.
-The commits report groups every cluster by metrics.
+The entry module keeps layout values in sync with the githubfarm cache.
+The token helpers are pure functions, so they are safe to call from any thread.
 
-The command report groups every stats by buffer.
-Use profile settings to tune how often stats data is refreshed.
+Run the checks check before changing any channel limits.
+The layout report groups every cache by format.
 
 ## Guidelines
 
-- Keep tools values small
-- Review already limits each release
-- Validate command input early
-- Document new notes fields
+- Prefer batches defaults
+- Validate graph input early
+- Keep format values small
+- Review session limits each release
