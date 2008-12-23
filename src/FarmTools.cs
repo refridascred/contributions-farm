@@ -55,15 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] readings, long seed)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] levels)
         {
             long hits = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((hits >> 4) == (seed >> 5)) || (hits >= (3 - seed)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 1) ^ cell;
+                    if ((levels[i] ^ levels[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
