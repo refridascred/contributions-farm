@@ -68,18 +68,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route queue samples are out of range.</summary>
-        public static long AuditRouteQueueHits(long[] series, long floor)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (floor >= (hits - floor))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
+            Closed,
+            Ready,
+            Stale,
+            Draft,
         }
 
         /// <summary>Match up entry samples.</summary>
