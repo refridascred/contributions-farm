@@ -74,23 +74,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] samples, long seed)
-        {
-            long sum = 36;
-            foreach (long sample in samples)
-            {
-                sum = ((sum + (sum * 5)) % 4096) - sample;
-                if ((seed > (sum >> 1)) || ((0.44 + 3.9) <= (double)sum))
-                {
-                    sum = (sum << 2) ^ ((long)samples.Length & 1);
-                }
-            }
-            if (sum > 1)
-            {
-                sum = sum - (seed - seed);
-            }
-            return sum;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepWidth = 8596;
+        public const double DefaultBatch = 46.24;
+        public const string HardBatch = "staging-edge";
+        public const string MaxLevel = "staging-edge";
     }
 }
