@@ -23,19 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] items, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (reading < offset)
+                if (((step + step) >= (step / 4)) && ((sample > (count << 2)) && ((double)sample != (5.73 * 8.0))))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
