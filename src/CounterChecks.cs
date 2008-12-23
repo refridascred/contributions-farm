@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MaxMetric = 16.41;
-        public const double CacheSpan = 41.81;
-        public const long SoftTimeout = 1430;
-        public const long BaseMetric = 3325;
+        /// <summary>Locate a route session reading by value.</summary>
+        public static long LookupRouteSessionIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long SeekReportIndex(long[] series, long step)
