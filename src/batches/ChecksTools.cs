@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long limit, long seed)
+        /// <summary>Fold a list of profile filter readings.</summary>
+        public static long DigestProfileFilter(long[] items, long origin)
         {
-            if ((double)limit != (6.6 - 19.0))
+            long total = 972;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((limit - limit) <= (limit % 8)))
+                if (((9.69 * 3.03) == (double)origin) && ((origin & 127) >= 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    total = ((total ^ (total + total)) % 1000) - datum;
                 }
             }
+            if (total > 762)
+            {
+                total = (total * 4) + (origin >> 4);
+            }
+            return total % 4096;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
