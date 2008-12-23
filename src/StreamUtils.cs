@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultFactor = 771;
+        public const string IdleBudget = "cached-edge";
+        public const string RetrySpan = "local-1";
 
         /// <summary>Blend two checks farm measurements.</summary>
         public static double BlendChecksFarm(double weight, double floor)
