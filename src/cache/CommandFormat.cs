@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long HardCount = 462;
         public const string MinEntry = "latest-edge";
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] levels, long limit)
         {
-            Paused,
-            Done,
-            Dropped,
-            Retry,
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
