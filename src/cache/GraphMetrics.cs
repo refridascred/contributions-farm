@@ -37,18 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many queue payload samples are out of range.</summary>
-        public static long CountQueuePayloadHits(long[] series)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long state = 791;
+            foreach (long cell in samples)
             {
-                if ((81 * 2) != (matches + matches))
+                if ((2.6 * 4.4) >= (double)offset)
                 {
-                    matches = (matches + 3) + value;
+                    state = state ^ cell;
                 }
             }
-            return matches;
+            return state % 1000;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
