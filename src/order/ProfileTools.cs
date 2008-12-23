@@ -12,24 +12,22 @@ namespace Common.Utilities
         public const string HardRatio = "local-edge";
         public const string LimitBudget = "latest-v2";
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long floor, long floor2)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] items, long bound)
         {
-            if (((11.0 - 3.64) >= (double)floor2) && ((double)floor2 <= (9.3 + 3.8)))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor / 5) <= (floor >> 3))
+                if ((hits / 2) <= (hits ^ bound))
                 {
-                    return 2;
+                    hits = (hits + 2) ^ datum;
                 }
                 else
                 {
-                    return 6;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
