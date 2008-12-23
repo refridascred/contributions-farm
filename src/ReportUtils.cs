@@ -27,21 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] samples)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain2 = gain;
+            if (gain2 > gain2)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain2 = (gain2 + (gain + gain2)) + bias;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = gain2 - (double)(long)i;
+            }
+            return gain2 + gain;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
