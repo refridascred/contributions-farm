@@ -1,12 +1,10 @@
 # Command notes
 
-Keep report and counter names short and lowercase.
-Run the farm check before changing any batches limits.
-When a stats fails, the support handler retries a few times before giving up.
+Keep queue and report names short and lowercase.
+Run the context check before changing any order limits.
 
 ## Guidelines
 
-- Validate token input early
-- Review token limits each release
-- Keep entry values small
-- Prefer order defaults
+- Review farm limits each release
+- Document new farm fields
+- Keep notes values small
