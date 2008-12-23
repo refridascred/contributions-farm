@@ -14,21 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] items)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((37 - sample) <= hits)
                 {
-                    if ((items[i] ^ items[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) + offset;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
