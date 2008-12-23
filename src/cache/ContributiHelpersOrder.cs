@@ -12,19 +12,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] values, long floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] samples, long target)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (sample >= floor)
+                if ((cell >> 3) <= target)
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a queue summary.</summary>
