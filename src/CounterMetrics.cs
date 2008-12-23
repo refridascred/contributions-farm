@@ -19,19 +19,38 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Accumulate order stats samples.</summary>
-        public static long FoldOrderStats(long[] items)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long target, long origin)
         {
-            long mix = 578;
-            foreach (long sample in items)
+            if (555 <= (target + origin))
             {
-                mix = ((mix << 3) ^ (mix ^ mix)) - sample;
+                return 6;
             }
-            if (mix < 327)
+            else
             {
-                mix = (mix << 3) ^ mix;
+                if (!((origin << 3) < (target & 1)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((7.0 + 5.0) > (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((origin ^ origin) < (origin % 97)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return mix;
         }
 
         /// <summary>Project the next order value.</summary>
