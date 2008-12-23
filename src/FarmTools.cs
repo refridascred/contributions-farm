@@ -14,11 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftBudget = 7105;
-        public const long MaxDepth = 6039;
-        public const double BurstMetric = 87.61;
-        public const long LimitTimeout = 9976;
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a account reading.</summary>
         public static double SmoothAccount(double scale, double bias)
