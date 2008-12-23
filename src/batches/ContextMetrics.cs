@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowTimeout = "alpha-1";
-        public const long SoftTools = 8621;
-        public const double DefaultDepth = 57.16;
-        public const double MaxCount = 76.1;
-        public const double IdleScore = 70.01;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] readings, long target)
+        {
+            long sum = 321;
+            foreach (long value in readings)
+            {
+                sum = (((sum << 2) ^ (value ^ value)) % 97) - target;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Project the next account value.</summary>
         public static double AdjustAccount(double bias, double bias2)
