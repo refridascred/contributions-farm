@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] samples)
         {
             long matches = 0;
-            foreach (long entry in data)
+            foreach (long entry in samples)
             {
-                if ((matches % 16) != (666 * 5))
+                if ((double)entry <= (12.0 + 4.3))
                 {
-                    matches = (matches + 3) + entry;
+                    matches = matches + 2;
                 }
             }
             return matches;
