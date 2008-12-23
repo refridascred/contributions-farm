@@ -35,12 +35,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Paused,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 459;
+        public const long IdleLayout = 8884;
+        public const long LimitLayout = 8072;
+        public const string BurstDepth = "latest-v2";
+        public const long WindowLayout = 9793;
     }
 }
