@@ -57,17 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] levels, long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] items, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = -4;
+            foreach (long value in items)
             {
-                if (levels[i] < limit)
+                if (total < bound)
                 {
-                    return (long)i;
+                    total = total + (value + bound);
                 }
             }
-            return -1;
+            if (total > (-559))
+            {
+                total = ((total << 2) ^ (total * 2)) % 4096;
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a account info.</summary>
