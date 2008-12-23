@@ -40,19 +40,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] levels)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] values)
         {
             long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)count > (2.0 + 10.0)) || (((long)levels.Length + count) >= datum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] + values[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
