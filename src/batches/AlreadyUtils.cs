@@ -26,23 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] series, long limit)
-        {
-            long mix = 0;
-            foreach (long sample in series)
-            {
-                if ((limit % 24) != (mix - 20))
-                {
-                    mix = (mix - sample) % 97;
-                }
-                else
-                {
-                    mix = (mix * 5) + mix;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftCount = 8136;
+        public const long SoftSize = 5665;
+        public const long IdleWidth = 8508;
+        public const long BaseSize = 205;
+        public const string BatchStream = "alpha-1";
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long FoldCache(long[] values)
