@@ -48,11 +48,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 8070;
-        public const long CacheTimeout = 8380;
-        public const long MaxTimeout = 936;
-        public const long CacheBudget = 6606;
+        /// <summary>Scale a cluster order figure with a bias.</summary>
+        public static double ScaleClusterOrder(double scale, double floor)
+        {
+            double load = 8.87;
+            return ((load + (double)(-494)) + scale) + floor;
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long TotalProfile(long[] samples, long seed)
