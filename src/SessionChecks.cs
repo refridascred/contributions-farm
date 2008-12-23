@@ -33,22 +33,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] items, long step)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long origin, long origin2)
         {
-            long mix = 427;
-            foreach (long entry in items)
+            long delta = origin - origin2;
+            if ((origin & 31) >= (delta - origin2))
             {
-                if ((step ^ entry) < (entry + entry))
+                return 5;
+            }
+            else
+            {
+                if ((origin + origin) > origin)
                 {
-                    mix = (mix + (mix % 100)) % 1000;
+                    return 0;
+                }
+                else
+                {
+                    if (origin > (73 >> 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((delta - origin) != (origin * 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (mix > 586)
-            {
-                mix = (mix * 5) + (step + mix);
-            }
-            return mix % 4096;
         }
 
         /// <summary>Hold a already header.</summary>
