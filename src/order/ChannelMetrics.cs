@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a metrics already figure with a bias.</summary>
-        public static double SmoothMetricsAlready(double scale, double span)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] values, long seed)
         {
-            double rate = scale;
-            return (rate + (double)4) + span;
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
