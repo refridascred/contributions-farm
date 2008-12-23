@@ -74,25 +74,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long limit, long seed)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long delta = limit - seed;
-            if (!((limit % 24) <= (delta ^ delta)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (seed >= (limit / 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Paused,
+            Locked,
+            Failed,
+            New,
+            Done,
         }
     }
 }
