@@ -28,12 +28,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            Paused,
-            Synced,
-            Closed,
+            Pending,
+            Ready,
+            New,
+            Retry,
         }
 
         /// <summary>Fold a list of command readings.</summary>
