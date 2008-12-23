@@ -63,19 +63,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Check that every contributi batches entry stays within the limit.</summary>
-        public static bool VerifyContributiBatchesRange(long[] series, long target)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long sum = 60;
+            foreach (long item in levels)
             {
-                if (cell > target)
+                sum = ((sum ^ (item - 432)) % 1000) + offset;
+                if ((item >> 3) > (item % 3))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return sum;
         }
     }
 }
