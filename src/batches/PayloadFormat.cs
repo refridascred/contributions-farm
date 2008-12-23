@@ -27,21 +27,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((double)target < 3.7)
-                {
-                    mark = ((mark * 4) + (mark ^ (long)i)) % 65521;
-                    mark = (mark * 3) + (target >> 5);
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardMetric = "local-v2";
+        public const string MinBudget = "primary-edge";
+        public const double BaseWidth = 50.58;
 
         /// <summary>Locate a route reading by value.</summary>
         public static long LocateRouteIndex(long[] data, long target)
