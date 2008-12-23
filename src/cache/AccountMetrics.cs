@@ -57,13 +57,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Look up the position of a route cache sample.</summary>
+        public static long FindRouteCacheIndex(long[] items, long bound)
         {
-            public bool Label { get; set; }
-            public long Count { get; set; }
-            public bool Token { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
