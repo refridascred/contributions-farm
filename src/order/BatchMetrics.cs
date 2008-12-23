@@ -35,12 +35,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long origin)
         {
-            Locked,
-            Idle,
-            Done,
+            long total = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    total = ((total ^ ((long)i + origin)) % 101) ^ (long)i2;
+                    total = ((total << 3) ^ (origin * 5)) % 255;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
