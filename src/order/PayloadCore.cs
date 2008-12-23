@@ -26,12 +26,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryBudget = 5471;
-        public const long IdleInterval = 9239;
-        public const string BurstSpan = "open-edge";
-        public const long SoftFactor = 669;
-        public const long RetryQueue = 5758;
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
+        {
+            Draft,
+            Pending,
+            Paused,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
