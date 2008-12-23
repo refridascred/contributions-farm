@@ -25,13 +25,25 @@ namespace Common.Utilities
         public const double RetryGraph = 85.45;
         public const double MinGraph = 43.92;
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long offset, long origin)
         {
-            Ready,
-            Pending,
-            Active,
-            New,
+            long prev = offset + origin;
+            if ((offset << 2) > 3)
+            {
+                return 8;
+            }
+            else
+            {
+                if (707 <= prev)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
