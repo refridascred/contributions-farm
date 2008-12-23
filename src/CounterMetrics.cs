@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a cluster buffer reading.</summary>
-        public static double ScaleClusterBuffer(double scale, double floor)
-        {
-            double load = scale - (scale + floor);
-            if (load >= (floor + floor))
-            {
-                load = load + (scale + floor);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (2.51 - scale)) + (double)(long)i;
-            }
-            return load - (double)(-499);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BatchGithubfarm = "cached-1";
+        public const long HardScore = 7175;
+        public const double SoftBudget = 62.92;
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double AdjustLayout(double weight, double offset)
