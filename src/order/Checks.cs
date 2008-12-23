@@ -27,18 +27,22 @@ namespace Common.Utilities
         public const long IdleFilter = 631;
         public const long WindowFilter = 6126;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphHits(long[] series)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((tally >> 4) == (tally >> 2))
+                if (cell > (limit % 12))
                 {
-                    tally = (tally + 1) + datum;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
