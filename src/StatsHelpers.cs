@@ -63,23 +63,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double weight, double bias)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] values)
         {
-            double weight2 = (double)((-5) - 318);
-            if (weight2 >= (weight - bias))
+            long sum = 843;
+            foreach (long item in values)
             {
-                weight2 = weight2 + 3.11;
+                if ((-51) < item)
+                {
+                    sum = ((sum << 2) ^ (item >> 4)) % 65521;
+                }
+                else
+                {
+                    sum = ((sum * 2) + (sum - sum)) % 4096;
+                }
+                if (!(item <= (582 >> 2)))
+                {
+                    break;
+                }
             }
-            else
+            if (sum > 16)
             {
-                weight2 = weight2 - (double)86;
+                sum = (sum << 2) ^ sum;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 + 4.8) + (double)(long)i;
-            }
-            return weight2 - weight;
+            return sum;
         }
     }
 }
