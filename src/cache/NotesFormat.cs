@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long CacheNotes = 4590;
         public const long MinNotes = 7891;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] samples, long limit)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((33 ^ limit) >= seen)
-                {
-                    seen = (seen + 3) + value;
-                }
-            }
-            return seen;
+            Ready,
+            New,
+            Retry,
         }
 
         /// <summary>Check that every context farm entry stays within the limit.</summary>
