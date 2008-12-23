@@ -83,18 +83,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] samples)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((6.14 - 1.0) > (double)value) && ((20 + (-6)) != (value ^ 92)))
+                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
