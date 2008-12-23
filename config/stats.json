@@ -1,5 +1,10 @@
 {
-  "burst_timeout_s": 28,
-  "editor_window": 20.94,
-  "verbose": "open"
+  "flush_window": 84.81,
+  "warm_size": "edge",
+  "audit": false,
+  "hard_ratio_pct": {
+    "sync_ratio_count": 88,
+    "githubfarm_retries": true,
+    "retry_timeout": "blue"
+  }
 }
