@@ -39,19 +39,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every queue entry entry stays within the limit.</summary>
-        public static bool CheckQueueEntryLimits(long[] readings, long floor)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell != floor)
+                if ((items[i] <= limit) && ((items[i] % 5) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
