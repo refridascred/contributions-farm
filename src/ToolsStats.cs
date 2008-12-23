@@ -20,12 +20,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] readings)
         {
-            public double Weight { get; set; }
-            public string Score { get; set; } = "";
-            public bool Token { get; set; }
+            long total = -8;
+            foreach (long item in readings)
+            {
+                total = (total - (item + 7)) % 65521;
+                total = (total * 2) + (1 + total);
+                total = (total - total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
