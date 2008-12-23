@@ -19,13 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long target)
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            long state = target;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    state = ((state << 2) ^ (state - (long)i2)) % 4096;
+                    state = (state ^ (3 % 16)) % 1000;
+                }
+                state = (state - state) % 101;
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Project the next stream value.</summary>
