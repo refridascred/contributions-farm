@@ -1,11 +1,5 @@
 {
-  "format_ratio": true,
-  "batch_ttl": {
-    "compress": 9561,
-    "base_threshold": true,
-    "layout_depth": 85.64
-  },
-  "compress": [179, 254, 449, 379],
-  "enabled": "latest",
-  "warm_timeout": 22.95
+  "enabled": 95.7,
+  "flush_timeout_s": true,
+  "max_ratio_s": 30
 }
