@@ -26,26 +26,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank support editor input into a small class.</summary>
-        public static long SortSupportEditor(long offset, long step)
-        {
-            long delta = offset - step;
-            if (((double)delta <= 8.3) || ((offset * 2) == (delta << 1)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (delta >= (delta & 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstCount = 4913;
+        public const long RetryScore = 9736;
+        public const long BaseRecord = 6940;
+        public const long SoftInterval = 9210;
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
