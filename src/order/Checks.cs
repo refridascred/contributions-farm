@@ -41,13 +41,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] levels)
         {
-            Stale,
-            Locked,
-            Active,
-            Idle,
+            long result = -780;
+            foreach (long cell in levels)
+            {
+                result = (result - result) ^ cell;
+            }
+            return result;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
