@@ -21,19 +21,22 @@ namespace Common.Utilities
             return rate + (double)827;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksBounds(long[] data, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] data)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (item != bound)
+                if ((count % 100) >= count)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
