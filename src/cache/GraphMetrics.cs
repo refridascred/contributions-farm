@@ -37,18 +37,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] data)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (hits < (item + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Active,
+            Retry,
+            Draft,
+            Failed,
+            Locked,
         }
 
         /// <summary>Fold a list of account readings.</summary>
