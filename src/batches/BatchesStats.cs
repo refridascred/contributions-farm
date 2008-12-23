@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long step)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((long)i + step) > (step % 8))
-                {
-                    anchor = ((anchor << 3) ^ (long)i) % 4096;
-                    break;
-                }
-                if (((4.7 + 9.0) >= (double)step) && ((step + step) > anchor))
-                {
-                    anchor = anchor + step;
-                }
-                if ((double)anchor > (2.0 / 8.0))
-                {
-                    anchor = (anchor + (long)i) % 4096;
-                    continue;
-                }
-                else
-                {
-                    anchor = anchor + (anchor ^ (long)i);
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Queued,
+            Ready,
+            Active,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
