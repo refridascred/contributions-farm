@@ -20,21 +20,24 @@ namespace Common.Utilities
         public const long SoftScore = 8209;
         public const long StepRecord = 9168;
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Rank checks stream input into a small class.</summary>
+        public static long GradeChecksStream(long step, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((floor << 3) < (floor + step))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (floor > (28 + 34))
                 {
-                    if ((series[i] - series[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
     }
 }
