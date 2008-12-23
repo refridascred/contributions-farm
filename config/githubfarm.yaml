@@ -1,5 +1,13 @@
 # githubfarm settings
-support_ttl: 27.44
-tools_capacity: latest
-default_interval_count: standard
-soft_depth_s: strict
+cache_ratio_count:
+  - 342
+  - 246
+  - 494
+strict:
+  - fallback
+  - edge
+  - cached
+  - stable
+hard_depth: 7
+retry_capacity_ms: open
+poll_interval_s: 9454
