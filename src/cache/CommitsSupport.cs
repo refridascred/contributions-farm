@@ -61,21 +61,15 @@ namespace Common.Utilities
             return scale - (double)0;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] samples)
+        /// <summary>Roll a support channel counter forward.</summary>
+        public static long RollSupportChannel(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
     }
 }
