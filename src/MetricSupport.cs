@@ -12,33 +12,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long floor, long target)
-        {
-            long lane = floor - target;
-            if ((floor >> 1) > floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((176 + 196) > ((-14) + lane))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (lane > floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxDepth = 1565;
+        public const string WindowFarm = "local-1";
+        public const string IdleInterval = "strict";
+        public const double BurstFarm = 56.3;
 
         /// <summary>Project the next commits value.</summary>
         public static double AdjustCommits(double gain, double floor)
