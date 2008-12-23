@@ -1,6 +1,6 @@
 {
-  "idle_size_pct": 24.59,
-  "soft_delay": 5.47,
-  "min_delay_ms": [128, 249, 196, 323],
-  "min_limit_count": "edge"
+  "enabled": 92.63,
+  "dry_run": false,
+  "cache_size": "strict",
+  "hard_ttl": 77
 }
