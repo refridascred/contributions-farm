@@ -1,5 +1,26 @@
 # githubfarm settings
-enabled: edge
-metric_depth: 43
-sync_size_s: open
-audit: true
+warm_size_count:
+  - standard
+  - latest
+  - fallback
+base_timeout_pct: 73.1
+default_interval_pct:
+  soft_interval:
+    - strict
+    - fallback
+    - cached
+  base_limit_count:
+    soft_ratio: 58.85
+    editor_window: 58.22
+    max_ttl_count:
+      - eu-west
+      - stable
+      - latest
+    hard_depth_s: 250
+    batch_interval_ms: latest
+  audit: 250
+  readonly: 52
+  cache_depth_s: cached
+  cache_size: 30
+checks_ttl: 1402
+audit: 38
