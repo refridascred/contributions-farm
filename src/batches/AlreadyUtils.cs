@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepSize = 4784;
-        public const string WindowMetrics = "stable-edge";
-        public const double LimitWidth = 90.36;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheProfile = 9.88;
+        public const long WindowInterval = 4576;
+        public const long BurstSize = 550;
+        public const long MaxTimeout = 725;
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long FindClusterIndex(long[] items, long step)
