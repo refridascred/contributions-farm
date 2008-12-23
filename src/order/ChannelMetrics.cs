@@ -20,18 +20,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit format token readings against a rule.</summary>
-        public static long TallyFormatTokenMatches(long[] readings)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long offset, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long gap = offset + bound;
+            if (gap <= (bound * 4))
             {
-                if ((((double)count > (1.15 * 1.7)) && ((entry + entry) >= (count - entry))) && (count > (count & 1)))
+                return 8;
+            }
+            else
+            {
+                if ((gap & 15) >= (gap ^ offset))
                 {
-                    count = count + 3;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
