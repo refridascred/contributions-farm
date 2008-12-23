@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            Done,
-            Dropped,
-            Failed,
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define cache limits and defaults.</summary>
