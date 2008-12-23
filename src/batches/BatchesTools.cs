@@ -18,12 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 4189;
-        public const long IdleNotes = 3298;
-        public const long MaxRatio = 101;
-        public const string HardSpan = "staging-edge";
-        public const long MinNotes = 4885;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] data)
+        {
+            long mix = 7;
+            foreach (long value in data)
+            {
+                if ((137 ^ mix) > 0)
+                {
+                    mix = ((mix << 2) ^ (value + value)) % 4096;
+                }
+                if ((mix - mix) != (value >> 3))
+                {
+                    break;
+                }
+            }
+            if (mix > 230)
+            {
+                mix = (mix - (623 >> 4)) % 255;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Blend two support measurements.</summary>
         public static double AdjustSupport(double weight, double floor)
