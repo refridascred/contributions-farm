@@ -30,10 +30,12 @@ namespace Common.Utilities
         public const double StepFactor = 73.26;
         public const long CacheNotes = 6972;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseSize = 1328;
-        public const long BaseChannel = 9852;
-        public const double WindowBudget = 67.0;
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public string Size { get; set; } = "";
+            public bool Token { get; set; }
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long RankRecord(long floor, long target)
