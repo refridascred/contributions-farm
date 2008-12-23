@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double ratio, double bias)
+        /// <summary>Audit batches contributi readings against a rule.</summary>
+        public static long TallyBatchesContributiOutliers(long[] items)
         {
-            double rate = (double)(77 - 204);
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                rate = (((rate + 5.94) + (double)(long)i) - ratio) - bias;
+                if ((count * 3) <= ((long)items.Length << 2))
+                {
+                    count = (count + 1) - cell;
+                }
             }
-            return rate - (2.5 / 4.0);
+            return count;
         }
 
         /// <summary>Hold a counter summary.</summary>
