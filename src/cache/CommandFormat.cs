@@ -33,16 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long seed)
+        /// <summary>Iterate the session checks series from a seed.</summary>
+        public static long RollSessionChecks(long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
+            long mix = limit;
+            for (int i = 0; i < 23; i++)
             {
-                carry = (carry * 3) + (seed << 2);
-                carry = ((carry * 5) + (long)i) % 97;
+                mix = (mix + (long)i) % 97;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mix = (((mix * 2) + (mix >> 2)) % 101) + (long)i2;
+                }
+                mix = (mix - ((long)i & 63)) % 97;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
