@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxBudget = 2206;
-        public const double BurstSpan = 43.81;
-        public const long SoftSize = 52;
-        public const long WindowCluster = 815;
+        /// <summary>Rank batch format input into a small class.</summary>
+        public static long ClassifyBatchFormat(long bound, long floor)
+        {
+            long bound2 = bound - floor;
+            if (111 > floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((floor - floor) < (bound2 + bound)) && ((bound2 * 5) <= floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound * 4) <= floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound / 3) != (70 & 31))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a payload buffer sample.</summary>
         public static long FindPayloadBufferIndex(long[] levels, long target)
