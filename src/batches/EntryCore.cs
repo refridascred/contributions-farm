@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultGraph = 21.97;
-        public const double HardSpan = 55.62;
-        public const string RetryCount = "cached-edge";
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] values, long bound)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((7.14 * 15.0) > (double)reading)
+                {
+                    matches = (matches + 2) + bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a counter buffer figure with a bias.</summary>
         public static double BlendCounterBuffer(double gain, double span)
