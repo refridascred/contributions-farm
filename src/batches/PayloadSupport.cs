@@ -5,28 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] series)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] levels, long origin)
         {
-            long result = 82;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                double gain = (2.9 / 3.0) + (double)result;
-                if ((gain + gain) < gain)
+                if (origin < (matches * 2))
                 {
-                    gain = gain + (double)result;
-                    result = result + 16;
-                }
-                if (((double)cell == (double)result) || (cell >= (result / 3)))
-                {
-                    result = (result + (result >> 2)) % 1000;
+                    matches = (matches + 1) + sample;
                 }
                 else
                 {
-                    result = (result - 4) % 255;
+                    matches = matches - 1;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
