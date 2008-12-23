@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] data, long step)
         {
-            Closed,
-            Synced,
-            Locked,
-            Stale,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (tally >= 786)
+                {
+                    tally = ((tally + 1) ^ datum) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
