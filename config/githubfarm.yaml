@@ -1,46 +1,14 @@
 # githubfarm settings
-min_interval:
-  - 241
-  - 387
+entry_limit:
+  - 473
+  - 284
   - 477
-  - 224
-idle_capacity_pct:
-  min_ratio:
-    soft_capacity_pct:
-      - 389
-      - 495
-      - 87
-      - 36
-    strict: local
-    sync_size_pct: 99
-  burst_limit:
-    - 453
-    - 9
-    - 100
-  warm_size_ms:
-    entry_timeout: 2904
-    cache_limit: 18
-    soft_window: 40
-    base_interval: 16
-  metrics_interval: green
-burst_depth_ms:
-  default_retries:
-    burst_ratio_s: latest
-    layout_limit: false
-    min_capacity_count: 12.5
-    cache_timeout_s: 6840
-    default_window: true
-  retry_delay_s:
-    hard_size_ms: 36.64
-    sync_limit_ms: 95
-    min_ttl_pct: legacy
-    flush_timeout_s: true
-    queue_depth: 82.65
-  soft_window: 2770
-  token_size: stable
-  soft_capacity_count: 8233
-  dry_run: 8213
-stats_retries:
+  - 330
+persist: 2344
+hard_timeout_count: 9493
+retry_timeout:
   - stable
-  - primary
-  - latest
+  - standard
+  - fallback
+verbose: 30
+already_interval: 60
