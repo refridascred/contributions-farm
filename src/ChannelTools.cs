@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] data, long bound)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
