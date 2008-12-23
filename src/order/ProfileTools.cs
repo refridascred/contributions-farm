@@ -11,12 +11,24 @@ namespace Common.Utilities
         public const long MaxSpan = 3794;
         public const long SoftEntry = 1430;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long floor, long floor2)
         {
-            Ready,
-            Queued,
-            Retry,
+            if (((11.0 - 3.64) >= (double)floor2) && ((double)floor2 <= (9.3 + 3.8)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor / 5) <= (floor >> 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Compare every pair of format report readings.</summary>
