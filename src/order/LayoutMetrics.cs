@@ -28,9 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 6265;
-        public const double WindowCommits = 2.79;
-        public const long SoftCommits = 9075;
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Closed,
+            Synced,
+            Paused,
+            Draft,
+        }
     }
 }
