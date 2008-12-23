@@ -47,21 +47,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] samples)
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double ratio, double span)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = span;
+            if (load >= (span + 1.16))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = load - ratio;
             }
-            return count;
+            else
+            {
+                load = load + (double)79;
+            }
+            return load + 1.5;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
