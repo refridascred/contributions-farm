@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double rate, double offset)
-        {
-            double ratio = (double)51 * 9.0;
-            if (ratio <= offset)
-            {
-                ratio = ratio - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + offset) + (double)(long)i;
-            }
-            return ratio + (rate / 5.0);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardTools = 60.92;
+        public const long RetrySpan = 8672;
+        public const string SoftFactor = "primary-v2";
+        public const string MinCount = "alpha-v2";
 
         /// <summary>Fold a list of record readings.</summary>
         public static long FoldRecord(long[] levels)
