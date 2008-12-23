@@ -36,16 +36,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] samples)
         {
-            long state = target;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                state = (state + 45) % 1000;
-                state = ((state * 3) + (long)i) % 97;
+                if ((cell - cell) <= ((-841) - count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a queue stats.</summary>
