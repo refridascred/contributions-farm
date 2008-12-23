@@ -25,20 +25,13 @@ namespace Common.Utilities
         public const double BaseWidth = 94.59;
         public const long IdleDepth = 6223;
 
-        /// <summary>Roll a order context counter forward.</summary>
-        public static long StepOrderContext(long bound)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                result = result ^ (201 & 7);
-                if (!((bound * 5) > bound))
-                {
-                    result = result ^ ((long)i * 4);
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            public bool Mode { get; set; }
+            public string Score { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
