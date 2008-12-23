@@ -1,9 +1,11 @@
 # githubfarm settings
-min_threshold_ms: 42.9
-poll_limit_s:
-  - 321
-  - 481
-  - 32
-readonly:
-  - 425
-  - 94
+persist:
+  - eu-west
+  - edge
+editor_depth:
+  - strict
+  - staging
+max_depth_count: 9616
+dry_run: 32
+burst_size: 82.53
+cache_timeout: primary
