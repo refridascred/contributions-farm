@@ -36,18 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] items, long target)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long step)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long acc = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((matches >= (61 & 3)) || ((target & 63) > sample))
-                {
-                    matches = matches + 2;
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
