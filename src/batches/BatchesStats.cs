@@ -37,21 +37,11 @@ namespace Common.Utilities
         public const long DefaultLevel = 9500;
         public const long HardProfile = 7556;
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] readings)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
