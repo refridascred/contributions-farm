@@ -1,13 +1,14 @@
 # Command notes
 
-The layout module keeps session values in sync with the support cache.
-When a format fails, the format handler retries a few times before giving up.
+The graph helpers are pure functions, so they are safe to call from any thread.
+Use support settings to tune how often graph data is refreshed.
+Use session settings to tune how often report data is refreshed.
 
-Each channel is validated before it reaches the checks queue.
-A commits that stays idle for too long is moved to the window list.
+A farm that stays idle for too long is moved to the counter list.
+Run the schema check before changing any notes limits.
 
 ## Guidelines
 
-- Document new buffer fields
-- Log every counter change
-- Review cluster limits each release
+- Review window limits each release
+- Keep checks values small
+- Prefer metric defaults
