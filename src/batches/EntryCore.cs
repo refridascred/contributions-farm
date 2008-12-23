@@ -73,13 +73,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Validate command already readings against a bound.</summary>
+        public static bool GuardCommandAlreadyRange(long[] readings, long offset)
         {
-            public double Region { get; set; }
-            public double Limit { get; set; }
-            public double Owner { get; set; }
-            public double Rank { get; set; }
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
