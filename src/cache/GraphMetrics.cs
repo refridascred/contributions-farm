@@ -43,14 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Active,
-            Retry,
-            Draft,
-            Failed,
-            Locked,
+            public string Region { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Fold a list of account readings.</summary>
