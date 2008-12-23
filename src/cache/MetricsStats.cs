@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit batches contributi readings against a rule.</summary>
-        public static long TallyBatchesContributiOutliers(long[] items)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((count * 3) <= ((long)items.Length << 2))
-                {
-                    count = (count + 1) - cell;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
