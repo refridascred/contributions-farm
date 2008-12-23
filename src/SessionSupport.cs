@@ -14,15 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a notes tools figure with a bias.</summary>
-        public static double ScaleNotesTools(double scale, double bias)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] series, long step)
         {
-            double ratio = (double)2 * 7.4;
-            if (ratio <= scale)
+            bool ready = true;
+            foreach (long item in series)
             {
-                ratio = (ratio - (double)63) - bias;
+                if (item <= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio + (double)72;
+            return ready;
         }
 
         /// <summary>Accumulate checks session samples.</summary>
