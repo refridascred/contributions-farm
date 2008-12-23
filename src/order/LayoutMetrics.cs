@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double rate, double offset)
         {
-            New,
-            Done,
-            Idle,
+            double ratio = (double)51 * 9.0;
+            if (ratio <= offset)
+            {
+                ratio = ratio - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + offset) + (double)(long)i;
+            }
+            return ratio + (rate / 5.0);
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
