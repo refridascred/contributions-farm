@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] values, long offset)
         {
-            Paused,
-            Draft,
-            Ready,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((matches & 31) <= (matches + entry))
+                {
+                    matches = (matches + 2) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
