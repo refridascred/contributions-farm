@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] data, long offset)
         {
-            Done,
-            Active,
-            Queued,
-            Closed,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (!(6 > ((long)data.Length + 8)) || ((5.3 + 4.4) != (double)entry))
+                {
+                    tally = (tally + 1) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two metric measurements.</summary>
