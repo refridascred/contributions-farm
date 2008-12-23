@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] values, long seed)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (cell <= seed)
+                if (reading >= bound)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Match up commits samples.</summary>
