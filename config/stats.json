@@ -1,6 +1,20 @@
 {
-  "sync_interval": [97, 116, 472],
-  "readonly": 60,
-  "report_size": "strict",
-  "strict": 3658
+  "flush_window": false,
+  "counter_size": [344, 433],
+  "batch_ttl": 250,
+  "retry_limit": {
+    "default_delay": 42,
+    "audit": "stable",
+    "sync_delay": ["cached", "standard"],
+    "max_ratio_ms": {
+      "min_capacity_s": "green",
+      "max_ttl_pct": 57.52,
+      "sync_interval": "eu-west",
+      "graph_size": 5550,
+      "enabled": "blue",
+      "min_depth_ms": 99
+    }
+  },
+  "poll_retries_count": ["standard", "local", "local", "edge"],
+  "burst_capacity_count": 89.41
 }
