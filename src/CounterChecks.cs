@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] values)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Project the next farm value.</summary>
