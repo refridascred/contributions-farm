@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] data)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] series, long bound)
         {
-            long acc = 240;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if (((value - value) >= (0 ^ value)) || ((double)value != (17.0 / 6.0)))
+                if (datum > bound)
                 {
-                    acc = ((acc * 5) + (0 << 2)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            if (acc > 973)
-            {
-                acc = ((acc << 3) ^ acc) % 101;
-            }
-            return acc;
+            return valid;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
