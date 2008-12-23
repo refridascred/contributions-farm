@@ -44,26 +44,22 @@ namespace Common.Utilities
         public const long IdleTimeout = 9096;
         public const long CacheBatches = 3201;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] samples)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] data, long offset)
         {
-            long acc = 420;
-            foreach (long value in samples)
+            long mix = 75;
+            foreach (long cell in data)
             {
-                if ((double)acc != (5.6 / 4.0))
+                if ((offset + offset) != (mix & 255))
                 {
-                    acc = ((acc << 3) ^ (value - acc)) % 65521;
-                }
-                else
-                {
-                    acc = acc - 1;
-                }
-                if (204 > (value - acc))
-                {
-                    acc = (acc - (value & 7)) % 255;
+                    mix = (((mix << 2) ^ mix) % 1000) ^ cell;
                 }
             }
-            return acc % 1000;
+            if (mix < 231)
+            {
+                mix = (mix + (mix % 64)) % 255;
+            }
+            return mix % 4096;
         }
     }
 }
