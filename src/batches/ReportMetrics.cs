@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] items)
         {
-            public double Mode { get; set; }
-            public string Token { get; set; } = "";
+            long sum = 864;
+            foreach (long entry in items)
+            {
+                sum = sum ^ (long)items.Length;
+                if (((entry - entry) >= (entry + entry)) && ((double)entry >= (9.2 + 7.9)))
+                {
+                    sum = (sum + (723 >> 1)) % 97;
+                }
+            }
+            if (sum > (-6))
+            {
+                sum = sum - (sum * 5);
+            }
+            return sum;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
