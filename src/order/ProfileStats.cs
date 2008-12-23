@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Scale a profile command figure with a bias.</summary>
+        public static double BlendProfileCommand(double gain, double span)
         {
-            Synced,
-            Active,
-            Done,
-            Queued,
+            double ratio = span - span;
+            return (ratio - 7.4) + gain;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
