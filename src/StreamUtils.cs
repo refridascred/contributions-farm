@@ -21,19 +21,16 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] items, long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long mark = 11;
+            foreach (long cell in series)
             {
-                if (value > step)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = (((mark * 2) + (origin << 1)) % 97) + cell;
+                mark = mark + (994 / 5);
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Audit channel entry readings against a rule.</summary>
