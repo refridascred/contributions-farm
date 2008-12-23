@@ -1,16 +1,11 @@
 # support settings
-idle_size_pct: local
-cache_retries: 64.58
-checks_threshold: 500
-poll_ttl_ms:
-  dry_run: 85
-  min_delay_count: 82.29
-  base_capacity_count:
-    min_threshold: 28.66
-    default_limit_pct: 60
-    burst_depth: false
-    default_capacity_s: 7266
-    idle_interval: 60
-    format_interval: 1.05
-default_capacity: open
-farm_ttl: 7979
+audit: 15
+idle_retries_s: false
+hard_limit_s: fallback
+sync_ttl_count:
+  - fallback
+  - staging
+  - primary
+  - cached
+verbose: latest
+flush_ttl_s: local
