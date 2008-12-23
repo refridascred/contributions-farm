@@ -63,11 +63,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheRatio = 79.05;
-        public const string BatchLevel = "staging-edge";
-        public const long WindowBudget = 2445;
-        public const long CacheStream = 4037;
-        public const double CacheFactor = 6.73;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long target, long offset)
+        {
+            if (((offset + offset) <= (target % 97)) && (offset >= 89))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((offset + 110) <= (offset * 3)) && ((13.0 * 6.52) <= (double)target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
