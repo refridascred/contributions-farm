@@ -41,25 +41,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long target, long bound)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long next = target - bound;
-            if (target >= (next + target))
-            {
-                return 6;
-            }
-            else
-            {
-                if (target >= (next ^ target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Locked,
+            Idle,
+            Paused,
+            Retry,
+            New,
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
