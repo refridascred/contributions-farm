@@ -53,11 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a account order reading.</summary>
-        public static double BlendAccountOrder(double bias, double floor)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            double gain = floor;
-            return (gain + (double)649) + bias;
+            Pending,
+            Queued,
+            Stale,
         }
     }
 }
