@@ -30,16 +30,19 @@ namespace Common.Utilities
         public const long HardLevel = 1245;
         public const string IdleBatch = "alpha-1";
 
-        /// <summary>Roll a stats profile counter forward.</summary>
-        public static long SeriesStatsProfile(long floor)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long floor)
         {
-            long mark = floor;
+            long sum = floor;
             for (int i = 0; i < 10; i++)
             {
-                mark = (mark ^ (floor << 3)) % 1000;
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (((long)i + floor) > 93)
+                {
+                    sum = (sum << 3) ^ (sum + sum);
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return mark;
+            return sum;
         }
     }
 }
