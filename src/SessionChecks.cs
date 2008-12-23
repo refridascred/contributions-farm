@@ -19,19 +19,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Audit farm channel readings against a rule.</summary>
-        public static long AuditFarmChannelOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (!((hits >= (6 / 4)) || (value <= ((-13) - hits))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double IdleChecks = 45.3;
+        public const long WindowChecks = 6564;
+        public const double MaxFactor = 8.71;
+        public const double SoftLevel = 42.28;
+        public const string MinChecks = "latest-1";
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long ClassifyChecks(long origin, long origin2)
