@@ -28,21 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] readings)
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double ratio = rate;
+            return ratio + span;
         }
     }
 }
