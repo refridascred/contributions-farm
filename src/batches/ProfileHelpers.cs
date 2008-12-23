@@ -19,18 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a profile farm sample.</summary>
-        public static long LocateProfileFarmIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBudget = 6213;
+        public const long BatchBatches = 5415;
+        public const string MaxBatches = "staging-v2";
 
         /// <summary>Find the first record checks entry that matches the target.</summary>
         public static long SeekRecordChecksIndex(long[] samples, long floor)
