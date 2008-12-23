@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the stats graph entries that pass the check.</summary>
-        public static long AuditStatsGraphGaps(long[] data, long origin)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((1.6 * 7.7) != (double)origin)
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Label { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
