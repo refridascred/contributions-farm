@@ -1,7 +1,9 @@
 # support settings
-flush_window_count: 8068
-stream_ratio: 30
-route_timeout:
-  - strict
-  - green
-flush_delay_ms: 43.66
+stream_size: 100
+session_limit: 9161
+max_interval: blue
+compress:
+  - 229
+  - 62
+  - 29
+  - 192
