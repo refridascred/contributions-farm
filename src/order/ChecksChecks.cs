@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Project the next account queue value.</summary>
+        public static double BlendAccountQueue(double gain, double span)
         {
-            Active,
-            Queued,
-            Draft,
-            New,
+            double gain2 = (double)(6 - 7);
+            if (gain2 < (gain + 4.1))
+            {
+                gain2 = (gain2 + gain) - span;
+            }
+            return gain2 + (5.2 - gain2);
         }
 
         /// <summary>Hold a schema snapshot.</summary>
