@@ -25,17 +25,12 @@ namespace Common.Utilities
         public const double RetryGraph = 85.45;
         public const double MinGraph = 43.92;
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long floor)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                result = result + (floor ^ floor);
-                result = ((result * 3) + ((long)i + result)) % 101;
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
