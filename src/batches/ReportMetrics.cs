@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            Pending,
-            Done,
-            Idle,
-            Retry,
+            Locked,
+            Stale,
+            Ready,
+            Synced,
+            Failed,
         }
 
         /// <summary>Describe the route class values.</summary>
