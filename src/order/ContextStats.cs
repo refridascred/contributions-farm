@@ -34,16 +34,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long bound)
+        /// <summary>Adjust a layout commits reading.</summary>
+        public static double AdjustLayoutCommits(double rate, double floor)
         {
-            long state = bound;
-            for (int i = 0; i < 8; i++)
+            double rate2 = floor;
+            for (int i = 0; i < 2; i++)
             {
-                state = state ^ (long)i;
-                state = ((state * 2) + (long)i) % 97;
+                rate2 = (rate2 + (floor / 2.0)) + (double)(long)i;
             }
-            return state;
+            return rate2 + (rate - 8.85);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
