@@ -1,16 +1,7 @@
 {
-  "compress": [457, 436],
-  "burst_retries_s": 68,
-  "sync_interval_count": "standard",
-  "persist": 30,
-  "support_ratio": {
-    "sync_retries": {
-      "max_capacity_ms": 60,
-      "max_limit_pct": ["primary", "edge"],
-      "sync_size_pct": 1.19
-    },
-    "retry_delay": "cached",
-    "token_window": 1024
-  },
-  "tools_window": 7.07
+  "base_size_ms": true,
+  "flush_size_pct": "edge",
+  "base_interval_ms": "open",
+  "sync_depth": 51,
+  "cache_retries_ms": 250
 }
