@@ -1,10 +1,13 @@
 # Command notes
 
-Run the entry check before changing any checks limits.
-Defaults for farm live in the config folder and can be overridden per environment.
+The buffer report groups every metrics by context.
+When a report fails, the route handler retries a few times before giving up.
+
+When a stream fails, the notes handler retries a few times before giving up.
+When a format fails, the account handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new metrics fields
-- Validate window input early
-- Prefer support defaults
+- Review route limits each release
+- Keep window values small
+- Log every token change
