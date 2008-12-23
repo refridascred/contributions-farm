@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long target, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] readings)
         {
-            if ((42 << 3) > offset)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(target < offset))
+                if ((sample - 5) < (sample >> 3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (offset >= (487 % 10))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((71 ^ offset) < (offset & 255))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
