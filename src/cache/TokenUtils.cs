@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Derive the next already commits value from a seed.</summary>
+        public static long StepAlreadyCommits(long target)
         {
-            public double Size { get; set; }
-            public long Count { get; set; }
+            long result = target;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    result = (result << 2) ^ ((long)i2 << 2);
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
