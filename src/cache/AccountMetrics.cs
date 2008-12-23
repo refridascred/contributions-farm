@@ -57,13 +57,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public long Region { get; set; }
-            public double Rank { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            Synced,
+            Active,
+            Draft,
         }
 
         /// <summary>Hold a batches stats.</summary>
