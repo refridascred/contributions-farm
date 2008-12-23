@@ -22,18 +22,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsGaps(long[] data)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            long state = 88;
+            foreach (long entry in levels)
             {
-                if ((double)(long)data.Length <= (8.0 + 6.9))
+                state = state + entry;
+                if ((double)floor > (double)entry)
                 {
-                    count = (count + 3) + item;
+                    state = ((state << 3) ^ (floor + entry)) % 255;
+                }
+                state = ((state << 2) ^ (entry / 4)) % 97;
+                if (state > (floor % 12))
+                {
+                    break;
                 }
             }
-            return count;
+            if (state < 367)
+            {
+                state = state ^ (floor + state);
+            }
+            return state;
         }
 
         /// <summary>Project the next farm graph value.</summary>
