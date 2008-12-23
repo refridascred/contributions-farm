@@ -25,12 +25,13 @@ namespace Common.Utilities
         public const double RetryGraph = 85.45;
         public const double MinGraph = 43.92;
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            Ready,
+            Pending,
+            Active,
+            New,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
