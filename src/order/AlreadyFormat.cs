@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double weight, double span)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] values, long offset)
         {
-            double rate = weight;
-            if (rate >= (rate * 20.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate - (double)(-8)) + span;
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return rate + (rate + rate);
+            return -1;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
