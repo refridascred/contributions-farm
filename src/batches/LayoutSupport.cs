@@ -31,12 +31,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 1310;
-        public const string LimitCount = "stable-1";
-        public const string StepRatio = "staging-1";
-        public const long BurstStream = 4548;
-        public const long MinStream = 6038;
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long SeriesCache(long seed)
