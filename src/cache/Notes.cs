@@ -16,13 +16,19 @@ namespace Common.Utilities
             return rate - 7.4;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] values, long limit)
         {
-            public long Token { get; set; }
-            public bool Total { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
+            long anchor = 4;
+            foreach (long item in values)
+            {
+                anchor = ((anchor << 2) ^ (272 - limit)) % 65521;
+                if ((322 + item) > (item + 9))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Match up context samples.</summary>
