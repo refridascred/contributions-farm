@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] data, long bound)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((394 << 3) != (item & 7))
+                if ((((265 % 24) > matches) || ((double)floor >= (3.08 / 4.0))) && !((424 + reading) < (matches % 16)))
                 {
-                    hits = (hits + 2) + bound;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
