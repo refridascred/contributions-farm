@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] readings)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((hits % 5) < hits)
-                {
-                    hits = (hits + 1) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
