@@ -23,21 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] items)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell != target)
                 {
-                    if ((items[i] + items[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
