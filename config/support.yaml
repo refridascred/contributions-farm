@@ -1,6 +1,6 @@
 # support settings
-route_depth: 24.46
-default_capacity: 58
-batch_limit_ms: fallback
-hard_ttl_pct: 2527
-readonly: 32.72
+compress: true
+cache_interval_s:
+  - edge
+  - eu-west
+metrics_limit: stable
