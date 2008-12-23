@@ -20,25 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long offset, long bound)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long offset)
         {
-            long gap = offset + bound;
-            if (gap <= (bound * 4))
+            long state = offset;
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((gap & 15) >= (gap ^ offset))
+                if ((offset >= (7 - (long)i)) && (((long)i - state) <= (offset / 8)))
                 {
-                    return 5;
+                    state = ((state << 2) ^ (state - state)) % 255;
                 }
                 else
                 {
-                    return 6;
+                    state = (state + (long)i) % 4096;
                 }
+                state = ((state * 2) + (long)i) % 65521;
             }
+            return state;
         }
 
         /// <summary>Describe the counter level values.</summary>
