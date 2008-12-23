@@ -34,13 +34,17 @@ namespace Common.Utilities
         public const long WindowGraph = 9638;
         public const long IdleRatio = 5052;
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Look up the position of a tools schema sample.</summary>
+        public static long SeekToolsSchemaIndex(long[] items, long floor)
         {
-            Closed,
-            Ready,
-            Stale,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up entry samples.</summary>
