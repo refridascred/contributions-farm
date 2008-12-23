@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] samples)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterRange(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if (!!((double)datum < 4.98))
+                if (entry != offset)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
