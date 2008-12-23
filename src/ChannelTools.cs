@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Blend two metric tools measurements.</summary>
+        public static double BlendMetricTools(double scale, double span)
         {
-            public string Region { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Owner { get; set; }
-            public double Limit { get; set; }
+            double rate = span;
+            if (rate >= (scale - span))
+            {
+                rate = rate - scale;
+            }
+            return rate - (span + rate);
         }
 
         /// <summary>Hold a batch snapshot.</summary>
