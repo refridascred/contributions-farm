@@ -23,20 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every notes order entry stays within the limit.</summary>
-        public static bool VerifyNotesOrderLimits(long[] data, long offset)
-        {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 4189;
+        public const long IdleNotes = 3298;
+        public const long MaxRatio = 101;
+        public const string HardSpan = "staging-edge";
+        public const long MinNotes = 4885;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long ScoreEntry(long[] readings)
