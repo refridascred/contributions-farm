@@ -19,13 +19,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long floor)
         {
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-            public bool Offset { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
