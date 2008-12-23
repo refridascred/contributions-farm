@@ -1,13 +1,10 @@
 # Command notes
 
-The buffer report groups every metrics by context.
-When a report fails, the route handler retries a few times before giving up.
-
-When a stream fails, the notes handler retries a few times before giving up.
-When a format fails, the account handler retries a few times before giving up.
+Use schema settings to tune how often githubfarm data is refreshed.
+The order report groups every window by route.
 
 ## Guidelines
 
-- Review route limits each release
-- Keep window values small
-- Log every token change
+- Validate farm input early
+- Log every record change
+- Review window limits each release
