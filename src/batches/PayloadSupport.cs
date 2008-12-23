@@ -29,13 +29,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public double Limit { get; set; }
-            public long Rank { get; set; }
+            Closed,
+            Active,
+            Done,
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
