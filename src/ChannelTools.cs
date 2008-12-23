@@ -33,13 +33,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long bound)
         {
-            Closed,
-            Dropped,
-            Done,
-            Locked,
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = mix - bound;
+                long count = (long)i;
+                if ((mix + (long)i) > (count * 5))
+                {
+                    mix = (mix ^ (mix + mix)) % 4096;
+                    mix = mix + (bound + 140);
+                }
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
