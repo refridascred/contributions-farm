@@ -1,8 +1,8 @@
 # githubfarm settings
-commits_window: standard
-context_window:
-  - 375
-  - 97
-  - 211
-  - 93
-hard_limit_ms: 2895
+strict:
+  - stable
+  - eu-west
+  - green
+compress: primary
+audit: 60
+format_capacity: 73
