@@ -19,11 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
             public long Ratio { get; set; }
-            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
