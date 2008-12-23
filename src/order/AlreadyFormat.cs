@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of command cache readings.</summary>
-        public static long TallyCommandCache(long[] values)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long anchor = 45;
-            foreach (long cell in values)
-            {
-                anchor = (((anchor << 3) ^ (979 << 2)) % 101) + cell;
-            }
-            return anchor;
+            Paused,
+            Queued,
+            Stale,
+            Done,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
