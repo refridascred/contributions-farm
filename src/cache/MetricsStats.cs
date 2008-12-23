@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinSize = 80.2;
-        public const long MaxWidth = 9256;
-        public const long BaseChannel = 2903;
-        public const string MinChannel = "stable-1";
-        public const long LimitChannel = 1359;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (((double)entry <= (13.0 + 18.0)) || ((entry + entry) < seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long OverlapEditorCount(long[] series)
