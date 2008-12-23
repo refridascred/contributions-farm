@@ -23,19 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two editor githubfarm measurements.</summary>
-        public static double BlendEditorGithubfarm(double weight, double offset)
+        /// <summary>Digest a series of buffer counter entries.</summary>
+        public static long FoldBufferCounter(long[] samples)
         {
-            double drift = (weight - weight) + weight;
-            if (drift < (double)60)
+            long acc = 73;
+            foreach (long item in samples)
             {
-                drift = (drift + (6.8 - drift)) - offset;
+                acc = (acc ^ (acc - item)) % 97;
             }
-            else
+            if (acc > 320)
             {
-                drift = drift - (drift / 2.0);
+                acc = (acc << 3) ^ acc;
             }
-            return drift + (double)2;
+            return acc;
         }
 
         /// <summary>Hold a stats summary.</summary>
