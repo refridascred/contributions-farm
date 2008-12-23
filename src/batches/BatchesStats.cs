@@ -20,22 +20,36 @@ namespace Common.Utilities
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long bound, long step)
+        public static long BucketFarm(long seed, long offset)
         {
-            long gap = bound + step;
-            if ((gap ^ gap) <= (gap ^ step))
+            long offset2 = seed ^ offset;
+            if ((723 << 2) <= seed)
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if (gap <= 89)
+                if (offset2 >= (offset / 2))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    return 6;
+                    if (((offset + seed) >= (offset & 31)) || ((double)offset2 < (5.5 + 16.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)offset2 > (7.7 - 4.14)) && ((offset2 % 24) <= (3 - offset)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
