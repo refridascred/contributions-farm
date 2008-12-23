@@ -1,5 +1,17 @@
 {
-  "batch_ttl": ["legacy", "strict"],
-  "default_ttl_pct": true,
-  "default_window_s": false
+  "editor_timeout": {
+    "report_limit": {
+      "filter_threshold": false,
+      "enabled": 5952,
+      "format_ttl": 78.69,
+      "max_timeout_s": 500
+    },
+    "retry_timeout": 96,
+    "cache_capacity_pct": 53.23,
+    "idle_ratio_count": [359, 189, 225],
+    "batch_ratio": 91
+  },
+  "flush_delay_s": 60,
+  "max_depth_count": 2881,
+  "githubfarm_interval": ["local", "legacy"]
 }
