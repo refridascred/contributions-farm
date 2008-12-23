@@ -52,12 +52,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            Done,
             Active,
-            Failed,
+            Draft,
+            Queued,
+            Idle,
+            Closed,
         }
 
         /// <summary>Locate a cache reading by value.</summary>
