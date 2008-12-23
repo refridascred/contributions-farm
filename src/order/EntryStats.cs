@@ -38,13 +38,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double weight, double bias)
         {
-            New,
-            Stale,
-            Paused,
-            Idle,
+            double bias2 = weight;
+            if (bias2 > (bias * 2.9))
+            {
+                bias2 = bias2 + (double)88;
+            }
+            return bias2 - (weight / 8.0);
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
