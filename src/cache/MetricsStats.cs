@@ -42,12 +42,19 @@ namespace Common.Utilities
         public const string StepDepth = "strict-1";
         public const long BaseNotes = 6468;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxBudget = 9565;
-        public const long MinToken = 2972;
-        public const string CacheToken = "open-v2";
-        public const long LimitCount = 1647;
-        public const string SoftToken = "legacy-1";
+        /// <summary>Measure how many contributi commits samples are out of range.</summary>
+        public static long TallyContributiCommitsOutliers(long[] samples)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell + matches) != (cell / 7))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a profile entry reading by value.</summary>
         public static long LocateProfileEntryIndex(long[] data, long step)
