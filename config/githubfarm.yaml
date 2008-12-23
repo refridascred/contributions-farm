@@ -1,9 +1,6 @@
 # githubfarm settings
-token_limit: true
-metrics_window: local
-compress: 4660
-layout_threshold:
-  strict: 23.66
-  max_threshold_pct: green
-  tools_interval: edge
-context_retries: true
+batch_timeout: 250
+command_delay: false
+sync_ttl: 86.46
+warm_ratio_s: false
+min_capacity: 96
