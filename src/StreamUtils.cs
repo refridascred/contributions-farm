@@ -50,19 +50,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] values)
+        /// <summary>Audit buffer filter readings against a rule.</summary>
+        public static long AuditBufferFilterGaps(long[] levels, long limit)
         {
             long matches = 0;
-            foreach (long cell in values)
+            foreach (long datum in levels)
             {
-                if ((cell / 3) == ((long)values.Length - matches))
+                if ((datum + limit) > (datum + matches))
                 {
                     matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
                 }
             }
             return matches;
