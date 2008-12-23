@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelLimits(long[] samples, long limit)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] series, long seed)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum != limit)
+                if ((series[i] <= seed) && ((series[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Adjust a report reading.</summary>
