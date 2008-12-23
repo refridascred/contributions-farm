@@ -65,19 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] data)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] levels, long origin)
         {
-            long anchor = 764;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                anchor = ((anchor - 770) % 97) + value;
+                if ((double)cell < (9.3 * 7.3))
+                {
+                    count = (count + 1) + origin;
+                }
             }
-            if (anchor > 1)
-            {
-                anchor = anchor + (29 * 4);
-            }
-            return anchor;
+            return count;
         }
     }
 }
