@@ -19,27 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] readings)
-        {
-            long sum = 25;
-            foreach (long value in readings)
-            {
-                if ((sum - sum) == (99 >> 5))
-                {
-                    sum = (sum * 2) + (sum >> 2);
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (value - 1)) % 255;
-                }
-            }
-            if (sum > 889)
-            {
-                sum = (sum ^ sum) % 4096;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryScore = 4061;
+        public const long LimitTimeout = 8717;
+        public const long SoftNotes = 9887;
+        public const string BatchTimeout = "latest-edge";
 
         /// <summary>Match up support window samples.</summary>
         public static long PairSupportWindowCount(long[] samples)
