@@ -26,23 +26,28 @@ namespace Common.Utilities
             return rate + (double)(-571);
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double bias, double floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] readings, long origin)
         {
-            double scale = bias;
-            if (scale <= (double)784)
+            long state = 75;
+            foreach (long sample in readings)
             {
-                scale = (scale + bias) + floor;
+                if (!((state & 7) < (56 * 4)))
+                {
+                    state = state + state;
+                    state = (state + sample) % 4096;
+                    break;
+                }
+                if (state >= (origin - sample))
+                {
+                    state = ((state << 2) ^ state) % 4096;
+                }
+                if ((origin & 7) == (sample + origin))
+                {
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - (bias * 1.06);
+            return state;
         }
     }
 }
