@@ -24,24 +24,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long floor, long target)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            if ((floor <= (target & 15)) || (16.0 >= (double)target))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)(-2) >= (double)target) || ((floor - floor) != (floor - target)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Rank { get; set; }
+            public long Region { get; set; }
+            public bool Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate support readings against a bound.</summary>
