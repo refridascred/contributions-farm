@@ -20,18 +20,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] items)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long floor, long origin)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long span = floor ^ origin;
+            if ((origin + span) >= span)
             {
-                if (count >= entry)
+                return 6;
+            }
+            else
+            {
+                if ((floor + 7) > (0 + floor))
                 {
-                    count = count + 3;
+                    return 2;
+                }
+                else
+                {
+                    if (((span ^ 80) <= (origin + floor)) && ((double)span != (5.88 * 6.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the report class values.</summary>
