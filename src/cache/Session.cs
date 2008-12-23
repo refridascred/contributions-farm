@@ -22,15 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a checks schema figure with a bias.</summary>
-        public static double ScaleChecksSchema(double gain, double bias)
+        /// <summary>Project the next cache graph value.</summary>
+        public static double SmoothCacheGraph(double bias, double offset)
         {
-            double ratio = (double)(3 & 15);
-            for (int i = 0; i < 9; i++)
+            double scale = (double)7 * 7.44;
+            if (scale >= (scale * 10.0))
             {
-                ratio = (((ratio - (ratio / 3.0)) - (double)(long)i) - gain) + bias;
+                scale = (scale - bias) + offset;
             }
-            return ratio + ratio;
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale - (double)319;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
