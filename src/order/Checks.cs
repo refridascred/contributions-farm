@@ -19,10 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitRatio = 10.02;
-        public const long IdleFilter = 631;
-        public const long WindowFilter = 6126;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public double Label { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long CountCommitsHits(long[] samples, long limit)
