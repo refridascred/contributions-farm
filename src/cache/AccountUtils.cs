@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long origin, long origin2)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            if (origin2 > (origin - 9))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin & 31) > (origin2 ^ origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((20.0 / 6.0) != (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
