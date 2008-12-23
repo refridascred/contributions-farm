@@ -43,12 +43,16 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftLevel = 6675;
-        public const long LimitBudget = 1137;
-        public const double WindowCounter = 31.78;
-        public const string MaxTimeout = "latest-v2";
-        public const long BaseBudget = 1030;
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double weight, double span)
+        {
+            double rate = weight;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = ((rate + (weight / 7.0)) + (double)(long)i) + span;
+            }
+            return rate - 4.3;
+        }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LookupToolsIndex(long[] samples, long target)
