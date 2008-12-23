@@ -46,18 +46,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] items)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] series, long bound)
         {
-            long score = 66;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)reading == (17.0 - 6.0)) || ((reading - score) >= (score << 1)))
+                if ((series[i] >= bound) && ((series[i] % 5) != 0))
                 {
-                    score = score + score;
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
