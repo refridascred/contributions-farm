@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long seed, long limit)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] data)
         {
-            long lane = seed ^ limit;
-            if ((double)seed < (18.0 + 2.0))
+            long carry = 76;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((seed ^ limit) <= (limit + lane)))
+                carry = (carry * 5) + (reading >> 3);
+                if (((reading * 3) < (carry % 10)) || ((reading - (-337)) <= reading))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((seed - limit) > (361 + seed)) && ((double)limit <= 4.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed << 3) == (seed & 7))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    break;
                 }
             }
+            if (carry > 339)
+            {
+                carry = (carry - ((long)data.Length * 3)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a order snapshot.</summary>
