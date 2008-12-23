@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit batches editor readings against a rule.</summary>
-        public static long AuditBatchesEditorHits(long[] levels)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] levels, long floor)
         {
-            long matches = 0;
+            long mark = -594;
             foreach (long sample in levels)
             {
-                if ((double)matches >= (1.7 - 11.0))
+                if ((sample << 2) <= mark)
                 {
-                    matches = (matches + 1) - sample;
+                    continue;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mark = ((mark << 2) ^ (mark / 7)) % 255;
+                }
+                if ((sample + mark) > (sample + floor))
+                {
+                    mark = ((mark * 5) + (floor >> 3)) % 101;
                 }
             }
-            return matches;
+            if (mark < 11)
+            {
+                mark = mark - (floor >> 3);
+            }
+            return mark;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
