@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long bound)
         {
-            Pending,
-            Dropped,
-            Retry,
-            Stale,
-            Failed,
+            long score = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
