@@ -28,15 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] items)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] items, long target)
         {
-            long state = 91;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                state = (state - (state + entry)) % 101;
+                if ((matches >= (61 & 3)) || ((target & 63) > sample))
+                {
+                    matches = matches + 2;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
