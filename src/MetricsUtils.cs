@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long origin)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long state = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    state = ((state * 3) + (state * 3)) - (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            Locked,
+            Paused,
+            Failed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Digest a series of format entries.</summary>
