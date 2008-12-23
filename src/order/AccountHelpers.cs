@@ -67,32 +67,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long step, long bound)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long next = step ^ bound;
-            if ((bound >> 2) > next)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((next << 2) <= (next * 3)) || (bound <= (bound * 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((step / 5) != (574 + (-759))) || (6.14 <= (double)bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            New,
+            Stale,
+            Paused,
+            Done,
+            Active,
         }
     }
 }
