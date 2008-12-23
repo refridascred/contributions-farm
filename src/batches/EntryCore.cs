@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long offset, long limit)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] levels)
         {
-            if ((6.4 * 4.13) != (double)offset)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset + offset) <= (limit << 1))
+                if ((matches % 8) >= (matches << 2))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    matches = (matches + 2) + datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
