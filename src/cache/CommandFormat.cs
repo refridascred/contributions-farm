@@ -5,21 +5,28 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] series)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((375 * 3) >= ((long)i * 3)))
                 {
-                    if ((series[i] + series[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total * 3) + (long)i) % 97;
                 }
+                else
+                {
+                    total = (total << 3) ^ (total & 31);
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    long prev = total / 8;
+                    total = ((total << 3) ^ prev) ^ (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Project the next profile value.</summary>
