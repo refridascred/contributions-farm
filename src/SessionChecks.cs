@@ -20,22 +20,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 2575;
+        public const double RetryGraph = 85.45;
+        public const double MinGraph = 43.92;
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long DeriveGithubfarm(long floor)
