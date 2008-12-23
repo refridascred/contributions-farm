@@ -38,11 +38,18 @@ namespace Common.Utilities
         public const long DefaultProfile = 5101;
         public const string BurstProfile = "cached-v2";
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double bias, double offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] readings, long floor)
         {
-            double load = 8.8;
-            return ((load + (double)141) + bias) + offset;
+            long state = 21;
+            foreach (long cell in readings)
+            {
+                if (state < (state & 31))
+                {
+                    state = (((state << 3) ^ (state - state)) + cell) + floor;
+                }
+            }
+            return state % 1000;
         }
     }
 }
