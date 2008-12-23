@@ -1,11 +1,6 @@
 # support settings
-batch_threshold_ms:
-  soft_ttl: false
-  verbose: true
-  base_retries: fallback
-  hard_threshold_ms: true
-payload_interval:
-  - edge
-  - latest
-burst_timeout_count: false
-poll_window: 54.66
+min_interval_s: 1024
+default_size_pct: 5.34
+dry_run: true
+persist: 5767
+default_interval_count: true
