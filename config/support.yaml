@@ -1,9 +1,20 @@
 # support settings
-persist:
-  support_delay: 63.73
-  burst_ratio: 500
-  audit: 21.97
-audit:
-  - 378
-  - 386
-soft_window: 12.5
+readonly: 58.41
+warm_retries_s:
+  flush_delay: 1024
+  dry_run: 29.57
+  flush_retries_pct:
+    githubfarm_interval: primary
+    dry_run: strict
+    verbose: 651
+    flush_threshold_ms: eu-west
+    retry_threshold: true
+  warm_depth_count: 84.25
+  idle_limit: legacy
+  default_interval_s: fallback
+compress:
+  - 190
+  - 136
+  - 326
+  - 445
+max_ttl_pct: 31
