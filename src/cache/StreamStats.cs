@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] data)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = (double)(64 ^ 5);
+            if (mean > (double)3)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean + (offset / 4.0)) - ratio;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (double)441) + (double)(long)i;
+            }
+            return mean - (mean * 1.5);
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
