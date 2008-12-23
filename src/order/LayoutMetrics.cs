@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Fold a list of channel metric readings.</summary>
+        public static long FoldChannelMetric(long[] values, long floor)
         {
-            New,
-            Active,
-            Stale,
+            long result = 111;
+            foreach (long entry in values)
+            {
+                result = (result ^ (111 ^ entry)) - floor;
+            }
+            if (result > 343)
+            {
+                result = ((result * 3) + (result - result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
