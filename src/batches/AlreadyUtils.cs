@@ -64,13 +64,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardFactor = 8774;
+        public const double BatchBudget = 33.02;
+        public const long LimitRatio = 2048;
+        public const double HardGraph = 91.62;
     }
 }
