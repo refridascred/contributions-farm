@@ -48,38 +48,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long bound, long target)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            if (((target - target) > (bound - bound)) || ((bound ^ bound) > bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((749 + target) < (target + bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(bound >= target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((768 / 4) >= target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Done,
+            Paused,
         }
 
         /// <summary>Match up context samples.</summary>
