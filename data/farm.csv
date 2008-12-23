@@ -1,6 +1,11 @@
-id,level,active,rank
-1,30.54,795,346
-2,431,7.88,green
-3,14,440,815
-4,503,23.28,234
-5,strict,cached,standard
+id,token,weight,owner
+1,52.44,312,green
+2,12.54,39.16,5.13
+3,73.73,stable,433
+4,671,local,122
+5,38.66,821,262
+6,89.44,52.7,local
+7,1.21,609,21.07
+8,68,blue,56.4
+9,eu-west,471,local
+10,953,746,862
