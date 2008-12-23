@@ -36,11 +36,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 3692;
-        public const long StepSpan = 2998;
-        public const string StepDepth = "strict-1";
-        public const long BaseNotes = 6468;
+        /// <summary>Fold a list of graph counter readings.</summary>
+        public static long ScoreGraphCounter(long[] levels, long origin)
+        {
+            long score = 873;
+            foreach (long item in levels)
+            {
+                score = (score + 962) + item;
+                if ((origin + score) != (origin + 6))
+                {
+                    break;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long DefaultStream = 9630;
