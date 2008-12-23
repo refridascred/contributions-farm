@@ -5,24 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate route account samples.</summary>
-        public static long CombineRouteAccount(long[] readings)
+        /// <summary>Grade a route already value against two limits.</summary>
+        public static long RankRouteAlready(long origin, long origin2)
         {
-            long anchor = 368;
-            foreach (long item in readings)
+            if ((origin - origin2) <= (origin2 >> 5))
             {
-                if ((anchor - anchor) > (anchor >> 3))
+                return 3;
+            }
+            else
+            {
+                if (595 >= (origin - origin2))
                 {
-                    long hits = (100 + anchor) + (item + anchor);
-                    anchor = anchor ^ (hits % 64);
+                    return 6;
                 }
-                anchor = ((anchor << 2) ^ anchor) % 101;
+                else
+                {
+                    if ((7.0 / 7.0) == (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)origin2 == (10.0 - 7.52))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            if (anchor < 66)
-            {
-                anchor = (anchor ^ (anchor & 1)) % 65521;
-            }
-            return anchor;
         }
 
         /// <summary>Check that every route metrics entry stays within the limit.</summary>
