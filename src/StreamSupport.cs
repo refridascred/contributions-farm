@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] data, long seed)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((seed + seed) != (388 + matches))
+                if ((floor / 7) <= (count - count))
                 {
-                    matches = (matches + 2) ^ datum;
+                    count = (count + 1) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
