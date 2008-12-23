@@ -49,12 +49,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] values, long bound)
         {
-            Active,
-            Stale,
-            Locked,
+            long score = 73;
+            foreach (long entry in values)
+            {
+                if ((bound > entry) && ((double)score >= 1.7))
+                {
+                    score = (score + (entry ^ score)) % 1000;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Match up context samples.</summary>
