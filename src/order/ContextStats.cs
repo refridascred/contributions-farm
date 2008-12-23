@@ -24,18 +24,15 @@ namespace Common.Utilities
         public const long MaxReport = 3315;
         public const string WindowFactor = "fallback-edge";
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] readings, long offset)
+        /// <summary>Digest a series of buffer token entries.</summary>
+        public static long TallyBufferToken(long[] data)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long acc = 0;
+            foreach (long value in data)
             {
-                if (6.1 < (double)offset)
-                {
-                    count = (count + 1) + sample;
-                }
+                acc = (((acc << 3) ^ 31) % 97) + value;
             }
-            return count;
+            return acc % 97;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
