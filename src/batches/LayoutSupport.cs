@@ -52,22 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window entry readings.</summary>
-        public static long FoldWindowEntry(long[] readings)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long total = 3;
-            foreach (long value in readings)
-            {
-                if ((total + (long)readings.Length) != (total ^ value))
-                {
-                    total = total + (total << 2);
-                }
-            }
-            if (total < (-668))
-            {
-                total = ((total * 2) + total) % 4096;
-            }
-            return total;
+            Queued,
+            Retry,
+            Idle,
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
