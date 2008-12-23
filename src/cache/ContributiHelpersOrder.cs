@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] values, long floor)
         {
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a profile header.</summary>
