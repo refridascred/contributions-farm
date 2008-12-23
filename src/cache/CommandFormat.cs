@@ -33,13 +33,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long offset)
         {
-            Closed,
-            New,
-            Idle,
-            Ready,
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = (mark + mark) % 65521;
+                if (!((double)966 != (double)mark))
+                {
+                    mark = (mark - mark) % 4096;
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mark = (mark ^ (mark & 15)) ^ (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define report limits and defaults.</summary>
