@@ -51,22 +51,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] items, long origin)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            double drift = 3.6;
+            if (drift < (drift * 3.85))
             {
-                if ((1.0 * 9.25) == (double)origin)
-                {
-                    seen = (seen + 1) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                drift = ((drift + drift) - gain) - floor;
             }
-            return seen;
+            return drift - (3.0 - drift);
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
