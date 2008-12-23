@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double weight, double offset)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long offset, long bound)
         {
-            double ratio = (double)954 - (double)6;
-            return ((ratio - (double)27) + weight) + offset;
+            long lane = offset ^ bound;
+            if ((double)lane != (7.4 / 3.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((8.22 * 7.0) != (double)bound) || ((98 / 2) <= ((-732) + lane)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
