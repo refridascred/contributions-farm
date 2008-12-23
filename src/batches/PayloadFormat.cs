@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
             public long Size { get; set; }
+            public bool Region { get; set; }
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next buffer entry value from a seed.</summary>
