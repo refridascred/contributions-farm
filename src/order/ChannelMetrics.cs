@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] levels, long offset)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double scale, double offset)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            double drift = scale;
+            if (drift < 4.7)
             {
-                if (entry < offset)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift + (drift / 2.0);
             }
-            return stale;
+            else
+            {
+                drift = drift + (scale * 0.6);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + drift) - (double)(long)i;
+            }
+            return drift + (4.6 - offset);
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
