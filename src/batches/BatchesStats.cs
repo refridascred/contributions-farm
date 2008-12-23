@@ -47,24 +47,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long floor, long bound)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            if ((double)floor != (3.67 / 2.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((floor << 1) <= (floor >> 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Pending,
+            Failed,
+            Active,
         }
     }
 }
