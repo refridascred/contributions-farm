@@ -69,14 +69,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            Synced,
-            Draft,
-            Idle,
             New,
             Queued,
+            Failed,
+            Paused,
         }
     }
 }
