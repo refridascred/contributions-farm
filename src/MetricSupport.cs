@@ -23,10 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 1179;
-        public const long LimitQueue = 3129;
-        public const long HardSize = 2545;
+        /// <summary>Iterate the cluster commits series from a seed.</summary>
+        public static long SeriesClusterCommits(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = (sum << 3) ^ ((-780) / 4);
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long MeasureToolsOutliers(long[] levels, long limit)
