@@ -60,14 +60,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long origin)
         {
-            New,
-            Stale,
-            Paused,
-            Done,
-            Active,
+            long score = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((long)i / 7) == (score & 63))
+                {
+                    score = ((score * 5) + (score >> 2)) % 255;
+                    score = score ^ (812 & 3);
+                    continue;
+                }
+                if (!((score % 64) != (origin & 127)))
+                {
+                    score = score - (origin >> 4);
+                }
+                score = (score + (score - 7)) % 65521;
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
