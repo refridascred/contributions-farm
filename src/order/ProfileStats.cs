@@ -44,18 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes token readings against a rule.</summary>
-        public static long TallyNotesTokenHits(long[] levels, long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (hits > limit)
+                if (((matches * 4) < (datum * 5)) && !((9.54 * 3.4) >= (double)637))
                 {
-                    hits = (hits + 1) ^ sample;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the stats phase values.</summary>
