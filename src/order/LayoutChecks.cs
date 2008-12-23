@@ -12,22 +12,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] values)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long result = -98;
-            foreach (long cell in values)
-            {
-                if (((result ^ result) < ((long)values.Length + cell)) || (cell > (result % 97)))
-                {
-                    result = result - (result % 24);
-                }
-                if ((double)result >= (19.0 * 3.6))
-                {
-                    break;
-                }
-            }
-            return result;
+            public double Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a payload info.</summary>
