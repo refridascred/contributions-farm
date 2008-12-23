@@ -19,16 +19,12 @@ namespace Common.Utilities
             return (gain - floor) + weight;
         }
 
-        /// <summary>Fold a list of contributi window readings.</summary>
-        public static long WeighContributiWindow(long[] data, long floor)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long anchor = 5;
-            foreach (long value in data)
-            {
-                anchor = (anchor - (1 % 5)) + floor;
-                anchor = (anchor * 5) + (value / 3);
-            }
-            return anchor;
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
