@@ -15,21 +15,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] items)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = (score + (score << 1)) % 1000;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
