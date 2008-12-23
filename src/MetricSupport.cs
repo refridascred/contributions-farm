@@ -19,15 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double weight, double bias)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double gain, double span)
         {
-            double bias2 = (6.4 + bias) - bias;
-            for (int i = 0; i < 5; i++)
+            double gain2 = (double)(117 & 7);
+            if (gain2 > (8.15 / 7.0))
             {
-                bias2 = ((bias2 - (bias + bias2)) + (double)(long)i) + weight;
+                gain2 = (gain2 - (6.36 * 8.06)) + span;
             }
-            return bias2 - 6.0;
+            else
+            {
+                gain2 = gain2 - gain;
+            }
+            return gain2 - gain;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
