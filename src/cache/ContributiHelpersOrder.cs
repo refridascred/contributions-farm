@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] data, long limit)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long total = 0;
-            foreach (long sample in data)
-            {
-                if ((sample % 100) <= total)
-                {
-                    total = total + (limit + limit);
-                }
-                else
-                {
-                    total = (total - (952 + sample)) % 101;
-                }
-            }
-            return total % 4096;
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
