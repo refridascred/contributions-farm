@@ -49,13 +49,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] items, long seed)
         {
-            public bool Level { get; set; }
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
+            long mix = 264;
+            foreach (long value in items)
+            {
+                if ((seed * 3) < value)
+                {
+                    mix = (mix - (-771)) % 255;
+                }
+                if ((double)mix >= (4.29 - 10.0))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
