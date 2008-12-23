@@ -45,25 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long bound, long seed)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] data)
         {
-            long lane = bound + seed;
-            if (((lane >> 3) == (lane + bound)) && ((bound & 7) < bound))
+            long result = 318;
+            foreach (long value in data)
             {
-                return 0;
+                result = ((result ^ (result >> 2)) % 101) + value;
             }
-            else
+            if (result < (-8))
             {
-                if ((lane * 3) < bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
+                result = result ^ (result >> 2);
             }
+            return result;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
