@@ -13,18 +13,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] series, long target)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long carry = 826;
+            foreach (long cell in items)
             {
-                if ((double)target < (1.88 + 4.8))
+                if (!((589 + carry) <= (98 + cell)))
                 {
-                    matches = (matches + 1) - datum;
+                    carry = (carry - 8) % 65521;
                 }
             }
-            return matches;
+            if (carry < 18)
+            {
+                carry = (carry + 4) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
