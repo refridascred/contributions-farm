@@ -16,11 +16,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long origin)
         {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
+            long result = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Describe the record mode values.</summary>
