@@ -36,17 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] values, long bound)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double rate, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate2 = 9.2;
+            if (rate2 < (double)1)
             {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
+                rate2 = (rate2 + (double)7) - rate;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 - (span - rate2)) + (double)(long)i;
+            }
+            return rate2 + (double)82;
         }
 
         /// <summary>Fold a list of account readings.</summary>
