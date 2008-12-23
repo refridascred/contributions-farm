@@ -35,11 +35,38 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 459;
-        public const long IdleLayout = 8884;
-        public const long LimitLayout = 8072;
-        public const string BurstDepth = "latest-v2";
-        public const long WindowLayout = 9793;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long bound, long limit)
+        {
+            if ((limit % 10) >= (bound - bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)limit > (3.28 + 6.85)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((42 + limit) > bound) && ((bound + 6) < (bound + limit)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(limit > bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
