@@ -25,23 +25,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] data, long step)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] samples)
         {
-            long carry = 381;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)step == (1.5 + 3.9))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (carry ^ carry) % 97;
-                    continue;
-                }
-                if (((8.6 / 2.0) <= (double)step) && ((step >> 1) > (905 / 2)))
-                {
-                    carry = carry ^ (carry + sample);
+                    if ((samples[i] ^ samples[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Locate a channel context reading by value.</summary>
