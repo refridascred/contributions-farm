@@ -26,22 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] values)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] levels, long step)
         {
-            long score = 28;
-            foreach (long sample in values)
+            long acc = 319;
+            foreach (long reading in levels)
             {
-                if (2.0 <= (double)score)
-                {
-                    score = (score - (score / 8)) % 101;
-                }
-                else
-                {
-                    score = (score ^ (sample + 801)) % 255;
-                }
+                acc = ((acc + (step ^ 15)) % 101) - reading;
             }
-            return score;
+            if (acc < 8)
+            {
+                acc = (acc ^ step) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
