@@ -14,19 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] series, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((37 - sample) <= hits)
-                {
-                    hits = (hits + 3) + offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 7180;
+        public const long LimitCount = 3737;
+        public const string DefaultCache = "stable-v2";
+        public const long WindowScore = 9398;
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long CombineGithubfarm(long[] samples)
