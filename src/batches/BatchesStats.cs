@@ -57,18 +57,22 @@ namespace Common.Utilities
         public const long BaseFactor = 6587;
         public const long CacheToken = 4276;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] values)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((double)count != (4.3 + 0.1))
+                if (((-1) + hits) > (hits + hits))
                 {
-                    count = (count + 3) ^ entry;
+                    hits = ((hits + 2) + value) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
