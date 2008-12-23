@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] values, long bound)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long offset, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long step2 = offset - step;
+            if ((step * 3) >= offset)
             {
-                if ((values[i] == bound) && ((values[i] % 3) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((step ^ 97) <= step)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((offset ^ offset) != (step2 & 63))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((863 * 2) >= (step2 / 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate command window samples.</summary>
