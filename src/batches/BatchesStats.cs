@@ -47,11 +47,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long floor, long bound)
         {
-            public long Flag { get; set; }
-            public double Limit { get; set; }
+            if ((double)floor != (3.67 / 2.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((floor << 1) <= (floor >> 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
