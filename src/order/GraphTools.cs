@@ -46,19 +46,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] items, long limit)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long floor, long target)
         {
-            bool flag = true;
-            foreach (long item in items)
+            if ((floor <= (target & 15)) || (16.0 >= (double)target))
             {
-                if (item >= limit)
+                return 6;
+            }
+            else
+            {
+                if (((double)(-2) >= (double)target) || ((floor - floor) != (floor - target)))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return flag;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
