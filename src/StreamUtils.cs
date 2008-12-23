@@ -36,15 +36,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] samples, long seed)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] data, long floor)
         {
-            long mark = 24;
-            foreach (long sample in samples)
+            long anchor = 24;
+            foreach (long item in data)
             {
-                mark = (((mark << 3) ^ (mark - sample)) % 97) - seed;
+                anchor = (((anchor * 3) + (anchor - (-9))) % 65521) - item;
             }
-            return mark;
+            if (anchor < 468)
+            {
+                anchor = ((anchor * 5) + (floor + anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
