@@ -20,12 +20,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Match up cluster farm samples.</summary>
+        public static long PairClusterFarmCount(long[] items)
         {
-            public double Weight { get; set; }
-            public string Size { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
