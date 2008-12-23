@@ -16,32 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long limit, long step)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long slot = limit + step;
-            if ((double)limit > (double)slot)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(step <= slot))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((step + step) != (slot + slot)) || ((slot + 741) > step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Synced,
+            Dropped,
+            Retry,
+            Queued,
         }
 
         /// <summary>Check that every report record entry stays within the limit.</summary>
