@@ -20,18 +20,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] levels)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)seen <= (3.46 - 13.0))
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
+            public double Total { get; set; }
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a channel snapshot.</summary>
