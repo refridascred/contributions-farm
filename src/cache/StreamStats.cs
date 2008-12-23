@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] data, long origin)
-        {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BurstRatio = 74.64;
+        public const long BurstEditor = 7460;
+        public const double BaseInterval = 7.98;
+        public const string MinEditor = "open-1";
+        public const double SoftEditor = 15.12;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool VerifyEditorRange(long[] samples, long target)
