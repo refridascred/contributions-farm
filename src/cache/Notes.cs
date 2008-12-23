@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] samples)
         {
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
+            long state = 66;
+            foreach (long value in samples)
+            {
+                state = ((state - (long)samples.Length) % 65521) - value;
+                if ((5.09 - 13.0) == (double)state)
+                {
+                    state = ((state << 2) ^ (96 + state)) % 1000;
+                }
+                else
+                {
+                    state = ((state * 3) + state) % 97;
+                }
+            }
+            if (state > 667)
+            {
+                state = ((state * 2) + (state - 566)) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the record state values.</summary>
