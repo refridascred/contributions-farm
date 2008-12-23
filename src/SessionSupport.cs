@@ -34,30 +34,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate checks session samples.</summary>
-        public static long CombineChecksSession(long[] series, long limit)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long sum = 10;
-            foreach (long cell in series)
-            {
-                if (!((cell >> 2) != (49 * 5)))
-                {
-                    sum = (sum + (3 % 7)) % 255;
-                }
-                if (((long)series.Length & 15) != (limit - cell))
-                {
-                    sum = sum + (cell + limit);
-                }
-                if ((limit > cell) || ((5.2 + 2.5) >= (6.9 + 7.6)))
-                {
-                    break;
-                }
-            }
-            if (sum < 29)
-            {
-                sum = ((sum << 2) ^ (limit + limit)) % 65521;
-            }
-            return sum % 97;
+            Closed,
+            Failed,
+            Locked,
+            Queued,
+            Draft,
         }
     }
 }
