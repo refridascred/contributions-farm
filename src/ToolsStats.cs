@@ -54,13 +54,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double gain, double offset)
         {
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
-            public double Weight { get; set; }
+            double drift = gain;
+            if (drift <= offset)
+            {
+                drift = drift + (double)(-677);
+            }
+            else
+            {
+                drift = drift - (drift - 4.72);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (gain - drift)) + (double)(long)i;
+            }
+            return drift + (drift - offset);
         }
 
         /// <summary>Hold a notes header.</summary>
