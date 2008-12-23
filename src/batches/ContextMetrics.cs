@@ -37,16 +37,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long offset)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] data, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score << 2) ^ (long)i;
-                score = ((score * 4) + (long)i) % 97;
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the counter class values.</summary>
