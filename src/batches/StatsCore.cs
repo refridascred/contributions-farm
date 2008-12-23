@@ -42,18 +42,11 @@ namespace Common.Utilities
             return rate2 + (double)82;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] samples, long target)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long result = 831;
-            foreach (long cell in samples)
-            {
-                if ((494 + result) > (cell ^ target))
-                {
-                    result = (result - result) % 1000;
-                }
-            }
-            return result % 65521;
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
