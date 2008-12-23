@@ -40,22 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] series, long origin)
+        /// <summary>Fold a list of entry cluster readings.</summary>
+        public static long CombineEntryCluster(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long sum = 7;
+            foreach (long sample in items)
             {
-                if (!((456 + 2) == (count - entry)))
-                {
-                    count = (count + 2) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = (((sum + 59) % 1000) + sample) - bound;
             }
-            return count;
+            return sum;
         }
     }
 }
