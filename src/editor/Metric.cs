@@ -31,22 +31,19 @@ namespace Common.Utilities
             return mean - (span / 4.0);
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] values, long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] values, long step)
         {
-            long score = 664;
-            foreach (long datum in values)
+            long state = 35;
+            foreach (long cell in values)
             {
-                if ((double)score < (9.51 * 4.0))
-                {
-                    score = (score ^ (score - datum)) - bound;
-                }
-                else
-                {
-                    score = (score - datum) % 255;
-                }
+                state = ((state << 3) ^ (62 - step)) + cell;
             }
-            return score;
+            if (state > 52)
+            {
+                state = ((state * 2) + (state % 10)) % 97;
+            }
+            return state % 1000;
         }
     }
 }
