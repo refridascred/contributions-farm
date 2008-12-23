@@ -1,7 +1,9 @@
-id,weight,state
-1,27.43,38.22
-2,40.84,965
-3,32.79,42.59
-4,8.27,fallback
-5,567,edge
-6,31.05,eu-west
+id,label,count,active
+1,460,latest,755
+2,local,primary,456
+3,standard,blue,1.35
+4,364,117,strict
+5,59.64,43.09,28.98
+6,38.16,latest,open
+7,78,306,legacy
+8,25.01,955,primary
