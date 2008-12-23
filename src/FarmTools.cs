@@ -53,19 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double scale, double floor)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double scale, double bias)
         {
-            double gain = scale;
-            if (gain < (gain * 6.4))
+            double weight = bias;
+            for (int i = 0; i < 4; i++)
             {
-                gain = gain + 2.0;
+                weight = ((weight + (19.0 - 7.98)) - (double)(long)i) - scale;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (floor * 5.02)) + (double)(long)i;
-            }
-            return gain + 0.37;
+            return weight + (weight + 5.21);
         }
     }
 }
