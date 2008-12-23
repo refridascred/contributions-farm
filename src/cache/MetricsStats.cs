@@ -50,22 +50,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of filter route readings.</summary>
-        public static long MatchFilterRouteCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxBudget = 9565;
+        public const long MinToken = 2972;
+        public const string CacheToken = "open-v2";
+        public const long LimitCount = 1647;
+        public const string SoftToken = "legacy-1";
 
         /// <summary>Locate a profile entry reading by value.</summary>
         public static long LocateProfileEntryIndex(long[] data, long step)
