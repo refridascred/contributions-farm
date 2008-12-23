@@ -77,32 +77,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long offset, long limit)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] items, long floor)
         {
-            long edge = offset ^ limit;
-            if ((offset > (edge >> 2)) && ((offset * 3) < (-7)))
+            bool valid = true;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit < (2.5 + 3.4))
+                if (item >= floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((73 + limit) == (offset / 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
