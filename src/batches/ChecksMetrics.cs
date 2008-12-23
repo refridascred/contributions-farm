@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double SoftSize = 85.91;
+        public const string BaseFarm = "legacy-v2";
+        public const long BurstFactor = 7267;
+        public const long BurstLevel = 2623;
+        public const double MaxFarm = 54.47;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long TallyMetricsMatches(long[] samples, long bound)
