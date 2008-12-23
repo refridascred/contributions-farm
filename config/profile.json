@@ -1,6 +1,12 @@
 {
-  "editor_window": "strict",
-  "payload_limit": "blue",
-  "compress": "latest",
-  "account_interval": 5030
+  "default_interval_s": 4524,
+  "burst_timeout_s": 8927,
+  "poll_size_pct": 1654,
+  "batch_ttl": {
+    "batch_ttl_count": true,
+    "profile_window": true,
+    "burst_delay_pct": [461, 26, 369]
+  },
+  "account_delay": 1024,
+  "readonly": 250
 }
