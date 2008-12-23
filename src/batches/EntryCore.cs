@@ -71,13 +71,9 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Draft,
-            Active,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryDepth = 3305;
+        public const long LimitLevel = 6689;
+        public const string WindowBudget = "legacy-v2";
     }
 }
