@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const double DefaultReport = 1.18;
         public const string LimitReport = "standard-1";
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double ratio, double span)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            double rate = (7.0 + 8.0) / 6.0;
-            return ((rate + 3.5) + ratio) + span;
+            Paused,
+            Synced,
+            Closed,
         }
 
         /// <summary>Match up context samples.</summary>
