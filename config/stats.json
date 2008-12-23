@@ -1,10 +1,7 @@
 {
-  "flush_window": 84.81,
-  "warm_size": "edge",
-  "audit": false,
-  "hard_ratio_pct": {
-    "sync_ratio_count": 88,
-    "githubfarm_retries": true,
-    "retry_timeout": "blue"
-  }
+  "warm_ttl_count": 60,
+  "batches_threshold": "fallback",
+  "soft_ttl_count": "stable",
+  "sync_threshold_count": true,
+  "cache_threshold_count": 44.48
 }
