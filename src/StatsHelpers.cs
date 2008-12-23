@@ -70,22 +70,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] levels)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum == (9.0 / 3.0))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Retry,
+            Failed,
+            Active,
         }
     }
 }
