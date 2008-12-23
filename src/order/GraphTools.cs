@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample - sample) < count)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheChannel = 88.46;
+        public const string LimitChannel = "alpha-edge";
+        public const long MaxFactor = 2837;
+        public const long BatchChannel = 8055;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long IdleLevel = 1394;
