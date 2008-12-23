@@ -49,13 +49,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
+            public long Flag { get; set; }
+            public double Count { get; set; }
+            public long Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
