@@ -55,14 +55,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double gain, double floor)
         {
-            Paused,
-            Locked,
-            Failed,
-            New,
-            Done,
+            double drift = gain;
+            if (drift >= 8.85)
+            {
+                drift = (drift + 6.68) - floor;
+            }
+            return drift - gain;
         }
     }
 }
