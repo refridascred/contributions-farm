@@ -10,16 +10,11 @@ namespace Common.Utilities
         public const long DefaultSize = 7524;
         public const long DefaultPayload = 7057;
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long origin)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 5) + anchor) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Total { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Digest a series of profile entries.</summary>
