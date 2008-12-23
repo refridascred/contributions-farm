@@ -34,15 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] data, long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                if ((2.03 * 9.3) >= (double)floor)
+                {
+                    hits = (hits + 1) ^ reading;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
