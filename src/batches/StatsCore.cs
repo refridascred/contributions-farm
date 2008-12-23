@@ -42,13 +42,18 @@ namespace Common.Utilities
             return rate2 + (double)82;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] samples, long target)
         {
-            Pending,
-            Done,
-            Active,
-            Queued,
+            long result = 831;
+            foreach (long cell in samples)
+            {
+                if ((494 + result) > (cell ^ target))
+                {
+                    result = (result - result) % 1000;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
