@@ -1,13 +1,10 @@
 # Command notes
 
-Run the session check before changing any entry limits.
-A stream that stays idle for too long is moved to the window list.
-
-The format module keeps payload values in sync with the metrics cache.
-Use record settings to tune how often format data is refreshed.
+Each already is validated before it reaches the route queue.
+Each queue is validated before it reaches the cluster queue.
 
 ## Guidelines
 
-- Validate profile input early
-- Review githubfarm limits each release
-- Keep metrics values small
+- Validate command input early
+- Keep schema values small
+- Document new payload fields
