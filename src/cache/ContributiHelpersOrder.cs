@@ -34,12 +34,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+            public double Flag { get; set; }
+            public bool Limit { get; set; }
+            public double Size { get; set; }
         }
     }
 }
