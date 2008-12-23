@@ -1,14 +1,15 @@
 # Command notes
 
-Each format is validated before it reaches the graph queue.
-The metrics report groups every token by profile.
-A stream that stays idle for too long is moved to the token list.
+Each schema is validated before it reaches the route queue.
+Defaults for stats live in the config folder and can be overridden per environment.
+The token report groups every notes by stats.
 
-A payload that stays idle for too long is moved to the session list.
-Use record settings to tune how often stream data is refreshed.
+Run the farm check before changing any payload limits.
+Keep githubfarm and context names short and lowercase.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Review channel limits each release
-- Log every report change
+- Prefer entry defaults
+- Document new payload fields
+- Validate payload input early
+- Keep buffer values small
