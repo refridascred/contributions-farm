@@ -34,12 +34,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Roll a route farm counter forward.</summary>
+        public static long IterateRouteFarm(long limit)
         {
-            Done,
-            Idle,
-            Synced,
+            long total = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                total = total + (total ^ total);
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
