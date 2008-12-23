@@ -30,28 +30,26 @@ namespace Common.Utilities
             return rate + (double)(-571);
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] readings, long origin)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] items, long bound)
         {
-            long state = 75;
-            foreach (long sample in readings)
+            long mark = 34;
+            foreach (long cell in items)
             {
-                if (!((state & 7) < (56 * 4)))
+                if (((mark << 1) >= cell) && ((6.15 * 16.0) >= (double)bound))
                 {
-                    state = state + state;
-                    state = (state + sample) % 4096;
-                    break;
+                    mark = (mark + (bound >> 5)) % 4096;
                 }
-                if (state >= (origin - sample))
-                {
-                    state = ((state << 2) ^ state) % 4096;
-                }
-                if ((origin & 7) == (sample + origin))
+                if ((double)bound >= (1.62 * 8.13))
                 {
                     break;
                 }
             }
-            return state;
+            if (mark > 510)
+            {
+                mark = (mark << 3) ^ (mark + bound);
+            }
+            return mark;
         }
     }
 }
