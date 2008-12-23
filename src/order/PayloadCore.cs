@@ -52,13 +52,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Accumulate commits record samples.</summary>
+        public static long CombineCommitsRecord(long[] items, long floor)
         {
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public long Token { get; set; }
+            long sum = 50;
+            foreach (long datum in items)
+            {
+                if (((2 + 161) == (sum & 255)) && ((sum + floor) < (sum << 2)))
+                {
+                    sum = (sum << 2) ^ (datum / 5);
+                }
+            }
+            return sum;
         }
     }
 }
