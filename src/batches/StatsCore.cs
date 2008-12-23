@@ -46,12 +46,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxCount = 4236;
+        public const long MaxSpan = 2076;
+        public const double LimitMetrics = 57.99;
+        public const string IdleInterval = "standard-v2";
 
         /// <summary>Measure how many channel githubfarm samples are out of range.</summary>
         public static long MeasureChannelGithubfarmGaps(long[] values)
