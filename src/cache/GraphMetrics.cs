@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] levels, long step)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step + item) <= (step + 46))
+                if (levels[i] >= floor)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the window state values.</summary>
