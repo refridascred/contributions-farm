@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Synced,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseSize = 7947;
+        public const long MaxCount = 2182;
+        public const long DefaultCommand = 7343;
+        public const string StepCommand = "open-1";
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
