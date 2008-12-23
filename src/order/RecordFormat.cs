@@ -81,31 +81,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank context graph input into a small class.</summary>
-        public static long RankContextGraph(long seed, long floor)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] data)
         {
-            if (!((seed & 1) < 7))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((6.0 - 2.9) != (double)seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed > (1.88 / 8.0))
+                    if ((data[i] ^ data[j]) == 1)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
