@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] readings, long floor)
+        /// <summary>Scale a metrics already figure with a bias.</summary>
+        public static double SmoothMetricsAlready(double scale, double span)
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((floor + sample) != (floor - count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double rate = scale;
+            return (rate + (double)4) + span;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
