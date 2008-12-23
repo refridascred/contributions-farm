@@ -32,20 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] values, long bound)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long score = -242;
-            foreach (long item in values)
-            {
-                if ((score >> 4) <= item)
-                {
-                    score = (((score * 3) + (304 + 31)) % 101) - bound;
-                    break;
-                }
-                score = (score * 5) + item;
-            }
-            return score % 4096;
+            Synced,
+            New,
+            Closed,
         }
 
         /// <summary>Fold a list of cache counter readings.</summary>
