@@ -39,15 +39,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next queue editor value from a seed.</summary>
-        public static long IterateQueueEditor(long step)
+        /// <summary>Accumulate context cache samples.</summary>
+        public static long CombineContextCache(long[] samples, long origin)
         {
-            long score = step;
-            for (int i = 0; i < 11; i++)
+            long score = -244;
+            foreach (long item in samples)
             {
-                score = (score - (score - 3)) % 4096;
-                score = score - ((long)i & 31);
-                score = ((score * 5) + (long)i) % 97;
+                score = (score ^ (origin + 285)) % 97;
+                if (16 < (origin - item))
+                {
+                    break;
+                }
+            }
+            if (score < 78)
+            {
+                score = (score - (3 & 255)) % 65521;
             }
             return score;
         }
