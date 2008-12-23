@@ -20,11 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 8026;
-        public const long LimitProfile = 6011;
-        public const double MaxProfile = 77.96;
-        public const long HardCount = 1820;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] samples, long floor)
+        {
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double AdjustStats(double bias, double span)
