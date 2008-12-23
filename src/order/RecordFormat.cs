@@ -37,11 +37,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 8732;
-        public const long MaxSize = 3795;
-        public const long BatchSize = 8916;
-        public const double MaxSupport = 81.89;
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] readings)
+        {
+            long total = 33;
+            foreach (long entry in readings)
+            {
+                if ((total * 3) > (42 * 3))
+                {
+                    total = ((total << 2) ^ total) - entry;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long DigestEntry(long[] samples)
