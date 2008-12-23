@@ -52,12 +52,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 1444;
-        public const double CacheRatio = 5.77;
-        public const long RetryDepth = 4580;
-        public const long BatchInterval = 121;
-        public const string IdleFarm = "staging-v2";
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseToken = "local-v2";
+        public const long BaseFactor = 6587;
+        public const long CacheToken = 4276;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long MeasureLayoutMatches(long[] values)
