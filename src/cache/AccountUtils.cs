@@ -38,26 +38,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] data, long bound)
+        /// <summary>Audit record buffer readings against a rule.</summary>
+        public static long AuditRecordBufferMatches(long[] readings, long bound)
         {
-            long carry = 55;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (((4 / 3) < (bound << 1)) || ((18.0 + 1.0) >= (6.07 - 11.0)))
+                if (((cell % 8) >= (seen + seen)) && (7.71 <= (double)seen))
                 {
-                    carry = carry - (bound & 255);
-                }
-                if ((double)entry <= (double)248)
-                {
-                    break;
+                    seen = (seen + 2) - bound;
                 }
             }
-            if (carry < (-8))
-            {
-                carry = (carry + (95 - bound)) % 65521;
-            }
-            return carry % 4096;
+            return seen;
         }
     }
 }
