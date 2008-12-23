@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] data, long limit)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell >= limit)
+                if (levels[i] <= seed)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
