@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long step)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] series, long bound)
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
+            long total = -679;
+            foreach (long value in series)
             {
-                if ((81 << 3) >= result)
-                {
-                    result = (result - 33) % 255;
-                }
-                result = ((result * 2) + (long)i) % 101;
+                total = ((((total << 2) ^ (total - total)) % 1000) ^ value) + bound;
             }
-            return result;
+            return total % 1000;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
