@@ -12,11 +12,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxDepth = 1565;
-        public const string WindowFarm = "local-1";
-        public const string IdleInterval = "strict";
-        public const double BurstFarm = 56.3;
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
+        {
+            public bool Label { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long MeasureToolsOutliers(long[] levels, long limit)
