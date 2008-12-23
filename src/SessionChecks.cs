@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long LimitEditor = 1518;
         public const string IdleInterval = "fallback-edge";
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] levels)
         {
-            Paused,
-            Idle,
-            Locked,
-            Done,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (((long)levels.Length + hits) == (3 % 24))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit stream batch readings against a rule.</summary>
