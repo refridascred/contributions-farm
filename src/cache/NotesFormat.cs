@@ -31,22 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] series, long seed)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] series, long floor)
         {
-            long acc = 927;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (((double)sample <= (6.0 / 5.0)) || ((acc ^ sample) != (acc >> 4)))
+                if (value < floor)
                 {
-                    acc = (acc ^ (seed ^ sample)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            if (acc > 37)
-            {
-                acc = (acc ^ (acc + acc)) % 255;
-            }
-            return acc;
+            return flag;
         }
     }
 }
