@@ -24,18 +24,13 @@ namespace Common.Utilities
         public const long RetryFarm = 968;
         public const long BaseFarm = 4926;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] data, long step)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((reading << 3) != (seen - seen))
-                {
-                    seen = (seen + 3) + step;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public double Size { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a context record.</summary>
