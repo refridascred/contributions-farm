@@ -68,15 +68,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a batch token reading.</summary>
-        public static double ScaleBatchToken(double ratio, double bias)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            double load = bias;
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (double)(long)i) + ratio;
-            }
-            return load - bias;
+            Draft,
+            Dropped,
+            Queued,
+            Ready,
         }
 
         /// <summary>Match up metric samples.</summary>
