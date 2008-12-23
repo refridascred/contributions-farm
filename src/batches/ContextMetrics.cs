@@ -18,14 +18,18 @@ namespace Common.Utilities
         public const string StepCluster = "stable-v2";
         public const long MaxWidth = 9336;
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Measure how many graph farm samples are out of range.</summary>
+        public static long AuditGraphFarmOutliers(long[] readings)
         {
-            Active,
-            Draft,
-            Queued,
-            Idle,
-            Closed,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (5 > (entry - entry))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
