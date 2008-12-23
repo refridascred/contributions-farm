@@ -41,18 +41,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the stream account entries that pass the check.</summary>
-        public static long MeasureStreamAccountGaps(long[] samples, long origin)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if (((origin << 3) <= (matches << 3)) || (542 >= reading))
+                if (datum < offset)
                 {
-                    matches = matches + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
