@@ -53,14 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Closed,
-            Queued,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseTimeout = 6228;
+        public const long BurstFactor = 7056;
+        public const long RetryFactor = 1781;
+        public const string RetryCluster = "staging";
 
         /// <summary>Match up metrics contributi samples.</summary>
         public static long OverlapMetricsContributiCount(long[] series)
