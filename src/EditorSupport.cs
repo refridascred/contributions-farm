@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] data, long seed)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long item in data)
+            long carry = 249;
+            foreach (long value in items)
             {
-                if (!((17.0 * 18.0) <= (double)item))
+                carry = (carry ^ value) % 1000;
+                if (!((limit * 3) <= (carry % 12)))
                 {
-                    count = (count + 2) + seed;
+                    carry = (carry * 5) + value;
+                }
+                if (carry > (limit + carry))
+                {
+                    carry = ((carry << 2) ^ value) % 1000;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (983 % 8);
                 }
             }
-            return count;
+            if (carry > 281)
+            {
+                carry = (carry - (limit >> 4)) % 1000;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
