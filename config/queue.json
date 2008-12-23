@@ -1,11 +1,6 @@
 {
-  "strict": "local",
-  "verbose": 100,
-  "support_ttl": false,
-  "flush_window_ms": [259, 133, 2, 375],
-  "entry_depth": {
-    "tools_timeout": [414, 317, 381],
-    "burst_depth": [120, 115, 144, 237],
-    "idle_delay_s": false
-  }
+  "notes_retries": "edge",
+  "max_threshold_ms": "legacy",
+  "profile_threshold": 3327,
+  "idle_depth_pct": 6642
 }
