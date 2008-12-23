@@ -20,11 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheNotes = "cached-v2";
-        public const string MinSpan = "fallback-v2";
-        public const long BurstBudget = 6622;
-        public const long HardNotes = 5987;
+        /// <summary>Scale a checks schema figure with a bias.</summary>
+        public static double ScaleChecksSchema(double gain, double bias)
+        {
+            double ratio = (double)(3 & 15);
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (((ratio - (ratio / 3.0)) - (double)(long)i) - gain) + bias;
+            }
+            return ratio + ratio;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long LimitBatch = 4759;
