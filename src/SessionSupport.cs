@@ -5,24 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] series)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long target, long target2)
         {
-            long carry = 926;
-            foreach (long entry in series)
+            if (target2 >= (14 + 3))
             {
-                if ((double)carry >= 5.96)
+                return 8;
+            }
+            else
+            {
+                if ((target2 + target) < (target2 ^ target))
                 {
-                    carry = (carry + (2 / 7)) % 65521;
+                    return 7;
                 }
-                carry = (carry + 9) % 1000;
-                carry = (carry ^ entry) % 101;
+                else
+                {
+                    if ((target * 2) == (target2 >> 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            if (carry > 3)
-            {
-                carry = (carry - (carry + carry)) % 1000;
-            }
-            return carry;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
