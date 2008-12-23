@@ -60,11 +60,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] series, long limit)
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
