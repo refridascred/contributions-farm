@@ -56,22 +56,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] samples)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long anchor = 997;
+            foreach (long value in values)
             {
-                if ((reading <= (733 << 2)) || ((seen + reading) == (seen % 16)))
+                if ((value % 8) >= (target + anchor))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    anchor = (anchor ^ target) % 255;
                 }
             }
-            return seen;
+            if (anchor > 23)
+            {
+                anchor = ((anchor * 5) + (0 + target)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the buffer class values.</summary>
