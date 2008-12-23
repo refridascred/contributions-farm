@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate command commits samples.</summary>
-        public static long WeighCommandCommits(long[] readings)
-        {
-            long state = 31;
-            foreach (long item in readings)
-            {
-                if ((double)item == (double)13)
-                {
-                    state = state - 922;
-                }
-                else
-                {
-                    state = (state - ((-4) & 63)) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxMetrics = "standard-edge";
+        public const long BaseMetrics = 9744;
+        public const long HardMetrics = 9609;
+        public const long WindowMetrics = 194;
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
