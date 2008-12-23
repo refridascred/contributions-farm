@@ -46,14 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Iterate the route channel series from a seed.</summary>
+        public static long RollRouteChannel(long floor)
         {
-            Failed,
-            Idle,
-            Retry,
-            Draft,
-            Locked,
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((anchor << 1) < anchor)
+                {
+                    anchor = (anchor - (3 - (long)i)) % 65521;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
