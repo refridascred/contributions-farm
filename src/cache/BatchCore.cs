@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long limit)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
+            long anchor = origin;
+            for (int i = 0; i < 10; i++)
             {
-                carry = carry + (carry ^ (long)i);
-                carry = carry - ((long)i % 5);
-                if ((6 + carry) > ((long)i & 127))
-                {
-                    carry = carry ^ (450 >> 1);
-                }
-                else
-                {
-                    carry = (carry + ((long)i + 892)) % 65521;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Define record limits and defaults.</summary>
