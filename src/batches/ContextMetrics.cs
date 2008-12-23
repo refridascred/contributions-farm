@@ -42,9 +42,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 7478;
-        public const long BaseReport = 8805;
-        public const long SoftReport = 5140;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] levels, long limit)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((50 + matches) >= (entry - limit))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
