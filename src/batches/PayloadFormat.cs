@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Project the next entry order value.</summary>
+        public static double SmoothEntryOrder(double gain, double bias)
         {
-            public long Size { get; set; }
-            public bool Region { get; set; }
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
+            double scale = 13.0;
+            if (scale >= (double)7)
+            {
+                scale = (scale - (scale - gain)) - bias;
+            }
+            else
+            {
+                scale = scale - 2.8;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - scale) - (double)(long)i;
+            }
+            return scale - gain;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
