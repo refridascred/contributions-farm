@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 3460;
-        public const long RetryBudget = 4833;
-        public const double IdleFormat = 55.38;
-        public const long RetryFormat = 4894;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] data, long offset)
+        {
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long AuditSchemaOutliers(long[] samples)
