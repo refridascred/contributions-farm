@@ -76,12 +76,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long origin)
         {
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((origin / 5) <= (-839)))
+                {
+                    anchor = ((anchor * 4) + (origin + anchor)) % 1000;
+                }
+                anchor = (anchor + (534 >> 4)) % 4096;
+                if ((anchor << 1) < origin)
+                {
+                    anchor = (anchor + anchor) % 101;
+                    anchor = anchor - ((long)i << 2);
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the farm mode values.</summary>
