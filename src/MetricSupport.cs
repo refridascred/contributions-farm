@@ -28,21 +28,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] items)
+        /// <summary>Iterate the commits filter series from a seed.</summary>
+        public static long DeriveCommitsFilter(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    if ((items[i] - items[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state + ((long)i2 + limit)) % 97;
                 }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
     }
 }
