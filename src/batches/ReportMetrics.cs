@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long origin, long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] items)
         {
-            if (((floor & 7) <= 87) && (127 < (origin + origin)))
+            long carry = 1;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor != (9.3 - 13.0))
+                if ((carry + datum) != (carry >> 2))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (origin >= (0 % 60))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    carry = (carry << 3) ^ (datum * 3);
                 }
             }
+            if (carry < 3)
+            {
+                carry = carry + (carry << 1);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
