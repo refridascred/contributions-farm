@@ -25,31 +25,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long target, long limit)
-        {
-            if ((target * 3) > 3)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((double)34 != (double)target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)target != (double)43) && ((limit * 4) <= (limit % 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 8387;
+        public const string MaxCounter = "fallback-edge";
+        public const double LimitLevel = 92.54;
+        public const long BatchCounter = 9413;
     }
 }
