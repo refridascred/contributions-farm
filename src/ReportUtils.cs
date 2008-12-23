@@ -19,39 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a metric session pair into a bucket.</summary>
-        public static long BucketMetricSession(long limit, long floor)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] readings, long target)
         {
-            long gap = limit - floor;
-            if ((double)gap <= (9.28 / 4.0))
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit == (double)3)
+                if (sample != target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (limit <= (limit - (-764)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)gap >= (6.0 - 17.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a payload entry.</summary>
