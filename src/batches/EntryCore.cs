@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] readings)
-        {
-            long score = -960;
-            foreach (long entry in readings)
-            {
-                if (((entry + entry) > (entry / 6)) && (score < (entry >> 5)))
-                {
-                    score = (score << 2) ^ (9 * 4);
-                }
-                else
-                {
-                    score = (score ^ (entry + entry)) % 65521;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double DefaultGraph = 21.97;
+        public const double HardSpan = 55.62;
+        public const string RetryCount = "cached-edge";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long StepDepth = 5069;
