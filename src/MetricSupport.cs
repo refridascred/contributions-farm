@@ -47,21 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] samples)
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = gain;
+            if (scale >= (double)614)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale - (3.03 + scale);
             }
-            return hits;
+            return scale + floor;
         }
     }
 }
