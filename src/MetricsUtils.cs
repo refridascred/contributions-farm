@@ -21,14 +21,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Ready,
-            Dropped,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstWidth = 2987;
+        public const long BurstOrder = 8170;
+        public const long IdleSize = 9011;
+        public const string BaseOrder = "strict-v2";
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
