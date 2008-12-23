@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatMatches(long[] values)
         {
-            public string Flag { get; set; } = "";
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (2.01 < (double)matches)
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
