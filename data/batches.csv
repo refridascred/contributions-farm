@@ -1,8 +1,8 @@
-id,count,level,active
-1,fallback,846,47.28
-2,85,670,legacy
-3,standard,35.57,open
-4,460,641,93.24
-5,91.18,395,123
-6,505,348,fallback
-7,85,48.51,255
+id,ratio,region,token
+1,30.55,417,green
+2,strict,341,185
+3,600,835,1.01
+4,863,blue,open
+5,66.13,152,23.58
+6,36.72,green,922
+7,25.58,legacy,1.09
