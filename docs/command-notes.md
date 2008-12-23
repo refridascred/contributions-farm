@@ -1,11 +1,12 @@
 # Command notes
 
-Run the support check before changing any entry limits.
-The commits report groups every cluster by schema.
-The editor report groups every buffer by order.
+Each report is validated before it reaches the entry queue.
+Run the window check before changing any checks limits.
+The channel report groups every layout by session.
 
 ## Guidelines
 
-- Validate order input early
-- Keep session values small
-- Review commits limits each release
+- Keep support values small
+- Document new editor fields
+- Review tools limits each release
+- Validate command input early
