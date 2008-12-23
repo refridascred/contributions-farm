@@ -13,22 +13,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine editor tools values into a single score.</summary>
-        public static long ScoreEditorTools(long[] items, long bound)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long sum = 45;
-            foreach (long cell in items)
-            {
-                if ((sum << 2) < bound)
-                {
-                    sum = ((sum + 105) % 65521) + cell;
-                }
-            }
-            if (sum < 860)
-            {
-                sum = ((sum * 2) + (bound - 4)) % 97;
-            }
-            return sum;
+            Active,
+            Closed,
+            Idle,
+            Draft,
         }
 
         /// <summary>Audit graph stream readings against a rule.</summary>
