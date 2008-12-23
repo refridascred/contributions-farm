@@ -1,5 +1,5 @@
 {
-  "strict": "edge",
-  "flush_timeout_ms": 35.3,
-  "context_window": 52
+  "warm_threshold_s": 2968,
+  "entry_capacity": "eu-west",
+  "flush_window_s": "fallback"
 }
