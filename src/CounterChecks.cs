@@ -24,13 +24,18 @@ namespace Common.Utilities
         public const long RetryFarm = 968;
         public const long BaseFarm = 4926;
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Measure how many account window samples are out of range.</summary>
+        public static long AuditAccountWindowMatches(long[] items)
         {
-            public long Weight { get; set; }
-            public double Size { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading == (9.46 / 5.0))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a context record.</summary>
