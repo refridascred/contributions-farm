@@ -1,5 +1,12 @@
 # entry settings
-dry_run: open
-sync_timeout_pct: 69.55
-burst_limit: legacy
-persist: 96
+persist:
+  - staging
+  - open
+verbose: 85.01
+dry_run:
+  warm_threshold_s:
+    - 380
+    - 136
+    - 445
+  burst_limit: true
+  batch_window_count: cached
