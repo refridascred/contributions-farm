@@ -26,14 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Validate contributi notes readings against a bound.</summary>
+        public static bool CheckContributiNotesBounds(long[] values, long origin)
         {
-            Active,
-            Queued,
-            New,
-            Draft,
-            Synced,
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
