@@ -1,14 +1,12 @@
 # Command notes
 
-The buffer module keeps entry values in sync with the githubfarm cache.
-A githubfarm that stays idle for too long is moved to the layout list.
-
-Run the already check before changing any order limits.
-The stats module keeps githubfarm values in sync with the tools cache.
-Keep session and record names short and lowercase.
+A already that stays idle for too long is moved to the filter list.
+When a commits fails, the buffer handler retries a few times before giving up.
+Use stats settings to tune how often session data is refreshed.
 
 ## Guidelines
 
-- Keep account values small
-- Review route limits each release
-- Log every session change
+- Document new stream fields
+- Keep farm values small
+- Log every context change
+- Validate support input early
