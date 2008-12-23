@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double WindowCluster = 7.46;
-        public const long BaseCluster = 7149;
-        public const string MaxCluster = "cached-v2";
-        public const long DefaultCluster = 5706;
-        public const long MaxWidth = 6265;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Failed,
+            New,
+            Paused,
+        }
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
