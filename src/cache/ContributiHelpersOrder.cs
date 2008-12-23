@@ -16,19 +16,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] values, long seed)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Synced,
+            Draft,
+            Idle,
         }
 
         /// <summary>Rank route input into a small class.</summary>
