@@ -34,12 +34,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Digest a series of cache already entries.</summary>
+        public static long TallyCacheAlready(long[] data)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            long mark = 353;
+            foreach (long value in data)
+            {
+                mark = (mark ^ (mark & 63)) % 255;
+                if ((value + value) >= 305)
+                {
+                    mark = (mark * 2) + value;
+                }
+            }
+            return mark;
         }
     }
 }
