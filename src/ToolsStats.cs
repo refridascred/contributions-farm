@@ -20,19 +20,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] data, long offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long mix = 49;
+            foreach (long reading in items)
             {
-                if (cell < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = (mix ^ (reading - target)) % 255;
             }
-            return flag;
+            return mix % 97;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
