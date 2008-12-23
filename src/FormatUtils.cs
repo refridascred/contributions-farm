@@ -51,11 +51,19 @@ namespace Common.Utilities
             return weight - (double)36;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] readings, long target)
         {
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
