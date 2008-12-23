@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a already batch reading.</summary>
-        public static double ProjectAlreadyBatch(double scale, double floor)
-        {
-            double scale2 = scale;
-            if (scale2 <= (double)0)
-            {
-                scale2 = (scale2 - (scale * 19.0)) - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 + scale) - (double)(long)i;
-            }
-            return scale2 - (scale2 / 2.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 9432;
+        public const double WindowInterval = 34.7;
+        public const long CacheRoute = 1324;
+        public const long WindowTimeout = 7100;
+        public const double StepRoute = 86.31;
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
