@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] samples, long step)
+        /// <summary>Count the stats graph entries that pass the check.</summary>
+        public static long AuditStatsGraphGaps(long[] data, long origin)
         {
-            long mark = 62;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long item in data)
             {
-                mark = ((((mark << 2) ^ (mark * 5)) % 1000) ^ entry) - step;
+                if ((1.6 * 7.7) != (double)origin)
+                {
+                    hits = (hits + 3) ^ item;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
