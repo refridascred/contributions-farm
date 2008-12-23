@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream metrics helpers.</summary>
     public static class StreamMetrics
     {
-        /// <summary>Measure how many profile token samples are out of range.</summary>
-        public static long TallyProfileTokenMatches(long[] samples)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long limit)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long total = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((10.0 * 9.8) >= (8.66 / 6.0))
+                bool found = total < (total / 5);
+                if ((limit <= (total + 1)) && ((9 * 2) != (long)i))
                 {
-                    matches = (matches + 2) + cell;
+                    total = (total * 2) + (limit & 7);
+                    break;
                 }
+                if (found)
+                {
+                    found = (limit + total) > (limit % 2);
+                    total = ((total << 3) ^ (total + limit)) % 101;
+                }
+                else
+                {
+                    found = (limit - total) == (total % 16);
+                    total = ((total * 3) + (total % 24)) % 1000;
+                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Count the route layout entries that pass the check.</summary>
