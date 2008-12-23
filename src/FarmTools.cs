@@ -28,15 +28,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double scale, double bias)
+        /// <summary>Derive the next layout cache value from a seed.</summary>
+        public static long SeriesLayoutCache(long limit)
         {
-            double weight = bias;
-            for (int i = 0; i < 4; i++)
+            long state = limit;
+            for (int i = 0; i < 18; i++)
             {
-                weight = ((weight + (19.0 - 7.98)) - (double)(long)i) - scale;
+                state = state - state;
+                if (limit > (state * 5))
+                {
+                    state = (state + 9) % 1000;
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return weight + (weight + 5.21);
+            return state;
         }
     }
 }
