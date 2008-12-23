@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] samples)
         {
-            Dropped,
-            Locked,
-            Pending,
-            Queued,
-            Stale,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (!!((double)datum < 4.98))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
