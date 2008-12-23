@@ -1,7 +1,5 @@
 {
-  "sync_window_pct": 61,
-  "cache_limit": "edge",
-  "idle_capacity": [483, 409],
-  "sync_ttl": 250,
-  "soft_capacity_s": 1.66
+  "audit": 250,
+  "poll_limit_count": ["stable", "legacy", "blue"],
+  "flush_size": ["eu-west", "strict", "blue"]
 }
