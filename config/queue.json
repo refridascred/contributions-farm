@@ -1,8 +1,10 @@
 {
-  "idle_limit_pct": ["eu-west", "local", "green", "eu-west"],
-  "sync_ratio_pct": 68,
-  "min_capacity": "latest",
-  "batch_depth_s": "standard",
-  "retry_threshold_s": "blue",
-  "compress": ["blue", "staging", "fallback", "blue"]
+  "compress": 4401,
+  "hard_interval_pct": ["fallback", "strict"],
+  "warm_capacity_ms": "edge",
+  "retry_ratio": {
+    "hard_window_s": 536,
+    "sync_threshold_ms": ["primary", "local"],
+    "retry_threshold_count": true
+  }
 }
