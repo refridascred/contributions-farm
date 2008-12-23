@@ -1,13 +1,30 @@
 # githubfarm settings
-cache_interval_s: legacy
-enabled: 9135
-idle_ttl: true
-base_timeout: 5060
-max_threshold_count:
-  flush_threshold_count: false
-  burst_delay_pct: 61
-  strict: primary
-  min_window_s: 51.31
-  readonly: 500
-  soft_ttl_count: 17
-sync_depth: 100
+compress:
+  editor_capacity: true
+  notes_delay: 8.81
+  burst_depth_s:
+    - 161
+    - 309
+min_retries_count:
+  batch_depth_pct: 3567
+  warm_window_count: open
+  enabled:
+    soft_window: strict
+    cache_retries_ms:
+      - blue
+      - fallback
+      - edge
+      - staging
+    notes_retries:
+      - 67
+      - 230
+      - 225
+persist:
+  - strict
+  - cached
+  - edge
+  - blue
+warm_window_ms:
+  - 2
+  - 47
+  - 194
