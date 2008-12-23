@@ -1,9 +1,11 @@
 {
-  "soft_delay": 6887,
-  "hard_size_s": {
-    "retry_ttl": true,
-    "session_limit": 73.09,
-    "readonly": 52.41
+  "strict": true,
+  "hard_interval": {
+    "flush_window_pct": true,
+    "format_depth": "stable",
+    "idle_interval_pct": 60.76
   },
-  "min_capacity_pct": 30
+  "poll_limit": "standard",
+  "warm_capacity_s": "stable",
+  "cache_timeout_s": false
 }
