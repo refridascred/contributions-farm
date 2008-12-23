@@ -25,22 +25,21 @@ namespace Common.Utilities
         public const double RetryChannel = 60.71;
         public const double IdleCount = 63.73;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] items, long bound)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] values)
         {
-            long total = -4;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (total < bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = total + (value + bound);
+                    if ((values[i] + values[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total > (-559))
-            {
-                total = ((total << 2) ^ (total * 2)) % 4096;
-            }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
