@@ -48,19 +48,11 @@ namespace Common.Utilities
         public const double IdleLevel = 2.2;
         public const long MaxNotes = 5805;
 
-        /// <summary>Accumulate githubfarm support samples.</summary>
-        public static long WeighGithubfarmSupport(long[] series, long bound)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long acc = 18;
-            foreach (long cell in series)
-            {
-                acc = (((acc << 3) ^ cell) % 101) + bound;
-            }
-            if (acc < 586)
-            {
-                acc = (acc + (acc + acc)) % 1000;
-            }
-            return acc;
+            public double Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the buffer class values.</summary>
