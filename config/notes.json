@@ -1,19 +1,5 @@
 {
-  "retry_delay": [220, 287, 232],
-  "min_window_s": 9610,
-  "readonly": "local",
-  "base_threshold": {
-    "graph_threshold": "local",
-    "burst_threshold_pct": [418, 36, 208],
-    "layout_size": "edge",
-    "strict": 70.99,
-    "retry_interval_ms": 2138
-  },
-  "session_ratio": "stable",
-  "graph_window": {
-    "retry_threshold_s": 62,
-    "layout_threshold": true,
-    "support_ratio": 85.64,
-    "default_capacity": 22.52
-  }
+  "strict": true,
+  "persist": [208, 295, 233, 80],
+  "burst_ttl": "green"
 }
