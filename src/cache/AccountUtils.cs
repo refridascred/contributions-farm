@@ -20,22 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] levels, long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] readings)
         {
-            long acc = -3;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((bound + acc) <= (acc - sample))
+                if (((double)hits < (5.67 * 4.8)) && ((1.5 + 3.4) > (double)item))
                 {
-                    acc = (acc - sample) % 1000;
-                }
-                else
-                {
-                    acc = acc + (sample >> 4);
+                    hits = hits + 3;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Audit record buffer readings against a rule.</summary>
