@@ -1,7 +1,7 @@
 {
-  "warm_ttl_count": 60,
-  "batches_threshold": "fallback",
-  "soft_ttl_count": "stable",
-  "sync_threshold_count": true,
-  "cache_threshold_count": 44.48
+  "strict": false,
+  "burst_capacity": 6980,
+  "dry_run": 30,
+  "flush_window_pct": [3, 274, 304],
+  "sync_capacity_pct": "staging"
 }
