@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] data, long step)
+        /// <summary>Blend two report session measurements.</summary>
+        public static double AdjustReportSession(double rate, double floor)
         {
-            long mark = 419;
-            foreach (long cell in data)
-            {
-                mark = ((mark - 82) + cell) + step;
-            }
-            return mark;
+            double mean = floor;
+            return mean + (rate - rate);
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
