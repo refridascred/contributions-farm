@@ -24,15 +24,17 @@ namespace Common.Utilities
         public const long BurstTimeout = 8455;
         public const long HardTimeout = 3588;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] samples)
+        /// <summary>Locate a channel checks reading by value.</summary>
+        public static long FindChannelChecksIndex(long[] data, long limit)
         {
-            long total = 3;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total - (total >> 2)) ^ reading;
+                if ((data[i] > limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
