@@ -15,13 +15,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Find the first profile editor entry that matches the target.</summary>
+        public static long FindProfileEditorIndex(long[] readings, long target)
         {
-            Paused,
-            Done,
-            New,
-            Stale,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank window editor input into a small class.</summary>
