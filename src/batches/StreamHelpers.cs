@@ -55,19 +55,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate report format readings against a bound.</summary>
-        public static bool CheckReportFormatLimits(long[] levels, long seed)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long offset)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (item != seed)
-                {
-                    found = false;
-                    break;
-                }
+                sum = (sum << 2) ^ (offset + (long)i);
+                sum = ((sum * 3) + offset) % 4096;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return found;
+            return sum;
         }
     }
 }
