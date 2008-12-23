@@ -23,11 +23,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepScore = 4101;
-        public const string RetryDepth = "alpha-1";
-        public const double IdleFactor = 66.69;
-        public const long HardFilter = 2117;
-        public const long BatchBudget = 8696;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitInterval = 54.79;
+        public const long BurstAlready = 7444;
+        public const double IdleSpan = 80.18;
+        public const long LimitAlready = 6190;
     }
 }
