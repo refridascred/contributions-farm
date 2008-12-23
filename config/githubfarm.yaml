@@ -1,16 +1,7 @@
 # githubfarm settings
-flush_delay:
-  max_size_pct:
-    - standard
-    - local
-    - open
-  default_timeout_ms: 64.64
-  base_limit_pct:
-    - 186
-    - 99
-support_retries:
-  idle_timeout: true
-  flush_size_pct: open
-  token_retries: 41
-  cluster_limit: 60
-min_delay_count: blue
+burst_ttl_ms: 613
+strict: 64
+burst_ttl_pct: stable
+channel_size: 60
+readonly: 60
+max_threshold_ms: 250
