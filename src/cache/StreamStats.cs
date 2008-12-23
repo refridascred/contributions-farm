@@ -14,28 +14,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] items, long target)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (((66 & 7) < (total - (long)i)) && ((double)total < (10.0 - 5.9)))
+                if (5.9 <= (double)matches)
                 {
-                    total = (total ^ (step / 4)) % 255;
-                    total = (total << 3) ^ step;
+                    matches = ((matches + 1) + reading) + target;
                 }
-                if ((step + total) != (64 ^ (-72)))
-                {
-                    total = (total * 4) + (step ^ 9);
-                }
-                if (!(((long)i >> 3) < step))
-                {
-                    total = (total << 3) ^ (step + total);
-                }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
