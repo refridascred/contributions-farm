@@ -33,19 +33,19 @@ namespace Common.Utilities
         public const string SoftCache = "primary";
         public const double BaseCache = 79.15;
 
-        /// <summary>Validate payload account readings against a bound.</summary>
-        public static bool VerifyPayloadAccountRange(long[] items, long floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (value != floor)
+                if (sample <= step)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Project the next metric value.</summary>
