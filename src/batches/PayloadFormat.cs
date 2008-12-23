@@ -33,11 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 4745;
-        public const long MaxFactor = 3719;
-        public const long BaseFactor = 6994;
-        public const long WindowLevel = 2088;
+        /// <summary>Derive the next buffer entry value from a seed.</summary>
+        public static long DeriveBufferEntry(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Derive the next layout cluster value from a seed.</summary>
         public static long IterateLayoutCluster(long limit)
