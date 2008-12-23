@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] data, long floor)
+        /// <summary>Blend two record payload measurements.</summary>
+        public static double ScaleRecordPayload(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            double gain = bias2 * 6.34;
+            if (gain < (gain / 8.0))
             {
-                if (reading <= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = (gain + (double)40) + bias;
             }
-            return stale;
+            else
+            {
+                gain = gain - (gain / 4.0);
+            }
+            return gain - gain;
         }
 
         /// <summary>Hold a filter header.</summary>
