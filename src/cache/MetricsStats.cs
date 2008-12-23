@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] readings)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if ((sample + sample) == (sample * 3))
+                if (entry < limit)
                 {
-                    seen = seen + 3;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Match up contributi samples.</summary>
