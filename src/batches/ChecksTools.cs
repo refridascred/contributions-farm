@@ -45,19 +45,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] readings, long step)
+        /// <summary>Rank buffer stats input into a small class.</summary>
+        public static long ClassifyBufferStats(long target, long floor)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long diff = target + floor;
+            if ((floor ^ 639) == (diff - diff))
             {
-                if (entry > step)
+                return 8;
+            }
+            else
+            {
+                if ((4.7 / 4.0) < (double)floor)
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return stale;
         }
     }
 }
