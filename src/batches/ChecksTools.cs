@@ -25,19 +25,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every report record entry stays within the limit.</summary>
-        public static bool ValidateReportRecordBounds(long[] data, long origin)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double gain, double bias)
         {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double scale = gain - (bias * 8.2);
+            return scale + gain;
         }
 
         /// <summary>Adjust a farm reading.</summary>
