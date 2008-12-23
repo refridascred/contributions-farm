@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            Stale,
-            New,
-            Ready,
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
