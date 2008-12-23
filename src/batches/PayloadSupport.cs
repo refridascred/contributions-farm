@@ -33,18 +33,23 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] items, long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] data)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long state = 6;
+            foreach (long entry in data)
             {
-                if ((59 & 7) < entry)
+                state = (state * 2) + (entry & 3);
+                if (((entry / 8) > (state + entry)) || ((entry >> 2) <= (entry * 4)))
                 {
-                    count = (count + 3) + floor;
+                    break;
                 }
             }
-            return count;
+            if (state > 302)
+            {
+                state = state + (state - state);
+            }
+            return state % 65521;
         }
     }
 }
