@@ -29,24 +29,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
+            long state = floor;
+            for (int i = 0; i < 11; i++)
             {
-                mark = (mark + mark) % 65521;
-                if (!((double)966 != (double)mark))
-                {
-                    mark = (mark - mark) % 4096;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mark = (mark ^ (mark & 15)) ^ (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
