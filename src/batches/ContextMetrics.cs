@@ -42,12 +42,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public double Token { get; set; }
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 7478;
+        public const long BaseReport = 8805;
+        public const long SoftReport = 5140;
     }
 }
