@@ -35,15 +35,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double bias, double span)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            double rate = (double)(46 << 2);
-            if (rate < (bias / 9.0))
-            {
-                rate = (rate + (rate - rate)) - span;
-            }
-            return rate + rate;
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
