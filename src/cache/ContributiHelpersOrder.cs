@@ -16,11 +16,20 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepFarm = 38.48;
-        public const long MaxSpan = 3052;
-        public const long WindowFarm = 2099;
-        public const double BaseFarm = 51.47;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] values, long seed)
+        {
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit format context readings against a rule.</summary>
         public static long TallyFormatContextGaps(long[] values)
