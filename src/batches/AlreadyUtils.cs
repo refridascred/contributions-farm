@@ -49,22 +49,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] levels, long limit)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] samples)
         {
-            long state = 990;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((state + state) > state)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (((state * 4) + reading) % 255) - limit;
+                    if ((samples[i] + samples[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state > 3)
-            {
-                state = state - (state << 1);
-            }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
