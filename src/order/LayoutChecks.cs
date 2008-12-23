@@ -12,19 +12,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Validate tools schema readings against a bound.</summary>
-        public static bool CheckToolsSchemaRange(long[] series, long limit)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Stale,
+            Active,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a payload info.</summary>
