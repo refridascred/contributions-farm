@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleWidth = 5.51;
-        public const long RetryRatio = 9081;
-        public const long BatchRoute = 188;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((double)count != (1.8 / 3.0))
+                {
+                    count = (count + 2) ^ item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long SeekReportIndex(long[] series, long step)
