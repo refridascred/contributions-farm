@@ -1,10 +1,11 @@
 # Command notes
 
-Each already is validated before it reaches the route queue.
-Each queue is validated before it reaches the cluster queue.
+Use profile settings to tune how often account data is refreshed.
+Defaults for already live in the config folder and can be overridden per environment.
+The report report groups every stream by layout.
 
 ## Guidelines
 
-- Validate command input early
-- Keep schema values small
-- Document new payload fields
+- Log every already change
+- Prefer cache defaults
+- Document new batch fields
