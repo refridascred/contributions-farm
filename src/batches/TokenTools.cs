@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] items, long origin)
-        {
-            long sum = 708;
-            foreach (long cell in items)
-            {
-                long step = (59 >> 2) + ((long)items.Length - 62);
-                if ((long)items.Length >= step)
-                {
-                    sum = sum + (82 + origin);
-                }
-                if ((double)sum >= (5.7 * 2.87))
-                {
-                    sum = (sum - ((long)items.Length + cell)) % 101;
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double RetryFilter = 0.93;
+        public const string BurstScore = "strict-1";
+        public const string CacheFilter = "legacy-v2";
 
         /// <summary>Define support limits and defaults.</summary>
         public const string IdleSpan = "local-v2";
