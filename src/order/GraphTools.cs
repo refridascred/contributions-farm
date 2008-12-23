@@ -20,15 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double weight, double floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] levels, long step)
         {
-            double mean = floor;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                mean = ((mean + 6.0) + (double)(long)i) - weight;
+                if (step < (hits ^ step))
+                {
+                    hits = (hits + 1) + value;
+                }
             }
-            return mean - floor;
+            return hits;
         }
 
         /// <summary>Blend two cache measurements.</summary>
