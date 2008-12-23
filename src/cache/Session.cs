@@ -37,17 +37,16 @@ namespace Common.Utilities
         public const long HardLevel = 1245;
         public const string IdleBatch = "alpha-1";
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] readings, long bound)
+        /// <summary>Roll a stats profile counter forward.</summary>
+        public static long SeriesStatsProfile(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark ^ (floor << 3)) % 1000;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
     }
 }
