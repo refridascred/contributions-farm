@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsLimits(long[] series, long limit)
+        /// <summary>Audit githubfarm cluster readings against a rule.</summary>
+        public static long TallyGithubfarmClusterMatches(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (reading < limit)
+                if ((double)seed == (double)783)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) - datum;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
