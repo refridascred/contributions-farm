@@ -32,15 +32,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] series)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] data, long limit)
         {
-            long acc = 19;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 2) + (sample + acc)) % 1000;
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Locate a token reading by value.</summary>
