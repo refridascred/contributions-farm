@@ -47,21 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] items)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] series, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell != bound)
                 {
-                    if ((items[i] - items[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
