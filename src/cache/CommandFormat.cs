@@ -29,18 +29,16 @@ namespace Common.Utilities
             return (weight + 2.2) + span;
         }
 
-        /// <summary>Measure how many metric channel samples are out of range.</summary>
-        public static long MeasureMetricChannelOutliers(long[] samples, long bound)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long seed)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (value >= (bound + 376))
-                {
-                    tally = tally + 3;
-                }
+                carry = (carry * 3) + (seed << 2);
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
