@@ -44,19 +44,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] samples, long origin)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Match up record samples.</summary>
