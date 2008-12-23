@@ -12,19 +12,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit record queue readings against a rule.</summary>
-        public static long MeasureRecordQueueGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (!((cell + cell) < hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 1179;
+        public const long LimitQueue = 3129;
+        public const long HardSize = 2545;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long MeasureToolsOutliers(long[] levels, long limit)
