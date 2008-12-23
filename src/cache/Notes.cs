@@ -43,11 +43,17 @@ namespace Common.Utilities
         public const long RetryProfile = 3683;
         public const long BurstProfile = 6044;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchScore = 8807;
-        public const string MinLevel = "open-edge";
-        public const long BurstLevel = 1720;
-        public const double StepMetric = 23.3;
-        public const double DefaultTimeout = 84.36;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
