@@ -1,19 +1,5 @@
 {
-  "batch_size_ms": {
-    "poll_delay_count": 60,
-    "readonly": ["staging", "standard", "edge", "stable"],
-    "cache_capacity_count": true,
-    "poll_capacity_pct": 33
-  },
-  "sync_retries_ms": "blue",
-  "warm_size_count": false,
-  "soft_capacity_pct": 30,
-  "already_window": {
-    "sync_size_ms": 33,
-    "format_interval": true,
-    "dry_run": "staging",
-    "audit": 33.65,
-    "hard_interval": false
-  },
-  "persist": 75
+  "report_delay": "cached",
+  "min_interval_count": [349, 402, 166, 172],
+  "batch_size": ["strict", "edge", "blue"]
 }
