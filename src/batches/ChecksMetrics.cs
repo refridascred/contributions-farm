@@ -55,22 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] values, long target)
+        /// <summary>Accumulate githubfarm support samples.</summary>
+        public static long WeighGithubfarmSupport(long[] series, long bound)
         {
-            long anchor = 997;
-            foreach (long value in values)
+            long acc = 18;
+            foreach (long cell in series)
             {
-                if ((value % 8) >= (target + anchor))
-                {
-                    anchor = (anchor ^ target) % 255;
-                }
+                acc = (((acc << 3) ^ cell) % 101) + bound;
             }
-            if (anchor > 23)
+            if (acc < 586)
             {
-                anchor = ((anchor * 5) + (0 + target)) % 65521;
+                acc = (acc + (acc + acc)) % 1000;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Describe the buffer class values.</summary>
