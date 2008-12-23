@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowScore = 1029;
-        public const double BurstNotes = 29.83;
-        public const long RetrySize = 4956;
-        public const string BatchDepth = "staging-v2";
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long target, long offset)
+        {
+            if ((42 << 3) > offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(target < offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset >= (487 % 10))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((71 ^ offset) < (offset & 255))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long WindowContributi = 8647;
