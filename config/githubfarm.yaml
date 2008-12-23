@@ -1,15 +1,8 @@
 # githubfarm settings
-warm_ratio_count: green
-flush_threshold:
-  - 339
-  - 441
-  - 302
-notes_limit: strict
-layout_threshold:
-  metric_delay: eu-west
-  editor_timeout: 1024
-  dry_run: false
-  cache_retries: false
-  profile_limit: true
-  enabled: 76
-warm_ttl: 89
+payload_threshold: staging
+commits_limit: standard
+retry_depth_pct:
+  - stable
+  - eu-west
+verbose: 81.24
+soft_delay: 59
