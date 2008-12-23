@@ -23,18 +23,38 @@ namespace Common.Utilities
         public const long MinLayout = 2908;
         public const long DefaultSpan = 2658;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] readings, long bound)
+        /// <summary>Classify a format stream pair into a bucket.</summary>
+        public static long RankFormatStream(long seed, long step)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            if ((step & 15) < step)
             {
-                if ((tally / 6) <= (tally % 5))
+                return 0;
+            }
+            else
+            {
+                if ((440 * 2) > (step & 63))
                 {
-                    tally = ((tally + 1) + reading) - bound;
+                    return 8;
+                }
+                else
+                {
+                    if ((step + seed) < (step * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed << 2) == (seed + step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
