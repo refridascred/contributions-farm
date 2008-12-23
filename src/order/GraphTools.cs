@@ -70,13 +70,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            Synced,
             Dropped,
-            Paused,
+            Failed,
             New,
+            Done,
+            Draft,
         }
     }
 }
