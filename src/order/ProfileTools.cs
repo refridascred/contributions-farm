@@ -20,18 +20,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up cluster farm samples.</summary>
-        public static long PairClusterFarmCount(long[] items)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] levels, long bound)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((bound << 3) < (tally << 2)) || ((entry <= (bound ^ 2)) && ((bound + entry) == (bound - entry))))
                 {
-                    if ((items[i] + items[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
