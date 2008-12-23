@@ -1,12 +1,6 @@
 {
-  "burst_delay_count": 55.21,
-  "report_threshold": {
-    "burst_ratio_count": ["open", "latest"],
-    "metric_limit": 66,
-    "warm_ttl_count": 48.51,
-    "soft_threshold": ["latest", "local", "green"],
-    "record_delay": "legacy"
-  },
-  "batch_limit": "latest",
-  "compress": false
+  "max_delay": 5466,
+  "readonly": "stable",
+  "warm_depth": "strict",
+  "farm_limit": 73.44
 }
