@@ -61,17 +61,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] series, long offset)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
