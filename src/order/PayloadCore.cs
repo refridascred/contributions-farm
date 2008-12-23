@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double WindowInterval = 36.27;
-        public const long WindowSize = 6812;
-        public const long CacheRatio = 4332;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] readings, long limit)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((double)value >= (5.74 - 3.7))
+                {
+                    tally = (tally + 2) - limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool ValidateStatsBounds(long[] series, long target)
