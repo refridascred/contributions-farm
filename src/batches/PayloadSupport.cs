@@ -29,18 +29,10 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] data, long limit)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((((46 + tally) < (limit * 2)) || ((limit / 6) > (94 - tally))) || (8.45 < (double)limit))
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepWidth = 9343;
+        public const long DefaultCount = 5706;
+        public const long SoftLevel = 1269;
+        public const long WindowFactor = 6549;
     }
 }
