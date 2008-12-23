@@ -36,22 +36,15 @@ namespace Common.Utilities
         public const long BaseFactor = 6587;
         public const long CacheToken = 4276;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] samples, long step)
+        /// <summary>Iterate the report metrics series from a seed.</summary>
+        public static long DeriveReportMetrics(long origin)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long score = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (((-1) + hits) > (hits + hits))
-                {
-                    hits = ((hits + 2) + value) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
     }
 }
