@@ -23,19 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of buffer counter entries.</summary>
-        public static long FoldBufferCounter(long[] samples)
+        /// <summary>Count the commits cluster entries that pass the check.</summary>
+        public static long AuditCommitsClusterGaps(long[] series, long floor)
         {
-            long acc = 73;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                acc = (acc ^ (acc - item)) % 97;
+                if (datum > floor)
+                {
+                    tally = tally + 1;
+                }
             }
-            if (acc > 320)
-            {
-                acc = (acc << 3) ^ acc;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
