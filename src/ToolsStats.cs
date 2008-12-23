@@ -64,15 +64,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double weight, double offset)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double rate = offset;
-            if (rate < weight)
-            {
-                rate = rate + rate;
-            }
-            return rate - (double)515;
+            Paused,
+            Done,
+            Active,
         }
 
         /// <summary>Digest a series of already entries.</summary>
