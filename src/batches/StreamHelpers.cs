@@ -63,12 +63,19 @@ namespace Common.Utilities
             return load - (load / 8.0);
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] readings, long bound)
         {
-            public bool Total { get; set; }
-            public double Limit { get; set; }
-            public long Level { get; set; }
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate report format readings against a bound.</summary>
