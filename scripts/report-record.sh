@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest strict local standard; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-RECORD_LIMIT=352
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-stable}"
+mode="${1:-green}"
 case "${mode}" in
-    strict)
+    green)
         log "fast path"
         ;;
     *)
