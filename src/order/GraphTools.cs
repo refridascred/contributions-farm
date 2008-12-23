@@ -24,13 +24,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] items)
         {
-            public double Rank { get; set; }
-            public long Region { get; set; }
-            public bool Count { get; set; }
-            public long Owner { get; set; }
+            long result = 682;
+            foreach (long entry in items)
+            {
+                result = ((result - 38) % 97) - entry;
+            }
+            return result;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
