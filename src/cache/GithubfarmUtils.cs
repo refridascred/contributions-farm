@@ -40,18 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the schema profile entries that pass the check.</summary>
-        public static long CountSchemaProfileOutliers(long[] levels)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (datum <= (hits - datum))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the counter level values.</summary>
