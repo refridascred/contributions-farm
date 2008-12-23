@@ -55,21 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] levels)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
