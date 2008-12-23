@@ -58,11 +58,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
+            Draft,
+            Active,
+            Retry,
+            Dropped,
         }
     }
 }
