@@ -92,13 +92,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public double Count { get; set; }
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
-            public string Offset { get; set; } = "";
+            Pending,
+            Draft,
+            Retry,
+            Stale,
         }
     }
 }
