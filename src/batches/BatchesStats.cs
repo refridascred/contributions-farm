@@ -33,22 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] readings, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((840 & 31) == (value >> 3))
+                if (((double)floor <= (double)count) && !((datum << 1) > (datum * 3)))
                 {
-                    tally = (tally + 1) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the notes phase values.</summary>
