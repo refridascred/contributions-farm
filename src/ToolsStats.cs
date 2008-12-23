@@ -75,21 +75,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up editor batches samples.</summary>
-        public static long OverlapEditorBatchesCount(long[] series)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (samples[i] < bound)
                 {
-                    if ((series[i] ^ series[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
