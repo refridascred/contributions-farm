@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] levels, long origin)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double weight, double span)
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (origin < (matches * 2))
-                {
-                    matches = (matches + 1) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double drift = span / 2.0;
+            return (drift + (double)(-426)) + weight;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
