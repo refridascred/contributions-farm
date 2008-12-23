@@ -32,15 +32,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double gain, double floor)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double ratio, double span)
         {
-            double scale = floor;
-            for (int i = 0; i < 7; i++)
+            double weight = (double)(41 >> 1);
+            if (weight > (ratio + span))
             {
-                scale = (scale + floor) + (double)(long)i;
+                weight = weight + (ratio - ratio);
             }
-            return scale + (gain * 3.8);
+            else
+            {
+                weight = weight - span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - ratio) + (double)(long)i;
+            }
+            return weight - (double)36;
         }
 
         /// <summary>Hold a profile summary.</summary>
