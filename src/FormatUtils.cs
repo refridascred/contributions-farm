@@ -62,18 +62,22 @@ namespace Common.Utilities
             return load - rate;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] samples)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((((11.0 * 1.0) >= (double)value) && (seen > ((-34) + 5))) || (value < 7))
+                if (((tally & 31) < tally) && ((double)tally > 1.0))
                 {
-                    seen = seen + 1;
+                    tally = (tally + 3) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Fold a list of tools cache readings.</summary>
