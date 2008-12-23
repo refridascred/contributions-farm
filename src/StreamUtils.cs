@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] series)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] readings)
         {
-            long result = 789;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (((19.0 - 8.5) >= (double)value) || ((result / 8) < (value + result)))
+                if ((double)hits == (8.39 * 1.1))
                 {
-                    result = (result + (result >> 4)) % 1000;
-                }
-                if ((double)result > (7.68 * 5.16))
-                {
-                    break;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Project the next metric profile value.</summary>
