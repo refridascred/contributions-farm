@@ -1,8 +1,30 @@
 # githubfarm settings
-strict:
-  - stable
-  - eu-west
-  - green
-compress: primary
-audit: 60
-format_capacity: 73
+githubfarm_timeout:
+  soft_ratio: 89
+  flush_ttl_pct: 73.71
+  warm_retries:
+    - 242
+    - 69
+  retry_interval: 69.7
+  format_interval:
+    - strict
+    - latest
+    - staging
+  max_capacity:
+    - edge
+    - blue
+    - eu-west
+commits_ratio:
+  - blue
+  - strict
+  - legacy
+idle_timeout:
+  - 328
+  - 153
+stats_retries:
+  - 293
+  - 367
+  - 298
+  - 410
+dry_run: 41
+batch_window: 70.34
