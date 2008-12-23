@@ -53,10 +53,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string HardWidth = "staging-v2";
-        public const string SoftReport = "stable-edge";
-        public const double MinReport = 53.44;
-        public const long SoftSpan = 9811;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (floor <= (hits + floor))
+                {
+                    hits = (hits + 2) - datum;
+                }
+            }
+            return hits;
+        }
     }
 }
