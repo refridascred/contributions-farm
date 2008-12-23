@@ -20,12 +20,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double IdleChecks = 45.3;
-        public const long WindowChecks = 6564;
-        public const double MaxFactor = 8.71;
-        public const double SoftLevel = 42.28;
-        public const string MinChecks = "latest-1";
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long DeriveGithubfarm(long floor)
