@@ -1,5 +1,18 @@
 # support settings
-dry_run: staging
-base_ratio_pct: green
-soft_interval: 500
-compress: 250
+retry_depth: true
+sync_window_pct: 9440
+notes_window: 7.57
+sync_ttl_count: 67.56
+githubfarm_capacity:
+  batch_delay_pct: 60.87
+  retry_size_pct: true
+  poll_interval_count:
+    - 133
+    - 400
+    - 466
+    - 144
+  readonly:
+    profile_size: 30
+    flush_depth_ms: latest
+    burst_ratio: 11.92
+    min_retries: standard
