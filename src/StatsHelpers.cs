@@ -19,32 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long seed, long seed2)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] readings)
         {
-            long offset = seed ^ seed2;
-            if (((double)offset <= (4.8 - 1.29)) || ((9.0 - 8.37) != (double)seed2))
+            long mix = 598;
+            foreach (long reading in readings)
             {
-                return 7;
+                mix = (((mix * 3) + ((-848) << 1)) % 255) ^ reading;
             }
-            else
-            {
-                if (((seed + offset) >= offset) && ((double)seed <= (18.0 - 8.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((offset << 1) <= (seed2 % 5)) || ((double)seed != (11.0 * 1.78)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Hold a metric entry.</summary>
