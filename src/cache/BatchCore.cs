@@ -14,24 +14,10 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double weight, double floor)
-        {
-            double ratio = floor;
-            if (ratio >= weight)
-            {
-                ratio = ratio + weight;
-            }
-            else
-            {
-                ratio = ratio + (7.8 / 2.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + weight) + (double)(long)i;
-            }
-            return ratio - (3.1 * 5.68);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 3587;
+        public const double BatchSize = 89.65;
+        public const string HardWidth = "stable-v2";
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double SmoothWindow(double weight, double span)
