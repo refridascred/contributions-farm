@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a queue farm reading by value.</summary>
-        public static long FindQueueFarmIndex(long[] samples, long step)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] data, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((samples[i] == step) && ((samples[i] % 3) != 0))
+                if (data[i] == origin)
                 {
                     return (long)i;
                 }
