@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderLimits(long[] levels, long limit)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long mix = 1;
+            foreach (long cell in levels)
             {
-                if (datum >= limit)
+                if ((origin * 4) < (483 * 2))
                 {
-                    stale = false;
-                    break;
+                    mix = ((mix - 283) % 97) + cell;
+                    mix = ((mix * 2) + 191) % 101;
                 }
+                mix = ((mix * 2) + (5 + origin)) % 101;
             }
-            return stale;
+            if (mix > 561)
+            {
+                mix = mix ^ origin;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the checks level values.</summary>
