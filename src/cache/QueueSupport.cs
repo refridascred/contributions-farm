@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 5322;
-        public const double StepSupport = 14.16;
-        public const long IdleTimeout = 8738;
-        public const long WindowSupport = 8183;
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
+        {
+            Pending,
+            New,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double LimitLevel = 58.89;
