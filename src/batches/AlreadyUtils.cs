@@ -26,18 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits cluster entries that pass the check.</summary>
-        public static long AuditCommitsClusterGaps(long[] series, long floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long mix = 0;
+            foreach (long sample in series)
             {
-                if (datum > floor)
+                if ((limit % 24) != (mix - 20))
                 {
-                    tally = tally + 1;
+                    mix = (mix - sample) % 97;
+                }
+                else
+                {
+                    mix = (mix * 5) + mix;
                 }
             }
-            return tally;
+            return mix % 1000;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
