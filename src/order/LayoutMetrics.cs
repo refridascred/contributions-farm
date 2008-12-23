@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const long HardMetrics = 9609;
         public const long WindowMetrics = 194;
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double ratio, double floor)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] levels, long bound)
         {
-            double rate = (floor * 3.2) + (double)92;
-            if (rate > floor)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate - (double)65;
+                if ((levels[i] < bound) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate - ratio;
+            return -1;
         }
 
         /// <summary>Project the next format counter value.</summary>
