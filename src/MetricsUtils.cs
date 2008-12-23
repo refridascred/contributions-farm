@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long RetrySize = 4956;
         public const string BatchDepth = "staging-v2";
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] data)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long anchor = 582;
-            foreach (long datum in data)
-            {
-                if (!((long)data.Length <= ((long)data.Length + 68)))
-                {
-                    anchor = ((anchor ^ ((long)data.Length + (-163))) % 4096) + datum;
-                }
-            }
-            if (anchor > 4)
-            {
-                anchor = anchor - (18 - anchor);
-            }
-            return anchor % 1000;
+            Done,
+            Failed,
+            Synced,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
