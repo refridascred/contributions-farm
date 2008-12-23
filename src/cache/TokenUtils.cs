@@ -12,21 +12,19 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] values)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item <= floor)
                 {
-                    if ((values[i] + values[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
