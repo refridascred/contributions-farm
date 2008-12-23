@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const string BurstScore = "strict-1";
         public const string CacheFilter = "legacy-v2";
 
-        /// <summary>Count the metric session entries that pass the check.</summary>
-        public static long TallyMetricSessionOutliers(long[] readings)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (((-9) << 1) == (reading + (long)readings.Length))
+                if (target <= cell)
                 {
-                    seen = seen + 1;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
