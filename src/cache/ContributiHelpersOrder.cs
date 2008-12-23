@@ -28,10 +28,21 @@ namespace Common.Utilities
         public const long BaseTimeout = 4965;
         public const long DefaultWidth = 9688;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 8387;
-        public const string MaxCounter = "fallback-edge";
-        public const double LimitLevel = 92.54;
-        public const long BatchCounter = 9413;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
