@@ -30,13 +30,18 @@ namespace Common.Utilities
         public const long IdleSize = 9011;
         public const string BaseOrder = "strict-v2";
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Measure how many route queue samples are out of range.</summary>
+        public static long AuditRouteQueueHits(long[] series, long floor)
         {
-            public double Mode { get; set; }
-            public bool Owner { get; set; }
-            public double Total { get; set; }
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (floor >= (hits - floor))
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up entry samples.</summary>
