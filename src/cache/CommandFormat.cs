@@ -20,17 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a tools payload reading by value.</summary>
-        public static long SeekToolsPayloadIndex(long[] samples, long origin)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Done,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
