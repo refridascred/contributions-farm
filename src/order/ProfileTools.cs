@@ -31,21 +31,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of format report readings.</summary>
-        public static long CompareFormatReportCount(long[] samples)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 126;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((mix - mix) > (mix >> 3))
                 {
-                    if ((samples[i] + samples[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix ^ (datum - 39)) % 97) + limit;
                 }
             }
-            return count;
+            if (mix > 387)
+            {
+                mix = (mix + 548) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Blend two queue measurements.</summary>
