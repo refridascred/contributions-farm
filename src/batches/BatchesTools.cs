@@ -38,15 +38,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long floor)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] readings)
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
+            long mix = 5;
+            foreach (long sample in readings)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                mix = (mix ^ sample) % 255;
             }
-            return carry;
+            return mix % 4096;
         }
     }
 }
