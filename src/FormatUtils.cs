@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long offset, long step)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] readings, long seed)
         {
-            long step2 = offset - step;
-            if ((step * 3) >= offset)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step ^ 97) <= step)
+                if (readings[i] == seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset ^ offset) != (step2 & 63))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((863 * 2) >= (step2 / 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
