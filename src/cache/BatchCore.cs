@@ -14,24 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long offset, long floor)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] values, long bound)
         {
-            if ((3.97 + 9.5) != (double)floor)
+            long mark = 31;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((floor / 8) == (offset / 9)) && (offset <= (offset ^ floor)))
+                if ((reading - bound) >= (5 % 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    mark = ((mark << 3) ^ (bound % 64)) % 4096;
                 }
             }
+            return mark % 4096;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
