@@ -1,7 +1,20 @@
 {
-  "audit": ["local", "cached", "staging"],
-  "flush_interval": 77.13,
-  "hard_window_pct": [221, 333, 336, 183],
-  "hard_limit": 23,
-  "verbose": 17.34
+  "audit": {
+    "poll_ttl": 64.13,
+    "persist": "legacy",
+    "cache_threshold_ms": {
+      "tools_timeout": "stable",
+      "payload_retries": "strict",
+      "strict": 79,
+      "stream_window": 26
+    },
+    "enabled": {
+      "default_delay_pct": "standard",
+      "format_threshold": 47.68,
+      "strict": "local"
+    },
+    "dry_run": "blue"
+  },
+  "githubfarm_window": false,
+  "cache_ttl": [88, 39]
 }
