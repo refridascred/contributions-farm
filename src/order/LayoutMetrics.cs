@@ -20,11 +20,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Validate checks editor readings against a bound.</summary>
+        public static bool GuardChecksEditorRange(long[] levels, long offset)
         {
-            public bool Label { get; set; }
-            public double Total { get; set; }
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
