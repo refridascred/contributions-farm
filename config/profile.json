@@ -1,5 +1,16 @@
 {
-  "stream_limit": "open",
-  "batch_limit_count": 100,
-  "session_capacity": "edge"
+  "batch_threshold_count": 56,
+  "min_timeout_ms": {
+    "max_window": ["standard", "standard"],
+    "hard_retries_pct": 46.54,
+    "soft_threshold_ms": 90.26
+  },
+  "format_threshold": {
+    "dry_run": [426, 475, 232],
+    "counter_capacity": ["edge", "local", "standard", "edge"],
+    "graph_threshold": "standard",
+    "soft_threshold": "fallback",
+    "flush_limit": 500
+  },
+  "base_delay_pct": 52
 }
