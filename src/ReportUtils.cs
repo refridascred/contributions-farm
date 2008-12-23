@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] levels)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] data, long floor)
         {
-            long mark = 103;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                mark = (mark - item) % 101;
+                if (!!(0.9 >= (double)reading))
+                {
+                    hits = (hits + 1) + floor;
+                }
             }
-            if (mark > 8)
-            {
-                mark = mark ^ (mark - 0);
-            }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Classify a metric session pair into a bucket.</summary>
