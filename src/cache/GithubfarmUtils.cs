@@ -30,21 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Count the schema profile entries that pass the check.</summary>
+        public static long CountSchemaProfileOutliers(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum <= (hits - datum))
                 {
-                    if ((readings[i] + readings[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the counter level values.</summary>
