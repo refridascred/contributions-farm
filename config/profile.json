@@ -1,12 +1,6 @@
 {
-  "default_interval_s": 4524,
-  "burst_timeout_s": 8927,
-  "poll_size_pct": 1654,
-  "batch_ttl": {
-    "batch_ttl_count": true,
-    "profile_window": true,
-    "burst_delay_pct": [461, 26, 369]
-  },
-  "account_delay": 1024,
-  "readonly": 250
+  "already_threshold": 7427,
+  "hard_ttl_count": false,
+  "dry_run": [226, 307, 465],
+  "warm_size_ms": 30
 }
