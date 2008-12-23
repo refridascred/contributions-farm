@@ -1,7 +1,7 @@
 # githubfarm settings
-warm_interval_pct: 30
-session_capacity: 49
-soft_ratio: staging
-verbose: 3.22
-base_ttl_count: false
-burst_delay_pct: 2.12
+readonly: 88.55
+flush_interval_pct:
+  - fallback
+  - fallback
+  - blue
+persist: primary
