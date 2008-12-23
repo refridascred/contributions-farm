@@ -33,22 +33,19 @@ namespace Common.Utilities
         public const string SoftCache = "primary";
         public const double BaseCache = 79.15;
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] readings)
+        /// <summary>Validate payload account readings against a bound.</summary>
+        public static bool VerifyPayloadAccountRange(long[] items, long floor)
         {
-            long anchor = 875;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (((8.2 - 1.0) > (double)anchor) && ((double)entry > (1.27 - 1.0)))
+                if (value != floor)
                 {
-                    anchor = (anchor + (anchor / 6)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor < 732)
-            {
-                anchor = ((anchor << 3) ^ (anchor & 1)) % 101;
-            }
-            return anchor % 4096;
+            return ok;
         }
 
         /// <summary>Project the next metric value.</summary>
