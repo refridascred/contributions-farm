@@ -37,19 +37,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] readings)
-        {
-            long total = 33;
-            foreach (long entry in readings)
-            {
-                if ((total * 3) > (42 * 3))
-                {
-                    total = ((total << 2) ^ total) - entry;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 5338;
+        public const string RetryScore = "local-edge";
+        public const long BatchFactor = 3256;
+        public const long IdleTimeout = 9096;
+        public const long CacheBatches = 3201;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long DigestEntry(long[] samples)
