@@ -67,22 +67,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] readings)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] levels, long limit)
         {
-            long carry = 20;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((carry & 127) <= (carry + entry))
+                if ((1.0 / 3.0) > (double)limit)
                 {
-                    carry = carry - (carry + entry);
+                    hits = (hits + 1) + datum;
                 }
-                if (((-30) * 5) > (carry + entry))
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the cache status values.</summary>
