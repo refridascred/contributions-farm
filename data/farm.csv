@@ -1,8 +1,6 @@
-id,active,rank,ratio
-1,904,blue,17.52
-2,44,stable,60.8
-3,79.32,local,163
-4,edge,24.89,385
-5,49.99,blue,open
-6,890,339,49.55
-7,strict,standard,open
+id,score,label
+1,open,46.98
+2,blue,88
+3,181,92.88
+4,323,779
+5,256,159
