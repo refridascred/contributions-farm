@@ -1,9 +1,8 @@
 {
-  "account_limit": "edge",
-  "min_timeout": 20,
-  "min_capacity_ms": {
-    "session_size": 250,
-    "max_limit_count": 94.4,
-    "soft_depth": [45, 12]
-  }
+  "persist": 99,
+  "hard_retries_pct": "latest",
+  "idle_limit_ms": 2045,
+  "order_delay": "edge",
+  "cache_retries_pct": "primary",
+  "burst_capacity": "local"
 }
