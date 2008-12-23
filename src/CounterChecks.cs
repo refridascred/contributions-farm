@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a route session reading by value.</summary>
-        public static long LookupRouteSessionIndex(long[] items, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (items[i] >= offset)
+                if ((double)target >= (4.0 - 12.0))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Project the next farm value.</summary>
