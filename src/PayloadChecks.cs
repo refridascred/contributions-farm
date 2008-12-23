@@ -39,16 +39,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheScore = "fallback";
+        public const long CacheInterval = 2342;
+        public const long WindowTools = 2887;
+        public const double LimitRatio = 30.06;
 
         /// <summary>Combine record cache values into a single score.</summary>
         public static long CombineRecordCache(long[] series, long step)
