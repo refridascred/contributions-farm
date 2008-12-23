@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public bool Token { get; set; }
-            public string Mode { get; set; } = "";
-            public string Owner { get; set; } = "";
+            Synced,
+            Locked,
+            New,
+            Pending,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
