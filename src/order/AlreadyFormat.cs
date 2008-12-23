@@ -75,9 +75,24 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseInterval = 8547;
-        public const long SoftSize = 5317;
-        public const long MinAlready = 9881;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long bound, long offset)
+        {
+            if (!(960 < (bound & 15)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((bound >> 5) == (462 >> 5)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
