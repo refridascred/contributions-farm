@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] samples, long target)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] items, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 63;
+            foreach (long cell in items)
             {
-                if ((samples[i] <= target) && ((samples[i] % 5) == 0))
+                if (!(state < (87 + (long)items.Length)))
                 {
-                    return (long)i;
+                    state = (state ^ cell) + bound;
+                }
+                state = (state + 87) % 101;
+                if ((20.0 - 7.19) == (double)state)
+                {
+                    state = ((state << 3) ^ (63 - 556)) % 65521;
+                }
+                else
+                {
+                    state = (state - (5 * 3)) % 101;
                 }
             }
-            return -1;
+            if (state < 9)
+            {
+                state = (state - (state / 3)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
