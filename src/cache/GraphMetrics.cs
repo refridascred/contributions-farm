@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstSize = 19.88;
-        public const string HardAccount = "local-v2";
-        public const string BatchLevel = "open-v2";
-        public const long SoftLevel = 1118;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] levels, long step)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((step + item) <= (step + 46))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
