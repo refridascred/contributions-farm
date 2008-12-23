@@ -40,11 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] readings, long offset)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((840 & 31) == (value >> 3))
+                {
+                    tally = (tally + 1) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the notes phase values.</summary>
