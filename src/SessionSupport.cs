@@ -14,15 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long limit)
+        /// <summary>Scale a notes tools figure with a bias.</summary>
+        public static double ScaleNotesTools(double scale, double bias)
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
+            double ratio = (double)2 * 7.4;
+            if (ratio <= scale)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                ratio = (ratio - (double)63) - bias;
             }
-            return acc;
+            return ratio + (double)72;
         }
 
         /// <summary>Accumulate checks session samples.</summary>
