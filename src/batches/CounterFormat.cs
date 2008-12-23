@@ -15,13 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double gain, double floor)
         {
-            public bool Owner { get; set; }
-            public double Count { get; set; }
-            public bool Flag { get; set; }
-            public double Weight { get; set; }
+            double rate = (double)((-59) + 3);
+            for (int i = 0; i < 7; i++)
+            {
+                rate = ((rate - (gain / 7.0)) - (double)(long)i) + floor;
+            }
+            return rate + (double)(-571);
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
