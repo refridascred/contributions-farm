@@ -1,13 +1,7 @@
 # support settings
-warm_size_count: 60
-max_limit_count:
-  retry_retries: false
-  batch_ratio: 90
-  retry_timeout_pct: 53.01
-readonly: standard
-enabled: 22
-default_delay: true
-dry_run:
-  counter_threshold: blue
-  support_delay: 58.11
-  editor_limit: 3241
+readonly: 500
+flush_depth_count: 4636
+max_ttl_s: legacy
+default_size_count: false
+flush_threshold_s: 61
+min_limit: 1290
