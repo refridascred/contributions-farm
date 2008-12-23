@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] levels)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((matches % 8) >= (matches << 2))
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
