@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const string SoftBuffer = "fallback";
         public const long StepLevel = 703;
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
