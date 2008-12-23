@@ -13,38 +13,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long limit, long limit2)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] data, long limit)
         {
-            if ((12.0 + 4.0) != (double)limit2)
+            bool found = true;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(91 < (limit2 - limit2)))
+                if (reading > limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit2 + limit) > limit2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)limit != (9.0 + 1.14)) && ((limit2 & 31) >= (limit % 10)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Match up metric samples.</summary>
