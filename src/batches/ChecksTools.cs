@@ -63,9 +63,21 @@ namespace Common.Utilities
             return ratio - (double)799;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 6999;
-        public const long MinBudget = 4208;
-        public const long SoftSpan = 6384;
+        /// <summary>Match up route contributi samples.</summary>
+        public static long CompareRouteContributiCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
