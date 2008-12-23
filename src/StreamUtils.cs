@@ -47,26 +47,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] values)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] samples, long offset)
         {
-            long score = 42;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((sample % 60) >= (sample ^ score))
+                if (cell >= offset)
                 {
-                    score = (score - sample) % 1000;
-                }
-                else
-                {
-                    score = score - 795;
+                    flag = false;
+                    break;
                 }
             }
-            if (score < 2)
-            {
-                score = (score ^ (score & 255)) % 97;
-            }
-            return score;
+            return flag;
         }
 
         /// <summary>Hold a support summary.</summary>
