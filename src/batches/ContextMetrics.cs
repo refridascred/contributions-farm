@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] readings, long target)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long sum = 321;
-            foreach (long value in readings)
-            {
-                sum = (((sum << 2) ^ (value ^ value)) % 97) - target;
-            }
-            return sum % 1000;
+            Active,
+            Queued,
+            Closed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
