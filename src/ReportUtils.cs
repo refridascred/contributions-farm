@@ -36,19 +36,25 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] series, long step)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long target, long bound)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long next = target - bound;
+            if (target >= (next + target))
             {
-                if (cell > step)
+                return 6;
+            }
+            else
+            {
+                if (target >= (next ^ target))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return stale;
         }
 
         /// <summary>Define session limits and defaults.</summary>
