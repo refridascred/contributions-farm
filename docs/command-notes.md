@@ -1,11 +1,12 @@
 # Command notes
 
-Use already settings to tune how often channel data is refreshed.
-The stream helpers are pure functions, so they are safe to call from any thread.
-Use queue settings to tune how often cache data is refreshed.
+Use context settings to tune how often queue data is refreshed.
+Defaults for farm live in the config folder and can be overridden per environment.
+When a session fails, the stream handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new contributi fields
-- Log every metric change
-- Review schema limits each release
+- Keep cluster values small
+- Review entry limits each release
+- Prefer batch defaults
+- Validate metrics input early
