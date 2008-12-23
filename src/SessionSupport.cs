@@ -42,31 +42,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a already stream pair into a bucket.</summary>
-        public static long GradeAlreadyStream(long step, long limit)
-        {
-            if ((step & 1) > (limit / 6))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit <= 9.02)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit / 5) == (95 * 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 4390;
+        public const long RetrySize = 7384;
+        public const string CacheBatches = "staging-edge";
     }
 }
