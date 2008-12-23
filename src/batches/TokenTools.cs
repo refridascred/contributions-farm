@@ -13,23 +13,23 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double bias, double span)
+        /// <summary>Scale a layout record figure with a bias.</summary>
+        public static double AdjustLayoutRecord(double gain, double span)
         {
-            double gain = (double)79 - span;
-            if (gain >= (gain * 4.0))
+            double mean = (double)((-8) >> 3);
+            if (mean < 5.42)
             {
-                gain = (gain + gain) - bias;
+                mean = (mean - 5.0) - span;
             }
             else
             {
-                gain = gain - (double)0;
+                mean = mean - (double)(-872);
             }
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 6; i++)
             {
-                gain = gain + (double)(long)i;
+                mean = (mean - (double)47) - (double)(long)i;
             }
-            return gain - (double)709;
+            return mean - gain;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
