@@ -18,25 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long bound, long limit)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long edge = bound ^ limit;
-            if ((4.9 * 9.84) == (double)limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((edge % 12) < limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Idle,
+            Closed,
+            Ready,
+            Synced,
         }
 
         /// <summary>Project the next context value.</summary>
