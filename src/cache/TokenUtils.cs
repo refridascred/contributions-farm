@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BaseLayout = "primary";
-        public const double MinTimeout = 82.26;
-        public const string HardDepth = "alpha-edge";
-        public const long DefaultLayout = 8599;
-        public const long CacheLayout = 8597;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((matches % 16) != (666 * 5))
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long IdleRecord = 5964;
