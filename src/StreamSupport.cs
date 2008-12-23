@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] data, long floor)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((floor / 7) <= (count - count))
-                {
-                    count = (count + 1) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Retry,
+            New,
+            Active,
+            Idle,
         }
 
         /// <summary>Match up entry record samples.</summary>
