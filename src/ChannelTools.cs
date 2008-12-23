@@ -33,22 +33,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long bound)
+        /// <summary>Adjust a session tools reading.</summary>
+        public static double ScaleSessionTools(double gain, double bias)
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
+            double mean = 4.25 + (gain / 6.0);
+            if (mean > bias)
             {
-                mix = mix - bound;
-                long count = (long)i;
-                if ((mix + (long)i) > (count * 5))
-                {
-                    mix = (mix ^ (mix + mix)) % 4096;
-                    mix = mix + (bound + 140);
-                }
-                mix = ((mix * 2) + (long)i) % 101;
+                mean = mean + mean;
             }
-            return mix;
+            else
+            {
+                mean = mean + (mean * 12.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (gain / 5.0)) - (double)(long)i;
+            }
+            return mean + (3.2 - mean);
         }
     }
 }
