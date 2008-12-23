@@ -45,18 +45,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] values)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long state = 88;
-            foreach (long reading in values)
-            {
-                if ((double)reading < 3.0)
-                {
-                    state = (state << 3) ^ (reading - 438);
-                }
-            }
-            return state;
+            Failed,
+            Closed,
+            Queued,
+            New,
+            Synced,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
