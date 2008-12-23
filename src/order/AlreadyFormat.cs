@@ -59,17 +59,23 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] data, long floor)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double gain, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = span;
+            if (ratio >= span)
             {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (gain * 8.2);
             }
-            return -1;
+            else
+            {
+                ratio = ratio + (double)8;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (gain + 2.19)) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
     }
 }
