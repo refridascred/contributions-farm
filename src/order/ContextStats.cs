@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const double BatchContext = 75.38;
         public const string BatchBudget = "staging-edge";
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] readings, long origin)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Flag { get; set; } = "";
+            public double Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Combine order values into a single score.</summary>
