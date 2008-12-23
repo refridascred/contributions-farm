@@ -53,13 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public double Weight { get; set; }
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public double Count { get; set; }
+            Closed,
+            Queued,
+            Draft,
+            Idle,
         }
 
         /// <summary>Rank buffer stats input into a small class.</summary>
