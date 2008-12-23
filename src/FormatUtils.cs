@@ -66,13 +66,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Paused,
-            Active,
-            Dropped,
-            Ready,
+            public double Count { get; set; }
+            public bool Flag { get; set; }
+            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
