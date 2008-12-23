@@ -18,11 +18,11 @@ namespace Common.Utilities
         public const long BaseTimeout = 4965;
         public const long DefaultWidth = 9688;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxTimeout = 3636;
-        public const long BatchAlready = 3521;
-        public const long MinAlready = 3393;
-        public const long BatchFactor = 3539;
-        public const double WindowLevel = 23.94;
+        /// <summary>Adjust a account order reading.</summary>
+        public static double BlendAccountOrder(double bias, double floor)
+        {
+            double gain = floor;
+            return (gain + (double)649) + bias;
+        }
     }
 }
