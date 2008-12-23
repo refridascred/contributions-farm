@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] levels)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] data, long origin)
         {
-            long carry = 3;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 9; i++)
+                if (value < origin)
                 {
-                    carry = ((carry + carry) % 101) - (long)i;
+                    found = false;
+                    break;
                 }
-                carry = (carry - (item + (long)levels.Length)) % 101;
             }
-            return carry % 4096;
+            return found;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
