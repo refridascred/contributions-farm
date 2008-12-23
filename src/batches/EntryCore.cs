@@ -39,12 +39,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Derive the next queue editor value from a seed.</summary>
+        public static long IterateQueueEditor(long step)
         {
-            New,
-            Retry,
-            Stale,
+            long score = step;
+            for (int i = 0; i < 11; i++)
+            {
+                score = (score - (score - 3)) % 4096;
+                score = score - ((long)i & 31);
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
