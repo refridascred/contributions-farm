@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleBudget = 7037;
-        public const string BurstSize = "cached";
-        public const string BurstFactor = "fallback-edge";
-        public const long SoftScore = 3536;
-        public const long MaxSize = 1714;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] series)
+        {
+            long state = 324;
+            foreach (long reading in series)
+            {
+                if ((1.0 / 9.0) > (double)reading)
+                {
+                    state = (state << 3) ^ (state - state);
+                }
+            }
+            if (state < (-158))
+            {
+                state = (state ^ (0 ^ state)) % 65521;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Roll a format counter forward.</summary>
         public static long IterateFormat(long floor)
