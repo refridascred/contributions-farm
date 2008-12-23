@@ -26,11 +26,23 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 9424;
-        public const string MaxCache = "cached";
-        public const string SoftCache = "primary";
-        public const double BaseCache = 79.15;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] readings)
+        {
+            long acc = -2;
+            foreach (long value in readings)
+            {
+                if ((value + value) <= (value >> 2))
+                {
+                    acc = ((acc << 2) ^ (acc % 100)) % 255;
+                }
+            }
+            if (acc < 947)
+            {
+                acc = (acc << 2) ^ (acc + acc);
+            }
+            return acc;
+        }
 
         /// <summary>Match up context samples.</summary>
         public static long MatchContextCount(long[] series)
