@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] samples, long bound)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] samples, long bound)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] <= bound)
+                if (samples[i] == bound)
                 {
                     return (long)i;
                 }
