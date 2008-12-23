@@ -1,15 +1,17 @@
 {
-  "compress": 6938,
-  "min_size": 9685,
-  "dry_run": {
-    "min_interval_ms": ["local", "blue", "strict", "local"],
-    "notes_window": "strict",
-    "batches_interval": 500,
-    "compress": "cached",
-    "verbose": 32,
-    "route_threshold": false
+  "verbose": "primary",
+  "audit": {
+    "audit": ["legacy", "open", "standard", "cached"],
+    "idle_ttl_pct": 500,
+    "strict": "strict",
+    "min_limit_s": 30.28,
+    "retry_ttl_s": 29,
+    "readonly": {
+      "editor_delay": "fallback",
+      "verbose": "legacy",
+      "burst_limit": 1150
+    }
   },
-  "report_timeout": 500,
-  "verbose": "legacy",
-  "min_retries_pct": 60
+  "hard_ttl_ms": 42,
+  "batch_depth_count": 38
 }
