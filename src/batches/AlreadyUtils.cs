@@ -70,13 +70,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] levels, long floor)
         {
-            public double Label { get; set; }
-            public long Total { get; set; }
-            public double Count { get; set; }
-            public bool Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > floor) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
