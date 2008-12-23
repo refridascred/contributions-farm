@@ -38,12 +38,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string LimitRatio = "latest-1";
+        public const long BaseFactor = 3121;
+        public const long IdleLayout = 4875;
+        public const string StepLayout = "staging";
     }
 }
