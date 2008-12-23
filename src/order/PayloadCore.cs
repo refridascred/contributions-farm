@@ -44,18 +44,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] samples)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry & 31) < (tally << 3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public long Token { get; set; }
         }
     }
 }
