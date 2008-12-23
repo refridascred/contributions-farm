@@ -20,18 +20,16 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] items, long bound)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long origin)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((seen * 2) <= (long)items.Length)
-                {
-                    seen = ((seen + 2) ^ entry) - bound;
-                }
+                anchor = ((anchor * 5) + anchor) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
