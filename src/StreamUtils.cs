@@ -69,24 +69,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank report batch input into a small class.</summary>
-        public static long ClassifyReportBatch(long offset, long target)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] data)
         {
-            if ((offset / 6) < (-613))
+            long anchor = 764;
+            foreach (long value in data)
             {
-                return 7;
+                anchor = ((anchor - 770) % 97) + value;
             }
-            else
+            if (anchor > 1)
             {
-                if (((1.77 - 6.6) == (double)offset) && ((46 - offset) < 627))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
+                anchor = anchor + (29 * 4);
             }
+            return anchor;
         }
     }
 }
