@@ -34,9 +34,9 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 4390;
-        public const long RetrySize = 7384;
-        public const string CacheBatches = "staging-edge";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 2823;
+        public const long BatchOrder = 1836;
+        public const double BurstRatio = 55.97;
     }
 }
