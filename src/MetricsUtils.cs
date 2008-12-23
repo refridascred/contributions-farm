@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstRatio = 2991;
-        public const double LimitCount = 1.78;
-        public const double BatchBudget = 0.17;
-        public const string BatchSession = "fallback";
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long step, long limit)
+        {
+            long slot = step + limit;
+            if (((double)limit <= 2.06) && ((limit + limit) <= ((-98) + slot)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((2 + slot) > (step & 63)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
