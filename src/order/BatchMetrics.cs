@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const long SoftScore = 3536;
         public const long MaxSize = 1714;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] series)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long floor)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((tally % 24) > tally)
+                acc = (acc * 2) + floor;
+                long step = (floor * 2) * 4;
+                if (!(((long)i << 3) != ((long)i >> 4)))
                 {
-                    tally = (tally + 3) ^ value;
+                    acc = (acc - (step - (long)i)) % 65521;
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Compare every pair of command window readings.</summary>
