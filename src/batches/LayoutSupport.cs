@@ -63,19 +63,15 @@ namespace Common.Utilities
             return mean + (mean * 6.5);
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] series, long floor)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long limit)
         {
-            long state = 5;
-            foreach (long entry in series)
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
             {
-                state = ((state << 3) ^ (entry << 3)) - floor;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            if (state > 8)
-            {
-                state = state ^ (state + state);
-            }
-            return state;
+            return mark;
         }
     }
 }
