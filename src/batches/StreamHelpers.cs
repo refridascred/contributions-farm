@@ -52,18 +52,39 @@ namespace Common.Utilities
             return load - (load / 8.0);
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] levels)
+        /// <summary>Rank graph batch input into a small class.</summary>
+        public static long ClassifyGraphBatch(long offset, long seed)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long lane = offset ^ seed;
+            if ((lane - 548) >= (seed - seed))
             {
-                if (reading < (reading >> 3))
+                return 8;
+            }
+            else
+            {
+                if ((1.4 / 7.0) == (double)seed)
                 {
-                    tally = tally + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (((581 / 4) <= (seed + 1)) && ((seed + seed) >= offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)37 < (double)offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate report format readings against a bound.</summary>
