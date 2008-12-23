@@ -28,15 +28,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next format counter value.</summary>
-        public static double ProjectFormatCounter(double bias, double bias2)
-        {
-            double bias3 = bias;
-            if (bias3 >= bias)
-            {
-                bias3 = bias3 - (bias / 5.0);
-            }
-            return bias3 - (bias2 * 10.0);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 6265;
+        public const double WindowCommits = 2.79;
+        public const long SoftCommits = 9075;
     }
 }
