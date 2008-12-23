@@ -29,19 +29,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double weight, double floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] data)
         {
-            double load = (weight + weight) * 3.3;
-            if (load >= floor)
+            long seen = 0;
+            foreach (long item in data)
             {
-                load = load - (double)892;
+                if (((double)(long)data.Length < (20.0 * 15.0)) && ((item >> 1) > (83 & 31)))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                load = load + 11.0;
-            }
-            return load + floor;
+            return seen;
         }
     }
 }
