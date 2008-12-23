@@ -1,8 +1,5 @@
 {
-  "readonly": [18, 1, 183, 232],
-  "retry_limit": 60,
-  "checks_limit": 15,
-  "cache_interval": 100,
-  "account_ratio": 500,
-  "commits_capacity": "open"
+  "stream_ttl": "eu-west",
+  "sync_retries": "latest",
+  "default_ratio": "latest"
 }
