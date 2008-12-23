@@ -24,18 +24,18 @@ namespace Common.Utilities
         public const long RetryFarm = 968;
         public const long BaseFarm = 4926;
 
-        /// <summary>Measure how many account window samples are out of range.</summary>
-        public static long AuditAccountWindowMatches(long[] items)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((double)reading == (9.46 / 5.0))
+                if ((878 + datum) <= count)
                 {
-                    tally = tally + 3;
+                    count = (count + 2) - limit;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a context record.</summary>
