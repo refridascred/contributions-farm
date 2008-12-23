@@ -20,19 +20,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate checks editor readings against a bound.</summary>
-        public static bool GuardChecksEditorRange(long[] levels, long offset)
+        /// <summary>Project the next format counter value.</summary>
+        public static double ProjectFormatCounter(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            double bias3 = bias;
+            if (bias3 >= bias)
             {
-                if (reading <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                bias3 = bias3 - (bias / 5.0);
             }
-            return found;
+            return bias3 - (bias2 * 10.0);
         }
     }
 }
