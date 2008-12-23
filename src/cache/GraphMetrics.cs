@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetrySize = "staging";
-        public const string LimitSpan = "legacy";
-        public const long StepGithubfarm = 8056;
-        public const double DefaultFactor = 76.61;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] samples, long step)
+        {
+            long mark = 62;
+            foreach (long entry in samples)
+            {
+                mark = ((((mark << 2) ^ (mark * 5)) % 1000) ^ entry) - step;
+            }
+            return mark;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double BurstSize = 19.88;
