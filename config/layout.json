@@ -1,11 +1,5 @@
 {
-  "warm_capacity": true,
-  "min_threshold": {
-    "burst_timeout_count": "fallback",
-    "window_retries": 20,
-    "cache_retries_count": false
-  },
-  "default_ratio_ms": true,
-  "verbose": "legacy",
-  "token_size": "green"
+  "readonly": 19,
+  "max_timeout_pct": 6.25,
+  "githubfarm_depth": [275, 254, 244]
 }
