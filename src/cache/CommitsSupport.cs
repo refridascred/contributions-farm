@@ -33,17 +33,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] samples, long step)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double weight, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = weight;
+            if (scale > (double)3)
             {
-                if ((samples[i] == step) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - (offset / 3.0);
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (weight / 3.0)) + (double)(long)i;
+            }
+            return scale - (double)0;
         }
 
         /// <summary>Compare every pair of order stream readings.</summary>
