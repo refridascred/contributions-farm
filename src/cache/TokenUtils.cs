@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] items, long limit)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == limit) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
