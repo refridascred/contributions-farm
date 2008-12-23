@@ -31,13 +31,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] items, long origin)
         {
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-            public long Count { get; set; }
-            public double Mode { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((1.0 * 9.25) == (double)origin)
+                {
+                    seen = (seen + 1) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
