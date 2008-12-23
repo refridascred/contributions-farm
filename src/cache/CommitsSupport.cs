@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double weight, double span)
         {
-            public double Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
+            double rate = (double)31;
+            if (rate >= (8.6 * 4.6))
+            {
+                rate = rate + weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - span) + (double)(long)i;
+            }
+            return rate - 16.0;
         }
 
         /// <summary>Audit schema report readings against a rule.</summary>
