@@ -51,23 +51,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double gain, double offset)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] levels)
         {
-            double drift = gain;
-            if (drift <= offset)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift + (double)(-677);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - (drift - 4.72);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (gain - drift)) + (double)(long)i;
-            }
-            return drift + (drift - offset);
+            return seen;
         }
 
         /// <summary>Hold a notes header.</summary>
