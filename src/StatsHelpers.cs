@@ -19,11 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double gain, double floor)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            double ratio = gain;
-            return (ratio + (double)7) + floor;
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the stats mode values.</summary>
