@@ -1,6 +1,9 @@
 # githubfarm settings
-retry_threshold: green
-compress: 27
-soft_depth_count: 91
-soft_retries_s: 67
-flush_interval_ms: 1024
+min_threshold_ms: 42.9
+poll_limit_s:
+  - 321
+  - 481
+  - 32
+readonly:
+  - 425
+  - 94
