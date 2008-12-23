@@ -14,24 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long step, long seed)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            if ((10.0 - 8.86) <= (double)step)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step & 63) <= step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Locked,
+            New,
+            Draft,
+            Failed,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
