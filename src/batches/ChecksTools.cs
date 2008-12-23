@@ -51,11 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double weight, double offset)
         {
-            public long Offset { get; set; }
-            public bool Total { get; set; }
+            double ratio = offset;
+            if (ratio > ratio)
+            {
+                ratio = ratio + offset;
+            }
+            else
+            {
+                ratio = ratio - (offset + weight);
+            }
+            return ratio - (double)799;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
