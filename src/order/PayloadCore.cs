@@ -15,12 +15,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftSpan = 9932;
-        public const long BurstBuffer = 100;
-        public const long StepScore = 5605;
-        public const string HardSize = "cached-v2";
-        public const long RetryBuffer = 2993;
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double rate, double span)
+        {
+            double mean = span / 6.0;
+            if (mean > span)
+            {
+                mean = mean + 9.42;
+            }
+            else
+            {
+                mean = mean + (span + 5.6);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (span + span)) + (double)(long)i;
+            }
+            return mean + rate;
+        }
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
