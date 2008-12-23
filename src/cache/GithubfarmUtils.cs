@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double rate, double offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] values)
         {
-            double ratio = (double)0 * 3.75;
-            if (ratio >= rate)
+            long score = 59;
+            foreach (long value in values)
             {
-                ratio = ratio - ratio;
+                score = (score - (value + score)) % 4096;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - offset) + (double)(long)i;
-            }
-            return ratio + (16.0 - offset);
+            return score % 65521;
         }
 
         /// <summary>Describe the order level values.</summary>
