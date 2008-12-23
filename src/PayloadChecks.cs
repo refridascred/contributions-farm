@@ -41,17 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] series, long bound)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double ratio, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio2 = (double)((-50) / 9);
+            if (ratio2 > (ratio + ratio))
             {
-                if ((series[i] >= bound) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                ratio2 = (ratio2 - (ratio / 5.0)) + offset;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 - (double)109) + (double)(long)i;
+            }
+            return ratio2 + ratio;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
