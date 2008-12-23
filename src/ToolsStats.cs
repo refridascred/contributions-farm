@@ -28,18 +28,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] data)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((item - 68) <= (count + count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
