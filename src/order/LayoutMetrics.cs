@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardTools = 60.92;
-        public const long RetrySpan = 8672;
-        public const string SoftFactor = "primary-v2";
-        public const string MinCount = "alpha-v2";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double RetryProfile = 56.85;
+        public const string LimitProfile = "primary";
+        public const double RetryLevel = 84.34;
+        public const long StepProfile = 4695;
+        public const double MaxProfile = 54.95;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long FoldRecord(long[] levels)
