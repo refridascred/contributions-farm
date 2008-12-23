@@ -45,21 +45,26 @@ namespace Common.Utilities
         public const long BatchSize = 8916;
         public const double MaxSupport = 81.89;
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] data)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 420;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)acc != (5.6 / 4.0))
                 {
-                    if ((data[i] ^ data[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc << 3) ^ (value - acc)) % 65521;
+                }
+                else
+                {
+                    acc = acc - 1;
+                }
+                if (204 > (value - acc))
+                {
+                    acc = (acc - (value & 7)) % 255;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
     }
 }
