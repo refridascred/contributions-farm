@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many context token samples are out of range.</summary>
-        public static long MeasureContextTokenGaps(long[] items)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            double gain = ratio - ratio;
+            if (gain > (offset / 8.0))
             {
-                if (((double)tally < 16.0) && ((46 / 5) < datum))
-                {
-                    tally = tally + 2;
-                }
+                gain = gain + gain;
             }
-            return tally;
+            else
+            {
+                gain = gain + (double)8;
+            }
+            return gain - gain;
         }
 
         /// <summary>Hold a layout info.</summary>
