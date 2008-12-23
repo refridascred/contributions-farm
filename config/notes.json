@@ -1,6 +1,5 @@
 {
-  "burst_interval_s": [264, 45, 402, 397],
-  "max_ratio_s": 74,
-  "default_timeout": "stable",
-  "dry_run": "local"
+  "retry_ratio_count": "fallback",
+  "batch_size": [36, 3],
+  "warm_retries_count": 11.97
 }
