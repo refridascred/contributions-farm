@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] samples)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long score = -6;
+            foreach (long value in levels)
             {
-                if ((double)entry <= (12.0 + 4.3))
+                if ((11.0 + 5.0) < (double)score)
                 {
-                    matches = matches + 2;
+                    score = ((score ^ score) % 65521) + value;
+                    score = (score ^ (score - (long)levels.Length)) % 4096;
                 }
+                score = (score - (score / 9)) % 1000;
             }
-            return matches;
+            return score % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
