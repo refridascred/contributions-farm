@@ -13,12 +13,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public bool Total { get; set; }
-            public string Label { get; set; } = "";
-            public bool Owner { get; set; }
+            Failed,
+            Retry,
+            Done,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Compare every pair of account readings.</summary>
