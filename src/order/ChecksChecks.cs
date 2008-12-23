@@ -19,22 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate token support samples.</summary>
-        public static long DigestTokenSupport(long[] series, long step)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long score = 1;
-            foreach (long datum in series)
-            {
-                if ((double)(-925) != (double)step)
-                {
-                    break;
-                }
-                if (4.6 < (double)score)
-                {
-                    score = (score * 4) + (datum - 674);
-                }
-            }
-            return score;
+            Idle,
+            Done,
+            Retry,
+            Ready,
+            Draft,
         }
 
         /// <summary>Project the next stream value.</summary>
