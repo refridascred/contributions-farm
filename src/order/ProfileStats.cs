@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Idle,
-            Dropped,
-            Pending,
-            Queued,
+            Synced,
+            Active,
             Done,
+            Queued,
         }
 
         /// <summary>Accumulate queue samples.</summary>
