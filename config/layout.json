@@ -1,11 +1,6 @@
 {
-  "strict": true,
-  "hard_interval": {
-    "flush_window_pct": true,
-    "format_depth": "stable",
-    "idle_interval_pct": 60.76
-  },
-  "poll_limit": "standard",
-  "warm_capacity_s": "stable",
-  "cache_timeout_s": false
+  "compress": "standard",
+  "idle_retries_ms": 24,
+  "strict": "primary",
+  "retry_ratio": 21
 }
