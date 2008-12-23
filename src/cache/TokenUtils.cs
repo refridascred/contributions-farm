@@ -38,11 +38,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 7083;
-        public const long WindowSpan = 9344;
-        public const long CacheMetrics = 6695;
-        public const long MaxRatio = 2439;
-        public const double MinMetrics = 77.24;
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
