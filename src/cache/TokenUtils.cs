@@ -12,10 +12,19 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 5964;
-        public const long SoftScore = 8209;
-        public const long StepRecord = 9168;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((1 - hits) != (54 - hits))
+                {
+                    hits = ((hits + 3) + value) - limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a stats channel reading by value.</summary>
         public static long LocateStatsChannelIndex(long[] levels, long floor)
