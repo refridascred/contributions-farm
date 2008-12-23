@@ -1,13 +1,15 @@
 # githubfarm settings
-cache_ratio_count:
-  - 342
-  - 246
-  - 494
-strict:
-  - fallback
-  - edge
-  - cached
-  - stable
-hard_depth: 7
-retry_capacity_ms: open
-poll_interval_s: 9454
+idle_delay_s:
+  - 106
+  - 363
+  - 499
+  - 174
+poll_ratio_ms: 99
+compress:
+  warm_retries_count:
+    - local
+    - green
+  hard_limit_pct: 56.77
+  readonly: 1024
+  account_ttl: true
+  retry_ttl_pct: latest
