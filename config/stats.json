@@ -1,6 +1,7 @@
 {
-  "max_delay": 5466,
-  "readonly": "stable",
-  "warm_depth": "strict",
-  "farm_limit": 73.44
+  "cluster_ttl": "green",
+  "retry_retries": 7875,
+  "warm_size_pct": true,
+  "strict": 99,
+  "dry_run": "staging"
 }
