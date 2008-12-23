@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate buffer batch readings against a bound.</summary>
-        public static bool VerifyBufferBatchRange(long[] samples, long step)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] values, long bound)
         {
             bool stale = true;
-            foreach (long sample in samples)
+            foreach (long item in values)
             {
-                if (sample < step)
+                if (item <= bound)
                 {
                     stale = false;
                     break;
