@@ -34,13 +34,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long bound)
         {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
+            long state = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                state = state ^ (long)i;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
