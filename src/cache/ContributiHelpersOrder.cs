@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
-        {
-            public bool Limit { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftCount = 2350;
+        public const long CacheMetric = 2978;
+        public const long CacheInterval = 6083;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long AuditEntryOutliers(long[] samples, long target)
