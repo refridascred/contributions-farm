@@ -38,19 +38,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] data, long target)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((target * 2) < 97)
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 1467;
+        public const long MinDepth = 7185;
+        public const long RetryToken = 9963;
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double ScaleCommits(double scale, double offset)
