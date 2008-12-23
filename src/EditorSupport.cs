@@ -40,13 +40,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] readings)
         {
-            Dropped,
-            Active,
-            Closed,
-            Failed,
+            long anchor = 875;
+            foreach (long entry in readings)
+            {
+                if (((8.2 - 1.0) > (double)anchor) && ((double)entry > (1.27 - 1.0)))
+                {
+                    anchor = (anchor + (anchor / 6)) % 97;
+                }
+            }
+            if (anchor < 732)
+            {
+                anchor = ((anchor << 3) ^ (anchor & 1)) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
