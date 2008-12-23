@@ -43,18 +43,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] series, long floor)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long diff = floor + offset;
+            if (!((floor / 7) != ((-136) + offset)))
             {
-                if (floor <= (hits + floor))
+                return 1;
+            }
+            else
+            {
+                if (diff <= (diff ^ floor))
                 {
-                    hits = (hits + 2) - datum;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset < (6.33 - 8.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
