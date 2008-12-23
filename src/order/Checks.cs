@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit channel record readings against a rule.</summary>
-        public static long MeasureChannelRecordOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (count < (long)readings.Length)
-                {
-                    count = (count + 3) - datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardLevel = 6899;
+        public const long DefaultInterval = 3973;
+        public const double LimitBudget = 33.44;
+        public const string SoftWidth = "stable-edge";
+        public const string BatchTimeout = "strict-1";
 
         /// <summary>Measure how many checks filter samples are out of range.</summary>
         public static long MeasureChecksFilterOutliers(long[] levels, long floor)
