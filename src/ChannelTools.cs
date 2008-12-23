@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] readings, long step)
         {
-            public string Limit { get; set; } = "";
-            public string Count { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
