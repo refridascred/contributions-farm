@@ -30,26 +30,18 @@ namespace Common.Utilities
             return rate + (double)(-571);
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] items, long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] samples, long bound)
         {
-            long mark = 34;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (((mark << 1) >= cell) && ((6.15 * 16.0) >= (double)bound))
+                if ((1 - bound) > (182 & 255))
                 {
-                    mark = (mark + (bound >> 5)) % 4096;
-                }
-                if ((double)bound >= (1.62 * 8.13))
-                {
-                    break;
+                    matches = (matches + 1) ^ item;
                 }
             }
-            if (mark > 510)
-            {
-                mark = (mark << 3) ^ (mark + bound);
-            }
-            return mark;
+            return matches;
         }
     }
 }
