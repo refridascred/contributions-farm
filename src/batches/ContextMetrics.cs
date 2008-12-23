@@ -65,19 +65,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double gain, double span)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] items)
         {
-            double scale = 18.0;
-            if (scale > (8.6 + scale))
+            long total = 7;
+            foreach (long value in items)
             {
-                scale = scale - (gain + span);
+                total = ((total << 2) ^ total) + value;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + gain;
+            return total % 97;
         }
     }
 }
