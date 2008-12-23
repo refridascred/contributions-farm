@@ -1,34 +1,16 @@
 # support settings
-record_timeout:
-  - 123
-  - 134
-  - 76
-  - 60
-editor_interval:
-  - green
-  - strict
-  - standard
-base_threshold: false
-poll_window_count:
-  strict: 59.09
-  idle_retries_count: 250
-  batch_threshold:
-    verbose: 8.41
-    batch_delay_ms: latest
-    stream_timeout: 39.93
-    batch_size_pct:
-      - 37
-      - 368
-    warm_depth: 1024
-    command_window: 71.41
-  audit: green
-  default_ratio_pct: 97.39
-  burst_size:
-    max_ttl_s: 5738
-    sync_ratio: eu-west
-    command_retries: 500
-    compress:
-      - 242
-      - 144
-      - 181
-      - 266
+idle_size_pct: local
+cache_retries: 64.58
+checks_threshold: 500
+poll_ttl_ms:
+  dry_run: 85
+  min_delay_count: 82.29
+  base_capacity_count:
+    min_threshold: 28.66
+    default_limit_pct: 60
+    burst_depth: false
+    default_capacity_s: 7266
+    idle_interval: 60
+    format_interval: 1.05
+default_capacity: open
+farm_ttl: 7979
