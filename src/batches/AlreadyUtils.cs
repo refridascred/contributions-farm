@@ -41,19 +41,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] samples, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (datum > bound)
+                if ((7 + tally) >= tally)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) + cell;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Describe the order status values.</summary>
