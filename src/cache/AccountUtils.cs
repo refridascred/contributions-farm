@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double scale, double offset)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            double rate = offset;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = ((rate - (double)152) - (double)(long)i) - scale;
+            }
+            return rate - 9.8;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
