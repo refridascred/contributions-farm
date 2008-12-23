@@ -28,17 +28,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] readings, long floor)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
