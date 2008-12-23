@@ -35,19 +35,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of cache already entries.</summary>
-        public static long TallyCacheAlready(long[] data)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long mark = 353;
-            foreach (long value in data)
-            {
-                mark = (mark ^ (mark & 63)) % 255;
-                if ((value + value) >= 305)
-                {
-                    mark = (mark * 2) + value;
-                }
-            }
-            return mark;
+            public string Offset { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
