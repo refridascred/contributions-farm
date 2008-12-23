@@ -10,19 +10,23 @@ namespace Common.Utilities
         public const double HardSpan = 55.62;
         public const string RetryCount = "cached-edge";
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] values, long step)
+        /// <summary>Scale a counter buffer figure with a bias.</summary>
+        public static double BlendCounterBuffer(double gain, double span)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            double mean = gain;
+            if (mean > (double)7)
             {
-                if (reading > step)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = mean + mean;
             }
-            return valid;
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (span * 2.64)) + (double)(long)i;
+            }
+            return mean - gain;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
