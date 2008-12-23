@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of profile account readings.</summary>
-        public static long PairProfileAccountCount(long[] readings)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = bias;
+            if (scale <= (scale + bias2))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = scale - bias;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (bias - scale)) + (double)(long)i;
+            }
+            return scale + (bias - 5.0);
         }
 
         /// <summary>Combine token values into a single score.</summary>
