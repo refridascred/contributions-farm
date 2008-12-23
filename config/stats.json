@@ -1,8 +1,12 @@
 {
-  "layout_threshold": true,
-  "hard_retries": "stable",
-  "order_depth": "latest",
-  "persist": 24.04,
-  "base_limit": 2591,
-  "cache_retries_count": 17
+  "burst_delay_count": 55.21,
+  "report_threshold": {
+    "burst_ratio_count": ["open", "latest"],
+    "metric_limit": 66,
+    "warm_ttl_count": 48.51,
+    "soft_threshold": ["latest", "local", "green"],
+    "record_delay": "legacy"
+  },
+  "batch_limit": "latest",
+  "compress": false
 }
