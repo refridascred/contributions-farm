@@ -19,12 +19,20 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double DefaultSize = 2.06;
-        public const double MaxChecks = 63.62;
-        public const long WindowBudget = 9228;
-        public const string WindowDepth = "stable-v2";
-        public const long RetryTimeout = 5249;
+        /// <summary>Adjust a report account reading.</summary>
+        public static double ProjectReportAccount(double gain, double offset)
+        {
+            double gain2 = (12.0 / 5.0) / 7.0;
+            if (gain2 <= offset)
+            {
+                gain2 = gain2 + (double)80;
+            }
+            else
+            {
+                gain2 = gain2 - (gain2 * 9.18);
+            }
+            return gain2 + (gain / 2.0);
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long TotalFarm(long[] items, long step)
