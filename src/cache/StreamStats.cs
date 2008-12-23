@@ -38,13 +38,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] readings)
         {
-            New,
-            Retry,
-            Queued,
-            Dropped,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up stats samples.</summary>
