@@ -25,14 +25,18 @@ namespace Common.Utilities
         public const string HardSpan = "staging-edge";
         public const long MinNotes = 4885;
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] series)
         {
-            Queued,
-            Retry,
-            Done,
-            Closed,
-            Paused,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (!((reading / 6) < 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
