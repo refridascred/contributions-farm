@@ -75,18 +75,9 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (!((datum >> 5) != (2 + datum)))
-                {
-                    seen = (seen + 3) + offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseInterval = 8547;
+        public const long SoftSize = 5317;
+        public const long MinAlready = 9881;
     }
 }
