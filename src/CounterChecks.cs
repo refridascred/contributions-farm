@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long floor, long target)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            if (!((floor - floor) <= floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor + target) < (target >> 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((target / 8) != (target >> 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (8.02 + 6.2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Project the next farm value.</summary>
