@@ -25,10 +25,19 @@ namespace Common.Utilities
         public const string HardSpan = "staging-edge";
         public const long MinNotes = 4885;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryCommits = 48.98;
-        public const long CacheCommits = 341;
-        public const long DefaultCommits = 7856;
-        public const long MinCommits = 1068;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamRange(long[] readings, long seed)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
