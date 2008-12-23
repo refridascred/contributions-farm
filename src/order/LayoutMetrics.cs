@@ -29,13 +29,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Combine format stream values into a single score.</summary>
+        public static long CombineFormatStream(long[] levels)
         {
-            Closed,
-            Synced,
-            Paused,
-            Draft,
+            long sum = 320;
+            foreach (long value in levels)
+            {
+                if (!(sum > 26))
+                {
+                    sum = (((sum * 3) + 49) % 4096) ^ value;
+                }
+                if ((8.5 + 8.01) >= (double)sum)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
     }
 }
