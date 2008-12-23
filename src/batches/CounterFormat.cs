@@ -23,11 +23,10 @@ namespace Common.Utilities
             return (mean + (mean * 4.49)) + scale;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double CacheInterval = 84.28;
-        public const long BurstScore = 8432;
-        public const long BaseCache = 8790;
-        public const double BurstCache = 62.24;
-        public const long SoftSize = 2043;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxReport = "local";
+        public const string HardReport = "local";
+        public const double MinDepth = 50.42;
+        public const string RetryReport = "primary-v2";
     }
 }
