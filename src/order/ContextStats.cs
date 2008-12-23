@@ -34,15 +34,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a layout commits reading.</summary>
-        public static double AdjustLayoutCommits(double rate, double floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] data)
         {
-            double rate2 = floor;
-            for (int i = 0; i < 2; i++)
+            long carry = 31;
+            foreach (long entry in data)
             {
-                rate2 = (rate2 + (floor / 2.0)) + (double)(long)i;
+                carry = (carry ^ (carry - carry)) % 4096;
+                if (((90 >> 2) < (43 + entry)) || ((17.0 + 4.0) >= (double)entry))
+                {
+                    carry = carry + (6 % 10);
+                }
+                else
+                {
+                    carry = (carry ^ (carry * 2)) % 101;
+                }
             }
-            return rate2 + (rate - 8.85);
+            if (carry > 6)
+            {
+                carry = (carry << 3) ^ (carry ^ carry);
+            }
+            return carry;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
