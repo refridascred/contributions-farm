@@ -33,40 +33,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long offset, long offset2)
-        {
-            long diff = offset + offset2;
-            if (((offset + diff) == (offset + offset)) || ((4.95 - 6.8) != (double)offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset2 != (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset2 < 9.11)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((diff < (248 % 2)) || ((offset2 + 3) < offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardLevel = 2105;
+        public const long WindowGraph = 9638;
+        public const long IdleRatio = 5052;
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
