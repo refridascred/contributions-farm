@@ -28,20 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next layout cache value from a seed.</summary>
-        public static long SeriesLayoutCache(long limit)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] items, long offset)
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = state - state;
-                if (limit > (state * 5))
+                if (items[i] <= offset)
                 {
-                    state = (state + 9) % 1000;
+                    return (long)i;
                 }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return -1;
         }
     }
 }
