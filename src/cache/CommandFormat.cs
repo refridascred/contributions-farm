@@ -29,10 +29,19 @@ namespace Common.Utilities
             return (weight + 2.2) + span;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 7005;
-        public const long BurstBuffer = 9989;
-        public const long DefaultDepth = 4009;
+        /// <summary>Measure how many metric channel samples are out of range.</summary>
+        public static long MeasureMetricChannelOutliers(long[] samples, long bound)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (value >= (bound + 376))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorOutliers(long[] series, long floor)
