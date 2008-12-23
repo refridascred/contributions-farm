@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long bound)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public long Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
