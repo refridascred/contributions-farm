@@ -47,12 +47,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            public string Level { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
+            Done,
+            Idle,
+            Synced,
         }
 
         /// <summary>Hold a payload snapshot.</summary>
