@@ -49,18 +49,18 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] data, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] data)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long sum = 826;
+            foreach (long value in data)
             {
-                if ((243 ^ datum) > origin)
+                if ((573 - value) >= value)
                 {
-                    count = count + 1;
+                    sum = ((sum << 3) ^ (854 + value)) % 101;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
