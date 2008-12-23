@@ -24,27 +24,18 @@ namespace Common.Utilities
         public const long MaxReport = 3315;
         public const string WindowFactor = "fallback-edge";
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] data)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] readings, long offset)
         {
-            long carry = 31;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                carry = (carry ^ (carry - carry)) % 4096;
-                if (((90 >> 2) < (43 + entry)) || ((17.0 + 4.0) >= (double)entry))
+                if (6.1 < (double)offset)
                 {
-                    carry = carry + (6 % 10);
-                }
-                else
-                {
-                    carry = (carry ^ (carry * 2)) % 101;
+                    count = (count + 1) + sample;
                 }
             }
-            if (carry > 6)
-            {
-                carry = (carry << 3) ^ (carry ^ carry);
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
