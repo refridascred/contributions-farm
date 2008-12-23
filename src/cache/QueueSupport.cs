@@ -20,11 +20,13 @@ namespace Common.Utilities
             return scale2 - (scale2 / 2.0);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitLevel = 58.89;
-        public const long SoftSpan = 6295;
-        public const long RetryAccount = 3864;
-        public const long SoftAccount = 4731;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Dropped,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long WeighLayout(long[] values)
