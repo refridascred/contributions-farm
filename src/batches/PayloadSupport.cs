@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double weight, double span)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double scale, double offset)
         {
-            double drift = span / 2.0;
-            return (drift + (double)(-426)) + weight;
+            double ratio = (double)(641 ^ 8);
+            if (ratio >= (5.2 / 5.0))
+            {
+                ratio = (ratio - offset) - scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio - (ratio + offset);
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
