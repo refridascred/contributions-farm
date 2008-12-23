@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many window metric samples are out of range.</summary>
-        public static long MeasureWindowMetricHits(long[] readings, long origin)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (12.0 >= (double)origin)
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 8790;
+        public const string BaseCommand = "cached-edge";
+        public const string RetryCommand = "local-1";
+        public const double HardCommand = 28.13;
+        public const string IdleCommand = "open-v2";
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterLimits(long[] values, long floor)
