@@ -36,21 +36,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] series)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (values[i] == bound)
                 {
-                    if ((series[i] + series[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
