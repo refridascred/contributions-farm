@@ -14,31 +14,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long offset, long seed)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            if ((925 << 3) <= (offset << 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((344 + offset) != (offset / 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed << 1) <= seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public double Owner { get; set; }
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Roll a filter counter forward.</summary>
