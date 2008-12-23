@@ -1,19 +1,7 @@
 # githubfarm settings
-sync_window:
-  - 437
-  - 167
-  - 242
-  - 66
-audit:
-  idle_depth: true
-  dry_run: 8484
-  soft_size_count: green
-metrics_capacity:
-  enabled: open
-  strict: true
-  metrics_limit:
-    flush_timeout: stable
-    sync_capacity_count: 6825
-    poll_size_count: standard
-  soft_delay_ms: green
-batch_window: blue
+warm_interval_pct: 30
+session_capacity: 49
+soft_ratio: staging
+verbose: 3.22
+base_ttl_count: false
+burst_delay_pct: 2.12
