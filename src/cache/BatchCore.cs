@@ -14,10 +14,20 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 3587;
-        public const double BatchSize = 89.65;
-        public const string HardWidth = "stable-v2";
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] series, long floor)
+        {
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double SmoothWindow(double weight, double span)
