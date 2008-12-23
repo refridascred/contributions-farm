@@ -16,10 +16,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitWidth = 3521;
-        public const long BurstTimeout = 8455;
-        public const long HardTimeout = 3588;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamLimits(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Locate a channel checks reading by value.</summary>
         public static long FindChannelChecksIndex(long[] data, long limit)
