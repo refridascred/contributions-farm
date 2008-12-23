@@ -29,12 +29,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Measure how many buffer counter samples are out of range.</summary>
+        public static long AuditBufferCounterOutliers(long[] items)
         {
-            Idle,
-            Active,
-            New,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (8.0 <= (double)count)
+                {
+                    count = (count + 3) - datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
