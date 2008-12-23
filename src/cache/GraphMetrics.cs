@@ -30,14 +30,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Measure how many queue payload samples are out of range.</summary>
+        public static long CountQueuePayloadHits(long[] series)
         {
-            Paused,
-            Dropped,
-            Draft,
-            Active,
-            Done,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((81 * 2) != (matches + matches))
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
