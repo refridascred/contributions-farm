@@ -63,17 +63,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] values)
         {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
+            long state = 4;
+            foreach (long entry in values)
             {
-                sum = (sum << 2) ^ (offset + (long)i);
-                sum = ((sum * 3) + offset) % 4096;
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (((5.7 + 6.4) < (7.6 - 7.0)) && ((state - (long)values.Length) < (entry ^ entry)))
+                {
+                    state = ((state << 2) ^ (state / 3)) % 97;
+                }
+                if (3.0 > (double)state)
+                {
+                    break;
+                }
             }
-            return sum;
+            if (state < 691)
+            {
+                state = state - (state - state);
+            }
+            return state;
         }
     }
 }
