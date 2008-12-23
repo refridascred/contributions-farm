@@ -46,14 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] values, long target)
         {
-            Paused,
-            Queued,
-            Closed,
-            Done,
-            Dropped,
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
