@@ -43,14 +43,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            Paused,
-            Done,
-            Retry,
-            Active,
-            Idle,
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
         }
     }
 }
