@@ -18,15 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two checks farm measurements.</summary>
-        public static double BlendChecksFarm(double weight, double floor)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long floor, long limit)
         {
-            double load = (double)(3 * 2);
-            for (int i = 0; i < 3; i++)
+            long bound = floor + limit;
+            if (!(2.71 < (double)floor))
             {
-                load = ((load + load) - (double)(long)i) - floor;
+                return 7;
             }
-            return load + weight;
+            else
+            {
+                if ((1.0 < (double)bound) && ((limit + bound) != (9 & 255)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((5 < (limit - floor)) && ((9.07 * 3.8) > (double)bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
