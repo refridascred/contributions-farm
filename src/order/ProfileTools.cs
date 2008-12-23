@@ -38,10 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 1467;
-        public const long MinDepth = 7185;
-        public const long RetryToken = 9963;
+        /// <summary>Count the batches order entries that pass the check.</summary>
+        public static long TallyBatchesOrderGaps(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((5.0 / 5.0) <= (double)matches)
+                {
+                    matches = ((matches + 3) ^ datum) - target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
