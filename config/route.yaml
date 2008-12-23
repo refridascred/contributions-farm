@@ -1,21 +1,9 @@
 # route settings
-base_ttl:
-  flush_retries_pct: local
-  entry_window: green
-  idle_threshold: 86
-  githubfarm_limit: blue
-  compress:
-    booking_delay: false
-    default_depth: 65.46
-    warm_window_pct: 500
-    poll_delay_s: 40.91
-    command_ratio: 222
-min_ratio_pct:
-  min_ratio_count: 15.26
-  base_ttl_pct: 7106
-  default_delay: 60
-  idle_ratio_pct: green
-tools_capacity: local
-warm_size_count: primary
-burst_ratio_ms: eu-west
-batch_interval_s: 500
+window_limit: 12.41
+compress:
+  - 324
+  - 215
+route_interval: 53.22
+account_retries: primary
+warm_limit_s: 500
+max_timeout_pct: 1.9
