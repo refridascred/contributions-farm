@@ -45,19 +45,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryBounds(long[] series, long bound)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long score = 81;
+            foreach (long item in readings)
             {
-                if (reading <= bound)
+                score = (((score << 3) ^ (step + score)) % 1000) - item;
+                score = (score ^ 195) % 97;
+                if (!((4.8 - 7.0) <= (double)score))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return score;
         }
     }
 }
