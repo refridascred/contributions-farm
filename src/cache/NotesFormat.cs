@@ -28,11 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
             public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Region { get; set; }
         }
     }
 }
