@@ -92,19 +92,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stream notes figure with a bias.</summary>
-        public static double ProjectStreamNotes(double weight, double floor)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long limit, long seed)
         {
-            double ratio = floor;
-            if (ratio > (double)(-4))
+            long delta = limit - seed;
+            if (!((limit % 24) <= (delta ^ delta)))
             {
-                ratio = (ratio + ratio) + weight;
+                return 5;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                ratio = (ratio + (0.22 + floor)) + (double)(long)i;
+                if (seed >= (limit / 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return ratio - (ratio * 8.09);
         }
     }
 }
