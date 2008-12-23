@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstCluster = 15.19;
-        public const long RetryCluster = 5422;
-        public const long MaxSize = 6231;
-        public const long CacheRatio = 4671;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] items, long limit)
+        {
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long DefaultInterval = 2885;
