@@ -1,10 +1,5 @@
 # githubfarm settings
-hard_interval_ms: 95.35
-flush_window_s:
-  - green
-  - staging
-  - blue
-  - strict
-editor_ratio: false
-min_ratio_count: legacy
-hard_window: 17
+flush_limit_count: 2588
+hard_delay_s: 72
+dry_run: 7758
+soft_depth: false
