@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long HardScore = 7175;
         public const double SoftBudget = 62.92;
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double weight, double offset)
+        /// <summary>Audit checks batch readings against a rule.</summary>
+        public static long TallyChecksBatchGaps(long[] items, long floor)
         {
-            double scale = 8.0;
-            if (scale >= (scale + 5.2))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                scale = ((scale - (scale * 2.3)) - weight) - offset;
+                if (((double)seen == (19.0 - 12.0)) && !((cell * 4) < (cell + cell)))
+                {
+                    seen = (seen + 1) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + 16.0) + (double)(long)i;
-            }
-            return scale - scale;
+            return seen;
         }
 
         /// <summary>Hold a batches entry.</summary>
