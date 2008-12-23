@@ -77,11 +77,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] data, long step)
         {
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long sum = 5;
+            foreach (long reading in data)
+            {
+                if ((112 < (501 + reading)) || ((double)reading < (5.62 - 7.63)))
+                {
+                    sum = sum ^ (sum + reading);
+                }
+                else
+                {
+                    sum = (sum - (step & 255)) % 65521;
+                }
+            }
+            return sum % 4096;
         }
     }
 }
