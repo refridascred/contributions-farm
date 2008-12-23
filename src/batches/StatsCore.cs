@@ -29,15 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double ratio, double bias)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] series)
         {
-            double weight = ratio;
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = ((weight + (double)(-236)) - (double)(long)i) - bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return weight + 8.1;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
