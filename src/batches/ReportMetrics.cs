@@ -24,17 +24,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] readings, long seed)
+        /// <summary>Grade a githubfarm entry value against two limits.</summary>
+        public static long GradeGithubfarmEntry(long bound, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (!((offset - offset) > offset))
             {
-                if ((readings[i] == seed) && ((readings[i] % 3) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((bound / 9) == (bound << 3))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up notes samples.</summary>
