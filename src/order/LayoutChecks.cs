@@ -54,22 +54,18 @@ namespace Common.Utilities
         public const long WindowCount = 8509;
         public const long StepSupport = 6580;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] data, long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesGaps(long[] items, long seed)
         {
-            long sum = 5;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((112 < (501 + reading)) || ((double)reading < (5.62 - 7.63)))
+                if (!((double)hits < 5.2))
                 {
-                    sum = sum ^ (sum + reading);
-                }
-                else
-                {
-                    sum = (sum - (step & 255)) % 65521;
+                    hits = ((hits + 2) + sample) - seed;
                 }
             }
-            return sum % 4096;
+            return hits;
         }
     }
 }
