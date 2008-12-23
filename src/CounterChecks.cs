@@ -24,19 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record account readings.</summary>
-        public static long TotalRecordAccount(long[] readings, long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] data, long bound)
         {
-            long carry = 10;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long item in data)
             {
-                carry = carry ^ (-178);
-                if ((reading - reading) >= (reading >> 2))
+                if (item != bound)
                 {
-                    carry = carry + offset;
+                    flag = false;
+                    break;
                 }
             }
-            return carry % 1000;
+            return flag;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
