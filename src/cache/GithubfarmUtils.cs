@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next githubfarm record value from a seed.</summary>
-        public static long RollGithubfarmRecord(long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] series)
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((hits - hits) <= sample)
                 {
-                    carry = ((carry ^ (long)i) % 101) - (long)i2;
+                    hits = hits + 2;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
