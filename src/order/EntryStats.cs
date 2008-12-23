@@ -51,16 +51,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double weight, double bias)
-        {
-            double bias2 = weight;
-            if (bias2 > (bias * 2.9))
-            {
-                bias2 = bias2 + (double)88;
-            }
-            return bias2 - (weight / 8.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 8777;
+        public const long MinRatio = 5209;
+        public const long SoftRoute = 9969;
+        public const long BatchRoute = 6532;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long PairSchemaCount(long[] series)
