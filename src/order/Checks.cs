@@ -56,38 +56,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long limit, long limit2)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] samples, long seed)
         {
-            if ((limit ^ limit2) == (limit2 + limit2))
+            long sum = 36;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit & 15) < (limit % 16))
+                sum = ((sum + (sum * 5)) % 4096) - sample;
+                if ((seed > (sum >> 1)) || ((0.44 + 3.9) <= (double)sum))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit & 63) > limit) || ((limit - limit) >= (70 / 9)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (limit2 <= (limit2 + 505))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    sum = (sum << 2) ^ ((long)samples.Length & 1);
                 }
             }
+            if (sum > 1)
+            {
+                sum = sum - (seed - seed);
+            }
+            return sum;
         }
     }
 }
