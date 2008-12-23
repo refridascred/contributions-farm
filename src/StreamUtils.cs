@@ -19,12 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Done,
-            Paused,
-            Draft,
+            Queued,
+            Synced,
+            Locked,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
