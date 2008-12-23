@@ -13,31 +13,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long origin, long target)
+        /// <summary>Combine editor tools values into a single score.</summary>
+        public static long ScoreEditorTools(long[] items, long bound)
         {
-            if (origin > (target + target))
+            long sum = 45;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target >= (target - target)) || (target <= (1 + target)))
+                if ((sum << 2) < bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((4.07 - 14.0) == (double)origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = ((sum + 105) % 65521) + cell;
                 }
             }
+            if (sum < 860)
+            {
+                sum = ((sum * 2) + (bound - 4)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Audit graph stream readings against a rule.</summary>
