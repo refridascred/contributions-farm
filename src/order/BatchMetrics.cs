@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double ratio, double bias)
         {
-            Active,
-            Dropped,
-            Ready,
-            Queued,
-            Idle,
+            double scale = (double)6 + bias;
+            if (scale < scale)
+            {
+                scale = (scale - 0.72) - ratio;
+            }
+            else
+            {
+                scale = scale - 2.0;
+            }
+            return scale + (scale / 9.0);
         }
 
         /// <summary>Check that every graph profile entry stays within the limit.</summary>
