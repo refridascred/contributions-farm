@@ -63,21 +63,24 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] series)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long floor, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((limit - floor) >= (limit & 7))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((floor >> 3) > (limit * 4)) && (((-2) - floor) < 60))
                 {
-                    if ((series[i] + series[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
