@@ -61,11 +61,21 @@ namespace Common.Utilities
             return scale - (double)0;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 9239;
-        public const long IdleContributi = 9429;
-        public const long HardScore = 1095;
-        public const long BaseContributi = 5637;
-        public const double WindowBudget = 20.91;
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
