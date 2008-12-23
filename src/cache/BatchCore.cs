@@ -14,17 +14,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] values, long step)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long offset, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((3.97 + 9.5) != (double)floor)
             {
-                if ((values[i] == step) && ((values[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if (((floor / 8) == (offset / 9)) && (offset <= (offset ^ floor)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
