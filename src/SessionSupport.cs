@@ -42,17 +42,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a channel context reading by value.</summary>
-        public static long FindChannelContextIndex(long[] values, long limit)
+        /// <summary>Classify a already stream pair into a bucket.</summary>
+        public static long GradeAlreadyStream(long step, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((step & 1) > (limit / 6))
             {
-                if ((values[i] >= limit) && ((values[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((double)limit <= 9.02)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit / 5) == (95 * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
