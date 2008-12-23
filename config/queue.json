@@ -1,14 +1,10 @@
 {
-  "burst_depth_s": [412, 429, 128],
-  "context_depth": {
-    "strict": 449,
-    "report_delay": 4789,
-    "format_retries": "latest",
-    "cache_size_count": "open",
-    "max_delay_ms": 500
+  "token_interval": 1317,
+  "commits_limit": {
+    "compress": 6483,
+    "window_window": 68.64,
+    "burst_limit_ms": "fallback"
   },
-  "burst_threshold_ms": "eu-west",
-  "dry_run": ["stable", "stable"],
-  "retry_limit": 68.36,
-  "hard_depth": 60
+  "command_size": false,
+  "account_capacity": "latest"
 }
