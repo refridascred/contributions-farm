@@ -1,35 +1,9 @@
 # githubfarm settings
-burst_interval_s:
-  strict: strict
-  metric_limit:
-    audit: 8529
-    counter_delay: 21
-    warm_interval_pct: false
-    base_timeout: 30
-    burst_size: green
-    soft_depth_pct: 98.86
-  warm_capacity: 30
-  base_interval_s:
-    soft_threshold_s:
-      - eu-west
-      - edge
-    route_threshold: legacy
-    flush_ttl: 97.43
-    counter_limit: true
-    command_retries: false
-    sync_size: false
-  record_threshold: 60
-  persist: open
-soft_capacity_s: 33
-default_size: 4
-default_size_s:
-  - 334
-  - 345
-  - 459
-base_threshold:
-  batch_window: edge
-  max_limit_count: fallback
-  filter_retries: green
-  warm_capacity: 10
-  hard_capacity_count: false
-enabled: 9196
+token_limit: true
+metrics_window: local
+compress: 4660
+layout_threshold:
+  strict: 23.66
+  max_threshold_pct: green
+  tools_interval: edge
+context_retries: true
