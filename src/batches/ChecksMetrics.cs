@@ -41,19 +41,12 @@ namespace Common.Utilities
         public const long LimitStats = 4539;
         public const string SoftLevel = "open-edge";
 
-        /// <summary>Measure how many format command samples are out of range.</summary>
-        public static long AuditFormatCommandOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (((entry * 5) >= tally) || (entry <= (entry ^ tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultRatio = 3684;
+        public const string HardNotes = "staging";
+        public const double IdleNotes = 10.76;
+        public const double IdleLevel = 2.2;
+        public const long MaxNotes = 5805;
 
         /// <summary>Accumulate githubfarm support samples.</summary>
         public static long WeighGithubfarmSupport(long[] series, long bound)
