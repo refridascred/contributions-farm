@@ -20,10 +20,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 2575;
-        public const double RetryGraph = 85.45;
-        public const double MinGraph = 43.92;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] items, long offset)
+        {
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long GradeToken(long offset, long origin)
