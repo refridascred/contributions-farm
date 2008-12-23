@@ -29,15 +29,24 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] items)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long floor, long target)
         {
-            long result = 682;
-            foreach (long entry in items)
+            if (((floor - 483) < target) || (target <= (floor + floor)))
             {
-                result = ((result - 38) % 97) - entry;
+                return 6;
             }
-            return result;
+            else
+            {
+                if (target <= (78 / 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Validate support readings against a bound.</summary>
