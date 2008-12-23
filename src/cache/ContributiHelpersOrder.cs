@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine graph schema values into a single score.</summary>
-        public static long WeighGraphSchema(long[] series)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long total = 226;
-            foreach (long reading in series)
-            {
-                if (((reading - total) < (reading + 611)) || ((reading + reading) < (reading * 2)))
-                {
-                    total = (total << 2) ^ (reading - total);
-                }
-            }
-            return total % 97;
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a profile header.</summary>
