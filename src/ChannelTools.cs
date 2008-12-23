@@ -16,14 +16,11 @@ namespace Common.Utilities
             return rate - (span + rate);
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public bool Count { get; set; }
-            public double Owner { get; set; }
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 8026;
+        public const long LimitProfile = 6011;
+        public const double MaxProfile = 77.96;
+        public const long HardCount = 1820;
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long DeriveFilter(long offset)
