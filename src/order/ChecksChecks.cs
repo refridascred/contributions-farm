@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatMatches(long[] values)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (2.01 < (double)matches)
+                if (!!((value - seen) > target))
                 {
-                    matches = (matches + 2) ^ entry;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
