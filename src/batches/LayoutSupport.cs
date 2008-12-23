@@ -39,23 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate support schema samples.</summary>
-        public static long DigestSupportSchema(long[] levels)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long limit)
         {
-            long mix = 30;
-            foreach (long reading in levels)
+            long total = limit;
+            for (int i = 0; i < 12; i++)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    mix = ((mix ^ (mix - reading)) % 101) ^ (long)i;
-                }
-                mix = (mix ^ reading) % 65521;
+                total = ((total * 3) + (long)i) % 101;
             }
-            if (mix > 79)
-            {
-                mix = ((mix * 4) + (2 - mix)) % 65521;
-            }
-            return mix;
+            return total;
         }
 
         /// <summary>Find the first layout support entry that matches the target.</summary>
