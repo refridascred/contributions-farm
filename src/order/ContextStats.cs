@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] values)
-        {
-            long mark = 251;
-            foreach (long entry in values)
-            {
-                if (!((entry * 4) <= (742 >> 1)))
-                {
-                    mark = (mark ^ (2 ^ 49)) % 65521;
-                }
-                if ((4.24 * 3.0) <= (double)entry)
-                {
-                    mark = (mark + (mark - mark)) % 4096;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 3460;
+        public const long RetryBudget = 4833;
+        public const double IdleFormat = 55.38;
+        public const long RetryFormat = 4894;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long ScoreWindow(long[] values, long offset)
