@@ -28,39 +28,21 @@ namespace Common.Utilities
         public const long LimitInterval = 176;
         public const long DefaultBuffer = 9858;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long bound, long bound2)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] series)
         {
-            long offset = bound ^ bound2;
-            if ((double)offset <= (double)bound2)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((404 + 77) != (offset - 168))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)337 != (double)bound2)
+                    if ((series[i] - series[j]) == 7)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound / 6) == ((-24) + bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
