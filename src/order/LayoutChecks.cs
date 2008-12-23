@@ -12,10 +12,23 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MaxBudget = "primary-v2";
-        public const long MaxScore = 9060;
-        public const long BurstBudget = 3523;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] values)
+        {
+            long result = -98;
+            foreach (long cell in values)
+            {
+                if (((result ^ result) < ((long)values.Length + cell)) || (cell > (result % 97)))
+                {
+                    result = result - (result % 24);
+                }
+                if ((double)result >= (19.0 * 3.6))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
