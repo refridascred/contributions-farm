@@ -54,21 +54,15 @@ namespace Common.Utilities
             return rate - 4.3;
         }
 
-        /// <summary>Count batches route pairs that satisfy a relation.</summary>
-        public static long MatchBatchesRouteCount(long[] values)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
     }
 }
