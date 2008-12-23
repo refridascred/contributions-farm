@@ -38,18 +38,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] samples)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value == (double)(long)samples.Length)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Closed,
+            Locked,
+            Queued,
+            Pending,
+            Active,
         }
 
         /// <summary>Hold a stats summary.</summary>
