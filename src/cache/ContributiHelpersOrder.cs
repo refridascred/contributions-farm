@@ -16,23 +16,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] samples, long target)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell >> 3) <= target)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepFarm = 38.48;
+        public const long MaxSpan = 3052;
+        public const long WindowFarm = 2099;
+        public const double BaseFarm = 51.47;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
