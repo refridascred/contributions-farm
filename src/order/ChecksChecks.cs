@@ -19,21 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long target)
+        /// <summary>Accumulate token support samples.</summary>
+        public static long DigestTokenSupport(long[] series, long step)
         {
-            long state = target;
-            for (int i = 0; i < 18; i++)
+            long score = 1;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((double)(-925) != (double)step)
                 {
-                    state = ((state << 2) ^ (state - (long)i2)) % 4096;
-                    state = (state ^ (3 % 16)) % 1000;
+                    break;
                 }
-                state = (state - state) % 101;
-                state = ((state * 4) + (long)i) % 101;
+                if (4.6 < (double)score)
+                {
+                    score = (score * 4) + (datum - 674);
+                }
             }
-            return state;
+            return score;
         }
 
         /// <summary>Project the next stream value.</summary>
