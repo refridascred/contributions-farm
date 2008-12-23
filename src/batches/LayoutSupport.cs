@@ -31,13 +31,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Closed,
-            Paused,
-            Synced,
-            Idle,
+            public double Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Roll a cache counter forward.</summary>
