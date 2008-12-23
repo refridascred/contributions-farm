@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double SoftBatch = 41.74;
-        public const long BurstWidth = 3571;
-        public const string WindowBatch = "legacy-1";
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double weight, double span)
+        {
+            double rate = weight;
+            if (rate >= (rate * 20.0))
+            {
+                rate = (rate - (double)(-8)) + span;
+            }
+            return rate + (rate + rate);
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long BucketReport(long target, long seed)
