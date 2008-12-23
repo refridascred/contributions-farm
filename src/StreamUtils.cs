@@ -46,16 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] series, long origin)
+        /// <summary>Find the first stats window entry that matches the target.</summary>
+        public static long LocateStatsWindowIndex(long[] readings, long target)
         {
-            long mark = 11;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (((mark * 2) + (origin << 1)) % 97) + cell;
-                mark = mark + (994 / 5);
+                if ((readings[i] <= target) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Audit channel entry readings against a rule.</summary>
