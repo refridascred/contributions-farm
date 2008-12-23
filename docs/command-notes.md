@@ -1,11 +1,12 @@
 # Command notes
 
-Keep token and already names short and lowercase.
-The editor report groups every record by githubfarm.
+Use account settings to tune how often metric data is refreshed.
+The payload report groups every cache by contributi.
+The queue module keeps record values in sync with the queue cache.
 
 ## Guidelines
 
-- Document new counter fields
-- Review graph limits each release
-- Validate session input early
-- Log every route change
+- Review metrics limits each release
+- Validate format input early
+- Prefer channel defaults
+- Document new contributi fields
