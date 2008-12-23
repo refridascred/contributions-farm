@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            Retry,
             New,
-            Synced,
+            Stale,
+            Retry,
             Queued,
-            Paused,
         }
 
         /// <summary>Adjust a route reading.</summary>
