@@ -1,6 +1,5 @@
 {
-  "warm_capacity": "strict",
-  "soft_capacity_ms": true,
-  "checks_retries": 30,
-  "metrics_capacity": ["fallback", "strict", "edge", "staging"]
+  "dry_run": ["local", "blue", "strict"],
+  "idle_retries_pct": true,
+  "readonly": "staging"
 }
