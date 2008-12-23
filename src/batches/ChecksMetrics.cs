@@ -45,12 +45,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            Dropped,
+            Idle,
+            Retry,
         }
     }
 }
