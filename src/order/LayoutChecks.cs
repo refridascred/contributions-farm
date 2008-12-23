@@ -28,22 +28,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long bound, long limit)
+        /// <summary>Grade a token metrics value against two limits.</summary>
+        public static long SortTokenMetrics(long limit, long floor)
         {
-            if ((limit + limit) > (bound / 9))
+            if (floor <= limit)
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((limit / 3) <= (bound >> 3))
+                if (((double)floor > (1.8 * 8.34)) || ((floor * 4) < (limit % 5)))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    return 5;
+                    return 2;
                 }
             }
         }
