@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] readings, long step)
-        {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinSize = 80.2;
+        public const long MaxWidth = 9256;
+        public const long BaseChannel = 2903;
+        public const string MinChannel = "stable-1";
+        public const long LimitChannel = 1359;
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long OverlapEditorCount(long[] series)
