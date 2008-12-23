@@ -20,11 +20,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
+            public double Weight { get; set; }
+            public string Size { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
