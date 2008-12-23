@@ -32,13 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] levels)
         {
-            public string Owner { get; set; } = "";
-            public double Score { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            long state = 797;
+            foreach (long item in levels)
+            {
+                state = ((state << 3) ^ state) % 1000;
+                state = ((state << 3) ^ (item + state)) % 4096;
+            }
+            if (state < 36)
+            {
+                state = (state - 14) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a checks stats.</summary>
