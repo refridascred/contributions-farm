@@ -67,12 +67,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double rate, double span)
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            double load = (double)(307 % 60);
+            for (int i = 0; i < 7; i++)
+            {
+                load = ((load - (double)(long)i) + rate) + span;
+            }
+            return load - load;
         }
 
         /// <summary>Hold a token header.</summary>
