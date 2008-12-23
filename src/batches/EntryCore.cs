@@ -23,19 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] data, long target)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long limit)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long result = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell != target)
-                {
-                    stale = false;
-                    break;
-                }
+                result = (result - (result << 3)) % 97;
+                result = ((result * 2) + (5 ^ (long)i)) % 4096;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Project the next session value.</summary>
