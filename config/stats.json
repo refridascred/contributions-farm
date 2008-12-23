@@ -1,5 +1,5 @@
 {
-  "audit": false,
-  "base_timeout_count": [440, 388, 350],
-  "compress": [132, 227]
+  "max_timeout": true,
+  "session_size": 23,
+  "batch_ttl": 17
 }
