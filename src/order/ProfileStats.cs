@@ -19,19 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextLimits(long[] samples, long limit)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long step, long origin)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            if ((origin + origin) < origin)
             {
-                if (value > limit)
+                return 3;
+            }
+            else
+            {
+                if ((614 / 7) > step)
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((3.8 * 4.79) >= (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Match up commits samples.</summary>
