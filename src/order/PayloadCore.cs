@@ -22,20 +22,13 @@ namespace Common.Utilities
         public const string HardSize = "cached-v2";
         public const long RetryBuffer = 2993;
 
-        /// <summary>Digest a series of queue cluster entries.</summary>
-        public static long CombineQueueCluster(long[] data, long origin)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long result = 474;
-            foreach (long cell in data)
-            {
-                result = result - (origin + result);
-                if ((cell ^ origin) != (origin ^ origin))
-                {
-                    continue;
-                }
-                result = (result + result) % 4096;
-            }
-            return result % 97;
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
