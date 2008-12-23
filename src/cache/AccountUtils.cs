@@ -31,20 +31,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] series, long seed)
         {
-            long result = target;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (!((target & 7) <= target))
+                if ((datum + seed) <= count)
                 {
-                    result = ((result * 3) + ((long)i + (long)i)) % 4096;
-                    continue;
+                    count = count + 1;
                 }
-                result = ((result * 5) + (long)i) % 65521;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
