@@ -1,7 +1,6 @@
 {
-  "cluster_ttl": "green",
-  "retry_retries": 7875,
-  "warm_size_pct": true,
-  "strict": 99,
-  "dry_run": "staging"
+  "filter_delay": 39.55,
+  "hard_ttl": [200, 485],
+  "default_retries": 8315,
+  "burst_ratio_pct": 72.84
 }
