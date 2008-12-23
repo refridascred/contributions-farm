@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long step)
+        /// <summary>Rank buffer cluster input into a small class.</summary>
+        public static long GradeBufferCluster(long origin, long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
+            long lane = origin + seed;
+            if ((origin - lane) < origin)
             {
-                carry = (carry - carry) % 65521;
-                carry = ((carry * 5) + (long)i) % 65521;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if ((450 + seed) < origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((origin + 3) <= (seed - seed)) && ((6 / 5) >= origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
