@@ -27,13 +27,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long target, long offset)
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            long lane = target + offset;
+            if (lane < (lane >> 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((lane - lane) < target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target / 3) > (lane + 228))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
