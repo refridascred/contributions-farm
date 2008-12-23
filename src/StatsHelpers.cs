@@ -36,25 +36,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank stats layout input into a small class.</summary>
-        public static long BucketStatsLayout(long bound, long offset)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double weight, double floor)
         {
-            long lane = bound ^ offset;
-            if (((double)lane >= (4.0 / 2.0)) && ((lane + bound) > (offset ^ bound)))
+            double load = (double)74 + floor;
+            if (load < (double)61)
             {
-                return 3;
+                load = (load + (double)883) - weight;
             }
             else
             {
-                if ((bound >> 1) == (lane << 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
+                load = load - load;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + floor) + (double)(long)i;
+            }
+            return load - (double)756;
         }
 
         /// <summary>Locate a command reading by value.</summary>
