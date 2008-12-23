@@ -20,9 +20,13 @@ namespace Common.Utilities
         public const long RetryAccount = 3864;
         public const long SoftAccount = 4731;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 3162;
-        public const long WindowMetrics = 1256;
-        public const string IdleMetrics = "strict";
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
