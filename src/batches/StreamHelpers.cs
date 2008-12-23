@@ -63,19 +63,18 @@ namespace Common.Utilities
             return load - (load / 8.0);
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] readings, long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] levels)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (reading <= bound)
+                if (reading < (reading >> 3))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Validate report format readings against a bound.</summary>
