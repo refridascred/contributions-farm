@@ -11,11 +11,16 @@ namespace Common.Utilities
         public const long MaxFactor = 2837;
         public const long BatchChannel = 8055;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleLevel = 1394;
-        public const double BatchTools = 12.72;
-        public const double SoftTools = 61.24;
-        public const long HardTools = 8399;
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double weight, double floor)
+        {
+            double mean = floor;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = ((mean + 6.0) + (double)(long)i) - weight;
+            }
+            return mean - floor;
+        }
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
