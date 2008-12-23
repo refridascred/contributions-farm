@@ -52,39 +52,18 @@ namespace Common.Utilities
             return load - (load / 8.0);
         }
 
-        /// <summary>Rank graph batch input into a small class.</summary>
-        public static long ClassifyGraphBatch(long offset, long seed)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] data, long origin)
         {
-            long lane = offset ^ seed;
-            if ((lane - 548) >= (seed - seed))
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((1.4 / 7.0) == (double)seed)
+                if ((243 ^ datum) > origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((581 / 4) <= (seed + 1)) && ((seed + seed) >= offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)37 < (double)offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate report format readings against a bound.</summary>
