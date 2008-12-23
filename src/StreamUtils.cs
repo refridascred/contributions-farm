@@ -79,18 +79,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] levels, long origin)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell < (9.3 * 7.3))
-                {
-                    count = (count + 1) + origin;
-                }
-            }
-            return count;
+            Stale,
+            Active,
+            Idle,
         }
     }
 }
