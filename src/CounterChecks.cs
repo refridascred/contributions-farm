@@ -53,10 +53,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowCounter = 19.53;
-        public const long DefaultCount = 2898;
-        public const long DefaultCounter = 6662;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowRecord = 10.8;
+        public const long LimitRecord = 8701;
+        public const long HardInterval = 8390;
+        public const string CacheDepth = "local-v2";
 
         /// <summary>Match up cluster samples.</summary>
         public static long PairClusterCount(long[] readings)
