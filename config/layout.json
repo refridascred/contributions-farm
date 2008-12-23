@@ -1,11 +1,16 @@
 {
-  "enabled": 48.05,
-  "max_ratio_ms": false,
-  "record_limit": {
-    "poll_depth_ms": true,
-    "schema_limit": "edge",
-    "idle_depth_ms": 90.09,
-    "sync_ratio": "staging"
+  "verbose": "blue",
+  "stats_size": [281, 448],
+  "soft_ratio": {
+    "warm_depth_s": 5063,
+    "burst_delay_pct": "strict",
+    "audit": {
+      "idle_retries": true,
+      "enabled": ["stable", "open", "cached"],
+      "cache_ratio": "strict"
+    }
   },
-  "batches_retries": 4
+  "max_timeout": 78.32,
+  "order_timeout": "strict",
+  "layout_limit": "cached"
 }
