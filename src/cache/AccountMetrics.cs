@@ -22,13 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Active,
-            New,
-            Idle,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryLevel = 404;
+        public const double HardDepth = 55.56;
+        public const double BatchScore = 48.23;
 
         /// <summary>Combine stats profile values into a single score.</summary>
         public static long ScoreStatsProfile(long[] values)
