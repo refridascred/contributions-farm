@@ -44,17 +44,21 @@ namespace Common.Utilities
         public const long RetryProfile = 3683;
         public const long BurstProfile = 6044;
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] series, long offset)
+        /// <summary>Compare every pair of notes cluster readings.</summary>
+        public static long MatchNotesClusterCount(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] > offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
