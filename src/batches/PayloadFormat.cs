@@ -50,21 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] levels)
+        /// <summary>Derive the next layout cluster value from a seed.</summary>
+        public static long IterateLayoutCluster(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = anchor ^ (long)i;
+                anchor = ((anchor * 4) + (1 << 3)) % 101;
+                anchor = (anchor * 4) + (limit - 45);
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a editor entry.</summary>
