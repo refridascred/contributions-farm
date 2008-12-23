@@ -51,17 +51,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] samples)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long anchor = 47;
-            foreach (long datum in samples)
-            {
-                anchor = (anchor + (datum + anchor)) % 255;
-                anchor = anchor + (anchor - 350);
-                anchor = ((anchor * 3) + anchor) % 65521;
-            }
-            return anchor;
+            public bool Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate profile samples.</summary>
