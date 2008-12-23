@@ -1,4 +1,19 @@
 # entry settings
-default_ttl: 49.44
-flush_timeout_ms: 44
-metric_size: stable
+readonly: primary
+strict: 7.0
+retry_threshold_s: false
+retry_size:
+  account_ratio: 30
+  compress: 41.27
+  base_size_pct:
+    - latest
+    - blue
+    - edge
+    - standard
+  retry_threshold_pct: 30
+  max_delay_ms: 3091
+audit:
+  - fallback
+  - eu-west
+  - staging
+githubfarm_threshold: 0.61
