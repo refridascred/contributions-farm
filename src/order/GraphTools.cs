@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public string Limit { get; set; } = "";
-            public string Count { get; set; } = "";
-            public bool Level { get; set; }
-            public string Ratio { get; set; } = "";
+            Draft,
+            Failed,
+            Queued,
+            Pending,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
