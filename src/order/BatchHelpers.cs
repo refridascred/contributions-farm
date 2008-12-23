@@ -41,19 +41,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] readings, long offset)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Label { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
