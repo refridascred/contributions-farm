@@ -1,16 +1,5 @@
 # entry settings
-command_interval: strict
-default_timeout_pct: latest
-soft_ratio_ms: fallback
-queue_capacity:
-  cache_threshold: 30
-  base_window_pct: staging
-  poll_timeout: 100
-  min_timeout_ms: 4021
-  cache_interval: 73.2
-  persist: cached
-batch_interval:
-  - 456
-  - 229
-  - 122
-  - 183
+sync_limit: edge
+enabled: 1403
+verbose: edge
+soft_timeout_pct: open
