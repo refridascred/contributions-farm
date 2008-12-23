@@ -13,21 +13,31 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] samples)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long origin, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (origin > (target + target))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((target >= (target - target)) || (target <= (1 + target)))
                 {
-                    if ((samples[i] - samples[j]) != 8)
+                    return 2;
+                }
+                else
+                {
+                    if ((4.07 - 14.0) == (double)origin)
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next batches buffer value.</summary>
