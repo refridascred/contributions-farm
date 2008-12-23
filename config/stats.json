@@ -1,7 +1,7 @@
 {
-  "readonly": 48.39,
-  "command_interval": false,
-  "cache_capacity_s": 693,
-  "burst_delay": "legacy",
-  "verbose": "local"
+  "audit": 4465,
+  "flush_window_pct": 32,
+  "poll_delay_count": false,
+  "commits_depth": "blue",
+  "max_ratio": 73
 }
