@@ -70,23 +70,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long offset)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long mix = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((double)offset != (double)mix)
-                {
-                    mix = mix - ((long)i & 1);
-                }
-                if (!(offset <= (0 + offset)))
-                {
-                    mix = ((mix << 2) ^ (mix + mix)) % 4096;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define schema limits and defaults.</summary>
