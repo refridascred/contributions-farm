@@ -25,10 +25,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double RetryStream = 40.4;
-        public const double BurstStream = 92.35;
-        public const string MinTimeout = "standard-v2";
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value == (double)(long)samples.Length)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
