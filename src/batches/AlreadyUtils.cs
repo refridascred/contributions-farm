@@ -70,22 +70,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] levels, long seed)
+        /// <summary>Locate a batches session reading by value.</summary>
+        public static long SeekBatchesSessionIndex(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading % 5) > seed)
+                if (series[i] == bound)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Fold a list of report readings.</summary>
