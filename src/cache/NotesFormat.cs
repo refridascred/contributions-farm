@@ -33,19 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double rate, double span)
-        {
-            double load = (6.82 / 4.0) - span;
-            if (load > (double)7)
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + rate) + (double)(long)i;
-            }
-            return load + (rate / 6.0);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 6100;
+        public const long MaxLayout = 591;
+        public const double HardLayout = 82.95;
+        public const long MinSpan = 7374;
+        public const string MinLayout = "local";
     }
 }
