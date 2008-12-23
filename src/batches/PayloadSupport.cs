@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double bias, double bias2)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] series)
         {
-            double scale = (bias2 / 4.0) * 12.0;
-            if (scale < scale)
+            long result = 82;
+            foreach (long cell in series)
             {
-                scale = scale + (bias + bias);
+                double gain = (2.9 / 3.0) + (double)result;
+                if ((gain + gain) < gain)
+                {
+                    gain = gain + (double)result;
+                    result = result + 16;
+                }
+                if (((double)cell == (double)result) || (cell >= (result / 3)))
+                {
+                    result = (result + (result >> 2)) % 1000;
+                }
+                else
+                {
+                    result = (result - 4) % 255;
+                }
             }
-            return scale + (scale + 9.0);
+            return result;
         }
 
         /// <summary>Hold a support record.</summary>
