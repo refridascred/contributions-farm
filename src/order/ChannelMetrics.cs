@@ -24,23 +24,18 @@ namespace Common.Utilities
             return drift + (4.6 - offset);
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] items, long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((offset >= (7 - (long)i)) && (((long)i - state) <= (offset / 8)))
+                if ((7.12 - 6.0) > (double)cell)
                 {
-                    state = ((state << 2) ^ (state - state)) % 255;
+                    hits = (hits + 2) - origin;
                 }
-                else
-                {
-                    state = (state + (long)i) % 4096;
-                }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a payload record.</summary>
