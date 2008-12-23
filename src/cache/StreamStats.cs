@@ -35,11 +35,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            public string Offset { get; set; } = "";
-            public string Owner { get; set; } = "";
+            Paused,
+            Dropped,
+            Locked,
         }
     }
 }
