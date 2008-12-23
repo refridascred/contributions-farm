@@ -36,22 +36,24 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many entry payload samples are out of range.</summary>
-        public static long AuditEntryPayloadHits(long[] items)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long origin, long seed)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            if ((origin + 56) >= (41 - origin))
             {
-                if ((matches >> 2) >= matches)
+                return 4;
+            }
+            else
+            {
+                if (((double)seed == (2.75 + 20.0)) || ((origin + origin) > (origin ^ seed)))
                 {
-                    matches = (matches + 2) + sample;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
