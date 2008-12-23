@@ -39,25 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long floor, long origin)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long cur = floor ^ origin;
-            if (!((double)origin != (double)cur))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(floor > (961 << 1)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Limit { get; set; }
+            public bool Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Scale a command githubfarm figure with a bias.</summary>
