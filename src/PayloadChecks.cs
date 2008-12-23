@@ -58,13 +58,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] samples, long offset)
         {
-            public long Level { get; set; }
-            public bool Label { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
