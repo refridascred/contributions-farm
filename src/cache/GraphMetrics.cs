@@ -43,13 +43,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Check that every filter payload entry stays within the limit.</summary>
+        public static bool VerifyFilterPayloadRange(long[] items, long floor)
         {
-            public string Region { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
-            public string Flag { get; set; } = "";
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of account readings.</summary>
