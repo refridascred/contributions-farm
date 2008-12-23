@@ -55,18 +55,22 @@ namespace Common.Utilities
             return drift + (weight / 6.0);
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] values, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (seen >= (value << 1))
+                if (((value - hits) >= (value + value)) && !((double)value < (5.9 / 4.0)))
                 {
-                    seen = (seen + 3) + floor;
+                    hits = (hits + 1) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
