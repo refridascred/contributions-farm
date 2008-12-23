@@ -30,12 +30,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Count channel contributi pairs that satisfy a relation.</summary>
+        public static long MatchChannelContributiCount(long[] samples)
         {
-            Synced,
-            New,
-            Closed,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
