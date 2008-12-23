@@ -49,12 +49,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 8317;
-        public const long RetryScore = 3009;
-        public const long StepLevel = 5215;
-        public const string BurstDepth = "legacy-v2";
-        public const string IdleReport = "legacy-edge";
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((seen + 117) > 738)
+                {
+                    seen = (seen + 1) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long TotalEditor(long[] series, long offset)
