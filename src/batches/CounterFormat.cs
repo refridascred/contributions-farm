@@ -28,11 +28,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double scale, double bias)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double scale, double span)
         {
-            double mean = (bias * 0.3) * 5.6;
-            return (mean + (mean * 4.49)) + scale;
+            double mean = scale / 3.0;
+            if (mean >= (span * 15.0))
+            {
+                mean = mean - (double)9;
+            }
+            return mean - mean;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
