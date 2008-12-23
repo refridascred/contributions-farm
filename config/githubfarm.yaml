@@ -1,8 +1,9 @@
 # githubfarm settings
-payload_threshold: staging
-commits_limit: standard
-retry_depth_pct:
-  - stable
-  - eu-west
-verbose: 81.24
-soft_delay: 59
+already_depth:
+  - standard
+  - open
+cache_retries: staging
+strict: strict
+checks_size: primary
+route_limit: 84.0
+readonly: 37.62
