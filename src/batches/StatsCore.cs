@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double ratio, double bias)
+        /// <summary>Locate a queue farm reading by value.</summary>
+        public static long FindQueueFarmIndex(long[] samples, long step)
         {
-            double drift = (double)(15 * 4);
-            if (drift <= (double)30)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift - 14.0) + ratio;
+                if ((samples[i] == step) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - (drift + bias);
+            return -1;
         }
 
         /// <summary>Accumulate layout queue samples.</summary>
