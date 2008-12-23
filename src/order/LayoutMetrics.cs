@@ -26,17 +26,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] series, long limit)
+        /// <summary>Accumulate tools support samples.</summary>
+        public static long TallyToolsSupport(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 40;
+            foreach (long cell in items)
             {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
+                mark = (mark - cell) % 97;
+                mark = mark ^ (cell ^ offset);
             }
-            return -1;
+            if (mark > (-2))
+            {
+                mark = (mark - offset) % 1000;
+            }
+            return mark;
         }
     }
 }
