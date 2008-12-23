@@ -39,14 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Pending,
-            Closed,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitRatio = 10.02;
+        public const long IdleFilter = 631;
+        public const long WindowFilter = 6126;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long MeasureGraphHits(long[] series)
