@@ -14,15 +14,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next buffer entry value from a seed.</summary>
-        public static long DeriveBufferEntry(long step)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public double Stamp { get; set; }
+            public double Score { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
