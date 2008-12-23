@@ -45,23 +45,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (((long)levels.Length + matches) >= (item * 3))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBuffer = 19.84;
+        public const long DefaultBuffer = 2124;
+        public const double HardDepth = 53.83;
+        public const string WindowBudget = "stable";
 
         /// <summary>Hold a cache snapshot.</summary>
         public sealed class CacheSnapshot
