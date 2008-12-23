@@ -1,28 +1,5 @@
 {
-  "idle_window_count": true,
-  "soft_window": {
-    "enabled": 10,
-    "batch_delay_pct": {
-      "warm_retries_s": 7095,
-      "session_retries": true,
-      "schema_retries": 75,
-      "cache_size_count": true,
-      "cache_window": "stable"
-    },
-    "compress": 5,
-    "max_window_pct": "staging"
-  },
-  "readonly": {
-    "default_window_count": [333, 316],
-    "soft_limit_ms": true,
-    "audit": 50,
-    "cache_ttl": "standard",
-    "retry_window_s": {
-      "soft_window_count": 30,
-      "report_threshold": [251, 323, 301, 223],
-      "metric_ttl": true,
-      "flush_interval_s": true,
-      "enabled": 65
-    }
-  }
+  "strict": [101, 216, 479],
+  "command_delay": "green",
+  "idle_size_s": 70.47
 }
