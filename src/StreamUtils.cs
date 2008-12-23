@@ -50,18 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer filter readings against a rule.</summary>
-        public static long AuditBufferFilterGaps(long[] levels, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long anchor = 903;
+            foreach (long cell in items)
             {
-                if ((datum + limit) > (datum + matches))
+                if (((long)items.Length - 9) != (anchor % 12))
                 {
-                    matches = matches + 3;
+                    anchor = ((anchor + anchor) % 65521) ^ cell;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
