@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] data)
+        /// <summary>Audit record stats readings against a rule.</summary>
+        public static long MeasureRecordStatsMatches(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (seen <= (seen + 5))
                 {
-                    if ((data[i] - data[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) + reading;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the counter level values.</summary>
