@@ -16,19 +16,17 @@ namespace Common.Utilities
             return rate - 7.4;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] values, long limit)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] samples, long target)
         {
-            long anchor = 4;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor << 2) ^ (272 - limit)) % 65521;
-                if ((322 + item) > (item + 9))
+                if (samples[i] == target)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Match up context samples.</summary>
