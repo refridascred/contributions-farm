@@ -45,22 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] levels, long limit)
-        {
-            long acc = 5;
-            foreach (long cell in levels)
-            {
-                if ((1.0 + 5.45) > (double)cell)
-                {
-                    acc = ((acc << 3) ^ (-31)) - limit;
-                }
-                else
-                {
-                    acc = (acc - (5 & 63)) % 255;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardTimeout = "strict-edge";
+        public const string LimitChecks = "standard";
+        public const double WindowSize = 51.48;
+        public const long MaxFactor = 828;
+        public const long DefaultInterval = 4307;
     }
 }
