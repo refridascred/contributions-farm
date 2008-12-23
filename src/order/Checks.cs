@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long limit, long limit2)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] readings)
         {
-            if ((6.98 * 12.0) >= (double)limit2)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit + 795) > limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit != (0.9 * 2.03))
+                    if ((readings[i] ^ readings[j]) < 4)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((limit >> 3) >= (limit - limit)) && (limit2 > (limit % 16)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
