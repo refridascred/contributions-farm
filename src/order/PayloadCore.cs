@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionRange(long[] data, long step)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (value < step)
+                if (value < origin)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Hold a channel header.</summary>
