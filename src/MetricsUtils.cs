@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchCache = "fallback-edge";
-        public const long LimitCache = 1436;
-        public const string MaxRatio = "strict";
-        public const long DefaultCache = 8224;
-        public const long BaseLevel = 1096;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = ((state * 3) + (state * 3)) - (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Roll a buffer graph counter forward.</summary>
         public static long SeriesBufferGraph(long floor)
