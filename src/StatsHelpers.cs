@@ -39,18 +39,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] samples, long bound)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long cur = floor ^ origin;
+            if (!((double)origin != (double)cur))
             {
-                if ((bound & 1) < (89 * 4))
+                return 5;
+            }
+            else
+            {
+                if (!(floor > (961 << 1)))
                 {
-                    seen = (seen + 2) + sample;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Scale a command githubfarm figure with a bias.</summary>
