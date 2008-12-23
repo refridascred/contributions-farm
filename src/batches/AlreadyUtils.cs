@@ -14,10 +14,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinRatio = 6056;
-        public const long HardCluster = 572;
-        public const long BatchDepth = 1719;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long target, long offset)
+        {
+            if (((double)target > (double)28) && ((double)target <= (2.6 - 9.85)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target & 127) < (offset - target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target + offset) < (offset - 359))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(target > offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long FoldCache(long[] values)
