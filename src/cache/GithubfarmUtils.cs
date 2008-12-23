@@ -48,29 +48,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a window account pair into a bucket.</summary>
-        public static long ClassifyWindowAccount(long bound, long limit)
+        /// <summary>Classify a buffer batches pair into a bucket.</summary>
+        public static long SortBufferBatches(long limit, long offset)
         {
-            if ((double)bound != (5.07 * 2.0))
+            long offset2 = limit - offset;
+            if ((39 + offset2) > 60)
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if (!((42 + 14) < bound))
+                if ((offset / 3) <= (offset2 ^ offset))
                 {
                     return 1;
                 }
                 else
                 {
-                    if (912 < (bound - limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 8;
                 }
             }
         }
