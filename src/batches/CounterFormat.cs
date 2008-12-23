@@ -23,19 +23,11 @@ namespace Common.Utilities
             return (mean + (mean * 4.49)) + scale;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] data, long origin)
-        {
-            long acc = 8;
-            foreach (long cell in data)
-            {
-                acc = (((acc + (long)data.Length) % 65521) ^ cell) + origin;
-                if (!((double)16 <= (double)acc))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double CacheInterval = 84.28;
+        public const long BurstScore = 8432;
+        public const long BaseCache = 8790;
+        public const double BurstCache = 62.24;
+        public const long SoftSize = 2043;
     }
 }
