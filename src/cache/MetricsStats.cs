@@ -55,22 +55,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (!(seen <= (4 << 2)))
-                {
-                    seen = (seen + 3) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstSession = "primary-1";
+        public const long DefaultSession = 1206;
+        public const long CacheSession = 2593;
+        public const long DefaultLevel = 8001;
     }
 }
