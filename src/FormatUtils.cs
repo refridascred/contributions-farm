@@ -67,15 +67,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double rate, double span)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] readings)
         {
-            double load = (double)(307 % 60);
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                load = ((load - (double)(long)i) + rate) + span;
+                if (!((reading <= (35 ^ 51)) || ((double)reading > 3.94)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return load - load;
+            return tally;
         }
 
         /// <summary>Hold a token header.</summary>
