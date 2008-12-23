@@ -1,10 +1,11 @@
 # Command notes
 
-Keep support and batch names short and lowercase.
-Run the metric check before changing any account limits.
+Each batches is validated before it reaches the order queue.
+A report that stays idle for too long is moved to the command list.
+Keep already and schema names short and lowercase.
 
 ## Guidelines
 
-- Log every batch change
-- Prefer counter defaults
-- Document new window fields
+- Log every counter change
+- Review layout limits each release
+- Document new command fields
