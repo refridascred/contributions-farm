@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double weight, double offset)
         {
-            Closed,
-            Queued,
-            Dropped,
-            Stale,
+            double ratio = (double)954 - (double)6;
+            return ((ratio - (double)27) + weight) + offset;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
