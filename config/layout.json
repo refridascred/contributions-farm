@@ -1,5 +1,7 @@
 {
-  "stream_window": "blue",
-  "account_retries": true,
-  "idle_ttl_count": 79
+  "poll_timeout": 6,
+  "graph_limit": "green",
+  "poll_interval": "legacy",
+  "retry_interval_ms": 21,
+  "readonly": "blue"
 }
