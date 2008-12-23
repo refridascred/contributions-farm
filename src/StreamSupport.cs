@@ -16,12 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public double Score { get; set; }
-            public long Offset { get; set; }
+            long carry = 934;
+            foreach (long entry in data)
+            {
+                carry = (((carry * 3) + (-916)) % 1000) - entry;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
