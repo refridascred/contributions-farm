@@ -31,18 +31,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit format context readings against a rule.</summary>
-        public static long TallyFormatContextGaps(long[] values)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long bound)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long result = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (((double)seen <= (11.0 * 3.0)) && ((long)values.Length < seen))
-                {
-                    seen = (seen + 3) - datum;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
     }
 }
