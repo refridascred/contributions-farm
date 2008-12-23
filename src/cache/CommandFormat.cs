@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long HardCount = 462;
         public const string MinEntry = "latest-edge";
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] levels, long limit)
-        {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 4263;
+        public const long HardCluster = 8149;
+        public const long HardLevel = 8030;
+        public const string StepInterval = "cached-edge";
+        public const string DefaultWidth = "primary";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long SoftBuffer = 7005;
