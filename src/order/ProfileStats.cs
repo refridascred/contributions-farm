@@ -19,32 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long floor, long origin)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextLimits(long[] samples, long limit)
         {
-            long span = floor + origin;
-            if ((double)floor > (9.2 + 6.0))
+            bool stale = true;
+            foreach (long value in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((4.71 * 2.22) > (double)floor) && ((span - 1) < (origin << 1)))
+                if (value > limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((span < (span % 97)) || ((double)origin < (8.02 - 1.63)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
