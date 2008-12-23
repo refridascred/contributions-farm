@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            New,
+            Failed,
+            Paused,
             Stale,
-            Retry,
-            Queued,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Adjust a route reading.</summary>
