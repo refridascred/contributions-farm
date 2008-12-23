@@ -44,12 +44,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long seed)
         {
-            Draft,
-            Closed,
-            Retry,
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = (mark ^ 64) % 101;
+                mark = mark + (mark << 2);
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
