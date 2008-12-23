@@ -51,15 +51,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] levels)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] samples)
         {
-            long result = -780;
-            foreach (long cell in levels)
+            long anchor = 47;
+            foreach (long datum in samples)
             {
-                result = (result - result) ^ cell;
+                anchor = (anchor + (datum + anchor)) % 255;
+                anchor = anchor + (anchor - 350);
+                anchor = ((anchor * 3) + anchor) % 65521;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Accumulate profile samples.</summary>
