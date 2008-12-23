@@ -42,19 +42,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate contributi notes readings against a bound.</summary>
-        public static bool CheckContributiNotesBounds(long[] values, long origin)
-        {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultDepth = "cached-edge";
+        public const long StepWidth = 293;
+        public const double WindowFactor = 97.97;
+        public const long HardSpan = 5408;
+        public const double SoftSession = 40.06;
     }
 }
