@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] items)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((item - item) > seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Adjust a route reading.</summary>
