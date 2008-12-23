@@ -14,39 +14,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long limit, long origin)
-        {
-            if ((limit % 100) >= (origin * 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((-422) > origin) || ((origin + limit) > origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit << 2) <= origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin & 7) < 36)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinRatio = 6056;
+        public const long HardCluster = 572;
+        public const long BatchDepth = 1719;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long FoldCache(long[] values)
