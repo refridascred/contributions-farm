@@ -1,6 +1,6 @@
 {
-  "graph_limit": 97.78,
-  "order_window": 55.03,
-  "layout_timeout": false,
-  "max_capacity_s": 51
+  "hard_ttl_count": 0.75,
+  "flush_threshold_pct": 5,
+  "cache_capacity": "fallback",
+  "entry_timeout": 61
 }
