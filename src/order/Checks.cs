@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Measure how many checks filter samples are out of range.</summary>
+        public static long MeasureChecksFilterOutliers(long[] levels, long floor)
         {
-            public double Label { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)floor < 6.2)
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
