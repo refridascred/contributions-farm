@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((((entry + 82) > (hits % 2)) || (entry >= (84 & 7))) && ((entry - hits) != (entry << 1)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double SoftBatch = 41.74;
+        public const long BurstWidth = 3571;
+        public const string WindowBatch = "legacy-1";
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long PairContextCount(long[] items)
