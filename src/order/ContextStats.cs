@@ -34,25 +34,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a contributi channel pair into a bucket.</summary>
-        public static long GradeContributiChannel(long limit, long origin)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long edge = limit ^ origin;
-            if ((double)origin <= (3.15 + 19.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)edge > (1.6 + 1.04))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
