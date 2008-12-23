@@ -70,18 +70,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((7 + tally) >= tally)
+                if ((reading % 5) > seed)
                 {
-                    tally = (tally + 1) + cell;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the order status values.</summary>
