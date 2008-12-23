@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] samples, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (value >= limit)
+                if ((double)bound >= (4.72 - 6.0))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) + cell;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
