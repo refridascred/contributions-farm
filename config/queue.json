@@ -1,11 +1,6 @@
 {
-  "batch_threshold_count": 100,
-  "hard_ttl": {
-    "metric_window": 83.1,
-    "warm_timeout_count": 83,
-    "dry_run": "primary"
-  },
-  "farm_delay": "local",
-  "warm_timeout_count": "green",
-  "retry_interval": true
+  "cache_threshold_count": "local",
+  "base_window_s": "fallback",
+  "strict": 7959,
+  "hard_capacity": "standard"
 }
