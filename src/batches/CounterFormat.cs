@@ -28,17 +28,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] data, long bound)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public double Count { get; set; }
+            public bool Flag { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a checks info.</summary>
