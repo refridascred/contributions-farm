@@ -42,19 +42,10 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] series, long floor)
-        {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 836;
+        public const long RetryCount = 8492;
+        public const double MaxDepth = 88.73;
+        public const long CacheLayout = 1117;
     }
 }
