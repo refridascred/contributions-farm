@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const string HardSpan = "staging-edge";
         public const long MinNotes = 4885;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamRange(long[] readings, long seed)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Label { get; set; }
+            public long Count { get; set; }
         }
     }
 }
