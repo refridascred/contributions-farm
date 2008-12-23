@@ -64,19 +64,39 @@ namespace Common.Utilities
         public const long DefaultLevel = 5012;
         public const long IdleRatio = 1135;
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] items, long target)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long origin, long offset)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long edge = origin - offset;
+            if (!((7.43 - 8.0) == (double)edge))
             {
-                if (value < target)
+                return 7;
+            }
+            else
+            {
+                if (((double)origin <= (0.4 * 1.1)) || ((origin - offset) >= (edge / 7)))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((14 % 2) == (8 + edge))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((7.72 / 6.0) >= (double)origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
