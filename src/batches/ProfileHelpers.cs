@@ -48,20 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long step)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    anchor = ((anchor << 3) ^ (anchor * 2)) ^ (long)i2;
-                }
-                anchor = ((anchor << 3) ^ 53) % 101;
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            Retry,
+            Ready,
+            New,
         }
 
         /// <summary>Describe the route level values.</summary>
