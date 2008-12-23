@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long bound, long floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] data, long step)
         {
-            long next = bound - floor;
-            if (((bound + 3) == (next << 1)) && (793 >= (floor + floor)))
+            bool valid = true;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)bound != (6.4 + 9.0)))
+                if (item <= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor <= 14.0)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the filter kind values.</summary>
