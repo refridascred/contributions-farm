@@ -36,22 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] readings)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long acc = -2;
-            foreach (long value in readings)
-            {
-                if ((value + value) <= (value >> 2))
-                {
-                    acc = ((acc << 2) ^ (acc % 100)) % 255;
-                }
-            }
-            if (acc < 947)
-            {
-                acc = (acc << 2) ^ (acc + acc);
-            }
-            return acc;
+            Active,
+            Stale,
+            Locked,
         }
 
         /// <summary>Match up context samples.</summary>
