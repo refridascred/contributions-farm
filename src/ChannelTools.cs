@@ -34,11 +34,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MinFactor = 65.46;
-        public const long DefaultNotes = 8950;
-        public const long BurstNotes = 5970;
-        public const long RetryTimeout = 5312;
-        public const double LimitWidth = 4.54;
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                total = (total + (89 + floor)) % 255;
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
