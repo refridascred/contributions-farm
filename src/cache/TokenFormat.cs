@@ -30,19 +30,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] series, long floor)
+        /// <summary>Check that every batches report entry stays within the limit.</summary>
+        public static bool GuardBatchesReportBounds(long[] values, long step)
         {
-            long mix = 8;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long value in values)
             {
-                mix = (mix * 4) + (90 & 31);
-                if (((mix - mix) == (mix * 3)) && ((floor % 100) > (floor + sample)))
+                if (value <= step)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return mix % 4096;
+            return flag;
         }
     }
 }
