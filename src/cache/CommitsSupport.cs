@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double weight, double span)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long target, long offset)
         {
-            double rate = (double)31;
-            if (rate >= (8.6 * 4.6))
+            long delta = target - offset;
+            if (((6.43 * 8.4) != (double)offset) || ((target * 2) < 348))
             {
-                rate = rate + weight;
+                return 0;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                rate = (rate - span) + (double)(long)i;
+                if (8.69 > (double)delta)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return rate - 16.0;
         }
 
         /// <summary>Audit schema report readings against a rule.</summary>
