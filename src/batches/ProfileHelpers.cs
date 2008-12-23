@@ -32,23 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] levels)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] readings, long bound)
         {
-            long total = 90;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                total = (total << 3) ^ item;
-                if ((item - total) == (total * 5))
+                if (datum >= bound)
                 {
-                    total = (total * 4) + (item - item);
+                    found = false;
+                    break;
                 }
             }
-            if (total < 742)
-            {
-                total = (total + (total << 1)) % 4096;
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Define route limits and defaults.</summary>
