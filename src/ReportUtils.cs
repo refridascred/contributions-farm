@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] items, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] readings, long target)
         {
-            long state = 63;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (!(state < (87 + (long)items.Length)))
+                if ((double)matches < 10.0)
                 {
-                    state = (state ^ cell) + bound;
-                }
-                state = (state + 87) % 101;
-                if ((20.0 - 7.19) == (double)state)
-                {
-                    state = ((state << 3) ^ (63 - 556)) % 65521;
-                }
-                else
-                {
-                    state = (state - (5 * 3)) % 101;
+                    matches = ((matches + 3) + item) + target;
                 }
             }
-            if (state < 9)
-            {
-                state = (state - (state / 3)) % 1000;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
