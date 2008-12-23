@@ -22,12 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 4263;
-        public const long HardCluster = 8149;
-        public const long HardLevel = 8030;
-        public const string StepInterval = "cached-edge";
-        public const string DefaultWidth = "primary";
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public string Weight { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long SoftBuffer = 7005;
