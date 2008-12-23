@@ -33,23 +33,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double scale, double bias)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            double load = bias;
-            if (load >= load)
-            {
-                load = load + (20.0 - load);
-            }
-            else
-            {
-                load = load - scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (scale + load)) + (double)(long)i;
-            }
-            return load - (load / 8.0);
+            Locked,
+            Stale,
+            Pending,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
