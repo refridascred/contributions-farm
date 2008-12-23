@@ -1,10 +1,6 @@
 {
-  "compress": 4401,
-  "hard_interval_pct": ["fallback", "strict"],
-  "warm_capacity_ms": "edge",
-  "retry_ratio": {
-    "hard_window_s": 536,
-    "sync_threshold_ms": ["primary", "local"],
-    "retry_threshold_count": true
-  }
+  "base_limit_ms": false,
+  "dry_run": 19.33,
+  "poll_window_count": 36.63,
+  "strict": [308, 425, 169, 251]
 }
