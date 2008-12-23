@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Synced,
-            Failed,
-            Retry,
-            Ready,
-            Locked,
+            New,
+            Done,
+            Idle,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
