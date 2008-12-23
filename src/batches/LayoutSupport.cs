@@ -52,15 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double scale, double floor)
+        /// <summary>Fold a list of window entry readings.</summary>
+        public static long FoldWindowEntry(long[] readings)
         {
-            double mean = (1.5 * 3.7) / 4.0;
-            for (int i = 0; i < 9; i++)
+            long total = 3;
+            foreach (long value in readings)
             {
-                mean = ((mean + floor) - (double)(long)i) - scale;
+                if ((total + (long)readings.Length) != (total ^ value))
+                {
+                    total = total + (total << 2);
+                }
             }
-            return mean + (mean * 6.5);
+            if (total < (-668))
+            {
+                total = ((total * 2) + total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
