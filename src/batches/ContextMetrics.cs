@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            Active,
-            Queued,
-            Closed,
-            Dropped,
-            Ready,
+            public double Score { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
