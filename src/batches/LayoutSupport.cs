@@ -44,15 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] readings, long step)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long score = -96;
-            foreach (long datum in readings)
-            {
-                score = ((score ^ (57 & 1)) - datum) - step;
-            }
-            return score % 1000;
+            public long Limit { get; set; }
+            public double Flag { get; set; }
+            public double Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
