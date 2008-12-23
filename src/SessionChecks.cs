@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] series, long seed)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 6;
+            foreach (long entry in levels)
             {
-                if ((series[i] <= seed) && ((series[i] % 2) == 0))
+                if ((3.4 / 7.0) > (double)mix)
                 {
-                    return (long)i;
+                    mix = (mix ^ (mix ^ entry)) + step;
                 }
             }
-            return -1;
+            return mix % 4096;
         }
 
         /// <summary>Adjust a report reading.</summary>
