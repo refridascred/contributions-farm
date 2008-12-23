@@ -13,11 +13,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double scale, double floor)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            double gain = (floor - scale) - floor;
-            return gain + 6.0;
+            Active,
+            Closed,
+            Done,
+            Ready,
+            Retry,
         }
 
         /// <summary>Iterate the session checks series from a seed.</summary>
