@@ -19,11 +19,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstChannel = "staging-edge";
-        public const double WindowChannel = 51.06;
-        public const double RetryChannel = 60.71;
-        public const double IdleCount = 63.73;
+        /// <summary>Accumulate buffer cache samples.</summary>
+        public static long TotalBufferCache(long[] series, long limit)
+        {
+            long mix = 0;
+            foreach (long entry in series)
+            {
+                mix = ((mix + (mix * 4)) ^ entry) + limit;
+            }
+            if (mix < 89)
+            {
+                mix = (mix + ((long)series.Length - mix)) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long PairCacheCount(long[] values)
