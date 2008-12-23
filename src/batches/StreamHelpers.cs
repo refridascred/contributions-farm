@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Retry,
-            Draft,
-            Stale,
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of order channel readings.</summary>
