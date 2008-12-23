@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of notes stats entries.</summary>
-        public static long WeighNotesStats(long[] values)
-        {
-            long score = 275;
-            foreach (long item in values)
-            {
-                score = (score ^ (item << 1)) % 4096;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double WindowCluster = 7.46;
+        public const long BaseCluster = 7149;
+        public const string MaxCluster = "cached-v2";
+        public const long DefaultCluster = 5706;
+        public const long MaxWidth = 6265;
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
