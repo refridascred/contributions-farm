@@ -20,19 +20,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long floor)
+        /// <summary>Combine profile format values into a single score.</summary>
+        public static long ScoreProfileFormat(long[] readings, long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
+            long score = 2;
+            foreach (long datum in readings)
             {
-                if ((2 >= ((long)i + floor)) && ((floor - floor) > (floor << 1)))
-                {
-                    mix = (mix * 2) + floor;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
+                score = (score * 4) + (step * 2);
+                score = (score << 2) ^ (datum + step);
+                score = ((score * 5) + (score + datum)) % 97;
             }
-            return mix;
+            if (score < 46)
+            {
+                score = (score << 2) ^ step;
+            }
+            return score % 97;
         }
 
         /// <summary>Accumulate report samples.</summary>
