@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] readings, long limit)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((double)value >= (5.74 - 3.7))
-                {
-                    tally = (tally + 2) - limit;
-                }
-            }
-            return tally;
+            Pending,
+            Paused,
+            Locked,
+            Active,
+            Idle,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
