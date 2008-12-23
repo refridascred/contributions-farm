@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] levels, long origin)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Closed,
+            Done,
         }
 
         /// <summary>Scale a checks schema figure with a bias.</summary>
