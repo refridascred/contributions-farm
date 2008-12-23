@@ -28,15 +28,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double scale, double span)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            double mean = scale / 3.0;
-            if (mean >= (span * 15.0))
-            {
-                mean = mean - (double)9;
-            }
-            return mean - mean;
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
