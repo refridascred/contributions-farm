@@ -43,11 +43,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 4583;
-        public const string CacheTimeout = "strict-edge";
-        public const long WindowCount = 8509;
-        public const long StepSupport = 6580;
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double weight, double offset)
+        {
+            double drift = weight;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = ((drift - (double)7) + (double)(long)i) - offset;
+            }
+            return drift + (weight / 6.0);
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long AuditNotesGaps(long[] items, long seed)
