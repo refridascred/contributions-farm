@@ -19,14 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Combine graph schema values into a single score.</summary>
+        public static long WeighGraphSchema(long[] series)
         {
-            Locked,
-            Ready,
-            Dropped,
-            Failed,
-            Paused,
+            long total = 226;
+            foreach (long reading in series)
+            {
+                if (((reading - total) < (reading + 611)) || ((reading + reading) < (reading * 2)))
+                {
+                    total = (total << 2) ^ (reading - total);
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a profile header.</summary>
