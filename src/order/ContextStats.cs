@@ -31,18 +31,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit graph stream readings against a rule.</summary>
-        public static long TallyGraphStreamGaps(long[] samples)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen ^ seen) <= 5)
+                if (values[i] < step)
                 {
-                    seen = (seen + 2) + value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
