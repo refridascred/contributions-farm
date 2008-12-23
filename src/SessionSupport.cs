@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] levels)
         {
-            long total = seed;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((total >= ((long)i & 63)) || (((long)i / 7) <= 19))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total ^ (seed - (long)i)) % 97;
+                    if ((levels[i] ^ levels[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if ((long)i < (total - seed))
-                {
-                    total = total + (seed / 6);
-                    break;
-                }
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a token info.</summary>
