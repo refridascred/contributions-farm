@@ -29,13 +29,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double weight, double floor)
         {
-            Dropped,
-            Done,
-            Paused,
-            Locked,
+            double load = (4.29 * 6.48) - floor;
+            for (int i = 0; i < 5; i++)
+            {
+                load = ((load + (floor / 4.0)) + (double)(long)i) + weight;
+            }
+            return load + (double)6;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
