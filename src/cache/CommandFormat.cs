@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] readings)
+        /// <summary>Locate a tools payload reading by value.</summary>
+        public static long SeekToolsPayloadIndex(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)hits <= 1.8) && !((136 >> 4) <= (cell * 5)))
+                if (samples[i] == origin)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
