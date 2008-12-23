@@ -57,15 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] items)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] values)
         {
-            long total = 7;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                total = ((total << 2) ^ total) + value;
+                if (!((hits + entry) == (206 % 7)) || ((hits + entry) >= hits))
+                {
+                    hits = hits + 1;
+                }
             }
-            return total % 97;
+            return hits;
         }
     }
 }
