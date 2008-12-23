@@ -62,19 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double gain, double span)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] series, long bound)
         {
-            double ratio = span;
-            if (ratio > ratio)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio + 4.0;
+                if ((series[i] > bound) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (gain * 8.3)) + (double)(long)i;
-            }
-            return ratio + (gain * 9.0);
+            return -1;
         }
     }
 }
