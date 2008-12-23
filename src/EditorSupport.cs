@@ -74,15 +74,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double weight, double span)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] samples)
         {
-            double rate = weight;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                rate = ((rate + (weight / 7.0)) + (double)(long)i) + span;
+                if (((6.14 - 1.0) > (double)value) && ((20 + (-6)) != (value ^ 92)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return rate - 4.3;
+            return tally;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
