@@ -24,14 +24,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Audit token githubfarm readings against a rule.</summary>
+        public static long AuditTokenGithubfarmMatches(long[] items)
         {
-            Paused,
-            New,
-            Active,
-            Queued,
-            Retry,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((hits + reading) > (9 + hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a order context counter forward.</summary>
