@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double bias, double bias2)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] series, long floor)
         {
-            double scale = bias;
-            if (scale <= (scale + bias2))
+            bool flag = true;
+            foreach (long sample in series)
             {
-                scale = scale - bias;
+                if (sample < floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (bias - scale)) + (double)(long)i;
-            }
-            return scale + (bias - 5.0);
+            return flag;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
