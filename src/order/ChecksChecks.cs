@@ -19,32 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long seed, long limit)
-        {
-            if ((seed ^ limit) >= (7 / 8))
-            {
-                return 0;
-            }
-            else
-            {
-                if (limit > seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed % 16) > (limit * 4)) || ((limit + seed) < ((-845) - (-9))))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MaxTools = 15.42;
+        public const long BaseSpan = 992;
+        public const long WindowFactor = 7517;
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long SeriesQueue(long target)
