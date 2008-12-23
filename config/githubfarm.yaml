@@ -1,13 +1,16 @@
 # githubfarm settings
-base_depth_pct:
-  strict:
-    - 454
-    - 450
-  soft_limit: 71
-  idle_size: 100
-  support_interval:
-    - 277
-    - 245
-min_ratio: latest
-warm_threshold_pct: staging
-readonly: cached
+flush_delay:
+  max_size_pct:
+    - standard
+    - local
+    - open
+  default_timeout_ms: 64.64
+  base_limit_pct:
+    - 186
+    - 99
+support_retries:
+  idle_timeout: true
+  flush_size_pct: open
+  token_retries: 41
+  cluster_limit: 60
+min_delay_count: blue
