@@ -1,32 +1,38 @@
 # entry settings
-stats_threshold: 17.99
-min_retries:
-  min_ttl_s: 30
-  retry_ratio_count: false
-  soft_timeout: 93
-  queue_retries: true
-payload_depth: 98.69
-strict: false
-sync_depth: green
-warm_limit:
-  max_ttl_ms:
-    max_threshold_count: 78
-    hard_ttl_pct: 58
-    retry_timeout_pct: false
-    verbose: true
-    warm_depth: standard
-    contributi_timeout: legacy
-  burst_depth_count: 29.04
-  cache_capacity: 41
-  editor_window:
-    filter_window: stable
-    max_ratio_pct: true
-    persist: 40
-    readonly: true
-    poll_interval_count: true
-    sync_timeout: legacy
-  counter_retries: false
-  contributi_window:
-    - eu-west
-    - eu-west
-    - legacy
+max_window_count:
+  contributi_capacity: open
+  sync_timeout:
+    - green
+    - latest
+  poll_threshold:
+    - 352
+    - 95
+    - 1
+    - 260
+  sync_size_ms: 98.72
+  flush_threshold: false
+  cache_size: 13.68
+sync_retries:
+  compress: fallback
+  enabled: 8620
+  cache_limit_pct: latest
+  buffer_size: 52.51
+  audit: 97.42
+  persist: true
+min_limit:
+  readonly: 17.9
+  idle_window_count: 4.1
+  poll_threshold_pct: false
+  persist:
+    - 15
+    - 107
+compress:
+  - open
+  - eu-west
+  - blue
+burst_limit_count:
+  - 73
+  - 450
+  - 283
+  - 339
+retry_window_pct: 76.35
