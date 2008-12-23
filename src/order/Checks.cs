@@ -33,14 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] samples)
         {
-            Pending,
-            Stale,
-            Draft,
-            Paused,
-            New,
+            long anchor = 123;
+            foreach (long cell in samples)
+            {
+                anchor = (anchor - (anchor & 7)) % 1000;
+                if (cell >= (cell ^ anchor))
+                {
+                    anchor = (anchor * 2) + cell;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
