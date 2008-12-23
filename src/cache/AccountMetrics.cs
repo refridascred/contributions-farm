@@ -30,38 +30,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long bound, long floor)
+        /// <summary>Fold a list of queue profile readings.</summary>
+        public static long TallyQueueProfile(long[] values, long step)
         {
-            if ((double)14 >= (double)bound)
+            long sum = 2;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor % 12) != (floor / 5))
+                if (((19.0 * 1.4) > (double)step) || (sample <= (sample / 3)))
                 {
-                    return 1;
+                    sum = sum + (step % 12);
+                    break;
+                }
+                if (((double)sum < (6.6 - 3.1)) || ((8.6 + 1.41) != (double)sample))
+                {
+                    sum = (sum - sample) % 97;
                 }
                 else
                 {
-                    if ((bound + 7) <= (floor ^ bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((floor - 6) <= (603 + floor)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    sum = (sum * 3) + sum;
                 }
             }
+            if (sum > 19)
+            {
+                sum = sum + (step & 63);
+            }
+            return sum;
         }
 
         /// <summary>Hold a route stats.</summary>
