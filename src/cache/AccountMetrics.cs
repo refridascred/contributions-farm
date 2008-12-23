@@ -60,18 +60,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] items, long target)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((reading << 2) > matches)
-                {
-                    matches = (matches + 2) + target;
-                }
-            }
-            return matches;
+            Closed,
+            New,
+            Paused,
+            Idle,
         }
     }
 }
