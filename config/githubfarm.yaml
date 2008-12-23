@@ -1,9 +1,18 @@
 # githubfarm settings
-already_depth:
-  - standard
-  - open
-cache_retries: staging
-strict: strict
-checks_size: primary
-route_limit: 84.0
-readonly: 37.62
+idle_timeout_ms:
+  - fallback
+  - green
+  - green
+  - blue
+base_capacity: standard
+already_size:
+  retry_retries: standard
+  base_retries_ms:
+    - 95
+    - 471
+    - 206
+    - 78
+  burst_depth: standard
+retry_size_count: 7375
+dry_run: 19
+order_threshold: 78.36
