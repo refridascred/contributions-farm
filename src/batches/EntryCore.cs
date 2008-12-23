@@ -61,19 +61,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Validate command already readings against a bound.</summary>
-        public static bool GuardCommandAlreadyRange(long[] readings, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] data)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (item != offset)
+                if ((15.0 - 2.5) != (double)count)
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
