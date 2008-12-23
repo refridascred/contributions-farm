@@ -30,10 +30,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheSpan = 1970;
-        public const long CacheCount = 6889;
-        public const string IdleRatio = "local";
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double bias, double offset)
+        {
+            double scale = bias;
+            if (scale >= bias)
+            {
+                scale = scale + offset;
+            }
+            return scale + 2.96;
+        }
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
