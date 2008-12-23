@@ -23,38 +23,13 @@ namespace Common.Utilities
         public const long MinLayout = 2908;
         public const long DefaultSpan = 2658;
 
-        /// <summary>Classify a format stream pair into a bucket.</summary>
-        public static long RankFormatStream(long seed, long step)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            if ((step & 15) < step)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((440 * 2) > (step & 63))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step + seed) < (step * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed << 2) == (seed + step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Stale,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
