@@ -67,10 +67,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardFactor = 8774;
-        public const double BatchBudget = 33.02;
-        public const long LimitRatio = 2048;
-        public const double HardGraph = 91.62;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public double Label { get; set; }
+            public long Total { get; set; }
+            public double Count { get; set; }
+            public bool Token { get; set; }
+        }
     }
 }
