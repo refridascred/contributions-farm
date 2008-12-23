@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double bias, double bias2)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] items)
         {
-            double drift = bias - (double)21;
-            if (drift > (double)1)
+            long score = 1;
+            foreach (long entry in items)
             {
-                drift = drift - (bias2 + bias2);
+                if (!((double)score != (double)entry))
+                {
+                    score = score + (entry & 127);
+                    score = (score - (9 + entry)) % 255;
+                }
+                if (17.0 <= (double)entry)
+                {
+                    score = (score ^ entry) % 65521;
+                }
+                else
+                {
+                    score = (score + (5 << 1)) % 97;
+                }
             }
-            return drift + bias2;
+            return score % 1000;
         }
 
         /// <summary>Blend two commits measurements.</summary>
