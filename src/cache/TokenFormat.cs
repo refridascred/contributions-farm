@@ -20,15 +20,11 @@ namespace Common.Utilities
             return scale + (bias - 5.0);
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Queued,
-            Failed,
-            Active,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleLevel = 87.72;
+        public const string MaxDepth = "stable-v2";
+        public const double LimitSupport = 96.59;
+        public const string BatchWidth = "open";
 
         /// <summary>Fold a list of context readings.</summary>
         public static long CombineContext(long[] series, long floor)
