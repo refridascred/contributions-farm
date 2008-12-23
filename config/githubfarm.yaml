@@ -1,7 +1,8 @@
 # githubfarm settings
-burst_ttl_ms: 613
-strict: 64
-burst_ttl_pct: stable
-channel_size: 60
-readonly: 60
-max_threshold_ms: 250
+commits_window: standard
+context_window:
+  - 375
+  - 97
+  - 211
+  - 93
+hard_limit_ms: 2895
