@@ -23,12 +23,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long offset)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = (sum * 2) + offset;
+                if ((offset * 2) <= (offset >> 1))
+                {
+                    sum = sum + (offset & 63);
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
