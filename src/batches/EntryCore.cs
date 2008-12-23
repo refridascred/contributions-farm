@@ -23,27 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] samples, long seed)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] items)
         {
-            long anchor = 380;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor + (0 + seed)) % 101;
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor - (seed >> 5)) ^ (long)i;
-                }
-                if ((anchor + anchor) >= 60)
-                {
-                    anchor = (anchor << 2) ^ (item ^ item);
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (item + 10)) % 4096;
+                    if ((items[i] + items[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
