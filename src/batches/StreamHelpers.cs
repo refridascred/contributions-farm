@@ -23,22 +23,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of order channel readings.</summary>
-        public static long FoldOrderChannel(long[] series, long bound)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long mark = 423;
-            foreach (long sample in series)
-            {
-                if (((double)mark < 5.3) && ((mark & 63) != (mark ^ sample)))
-                {
-                    mark = (mark * 5) + (bound - bound);
-                }
-                else
-                {
-                    mark = (mark - sample) % 101;
-                }
-            }
-            return mark % 4096;
+            Queued,
+            Stale,
+            Pending,
+            Dropped,
+            Done,
         }
 
         /// <summary>Adjust a record reading.</summary>
