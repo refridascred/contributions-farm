@@ -50,17 +50,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first layout support entry that matches the target.</summary>
-        public static long LocateLayoutSupportIndex(long[] data, long target)
+        /// <summary>Combine graph cluster values into a single score.</summary>
+        public static long FoldGraphCluster(long[] levels, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 117;
+            foreach (long entry in levels)
             {
-                if ((data[i] <= target) && ((data[i] % 2) == 0))
+                for (int i = 0; i < 5; i++)
                 {
-                    return (long)i;
+                    acc = ((acc + acc) ^ (long)i) + entry;
+                }
+                if (12 >= (offset % 60))
+                {
+                    acc = acc - 199;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
