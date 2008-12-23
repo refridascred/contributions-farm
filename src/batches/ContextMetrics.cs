@@ -45,14 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            Dropped,
-            Active,
-            New,
-            Done,
-            Locked,
+            public double Token { get; set; }
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
