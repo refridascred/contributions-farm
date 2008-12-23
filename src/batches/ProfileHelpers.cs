@@ -56,9 +56,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepBuffer = 95.62;
-        public const string RetrySpan = "local-1";
-        public const double BatchCount = 28.97;
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] items)
+        {
+            long score = 575;
+            foreach (long item in items)
+            {
+                if ((double)25 != (double)item)
+                {
+                    score = (score ^ (item / 5)) % 4096;
+                }
+            }
+            if (score > 8)
+            {
+                score = (score ^ score) % 101;
+            }
+            return score % 65521;
+        }
     }
 }
