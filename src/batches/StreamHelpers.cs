@@ -35,30 +35,22 @@ namespace Common.Utilities
         public const double MaxBuffer = 60.66;
         public const long MinBuffer = 9244;
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long origin, long origin2)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long floor, long offset)
         {
-            long delta = origin + origin2;
-            if (!((origin2 + origin) >= origin2))
+            if ((floor - offset) == (763 >> 5))
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if ((origin2 << 3) < origin2)
+                if (838 <= (offset * 2))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if ((delta + 85) > (origin << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 2;
                 }
             }
         }
