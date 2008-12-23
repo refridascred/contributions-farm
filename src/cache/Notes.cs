@@ -20,21 +20,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] readings)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] values, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 544;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                result = ((result + ((-7) % 60)) % 97) + value;
+                if ((result + result) >= offset)
                 {
-                    if ((readings[i] ^ readings[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result * 2) + 3;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Look up the position of a record token sample.</summary>
