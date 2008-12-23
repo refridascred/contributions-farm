@@ -64,18 +64,19 @@ namespace Common.Utilities
         public const long DefaultLevel = 5012;
         public const long IdleRatio = 1135;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] levels, long step)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] items, long target)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if ((step - count) <= (3 & 15))
+                if (value < target)
                 {
-                    count = (count + 2) + sample;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
