@@ -1,38 +1,16 @@
 # entry settings
-max_window_count:
-  contributi_capacity: open
-  sync_timeout:
-    - green
-    - latest
-  poll_threshold:
-    - 352
-    - 95
-    - 1
-    - 260
-  sync_size_ms: 98.72
-  flush_threshold: false
-  cache_size: 13.68
-sync_retries:
-  compress: fallback
-  enabled: 8620
-  cache_limit_pct: latest
-  buffer_size: 52.51
-  audit: 97.42
-  persist: true
-min_limit:
-  readonly: 17.9
-  idle_window_count: 4.1
-  poll_threshold_pct: false
-  persist:
-    - 15
-    - 107
-compress:
-  - open
-  - eu-west
-  - blue
-burst_limit_count:
-  - 73
-  - 450
-  - 283
-  - 339
-retry_window_pct: 76.35
+command_interval: strict
+default_timeout_pct: latest
+soft_ratio_ms: fallback
+queue_capacity:
+  cache_threshold: 30
+  base_window_pct: staging
+  poll_timeout: 100
+  min_timeout_ms: 4021
+  cache_interval: 73.2
+  persist: cached
+batch_interval:
+  - 456
+  - 229
+  - 122
+  - 183
