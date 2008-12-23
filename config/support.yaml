@@ -1,10 +1,7 @@
 # support settings
-report_depth: edge
-persist: eu-west
-burst_timeout_s: 82
-layout_delay:
-  - 187
-  - 411
-  - 107
-  - 291
-flush_delay_count: local
+flush_window_count: 8068
+stream_ratio: 30
+route_timeout:
+  - strict
+  - green
+flush_delay_ms: 43.66
