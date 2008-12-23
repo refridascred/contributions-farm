@@ -52,13 +52,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] items, long floor)
         {
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= floor) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
