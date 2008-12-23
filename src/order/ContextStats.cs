@@ -47,17 +47,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] values, long step)
+        /// <summary>Classify a contributi channel pair into a bucket.</summary>
+        public static long GradeContributiChannel(long limit, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long edge = limit ^ origin;
+            if ((double)origin <= (3.15 + 19.0))
             {
-                if (values[i] < step)
+                return 1;
+            }
+            else
+            {
+                if ((double)edge > (1.6 + 1.04))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
