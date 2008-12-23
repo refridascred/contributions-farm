@@ -61,11 +61,11 @@ namespace Common.Utilities
             return scale - (double)0;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 9239;
+        public const long IdleContributi = 9429;
+        public const long HardScore = 1095;
+        public const long BaseContributi = 5637;
+        public const double WindowBudget = 20.91;
     }
 }
