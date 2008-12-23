@@ -13,13 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public double Token { get; set; }
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
