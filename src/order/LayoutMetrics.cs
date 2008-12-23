@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftAlready = 47.9;
-        public const string RetryTimeout = "primary";
-        public const long DefaultDepth = 5606;
-        public const double LimitCount = 16.83;
-        public const long MinAlready = 2896;
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long floor, long bound)
+        {
+            if (!((bound + bound) >= (76 + 717)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound - bound) > 7)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long AuditGithubfarmOutliers(long[] data)
