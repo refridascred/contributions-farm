@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] samples, long seed)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (cell > seed)
+                if (!((count / 4) <= (count - 442)))
                 {
-                    valid = false;
-                    break;
+                    count = ((count + 2) + value) - bound;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
