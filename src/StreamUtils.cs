@@ -47,26 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] samples)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] values)
         {
-            long total = 722;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((datum + datum) < datum)
+                if ((cell / 3) == ((long)values.Length - matches))
                 {
-                    total = (total - total) % 255;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    total = total + 124;
+                    matches = matches - 1;
                 }
             }
-            if (total < 92)
-            {
-                total = (total << 2) ^ (total + total);
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
