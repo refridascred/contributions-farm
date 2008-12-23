@@ -67,24 +67,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long target, long offset)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            if (((offset + offset) <= (target % 97)) && (offset >= 89))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((offset + 110) <= (offset * 3)) && ((13.0 * 6.52) <= (double)target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
