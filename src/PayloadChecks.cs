@@ -13,13 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double weight, double span)
         {
-            Pending,
-            Queued,
-            Idle,
-            Active,
+            double gain = 3.7;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = ((gain + (span * 9.5)) + (double)(long)i) + weight;
+            }
+            return gain + gain;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
