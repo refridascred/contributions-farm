@@ -35,11 +35,22 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxTimeout = 5268;
-        public const long DefaultFormat = 1130;
-        public const double LimitTimeout = 75.29;
-        public const string BatchDepth = "stable-edge";
+        /// <summary>Count order tools pairs that satisfy a relation.</summary>
+        public static long MatchOrderToolsCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long LookupChannelIndex(long[] values, long bound)
