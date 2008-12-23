@@ -1,6 +1,13 @@
 {
-  "sync_ttl_count": 98.84,
-  "batches_ttl": 65,
-  "burst_retries_ms": false,
-  "sync_ratio": "standard"
+  "retry_threshold": false,
+  "idle_timeout_s": {
+    "cache_capacity_ms": [89, 20, 317, 143],
+    "burst_interval": true,
+    "filter_depth": false,
+    "flush_ratio": "standard",
+    "window_window": 95.46
+  },
+  "command_limit": 86.42,
+  "stats_size": 7567,
+  "payload_ttl": 30
 }
