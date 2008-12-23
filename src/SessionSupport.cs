@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long bound, long origin)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long offset, long floor)
         {
-            if (((-23) < bound) || ((bound - origin) >= ((-9) - origin)))
+            long diff = offset + floor;
+            if (offset <= (offset ^ floor))
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if ((double)origin == (3.5 * 1.4))
+                if ((floor ^ 6) <= diff)
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    return 8;
+                    return 3;
                 }
             }
         }
