@@ -25,13 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double bias, double bias2)
         {
-            Idle,
-            Retry,
-            Queued,
-            Closed,
+            double bias3 = (bias2 - 4.82) / 2.0;
+            if (bias3 < bias2)
+            {
+                bias3 = bias3 + (bias - bias3);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias3 = (bias3 + 8.0) + (double)(long)i;
+            }
+            return bias3 - bias2;
         }
 
         /// <summary>Describe the batch mode values.</summary>
