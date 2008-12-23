@@ -63,17 +63,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] items, long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 26;
+            foreach (long value in series)
             {
-                if ((items[i] == bound) && ((items[i] % 3) != 0))
+                if (((642 % 3) == (mark + value)) || ((5.4 / 5.0) != (double)mark))
                 {
-                    return (long)i;
+                    mark = ((mark << 3) ^ value) % 97;
+                }
+                else
+                {
+                    mark = (mark ^ (mark << 1)) % 255;
                 }
             }
-            return -1;
+            if (mark < 911)
+            {
+                mark = (mark * 5) + ((long)series.Length - mark);
+            }
+            return mark % 65521;
         }
     }
 }
