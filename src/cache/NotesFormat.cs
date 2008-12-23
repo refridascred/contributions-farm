@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftCount = 6101;
-        public const long MinScore = 5287;
-        public const long CacheNotes = 4590;
-        public const long MinNotes = 7891;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Paused,
+            Draft,
+            Ready,
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long CacheBatches = 8937;
