@@ -14,11 +14,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 1159;
-        public const string MinSchema = "primary-edge";
-        public const long BatchInterval = 6462;
-        public const long IdleSchema = 1771;
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Accumulate checks session samples.</summary>
         public static long CombineChecksSession(long[] series, long limit)
