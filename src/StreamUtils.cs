@@ -45,16 +45,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long floor)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long bound, long seed)
         {
-            long mark = floor;
-            for (int i = 0; i < 21; i++)
+            long lane = bound + seed;
+            if (((lane >> 3) == (lane + bound)) && ((bound & 7) < bound))
             {
-                mark = (mark ^ (mark + (long)i)) % 1000;
-                mark = ((mark * 4) + (long)i) % 4093;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((lane * 3) < bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
