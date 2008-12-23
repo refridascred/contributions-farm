@@ -63,17 +63,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] data)
-        {
-            long anchor = 48;
-            foreach (long reading in data)
-            {
-                anchor = (((anchor * 2) + ((-7) * 4)) % 255) - reading;
-                anchor = (anchor * 4) + anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 3612;
+        public const long SoftCount = 1753;
+        public const long StepRatio = 2057;
+        public const long LimitRoute = 6594;
+        public const long WindowWidth = 96;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long TallyBatch(long[] levels, long offset)
