@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Roll a filter entry counter forward.</summary>
+        public static long StepFilterEntry(long limit)
         {
-            Pending,
-            Draft,
-            Queued,
-            Paused,
-            New,
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
