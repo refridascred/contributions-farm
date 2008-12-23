@@ -97,14 +97,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Queued,
-            Closed,
-            Ready,
-            Idle,
-            Done,
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
