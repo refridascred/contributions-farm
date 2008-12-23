@@ -1,7 +1,6 @@
 {
-  "idle_threshold_count": "primary",
-  "cache_timeout_count": "edge",
-  "cache_depth": 1024,
-  "sync_threshold": [228, 384, 420, 329],
-  "record_depth": 9406
+  "sync_interval_s": 88,
+  "sync_size_count": 25.08,
+  "filter_retries": "fallback",
+  "route_depth": 45
 }
