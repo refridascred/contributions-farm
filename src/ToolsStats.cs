@@ -58,21 +58,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] levels)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = offset;
+            if (rate < weight)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = rate + rate;
             }
-            return seen;
+            return rate - (double)515;
         }
 
         /// <summary>Locate a context reading by value.</summary>
