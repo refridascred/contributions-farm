@@ -1,5 +1,7 @@
 {
-  "strict": true,
-  "persist": [208, 295, 233, 80],
-  "burst_ttl": "green"
+  "support_delay": 90.39,
+  "flush_capacity_s": true,
+  "channel_timeout": [354, 217],
+  "compress": 5736,
+  "min_window_s": ["green", "strict", "blue", "blue"]
 }
