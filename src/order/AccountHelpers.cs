@@ -32,17 +32,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] levels, long limit)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            New,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Combine stream values into a single score.</summary>
