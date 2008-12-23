@@ -1,5 +1,9 @@
 # support settings
-cache_threshold_ms: 22.34
-flush_ratio_count: 7.2
-channel_delay: latest
-batch_window: 3935
+persist:
+  support_delay: 63.73
+  burst_ratio: 500
+  audit: 21.97
+audit:
+  - 378
+  - 386
+soft_window: 12.5
