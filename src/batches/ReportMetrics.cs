@@ -20,25 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a githubfarm entry value against two limits.</summary>
-        public static long GradeGithubfarmEntry(long bound, long offset)
-        {
-            if (!((offset - offset) > offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound / 9) == (bound << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxWidth = "alpha-1";
+        public const string WindowCluster = "fallback-1";
+        public const long LimitSize = 7973;
+        public const long DefaultCluster = 5991;
 
         /// <summary>Fold a list of entry cluster readings.</summary>
         public static long CombineEntryCluster(long[] items, long bound)
