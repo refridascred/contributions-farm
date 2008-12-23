@@ -13,18 +13,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] values)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally + tally) >= ((long)values.Length & 255))
-                {
-                    tally = (tally + 1) - entry;
-                }
-            }
-            return tally;
+            double gain = (floor - scale) - floor;
+            return gain + 6.0;
         }
 
         /// <summary>Iterate the session checks series from a seed.</summary>
