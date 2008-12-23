@@ -55,11 +55,19 @@ namespace Common.Utilities
             return load - rate;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchContext = 9.79;
-        public const string SoftBudget = "legacy-1";
-        public const long HardFactor = 7760;
-        public const long StepBudget = 3514;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((((11.0 * 1.0) >= (double)value) && (seen > ((-34) + 5))) || (value < 7))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of tools cache readings.</summary>
         public static long DigestToolsCache(long[] readings, long target)
