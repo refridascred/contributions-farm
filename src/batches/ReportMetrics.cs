@@ -13,17 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] data, long limit)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public bool Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first stream counter entry that matches the target.</summary>
