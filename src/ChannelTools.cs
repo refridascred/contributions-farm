@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = (sum ^ (long)i) % 65521;
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            public string Region { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Look up the position of a session sample.</summary>
