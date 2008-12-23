@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] data)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)limit >= (11.0 - 4.2))
                 {
-                    if ((data[i] - data[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) - entry;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
