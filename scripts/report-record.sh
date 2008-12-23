@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+for item in latest strict local standard; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=352
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-stable}"
 case "${mode}" in
-    stable)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
