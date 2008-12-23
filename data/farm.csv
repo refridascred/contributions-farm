@@ -1,6 +1,9 @@
-id,token,rank,owner,score
-1,78.55,614,46.67,6.35
-2,standard,48.16,14.31,989
-3,76.05,blue,44.63,fallback
-4,423,86.71,legacy,35.92
-5,596,12.74,blue,291
+id,region,owner,label
+1,68.8,45.87,fallback
+2,legacy,385,local
+3,174,primary,760
+4,195,680,edge
+5,15.16,630,32.37
+6,primary,open,eu-west
+7,999,eu-west,344
+8,97.14,staging,92
