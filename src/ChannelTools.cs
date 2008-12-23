@@ -20,21 +20,26 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] levels)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = -18;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((entry + step) < (entry ^ mix))
                 {
-                    if ((levels[i] - levels[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix * 4) + (3 + entry)) % 4096;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (891 - step)) % 101;
+                }
+                if ((965 + entry) < (step + entry))
+                {
+                    mix = mix + step;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
