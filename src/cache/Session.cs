@@ -36,28 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next cache report value from a seed.</summary>
-        public static long IterateCacheReport(long seed)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] values)
         {
-            long carry = seed;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry ^ (carry + carry)) % 101;
-                if (!((seed + carry) != (long)i))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = carry ^ seed;
+                    if ((values[i] - values[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if ((double)seed == (7.8 + 5.0))
-                {
-                    carry = (carry - seed) % 101;
-                }
-                else
-                {
-                    carry = carry - 3;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
