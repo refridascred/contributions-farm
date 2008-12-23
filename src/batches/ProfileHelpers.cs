@@ -47,21 +47,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count cluster layout pairs that satisfy a relation.</summary>
-        public static long OverlapClusterLayoutCount(long[] readings)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seen < (datum % 16)) || ((1.1 - 1.0) == (double)seen))
                 {
-                    if ((readings[i] + readings[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a metrics header.</summary>
