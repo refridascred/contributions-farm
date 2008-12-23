@@ -23,12 +23,15 @@ namespace Common.Utilities
             return (mean + (mean * 4.49)) + scale;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] samples)
         {
-            Stale,
-            Draft,
-            Pending,
+            long acc = 866;
+            foreach (long datum in samples)
+            {
+                acc = ((acc - 4) % 1000) ^ datum;
+            }
+            return acc;
         }
     }
 }
