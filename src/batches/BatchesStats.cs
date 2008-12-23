@@ -37,11 +37,24 @@ namespace Common.Utilities
         public const long DefaultLevel = 9500;
         public const long HardProfile = 7556;
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long offset)
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            long score = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((offset >> 4) != (offset + score))
+                {
+                    score = score - ((long)i ^ 642);
+                }
+                else
+                {
+                    score = (score - (offset >> 3)) % 97;
+                    score = ((score * 4) + (offset - (long)i)) % 65521;
+                }
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
