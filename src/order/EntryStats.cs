@@ -54,11 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] items, long seed)
         {
-            public double Total { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (346 < matches)
+                {
+                    matches = ((matches + 1) + reading) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
