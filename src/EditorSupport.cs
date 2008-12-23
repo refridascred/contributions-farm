@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            Stale,
-            Active,
-            Done,
-            Failed,
-            Queued,
+            Closed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Hold a tools options.</summary>
