@@ -26,13 +26,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public double Level { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryBudget = 5471;
+        public const long IdleInterval = 9239;
+        public const string BurstSpan = "open-edge";
+        public const long SoftFactor = 669;
+        public const long RetryQueue = 5758;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
