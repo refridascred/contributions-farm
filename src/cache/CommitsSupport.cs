@@ -27,12 +27,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long offset)
         {
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public bool Rank { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a cache entry.</summary>
