@@ -1,5 +1,23 @@
 # githubfarm settings
-poll_size: 78.72
-audit: edge
-flush_retries_ms: stable
-commits_interval: false
+burst_size: fallback
+filter_size: green
+tools_timeout: 250
+cache_size:
+  poll_interval: 25
+  warm_ttl_pct: primary
+  idle_capacity:
+    persist: true
+    channel_capacity: open
+    burst_depth_count: 44.68
+    batch_size: standard
+    hard_interval: false
+    context_ratio: edge
+  cache_ttl_s:
+    retry_depth_ms: false
+    retry_size: edge
+    schema_ttl: 9357
+    context_depth: 76.34
+    strict:
+      - standard
+      - fallback
+  flush_depth: 29
