@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheFactor = "primary-edge";
-        public const long HardTimeout = 9807;
-        public const long BatchWidth = 8779;
-        public const long DefaultRoute = 7498;
+        /// <summary>Compare every pair of context batches readings.</summary>
+        public static long CompareContextBatchesCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long RetryNotes = 4189;
