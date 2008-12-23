@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] items)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] + items[j]) != 0)
+                    if ((samples[i] ^ samples[j]) > 15)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
