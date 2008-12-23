@@ -36,18 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] levels)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double weight, double span)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            double rate = 1.14 - weight;
+            if (rate >= (double)9)
             {
-                if (sample > (1 << 3))
-                {
-                    tally = tally + 3;
-                }
+                rate = (rate + (double)0) - span;
             }
-            return tally;
+            return rate + (rate - weight);
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
