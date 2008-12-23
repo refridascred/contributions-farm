@@ -16,15 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] data)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] samples, long offset)
         {
-            long carry = 934;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                carry = (((carry * 3) + (-916)) % 1000) - entry;
+                if (sample < offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Describe the tools kind values.</summary>
