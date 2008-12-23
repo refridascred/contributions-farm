@@ -33,23 +33,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a session tools reading.</summary>
-        public static double ScaleSessionTools(double gain, double bias)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long offset)
         {
-            double mean = 4.25 + (gain / 6.0);
-            if (mean > bias)
+            long state = offset;
+            for (int i = 0; i < 13; i++)
             {
-                mean = mean + mean;
+                state = (state - ((long)i << 2)) % 65521;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean + (mean * 12.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (gain / 5.0)) - (double)(long)i;
-            }
-            return mean + (3.2 - mean);
+            return state;
         }
     }
 }
