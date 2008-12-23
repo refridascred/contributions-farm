@@ -23,22 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] values, long step)
+        /// <summary>Derive the next batches counter value from a seed.</summary>
+        public static long SeriesBatchesCounter(long bound)
         {
-            long count = 0;
-            foreach (long item in values)
+            long score = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((item / 5) != (count / 2))
+                if (6.4 > (double)bound)
                 {
-                    count = (count + 2) - step;
+                    score = (score * 4) + 86;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Roll a session counter forward.</summary>
