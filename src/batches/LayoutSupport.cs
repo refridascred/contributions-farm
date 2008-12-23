@@ -53,10 +53,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 7756;
-        public const string MinTools = "fallback-v2";
-        public const long BurstTools = 1541;
-        public const long HardBudget = 844;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
+        }
     }
 }
