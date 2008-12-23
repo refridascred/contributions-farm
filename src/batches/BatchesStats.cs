@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            Queued,
-            Ready,
-            Active,
+            Locked,
+            Pending,
+            New,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
