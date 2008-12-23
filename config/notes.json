@@ -1,24 +1,9 @@
 {
-  "persist": "cached",
-  "flush_threshold": {
-    "cache_interval": 76,
-    "cluster_capacity": "edge",
-    "sync_size_s": {
-      "warm_delay_ms": "primary",
-      "default_depth_pct": false,
-      "hard_size_pct": 50.94
-    },
-    "dry_run": 60,
-    "idle_timeout_pct": "green",
-    "account_capacity": {
-      "persist": 100,
-      "flush_timeout_pct": [207, 55],
-      "stats_depth": "edge",
-      "sync_ttl_pct": 75,
-      "poll_interval_pct": true
-    }
-  },
-  "warm_timeout": "strict",
-  "batch_ttl": 19,
-  "hard_ratio_count": "fallback"
+  "account_limit": "edge",
+  "min_timeout": 20,
+  "min_capacity_ms": {
+    "session_size": 250,
+    "max_limit_count": 94.4,
+    "soft_depth": [45, 12]
+  }
 }
