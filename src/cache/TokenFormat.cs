@@ -20,28 +20,14 @@ namespace Common.Utilities
             return scale + (bias - 5.0);
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] levels, long floor)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long state = 88;
-            foreach (long entry in levels)
-            {
-                state = state + entry;
-                if ((double)floor > (double)entry)
-                {
-                    state = ((state << 3) ^ (floor + entry)) % 255;
-                }
-                state = ((state << 2) ^ (entry / 4)) % 97;
-                if (state > (floor % 12))
-                {
-                    break;
-                }
-            }
-            if (state < 367)
-            {
-                state = state ^ (floor + state);
-            }
-            return state;
+            Queued,
+            Failed,
+            Active,
+            Draft,
+            Ready,
         }
 
         /// <summary>Fold a list of context readings.</summary>
