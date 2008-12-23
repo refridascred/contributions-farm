@@ -35,21 +35,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Count order tools pairs that satisfy a relation.</summary>
-        public static long MatchOrderToolsCount(long[] series)
+        /// <summary>Validate commits notes readings against a bound.</summary>
+        public static bool GuardCommitsNotesBounds(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum <= origin)
                 {
-                    if ((series[i] - series[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
