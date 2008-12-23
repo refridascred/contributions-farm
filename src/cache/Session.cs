@@ -29,22 +29,21 @@ namespace Common.Utilities
         public const string LimitMetric = "primary-v2";
         public const long IdleWidth = 6127;
 
-        /// <summary>Fold a list of account metrics readings.</summary>
-        public static long FoldAccountMetrics(long[] readings)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] levels)
         {
-            long acc = 9;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((acc + datum) >= (datum + acc))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = acc + acc;
+                    if ((levels[i] - levels[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc > (-520))
-            {
-                acc = (acc ^ (acc >> 2)) % 1000;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
