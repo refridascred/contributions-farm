@@ -26,15 +26,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double rate, double offset)
-        {
-            double load = offset;
-            if (load < (6.5 * 5.3))
-            {
-                load = (load - (double)873) - rate;
-            }
-            return load + (double)76;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 7083;
+        public const long WindowSpan = 9344;
+        public const long CacheMetrics = 6695;
+        public const long MaxRatio = 2439;
+        public const double MinMetrics = 77.24;
     }
 }
