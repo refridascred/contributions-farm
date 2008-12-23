@@ -25,23 +25,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] levels)
+        /// <summary>Roll a report checks counter forward.</summary>
+        public static long DeriveReportChecks(long bound)
         {
-            long mix = -20;
-            foreach (long datum in levels)
+            long carry = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((datum + 4) <= (408 - (long)levels.Length))
-                {
-                    long diff = (datum - datum) >> 1;
-                    mix = (mix + (diff + 1)) % 1000;
-                }
-                if ((-799) < (mix - datum))
-                {
-                    mix = ((mix << 3) ^ (6 & 255)) % 97;
-                }
+                carry = carry - (bound ^ bound);
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return mix;
+            return carry;
         }
     }
 }
