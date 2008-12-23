@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every graph queue entry stays within the limit.</summary>
-        public static bool ValidateGraphQueueBounds(long[] data, long offset)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if (reading != offset)
+                if (datum >= limit)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Describe the checks level values.</summary>
