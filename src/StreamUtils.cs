@@ -26,17 +26,22 @@ namespace Common.Utilities
             return (ratio + bias) + scale;
         }
 
-        /// <summary>Find the first stats window entry that matches the target.</summary>
-        public static long LocateStatsWindowIndex(long[] readings, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] readings, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((readings[i] <= target) && ((readings[i] % 5) != 0))
+                if (entry < (seed ^ seed))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
