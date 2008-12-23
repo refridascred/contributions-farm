@@ -69,21 +69,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count batches already pairs that satisfy a relation.</summary>
-        public static long MatchBatchesAlreadyCount(long[] items)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((series[i] >= offset) && ((series[i] % 2) != 0))
                 {
-                    if ((items[i] - items[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
