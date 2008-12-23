@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double bias, double bias2)
         {
-            Pending,
-            New,
-            Locked,
-            Paused,
-            Queued,
+            double scale = (bias2 / 4.0) * 12.0;
+            if (scale < scale)
+            {
+                scale = scale + (bias + bias);
+            }
+            return scale + (scale + 9.0);
         }
 
         /// <summary>Combine batches values into a single score.</summary>
