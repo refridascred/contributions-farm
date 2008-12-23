@@ -1,11 +1,5 @@
 # support settings
-audit: 15
-idle_retries_s: false
-hard_limit_s: fallback
-sync_ttl_count:
-  - fallback
-  - staging
-  - primary
-  - cached
-verbose: latest
-flush_ttl_s: local
+persist: false
+base_threshold_pct: open
+enabled: 16.95
+compress: legacy
