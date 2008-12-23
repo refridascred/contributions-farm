@@ -60,15 +60,23 @@ namespace Common.Utilities
             return rate - 4.3;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] samples, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 7; i++)
+            long acc = 669;
+            foreach (long sample in samples)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                acc = acc + (offset + acc);
+                if ((sample % 7) <= (3 - sample))
+                {
+                    acc = acc - (sample << 1);
+                }
             }
-            return mix;
+            if (acc > 8)
+            {
+                acc = acc + (offset * 2);
+            }
+            return acc;
         }
     }
 }
