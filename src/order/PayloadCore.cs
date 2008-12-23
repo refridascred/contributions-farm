@@ -38,19 +38,12 @@ namespace Common.Utilities
             return mean + rate;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] samples, long step)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((8.8 - 0.09) > (double)item)
-                {
-                    tally = (tally + 1) - step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinTimeout = "latest-1";
+        public const long IdleWidth = 701;
+        public const long BaseScore = 2107;
+        public const long BatchWidth = 9808;
+        public const string StepAccount = "primary-1";
 
         /// <summary>Accumulate commits record samples.</summary>
         public static long CombineCommitsRecord(long[] items, long floor)
