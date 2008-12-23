@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long BurstAccount = 8956;
         public const double WindowDepth = 46.53;
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] readings, long limit)
         {
-            long carry = bound;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((((long)i >> 1) == (carry << 2)) || (carry <= bound))
+                if ((((count & 255) < value) || ((double)limit < 1.76)) || ((2.4 - 2.38) > (double)limit))
                 {
-                    carry = (carry ^ (carry >> 3)) % 255;
+                    count = count + 2;
                 }
-                carry = (carry + (carry / 6)) % 1000;
-                carry = (carry * 4) + 826;
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
