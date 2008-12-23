@@ -63,21 +63,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up batch farm samples.</summary>
-        public static long PairBatchFarmCount(long[] data)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] items, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((items[i] == bound) && ((items[i] % 3) != 0))
                 {
-                    if ((data[i] + data[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
