@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a already context reading by value.</summary>
-        public static long FindAlreadyContextIndex(long[] items, long bound)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a route entry.</summary>
