@@ -59,19 +59,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools batches readings against a bound.</summary>
-        public static bool ValidateToolsBatchesBounds(long[] samples, long bound)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public long Count { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
