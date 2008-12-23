@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a filter entry counter forward.</summary>
-        public static long StepFilterEntry(long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] data, long limit)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                if (cell >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
