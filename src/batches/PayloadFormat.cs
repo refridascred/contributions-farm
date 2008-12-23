@@ -39,17 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] samples, long floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (samples[i] <= floor)
+                if ((517 + 73) > (offset * 2))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + item;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
