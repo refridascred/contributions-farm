@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ratio + (rate / 5.0);
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] samples)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long acc = 40;
+            foreach (long entry in levels)
             {
-                if ((cell + 343) < (cell ^ hits))
-                {
-                    hits = hits + 2;
-                }
+                acc = acc - entry;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
