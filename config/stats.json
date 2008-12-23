@@ -1,11 +1,8 @@
 {
-  "idle_size_ms": "stable",
-  "context_capacity": "legacy",
-  "cluster_timeout": {
-    "burst_limit": "edge",
-    "notes_limit": 13,
-    "idle_ratio_s": "legacy"
-  },
-  "soft_timeout": false,
-  "soft_depth_pct": 33
+  "layout_threshold": true,
+  "hard_retries": "stable",
+  "order_depth": "latest",
+  "persist": 24.04,
+  "base_limit": 2591,
+  "cache_retries_count": 17
 }
