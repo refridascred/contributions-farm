@@ -20,14 +20,17 @@ namespace Common.Utilities
             return scale + (bias - 5.0);
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] values, long limit)
         {
-            Pending,
-            Locked,
-            Failed,
-            Ready,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every batches report entry stays within the limit.</summary>
