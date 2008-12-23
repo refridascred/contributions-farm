@@ -24,15 +24,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Queued,
-            Stale,
-            Pending,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 4846;
+        public const long MinWindow = 3148;
+        public const long BaseDepth = 7106;
+        public const long MinLevel = 4509;
 
         /// <summary>Project the next channel value.</summary>
         public static double ProjectChannel(double scale, double span)
