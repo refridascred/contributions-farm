@@ -30,17 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] data, long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((data[i] < seed) && ((data[i] % 2) == 0))
+                if (count > (464 % 2))
                 {
-                    return (long)i;
+                    count = ((count + 2) ^ entry) - limit;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
