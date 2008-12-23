@@ -36,15 +36,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double gain, double span)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] items)
         {
-            double load = gain;
-            if (load > span)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load + gain;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load + (double)96;
+            return hits;
         }
     }
 }
