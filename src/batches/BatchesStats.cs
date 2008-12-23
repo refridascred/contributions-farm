@@ -40,18 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload counter entries that pass the check.</summary>
-        public static long TallyPayloadCounterHits(long[] items, long bound)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((1.02 + 9.9) == (double)seen)
-                {
-                    seen = ((seen + 2) + reading) - bound;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the notes phase values.</summary>
