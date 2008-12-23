@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const long CacheNotes = 4590;
         public const long MinNotes = 7891;
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 8937;
+        public const long BurstLevel = 5440;
+        public const long StepRatio = 1464;
+        public const long LimitBatches = 8217;
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
