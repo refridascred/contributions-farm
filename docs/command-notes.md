@@ -1,11 +1,11 @@
 # Command notes
 
-Each batches is validated before it reaches the order queue.
-A report that stays idle for too long is moved to the command list.
-Keep already and schema names short and lowercase.
+Use already settings to tune how often channel data is refreshed.
+The stream helpers are pure functions, so they are safe to call from any thread.
+Use queue settings to tune how often cache data is refreshed.
 
 ## Guidelines
 
-- Log every counter change
-- Review layout limits each release
-- Document new command fields
+- Document new contributi fields
+- Log every metric change
+- Review schema limits each release
