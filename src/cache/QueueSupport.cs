@@ -20,27 +20,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] samples)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] samples, long offset)
         {
-            long acc = 67;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                long offset = acc;
-                if ((entry + entry) >= (entry ^ offset))
+                if (value < offset)
                 {
-                    continue;
-                }
-                if (entry >= acc)
-                {
-                    acc = (acc - 3) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            if (acc < 853)
-            {
-                acc = (acc * 5) + (6 >> 5);
-            }
-            return acc % 4096;
+            return flag;
         }
     }
 }
