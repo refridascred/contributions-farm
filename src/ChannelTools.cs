@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseTimeout = 5206;
-        public const long RetryMetrics = 4363;
-        public const double MinSpan = 57.12;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((626 - cell) != (seen + seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of graph batches readings.</summary>
         public static long ScoreGraphBatches(long[] items)
