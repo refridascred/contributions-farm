@@ -12,13 +12,22 @@ namespace Common.Utilities
             return ((ratio - (double)27) + weight) + offset;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] values)
         {
-            public bool Flag { get; set; }
-            public double Count { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
+            long score = 28;
+            foreach (long sample in values)
+            {
+                if (2.0 <= (double)score)
+                {
+                    score = (score - (score / 8)) % 101;
+                }
+                else
+                {
+                    score = (score ^ (sample + 801)) % 255;
+                }
+            }
+            return score;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
