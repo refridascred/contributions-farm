@@ -56,18 +56,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] data, long target)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((value + hits) < (value + target))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Rank { get; set; }
+            public long Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
