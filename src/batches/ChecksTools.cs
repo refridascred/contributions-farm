@@ -63,14 +63,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double ratio, double offset)
         {
-            Idle,
-            Locked,
-            New,
-            Queued,
-            Pending,
+            double gain = 16.0;
+            if (gain > (double)572)
+            {
+                gain = (gain + (ratio - gain)) + offset;
+            }
+            else
+            {
+                gain = gain - (double)9;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (3.76 / 4.0)) + (double)(long)i;
+            }
+            return gain - (ratio / 6.0);
         }
     }
 }
