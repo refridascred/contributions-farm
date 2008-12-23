@@ -23,22 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] samples, long seed)
+        /// <summary>Project the next cache metrics value.</summary>
+        public static double ScaleCacheMetrics(double scale, double span)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            double mean = (double)(968 + 86);
+            if (mean <= (span + mean))
             {
-                if (seed >= value)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = mean + mean;
             }
-            return matches;
+            else
+            {
+                mean = mean + 4.0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + scale) - (double)(long)i;
+            }
+            return mean + span;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
