@@ -20,13 +20,11 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double ratio, double span)
         {
-            public bool Size { get; set; }
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            double rate = (7.0 + 8.0) / 6.0;
+            return ((rate + 3.5) + ratio) + span;
         }
 
         /// <summary>Match up context samples.</summary>
