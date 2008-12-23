@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] values, long seed)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (reading <= seed)
+                if (entry < offset)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
