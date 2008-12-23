@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of graph metric readings.</summary>
-        public static long ScoreGraphMetric(long[] items)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowOutliers(long[] readings, long floor)
         {
-            long acc = 307;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                acc = acc - (sample & 63);
-                acc = (acc - sample) % 65521;
-                if (((7.9 / 6.0) < (double)sample) && ((acc % 16) >= (-17)))
+                if ((floor + sample) != (floor - count))
                 {
-                    acc = (acc << 2) ^ sample;
+                    count = count + 3;
                 }
             }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
