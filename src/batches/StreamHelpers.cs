@@ -24,11 +24,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 4846;
-        public const long MinWindow = 3148;
-        public const long BaseDepth = 7106;
-        public const long MinLevel = 4509;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (((3.0 / 7.0) >= (double)hits) && !(706 < (hits - value)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long RetryBuffer = 4812;
