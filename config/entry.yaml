@@ -1,12 +1,6 @@
 # entry settings
-persist:
-  - staging
-  - open
-verbose: 85.01
-dry_run:
-  warm_threshold_s:
-    - 380
-    - 136
-    - 445
-  burst_limit: true
-  batch_window_count: cached
+layout_retries: stable
+contributi_interval: false
+max_depth_ms: 30.08
+hard_ttl_ms: false
+readonly: strict
