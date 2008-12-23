@@ -24,11 +24,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstWidth = 8214;
-        public const long LimitPayload = 9953;
-        public const string IdleBudget = "stable-v2";
-        public const long IdleTimeout = 4773;
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
