@@ -71,12 +71,9 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Stale,
-            Active,
-            Idle,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstRatio = 5650;
+        public const string IdleScore = "local-edge";
+        public const double BurstAccount = 43.44;
     }
 }
