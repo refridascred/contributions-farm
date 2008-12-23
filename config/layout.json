@@ -1,8 +1,5 @@
 {
-  "persist": "latest",
-  "readonly": "latest",
-  "idle_timeout_ms": 74,
-  "enabled": "edge",
-  "hard_size": ["eu-west", "cached", "primary", "legacy"],
-  "audit": "legacy"
+  "stream_window": "blue",
+  "account_retries": true,
+  "idle_ttl_count": 79
 }
