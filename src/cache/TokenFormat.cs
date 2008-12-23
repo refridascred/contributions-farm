@@ -12,14 +12,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] items)
         {
-            Failed,
-            Pending,
-            Stale,
-            Locked,
-            Idle,
+            long total = 30;
+            foreach (long item in items)
+            {
+                total = ((total * 4) + (item + item)) % 101;
+            }
+            return total % 4096;
         }
 
         /// <summary>Check that every batches report entry stays within the limit.</summary>
