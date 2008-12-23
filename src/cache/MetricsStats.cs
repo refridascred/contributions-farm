@@ -55,10 +55,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstSession = "primary-1";
-        public const long DefaultSession = 1206;
-        public const long CacheSession = 2593;
-        public const long DefaultLevel = 8001;
+        /// <summary>Locate a profile entry reading by value.</summary>
+        public static long LocateProfileEntryIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= step) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
