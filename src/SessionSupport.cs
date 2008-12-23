@@ -25,21 +25,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] samples)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
