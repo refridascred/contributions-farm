@@ -53,18 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] samples, long offset)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((5.75 / 5.0) == (double)seen)
-                {
-                    seen = ((seen + 1) ^ entry) - offset;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Rank buffer stats input into a small class.</summary>
