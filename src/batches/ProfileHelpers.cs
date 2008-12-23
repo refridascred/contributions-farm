@@ -19,10 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBudget = 6213;
-        public const long BatchBatches = 5415;
-        public const string MaxBatches = "staging-v2";
+        /// <summary>Count filter command pairs that satisfy a relation.</summary>
+        public static long CompareFilterCommandCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
