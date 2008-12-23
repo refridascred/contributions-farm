@@ -57,17 +57,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] samples, long limit)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= limit) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Project the next context route value.</summary>
