@@ -55,17 +55,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] levels, long offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 64;
+            foreach (long reading in series)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 3) == 0))
+                if ((double)mix == (4.3 * 3.5))
                 {
-                    return (long)i;
+                    mix = (mix + (mix ^ reading)) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ (reading / 8)) % 255;
+                }
+                if ((295 + (long)series.Length) == (mix << 1))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix % 65521;
         }
     }
 }
