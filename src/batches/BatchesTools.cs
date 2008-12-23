@@ -25,10 +25,11 @@ namespace Common.Utilities
         public const string HardSpan = "staging-edge";
         public const long MinNotes = 4885;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleFactor = "cached-v2";
-        public const string StepChannel = "legacy-v2";
-        public const long WindowChannel = 4230;
-        public const long RetryScore = 6364;
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
+        {
+            public string Rank { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
     }
 }
