@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] data)
         {
-            Closed,
-            New,
-            Stale,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((datum << 3) > datum)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
