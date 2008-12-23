@@ -46,10 +46,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowFactor = 9869;
-        public const long BaseWindow = 845;
-        public const long DefaultWidth = 6843;
-        public const long LimitWindow = 9292;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long target, long bound)
+        {
+            if ((target < (target * 5)) && ((double)target == (18.0 / 4.0)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target & 31) > 49)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((-728) + 539) >= (bound / 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
