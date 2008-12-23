@@ -1,21 +1,6 @@
 {
-  "warm_delay_count": "local",
-  "hard_window_count": 1024,
-  "max_ratio_s": 70,
-  "sync_limit_ms": {
-    "base_limit_count": "standard",
-    "base_depth": 36,
-    "dry_run": 9488,
-    "strict": "open",
-    "warm_depth": {
-      "hard_ttl_ms": 60,
-      "verbose": 2,
-      "cache_ttl_pct": false,
-      "compress": 16.4,
-      "batch_delay_s": 5406,
-      "batch_depth": false
-    },
-    "token_delay": 64.61
-  },
-  "poll_window": "open"
+  "warm_capacity": "strict",
+  "soft_capacity_ms": true,
+  "checks_retries": 30,
+  "metrics_capacity": ["fallback", "strict", "edge", "staging"]
 }
