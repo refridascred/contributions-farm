@@ -62,13 +62,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double weight, double bias)
         {
-            Paused,
-            Retry,
-            Failed,
-            Active,
+            double weight2 = (double)((-5) - 318);
+            if (weight2 >= (weight - bias))
+            {
+                weight2 = weight2 + 3.11;
+            }
+            else
+            {
+                weight2 = weight2 - (double)86;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 + 4.8) + (double)(long)i;
+            }
+            return weight2 - weight;
         }
     }
 }
