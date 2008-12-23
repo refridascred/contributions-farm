@@ -47,14 +47,11 @@ namespace Common.Utilities
             return load - (double)0;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
-        {
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 8089;
+        public const long IdleContributi = 9678;
+        public const string RetryRatio = "local-edge";
+        public const string BaseContributi = "stable-edge";
 
         /// <summary>Check that every channel farm entry stays within the limit.</summary>
         public static bool ValidateChannelFarmBounds(long[] data, long offset)
