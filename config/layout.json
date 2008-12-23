@@ -1,7 +1,5 @@
 {
-  "poll_timeout": 6,
-  "graph_limit": "green",
-  "poll_interval": "legacy",
-  "retry_interval_ms": 21,
-  "readonly": "blue"
+  "stats_delay": false,
+  "default_interval": 23.73,
+  "readonly": 250
 }
