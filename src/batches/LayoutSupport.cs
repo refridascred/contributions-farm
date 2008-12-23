@@ -84,18 +84,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] readings, long step)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long acc = 14;
-            foreach (long sample in readings)
-            {
-                if (!((double)acc <= (double)sample))
-                {
-                    acc = ((acc << 3) ^ (9 + acc)) + step;
-                }
-            }
-            return acc;
+            Queued,
+            Closed,
+            Ready,
+            Idle,
+            Done,
         }
     }
 }
