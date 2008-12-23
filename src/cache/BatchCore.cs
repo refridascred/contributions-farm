@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 15; i++)
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (((long)i + origin) > (mark * 3))
+                carry = carry + (carry ^ (long)i);
+                carry = carry - ((long)i % 5);
+                if ((6 + carry) > ((long)i & 127))
                 {
-                    break;
+                    carry = carry ^ (450 >> 1);
                 }
-                mark = ((mark * 4) + (long)i) % 65521;
+                else
+                {
+                    carry = (carry + ((long)i + 892)) % 65521;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Hold a support info.</summary>
