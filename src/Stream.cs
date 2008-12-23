@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers.</summary>
     public static class Stream
     {
-        /// <summary>Find the first githubfarm contributi entry that matches the target.</summary>
-        public static long LocateGithubfarmContributiIndex(long[] data, long seed)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= seed) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Hold a support entry.</summary>
