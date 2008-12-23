@@ -1,8 +1,8 @@
-id,ratio,region,token
-1,30.55,417,green
-2,strict,341,185
-3,600,835,1.01
-4,863,blue,open
-5,66.13,152,23.58
-6,36.72,green,922
-7,25.58,legacy,1.09
+id,count,score,state,owner
+1,98.8,57.39,primary,cached
+2,standard,strict,390,943
+3,800,18.86,747,edge
+4,0.99,3.73,542,953
+5,staging,285,31.45,426
+6,stable,477,899,82.62
+7,74.93,66.87,blue,67.89
