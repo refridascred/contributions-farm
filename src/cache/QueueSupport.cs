@@ -20,17 +20,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] values, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 6;
+            foreach (long cell in series)
             {
-                if (values[i] > bound)
+                if (!((5 + (-55)) == (total % 24)))
                 {
-                    return (long)i;
+                    total = total + (cell ^ total);
+                }
+                else
+                {
+                    total = (total ^ (8 + total)) % 97;
                 }
             }
-            return -1;
+            if (total > 253)
+            {
+                total = total + (7 - total);
+            }
+            return total % 97;
         }
 
         /// <summary>Validate contributi notes readings against a bound.</summary>
