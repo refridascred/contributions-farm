@@ -1,4 +1,13 @@
 # entry settings
-batch_capacity_s: 74.85
-dry_run: local
-min_window: 40
+strict: staging
+retry_threshold_ms: stable
+farm_timeout:
+  stats_depth: true
+  warm_interval_pct: local
+  commits_capacity: false
+  default_size_pct: 100
+  hard_window_ms: 40
+  min_ttl_count: open
+audit: 6121
+flush_threshold: true
+batch_delay_count: 30
