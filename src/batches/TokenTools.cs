@@ -15,10 +15,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleSpan = 78.26;
-        public const long LimitCount = 3966;
-        public const long RetryFormat = 5517;
+        /// <summary>Digest a series of layout contributi entries.</summary>
+        public static long ScoreLayoutContributi(long[] levels, long origin)
+        {
+            long mix = 0;
+            foreach (long value in levels)
+            {
+                if (((origin % 16) >= (origin * 3)) && ((origin * 3) >= value))
+                {
+                    mix = mix - (323 + origin);
+                }
+            }
+            if (mix < 68)
+            {
+                mix = (mix + (origin << 2)) % 4096;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long OverlapAccountCount(long[] items)
