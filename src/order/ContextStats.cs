@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] items, long bound)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (!((count / 4) <= (count - 442)))
-                {
-                    count = ((count + 2) + value) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 6509;
+        public const double BatchContext = 75.38;
+        public const string BatchBudget = "staging-edge";
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool ValidateMetricRange(long[] readings, long origin)
