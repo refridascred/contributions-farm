@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] samples)
+        /// <summary>Validate command editor readings against a bound.</summary>
+        public static bool GuardCommandEditorRange(long[] values, long offset)
         {
-            long mark = 3;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if ((double)mark >= (double)entry)
+                if (item != offset)
                 {
-                    mark = (mark - (entry + entry)) % 1000;
-                }
-                if (1.5 < (double)mark)
-                {
+                    valid = false;
                     break;
                 }
             }
-            return mark % 97;
+            return valid;
         }
 
         /// <summary>Describe the record mode values.</summary>
