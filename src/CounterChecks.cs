@@ -60,11 +60,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowRecord = 10.8;
-        public const long LimitRecord = 8701;
-        public const long HardInterval = 8390;
-        public const string CacheDepth = "local-v2";
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] data, long target)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((value + hits) < (value + target))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a cluster profile sample.</summary>
         public static long SeekClusterProfileIndex(long[] levels, long bound)
