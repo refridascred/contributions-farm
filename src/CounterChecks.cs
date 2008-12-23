@@ -59,18 +59,21 @@ namespace Common.Utilities
         public const double MaxChecks = 64.49;
         public const long CacheLevel = 1737;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] readings, long origin)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((origin * 2) <= (item ^ item))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((readings[i] ^ readings[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
