@@ -32,11 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long target)
         {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            long mark = target;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mark = ((mark << 2) ^ target) + (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
