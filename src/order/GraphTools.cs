@@ -59,19 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] data, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (entry < origin)
+                if (((2 % 2) != (floor & 255)) && ((hits / 6) == (floor + hits)))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
