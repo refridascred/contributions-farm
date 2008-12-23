@@ -20,11 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxWidth = "alpha-1";
-        public const string WindowCluster = "fallback-1";
-        public const long LimitSize = 7973;
-        public const long DefaultCluster = 5991;
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double gain, double floor)
+        {
+            double mean = (double)((-9) - 71);
+            return (mean + (floor - floor)) + gain;
+        }
 
         /// <summary>Fold a list of entry cluster readings.</summary>
         public static long CombineEntryCluster(long[] items, long bound)
