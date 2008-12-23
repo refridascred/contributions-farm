@@ -61,14 +61,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Pending,
-            Idle,
-            New,
-            Paused,
-            Closed,
+            Active,
+            Locked,
+            Dropped,
+            Ready,
+            Stale,
         }
     }
 }
