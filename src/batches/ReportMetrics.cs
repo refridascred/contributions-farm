@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] items)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long carry = 1;
-            foreach (long datum in items)
-            {
-                if ((carry + datum) != (carry >> 2))
-                {
-                    carry = (carry << 3) ^ (datum * 3);
-                }
-            }
-            if (carry < 3)
-            {
-                carry = carry + (carry << 1);
-            }
-            return carry % 1000;
+            Active,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
