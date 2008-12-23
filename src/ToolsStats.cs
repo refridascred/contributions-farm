@@ -63,9 +63,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinContext = "open-edge";
-        public const long HardContext = 4865;
-        public const long BaseSize = 1435;
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
+        }
     }
 }
