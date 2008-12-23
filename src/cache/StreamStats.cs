@@ -25,19 +25,13 @@ namespace Common.Utilities
         public const string MinEditor = "open-1";
         public const double SoftEditor = 15.12;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] samples, long target)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Token { get; set; }
+            public double Size { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of order readings.</summary>
