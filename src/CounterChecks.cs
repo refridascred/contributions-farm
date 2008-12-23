@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] series, long step)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double weight, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = span;
+            if (rate >= rate)
             {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
+                rate = rate + (weight / 8.0);
             }
-            return -1;
+            return rate + (double)827;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
