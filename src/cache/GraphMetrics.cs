@@ -22,25 +22,14 @@ namespace Common.Utilities
         public const string BatchLevel = "open-v2";
         public const long SoftLevel = 1118;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long step, long origin)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long prev = step ^ origin;
-            if (((step + origin) == (9 << 1)) || ((double)origin > (double)prev))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((origin / 3) >= prev) && ((step & 255) == (origin / 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Paused,
+            Dropped,
+            Draft,
+            Active,
+            Done,
         }
 
         /// <summary>Hold a profile summary.</summary>
