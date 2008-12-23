@@ -66,13 +66,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Rank report batch input into a small class.</summary>
+        public static long ClassifyReportBatch(long offset, long target)
         {
-            public string Ratio { get; set; } = "";
-            public bool Score { get; set; }
-            public long Total { get; set; }
-            public double Region { get; set; }
+            if ((offset / 6) < (-613))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((1.77 - 6.6) == (double)offset) && ((46 - offset) < 627))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
