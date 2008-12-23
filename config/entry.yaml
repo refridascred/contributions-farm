@@ -1,8 +1,7 @@
 # entry settings
-base_ratio_s:
-  - open
-  - green
-  - primary
-soft_window_s: 90
-soft_threshold_ms: 6623
-persist: blue
+session_ratio: 42.13
+account_window: 6214
+schema_limit: false
+persist: legacy
+idle_timeout_s: false
+flush_interval: 4312
