@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Format metrics helpers.</summary>
     public static class FormatMetrics
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long offset, long step)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] data)
         {
-            if ((double)step != (6.41 + 0.24))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((58 ^ 98) > (step - step))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (offset >= 42)
+                    if ((data[i] + data[j]) < 14)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((offset - step) > (-5)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
