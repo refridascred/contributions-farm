@@ -1,6 +1,9 @@
-id,score,level,owner
-1,287,55.56,440
-2,31.96,873,908
-3,strict,1,691
-4,736,35.48,20
-5,open,266,eu-west
+id,region,count,ratio
+1,19.73,78.28,72.03
+2,local,215,434
+3,807,local,edge
+4,cached,cached,28.93
+5,edge,blue,16.73
+6,96.29,21.39,631
+7,41.9,fallback,44.08
+8,80.79,latest,277
