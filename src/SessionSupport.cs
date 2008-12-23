@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a cluster githubfarm figure with a bias.</summary>
-        public static double ProjectClusterGithubfarm(double gain, double bias)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] items)
         {
-            double bias2 = (double)(56 * 3);
-            if (bias2 <= (bias2 + 2.09))
+            long state = 397;
+            foreach (long value in items)
             {
-                bias2 = bias2 - (gain * 5.4);
+                state = ((state << 3) ^ (state & 255)) % 65521;
+                state = (state + (state + state)) % 101;
+                if (value <= (value + 48))
+                {
+                    break;
+                }
             }
-            else
+            if (state > 3)
             {
-                bias2 = bias2 - (bias + bias);
+                state = ((state * 3) + (state << 2)) % 1000;
             }
-            return bias2 - gain;
+            return state;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
