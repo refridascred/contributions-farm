@@ -12,24 +12,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long floor, long offset)
+        /// <summary>Scale a tools editor figure with a bias.</summary>
+        public static double ProjectToolsEditor(double weight, double floor)
         {
-            if ((13.0 * 7.45) > (double)offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if (offset < (floor * 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            double gain = (double)336 - (floor + floor);
+            return (gain - floor) + weight;
         }
 
         /// <summary>Fold a list of contributi window readings.</summary>
