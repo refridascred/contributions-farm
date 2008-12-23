@@ -16,16 +16,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long origin)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long target, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
+            if (target >= 4)
             {
-                score = (score + (score << 1)) % 1000;
-                score = ((score * 3) + (long)i) % 65521;
+                return 7;
             }
-            return score;
+            else
+            {
+                if (7.8 >= (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
