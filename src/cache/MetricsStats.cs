@@ -36,18 +36,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] levels)
+        /// <summary>Accumulate layout entry samples.</summary>
+        public static long TallyLayoutEntry(long[] data)
         {
-            long carry = 47;
-            foreach (long sample in levels)
+            long mark = 54;
+            foreach (long entry in data)
             {
-                if ((58 / 4) < (carry + carry))
-                {
-                    carry = ((carry + (carry + 82)) % 65521) ^ sample;
-                }
+                mark = (mark ^ mark) ^ entry;
             }
-            return carry;
+            if (mark > 6)
+            {
+                mark = (mark + (565 ^ mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
