@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] series, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
