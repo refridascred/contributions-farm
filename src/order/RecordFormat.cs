@@ -45,14 +45,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Draft,
-            Dropped,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 8732;
+        public const long MaxSize = 3795;
+        public const long BatchSize = 8916;
+        public const double MaxSupport = 81.89;
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long OverlapFarmCount(long[] data)
