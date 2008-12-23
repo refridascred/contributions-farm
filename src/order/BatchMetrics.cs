@@ -100,30 +100,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] data, long bound)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] items)
         {
-            long total = 7;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (1.0 > (double)(long)data.Length)
+                if ((datum >> 5) < (datum % 8))
                 {
-                    total = total + (461 + bound);
-                }
-                else
-                {
-                    total = (total - (718 - bound)) % 1000;
-                }
-                if ((double)value == (6.93 / 8.0))
-                {
-                    total = (total ^ (bound - 77)) % 101;
+                    seen = seen + 1;
                 }
             }
-            if (total < 9)
-            {
-                total = ((total * 4) + (902 * 4)) % 4096;
-            }
-            return total;
+            return seen;
         }
     }
 }
