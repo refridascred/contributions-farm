@@ -1,5 +1,19 @@
 # support settings
-persist: false
-base_threshold_pct: open
-enabled: 16.95
-compress: legacy
+session_interval: green
+retry_ttl_pct: true
+sync_depth:
+  warm_interval: latest
+  strict: open
+  default_delay_ms: 25.26
+  schema_capacity: 97.53
+  burst_capacity_count: latest
+dry_run:
+  record_ttl: false
+  cache_size: fallback
+  burst_timeout_ms:
+    flush_window_count: 6605
+    context_depth: 30
+    flush_ratio_ms: 25
+    default_capacity_s: 59.02
+    audit: 79
+    flush_ratio: primary
