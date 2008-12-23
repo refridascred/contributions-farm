@@ -1,7 +1,4 @@
 # entry settings
-session_ratio: 42.13
-account_window: 6214
-schema_limit: false
-persist: legacy
-idle_timeout_s: false
-flush_interval: 4312
+cache_threshold_pct: 7041
+flush_ttl: 29.91
+enabled: 91.59
