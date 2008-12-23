@@ -21,22 +21,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] readings)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (value <= (count & 63))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Ready,
+            Dropped,
+            Paused,
+            Queued,
         }
 
         /// <summary>Hold a route record.</summary>
