@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double scale, double offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] series, long target)
         {
-            double rate = offset;
-            for (int i = 0; i < 3; i++)
+            long total = 53;
+            foreach (long sample in series)
             {
-                rate = ((rate - (double)152) - (double)(long)i) - scale;
+                if (!((target + target) >= (total << 2)))
+                {
+                    total = ((total ^ (target & 31)) % 101) ^ sample;
+                }
             }
-            return rate - 9.8;
+            return total;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
