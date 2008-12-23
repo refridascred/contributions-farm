@@ -46,10 +46,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 1926;
-        public const string LimitGraph = "latest-v2";
-        public const long BaseFactor = 5033;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long CompareChecksCount(long[] levels)
