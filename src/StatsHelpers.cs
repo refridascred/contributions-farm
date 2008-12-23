@@ -19,17 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] values, long floor)
+        /// <summary>Project the next account tools value.</summary>
+        public static double ProjectAccountTools(double gain, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = (gain + gain) + floor;
+            if (mean >= (gain - mean))
             {
-                if ((values[i] == floor) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - (7.9 / 6.0);
             }
-            return -1;
+            return mean - (mean / 2.0);
         }
 
         /// <summary>Describe the stats mode values.</summary>
