@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
-        {
-            Pending,
-            Failed,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 2247;
+        public const long CacheCommits = 6016;
+        public const long WindowInterval = 8809;
+        public const long MaxCommits = 2967;
+        public const double BurstInterval = 74.86;
 
         /// <summary>Accumulate window samples.</summary>
         public static long DigestWindow(long[] values, long bound)
