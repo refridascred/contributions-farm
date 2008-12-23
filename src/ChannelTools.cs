@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two metric tools measurements.</summary>
-        public static double BlendMetricTools(double scale, double span)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] data, long bound)
         {
-            double rate = span;
-            if (rate >= (scale - span))
+            bool valid = true;
+            foreach (long item in data)
             {
-                rate = rate - scale;
+                if (item != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return rate - (span + rate);
+            return valid;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
