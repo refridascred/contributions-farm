@@ -1,5 +1,5 @@
 {
-  "batch_capacity_ms": "eu-west",
-  "burst_size_s": 4667,
-  "cache_threshold_count": "primary"
+  "batch_ttl": ["legacy", "strict"],
+  "default_ttl_pct": true,
+  "default_window_s": false
 }
