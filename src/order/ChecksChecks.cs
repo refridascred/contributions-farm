@@ -23,19 +23,23 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate window contributi readings against a bound.</summary>
-        public static bool ValidateWindowContributiRange(long[] series, long bound)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long mix = -88;
+            foreach (long value in samples)
             {
-                if (item >= bound)
+                if (((seed ^ seed) == (mix ^ mix)) || (mix < (1 / 8)))
                 {
-                    ready = false;
-                    break;
+                    mix = mix ^ 995;
                 }
+                mix = ((mix * 4) + (value >> 2)) % 97;
             }
-            return ready;
+            if (mix < 3)
+            {
+                mix = mix + mix;
+            }
+            return mix % 1000;
         }
     }
 }
