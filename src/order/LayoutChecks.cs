@@ -48,20 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] values, long seed)
-        {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 4583;
+        public const string CacheTimeout = "strict-edge";
+        public const long WindowCount = 8509;
+        public const long StepSupport = 6580;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long CombineCluster(long[] data, long step)
