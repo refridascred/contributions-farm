@@ -15,20 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsBounds(long[] series, long target)
-        {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftSpan = 9932;
+        public const long BurstBuffer = 100;
+        public const long StepScore = 5605;
+        public const string HardSize = "cached-v2";
+        public const long RetryBuffer = 2993;
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
