@@ -71,19 +71,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] items, long floor)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Level { get; set; }
+            public bool Label { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
