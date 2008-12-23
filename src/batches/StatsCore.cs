@@ -29,21 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long seed)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double ratio, double bias)
         {
-            long anchor = seed;
-            for (int i = 0; i < 19; i++)
+            double weight = ratio;
+            for (int i = 0; i < 3; i++)
             {
-                anchor = (anchor * 5) + seed;
-                anchor = (anchor ^ (seed % 10)) % 97;
-                if ((seed - 980) < (524 ^ 200))
-                {
-                    anchor = ((anchor << 3) ^ (anchor & 3)) % 65521;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
+                weight = ((weight + (double)(-236)) - (double)(long)i) - bias;
             }
-            return anchor;
+            return weight + 8.1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
