@@ -39,17 +39,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] levels, long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 25;
+            foreach (long datum in values)
             {
-                if ((levels[i] >= target) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                total = (total ^ (total + total)) - datum;
             }
-            return -1;
+            if (total < (-119))
+            {
+                total = (total ^ (total + total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
