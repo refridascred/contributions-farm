@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] items)
+        /// <summary>Validate buffer batch readings against a bound.</summary>
+        public static bool VerifyBufferBatchRange(long[] samples, long step)
         {
-            long sum = 864;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                sum = sum ^ (long)items.Length;
-                if (((entry - entry) >= (entry + entry)) && ((double)entry >= (9.2 + 7.9)))
+                if (sample < step)
                 {
-                    sum = (sum + (723 >> 1)) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            if (sum > (-6))
-            {
-                sum = sum - (sum * 5);
-            }
-            return sum;
+            return stale;
         }
 
         /// <summary>Grade a githubfarm entry value against two limits.</summary>
