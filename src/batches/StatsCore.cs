@@ -49,11 +49,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxCount = 4236;
-        public const long MaxSpan = 2076;
-        public const double LimitMetrics = 57.99;
-        public const string IdleInterval = "standard-v2";
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] items)
+        {
+            long total = 4;
+            foreach (long cell in items)
+            {
+                total = (((total * 3) + (total & 15)) % 97) + cell;
+            }
+            return total;
+        }
 
         /// <summary>Audit format metric readings against a rule.</summary>
         public static long AuditFormatMetricOutliers(long[] data)
