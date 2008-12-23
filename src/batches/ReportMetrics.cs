@@ -12,15 +12,31 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] series)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long bound, long step)
         {
-            long anchor = 577;
-            foreach (long sample in series)
+            if ((((-79) << 2) == (bound & 31)) || ((bound << 2) < (bound % 60)))
             {
-                anchor = ((anchor << 2) ^ anchor) ^ sample;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((step + step) >= (step & 31))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((-4) + step) >= step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up notes samples.</summary>
