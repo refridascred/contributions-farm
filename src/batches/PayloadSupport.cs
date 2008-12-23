@@ -29,11 +29,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetryTimeout = 31.23;
-        public const long HardQueue = 4393;
-        public const long MinQueue = 5938;
-        public const long BatchFactor = 6714;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long step, long bound)
+        {
+            if (((4 / 8) <= bound) && ((double)step <= (7.5 - 7.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound << 3) == (step + bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step % 60) >= (571 - bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((327 & 7) >= (bound - bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate payload route readings against a bound.</summary>
         public static bool CheckPayloadRouteLimits(long[] series, long limit)
