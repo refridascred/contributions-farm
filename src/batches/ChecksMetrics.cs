@@ -54,25 +54,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long offset, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] samples)
         {
-            long offset2 = offset - target;
-            if (offset2 < (offset + offset))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target & 1) != (offset2 / 5))
+                if ((reading <= (733 << 2)) || ((seen + reading) == (seen % 16)))
                 {
-                    return 4;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    return 8;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
