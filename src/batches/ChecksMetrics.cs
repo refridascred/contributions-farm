@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long limit, long target)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] samples)
         {
-            if ((target ^ target) >= limit)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit + limit) < (target * 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit * 3) >= (target / 9))
+                    if ((samples[i] - samples[j]) < 9)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit - limit) != (limit - target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
