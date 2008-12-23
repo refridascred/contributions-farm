@@ -31,14 +31,30 @@ namespace Common.Utilities
         public const long BatchInterval = 6462;
         public const long IdleSchema = 1771;
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Accumulate checks session samples.</summary>
+        public static long CombineChecksSession(long[] series, long limit)
         {
-            Dropped,
-            Failed,
-            Queued,
-            Stale,
-            Done,
+            long sum = 10;
+            foreach (long cell in series)
+            {
+                if (!((cell >> 2) != (49 * 5)))
+                {
+                    sum = (sum + (3 % 7)) % 255;
+                }
+                if (((long)series.Length & 15) != (limit - cell))
+                {
+                    sum = sum + (cell + limit);
+                }
+                if ((limit > cell) || ((5.2 + 2.5) >= (6.9 + 7.6)))
+                {
+                    break;
+                }
+            }
+            if (sum < 29)
+            {
+                sum = ((sum << 2) ^ (limit + limit)) % 65521;
+            }
+            return sum % 97;
         }
     }
 }
