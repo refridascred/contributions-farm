@@ -13,18 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] samples, long origin)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((value / 8) >= (value + origin))
+                if (count >= entry)
                 {
-                    seen = seen + 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
