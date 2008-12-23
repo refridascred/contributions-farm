@@ -24,14 +24,21 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] levels)
         {
-            Active,
-            Closed,
-            Pending,
-            Retry,
-            Paused,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
