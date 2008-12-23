@@ -53,9 +53,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 4328;
-        public const long BatchInterval = 2648;
-        public const long BurstStats = 8537;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] samples, long floor)
+        {
+            long carry = 86;
+            foreach (long entry in samples)
+            {
+                if (!(floor > (982 & 3)))
+                {
+                    carry = ((carry ^ ((-8) + floor)) % 1000) - entry;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (7 + carry);
+                }
+            }
+            return carry % 4096;
+        }
     }
 }
