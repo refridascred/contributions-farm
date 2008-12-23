@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a graph order counter forward.</summary>
-        public static long IterateGraphOrder(long origin)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] data, long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
+            long state = 41;
+            foreach (long entry in data)
             {
-                mix = (mix ^ (long)i) % 255;
-                if ((mix + mix) == (612 << 1))
+                state = state + (state % 12);
+                if (!((state << 2) < origin))
                 {
-                    mix = mix + (78 ^ mix);
+                    state = state ^ entry;
                 }
                 else
                 {
-                    mix = mix ^ (mix / 6);
+                    state = (state + (origin + state)) % 97;
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return state % 65521;
         }
 
         /// <summary>Describe the profile state values.</summary>
