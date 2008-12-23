@@ -12,11 +12,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a tools editor figure with a bias.</summary>
-        public static double ProjectToolsEditor(double weight, double floor)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            double gain = (double)336 - (floor + floor);
-            return (gain - floor) + weight;
+            Pending,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a filter header.</summary>
