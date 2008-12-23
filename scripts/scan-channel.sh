@@ -6,24 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+CHANNEL_LIMIT=99
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in eu-west fallback cached strict; do
+    log "checking ${item}"
+done
+
+mode="${1:-eu-west}"
 case "${mode}" in
-    green)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
