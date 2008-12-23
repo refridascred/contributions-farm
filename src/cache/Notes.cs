@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            Idle,
-            Done,
-            Stale,
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the record state values.</summary>
