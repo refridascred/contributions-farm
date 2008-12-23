@@ -1,9 +1,4 @@
 # entry settings
-hard_delay: latest
-sync_ratio: eu-west
-editor_size: primary
-hard_size_s:
-  - standard
-  - stable
-burst_limit_s: staging
-cache_delay: 78
+default_ttl: 49.44
+flush_timeout_ms: 44
+metric_size: stable
