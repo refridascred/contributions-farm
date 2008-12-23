@@ -1,9 +1,8 @@
-id,weight,ratio
-1,8.27,14.34
-2,staging,349
-3,987,617
-4,12.27,292
-5,20.59,161
-6,63.97,fallback
-7,954,edge
-8,714,75.16
+id,rank,score
+1,latest,210
+2,794,70.18
+3,60.47,275
+4,standard,legacy
+5,fallback,local
+6,5.06,cached
+7,867,stable
