@@ -49,15 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] values)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] samples, long offset)
         {
-            long sum = 1;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                sum = (sum - (value & 7)) % 255;
+                if (offset > (tally + offset))
+                {
+                    tally = (tally + 3) + item;
+                }
             }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
