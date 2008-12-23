@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] items)
         {
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (!(count <= (count - count)) && (((double)count == (15.0 * 19.0)) && ((count / 4) >= (sample - count))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the checks kind values.</summary>
