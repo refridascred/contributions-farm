@@ -41,38 +41,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank profile metrics input into a small class.</summary>
-        public static long GradeProfileMetrics(long bound, long bound2)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] samples, long floor)
         {
-            if (!((double)bound2 != (double)3))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound - bound) >= (bound2 / 7))
+                if (samples[i] <= floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)bound <= (5.0 + 8.85)) || ((bound2 + bound) > (bound2 << 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)bound == (double)bound2) && ((bound2 ^ bound) > bound2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
