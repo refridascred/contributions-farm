@@ -42,39 +42,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Rank window editor input into a small class.</summary>
-        public static long RankWindowEditor(long bound, long limit)
-        {
-            if ((limit - (-91)) > (bound + limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if (bound <= limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(8 > limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)bound == (8.0 - 7.4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowInterval = "latest-v2";
+        public const double WindowTimeout = 85.79;
+        public const long SoftNotes = 9856;
+        public const string HardNotes = "staging-v2";
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
