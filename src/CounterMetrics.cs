@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the commits queue series from a seed.</summary>
-        public static long SeriesCommitsQueue(long bound)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] items, long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
+            long mark = 783;
+            foreach (long reading in items)
             {
-                mark = mark - ((long)i * 4);
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((limit % 60) <= (mark >> 5))
+                {
+                    mark = ((mark ^ (mark * 2)) % 101) + reading;
+                }
             }
-            return mark;
+            return mark % 1000;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
