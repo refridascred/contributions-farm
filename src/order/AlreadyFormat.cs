@@ -37,19 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((long)items.Length >> 1) >= reading)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 1744;
+        public const double SoftDepth = 2.49;
+        public const long BatchStream = 579;
+        public const double MaxSize = 53.21;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmBounds(long[] readings, long floor)
