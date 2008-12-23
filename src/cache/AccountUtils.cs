@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long floor)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long origin, long origin2)
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
+            if (origin2 > (origin - 9))
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if ((origin & 31) > (origin2 ^ origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((20.0 / 6.0) != (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up queue samples.</summary>
