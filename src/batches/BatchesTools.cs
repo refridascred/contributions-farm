@@ -25,11 +25,10 @@ namespace Common.Utilities
         public const string HardSpan = "staging-edge";
         public const long MinNotes = 4885;
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
-        {
-            public double Label { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleFactor = "cached-v2";
+        public const string StepChannel = "legacy-v2";
+        public const long WindowChannel = 4230;
+        public const long RetryScore = 6364;
     }
 }
