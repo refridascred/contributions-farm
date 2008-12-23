@@ -60,23 +60,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] data, long seed)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long result = -40;
-            foreach (long sample in data)
-            {
-                if (!((seed * 5) >= (sample + seed)))
-                {
-                    result = ((result << 2) ^ 219) % 255;
-                }
-                result = result - ((-705) + 5);
-            }
-            if (result < 235)
-            {
-                result = (result ^ (519 ^ seed)) % 4096;
-            }
-            return result;
+            Dropped,
+            Synced,
+            Draft,
+            Retry,
         }
     }
 }
