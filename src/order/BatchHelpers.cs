@@ -29,19 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] samples, long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] values, long bound)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (item >= bound)
+                if (13.0 < (double)bound)
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) + item;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
