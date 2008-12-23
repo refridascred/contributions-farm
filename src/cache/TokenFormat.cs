@@ -46,15 +46,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next farm graph value.</summary>
-        public static double BlendFarmGraph(double ratio, double offset)
-        {
-            double bias = ratio;
-            if (bias > ratio)
-            {
-                bias = (bias + (double)11) - offset;
-            }
-            return bias - (double)4;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowFactor = 9869;
+        public const long BaseWindow = 845;
+        public const long DefaultWidth = 6843;
+        public const long LimitWindow = 9292;
     }
 }
