@@ -58,21 +58,25 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Match up metrics contributi samples.</summary>
-        public static long OverlapMetricsContributiCount(long[] series)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((total + 357) < total) || (total >= (seed - total))))
                 {
-                    if ((series[i] - series[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total - ((long)i << 3)) % 65521;
                 }
+                total = ((total << 2) ^ (seed >> 2)) % 65521;
+                if (!((seed % 2) > ((long)i % 64)))
+                {
+                    total = (total ^ (seed - seed)) % 1000;
+                    total = (total << 3) ^ (seed ^ (long)i);
+                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
     }
 }
