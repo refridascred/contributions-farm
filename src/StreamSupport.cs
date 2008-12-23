@@ -19,12 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] readings)
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
+            long sum = 25;
+            foreach (long value in readings)
+            {
+                if ((sum - sum) == (99 >> 5))
+                {
+                    sum = (sum * 2) + (sum >> 2);
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (value - 1)) % 255;
+                }
+            }
+            if (sum > 889)
+            {
+                sum = (sum ^ sum) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Match up support window samples.</summary>
