@@ -26,23 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double ratio, double span)
+        /// <summary>Blend two support record measurements.</summary>
+        public static double SmoothSupportRecord(double rate, double offset)
         {
-            double weight = (double)(41 >> 1);
-            if (weight > (ratio + span))
+            double mean = 0.95 / 7.0;
+            if (mean >= (rate * 9.57))
             {
-                weight = weight + (ratio - ratio);
-            }
-            else
-            {
-                weight = weight - span;
+                mean = (mean + rate) - offset;
             }
             for (int i = 0; i < 5; i++)
             {
-                weight = (weight - ratio) + (double)(long)i;
+                mean = (mean - mean) + (double)(long)i;
             }
-            return weight - (double)36;
+            return mean + (double)(-3);
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
