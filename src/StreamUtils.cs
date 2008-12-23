@@ -19,13 +19,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Queued,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleCommand = 97.01;
+        public const long BaseCommand = 1921;
+        public const long LimitRatio = 7144;
+        public const long WindowCommand = 8117;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsHits(long[] readings, long seed)
