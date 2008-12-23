@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const long CacheNotes = 4590;
         public const long MinNotes = 7891;
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] samples)
         {
-            Ready,
-            New,
-            Retry,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a format options.</summary>
