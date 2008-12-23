@@ -16,22 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] series, long limit)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((135 + cell) <= (50 - hits))
-                {
-                    hits = (hits + 3) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public double Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
