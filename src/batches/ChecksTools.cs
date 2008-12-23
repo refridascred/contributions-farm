@@ -63,21 +63,14 @@ namespace Common.Utilities
             return ratio - (double)799;
         }
 
-        /// <summary>Match up route contributi samples.</summary>
-        public static long CompareRouteContributiCount(long[] values)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Idle,
+            Locked,
+            New,
+            Queued,
+            Pending,
         }
     }
 }
