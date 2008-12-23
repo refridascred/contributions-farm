@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const double MinEntry = 97.15;
         public const string HardEntry = "legacy-edge";
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double ratio, double offset)
-        {
-            double bias = ratio * 2.0;
-            if (bias >= offset)
-            {
-                bias = bias + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + bias;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseSpan = 37.02;
+        public const long StepSupport = 8678;
+        public const double BaseSupport = 69.91;
+        public const string IdleInterval = "latest-edge";
 
         /// <summary>Roll a order context counter forward.</summary>
         public static long StepOrderContext(long bound)
