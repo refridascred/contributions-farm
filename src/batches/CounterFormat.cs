@@ -37,13 +37,23 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double bias, double floor)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public double Count { get; set; }
-            public long Owner { get; set; }
+            double scale = bias;
+            if (scale <= (double)784)
+            {
+                scale = (scale + bias) + floor;
+            }
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - (bias * 1.06);
         }
     }
 }
