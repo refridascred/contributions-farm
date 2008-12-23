@@ -49,17 +49,19 @@ namespace Common.Utilities
             return weight - (double)35;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] levels, long step)
+        /// <summary>Check that every support cluster entry stays within the limit.</summary>
+        public static bool GuardSupportClusterBounds(long[] samples, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((levels[i] > step) && ((levels[i] % 5) != 0))
+                if (datum <= bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
