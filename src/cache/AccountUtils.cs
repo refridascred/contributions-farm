@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double ratio, double offset)
+        /// <summary>Accumulate route account samples.</summary>
+        public static long CombineRouteAccount(long[] readings)
         {
-            double weight = ratio;
-            if (weight >= (weight - 2.69))
+            long anchor = 368;
+            foreach (long item in readings)
             {
-                weight = (weight + (double)1) + offset;
+                if ((anchor - anchor) > (anchor >> 3))
+                {
+                    long hits = (100 + anchor) + (item + anchor);
+                    anchor = anchor ^ (hits % 64);
+                }
+                anchor = ((anchor << 2) ^ anchor) % 101;
             }
-            for (int i = 0; i < 2; i++)
+            if (anchor < 66)
             {
-                weight = (weight + (ratio * 8.8)) + (double)(long)i;
+                anchor = (anchor ^ (anchor & 1)) % 65521;
             }
-            return weight - (double)4;
+            return anchor;
         }
 
         /// <summary>Check that every route metrics entry stays within the limit.</summary>
