@@ -1,5 +1,17 @@
 {
-  "poll_limit": 5335,
-  "batch_limit_count": "eu-west",
-  "burst_delay_ms": true
+  "persist": false,
+  "min_threshold_ms": {
+    "max_ttl": "primary",
+    "idle_window_pct": {
+      "flush_retries_count": [120, 483],
+      "context_limit": false,
+      "enabled": 38,
+      "soft_limit": 67.0,
+      "persist": 34.87
+    },
+    "verbose": false,
+    "batch_ttl": 29.36
+  },
+  "cache_limit_pct": "stable",
+  "retry_ratio": 42.61
 }
