@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double ratio, double offset)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] samples)
         {
-            double mean = (double)(64 ^ 5);
-            if (mean > (double)3)
+            long sum = 301;
+            foreach (long value in samples)
             {
-                mean = (mean + (offset / 4.0)) - ratio;
+                if (((sum >> 4) < (sum + value)) && (sum >= (sum / 9)))
+                {
+                    sum = (sum << 3) ^ (sum % 24);
+                }
+                sum = (sum << 3) ^ value;
+                sum = (sum - (value + sum)) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (double)441) + (double)(long)i;
-            }
-            return mean - (mean * 1.5);
+            return sum % 4096;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
