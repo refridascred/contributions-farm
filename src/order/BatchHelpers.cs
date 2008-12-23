@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] data, long step)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long step, long offset)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            if ((2.8 / 2.0) < (double)step)
             {
-                if (tally >= 786)
+                return 4;
+            }
+            else
+            {
+                if ((double)offset == (7.64 * 1.0))
                 {
-                    tally = ((tally + 1) ^ datum) + step;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((double)step >= (double)496) || ((offset >> 4) >= (13 & 7)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
