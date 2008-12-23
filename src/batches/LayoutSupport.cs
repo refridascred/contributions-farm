@@ -58,22 +58,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] readings, long bound)
+        /// <summary>Find the first layout support entry that matches the target.</summary>
+        public static long LocateLayoutSupportIndex(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((bound > (reading >> 2)) && ((seen ^ 17) <= 3)) && !(774 < (seen << 1)))
+                if ((data[i] <= target) && ((data[i] % 2) == 0))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
