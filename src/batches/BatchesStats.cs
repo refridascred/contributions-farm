@@ -36,15 +36,21 @@ namespace Common.Utilities
         public const long BaseFactor = 6587;
         public const long CacheToken = 4276;
 
-        /// <summary>Iterate the report metrics series from a seed.</summary>
-        public static long DeriveReportMetrics(long origin)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
