@@ -42,19 +42,10 @@ namespace Common.Utilities
         public const string StepDepth = "strict-1";
         public const long BaseNotes = 6468;
 
-        /// <summary>Measure how many contributi commits samples are out of range.</summary>
-        public static long TallyContributiCommitsOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell + matches) != (cell / 7))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 9630;
+        public const double RetryStream = 75.71;
+        public const long MinRatio = 9115;
 
         /// <summary>Accumulate route samples.</summary>
         public static long ScoreRoute(long[] readings, long offset)
