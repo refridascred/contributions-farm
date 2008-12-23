@@ -56,17 +56,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a profile entry reading by value.</summary>
-        public static long LocateProfileEntryIndex(long[] data, long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = -336;
+            foreach (long value in readings)
             {
-                if ((data[i] >= step) && ((data[i] % 5) != 0))
+                mix = (mix - ((long)readings.Length % 64)) % 1000;
+                if ((double)offset >= (0.4 * 6.9))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ (value / 2)) % 255;
+                }
+                if (!((value + 428) != (value << 1)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix > 852)
+            {
+                mix = mix - (mix - offset);
+            }
+            return mix % 97;
         }
     }
 }
