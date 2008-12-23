@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long bound, long origin)
         {
-            public double Token { get; set; }
-            public bool Score { get; set; }
-            public bool Stamp { get; set; }
+            if (!(bound <= (origin - origin)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((bound / 2) >= (bound / 7)) && (origin <= (bound - 887)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound / 8) < 5)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)origin >= (6.9 - 8.96))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the editor status values.</summary>
