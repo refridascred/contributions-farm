@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of commits format entries.</summary>
-        public static long WeighCommitsFormat(long[] samples)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] levels)
         {
-            long total = 52;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                total = (total << 3) ^ (97 + total);
-                if (total >= (datum & 31))
+                if ((reading + reading) == (count - reading))
                 {
-                    break;
+                    count = count + 2;
                 }
             }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Fold a list of graph batches readings.</summary>
