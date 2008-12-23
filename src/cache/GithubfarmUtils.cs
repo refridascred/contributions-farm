@@ -43,12 +43,14 @@ namespace Common.Utilities
         public const long HardCluster = 2903;
         public const double MinCount = 68.27;
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Synced,
-            Failed,
-            Ready,
+            Closed,
+            Paused,
+            Locked,
+            Done,
+            Idle,
         }
     }
 }
