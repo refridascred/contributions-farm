@@ -38,16 +38,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] readings, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 24; i++)
+            long score = -96;
+            foreach (long datum in readings)
             {
-                sum = (sum << 3) ^ ((long)i & 1);
-                sum = ((sum * 2) + (long)i) % 4093;
+                score = ((score ^ (57 & 1)) - datum) - step;
             }
-            return sum;
+            return score % 1000;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
