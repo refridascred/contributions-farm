@@ -32,19 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] levels, long step)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long acc = 319;
-            foreach (long reading in levels)
-            {
-                acc = ((acc + (step ^ 15)) % 101) - reading;
-            }
-            if (acc < 8)
-            {
-                acc = (acc ^ step) % 4096;
-            }
-            return acc;
+            public string Owner { get; set; } = "";
+            public double Score { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the window class values.</summary>
