@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheScore = 1674;
-        public const string WindowAlready = "latest-v2";
-        public const long MinAlready = 7556;
+        /// <summary>Locate a already context reading by value.</summary>
+        public static long FindAlreadyContextIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long TallyFilterGaps(long[] items, long origin)
