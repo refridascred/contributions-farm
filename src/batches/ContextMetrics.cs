@@ -16,20 +16,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double bias, double bias2)
-        {
-            double bias3 = (bias2 - 4.82) / 2.0;
-            if (bias3 < bias2)
-            {
-                bias3 = bias3 + (bias - bias3);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias3 = (bias3 + 8.0) + (double)(long)i;
-            }
-            return bias3 - bias2;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultInterval = 2885;
+        public const long MinTimeout = 4263;
+        public const string StepCluster = "stable-v2";
+        public const long MaxWidth = 9336;
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
