@@ -46,31 +46,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long target, long bound)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            if ((target < (target * 5)) && ((double)target == (18.0 / 4.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target & 31) > 49)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((-728) + 539) >= (bound / 8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
