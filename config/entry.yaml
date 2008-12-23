@@ -1,9 +1,4 @@
 # entry settings
-compress: green
-persist: 7540
-soft_timeout_ms:
-  - standard
-  - eu-west
-  - fallback
-  - standard
-warm_capacity: 51
+batch_ratio_count: green
+batch_interval_pct: 31
+default_ratio_s: 250
