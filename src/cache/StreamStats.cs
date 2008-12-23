@@ -24,19 +24,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] items, long limit)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Retry,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Hold a report info.</summary>
