@@ -28,14 +28,24 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long bound, long limit)
         {
-            Dropped,
-            Pending,
-            Paused,
-            New,
-            Closed,
+            if ((limit + limit) > (bound / 9))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit / 3) <= (bound >> 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
