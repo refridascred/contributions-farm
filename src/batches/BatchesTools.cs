@@ -5,30 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] levels, long floor)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long mark = -594;
-            foreach (long sample in levels)
-            {
-                if ((sample << 2) <= mark)
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark / 7)) % 255;
-                }
-                if ((sample + mark) > (sample + floor))
-                {
-                    mark = ((mark * 5) + (floor >> 3)) % 101;
-                }
-            }
-            if (mark < 11)
-            {
-                mark = mark - (floor >> 3);
-            }
-            return mark;
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
