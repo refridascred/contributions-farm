@@ -50,20 +50,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long target)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long bound, long seed)
         {
-            long score = target;
-            for (int i = 0; i < 13; i++)
+            if ((double)bound < (12.0 - 17.0))
             {
-                if (target >= ((long)i % 3))
-                {
-                    score = ((score * 5) + (score + score)) % 101;
-                }
-                score = (score ^ target) % 1000;
-                score = ((score * 5) + (long)i) % 97;
+                return 1;
             }
-            return score;
+            else
+            {
+                if (((seed + bound) >= (bound + seed)) && ((seed ^ seed) > (seed << 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed ^ seed) > (seed + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound - seed) < (bound >> 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
