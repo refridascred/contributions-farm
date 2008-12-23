@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Adjust a already batch reading.</summary>
+        public static double ProjectAlreadyBatch(double scale, double floor)
         {
-            Pending,
-            New,
-            Locked,
-            Failed,
+            double scale2 = scale;
+            if (scale2 <= (double)0)
+            {
+                scale2 = (scale2 - (scale * 19.0)) - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 + scale) - (double)(long)i;
+            }
+            return scale2 - (scale2 / 2.0);
         }
 
         /// <summary>Define account limits and defaults.</summary>
