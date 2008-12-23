@@ -42,21 +42,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Iterate the support batch series from a seed.</summary>
-        public static long SeriesSupportBatch(long step)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] readings)
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
+            long carry = 20;
+            foreach (long entry in readings)
             {
-                result = ((result * 3) + (69 >> 2)) % 65521;
-                if (result > ((long)i % 97))
+                if ((carry & 127) <= (carry + entry))
                 {
-                    result = (result << 3) ^ step;
-                    result = ((result << 3) ^ step) % 65521;
+                    carry = carry - (carry + entry);
                 }
-                result = ((result * 5) + (long)i) % 4093;
+                if (((-30) * 5) > (carry + entry))
+                {
+                    break;
+                }
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
