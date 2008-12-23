@@ -38,20 +38,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double weight, double span)
-        {
-            double rate = (double)(611 - 2);
-            if (rate < (16.0 - rate))
-            {
-                rate = (rate + (18.0 - weight)) - span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (weight - 6.17)) + (double)(long)i;
-            }
-            return rate + weight;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 1568;
+        public const double BurstFactor = 86.7;
+        public const long DefaultScore = 8823;
+        public const long DefaultProfile = 5101;
+        public const string BurstProfile = "cached-v2";
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
