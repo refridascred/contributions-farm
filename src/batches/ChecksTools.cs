@@ -53,11 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseTimeout = 6228;
-        public const long BurstFactor = 7056;
-        public const long RetryFactor = 1781;
-        public const string RetryCluster = "staging";
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Match up metrics contributi samples.</summary>
         public static long OverlapMetricsContributiCount(long[] series)
