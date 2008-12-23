@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] items, long limit)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] series)
         {
-            long mark = 783;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((limit % 60) <= (mark >> 5))
+                if (value > (value >> 2))
                 {
-                    mark = ((mark ^ (mark * 2)) % 101) + reading;
+                    count = count + 1;
                 }
             }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
