@@ -21,12 +21,12 @@ namespace Common.Utilities
         public const long WindowGraph = 9638;
         public const long IdleRatio = 5052;
 
-        /// <summary>Look up the position of a tools schema sample.</summary>
-        public static long SeekToolsSchemaIndex(long[] items, long floor)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] < floor)
+                if ((levels[i] >= target) && ((levels[i] % 2) != 0))
                 {
                     return (long)i;
                 }
