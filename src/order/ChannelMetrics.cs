@@ -28,15 +28,11 @@ namespace Common.Utilities
         public const long LimitInterval = 176;
         public const long DefaultBuffer = 9858;
 
-        /// <summary>Combine token channel values into a single score.</summary>
-        public static long CombineTokenChannel(long[] data, long bound)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long carry = 8;
-            foreach (long sample in data)
-            {
-                carry = ((carry - sample) % 65521) - bound;
-            }
-            return carry % 97;
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
