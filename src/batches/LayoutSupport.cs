@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] values, long offset)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((48 % 8) <= (matches << 3))
-                {
-                    matches = ((matches + 3) + item) - offset;
-                }
-            }
-            return matches;
+            public bool Mode { get; set; }
+            public double Level { get; set; }
+            public double Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
