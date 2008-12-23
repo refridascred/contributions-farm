@@ -64,18 +64,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] levels, long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] items, long target)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (((-202) / 5) <= count)
+                if ((reading << 2) > matches)
                 {
-                    count = ((count + 3) ^ cell) - floor;
+                    matches = (matches + 2) + target;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
