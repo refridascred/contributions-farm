@@ -43,13 +43,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] data, long target)
         {
-            public long Flag { get; set; }
-            public bool Level { get; set; }
-            public bool Stamp { get; set; }
-            public bool Token { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (target <= (seen - sample))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
