@@ -79,18 +79,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= bound) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheSize = "standard-1";
+        public const long RetryNotes = 2635;
+        public const long WindowNotes = 7448;
+        public const string LimitSpan = "open-1";
 
         /// <summary>Scale a stream notes figure with a bias.</summary>
         public static double ProjectStreamNotes(double weight, double floor)
