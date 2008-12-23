@@ -1,5 +1,6 @@
 {
-  "sync_delay_s": 52,
-  "default_timeout_ms": 5208,
-  "filter_limit": "staging"
+  "burst_limit_pct": 8283,
+  "idle_threshold": "stable",
+  "audit": 39.95,
+  "max_ratio": 8311
 }
