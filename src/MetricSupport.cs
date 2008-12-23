@@ -13,16 +13,38 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Iterate the cluster commits series from a seed.</summary>
-        public static long SeriesClusterCommits(long bound)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long limit, long limit2)
         {
-            long sum = bound;
-            for (int i = 0; i < 6; i++)
+            if ((12.0 + 4.0) != (double)limit2)
             {
-                sum = (sum << 3) ^ ((-780) / 4);
-                sum = ((sum * 5) + (long)i) % 4093;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if (!(91 < (limit2 - limit2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit2 + limit) > limit2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)limit != (9.0 + 1.14)) && ((limit2 & 31) >= (limit % 10)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up metric samples.</summary>
