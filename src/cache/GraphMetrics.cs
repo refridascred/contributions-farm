@@ -78,17 +78,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a command graph reading by value.</summary>
-        public static long SeekCommandGraphIndex(long[] data, long offset)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
