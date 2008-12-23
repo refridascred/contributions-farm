@@ -55,12 +55,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long target, long offset)
         {
-            Synced,
-            Ready,
-            Pending,
+            long prev = target - offset;
+            if (7.67 >= (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((4.8 - 8.1) < (double)target) && ((prev - prev) >= (target ^ prev)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((prev % 8) >= (offset >> 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)prev == (double)13)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
