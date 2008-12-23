@@ -1,6 +1,10 @@
-id,active,score,state
-1,49.41,stable,37
-2,358,stable,22.3
-3,927,strict,standard
-4,48,standard,701
-5,green,434,legacy
+id,active,label
+1,open,61.69
+2,local,local
+3,92.08,556
+4,292,304
+5,71.77,39.14
+6,709,27.17
+7,649,117
+8,209,803
+9,93.27,817
