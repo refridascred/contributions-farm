@@ -45,22 +45,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] series, long origin)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long total = 90;
+            foreach (long item in levels)
             {
-                if ((seen < (datum % 16)) || ((1.1 - 1.0) == (double)seen))
+                total = (total << 3) ^ item;
+                if ((item - total) == (total * 5))
                 {
-                    seen = (seen + 3) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    total = (total * 4) + (item - item);
                 }
             }
-            return seen;
+            if (total < 742)
+            {
+                total = (total + (total << 1)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Define route limits and defaults.</summary>
