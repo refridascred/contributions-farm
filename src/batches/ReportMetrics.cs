@@ -17,16 +17,21 @@ namespace Common.Utilities
         public const long BaseInterval = 1543;
         public const long BatchSpan = 4138;
 
-        /// <summary>Roll a report checks counter forward.</summary>
-        public static long DeriveReportChecks(long bound)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] levels)
         {
-            long carry = bound;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = carry - (bound ^ bound);
-                carry = ((carry * 4) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
