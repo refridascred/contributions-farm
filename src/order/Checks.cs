@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] readings)
+        /// <summary>Audit channel record readings against a rule.</summary>
+        public static long MeasureChannelRecordOutliers(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (count < (long)readings.Length)
                 {
-                    if ((readings[i] ^ readings[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 3) - datum;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
