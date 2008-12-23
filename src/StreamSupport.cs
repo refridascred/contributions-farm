@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long offset, long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] data, long seed)
         {
-            long bound = offset - floor;
-            if ((floor + 9) != (floor + bound))
+            long matches = 0;
+            foreach (long datum in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor >= offset)
+                if ((seed + seed) != (388 + matches))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((offset ^ floor) <= (4 << 3)) || ((floor ^ offset) <= bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((offset + offset) <= offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = (matches + 2) ^ datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a batch entry.</summary>
