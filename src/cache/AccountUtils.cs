@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] series, long target)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double ratio, double offset)
         {
-            long total = 53;
-            foreach (long sample in series)
+            double weight = ratio;
+            if (weight >= (weight - 2.69))
             {
-                if (!((target + target) >= (total << 2)))
-                {
-                    total = ((total ^ (target & 31)) % 101) ^ sample;
-                }
+                weight = (weight + (double)1) + offset;
             }
-            return total;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (ratio * 8.8)) + (double)(long)i;
+            }
+            return weight - (double)4;
         }
 
         /// <summary>Hold a account summary.</summary>
