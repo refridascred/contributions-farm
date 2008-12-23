@@ -51,19 +51,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] values, long floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (datum != floor)
+                if ((datum << 1) >= (datum ^ matches))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
