@@ -32,19 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] items, long step)
+        /// <summary>Find the first record checks entry that matches the target.</summary>
+        public static long SeekRecordChecksIndex(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell > step)
+                if (samples[i] == floor)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
