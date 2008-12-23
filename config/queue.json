@@ -1,20 +1,15 @@
 {
-  "audit": {
-    "poll_ttl": 64.13,
-    "persist": "legacy",
-    "cache_threshold_ms": {
-      "tools_timeout": "stable",
-      "payload_retries": "strict",
-      "strict": 79,
-      "stream_window": 26
-    },
-    "enabled": {
-      "default_delay_pct": "standard",
-      "format_threshold": 47.68,
-      "strict": "local"
-    },
-    "dry_run": "blue"
+  "compress": 6938,
+  "min_size": 9685,
+  "dry_run": {
+    "min_interval_ms": ["local", "blue", "strict", "local"],
+    "notes_window": "strict",
+    "batches_interval": 500,
+    "compress": "cached",
+    "verbose": 32,
+    "route_threshold": false
   },
-  "githubfarm_window": false,
-  "cache_ttl": [88, 39]
+  "report_timeout": 500,
+  "verbose": "legacy",
+  "min_retries_pct": 60
 }
