@@ -22,17 +22,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] items, long target)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
