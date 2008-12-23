@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next payload record value.</summary>
-        public static double SmoothPayloadRecord(double gain, double floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] items, long offset)
         {
-            double rate = (double)(763 ^ 23);
-            if (rate < rate)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                rate = (rate + (double)50) + floor;
+                if (offset > (reading - reading))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                rate = rate + gain;
-            }
-            return rate - (double)(-6);
+            return hits;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
