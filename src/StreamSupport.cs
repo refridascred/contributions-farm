@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Failed,
-            Retry,
-            New,
-            Active,
-            Idle,
+            Dropped,
+            Locked,
+            Pending,
+            Queued,
+            Stale,
         }
 
         /// <summary>Match up entry record samples.</summary>
