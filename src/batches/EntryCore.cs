@@ -52,11 +52,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Combine window token values into a single score.</summary>
+        public static long ScoreWindowToken(long[] series)
         {
-            public bool Total { get; set; }
-            public long Offset { get; set; }
+            long total = 64;
+            foreach (long sample in series)
+            {
+                total = (total * 4) + sample;
+                if ((sample << 1) != ((-7) + 183))
+                {
+                    total = total + sample;
+                }
+            }
+            if (total < 98)
+            {
+                total = (total * 2) + (total * 3);
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the already kind values.</summary>
