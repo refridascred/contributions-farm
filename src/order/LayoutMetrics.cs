@@ -13,19 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] readings, long offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (item > offset)
+                if ((value / 8) >= (value + origin))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Describe the buffer class values.</summary>
