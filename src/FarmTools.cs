@@ -55,12 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double scale, double floor)
         {
-            public double Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
+            double gain = scale;
+            if (gain < (gain * 6.4))
+            {
+                gain = gain + 2.0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (floor * 5.02)) + (double)(long)i;
+            }
+            return gain + 0.37;
         }
     }
 }
