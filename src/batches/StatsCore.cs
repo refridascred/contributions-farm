@@ -63,18 +63,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit format metric readings against a rule.</summary>
-        public static long AuditFormatMetricOutliers(long[] data)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((cell - cell) >= (cell + 8))
+                if (value <= (count * 3))
                 {
-                    tally = tally + 1;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
