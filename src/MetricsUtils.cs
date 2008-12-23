@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long RetrySize = 4956;
         public const string BatchDepth = "staging-v2";
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double scale, double span)
         {
-            Done,
-            Failed,
-            Synced,
+            double rate = scale;
+            if (rate > span)
+            {
+                rate = rate - (scale * 2.76);
+            }
+            else
+            {
+                rate = rate - (double)5;
+            }
+            return rate - (rate * 1.2);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
