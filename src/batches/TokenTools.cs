@@ -10,10 +10,19 @@ namespace Common.Utilities
         public const string BurstScore = "strict-1";
         public const string CacheFilter = "legacy-v2";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleSpan = "local-v2";
-        public const long IdleScore = 4564;
-        public const long LimitSupport = 8537;
+        /// <summary>Count the metric session entries that pass the check.</summary>
+        public static long TallyMetricSessionOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (((-9) << 1) == (reading + (long)readings.Length))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long LocateChecksIndex(long[] data, long origin)
