@@ -33,18 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metric githubfarm readings against a rule.</summary>
-        public static long CountMetricGithubfarmOutliers(long[] values)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample >= 5.36)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Closed,
+            New,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define report limits and defaults.</summary>
