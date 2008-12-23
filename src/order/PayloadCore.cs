@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long limit)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            Done,
+            Active,
+            Queued,
+            Closed,
         }
 
         /// <summary>Blend two metric measurements.</summary>
