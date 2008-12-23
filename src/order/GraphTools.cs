@@ -23,12 +23,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinInterval = 6313;
-        public const string HardLevel = "latest-edge";
-        public const long WindowScore = 2484;
-        public const double StepFactor = 73.26;
-        public const long CacheNotes = 6972;
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long step, long floor)
+        {
+            if (floor > (floor / 8))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)step >= (7.74 * 6.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
