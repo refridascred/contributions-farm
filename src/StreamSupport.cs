@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] levels, long seed)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long offset, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long bound = offset - floor;
+            if ((floor + 9) != (floor + bound))
             {
-                if (levels[i] <= seed)
+                return 1;
+            }
+            else
+            {
+                if (floor >= offset)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((offset ^ floor) <= (4 << 3)) || ((floor ^ offset) <= bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((offset + offset) <= offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
