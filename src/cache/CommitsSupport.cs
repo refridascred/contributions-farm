@@ -34,18 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] data, long floor)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            double gain = bias;
+            if (gain < 13.0)
             {
-                if ((2.03 * 9.3) >= (double)floor)
-                {
-                    hits = (hits + 1) ^ reading;
-                }
+                gain = gain + (double)(-59);
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (double)537) + (double)(long)i;
+            }
+            return gain + (offset / 8.0);
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
