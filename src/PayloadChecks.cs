@@ -57,21 +57,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] levels)
+        /// <summary>Combine record cache values into a single score.</summary>
+        public static long CombineRecordCache(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 49;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                state = (((state * 4) + (step << 1)) % 65521) + datum;
+                if (!((double)(long)series.Length > (2.95 + 2.5)))
                 {
-                    if ((levels[i] ^ levels[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = state + (step + 15);
+                    state = (state * 4) + (step + step);
                 }
+                state = state + 58;
             }
-            return matches;
+            if (state < 53)
+            {
+                state = (state * 4) + (state & 15);
+            }
+            return state % 97;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
