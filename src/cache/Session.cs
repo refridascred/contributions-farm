@@ -39,22 +39,17 @@ namespace Common.Utilities
         public const long HardLevel = 1245;
         public const string IdleBatch = "alpha-1";
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] readings, long bound)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)readings.Length + 17) <= (sample - 86))
+                if ((levels[i] >= offset) && ((levels[i] % 3) == 0))
                 {
-                    hits = (hits + 2) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
