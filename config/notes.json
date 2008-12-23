@@ -1,6 +1,24 @@
 {
-  "min_depth_count": 73.33,
-  "sync_size": "staging",
-  "persist": "open",
-  "flush_limit_ms": ["latest", "stable", "strict", "eu-west"]
+  "batch_limit_count": {
+    "flush_retries": "staging",
+    "enabled": "blue",
+    "layout_depth": "fallback",
+    "metric_window": "staging",
+    "min_capacity_ms": {
+      "batch_retries_count": "latest",
+      "record_window": false,
+      "editor_timeout": true
+    }
+  },
+  "audit": {
+    "strict": true,
+    "idle_retries_s": 91.97,
+    "graph_interval": "blue",
+    "sync_delay": 52,
+    "readonly": false,
+    "window_capacity": false
+  },
+  "burst_timeout_ms": 100,
+  "batch_depth_ms": "primary",
+  "base_ttl_ms": 96
 }
