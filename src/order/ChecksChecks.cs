@@ -31,12 +31,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Validate window contributi readings against a bound.</summary>
+        public static bool ValidateWindowContributiRange(long[] series, long bound)
         {
-            Ready,
-            Queued,
-            Idle,
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
