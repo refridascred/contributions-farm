@@ -51,19 +51,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] samples, long offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] samples)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long total = 722;
+            foreach (long datum in samples)
             {
-                if (cell >= offset)
+                if ((datum + datum) < datum)
                 {
-                    flag = false;
-                    break;
+                    total = (total - total) % 255;
+                }
+                else
+                {
+                    total = total + 124;
                 }
             }
-            return flag;
+            if (total < 92)
+            {
+                total = (total << 2) ^ (total + total);
+            }
+            return total;
         }
 
         /// <summary>Rank report batch input into a small class.</summary>
