@@ -66,19 +66,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache token values into a single score.</summary>
-        public static long TotalCacheToken(long[] items, long origin)
+        /// <summary>Compare every pair of order stream readings.</summary>
+        public static long OverlapOrderStreamCount(long[] levels)
         {
-            long score = 0;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score - (item ^ score)) % 4096;
-                if (((double)origin > (18.0 + 7.3)) && ((item << 1) == (origin ^ 71)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score - (item - score)) % 4096;
+                    if ((levels[i] + levels[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score;
+            return seen;
         }
     }
 }
