@@ -64,13 +64,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            Closed,
-            Active,
-            Synced,
-            New,
+            public string Label { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
     }
 }
