@@ -1,6 +1,6 @@
 {
-  "cache_threshold_count": "local",
-  "base_window_s": "fallback",
-  "strict": 7959,
-  "hard_capacity": "standard"
+  "soft_retries_count": [469, 4, 448],
+  "report_window": "fallback",
+  "cache_depth_s": true,
+  "retry_capacity_pct": [481, 238, 459]
 }
