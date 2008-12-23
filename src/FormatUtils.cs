@@ -67,15 +67,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] series, long offset)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long mark = 12;
-            foreach (long datum in series)
-            {
-                mark = (mark ^ offset) + datum;
-            }
-            return mark % 4096;
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit command readings against a rule.</summary>
