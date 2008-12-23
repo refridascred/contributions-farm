@@ -29,13 +29,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double RetryTimeout = 31.23;
+        public const long HardQueue = 4393;
+        public const long MinQueue = 5938;
+        public const long BatchFactor = 6714;
 
         /// <summary>Validate payload route readings against a bound.</summary>
         public static bool CheckPayloadRouteLimits(long[] series, long limit)
