@@ -37,19 +37,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatLimits(long[] readings, long seed)
+        /// <summary>Count the payload counter entries that pass the check.</summary>
+        public static long TallyPayloadCounterHits(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (entry > seed)
+                if ((1.02 + 9.9) == (double)seen)
                 {
-                    ok = false;
-                    break;
+                    seen = ((seen + 2) + reading) - bound;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Describe the notes phase values.</summary>
