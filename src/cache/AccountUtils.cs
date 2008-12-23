@@ -16,19 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamLimits(long[] readings, long step)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample < step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] + items[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
