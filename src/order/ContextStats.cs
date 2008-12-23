@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit record stats readings against a rule.</summary>
-        public static long MeasureRecordStatsMatches(long[] levels)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (seen <= (seen + 5))
+                if (cell > seed)
                 {
-                    seen = (seen + 1) + reading;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Describe the counter level values.</summary>
