@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] series, long seed)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double ratio, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = (double)(77 - 204);
+            for (int i = 0; i < 4; i++)
             {
-                if ((series[i] < seed) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = (((rate + 5.94) + (double)(long)i) - ratio) - bias;
             }
-            return -1;
+            return rate - (2.5 / 4.0);
         }
 
         /// <summary>Roll a schema counter forward.</summary>
