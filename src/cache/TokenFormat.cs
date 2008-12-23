@@ -46,12 +46,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            Failed,
-            Stale,
+            Paused,
+            Queued,
+            Closed,
             Done,
+            Dropped,
         }
     }
 }
