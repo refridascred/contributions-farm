@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first stats account entry that matches the target.</summary>
-        public static long FindStatsAccountIndex(long[] values, long target)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 789;
+            foreach (long value in series)
             {
-                if (values[i] >= target)
+                if (((19.0 - 8.5) >= (double)value) || ((result / 8) < (value + result)))
                 {
-                    return (long)i;
+                    result = (result + (result >> 4)) % 1000;
+                }
+                if ((double)result > (7.68 * 5.16))
+                {
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Project the next metric profile value.</summary>
