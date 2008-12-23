@@ -26,25 +26,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long offset, long origin)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long bound)
         {
-            long prev = offset + origin;
-            if ((offset << 2) > 3)
+            long score = bound;
+            for (int i = 0; i < 11; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (707 <= prev)
+                score = ((score * 5) + (bound >> 2)) % 97;
+                if ((score + bound) != ((long)i - bound))
                 {
-                    return 5;
+                    score = (score + (score - 5)) % 101;
                 }
-                else
-                {
-                    return 6;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Hold a schema summary.</summary>
