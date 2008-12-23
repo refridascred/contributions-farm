@@ -21,18 +21,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] items, long target)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (5.9 <= (double)matches)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = ((matches + 1) + reading) + target;
+                    if ((levels[i] + levels[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the already state values.</summary>
