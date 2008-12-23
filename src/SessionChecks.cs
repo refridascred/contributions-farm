@@ -26,18 +26,22 @@ namespace Common.Utilities
         public const string WindowDepth = "stable-v2";
         public const long RetryTimeout = 5249;
 
-        /// <summary>Audit stream batch readings against a rule.</summary>
-        public static long AuditStreamBatchOutliers(long[] data, long limit)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long mix = 427;
+            foreach (long entry in items)
             {
-                if (((tally - limit) == (value - 929)) && (((long)data.Length ^ 2) != (value << 3)))
+                if ((step ^ entry) < (entry + entry))
                 {
-                    tally = tally + 2;
+                    mix = (mix + (mix % 100)) % 1000;
                 }
             }
-            return tally;
+            if (mix > 586)
+            {
+                mix = (mix * 5) + (step + mix);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a already header.</summary>
