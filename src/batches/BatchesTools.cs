@@ -25,11 +25,19 @@ namespace Common.Utilities
         public const string HardSpan = "staging-edge";
         public const long MinNotes = 4885;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftStats = 58.25;
-        public const long WindowStats = 1151;
-        public const double BurstDepth = 98.47;
-        public const string DefaultCount = "local-v2";
-        public const long IdleStats = 1764;
+        /// <summary>Validate batches filter readings against a bound.</summary>
+        public static bool ValidateBatchesFilterRange(long[] readings, long seed)
+        {
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
