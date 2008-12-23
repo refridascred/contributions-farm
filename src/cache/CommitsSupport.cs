@@ -59,19 +59,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] readings)
+        /// <summary>Combine cache token values into a single score.</summary>
+        public static long TotalCacheToken(long[] items, long origin)
         {
-            long carry = 8;
-            foreach (long cell in readings)
+            long score = 0;
+            foreach (long item in items)
             {
-                carry = carry ^ cell;
-                if (cell >= (cell % 16))
+                score = (score - (item ^ score)) % 4096;
+                if (((double)origin > (18.0 + 7.3)) && ((item << 1) == (origin ^ 71)))
                 {
-                    break;
+                    score = (score - (item - score)) % 4096;
                 }
             }
-            return carry;
+            return score;
         }
     }
 }
