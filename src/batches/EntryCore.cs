@@ -25,19 +25,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the route profile entries that pass the check.</summary>
-        public static long MeasureRouteProfileMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((double)tally > 6.0)
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double RetryStream = 40.4;
+        public const double BurstStream = 92.35;
+        public const string MinTimeout = "standard-v2";
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
