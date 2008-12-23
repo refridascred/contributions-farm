@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const long MaxCommits = 2967;
         public const double BurstInterval = 74.86;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] values, long bound)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double weight, double floor)
         {
-            long mark = 31;
-            foreach (long reading in values)
+            double mean = 2.2;
+            if (mean < 2.7)
             {
-                if ((reading - bound) >= (5 % 3))
-                {
-                    mark = ((mark << 3) ^ (bound % 64)) % 4096;
-                }
+                mean = (mean + (mean + floor)) - weight;
             }
-            return mark % 4096;
+            else
+            {
+                mean = mean - (double)1;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + (mean * 1.0);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
