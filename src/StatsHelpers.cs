@@ -57,12 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] items, long bound)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] items, long step)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] <= bound) && ((items[i] % 5) != 0))
+                if (items[i] < step)
                 {
                     return (long)i;
                 }
