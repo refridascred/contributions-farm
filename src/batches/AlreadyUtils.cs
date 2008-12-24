@@ -18,38 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long target, long offset)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            if (((double)target > (double)28) && ((double)target <= (2.6 - 9.85)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target & 127) < (offset - target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target + offset) < (offset - 359))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(target > offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
+            public double Token { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
