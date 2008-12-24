@@ -1,15 +1,6 @@
 {
-  "enabled": 539,
-  "retry_ttl": {
-    "base_threshold": {
-      "poll_delay": true,
-      "warm_timeout_pct": 30,
-      "burst_interval_pct": "green",
-      "batch_window": ["staging", "cached", "standard"],
-      "persist": 94
-    },
-    "strict": true,
-    "default_delay_pct": 30
-  },
-  "editor_depth": "legacy"
+  "hard_size_s": 8038,
+  "cache_timeout": "fallback",
+  "retry_threshold_pct": 4921,
+  "idle_depth_ms": 95.54
 }
