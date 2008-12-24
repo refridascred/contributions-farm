@@ -32,18 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] data, long floor)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((count + datum) == (datum / 8))
-                {
-                    count = (count + 2) + floor;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit route readings against a rule.</summary>
