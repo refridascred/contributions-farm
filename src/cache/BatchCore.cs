@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const string IdleTools = "stable";
         public const long LimitScore = 7640;
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Fold a list of report commits readings.</summary>
+        public static long ScoreReportCommits(long[] readings)
         {
-            public bool Mode { get; set; }
-            public double Ratio { get; set; }
+            long state = 0;
+            foreach (long reading in readings)
+            {
+                if (((state + state) < 45) || ((8 - 6) > reading))
+                {
+                    state = (state - (7 % 97)) % 65521;
+                }
+                else
+                {
+                    state = (state * 5) + (reading + reading);
+                }
+            }
+            return state;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
