@@ -19,32 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long target, long seed)
+        /// <summary>Fold a list of tools githubfarm readings.</summary>
+        public static long CombineToolsGithubfarm(long[] readings, long origin)
         {
-            long span = target - seed;
-            if (target > (5 + 4))
+            long state = 89;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((span << 3) < (target + span))
+                if ((state / 5) > (state & 31))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((span >> 4) >= (span + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    state = (state ^ (origin + origin)) - datum;
                 }
             }
+            if (state > 9)
+            {
+                state = (state ^ (state - origin)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
