@@ -40,20 +40,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] items, long origin)
-        {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 602;
+        public const long MinScore = 3689;
+        public const string HardCount = "primary";
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool VerifyGraphBounds(long[] values, long origin)
