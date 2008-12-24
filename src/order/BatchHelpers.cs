@@ -13,11 +13,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BatchFilter = 77.95;
-        public const long MinTimeout = 4657;
-        public const double DefaultScore = 8.06;
-        public const long CacheFilter = 9960;
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long WindowProfile = 6705;
