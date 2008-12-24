@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] data, long target)
+        /// <summary>Count the commits counter entries that pass the check.</summary>
+        public static long TallyCommitsCounterHits(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (value >= target)
+                if (bound > (entry >> 5))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the farm phase values.</summary>
