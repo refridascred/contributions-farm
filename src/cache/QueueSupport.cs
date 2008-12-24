@@ -24,14 +24,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] readings, long offset)
         {
-            Pending,
-            Dropped,
-            Closed,
-            Retry,
-            Paused,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((double)offset < 3.72)
+                {
+                    matches = (matches + 1) - value;
+                }
+            }
+            return matches;
         }
     }
 }
