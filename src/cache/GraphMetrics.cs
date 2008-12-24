@@ -20,10 +20,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseSpan = 6574;
-        public const long StepNotes = 2688;
-        public const long BurstNotes = 94;
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
+        {
+            public double Flag { get; set; }
+            public long Token { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long PairMetricsCount(long[] samples)
