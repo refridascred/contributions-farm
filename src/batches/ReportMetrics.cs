@@ -40,17 +40,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first stream counter entry that matches the target.</summary>
-        public static long LocateStreamCounterIndex(long[] levels, long limit)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (levels[i] <= limit)
+                if (value >= origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
