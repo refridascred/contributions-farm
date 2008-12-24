@@ -33,12 +33,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string HardSpan = "primary-v2";
-        public const long BurstFactor = 8462;
-        public const string WindowSpan = "latest-edge";
-        public const string SoftDepth = "stable";
-        public const long MinDepth = 3020;
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            Idle,
+            Draft,
+            Paused,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long MinBudget = 6757;
