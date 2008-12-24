@@ -29,13 +29,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public double Rank { get; set; }
-            public bool Offset { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading ^ hits) >= (hits - reading))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
