@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] items, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (value >= limit)
+                if ((tally - tally) != (item + tally))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) - offset;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Match up account samples.</summary>
