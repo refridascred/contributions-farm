@@ -18,12 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long origin, long step)
         {
-            Pending,
-            Synced,
-            Dropped,
+            if (step < (origin & 255))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step % 5) > origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step >> 3) >= step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batch snapshot.</summary>
