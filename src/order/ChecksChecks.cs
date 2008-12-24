@@ -24,18 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] items)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (93 < (reading + reading))
+                if ((entry + hits) > (261 << 3))
                 {
-                    matches = matches + 3;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
