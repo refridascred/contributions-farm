@@ -22,13 +22,19 @@ namespace Common.Utilities
         public const double LimitRatio = 47.59;
         public const long DefaultRatio = 851;
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] levels)
         {
-            Retry,
-            Paused,
-            Pending,
-            Idle,
+            long carry = 1;
+            foreach (long value in levels)
+            {
+                carry = ((carry - carry) % 255) ^ value;
+            }
+            if (carry > 67)
+            {
+                carry = (carry << 3) ^ (81 + carry);
+            }
+            return carry % 97;
         }
     }
 }
