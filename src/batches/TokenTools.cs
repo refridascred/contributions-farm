@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long offset)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] readings)
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix << 2) ^ offset;
-                mix = ((mix * 3) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
