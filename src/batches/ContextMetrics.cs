@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit metric profile readings against a rule.</summary>
-        public static long TallyMetricProfileMatches(long[] series)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long floor, long target)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long delta = floor - target;
+            if (((-8) + floor) >= (floor + target))
             {
-                if ((tally > (tally & 31)) || ((cell & 3) == (tally * 5)))
+                return 0;
+            }
+            else
+            {
+                if (target > (delta + target))
                 {
-                    tally = tally + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of queue order entries.</summary>
