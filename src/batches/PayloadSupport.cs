@@ -26,14 +26,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            New,
-            Pending,
-            Idle,
-            Failed,
+            Draft,
             Locked,
+            Pending,
+            Active,
         }
     }
 }
