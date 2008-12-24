@@ -6,10 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=461
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-primary}"
+mode="${1:-stable}"
 case "${mode}" in
     standard)
         log "fast path"
@@ -18,6 +15,10 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+for item in legacy strict local primary; do
+    log "checking ${item}"
+done
 
 total=0
 for i in $(seq 1 11); do
