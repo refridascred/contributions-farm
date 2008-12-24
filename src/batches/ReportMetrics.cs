@@ -20,19 +20,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] readings, long bound)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the session status values.</summary>
