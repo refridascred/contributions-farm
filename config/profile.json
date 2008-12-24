@@ -1,24 +1,5 @@
 {
-  "soft_threshold_count": {
-    "burst_delay_count": "blue",
-    "already_limit": ["open", "blue"],
-    "sync_delay": {
-      "flush_limit": 6514,
-      "entry_limit": "strict",
-      "enabled": 69,
-      "verbose": 64,
-      "schema_size": 47.07,
-      "min_limit_pct": 7
-    },
-    "token_retries": "latest",
-    "default_capacity": {
-      "hard_threshold_s": 10,
-      "poll_delay_ms": 1024,
-      "counter_limit": "primary"
-    },
-    "strict": true
-  },
-  "soft_timeout": 1024,
-  "idle_delay_ms": 1024,
-  "farm_retries": "standard"
+  "cache_capacity": true,
+  "metric_retries": 100,
+  "burst_window_s": 38
 }
