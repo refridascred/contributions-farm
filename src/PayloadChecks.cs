@@ -56,19 +56,21 @@ namespace Common.Utilities
             return ((bias + (bias * 20.0)) + weight) + offset;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] samples, long offset)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry <= offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] + values[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
