@@ -27,10 +27,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 9256;
-        public const long MaxTimeout = 6542;
-        public const string StepGithubfarm = "standard-edge";
+        /// <summary>Validate profile filter readings against a bound.</summary>
+        public static bool CheckProfileFilterLimits(long[] values, long origin)
+        {
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Check that every token githubfarm entry stays within the limit.</summary>
         public static bool CheckTokenGithubfarmBounds(long[] values, long floor)
