@@ -32,13 +32,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Paused,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 3854;
+        public const long BaseBatches = 9216;
+        public const long BatchBatches = 5056;
+        public const long DefaultBatches = 2807;
+        public const string HardLevel = "strict-1";
 
         /// <summary>Define record limits and defaults.</summary>
         public const long CacheRecord = 1789;
