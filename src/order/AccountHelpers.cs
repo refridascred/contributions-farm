@@ -81,19 +81,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Check that every editor record entry stays within the limit.</summary>
-        public static bool CheckEditorRecordBounds(long[] levels, long step)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Synced,
+            Dropped,
+            Active,
+            Queued,
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
