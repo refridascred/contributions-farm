@@ -67,13 +67,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double gain, double floor)
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
+            double weight = floor - 1.0;
+            if (weight < floor)
+            {
+                weight = (weight - 4.96) - gain;
+            }
+            return weight - weight;
         }
 
         /// <summary>Describe the notes kind values.</summary>
