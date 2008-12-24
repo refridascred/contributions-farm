@@ -13,15 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double weight, double span)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] data)
         {
-            double gain = 3.7;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                gain = ((gain + (span * 9.5)) + (double)(long)i) + weight;
+                if ((1.84 + 5.42) < (double)value)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return gain + gain;
+            return seen;
         }
 
         /// <summary>Describe the payload level values.</summary>
