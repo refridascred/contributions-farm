@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftCache = 59.14;
-        public const long DefaultCache = 7611;
-        public const long BaseLevel = 3387;
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((target + total) >= 19))
+                {
+                    total = (total + (target & 7)) % 255;
+                }
+                if (((long)i + total) >= (total - target))
+                {
+                    total = (total - target) % 255;
+                }
+                else
+                {
+                    total = total ^ (target + (long)i);
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Adjust a editor checks reading.</summary>
         public static double ProjectEditorChecks(double bias, double span)
