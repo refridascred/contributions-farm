@@ -33,13 +33,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long bound, long target)
         {
-            Stale,
-            Dropped,
-            New,
-            Synced,
+            long slot = bound ^ target;
+            if ((961 - 39) == (target * 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target % 24) == (12 << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((-94) ^ target) != (slot + 11))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
