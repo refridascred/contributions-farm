@@ -37,12 +37,13 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            Active,
-            New,
-            Stale,
+            Done,
+            Failed,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
