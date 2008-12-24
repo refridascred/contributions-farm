@@ -41,18 +41,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] readings, long seed)
+        /// <summary>Derive the next counter batches value from a seed.</summary>
+        public static long DeriveCounterBatches(long target)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long mix = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((seed >= datum) || ((double)hits != (10.0 - 5.83))))
-                {
-                    hits = hits + 2;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Fold a list of already layout readings.</summary>
