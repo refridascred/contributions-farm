@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] values, long offset)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (values[i] >= offset)
+                if (((mix + mix) == (bound ^ bound)) || ((mix % 5) < (bound & 31)))
                 {
-                    return (long)i;
+                    mix = (mix * 3) + ((long)i - mix);
                 }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mix = (((mix * 2) + mix) % 101) ^ (long)i2;
+                    mix = (mix + (mix % 24)) % 65521;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
