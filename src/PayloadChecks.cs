@@ -38,31 +38,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a payload metrics value against two limits.</summary>
-        public static long SortPayloadMetrics(long seed, long bound)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] samples, long target)
         {
-            if ((seed + seed) != (bound - bound))
+            bool stale = true;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed > (bound + seed))
+                if (item > target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed * 4) <= (738 % 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the format mode values.</summary>
