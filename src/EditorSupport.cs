@@ -49,15 +49,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] samples)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] items, long bound)
         {
-            long mix = 6;
-            foreach (long entry in samples)
+            long result = 86;
+            foreach (long value in items)
             {
-                mix = mix + (entry / 2);
+                result = (result << 3) ^ (bound - value);
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
