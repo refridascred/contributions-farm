@@ -37,11 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] items, long bound)
         {
-            public long Region { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next batches value.</summary>
