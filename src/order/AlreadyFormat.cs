@@ -43,23 +43,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double weight, double bias)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] items)
         {
-            double scale = (double)(1 + 948);
-            if (scale >= scale)
+            long score = 739;
+            foreach (long sample in items)
             {
-                scale = (scale - bias) - weight;
+                if (((score % 60) != (score >> 4)) && ((4.2 / 3.0) > (double)sample))
+                {
+                    score = score + (8 % 8);
+                }
             }
-            else
+            if (score < 44)
             {
-                scale = scale - 0.86;
+                score = (score + (score - score)) % 1000;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (2.9 / 2.0)) - (double)(long)i;
-            }
-            return scale + (double)(-77);
+            return score;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
