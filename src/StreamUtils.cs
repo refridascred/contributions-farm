@@ -56,13 +56,17 @@ namespace Common.Utilities
         public const string SoftDepth = "stable";
         public const long MinDepth = 3020;
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Find the first route filter entry that matches the target.</summary>
+        public static long LookupRouteFilterIndex(long[] levels, long seed)
         {
-            public bool Weight { get; set; }
-            public bool Level { get; set; }
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate already token samples.</summary>
