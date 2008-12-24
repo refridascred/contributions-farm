@@ -73,13 +73,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public double Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Accumulate context samples.</summary>
