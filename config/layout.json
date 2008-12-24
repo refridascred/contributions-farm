@@ -1,5 +1,6 @@
 {
-  "max_capacity_pct": ["strict", "open", "local", "strict"],
-  "warm_retries": "open",
-  "soft_retries_pct": 6755
+  "compress": 60.25,
+  "batch_depth_count": ["standard", "green", "open", "strict"],
+  "default_interval": "legacy",
+  "persist": 48.8
 }
