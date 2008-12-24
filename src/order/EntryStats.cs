@@ -42,15 +42,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] series, long seed)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] levels)
         {
-            long mix = 42;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (((mix << 2) ^ ((-7) + cell)) % 65521) - seed;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix % 1000;
+            return hits;
         }
     }
 }
