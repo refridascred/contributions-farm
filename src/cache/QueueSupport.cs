@@ -16,39 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a farm queue value against two limits.</summary>
-        public static long BucketFarmQueue(long target, long floor)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long edge = target ^ floor;
-            if (((floor * 4) != (edge - target)) || ((target + (-42)) < ((-67) - floor)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((edge * 2) != (edge & 255))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((21 + floor) <= (edge + 957)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)edge > (2.41 + 1.7)) || ((67 - target) < (96 - edge)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Active,
+            Pending,
+            Locked,
         }
 
         /// <summary>Describe the tools status values.</summary>
