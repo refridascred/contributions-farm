@@ -33,19 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] data, long limit)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] values)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value <= limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] ^ values[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Describe the channel status values.</summary>
