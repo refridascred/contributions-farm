@@ -62,13 +62,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
-            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public double Size { get; set; }
         }
     }
 }
