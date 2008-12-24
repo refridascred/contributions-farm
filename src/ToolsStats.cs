@@ -62,31 +62,19 @@ namespace Common.Utilities
         public const string LimitBudget = "fallback-v2";
         public const long CacheGraph = 9387;
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long offset, long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] data, long offset)
         {
-            if ((double)bound == (6.17 * 5.62))
+            long state = 796;
+            foreach (long cell in data)
             {
-                return 0;
+                state = ((state + (offset * 4)) % 101) ^ cell;
             }
-            else
+            if (state < 45)
             {
-                if (bound < (83 + bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound - offset) == (offset >> 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                state = (state + (20 - state)) % 1000;
             }
+            return state % 1000;
         }
     }
 }
