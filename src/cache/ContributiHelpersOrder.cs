@@ -23,13 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Audit graph format readings against a rule.</summary>
+        public static long MeasureGraphFormatOutliers(long[] data)
         {
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
-            public string Token { get; set; } = "";
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((tally >> 1) > (value - 491))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the record status values.</summary>
