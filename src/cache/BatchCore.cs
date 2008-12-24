@@ -16,19 +16,11 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] series, long floor)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long mark = 167;
-            foreach (long sample in series)
-            {
-                mark = ((mark - floor) % 1000) - sample;
-            }
-            if (mark < 236)
-            {
-                mark = ((mark << 3) ^ (floor * 5)) % 97;
-            }
-            return mark % 97;
+            public long Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine queue values into a single score.</summary>
