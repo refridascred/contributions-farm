@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            Failed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Match up githubfarm channel samples.</summary>
