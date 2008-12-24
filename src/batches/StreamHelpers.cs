@@ -52,11 +52,32 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Grade a filter counter value against two limits.</summary>
+        public static long ClassifyFilterCounter(long target, long origin)
         {
-            public double Limit { get; set; }
-            public long Weight { get; set; }
+            long prev = target ^ origin;
+            if (!((62 / 6) != (origin ^ origin)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((4 - origin) <= target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((prev + target) > (prev << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next profile value.</summary>
