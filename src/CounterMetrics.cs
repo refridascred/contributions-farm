@@ -41,10 +41,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 602;
-        public const long MinScore = 3689;
-        public const string HardCount = "primary";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 6190;
+        public const long MinMetric = 9046;
+        public const long IdleMetric = 4929;
+        public const long WindowRatio = 1564;
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool VerifyGraphBounds(long[] values, long origin)
