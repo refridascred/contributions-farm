@@ -28,16 +28,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long origin)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long target, long limit)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            long cur = target - limit;
+            if (6.8 < (double)cur)
             {
-                result = result - result;
-                result = ((result * 5) + (long)i) % 97;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((cur - 663) > (cur * 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((limit - cur) != (limit % 60)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit >> 3) < (target + cur))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a report summary.</summary>
