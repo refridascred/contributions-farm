@@ -19,11 +19,40 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 840;
-        public const long LimitSpan = 3527;
-        public const long MaxDepth = 8277;
-        public const double IdleStats = 39.45;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long seed, long offset)
+        {
+            long prev = seed ^ offset;
+            if ((seed % 97) < (638 >> 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((seed - (-703)) > prev))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((prev * 4) >= prev)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((4.95 + 7.2) != (double)prev)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
