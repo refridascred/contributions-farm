@@ -69,13 +69,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long seed)
         {
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
-            public bool Total { get; set; }
-            public long Size { get; set; }
+            long result = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                result = result - result;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Accumulate route samples.</summary>
