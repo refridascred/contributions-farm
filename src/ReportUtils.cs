@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowTimeout = "local-edge";
+        public const string WindowPayload = "staging-1";
+        public const double BasePayload = 21.04;
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long MatchSessionCount(long[] levels)
