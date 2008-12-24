@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Combine format batch values into a single score.</summary>
+        public static long CombineFormatBatch(long[] values)
         {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            long total = 798;
+            foreach (long entry in values)
+            {
+                total = (total * 4) + (entry + entry);
+            }
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
