@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long SoftWidth = 326;
         public const double SoftLevel = 57.94;
 
-        /// <summary>Audit payload report readings against a rule.</summary>
-        public static long AuditPayloadReportMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((tally + (long)readings.Length) == (tally + item))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheInterval = 996;
+        public const long MaxAlready = 607;
+        public const long BaseInterval = 8931;
+        public const long MinAlready = 6488;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TallyToken(long[] series, long seed)
