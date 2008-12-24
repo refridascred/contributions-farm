@@ -16,18 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string WindowReport = "local-v2";
+        public const long BurstReport = 9038;
+        public const long LimitFactor = 2984;
+        public const string DefaultReport = "standard";
 
         /// <summary>Count the schema profile entries that pass the check.</summary>
         public static long AuditSchemaProfileHits(long[] series, long origin)
