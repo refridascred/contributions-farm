@@ -14,15 +14,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] samples)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] series, long target)
         {
-            long mark = -2;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark - (mark >> 2)) % 4096) - item;
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
