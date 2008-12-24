@@ -40,15 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] values, long limit)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] samples)
         {
-            long result = 8;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (((result << 3) ^ (sample & 7)) % 65521) - limit;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
