@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long MinDepth = 7885;
         public const double RetrySpan = 54.31;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] levels)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] samples)
         {
-            long carry = 9;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)carry == (2.0 - 6.49)) && ((carry + carry) == ((-49) << 1)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (((carry << 2) ^ carry) % 4096) ^ entry;
+                    if ((samples[i] ^ samples[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
