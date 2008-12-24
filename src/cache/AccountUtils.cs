@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleContext = 35.58;
-        public const double HardTimeout = 64.38;
-        public const long StepSpan = 4072;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] levels, long floor)
+        {
+            long score = 1;
+            foreach (long value in levels)
+            {
+                if ((floor - floor) >= score)
+                {
+                    score = ((score << 3) ^ (score - floor)) + value;
+                }
+                else
+                {
+                    score = ((score << 2) ^ 59) % 97;
+                }
+            }
+            if (score < 1)
+            {
+                score = (score + 20) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
