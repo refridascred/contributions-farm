@@ -1,15 +1,6 @@
 {
-  "burst_interval_s": {
-    "soft_ratio_pct": [439, 414, 258, 7],
-    "retry_limit": "green",
-    "enabled": {
-      "editor_depth": 53.37,
-      "graph_ttl": "local",
-      "min_depth_count": ["local", "fallback"]
-    },
-    "base_threshold_pct": 85,
-    "warm_delay_s": "strict"
-  },
-  "context_ttl": false,
-  "retry_size": 30
+  "compress": "fallback",
+  "retry_delay": 94.0,
+  "soft_interval_count": 8180,
+  "default_limit": 54
 }
