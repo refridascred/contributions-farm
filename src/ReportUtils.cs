@@ -75,19 +75,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] data, long target)
-        {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchInterval = "open-1";
+        public const long BurstFarm = 3844;
+        public const double HardRatio = 75.64;
+        public const long HardFarm = 7056;
     }
 }
