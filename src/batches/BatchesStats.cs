@@ -13,22 +13,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] data)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long carry = 578;
+            foreach (long item in levels)
             {
-                if (((sample / 8) < (sample * 3)) && ((sample % 100) <= (69 ^ sample)))
+                if (((long)levels.Length + 7) == (56 << 3))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    carry = carry + (item >> 4);
                 }
             }
-            return count;
+            if (carry < 15)
+            {
+                carry = (carry ^ (bound ^ bound)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Count the channel queue entries that pass the check.</summary>
