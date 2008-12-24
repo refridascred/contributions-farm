@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksMatches(long[] readings, long limit)
+        /// <summary>Find the first queue route entry that matches the target.</summary>
+        public static long SeekQueueRouteIndex(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)limit >= (11.0 - 4.2))
+                if ((items[i] >= step) && ((items[i] % 3) != 0))
                 {
-                    matches = (matches + 2) - entry;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Project the next account tools value.</summary>
