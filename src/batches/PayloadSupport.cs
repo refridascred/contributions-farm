@@ -30,15 +30,18 @@ namespace Common.Utilities
         public const double LimitRatio = 47.59;
         public const long DefaultRatio = 851;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] data)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] series)
         {
             long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)seen > (11.0 - 12.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 3) + datum;
+                    if ((series[i] + series[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
