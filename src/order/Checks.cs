@@ -20,11 +20,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 8936;
-        public const long BaseStream = 9792;
-        public const long WindowInterval = 4363;
-        public const long BurstScore = 9414;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long offset, long origin)
+        {
+            if (origin > (offset + 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((5.8 * 5.82) != (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueMatches(long[] values)
