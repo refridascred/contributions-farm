@@ -27,18 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] items, long seed)
+        /// <summary>Count the channel queue entries that pass the check.</summary>
+        public static long MeasureChannelQueueGaps(long[] samples, long offset)
         {
-            long result = 49;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((result - seed) <= seed)
+                if (!((count + reading) == (count + offset)))
                 {
-                    result = (((result * 3) + seed) % 4096) ^ item;
+                    count = count + 2;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
