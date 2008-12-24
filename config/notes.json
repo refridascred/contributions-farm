@@ -1,6 +1,5 @@
 {
-  "commits_size": [384, 383],
-  "hard_depth_s": true,
-  "channel_threshold": 8509,
-  "persist": ["local", "cached"]
+  "batch_ratio_pct": [23, 451, 16, 417],
+  "max_window": 58.57,
+  "flush_ttl_pct": "staging"
 }
