@@ -76,11 +76,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 3238;
-        public const long LimitWindow = 9328;
-        public const double BaseInterval = 38.27;
-        public const long BaseWidth = 6758;
-        public const long DefaultWindow = 7467;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > offset) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
