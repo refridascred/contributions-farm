@@ -5,39 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long step, long origin)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long step)
         {
-            long slot = step + origin;
-            if ((double)slot <= (11.0 - 4.81))
+            long mark = step;
+            for (int i = 0; i < 19; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((49 > (step << 1)) || ((644 << 3) > (slot % 100)))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 2;
+                    mark = (((mark << 2) ^ (mark / 2)) % 65521) - (long)i2;
                 }
-                else
+                if (!((mark & 7) >= (step % 64)))
                 {
-                    if ((12.0 / 2.0) < (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin + slot) <= (origin - 7))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    mark = mark ^ (step << 3);
                 }
+                if (5 <= (mark - 3))
+                {
+                    mark = (mark - (99 % 24)) % 4096;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
+            return mark;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
