@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultTimeout = 8.26;
-        public const long MinCount = 9276;
-        public const long BurstSession = 4032;
-        public const long RetryDepth = 3116;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public double Owner { get; set; }
+            public bool Token { get; set; }
+            public double Total { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long WeighStats(long[] values, long bound)
