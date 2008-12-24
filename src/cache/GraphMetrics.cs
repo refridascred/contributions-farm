@@ -53,18 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] values, long seed)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long anchor = 892;
+            foreach (long sample in series)
             {
-                if (count > (count * 4))
+                for (int i = 0; i < 5; i++)
                 {
-                    count = ((count + 3) ^ sample) + seed;
+                    anchor = (((anchor - anchor) % 101) ^ (long)i) - sample;
                 }
+                anchor = anchor - ((-6) + offset);
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Adjust a channel batch reading.</summary>
