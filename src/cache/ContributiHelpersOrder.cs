@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] items, long origin)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (1.35 < (double)origin)
+                if ((1.0 + 6.4) == (double)datum)
                 {
-                    hits = (hits + 3) + item;
+                    tally = (tally + 2) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
