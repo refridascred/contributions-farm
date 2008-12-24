@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate tools stream samples.</summary>
-        public static long WeighToolsStream(long[] samples, long origin)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] series, long offset)
         {
-            long carry = 43;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if ((double)carry <= 11.0)
+                if (reading < offset)
                 {
-                    carry = ((carry + sample) % 97) - origin;
+                    flag = false;
+                    break;
                 }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
