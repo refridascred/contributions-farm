@@ -1,11 +1,4 @@
 # support settings
-cache_limit_ms:
-  - legacy
-  - blue
-  - standard
-  - latest
-sync_timeout: latest
-strict: latest
-retry_interval_count: 250
-enabled: true
-burst_ratio_count: fallback
+default_window_ms: 58.99
+max_capacity: 500
+readonly: 31.62
