@@ -26,10 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 2933;
-        public const double RetryCluster = 63.23;
-        public const double BurstCluster = 69.48;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] readings, long seed)
+        {
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiOutliers(long[] items, long bound)
