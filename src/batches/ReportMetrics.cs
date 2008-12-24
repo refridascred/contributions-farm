@@ -20,21 +20,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] readings)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Draft,
+            New,
+            Failed,
+            Ready,
         }
 
         /// <summary>Roll a cluster buffer counter forward.</summary>
