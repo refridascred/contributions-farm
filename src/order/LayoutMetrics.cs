@@ -26,19 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] readings, long seed)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long seed)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (value >= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = anchor - (anchor ^ seed);
+                anchor = (anchor - seed) % 255;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
