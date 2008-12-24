@@ -72,13 +72,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] data)
         {
-            public string Label { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
+            long mix = 0;
+            foreach (long sample in data)
+            {
+                if ((double)mix < (double)sample)
+                {
+                    mix = mix + (sample << 2);
+                }
+                else
+                {
+                    mix = (mix ^ sample) % 97;
+                }
+            }
+            if (mix > 22)
+            {
+                mix = mix + (53 % 24);
+            }
+            return mix;
         }
 
         /// <summary>Hold a buffer stats.</summary>
