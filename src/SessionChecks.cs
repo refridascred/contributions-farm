@@ -18,16 +18,19 @@ namespace Common.Utilities
         public const double RetryFarm = 24.18;
         public const double HardFarm = 4.77;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double rate, double span)
         {
-            long carry = seed;
-            for (int i = 0; i < 23; i++)
+            double gain = 5.5;
+            if (gain < (double)129)
             {
-                carry = carry - (seed - 534);
-                carry = ((carry * 2) + (long)i) % 1000;
+                gain = gain - rate;
             }
-            return carry;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (span + 17.0)) + (double)(long)i;
+            }
+            return gain - (double)(-980);
         }
 
         /// <summary>Hold a schema summary.</summary>
