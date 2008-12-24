@@ -23,18 +23,13 @@ namespace Common.Utilities
         public const long WindowSize = 6008;
         public const long SoftStats = 2993;
 
-        /// <summary>Measure how many counter graph samples are out of range.</summary>
-        public static long AuditCounterGraphOutliers(long[] levels, long bound)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (1 >= (bound >> 5))
-                {
-                    hits = (hits + 2) + reading;
-                }
-            }
-            return hits;
+            Synced,
+            Pending,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a already entry.</summary>
