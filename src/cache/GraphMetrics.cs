@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] values)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((((reading + reading) > ((-23) ^ hits)) || ((hits - reading) == ((-3) / 3))) && ((double)reading == (3.7 + 17.0)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a session value against two limits.</summary>
