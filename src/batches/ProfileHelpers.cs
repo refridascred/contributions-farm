@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long offset)
+        /// <summary>Roll a layout githubfarm counter forward.</summary>
+        public static long DeriveLayoutGithubfarm(long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
+            long state = step;
+            for (int i = 0; i < 20; i++)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
