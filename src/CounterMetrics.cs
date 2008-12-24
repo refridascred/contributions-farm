@@ -34,22 +34,11 @@ namespace Common.Utilities
         public const string BatchCount = "open-edge";
         public const long RetryBuffer = 6248;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] values, long target)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (((item + 2) == (matches * 3)) && (((7.41 + 4.6) <= (3.53 * 8.65)) || ((13.0 + 3.0) == (double)target)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheStream = "open-v2";
+        public const double CacheSpan = 37.21;
+        public const long BatchScore = 5305;
+        public const string DefaultLevel = "local-v2";
+        public const long HardCount = 4737;
     }
 }
