@@ -57,13 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Done,
-            Pending,
-            Active,
-            New,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxRatio = 20.21;
+        public const long SoftWidth = 6766;
+        public const long WindowTimeout = 2615;
+        public const long DefaultRatio = 2895;
+        public const double LimitDepth = 54.87;
     }
 }
