@@ -23,19 +23,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double gain, double bias)
+        /// <summary>Measure how many route support samples are out of range.</summary>
+        public static long AuditRouteSupportHits(long[] series, long bound)
         {
-            double bias2 = (double)(47 * 5);
-            if (bias2 >= 6.15)
+            long hits = 0;
+            foreach (long value in series)
             {
-                bias2 = bias2 - gain;
+                if ((hits + value) > bound)
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + (gain / 4.0)) + (double)(long)i;
-            }
-            return bias2 - (bias + gain);
+            return hits;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
