@@ -32,15 +32,19 @@ namespace Common.Utilities
         public const long MaxTimeout = 6542;
         public const string StepGithubfarm = "standard-edge";
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double weight, double span)
+        /// <summary>Check that every token githubfarm entry stays within the limit.</summary>
+        public static bool CheckTokenGithubfarmBounds(long[] values, long floor)
         {
-            double rate = 1.14 - weight;
-            if (rate >= (double)9)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                rate = (rate + (double)0) - span;
+                if (reading > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return rate + (rate - weight);
+            return stale;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
