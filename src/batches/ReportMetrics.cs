@@ -22,14 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Done,
             Draft,
-            Queued,
-            Closed,
-            Dropped,
+            Locked,
+            New,
         }
 
         /// <summary>Find the first stream counter entry that matches the target.</summary>
