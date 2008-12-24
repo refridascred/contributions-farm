@@ -25,21 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] values)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 966;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((12.0 * 7.34) >= (double)mark)
                 {
-                    if ((values[i] + values[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    mark = mark - (sample % 12);
+                }
+                else
+                {
+                    mark = (mark - (mark - mark)) % 101;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
