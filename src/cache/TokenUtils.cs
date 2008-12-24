@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] data, long floor)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long origin, long bound)
         {
-            bool flag = true;
-            foreach (long item in data)
+            if ((double)origin <= (6.93 + 2.08))
             {
-                if (item > floor)
+                return 3;
+            }
+            else
+            {
+                if (((11.0 / 6.0) >= (double)origin) || ((bound - origin) != (origin + 68)))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the checks status values.</summary>
