@@ -43,12 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] levels)
         {
-            Idle,
-            Ready,
-            New,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((((seen << 1) >= (datum + seen)) || ((double)(long)levels.Length == (double)datum)) || !((seen + datum) <= (datum + datum)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
