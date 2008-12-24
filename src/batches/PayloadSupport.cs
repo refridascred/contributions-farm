@@ -22,11 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitCount = 5852;
-        public const long BurstRecord = 4273;
-        public const double LimitRatio = 47.59;
-        public const long DefaultRatio = 851;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] readings, long limit)
+        {
+            long mix = -385;
+            foreach (long entry in readings)
+            {
+                if (entry < (limit / 3))
+                {
+                    mix = (mix - (entry ^ mix)) % 65521;
+                }
+            }
+            if (mix > 415)
+            {
+                mix = (mix * 5) + (5 / 2);
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long ScoreFilter(long[] levels)
