@@ -64,18 +64,14 @@ namespace Common.Utilities
         public const long CacheLayout = 430;
         public const string IdleDepth = "open-v2";
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] values, long limit)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long carry = 44;
-            foreach (long entry in values)
-            {
-                if ((double)carry > 7.5)
-                {
-                    carry = ((((carry * 3) + (carry % 16)) % 101) - entry) - limit;
-                }
-            }
-            return carry;
+            Synced,
+            New,
+            Dropped,
+            Failed,
+            Stale,
         }
     }
 }
