@@ -28,10 +28,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseWidth = 53.74;
-        public const long BurstSpan = 4350;
-        public const string WindowQueue = "staging";
-        public const long IdleQueue = 3781;
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
