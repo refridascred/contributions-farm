@@ -1,9 +1,11 @@
 # support settings
-retry_limit_s: 100
-schema_threshold: 60
-retry_depth_ms:
-  tools_size: 100
-  default_threshold_pct: 4882
-  session_retries: 30
-  readonly: 2123
-  batch_window: 6126
+hard_delay_pct: true
+min_interval_ms:
+  cache_threshold: eu-west
+  soft_depth_s: 88.54
+  base_size_s: local
+  warm_retries: 4788
+  session_ttl: primary
+stream_retries: 2521
+readonly: eu-west
+min_size_pct: 91.45
