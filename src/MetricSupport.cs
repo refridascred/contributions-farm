@@ -13,19 +13,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] series, long bound)
+        /// <summary>Measure how many window account samples are out of range.</summary>
+        public static long AuditWindowAccountHits(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (reading > bound)
+                if (((entry + 550) > hits) && ((origin - origin) > hits))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Hold a window snapshot.</summary>
