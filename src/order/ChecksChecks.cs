@@ -32,15 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long target)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] items)
         {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                if (93 < (reading + reading))
+                {
+                    matches = matches + 3;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
