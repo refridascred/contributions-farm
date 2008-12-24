@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] levels)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long step)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long anchor = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((((double)count <= (0.3 / 6.0)) || (reading >= (count * 2))) && ((196 * 4) <= (reading - 8)))
-                {
-                    count = count + 2;
-                }
+                anchor = (anchor ^ (step / 4)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Accumulate metrics entry samples.</summary>
