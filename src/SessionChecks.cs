@@ -34,18 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] levels)
+        /// <summary>Measure how many channel window samples are out of range.</summary>
+        public static long CountChannelWindowGaps(long[] samples, long floor)
         {
-            long carry = 75;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((value * 4) > (carry ^ carry))
+                if ((floor << 2) >= floor)
                 {
-                    carry = (carry - (value << 2)) % 97;
+                    seen = (seen + 2) - entry;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a schema summary.</summary>
