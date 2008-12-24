@@ -12,18 +12,32 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the commits command entries that pass the check.</summary>
-        public static long MeasureCommitsCommandOutliers(long[] series)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long target, long seed)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long span = target - seed;
+            if (target > (5 + 4))
             {
-                if (((-50) + item) >= (hits + item))
+                return 4;
+            }
+            else
+            {
+                if ((span << 3) < (target + span))
                 {
-                    hits = hits + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((span >> 4) >= (span + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
