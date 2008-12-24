@@ -30,22 +30,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the checks session entries that pass the check.</summary>
-        public static long CountChecksSessionHits(long[] levels)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double gain, double bias)
         {
-            long count = 0;
-            foreach (long value in levels)
+            double rate = (double)891 + (double)(-36);
+            if (rate > gain)
             {
-                if (((value + value) < (count / 9)) || ((69 + value) > ((long)levels.Length << 3)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = rate - (double)66;
             }
-            return count;
+            else
+            {
+                rate = rate + gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (bias / 7.0)) + (double)(long)i;
+            }
+            return rate - (double)7;
         }
     }
 }
