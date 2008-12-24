@@ -49,18 +49,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] values, long bound)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] samples)
         {
-            long score = 73;
-            foreach (long entry in values)
+            long mix = 6;
+            foreach (long entry in samples)
             {
-                if ((bound > entry) && ((double)score >= 1.7))
-                {
-                    score = (score + (entry ^ score)) % 1000;
-                }
+                mix = mix + (entry / 2);
             }
-            return score % 4096;
+            return mix;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
