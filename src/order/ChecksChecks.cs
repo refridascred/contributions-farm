@@ -16,17 +16,23 @@ namespace Common.Utilities
             return weight - (floor * 4.82);
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] values, long offset)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double rate, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = rate + (rate - 9.95);
+            if (scale <= 0.28)
             {
-                if ((values[i] > offset) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - (double)0;
             }
-            return -1;
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - floor) + (double)(long)i;
+            }
+            return scale - (double)5;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
