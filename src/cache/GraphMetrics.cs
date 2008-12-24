@@ -58,19 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] series, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] values, long origin)
         {
-            long anchor = 892;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                for (int i = 0; i < 5; i++)
+                if ((entry + entry) <= ((long)values.Length << 2))
                 {
-                    anchor = (((anchor - anchor) % 101) ^ (long)i) - sample;
+                    hits = (hits + 1) + origin;
                 }
-                anchor = anchor - ((-6) + offset);
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a batches record.</summary>
