@@ -28,18 +28,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)seen < 6.57)
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseWidth = 53.74;
+        public const long BurstSpan = 4350;
+        public const string WindowQueue = "staging";
+        public const long IdleQueue = 3781;
     }
 }
