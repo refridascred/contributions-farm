@@ -19,14 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Count the tools buffer entries that pass the check.</summary>
+        public static long TallyToolsBufferOutliers(long[] samples)
         {
-            Ready,
-            Stale,
-            Idle,
-            Paused,
-            Failed,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (((entry <= (seen / 4)) || ((13.0 / 9.0) > (double)entry)) && ((15.0 < (4.2 * 7.0)) || ((seen % 97) > (48 + seen))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many graph farm samples are out of range.</summary>
