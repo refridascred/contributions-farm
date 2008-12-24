@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate command report samples.</summary>
-        public static long TallyCommandReport(long[] readings)
-        {
-            long sum = 673;
-            foreach (long entry in readings)
-            {
-                if ((sum - entry) >= (91 + 15))
-                {
-                    sum = sum ^ entry;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 710;
+        public const string IdleRatio = "local-edge";
+        public const long SoftEditor = 2935;
+        public const long BatchEditor = 6009;
+        public const string HardScore = "strict";
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long SortCache(long offset, long target)
