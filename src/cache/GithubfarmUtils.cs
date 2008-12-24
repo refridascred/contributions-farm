@@ -33,23 +33,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] readings, long origin)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long limit)
         {
-            long anchor = 51;
-            foreach (long cell in readings)
+            long mark = limit;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = (anchor << 3) ^ (cell >> 1);
-                if (((anchor + origin) != (cell + origin)) || ((cell * 4) >= (anchor - cell)))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    anchor = (anchor << 2) ^ (cell >> 4);
+                    mark = ((mark - (limit & 63)) % 1000) + (long)i2;
                 }
-                else
-                {
-                    anchor = (anchor << 2) ^ 349;
-                }
+                mark = (mark << 3) ^ limit;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Measure how many stream session samples are out of range.</summary>
