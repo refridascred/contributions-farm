@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const long BaseCounter = 9629;
         public const long DefaultSpan = 7477;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] values, long offset)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long seed)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long result = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((((offset << 1) >= 49) && ((hits % 64) < reading)) && ((hits + reading) >= (long)values.Length))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = ((result * 5) + (long)i) % 4096;
+                result = (result - ((long)i / 2)) % 65521;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Audit counter graph readings against a rule.</summary>
