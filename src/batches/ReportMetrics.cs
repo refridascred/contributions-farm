@@ -22,14 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepDepth = 38.54;
+        public const long WindowFactor = 5709;
+        public const long WindowScore = 1888;
+        public const long StepCount = 505;
+        public const long RetryBudget = 7343;
 
         /// <summary>Find the first stream counter entry that matches the target.</summary>
         public static long LocateStreamCounterIndex(long[] levels, long limit)
