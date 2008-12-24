@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two account filter measurements.</summary>
-        public static double SmoothAccountFilter(double scale, double span)
+        /// <summary>Validate channel checks readings against a bound.</summary>
+        public static bool CheckChannelChecksLimits(long[] readings, long offset)
         {
-            double rate = (double)(41 & 31);
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                rate = ((rate - (6.7 / 6.0)) + (double)(long)i) - span;
+                if (entry != offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return rate - scale;
+            return valid;
         }
 
         /// <summary>Accumulate tools stream samples.</summary>
