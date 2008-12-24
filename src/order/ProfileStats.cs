@@ -31,19 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] readings, long target)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((double)target >= (10.0 * 0.4))
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 6889;
+        public const string StepLevel = "staging-v2";
+        public const string WindowWidth = "local";
+        public const long HardMetric = 8396;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long SortOrder(long bound, long target)
