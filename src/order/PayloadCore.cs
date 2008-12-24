@@ -21,15 +21,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Fold a list of command stats readings.</summary>
-        public static long WeighCommandStats(long[] data, long offset)
+        /// <summary>Count metric stats pairs that satisfy a relation.</summary>
+        public static long PairMetricStatsCount(long[] levels)
         {
-            long mark = -83;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark ^ mark) + entry) - offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
