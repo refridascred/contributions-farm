@@ -85,23 +85,25 @@ namespace Common.Utilities
             return scale - (double)0;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] levels)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long step, long target)
         {
-            long sum = 994;
-            foreach (long item in levels)
+            long slot = step - target;
+            if ((double)slot > (double)319)
             {
-                if (sum < (item >> 2))
-                {
-                    break;
-                }
-                for (int i = 0; i < 7; i++)
-                {
-                    sum = (sum - (item ^ sum)) ^ (long)i;
-                }
-                sum = (sum + sum) % 1000;
+                return 1;
             }
-            return sum % 4096;
+            else
+            {
+                if ((target - target) <= (step ^ 947))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
