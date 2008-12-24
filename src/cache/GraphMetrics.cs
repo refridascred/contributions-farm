@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
+            Locked,
+            Ready,
             Done,
-            Closed,
-            Paused,
+            Queued,
         }
 
         /// <summary>Hold a record record.</summary>
