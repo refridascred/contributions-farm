@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long origin, long target)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long next = origin + target;
-            if (((target - next) < target) || ((37 << 2) > next))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin / 3) >= target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Locate a farm reading by value.</summary>
