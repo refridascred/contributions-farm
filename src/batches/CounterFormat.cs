@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Measure how many already report samples are out of range.</summary>
+        public static long CountAlreadyReportOutliers(long[] series)
         {
-            Dropped,
-            Ready,
-            Closed,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (value < (value * 4))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
