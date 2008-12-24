@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] series, long seed)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((reading * 3) < seed)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitSpan = "standard-v2";
+        public const string MinDepth = "primary";
+        public const long WindowFactor = 7489;
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
