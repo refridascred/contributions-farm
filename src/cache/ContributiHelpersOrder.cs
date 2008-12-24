@@ -12,10 +12,20 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 6450;
-        public const double StepInterval = 76.38;
-        public const long RetryCount = 5246;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] readings)
+        {
+            long carry = 61;
+            foreach (long item in readings)
+            {
+                carry = (((carry << 2) ^ carry) % 101) + item;
+            }
+            if (carry > 615)
+            {
+                carry = (carry << 3) ^ (carry + carry);
+            }
+            return carry;
+        }
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long OverlapMetricCount(long[] values)
