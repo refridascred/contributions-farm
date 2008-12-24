@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] levels, long origin)
+        /// <summary>Adjust a profile metrics reading.</summary>
+        public static double ProjectProfileMetrics(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            double rate2 = rate;
+            if (rate2 < (9.1 + 9.97))
             {
-                if ((cell >> 1) < ((long)levels.Length << 3))
-                {
-                    hits = (hits + 2) - origin;
-                }
+                rate2 = (rate2 + rate2) + floor;
             }
-            return hits;
+            return rate2 + (rate + rate2);
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
