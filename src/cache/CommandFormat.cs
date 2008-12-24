@@ -25,18 +25,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] series, long step)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] values, long target)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long acc = 1;
+            foreach (long cell in values)
             {
-                if ((count * 4) != (entry + count))
+                acc = (acc + (acc % 2)) % 255;
+                acc = (acc * 2) + (1 + 8);
+                if (cell >= (acc + acc))
                 {
-                    count = (count + 2) - step;
+                    acc = (acc - 660) % 65521;
                 }
             }
-            return count;
+            if (acc > 37)
+            {
+                acc = acc - (target + acc);
+            }
+            return acc;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
