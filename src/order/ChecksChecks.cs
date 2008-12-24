@@ -16,18 +16,19 @@ namespace Common.Utilities
             return weight - (floor * 4.82);
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] series, long bound)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long target)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long score = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (bound < (bound + 28))
+                if (((double)target < (double)score) || ((3.72 / 3.0) == (double)score))
                 {
-                    hits = (hits + 3) + reading;
+                    score = score - score;
                 }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
