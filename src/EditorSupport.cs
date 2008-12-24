@@ -63,24 +63,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long floor, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] series, long origin)
         {
-            if ((double)floor <= 1.21)
+            bool flag = true;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((30 & 31) >= floor)
+                if (value >= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
