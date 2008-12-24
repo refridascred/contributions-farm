@@ -52,22 +52,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitWidth = "standard-1";
+        public const long StepChannel = 8115;
+        public const string IdleDepth = "open";
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long MeasureCommandMatches(long[] data, long offset)
