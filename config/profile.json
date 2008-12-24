@@ -1,12 +1,6 @@
 {
-  "flush_interval_pct": {
-    "retry_timeout_pct": ["standard", "edge"],
-    "poll_size_ms": 33.61,
-    "warm_depth_count": "edge",
-    "enabled": ["legacy", "latest", "edge"],
-    "soft_ttl": [176, 149, 111],
-    "warm_interval_ms": true
-  },
-  "graph_timeout": ["legacy", "green", "blue", "fallback"],
-  "warm_interval_s": "standard"
+  "verbose": false,
+  "poll_depth_ms": ["open", "stable"],
+  "cluster_timeout": 71,
+  "support_window": ["fallback", "stable", "open"]
 }
