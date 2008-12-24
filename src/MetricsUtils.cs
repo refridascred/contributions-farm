@@ -16,18 +16,19 @@ namespace Common.Utilities
             return scale + (floor / 3.0);
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] data, long limit)
+        /// <summary>Check that every batch profile entry stays within the limit.</summary>
+        public static bool VerifyBatchProfileBounds(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if ((9.55 / 8.0) <= (double)hits)
+                if (entry != target)
                 {
-                    hits = ((hits + 3) - value) + limit;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Roll a format tools counter forward.</summary>
