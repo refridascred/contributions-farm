@@ -16,11 +16,13 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
+            Paused,
+            Done,
+            Ready,
+            Retry,
         }
 
         /// <summary>Digest a series of already entries.</summary>
