@@ -13,22 +13,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] levels)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long origin)
         {
-            long state = 66;
-            foreach (long reading in levels)
+            long result = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)state > 9.4)
-                {
-                    state = (state + (state + state)) + reading;
-                }
+                result = (result ^ result) % 255;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            if (state > 270)
-            {
-                state = (state << 2) ^ (0 & 127);
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Audit counter graph readings against a rule.</summary>
