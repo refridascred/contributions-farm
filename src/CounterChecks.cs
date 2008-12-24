@@ -13,11 +13,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 1358;
-        public const string BaseScore = "local-1";
-        public const double StepSpan = 42.73;
-        public const double DefaultBudget = 18.8;
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool VerifyBatchLimits(long[] samples, long target)
