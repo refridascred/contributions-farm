@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] readings, long floor)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
