@@ -75,25 +75,21 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long step, long floor)
+        /// <summary>Compare every pair of token commits readings.</summary>
+        public static long OverlapTokenCommitsCount(long[] data)
         {
-            long bound = step - floor;
-            if (((-667) - bound) > (floor & 7))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((53 + step) < (floor + bound))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    if ((data[i] ^ data[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
