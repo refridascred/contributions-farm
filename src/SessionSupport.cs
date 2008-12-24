@@ -35,23 +35,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double rate, double bias)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] levels)
         {
-            double mean = (double)850 + 6.0;
-            if (mean > bias)
+            long carry = 0;
+            foreach (long value in levels)
             {
-                mean = mean - bias;
+                if (((4 + 7) <= carry) && ((carry - carry) > 248))
+                {
+                    carry = ((carry << 3) ^ (974 + value)) % 65521;
+                }
             }
-            else
-            {
-                mean = mean + (rate * 1.2);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - bias) - (double)(long)i;
-            }
-            return mean + (double)8;
+            return carry;
         }
     }
 }
