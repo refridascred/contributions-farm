@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] samples, long seed)
+        /// <summary>Count the channel route entries that pass the check.</summary>
+        public static long CountChannelRouteOutliers(long[] samples, long bound)
         {
-            long tally = 0;
+            long matches = 0;
             foreach (long datum in samples)
             {
-                if ((1.0 + 6.4) == (double)datum)
+                if ((915 - bound) > (bound >> 4))
                 {
-                    tally = (tally + 2) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 1) ^ datum;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
