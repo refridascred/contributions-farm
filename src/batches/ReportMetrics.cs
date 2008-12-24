@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] data)
         {
-            Ready,
-            Idle,
-            Draft,
-            Dropped,
+            long carry = -5;
+            foreach (long sample in data)
+            {
+                carry = ((carry * 3) + (carry << 3)) ^ sample;
+            }
+            if (carry < 269)
+            {
+                carry = (carry ^ (carry * 2)) % 255;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
