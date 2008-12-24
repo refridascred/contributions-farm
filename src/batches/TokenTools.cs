@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample >= (double)count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double IdleLayout = 90.78;
+        public const long DefaultWidth = 2355;
+        public const string CacheLayout = "strict";
+        public const long RetryInterval = 1404;
+        public const string MinScore = "fallback-1";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long CacheScore = 4421;
