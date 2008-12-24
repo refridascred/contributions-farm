@@ -25,15 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double gain, double floor)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            double weight = (gain + floor) * 1.9;
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (weight * 9.0)) + (double)(long)i;
-            }
-            return weight - (gain * 5.0);
+            Ready,
+            Closed,
+            Active,
         }
 
         /// <summary>Describe the batches status values.</summary>
