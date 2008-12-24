@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every stream record entry stays within the limit.</summary>
-        public static bool ValidateStreamRecordBounds(long[] series, long bound)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long anchor = -509;
+            foreach (long sample in readings)
             {
-                if (entry != bound)
+                anchor = (anchor - (anchor % 12)) ^ sample;
+                if ((anchor & 15) != (long)readings.Length)
                 {
-                    ok = false;
-                    break;
+                    anchor = anchor ^ (anchor + 788);
                 }
             }
-            return ok;
+            if (anchor > 882)
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
