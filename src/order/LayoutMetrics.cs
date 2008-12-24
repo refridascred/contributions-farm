@@ -32,15 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double weight, double span)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            double rate = span;
-            for (int i = 0; i < 5; i++)
-            {
-                rate = ((rate - rate) + (double)(long)i) - weight;
-            }
-            return rate + (span + rate);
+            Retry,
+            Stale,
+            Active,
+            Draft,
+            Failed,
         }
     }
 }
