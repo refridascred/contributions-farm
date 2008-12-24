@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] series)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) != 14)
+                    if ((items[i] ^ items[j]) == 18)
                     {
                         seen = seen + 1;
                     }
