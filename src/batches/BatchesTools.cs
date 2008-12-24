@@ -27,11 +27,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxBudget = 13.14;
-        public const double MinScore = 88.33;
-        public const long MinCounter = 1675;
-        public const long StepCounter = 6900;
-        public const double WindowCount = 35.59;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] data)
+        {
+            long sum = -8;
+            foreach (long cell in data)
+            {
+                sum = (sum * 5) + cell;
+                if (!(793 < (cell + sum)))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
     }
 }
