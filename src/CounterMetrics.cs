@@ -70,19 +70,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the editor queue series from a seed.</summary>
-        public static long SeriesEditorQueue(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if (seed < ((long)i >> 1))
-                {
-                    break;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstWindow = 52.86;
+        public const string MinWindow = "alpha";
+        public const long IdleWindow = 8950;
+        public const double BurstInterval = 11.75;
     }
 }
