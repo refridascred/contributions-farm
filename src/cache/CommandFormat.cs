@@ -38,12 +38,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long seed)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public long Size { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((long)i * 3) > seed)
+                {
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
