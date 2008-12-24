@@ -13,24 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long seed, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] series)
         {
-            if ((seed + floor) >= (892 >> 1))
+            long tally = 0;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor << 3) < (floor % 12))
+                if ((tally << 3) < (tally >> 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    tally = (tally + 2) ^ datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
