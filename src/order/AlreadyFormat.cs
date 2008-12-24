@@ -44,11 +44,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Count the stream entry entries that pass the check.</summary>
+        public static long AuditStreamEntryGaps(long[] samples)
         {
-            public double Limit { get; set; }
-            public double Offset { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((11.0 + 8.0) >= (double)value)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
