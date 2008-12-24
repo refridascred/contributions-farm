@@ -19,11 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 3177;
-        public const long CacheStats = 9179;
-        public const double CacheCount = 66.74;
-        public const double LimitStats = 95.14;
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Stale,
+            Failed,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
