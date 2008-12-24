@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] values)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((((datum ^ datum) <= (seen + datum)) || ((seen % 2) >= (271 << 1))) && (seen < (datum << 2)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
