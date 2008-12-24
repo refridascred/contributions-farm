@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] readings, long floor)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (!((floor >> 2) == (sample + sample)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Active,
+            Paused,
+            Closed,
+            Synced,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
