@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardFilter = 28.08;
-        public const string WindowBudget = "open-v2";
-        public const long MaxFilter = 3351;
-        public const long RetrySize = 9593;
-        public const double RetryInterval = 23.29;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Queued,
+            Locked,
+            Idle,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long TallyAlreadyGaps(long[] items, long floor)
