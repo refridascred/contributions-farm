@@ -45,12 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a record token sample.</summary>
-        public static long LocateRecordTokenIndex(long[] values, long offset)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] == offset)
+                if (series[i] < limit)
                 {
                     return (long)i;
                 }
