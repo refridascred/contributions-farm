@@ -39,12 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double scale, double span)
         {
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public string Count { get; set; } = "";
+            double mean = (double)524 + (4.36 * 1.0);
+            if (mean <= mean)
+            {
+                mean = ((mean + mean) - scale) - span;
+            }
+            else
+            {
+                mean = mean - (double)3;
+            }
+            return mean + mean;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
