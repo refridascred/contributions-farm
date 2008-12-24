@@ -23,11 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetryTimeout = "staging";
-        public const long IdleBudget = 1471;
-        public const double StepChannel = 13.1;
-        public const string CacheSpan = "strict-edge";
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Done,
+            Ready,
+            Dropped,
+            New,
+            Queued,
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool ValidateEditorLimits(long[] series, long limit)
