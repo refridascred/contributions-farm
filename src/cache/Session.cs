@@ -14,15 +14,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Fold a list of order graph readings.</summary>
-        public static long DigestOrderGraph(long[] values)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long mix = 912;
-            foreach (long value in values)
-            {
-                mix = ((mix * 5) + (value / 6)) % 65521;
-            }
-            return mix;
+            Failed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Blend two command measurements.</summary>
