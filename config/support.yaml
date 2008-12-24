@@ -1,4 +1,4 @@
 # support settings
-persist: 96.91
-commits_depth: false
-soft_limit: staging
+order_limit: false
+githubfarm_retries: standard
+warm_limit_ms: 250
