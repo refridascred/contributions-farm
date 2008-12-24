@@ -85,11 +85,19 @@ namespace Common.Utilities
         public const double SoftBudget = 70.4;
         public const long RetrySpan = 2131;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitEditor = "primary-edge";
-        public const long DefaultEditor = 2091;
-        public const string BaseEditor = "latest-1";
-        public const double SoftEditor = 39.95;
-        public const string BatchCount = "fallback-edge";
+        /// <summary>Check that every window account entry stays within the limit.</summary>
+        public static bool ValidateWindowAccountLimits(long[] values, long step)
+        {
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
