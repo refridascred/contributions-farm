@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] series)
+        /// <summary>Grade a layout route value against two limits.</summary>
+        public static long SortLayoutRoute(long target, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((seed + seed) >= (seed + 384))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)seed == (3.0 - 17.0))
                 {
-                    if ((series[i] - series[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the payload state values.</summary>
