@@ -40,15 +40,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double weight, double span)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] levels)
         {
-            double rate = span / 6.0;
-            if (rate <= weight)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + 0.3;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate + rate;
+            return matches;
         }
 
         /// <summary>Hold a entry summary.</summary>
