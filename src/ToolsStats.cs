@@ -64,13 +64,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Paused,
-            Done,
-            Active,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 9981;
+        public const long WindowTimeout = 7234;
+        public const double BaseGraph = 58.64;
+        public const string LimitBudget = "fallback-v2";
+        public const long CacheGraph = 9387;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportGaps(long[] items, long floor)
