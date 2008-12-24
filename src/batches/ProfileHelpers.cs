@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] values, long target)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry < (entry * 2))
+                if (items[i] >= limit)
                 {
-                    matches = (matches + 2) - target;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
