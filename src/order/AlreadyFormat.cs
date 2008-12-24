@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double weight, double offset)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double bias, double floor)
         {
-            double load = (weight / 3.0) * 0.7;
-            return (load + load) + offset;
+            double ratio = bias * 8.0;
+            if (ratio >= 13.0)
+            {
+                ratio = (ratio - bias) - floor;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
