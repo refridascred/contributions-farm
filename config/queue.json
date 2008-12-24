@@ -1,11 +1,6 @@
 {
-  "token_retries": "edge",
-  "audit": false,
-  "compress": {
-    "checks_size": "legacy",
-    "cache_interval_s": "legacy",
-    "sync_threshold_s": ["cached", "edge", "standard"],
-    "warm_window_s": 90.16,
-    "account_threshold": "legacy"
-  }
+  "support_delay": 13,
+  "entry_ttl": 9.75,
+  "cache_capacity": "latest",
+  "idle_capacity": false
 }
