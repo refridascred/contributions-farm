@@ -29,18 +29,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((double)hits <= (0.76 - 9.9))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleScore = 8981;
+        public const string RetryFactor = "local-1";
+        public const string MinStats = "cached";
     }
 }
