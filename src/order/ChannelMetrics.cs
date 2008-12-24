@@ -36,13 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] levels, long limit)
         {
-            Synced,
-            Active,
-            Done,
-            Draft,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((limit - entry) > (81 % 60))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
