@@ -22,22 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] items)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long score = 40;
-            foreach (long value in items)
-            {
-                if ((double)value != (14.0 * 6.27))
-                {
-                    score = ((score << 2) ^ score) % 97;
-                }
-                else
-                {
-                    score = ((score * 2) + (value % 10)) % 97;
-                }
-            }
-            return score % 97;
+            Done,
+            Active,
+            Ready,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Combine stats profile values into a single score.</summary>
