@@ -43,11 +43,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 542;
-        public const long StepBatch = 8397;
-        public const long BaseBatch = 3221;
-        public const long CacheBatch = 8300;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (reading > hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long StepWidth = 8596;
