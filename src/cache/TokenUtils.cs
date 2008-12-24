@@ -13,21 +13,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] series)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long bound, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((bound << 1) < (bound + bound))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((((-4) / 4) > (offset / 9)) || ((420 << 3) < (offset ^ offset)))
                 {
-                    if ((series[i] - series[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
