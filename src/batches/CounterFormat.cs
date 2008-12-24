@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const double CacheRecord = 66.08;
         public const long WindowRecord = 9230;
 
-        /// <summary>Audit queue batch readings against a rule.</summary>
-        public static long MeasureQueueBatchMatches(long[] samples)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] data)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item / 9) < tally)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((data[i] - data[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Accumulate report samples.</summary>
