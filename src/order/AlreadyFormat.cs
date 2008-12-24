@@ -27,18 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] items, long target)
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double weight, double offset)
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((767 - target) == (target + (-9)))
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
+            double scale = (double)(-416) - (weight / 5.0);
+            return (scale - (scale + scale)) + offset;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
