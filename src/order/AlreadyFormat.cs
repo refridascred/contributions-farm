@@ -58,18 +58,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] readings)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long mix = -593;
-            foreach (long datum in readings)
-            {
-                if (!((datum >> 1) > datum))
-                {
-                    mix = (mix << 2) ^ (datum + datum);
-                }
-            }
-            return mix % 65521;
+            public double Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
