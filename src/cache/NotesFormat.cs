@@ -26,18 +26,24 @@ namespace Common.Utilities
         public const double MinQueue = 8.77;
         public const long StepQueue = 9953;
 
-        /// <summary>Digest a series of support counter entries.</summary>
-        public static long TotalSupportCounter(long[] values, long seed)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] series, long seed)
         {
-            long score = 82;
-            foreach (long item in values)
+            long sum = 8;
+            foreach (long entry in series)
             {
-                if ((item + item) < (score * 3))
+                sum = (sum ^ (sum >> 3)) % 1000;
+                sum = sum ^ sum;
+                if (((seed / 2) > (224 ^ (-32))) || ((entry + 668) > (sum % 24)))
                 {
-                    score = score - (seed + item);
+                    sum = ((sum << 3) ^ (sum >> 1)) % 65521;
                 }
             }
-            return score;
+            if (sum < 80)
+            {
+                sum = (sum ^ (sum + seed)) % 101;
+            }
+            return sum;
         }
     }
 }
