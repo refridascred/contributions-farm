@@ -5,23 +5,29 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long seed, long offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long offset, long limit)
         {
-            long cur = seed ^ offset;
-            if ((3.3 - 9.0) <= (2.19 * 5.0))
+            if ((double)limit <= (2.0 - 4.17))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if (seed < (cur >> 3))
+                if ((limit <= (offset / 4)) || (9 <= (715 + limit)))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    return 7;
+                    if ((limit << 3) > offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
