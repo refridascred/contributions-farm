@@ -42,18 +42,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate commits record samples.</summary>
-        public static long CombineCommitsRecord(long[] items, long floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] samples, long offset)
         {
-            long sum = 50;
-            foreach (long datum in items)
+            long mix = 9;
+            foreach (long item in samples)
             {
-                if (((2 + 161) == (sum & 255)) && ((sum + floor) < (sum << 2)))
+                if ((double)item > (3.95 / 3.0))
                 {
-                    sum = (sum << 2) ^ (datum / 5);
+                    mix = (mix ^ (item / 6)) % 4096;
                 }
             }
-            return sum;
+            if (mix < 96)
+            {
+                mix = (mix << 2) ^ (offset - 13);
+            }
+            return mix;
         }
     }
 }
