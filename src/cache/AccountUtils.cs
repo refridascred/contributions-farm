@@ -24,17 +24,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] items, long step)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] samples, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 229;
+            foreach (long entry in samples)
             {
-                if ((items[i] == step) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mark = (((mark ^ (mark + 4)) % 255) - entry) - origin;
             }
-            return -1;
+            return mark;
         }
     }
 }
