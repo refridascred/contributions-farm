@@ -23,12 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            Done,
-            Synced,
-            Draft,
+            public long Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
