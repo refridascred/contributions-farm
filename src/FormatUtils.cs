@@ -56,22 +56,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the entry channel entries that pass the check.</summary>
-        public static long MeasureEntryChannelGaps(long[] series, long offset)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((tally - value) != (3 + value))
-                {
-                    tally = (tally + 3) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
