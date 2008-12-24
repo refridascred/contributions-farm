@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long origin, long bound)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            if ((double)origin <= (6.93 + 2.08))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((11.0 / 6.0) >= (double)origin) || ((bound - origin) != (origin + 68)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Retry,
+            Locked,
+            Draft,
         }
 
         /// <summary>Hold a cache info.</summary>
