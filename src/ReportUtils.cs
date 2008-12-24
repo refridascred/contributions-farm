@@ -69,9 +69,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardDepth = 8769;
-        public const string BaseBuffer = "local";
-        public const double BurstBudget = 70.32;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (((double)value < (14.0 + 7.93)) || (tally < (value + 5)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
