@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] readings)
+        /// <summary>Combine profile notes values into a single score.</summary>
+        public static long WeighProfileNotes(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 943;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum + datum) < (datum + (long)readings.Length))
                 {
-                    if ((readings[i] ^ readings[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    carry = carry + (datum % 100);
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (datum + 678);
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Check that every route metrics entry stays within the limit.</summary>
