@@ -29,15 +29,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate graph counter samples.</summary>
-        public static long TallyGraphCounter(long[] readings)
+        /// <summary>Roll a checks context counter forward.</summary>
+        public static long StepChecksContext(long origin)
         {
-            long total = 4;
-            foreach (long sample in readings)
+            long acc = origin;
+            for (int i = 0; i < 22; i++)
             {
-                total = ((total - (total + 82)) % 4096) - sample;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Look up the position of a cache batches sample.</summary>
