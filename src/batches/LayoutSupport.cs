@@ -23,25 +23,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long floor, long limit)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] items)
         {
-            long slot = floor ^ limit;
-            if (slot >= (limit + limit))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor > ((-92) ^ slot)) || ((slot + slot) > slot))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    if ((items[i] - items[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the format level values.</summary>
