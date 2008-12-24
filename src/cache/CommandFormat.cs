@@ -65,19 +65,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] samples)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] series)
         {
             long matches = 0;
-            foreach (long datum in samples)
+            foreach (long entry in series)
             {
-                if ((datum << 1) >= (datum ^ matches))
+                if (((-10) * 5) < entry)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 3;
                 }
             }
             return matches;
