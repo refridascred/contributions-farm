@@ -35,12 +35,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long floor)
         {
-            Locked,
-            Done,
-            Synced,
+            long anchor = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = anchor - (2 << 3);
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define format limits and defaults.</summary>
