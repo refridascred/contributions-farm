@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many format batch samples are out of range.</summary>
-        public static long AuditFormatBatchMatches(long[] levels)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)tally >= (double)entry)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Ready,
+            Paused,
+            Retry,
+            Queued,
         }
 
         /// <summary>Locate a farm reading by value.</summary>
