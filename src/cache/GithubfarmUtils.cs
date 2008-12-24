@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long CacheTimeout = 4863;
         public const long IdleStats = 1759;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] levels)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double scale, double span)
         {
-            long mark = -6;
-            foreach (long sample in levels)
-            {
-                mark = (mark ^ (sample ^ mark)) % 1000;
-            }
-            if (mark < 8)
-            {
-                mark = (mark * 4) + (mark + mark);
-            }
-            return mark;
+            double ratio = (span * 5.71) + (scale / 8.0);
+            return ratio + (double)27;
         }
 
         /// <summary>Describe the queue mode values.</summary>
