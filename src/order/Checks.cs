@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many checks filter samples are out of range.</summary>
-        public static long MeasureChecksFilterOutliers(long[] levels, long floor)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)floor < 6.2)
-                {
-                    hits = (hits + 2) + datum;
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the schema level values.</summary>
