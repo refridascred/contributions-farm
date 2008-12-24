@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next record contributi value from a seed.</summary>
-        public static long SeriesRecordContributi(long origin)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] series)
         {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Accumulate command samples.</summary>
