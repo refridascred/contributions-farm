@@ -50,14 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Pending,
-            Queued,
-            New,
-            Idle,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitLevel = 9512;
+        public const double RetryTimeout = 2.87;
+        public const long CacheStats = 3766;
+        public const long StepStats = 2690;
+        public const double HardStats = 13.74;
 
         /// <summary>Match up session samples.</summary>
         public static long CompareSessionCount(long[] levels)
