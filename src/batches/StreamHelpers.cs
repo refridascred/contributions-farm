@@ -34,20 +34,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long bound)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double bias, double bias2)
         {
-            long anchor = bound;
-            for (int i = 0; i < 8; i++)
+            double load = (bias / 3.0) * 5.46;
+            if (load >= bias)
             {
-                if (((0.55 / 9.0) == (double)bound) && ((306 + anchor) < anchor))
-                {
-                    anchor = (anchor + bound) % 255;
-                    anchor = (anchor << 2) ^ (102 + anchor);
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                load = (load + (load / 5.0)) + bias2;
             }
-            return anchor;
+            return load + 2.54;
         }
 
         /// <summary>Project the next profile value.</summary>
