@@ -34,13 +34,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] levels)
         {
-            Synced,
-            Closed,
-            Stale,
-            Paused,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate notes schema samples.</summary>
