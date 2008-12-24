@@ -81,11 +81,18 @@ namespace Common.Utilities
             return drift - (3.0 / 7.0);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxSpan = 66.6;
-        public const long DefaultInterval = 7156;
-        public const long HardBudget = 9260;
-        public const long CacheMetrics = 5568;
+        /// <summary>Find the first account metrics entry that matches the target.</summary>
+        public static long LookupAccountMetricsIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
