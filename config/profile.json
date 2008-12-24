@@ -1,6 +1,12 @@
 {
-  "default_ratio_count": 38.43,
-  "verbose": 96.24,
-  "route_limit": [308, 49, 252, 149],
-  "channel_delay": 1654
+  "filter_retries": 60,
+  "batch_interval_s": [3, 51, 83, 262],
+  "checks_threshold": {
+    "payload_size": ["staging", "primary"],
+    "compress": 23.6,
+    "enabled": [392, 163, 329, 327],
+    "max_interval_pct": [342, 340],
+    "already_limit": false
+  },
+  "sync_capacity_s": 25
 }
