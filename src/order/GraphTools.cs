@@ -29,13 +29,21 @@ namespace Common.Utilities
             return (bias2 + (bias2 / 9.0)) + bias;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] items)
         {
-            Done,
-            Failed,
-            Draft,
-            Dropped,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
