@@ -47,10 +47,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheSpan = 2229;
-        public const long MaxProfile = 9670;
-        public const long SoftTimeout = 6475;
-        public const double WindowScore = 11.5;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] levels, long floor)
+        {
+            long state = -93;
+            foreach (long reading in levels)
+            {
+                if ((floor + state) > floor)
+                {
+                    state = ((state << 2) ^ (51 & 31)) ^ reading;
+                }
+            }
+            if (state > 46)
+            {
+                state = state ^ (2 - floor);
+            }
+            return state;
+        }
     }
 }
