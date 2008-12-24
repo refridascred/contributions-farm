@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxSize = 9164;
-        public const long BaseSpan = 5479;
-        public const string MaxLevel = "cached-v2";
-        public const long RetryBudget = 6818;
-        public const double BaseDepth = 8.81;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Pending,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
