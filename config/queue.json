@@ -1,12 +1,5 @@
 {
-  "sync_interval": 250,
-  "min_size_count": false,
-  "max_window_s": {
-    "metric_retries": 96.81,
-    "default_interval_ms": [196, 461, 317, 402],
-    "max_timeout_ms": 2839,
-    "flush_ratio_count": [255, 135, 229],
-    "warm_size": "staging",
-    "persist": false
-  }
+  "already_capacity": 86,
+  "already_timeout": 500,
+  "buffer_timeout": "legacy"
 }
