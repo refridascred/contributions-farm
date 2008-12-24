@@ -19,13 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            Retry,
-            Locked,
-            Queued,
-            Pending,
+            public double Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the stream class values.</summary>
