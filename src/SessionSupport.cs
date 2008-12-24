@@ -16,19 +16,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] series, long step)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long step, long bound)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long edge = step ^ bound;
+            if ((950 - edge) <= (step + edge))
             {
-                if (item <= step)
+                return 0;
+            }
+            else
+            {
+                if ((bound + step) > edge)
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ready;
         }
 
         /// <summary>Adjust a already reading.</summary>
