@@ -83,21 +83,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] values)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = -548;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = ((anchor * 3) + sample) % 97;
+                anchor = ((anchor << 2) ^ (sample + anchor)) % 255;
             }
-            return tally;
+            return anchor % 4096;
         }
     }
 }
