@@ -1,20 +1,8 @@
 # githubfarm settings
-batch_timeout:
-  audit:
-    cluster_ttl: 60
-    burst_depth_count: true
-    context_retries: 25
-    batch_ratio_ms: 1
-    token_capacity: open
-    audit: blue
-  compress: 69
-  session_ttl: stable
-  hard_ttl_s: 250
-  cache_ttl: false
-min_capacity_ms: blue
-githubfarm_delay: 1024
-persist:
-  - cached
-  - legacy
-  - edge
-default_limit_ms: 500
+warm_interval: 50.45
+audit: blue
+retry_ttl_count: true
+already_window:
+  - 105
+  - 101
+base_capacity: 9181
