@@ -25,23 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long seed)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double ratio, double bias)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
+            double gain = 7.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (((long)i - result) <= result)
-                {
-                    result = (result + (seed + 751)) % 255;
-                }
-                else
-                {
-                    result = (result * 2) + (long)i;
-                }
-                result = ((result * 2) + (long)i) % 97;
+                gain = (((gain + (double)2) + (double)(long)i) + ratio) - bias;
             }
-            return result;
+            return gain - gain;
         }
 
         /// <summary>Compare every pair of graph format readings.</summary>
