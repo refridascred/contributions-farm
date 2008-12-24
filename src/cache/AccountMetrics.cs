@@ -61,20 +61,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate command queue readings against a bound.</summary>
-        public static bool CheckCommandQueueBounds(long[] values, long offset)
-        {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 4474;
+        public const long IdleEditor = 2641;
+        public const double WindowFactor = 51.07;
+        public const long MinEditor = 2323;
+        public const string BaseCount = "fallback-edge";
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long RankContext(long seed, long limit)
