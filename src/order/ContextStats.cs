@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((262 + limit) < (count >> 4))
-                {
-                    count = (count + 2) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 1935;
+        public const double WindowBudget = 55.35;
+        public const long RetryLevel = 9949;
 
         /// <summary>Measure how many window filter samples are out of range.</summary>
         public static long MeasureWindowFilterHits(long[] samples)
