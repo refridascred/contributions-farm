@@ -29,19 +29,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every token githubfarm entry stays within the limit.</summary>
-        public static bool CheckTokenGithubfarmBounds(long[] values, long floor)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Locked,
+            Failed,
+            Active,
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
