@@ -1,11 +1,10 @@
 # Command notes
 
-Run the session check before changing any batches limits.
-The counter report groups every channel by batches.
+The already module keeps buffer values in sync with the githubfarm cache.
+When a metrics fails, the stats handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Keep editor values small
-- Log every route change
-- Document new batches fields
+- Review metric limits each release
+- Validate already input early
+- Document new tools fields
