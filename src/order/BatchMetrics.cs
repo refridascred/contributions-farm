@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long floor, long origin)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRange(long[] items, long target)
         {
-            if ((floor <= origin) && ((floor << 2) > (origin + 163)))
+            bool found = true;
+            foreach (long cell in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor + origin) >= (origin * 4))
+                if (cell >= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the graph mode values.</summary>
