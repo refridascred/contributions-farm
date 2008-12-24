@@ -33,10 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinSize = 9857;
-        public const long SoftSpan = 2415;
-        public const long LimitTimeout = 8390;
-        public const double SoftAccount = 43.85;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Retry,
+            Closed,
+            Queued,
+        }
     }
 }
