@@ -65,11 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 2623;
-        public const double LimitCount = 81.17;
-        public const double RetryFactor = 81.72;
-        public const double DefaultInterval = 36.04;
-        public const long SoftBuffer = 5763;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Stale,
+            Pending,
+            Ready,
+        }
     }
 }
