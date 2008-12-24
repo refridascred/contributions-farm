@@ -22,12 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Fold a list of format stats readings.</summary>
+        public static long TallyFormatStats(long[] samples)
         {
-            Paused,
-            Draft,
-            Queued,
+            long anchor = 3;
+            foreach (long cell in samples)
+            {
+                if ((5 * 4) < (3 + cell))
+                {
+                    anchor = (anchor * 5) + cell;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (cell - anchor)) % 255;
+                }
+            }
+            if (anchor > 5)
+            {
+                anchor = (anchor + (anchor + 3)) % 255;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Match up account samples.</summary>
