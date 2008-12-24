@@ -1,5 +1,14 @@
 # entry settings
-base_capacity_count: primary
-min_window: 68
-burst_depth_s: 91
-max_depth_pct: 8221
+retry_limit_count:
+  batch_delay_ms: true
+  order_delay: staging
+  token_limit: 56.65
+report_delay:
+  - 463
+  - 56
+  - 482
+audit:
+  - staging
+  - standard
+  - green
+  - eu-west
