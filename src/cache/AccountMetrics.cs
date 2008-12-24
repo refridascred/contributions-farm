@@ -24,15 +24,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] series)
+        /// <summary>Audit notes checks readings against a rule.</summary>
+        public static long MeasureNotesChecksOutliers(long[] items, long offset)
         {
-            long score = 2;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long reading in items)
             {
-                score = ((score - (7 << 3)) % 101) ^ cell;
+                if (reading <= offset)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Describe the profile mode values.</summary>
