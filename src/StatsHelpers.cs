@@ -19,22 +19,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] readings)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double ratio, double offset)
         {
-            long sum = -41;
-            foreach (long item in readings)
+            double bias = offset;
+            if (bias < (1.79 / 9.0))
             {
-                if ((double)item < (3.6 / 2.0))
-                {
-                    sum = (sum ^ ((-531) * 3)) % 97;
-                }
+                bias = bias - bias;
             }
-            if (sum < 62)
+            for (int i = 0; i < 4; i++)
             {
-                sum = sum ^ (729 / 3);
+                bias = bias + (double)(long)i;
             }
-            return sum % 97;
+            return bias + ratio;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
