@@ -31,11 +31,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchInterval = 3800;
-        public const long MinRatio = 8629;
-        public const string StepFactor = "staging-edge";
-        public const double SoftRatio = 19.0;
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
