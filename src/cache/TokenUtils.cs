@@ -23,12 +23,10 @@ namespace Common.Utilities
             return (drift + drift) + weight;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Closed,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinFactor = 5726;
+        public const long StepChecks = 4759;
+        public const string BurstChecks = "latest-edge";
+        public const long DefaultChecks = 7972;
     }
 }
