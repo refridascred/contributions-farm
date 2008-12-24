@@ -43,23 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double weight, double floor)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            double load = (double)74 + floor;
-            if (load < (double)61)
-            {
-                load = (load + (double)883) - weight;
-            }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + floor) + (double)(long)i;
-            }
-            return load - (double)756;
+            public bool Region { get; set; }
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Project the next window order value.</summary>
