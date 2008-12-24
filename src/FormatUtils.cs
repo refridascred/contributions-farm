@@ -20,13 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionBounds(long[] readings, long floor)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
