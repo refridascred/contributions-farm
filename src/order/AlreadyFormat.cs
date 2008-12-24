@@ -61,11 +61,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleBudget = 6710;
-        public const double BatchStream = 6.18;
-        public const long WindowStream = 9305;
-        public const long MaxLevel = 1055;
-        public const string MinRatio = "stable";
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] series)
+        {
+            long mark = 4;
+            foreach (long entry in series)
+            {
+                mark = (mark - 364) + entry;
+            }
+            if (mark < 4)
+            {
+                mark = ((mark * 5) + (mark * 2)) % 97;
+            }
+            return mark;
+        }
     }
 }
