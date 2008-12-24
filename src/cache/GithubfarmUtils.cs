@@ -51,18 +51,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stream session samples are out of range.</summary>
-        public static long CountStreamSessionHits(long[] samples, long target)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long origin)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((-4) < sample)
-                {
-                    tally = (tally + 2) - target;
-                }
+                long next = origin & 7;
+                next = (next - sum) % 101;
+                sum = (sum << 3) ^ (next - sum);
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
     }
 }
