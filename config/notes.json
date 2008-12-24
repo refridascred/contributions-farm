@@ -1,22 +1,6 @@
 {
-  "flush_ttl": "stable",
-  "min_retries": ["edge", "cached", "legacy", "fallback"],
-  "metric_ratio": 60,
-  "contributi_threshold": {
-    "default_timeout": 92.4,
-    "enabled": "cached",
-    "max_timeout": "edge"
-  },
-  "support_ttl": {
-    "burst_size": 40.68,
-    "hard_ratio_s": 30,
-    "persist": 250,
-    "githubfarm_limit": "blue",
-    "enabled": {
-      "base_window": "standard",
-      "readonly": "standard",
-      "default_depth_count": [457, 275],
-      "burst_capacity_s": 250
-    }
-  }
+  "commits_size": [384, 383],
+  "hard_depth_s": true,
+  "channel_threshold": 8509,
+  "persist": ["local", "cached"]
 }
