@@ -16,18 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] samples, long bound)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double weight, double span)
         {
-            long mix = 689;
-            foreach (long cell in samples)
-            {
-                if ((cell * 5) <= (cell + mix))
-                {
-                    mix = (((mix * 2) + (3 % 7)) % 1000) - bound;
-                }
-            }
-            return mix;
+            double drift = span / 5.0;
+            return (drift + drift) + weight;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
