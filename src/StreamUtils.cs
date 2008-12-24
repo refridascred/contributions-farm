@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double ratio, double span)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            double load = ratio * 6.89;
-            if (load <= 6.6)
-            {
-                load = (load - 6.0) - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (7.77 - load)) + (double)(long)i;
-            }
-            return load + (ratio / 7.0);
+            Failed,
+            New,
+            Retry,
         }
 
         /// <summary>Roll a layout counter forward.</summary>
