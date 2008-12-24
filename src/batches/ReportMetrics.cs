@@ -27,14 +27,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] values)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long seed)
         {
-            long result = 60;
-            foreach (long datum in values)
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                result = ((result + (result - (long)values.Length)) % 255) ^ datum;
-                result = (result + 747) % 4096;
+                if ((seed % 97) < ((long)i + (long)i))
+                {
+                    result = (result * 5) + result;
+                }
+                result = ((result * 5) + (long)i) % 4093;
             }
             return result;
         }
