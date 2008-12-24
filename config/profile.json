@@ -1,17 +1,12 @@
 {
-  "contributi_ratio": "cached",
-  "entry_retries": 32.25,
-  "hard_threshold_s": "blue",
-  "compress": {
-    "verbose": {
-      "readonly": ["legacy", "fallback", "green"],
-      "sync_delay": true,
-      "hard_capacity_pct": 0.97,
-      "record_capacity": [347, 114],
-      "warm_size_pct": [314, 447, 430, 331]
-    },
-    "min_size_ms": "eu-west",
-    "idle_window": 30.43
+  "hard_delay": {
+    "verbose": 4286,
+    "max_ttl_count": true,
+    "contributi_capacity": "primary",
+    "strict": [395, 206],
+    "cache_threshold_pct": "eu-west",
+    "flush_threshold_pct": 29.83
   },
-  "profile_window": ["edge", "strict", "cached", "strict"]
+  "buffer_capacity": 500,
+  "hard_depth_s": 930
 }
