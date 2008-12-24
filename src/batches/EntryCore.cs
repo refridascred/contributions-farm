@@ -46,18 +46,21 @@ namespace Common.Utilities
         public const long BatchCommits = 7822;
         public const long IdleCommits = 3577;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] series)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (seen > (seen - seen))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 2) + item;
+                    if ((samples[i] - samples[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
