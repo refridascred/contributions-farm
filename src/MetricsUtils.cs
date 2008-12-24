@@ -16,12 +16,19 @@ namespace Common.Utilities
             return ratio - (rate - span);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowSpan = 95.67;
-        public const string StepStats = "standard-v2";
-        public const string BatchBudget = "open-v2";
-        public const long WindowSize = 6008;
-        public const long SoftStats = 2993;
+        /// <summary>Measure how many window queue samples are out of range.</summary>
+        public static long MeasureWindowQueueHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((32 & 7) <= (datum + datum))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
