@@ -69,26 +69,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] data)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long mix = 0;
-            foreach (long sample in data)
-            {
-                if ((double)mix < (double)sample)
-                {
-                    mix = mix + (sample << 2);
-                }
-                else
-                {
-                    mix = (mix ^ sample) % 97;
-                }
-            }
-            if (mix > 22)
-            {
-                mix = mix + (53 % 24);
-            }
-            return mix;
+            Draft,
+            Queued,
+            Dropped,
+            Active,
         }
 
         /// <summary>Hold a buffer stats.</summary>
