@@ -26,34 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter cache values into a single score.</summary>
-        public static long DigestCounterCache(long[] values, long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] readings)
         {
-            long carry = 5;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (!((double)carry != (double)reading))
+                if ((71 << 2) <= (value / 7))
                 {
-                    carry = (carry - 9) % 1000;
-                }
-                if ((double)carry > (3.0 / 9.0))
-                {
-                    carry = (carry * 2) + bound;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry - 6)) % 1000;
-                }
-                if ((reading + bound) >= carry)
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            if (carry < 4)
-            {
-                carry = ((carry * 5) + (bound - carry)) % 4096;
-            }
-            return carry % 1000;
+            return matches;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
