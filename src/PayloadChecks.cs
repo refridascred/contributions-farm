@@ -64,17 +64,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first account metrics entry that matches the target.</summary>
-        public static long LookupAccountMetricsIndex(long[] series, long bound)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a metric stats.</summary>
