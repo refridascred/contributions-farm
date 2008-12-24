@@ -41,17 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a graph profile sample.</summary>
-        public static long LocateGraphProfileIndex(long[] values, long bound)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < bound) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
