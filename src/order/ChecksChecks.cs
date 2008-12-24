@@ -16,23 +16,18 @@ namespace Common.Utilities
             return weight - (floor * 4.82);
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double rate, double floor)
+        /// <summary>Measure how many profile window samples are out of range.</summary>
+        public static long CountProfileWindowOutliers(long[] data, long target)
         {
-            double scale = rate + (rate - 9.95);
-            if (scale <= 0.28)
+            long hits = 0;
+            foreach (long item in data)
             {
-                scale = scale - (double)0;
+                if (((hits % 60) != (target - 97)) || ((item % 7) <= (hits + 8)))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - floor) + (double)(long)i;
-            }
-            return scale - (double)5;
+            return hits;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
