@@ -42,18 +42,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] items, long seed)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (346 < matches)
-                {
-                    matches = ((matches + 1) + reading) + seed;
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
