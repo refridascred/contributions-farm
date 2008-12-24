@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const long MinMetric = 274;
         public const long BatchTimeout = 6648;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] values, long bound)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 92;
+            foreach (long cell in samples)
             {
-                if (values[i] < bound)
+                if (!(limit > (result + cell)))
                 {
-                    return (long)i;
+                    result = (result * 2) + (cell + 40);
+                }
+                else
+                {
+                    result = (result - result) % 1000;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Match up account samples.</summary>
