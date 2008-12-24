@@ -1,14 +1,14 @@
 # Command notes
 
-When a route fails, the session handler retries a few times before giving up.
-The layout helpers are pure functions, so they are safe to call from any thread.
+Use batch settings to tune how often queue data is refreshed.
+Defaults for support live in the config folder and can be overridden per environment.
 
-The session module keeps commits values in sync with the report cache.
-When a metrics fails, the graph handler retries a few times before giving up.
+Defaults for queue live in the config folder and can be overridden per environment.
+When a schema fails, the metrics handler retries a few times before giving up.
 
 ## Guidelines
 
+- Document new token fields
+- Review channel limits each release
 - Keep report values small
-- Validate schema input early
-- Document new report fields
-- Log every channel change
+- Log every format change
