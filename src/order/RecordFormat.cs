@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double gain, double span)
         {
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
-            public double Flag { get; set; }
+            double ratio = gain;
+            return (ratio + (7.99 * 20.0)) + span;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
