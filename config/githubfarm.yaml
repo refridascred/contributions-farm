@@ -1,16 +1,7 @@
 # githubfarm settings
-sync_delay:
-  - stable
-  - fallback
+editor_limit: stable
+min_size_count: eu-west
+sync_depth_pct:
   - latest
-  - staging
-max_retries_ms: 2857
-verbose:
-  - staging
-  - open
-  - strict
-session_size:
-  - 480
-  - 61
-  - 164
-poll_depth_pct: false
+  - blue
+poll_ratio_pct: 46.04
