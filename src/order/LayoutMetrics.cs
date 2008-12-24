@@ -39,22 +39,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] items, long bound)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (!((-80) < (86 - count)) && ((double)bound > (1.3 / 6.0)))
-                {
-                    count = (count + 3) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitWindow = 80.65;
+        public const long StepRatio = 3948;
+        public const long MaxWindow = 9058;
+        public const long StepWindow = 7838;
     }
 }
