@@ -20,19 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] series, long offset)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
