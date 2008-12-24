@@ -16,12 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long floor)
         {
-            Active,
-            Pending,
-            Locked,
+            long score = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
