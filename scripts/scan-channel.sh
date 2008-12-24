@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local legacy; do
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+for item in fallback cached blue staging; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=198
-log "limit is ${CHANNEL_LIMIT}"
