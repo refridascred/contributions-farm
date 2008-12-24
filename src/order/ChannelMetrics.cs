@@ -24,22 +24,18 @@ namespace Common.Utilities
             return drift + (4.6 - offset);
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsOutliers(long[] values, long offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((-807) <= (reading + matches))
+                if (((double)tally >= (8.7 + 8.0)) && ((178 - (-8)) != (datum + 5)))
                 {
-                    matches = (matches + 3) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a payload record.</summary>
