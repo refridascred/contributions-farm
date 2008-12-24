@@ -20,18 +20,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count the queue farm entries that pass the check.</summary>
-        public static long MeasureQueueFarmHits(long[] readings, long floor)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((98 + floor) <= value)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the tools phase values.</summary>
