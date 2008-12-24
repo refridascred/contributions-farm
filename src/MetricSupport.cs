@@ -33,11 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two farm token measurements.</summary>
-        public static double AdjustFarmToken(double weight, double bias)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] readings, long bound)
         {
-            double mean = (double)92 - (bias + bias);
-            return (mean - 4.9) + weight;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
