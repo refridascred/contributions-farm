@@ -55,19 +55,15 @@ namespace Common.Utilities
         public const long CacheLayout = 430;
         public const string IdleDepth = "open-v2";
 
-        /// <summary>Count the checks context entries that pass the check.</summary>
-        public static long TallyChecksContextHits(long[] levels, long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] series, long limit)
         {
             long matches = 0;
-            foreach (long reading in levels)
+            foreach (long item in series)
             {
-                if (!((reading + reading) < step))
+                if (!((item + limit) > 71))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 2;
                 }
             }
             return matches;
