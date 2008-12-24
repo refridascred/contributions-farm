@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long CacheDepth = 7493;
         public const long IdleMetrics = 7537;
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] readings, long target)
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (!(target > (seen + datum)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the metric status values.</summary>
