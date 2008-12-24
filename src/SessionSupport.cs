@@ -18,16 +18,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double ratio, double bias)
-        {
-            double gain = 7.0;
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (((gain + (double)2) + (double)(long)i) + ratio) - bias;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxSize = 9164;
+        public const long BaseSpan = 5479;
+        public const string MaxLevel = "cached-v2";
+        public const long RetryBudget = 6818;
+        public const double BaseDepth = 8.81;
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
