@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] levels)
+        /// <summary>Grade a layout payload value against two limits.</summary>
+        public static long BucketLayoutPayload(long offset, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((242 % 10) == (47 - bound))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((offset + offset) < (offset / 5))
                 {
-                    if ((levels[i] + levels[j]) != 12)
+                    return 3;
+                }
+                else
+                {
+                    if ((offset < (offset / 2)) && ((double)offset >= (4.6 / 6.0)))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
