@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double bias, double offset)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] samples, long bound)
         {
-            double gain = offset;
-            return gain - bias;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of tools queue entries.</summary>
