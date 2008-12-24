@@ -85,12 +85,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public long Level { get; set; }
+            public long Count { get; set; }
+            public double Label { get; set; }
             public string Total { get; set; } = "";
-            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
