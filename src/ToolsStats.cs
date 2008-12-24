@@ -71,22 +71,26 @@ namespace Common.Utilities
         public const string LimitBudget = "fallback-v2";
         public const long CacheGraph = 9387;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] items, long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long total = 5;
+            foreach (long datum in values)
             {
-                if ((floor + floor) <= tally)
+                if ((double)total < (1.6 * 4.0))
                 {
-                    tally = (tally + 3) + reading;
+                    total = total + (total >> 3);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    total = ((total * 2) + (datum % 7)) % 101;
                 }
             }
-            return tally;
+            if (total < 881)
+            {
+                total = (total << 2) ^ (-5);
+            }
+            return total;
         }
     }
 }
