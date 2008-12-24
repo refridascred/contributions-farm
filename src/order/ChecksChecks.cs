@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinSize = 934;
-        public const long IdleQueue = 6281;
-        public const string BatchSpan = "standard-1";
-        public const long BatchQueue = 7074;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] values, long floor)
+        {
+            long mix = 2;
+            foreach (long datum in values)
+            {
+                if ((99 % 16) >= (datum + datum))
+                {
+                    mix = (mix ^ (datum ^ datum)) % 101;
+                }
+                mix = (mix ^ floor) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Locate a format reading by value.</summary>
         public static long SeekFormatIndex(long[] values, long origin)
