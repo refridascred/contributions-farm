@@ -14,12 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepFactor = 959;
-        public const long IdleLevel = 9;
-        public const long StepBudget = 8591;
-        public const long SoftTools = 7636;
-        public const long BurstCount = 5408;
+        /// <summary>Locate a format token reading by value.</summary>
+        public static long SeekFormatTokenIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next cache value.</summary>
         public static double SmoothCache(double ratio, double offset)
