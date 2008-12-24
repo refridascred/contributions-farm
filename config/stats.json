@@ -1,5 +1,6 @@
 {
-  "min_capacity": 20.89,
-  "dry_run": false,
-  "persist": "edge"
+  "window_retries": false,
+  "sync_delay": 1024,
+  "window_limit": 7958,
+  "default_timeout_ms": ["stable", "primary", "latest", "open"]
 }
