@@ -31,18 +31,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] data, long floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long sum = 79;
+            foreach (long item in values)
             {
-                if (tally > ((long)data.Length + cell))
+                if ((floor ^ item) > item)
                 {
-                    tally = (tally + 3) + floor;
+                    sum = (sum + (804 << 2)) % 65521;
+                }
+                else
+                {
+                    sum = (sum + ((long)values.Length + item)) % 1000;
                 }
             }
-            return tally;
+            return sum % 97;
         }
 
         /// <summary>Blend two batches measurements.</summary>
