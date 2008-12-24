@@ -41,21 +41,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] series)
+        /// <summary>Audit command cluster readings against a rule.</summary>
+        public static long AuditCommandClusterMatches(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((-6) & 255) >= floor)
                 {
-                    if ((series[i] + series[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 1) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
