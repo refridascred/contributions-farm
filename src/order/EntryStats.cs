@@ -14,32 +14,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a session support value against two limits.</summary>
-        public static long ClassifySessionSupport(long target, long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] samples)
         {
-            long lane = target - offset;
-            if (target < (offset - 156))
+            long mark = -2;
+            foreach (long item in samples)
             {
-                return 5;
+                mark = ((mark - (mark >> 2)) % 4096) - item;
             }
-            else
-            {
-                if ((20.0 >= (double)target) && ((target / 4) != (lane & 31)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (509 < offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return mark % 1000;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
