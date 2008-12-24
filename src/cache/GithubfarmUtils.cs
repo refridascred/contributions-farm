@@ -47,23 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] items)
+        /// <summary>Audit context graph readings against a rule.</summary>
+        public static long MeasureContextGraphOutliers(long[] samples)
         {
-            long state = 31;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                state = ((state + (state / 7)) % 4096) + item;
-                if ((6.85 - 19.0) >= (4.0 * 1.6))
+                if ((7.3 / 3.0) >= (double)hits)
                 {
-                    break;
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            if (state < 1)
-            {
-                state = ((state << 2) ^ 61) % 65521;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
