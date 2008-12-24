@@ -1,8 +1,14 @@
 {
-  "strict": "eu-west",
-  "batch_ratio_s": 3324,
-  "cache_depth_count": "staging",
-  "persist": "staging",
-  "buffer_retries": ["legacy", "legacy"],
-  "githubfarm_threshold": "legacy"
+  "checks_interval": 35,
+  "warm_retries_pct": false,
+  "commits_threshold": {
+    "strict": {
+      "soft_ratio_pct": "edge",
+      "warm_window": 61,
+      "max_capacity_count": "cached"
+    },
+    "max_ratio": 250,
+    "default_limit_pct": ["cached", "cached"]
+  },
+  "compress": 22.35
 }
