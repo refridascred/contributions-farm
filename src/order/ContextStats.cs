@@ -48,15 +48,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double bias, double offset)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            double rate = 16.0;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (double)(long)i) - bias;
-            }
-            return rate - offset;
+            public bool Flag { get; set; }
+            public double Region { get; set; }
         }
     }
 }
