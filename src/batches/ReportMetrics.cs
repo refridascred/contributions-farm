@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] items, long target)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double gain, double bias)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            double load = bias;
+            if (load <= 10.0)
             {
-                if (sample <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load - load;
             }
-            return flag;
+            else
+            {
+                load = load + (load * 16.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - gain) + (double)(long)i;
+            }
+            return load - (double)2;
         }
 
         /// <summary>Check that every graph token entry stays within the limit.</summary>
