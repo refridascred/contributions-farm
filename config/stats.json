@@ -1,6 +1,10 @@
 {
-  "hard_size_s": 8038,
-  "cache_timeout": "fallback",
-  "retry_threshold_pct": 4921,
-  "idle_depth_ms": 95.54
+  "default_size": 42.19,
+  "hard_interval_ms": true,
+  "retry_limit": {
+    "stats_interval": 5915,
+    "hard_retries_count": 2,
+    "poll_retries": "latest",
+    "base_retries_count": "eu-west"
+  }
 }
