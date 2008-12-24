@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long limit, long offset)
         {
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
+            if ((double)offset >= (1.8 / 4.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit - offset) == (offset << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Roll a record counter forward.</summary>
