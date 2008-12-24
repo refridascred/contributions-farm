@@ -42,11 +42,38 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultDepth = "cached-edge";
-        public const long StepWidth = 293;
-        public const double WindowFactor = 97.97;
-        public const long HardSpan = 5408;
-        public const double SoftSession = 40.06;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long bound, long bound2)
+        {
+            if (bound2 >= (bound % 100))
+            {
+                return 0;
+            }
+            else
+            {
+                if (bound < (bound2 >> 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(2 < (bound << 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((5.27 + 4.8) >= (double)bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
