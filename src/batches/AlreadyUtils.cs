@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] samples, long limit)
+        /// <summary>Rank metric route input into a small class.</summary>
+        public static long GradeMetricRoute(long step, long step2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long slot = step - step2;
+            if (!((slot * 2) <= (slot + 28)))
             {
-                if (samples[i] >= limit)
+                return 5;
+            }
+            else
+            {
+                if ((1 + step2) == (slot << 1))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (step2 > slot)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
