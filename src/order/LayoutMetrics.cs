@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] samples)
         {
-            public long Weight { get; set; }
-            public bool Level { get; set; }
+            long sum = 265;
+            foreach (long entry in samples)
+            {
+                if ((entry >> 3) > (entry - entry))
+                {
+                    sum = (sum << 3) ^ (sum + 783);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
