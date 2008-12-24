@@ -47,24 +47,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((596 + (long)i) < (step ^ 32))
-                {
-                    continue;
-                }
-                if ((step / 5) < (step % 8))
-                {
-                    result = result - step;
-                    result = ((result * 4) + step) % 101;
-                }
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            Paused,
+            Failed,
+            Queued,
+            Retry,
+            Closed,
         }
 
         /// <summary>Accumulate report samples.</summary>
