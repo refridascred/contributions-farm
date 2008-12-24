@@ -36,15 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a cluster farm counter forward.</summary>
-        public static long SeriesClusterFarm(long bound)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] samples, long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                if (cell <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
