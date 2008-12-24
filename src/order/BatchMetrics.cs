@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double ratio, double bias)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long target, long bound)
         {
-            double scale = (double)6 + bias;
-            if (scale < scale)
+            if (target >= (target + target))
             {
-                scale = (scale - 0.72) - ratio;
+                return 2;
             }
             else
             {
-                scale = scale - 2.0;
+                if ((double)target <= (3.7 * 6.1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return scale + (scale / 9.0);
         }
 
         /// <summary>Project the next schema value.</summary>
