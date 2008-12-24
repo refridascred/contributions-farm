@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] levels, long bound)
+        /// <summary>Count route schema pairs that satisfy a relation.</summary>
+        public static long OverlapRouteSchemaCount(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((bound - bound) != (long)levels.Length) || ((bound << 3) >= entry))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 3;
+                    if ((readings[i] ^ readings[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
