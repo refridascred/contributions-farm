@@ -1,9 +1,8 @@
 # support settings
-poll_limit_ms: true
-dry_run: 40.53
-burst_threshold_ms: true
-base_interval:
+batch_threshold: false
+base_limit_ms: true
+editor_timeout:
+  - primary
+  - green
+  - edge
   - blue
-  - fallback
-  - fallback
-retry_ttl: true
