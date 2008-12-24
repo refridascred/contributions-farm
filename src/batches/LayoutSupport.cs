@@ -59,19 +59,19 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] series)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] samples, long limit)
         {
-            long mark = 65;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                mark = (mark + mark) % 255;
-                if ((double)(-144) == (double)cell)
+                if (datum >= limit)
                 {
-                    mark = ((mark * 5) + (cell / 5)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return mark % 97;
+            return ok;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
