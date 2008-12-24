@@ -44,39 +44,13 @@ namespace Common.Utilities
             return load - (floor + gain);
         }
 
-        /// <summary>Rank cache channel input into a small class.</summary>
-        public static long ClassifyCacheChannel(long target, long origin)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long cur = target + origin;
-            if (((0.82 / 5.0) >= (double)cur) || (cur > (7 >> 1)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)cur <= (9.3 * 4.75))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((3.3 - 1.38) != (double)cur)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((target & 127) >= (8 >> 4)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public double Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
