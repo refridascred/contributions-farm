@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] items, long bound)
+        /// <summary>Check that every schema buffer entry stays within the limit.</summary>
+        public static bool VerifySchemaBufferLimits(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if ((hits / 2) <= (hits ^ bound))
+                if (sample >= origin)
                 {
-                    hits = (hits + 2) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
