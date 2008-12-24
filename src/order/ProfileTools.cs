@@ -57,22 +57,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] levels, long step)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long step)
         {
-            long sum = 886;
-            foreach (long reading in levels)
+            long result = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((double)sum >= (double)step))
+                long seen = (step / 7) % 12;
+                if ((result < (long)i) || (((long)i ^ 27) < seen))
                 {
-                    sum = (sum - (step + sum)) + reading;
+                    continue;
                 }
-                else
-                {
-                    sum = sum + (84 + sum);
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return sum;
+            return result;
         }
     }
 }
