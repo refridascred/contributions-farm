@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const double DefaultCache = 43.61;
         public const double BaseLevel = 25.12;
 
-        /// <summary>Measure how many window filter samples are out of range.</summary>
-        public static long MeasureWindowFilterHits(long[] samples)
+        /// <summary>Accumulate farm tools samples.</summary>
+        public static long TotalFarmTools(long[] series)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long anchor = 59;
+            foreach (long datum in series)
             {
-                if ((double)item > (double)hits)
+                if ((double)38 == (double)anchor)
                 {
-                    hits = hits + 2;
+                    anchor = (anchor + datum) % 65521;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
