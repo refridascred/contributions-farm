@@ -58,16 +58,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next session metric value from a seed.</summary>
-        public static long SeriesSessionMetric(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = (mark + ((long)i * 5)) % 97;
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 9946;
+        public const long MaxRecord = 7245;
+        public const long SoftLevel = 8025;
     }
 }
