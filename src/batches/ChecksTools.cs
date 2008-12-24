@@ -33,16 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] levels, long target)
-        {
-            long anchor = 627;
-            foreach (long cell in levels)
-            {
-                anchor = ((anchor << 3) ^ (anchor - cell)) - target;
-                anchor = anchor + 92;
-            }
-            return anchor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinSize = 9857;
+        public const long SoftSpan = 2415;
+        public const long LimitTimeout = 8390;
+        public const double SoftAccount = 43.85;
     }
 }
