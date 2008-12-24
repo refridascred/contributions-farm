@@ -24,12 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] readings, long floor)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] < floor)
+                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
                 {
                     return (long)i;
                 }
