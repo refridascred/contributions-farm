@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] series)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double weight, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = weight;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = (load - load) + (double)(long)i;
             }
-            return hits;
+            return load + span;
         }
 
         /// <summary>Accumulate command samples.</summary>
