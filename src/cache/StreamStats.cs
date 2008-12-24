@@ -16,19 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] readings, long target)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (!(target > (seen + datum)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 5639;
+        public const string CacheFactor = "strict-edge";
+        public const long RetryGraph = 7016;
+        public const double LimitWidth = 52.42;
+        public const long MaxTimeout = 7009;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BaseTimeout = 9751;
