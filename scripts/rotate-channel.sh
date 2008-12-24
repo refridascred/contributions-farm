@@ -6,22 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-for item in cached legacy; do
+for item in open strict; do
     log "checking ${item}"
 done
 
-mode="${1:-edge}"
+mode="${1:-staging}"
 case "${mode}" in
-    blue)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
