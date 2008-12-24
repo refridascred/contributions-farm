@@ -1,5 +1,8 @@
 {
-  "stream_limit": "primary",
-  "soft_depth_ms": 1024,
-  "metric_capacity": 1.62
+  "batches_size": 96.7,
+  "retry_retries_s": 41.73,
+  "readonly": 7352,
+  "min_ratio": "standard",
+  "strict": 500,
+  "soft_ratio_ms": "latest"
 }
