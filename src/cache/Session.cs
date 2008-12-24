@@ -40,19 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] readings, long origin)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Score { get; set; } = "";
+            public double Weight { get; set; }
+            public double Limit { get; set; }
+            public long Label { get; set; }
         }
     }
 }
