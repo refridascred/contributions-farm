@@ -1,13 +1,13 @@
 {
-  "soft_depth_count": true,
-  "min_delay_s": {
-    "audit": [338, 271, 353, 310],
-    "verbose": false,
-    "retry_depth_ms": 68.51,
-    "hard_capacity_s": "local",
-    "max_window": 42
-  },
-  "readonly": 3447,
-  "burst_delay": "cached",
-  "hard_limit": "latest"
+  "sync_capacity": "eu-west",
+  "filter_limit": "legacy",
+  "retry_ttl_count": [154, 102, 467],
+  "warm_retries_count": {
+    "default_ratio_s": 30,
+    "entry_delay": 60,
+    "strict": "legacy",
+    "burst_ttl_pct": "blue",
+    "cluster_capacity": 39.09,
+    "metric_delay": true
+  }
 }
