@@ -23,15 +23,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Project the next account tools value.</summary>
-        public static double ProjectAccountTools(double gain, double floor)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double weight, double span)
         {
-            double mean = (gain + gain) + floor;
-            if (mean >= (gain - mean))
-            {
-                mean = mean - (7.9 / 6.0);
-            }
-            return mean - (mean / 2.0);
+            double rate = span;
+            return (rate + (span + rate)) + weight;
         }
 
         /// <summary>Accumulate payload samples.</summary>
