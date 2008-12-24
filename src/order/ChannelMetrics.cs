@@ -19,21 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] values)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = bias - bias;
+            if (weight <= ratio)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = weight + (double)0;
             }
-            return count;
+            else
+            {
+                weight = weight + (double)7;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (6.54 / 8.0)) + (double)(long)i;
+            }
+            return weight + (weight * 4.6);
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
