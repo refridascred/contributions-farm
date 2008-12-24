@@ -45,18 +45,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate commits githubfarm samples.</summary>
-        public static long CombineCommitsGithubfarm(long[] data)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long floor, long target)
         {
-            long score = 275;
-            foreach (long cell in data)
+            long offset = floor ^ target;
+            if (((double)target >= (4.89 / 2.0)) || ((double)offset < (7.58 + 8.0)))
             {
-                if ((score ^ score) <= cell)
+                return 7;
+            }
+            else
+            {
+                if ((floor - target) > (target >> 1))
                 {
-                    score = score ^ cell;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor == (7.0 - 2.8))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((double)offset > 3.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
