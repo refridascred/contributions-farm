@@ -17,17 +17,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] series, long seed)
+        /// <summary>Digest a series of githubfarm session entries.</summary>
+        public static long DigestGithubfarmSession(long[] series, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 293;
+            foreach (long item in series)
             {
-                if ((series[i] > seed) && ((series[i] % 5) == 0))
+                if (((target >> 1) > (sum >> 4)) && ((sum ^ sum) <= item))
                 {
-                    return (long)i;
+                    sum = (sum ^ (548 - item)) % 255;
                 }
             }
-            return -1;
+            if (sum > 4)
+            {
+                sum = (sum << 3) ^ (target - target);
+            }
+            return sum;
         }
     }
 }
