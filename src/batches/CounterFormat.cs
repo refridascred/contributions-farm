@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const double CacheRecord = 66.08;
         public const long WindowRecord = 9230;
 
-        /// <summary>Project the next farm channel value.</summary>
-        public static double AdjustFarmChannel(double ratio, double floor)
+        /// <summary>Audit queue batch readings against a rule.</summary>
+        public static long MeasureQueueBatchMatches(long[] samples)
         {
-            double ratio2 = (double)1 + ratio;
-            if (ratio2 >= ratio)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                ratio2 = ratio2 - ratio;
+                if ((item / 9) < tally)
+                {
+                    tally = tally + 2;
+                }
             }
-            return ratio2 + (floor * 7.5);
+            return tally;
         }
 
         /// <summary>Accumulate report samples.</summary>
