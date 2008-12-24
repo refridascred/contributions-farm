@@ -16,19 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate counter buffer readings against a bound.</summary>
-        public static bool ValidateCounterBufferRange(long[] values, long origin)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterMatches(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (entry < origin)
+                if (!((reading - 19) > (4 - reading)))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
