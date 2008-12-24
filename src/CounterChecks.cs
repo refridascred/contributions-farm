@@ -33,10 +33,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleBudget = 9803;
-        public const double RetryEntry = 93.86;
-        public const string HardFactor = "primary";
+        /// <summary>Count route graph pairs that satisfy a relation.</summary>
+        public static long MatchRouteGraphCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double ProjectTools(double gain, double span)
