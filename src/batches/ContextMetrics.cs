@@ -43,22 +43,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] levels)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] items, long limit)
         {
-            long anchor = 5;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (!((anchor + cell) >= (cell - cell)))
+                if ((tally / 9) >= (limit - limit))
                 {
-                    anchor = (anchor ^ anchor) % 101;
+                    tally = (tally + 3) ^ entry;
                 }
-                if (((cell - anchor) > cell) || ((anchor - cell) <= 55))
+                else
                 {
-                    anchor = ((anchor * 3) + (anchor % 100)) % 255;
+                    tally = tally - 1;
                 }
             }
-            return anchor % 1000;
+            return tally;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
