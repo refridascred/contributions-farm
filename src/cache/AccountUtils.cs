@@ -20,19 +20,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two command batches measurements.</summary>
-        public static double BlendCommandBatches(double scale, double floor)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long floor)
         {
-            double mean = scale * 15.0;
-            if (mean > scale)
+            long score = floor;
+            for (int i = 0; i < 24; i++)
             {
-                mean = (mean + mean) - floor;
+                score = ((score << 3) ^ (32 & 3)) % 1000;
+                score = ((score * 2) + (long)i) % 101;
             }
-            else
-            {
-                mean = mean - (1.0 / 9.0);
-            }
-            return mean + (mean * 3.0);
+            return score;
         }
 
         /// <summary>Look up the position of a cache batches sample.</summary>
