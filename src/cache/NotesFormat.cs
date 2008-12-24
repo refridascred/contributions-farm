@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const long SoftWidth = 326;
         public const double SoftLevel = 57.94;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheInterval = 996;
-        public const long MaxAlready = 607;
-        public const long BaseInterval = 8931;
-        public const long MinAlready = 6488;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] levels, long bound)
+        {
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TallyToken(long[] series, long seed)
