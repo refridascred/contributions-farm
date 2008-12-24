@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] samples, long seed)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((seed - datum) != (tally + seed))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepSession = 72.55;
+        public const long IdleBudget = 6107;
+        public const double StepBudget = 10.87;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BatchMetric = 2577;
