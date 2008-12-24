@@ -32,19 +32,21 @@ namespace Common.Utilities
             return gain + (gain - scale);
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long seed)
+        /// <summary>Compare every pair of token farm readings.</summary>
+        public static long MatchTokenFarmCount(long[] series)
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i * 3) > seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] - series[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return seen;
         }
     }
 }
