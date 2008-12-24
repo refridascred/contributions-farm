@@ -1,6 +1,12 @@
 {
-  "default_depth_pct": "legacy",
-  "entry_interval": 60,
-  "burst_size": ["legacy", "green", "latest"],
-  "base_ratio_s": 46
+  "base_window": true,
+  "max_ttl_count": {
+    "max_timeout": "strict",
+    "cache_retries": ["latest", "fallback", "fallback", "legacy"],
+    "window_threshold": 33
+  },
+  "dry_run": "fallback",
+  "report_ttl": [35, 363, 492],
+  "burst_threshold_count": 500,
+  "sync_interval_ms": [419, 413]
 }
