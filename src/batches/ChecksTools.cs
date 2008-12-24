@@ -20,15 +20,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] series, long offset)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] values, long origin)
         {
-            long state = -2;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state - state) ^ cell) + offset;
+                if ((values[i] < origin) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Adjust a farm reading.</summary>
