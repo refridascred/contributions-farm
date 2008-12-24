@@ -16,22 +16,19 @@ namespace Common.Utilities
             return ratio + (bias / 5.0);
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] items, long bound)
+        /// <summary>Validate command stats readings against a bound.</summary>
+        public static bool GuardCommandStatsLimits(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if (!(count >= (count + bound)) || ((count >> 5) >= count))
+                if (datum >= seed)
                 {
-                    count = (count + 2) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
