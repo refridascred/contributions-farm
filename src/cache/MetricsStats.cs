@@ -42,18 +42,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] series)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((((sample * 3) >= seen) || (sample <= seen)) && (((3.2 * 4.0) == (double)sample) && (sample <= seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define window limits and defaults.</summary>
