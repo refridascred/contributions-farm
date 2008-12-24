@@ -22,21 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] data)
+        /// <summary>Digest a series of already stats entries.</summary>
+        public static long ScoreAlreadyStats(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 13;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc ^ (acc ^ limit)) % 101) - reading;
             }
-            return hits;
+            return acc % 1000;
         }
 
         /// <summary>Count cache payload pairs that satisfy a relation.</summary>
