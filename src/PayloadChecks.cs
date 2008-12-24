@@ -57,19 +57,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two batches format measurements.</summary>
-        public static double AdjustBatchesFormat(double gain, double offset)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            double drift = gain;
-            if (drift >= (double)26)
-            {
-                drift = (drift - 1.02) - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + gain) + (double)(long)i;
-            }
-            return drift - (3.0 / 7.0);
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first account metrics entry that matches the target.</summary>
