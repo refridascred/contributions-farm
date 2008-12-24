@@ -50,21 +50,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] series)
+        /// <summary>Project the next layout report value.</summary>
+        public static double SmoothLayoutReport(double scale, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = scale;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = ((rate + (0.49 / 5.0)) - (double)(long)i) - bias;
             }
-            return count;
+            return rate + (rate - rate);
         }
     }
 }
