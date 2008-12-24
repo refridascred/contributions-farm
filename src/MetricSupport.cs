@@ -28,19 +28,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the commits filter series from a seed.</summary>
-        public static long DeriveCommitsFilter(long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] series)
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((8.8 + 17.0) <= (double)matches)
                 {
-                    state = (state + ((long)i2 + limit)) % 97;
+                    matches = (matches + 2) + entry;
                 }
-                state = ((state * 5) + (long)i) % 97;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
