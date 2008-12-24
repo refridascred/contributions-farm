@@ -1,6 +1,5 @@
 {
-  "sync_delay": 30,
-  "warm_capacity_ms": 7728,
-  "support_limit": 9.76,
-  "cache_interval_pct": "open"
+  "enabled": "eu-west",
+  "sync_window_pct": 60,
+  "burst_retries_pct": false
 }
