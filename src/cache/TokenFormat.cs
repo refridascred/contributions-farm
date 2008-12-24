@@ -26,11 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double ratio, double floor)
         {
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            double mean = ratio;
+            if (mean > (floor * 9.45))
+            {
+                mean = mean + (double)13;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - ratio) + (double)(long)i;
+            }
+            return mean - (floor - floor);
         }
     }
 }
