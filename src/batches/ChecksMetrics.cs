@@ -44,11 +44,17 @@ namespace Common.Utilities
             return ((rate + (double)6) + ratio) + floor;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] values, long seed)
         {
-            public double Flag { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metric phase values.</summary>
