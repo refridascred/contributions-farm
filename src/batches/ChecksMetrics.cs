@@ -45,18 +45,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] data, long target)
+        /// <summary>Locate a stats order reading by value.</summary>
+        public static long LocateStatsOrderIndex(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches + 725) >= (entry + 0))
+                if ((items[i] <= step) && ((items[i] % 3) == 0))
                 {
-                    matches = (matches + 2) - target;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
