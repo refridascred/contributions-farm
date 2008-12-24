@@ -42,11 +42,14 @@ namespace Common.Utilities
             return load - (double)0;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 8089;
-        public const long IdleContributi = 9678;
-        public const string RetryRatio = "local-edge";
-        public const string BaseContributi = "stable-edge";
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
+        {
+            public double Total { get; set; }
+            public double Weight { get; set; }
+            public double Rank { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long WeighToken(long[] data, long floor)
