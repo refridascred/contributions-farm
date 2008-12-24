@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] levels, long step)
+        /// <summary>Grade a token tools value against two limits.</summary>
+        public static long ClassifyTokenTools(long offset, long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            if ((limit >> 1) >= (limit * 3))
             {
-                if (((hits + item) >= (step + step)) || !((item >> 1) < (hits % 64)))
+                return 8;
+            }
+            else
+            {
+                if ((double)offset == (double)limit)
                 {
-                    hits = hits + 1;
+                    return 3;
+                }
+                else
+                {
+                    if (12.0 < (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((-7) % 12) < limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a report entry.</summary>
