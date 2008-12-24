@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank metric route input into a small class.</summary>
-        public static long GradeMetricRoute(long step, long step2)
-        {
-            long slot = step - step2;
-            if (!((slot * 2) <= (slot + 28)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((1 + step2) == (slot << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step2 > slot)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 2867;
+        public const long StepTimeout = 3313;
+        public const string BatchContributi = "local-v2";
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long RankRecord(long target, long seed)
