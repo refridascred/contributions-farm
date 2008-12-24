@@ -35,17 +35,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a cluster buffer counter forward.</summary>
-        public static long RollClusterBuffer(long step)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long anchor = step;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = (anchor ^ (step ^ step)) % 1000;
-                anchor = anchor ^ (step >> 5);
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            Idle,
+            Done,
+            Closed,
+            Paused,
         }
     }
 }
