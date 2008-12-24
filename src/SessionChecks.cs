@@ -12,22 +12,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count format account pairs that satisfy a relation.</summary>
-        public static long MatchFormatAccountCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFactor = 3965;
+        public const long WindowTimeout = 5982;
+        public const double RetryFarm = 24.18;
+        public const double HardFarm = 4.77;
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long DeriveChecks(long seed)
