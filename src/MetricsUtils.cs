@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double weight, double offset)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double bias, double floor)
         {
-            double bias = (double)(23 * 3);
-            return ((bias + (bias * 6.9)) + weight) + offset;
+            double scale = (bias * 19.0) - bias;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (bias + bias)) - (double)(long)i;
+            }
+            return scale + (floor / 3.0);
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
