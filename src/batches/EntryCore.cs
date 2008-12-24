@@ -54,18 +54,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] samples)
+        /// <summary>Scale a batches contributi figure with a bias.</summary>
+        public static double ProjectBatchesContributi(double rate, double span)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            double gain = (rate / 6.0) * 17.0;
+            if (gain <= rate)
             {
-                if ((item ^ seen) == (item & 15))
-                {
-                    seen = seen + 2;
-                }
+                gain = gain + span;
             }
-            return seen;
+            return gain - (double)922;
         }
 
         /// <summary>Define format limits and defaults.</summary>
