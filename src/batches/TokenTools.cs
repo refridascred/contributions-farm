@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            public double Owner { get; set; }
-            public bool Token { get; set; }
-            public double Total { get; set; }
-            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of stats entries.</summary>
