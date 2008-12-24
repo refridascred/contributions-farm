@@ -1,4 +1,4 @@
 # support settings
-cache_limit: fallback
-poll_delay_s: false
-audit: true
+verbose: local
+default_ratio_count: latest
+entry_ratio: 250
