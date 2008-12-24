@@ -33,22 +33,39 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine window context values into a single score.</summary>
-        public static long ScoreWindowContext(long[] data)
+        /// <summary>Grade a tools support value against two limits.</summary>
+        public static long SortToolsSupport(long step, long floor)
         {
-            long sum = 59;
-            foreach (long sample in data)
+            long slot = step ^ floor;
+            if ((double)floor != (double)39)
             {
-                if ((sample % 100) != (sum + sum))
+                return 7;
+            }
+            else
+            {
+                if ((slot * 2) <= (step * 3))
                 {
-                    sum = (sum + (sample - sample)) % 97;
+                    return 1;
                 }
                 else
                 {
-                    sum = sum - 2;
+                    if (((slot % 100) > (floor + step)) && ((79 ^ 1) <= (89 - step)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)step <= 20.0) || ((floor - slot) <= (slot - slot)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Hold a token stats.</summary>
