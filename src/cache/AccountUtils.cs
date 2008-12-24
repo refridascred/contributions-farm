@@ -20,13 +20,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-            public double Region { get; set; }
-            public double Token { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Look up the position of a cache batches sample.</summary>
