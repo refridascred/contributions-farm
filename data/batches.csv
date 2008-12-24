@@ -1,6 +1,9 @@
-id,level,rank,active
-1,500,664,184
-2,legacy,13.22,67
-3,846,308,eu-west
-4,107,278,eu-west
-5,965,open,477
+id,weight,rank,level
+1,green,3.29,94
+2,fallback,806,blue
+3,881,72.7,699
+4,cached,fallback,edge
+5,77.43,912,63.93
+6,3.64,357,895
+7,90.92,primary,155
+8,3.66,361,24.17
