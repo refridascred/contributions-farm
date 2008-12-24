@@ -76,22 +76,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] samples, long bound)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long origin, long offset)
         {
-            long count = 0;
-            foreach (long item in samples)
+            if (((offset ^ offset) > (origin + (-2))) || ((16.0 * 9.2) >= (double)offset))
             {
-                if (!(((double)(long)samples.Length < (2.54 + 2.6)) || ((double)count <= (double)bound)))
+                return 4;
+            }
+            else
+            {
+                if (origin <= (origin + origin))
                 {
-                    count = (count + 1) ^ item;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 7;
                 }
             }
-            return count;
         }
     }
 }
