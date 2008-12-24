@@ -56,24 +56,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long floor, long offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] data)
         {
-            if ((floor - offset) == (763 >> 5))
+            long acc = 0;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (838 <= (offset * 2))
+                if (!((entry & 1) < (-97)))
                 {
-                    return 6;
+                    acc = ((acc << 2) ^ 840) % 101;
                 }
                 else
                 {
-                    return 2;
+                    acc = (acc ^ (573 * 3)) % 1000;
                 }
             }
+            return acc;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
