@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next profile githubfarm value from a seed.</summary>
-        public static long IterateProfileGithubfarm(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = ((acc * 4) + ((long)i >> 1)) % 4096;
-                if (((long)i << 2) > acc)
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = ((acc * 5) + 10) % 65521;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double DefaultTimeout = 8.26;
+        public const long MinCount = 9276;
+        public const long BurstSession = 4032;
+        public const long RetryDepth = 3116;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long CombineBatch(long[] readings)
