@@ -28,12 +28,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Roll a commits farm counter forward.</summary>
+        public static long RollCommitsFarm(long floor)
         {
-            Failed,
-            Synced,
-            Active,
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!((long)i < (floor + floor)))
+                {
+                    sum = (sum << 3) ^ (floor << 1);
+                    sum = (sum << 2) ^ (floor % 64);
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Blend two counter measurements.</summary>
