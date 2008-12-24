@@ -1,7 +1,17 @@
 {
-  "graph_retries": "standard",
-  "soft_ttl_ms": [59, 475],
-  "context_size": [142, 337, 472, 66],
-  "burst_limit_count": "green",
-  "order_depth": [433, 235, 278]
+  "base_ratio_pct": "cached",
+  "contributi_ttl": 9.04,
+  "retry_limit": 9542,
+  "sync_size": {
+    "warm_size": false,
+    "verbose": {
+      "route_ttl": ["staging", "stable"],
+      "base_timeout_count": 500,
+      "max_window_count": [379, 75],
+      "poll_size_count": 35.12
+    },
+    "readonly": 100,
+    "command_ratio": 61,
+    "poll_interval_s": "stable"
+  }
 }
