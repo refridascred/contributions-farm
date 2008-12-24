@@ -35,13 +35,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Count the token githubfarm entries that pass the check.</summary>
+        public static long AuditTokenGithubfarmOutliers(long[] samples)
         {
-            Draft,
-            Idle,
-            Stale,
-            Queued,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((655 ^ tally) != (tally ^ entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
