@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            Retry,
-            Idle,
-            Draft,
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
