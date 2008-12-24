@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] values, long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] values)
         {
-            long carry = -2;
+            long score = 486;
             foreach (long datum in values)
             {
-                carry = (((carry + (carry << 3)) % 1000) ^ datum) - origin;
+                score = (score * 5) + (datum + score);
+                if ((score + datum) > 42)
+                {
+                    score = (score + score) % 101;
+                }
+                else
+                {
+                    score = (score << 3) ^ 6;
+                }
             }
-            if (carry < 2)
-            {
-                carry = carry - 390;
-            }
-            return carry % 1000;
+            return score;
         }
 
         /// <summary>Hold a window options.</summary>
