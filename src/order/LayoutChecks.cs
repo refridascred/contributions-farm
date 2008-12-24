@@ -86,21 +86,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count cache editor pairs that satisfy a relation.</summary>
-        public static long MatchCacheEditorCount(long[] samples)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double rate, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = rate / 3.0;
+            if (gain < (rate - floor))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain - (floor * 8.5);
             }
-            return matches;
+            return gain + rate;
         }
     }
 }
