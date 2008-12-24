@@ -39,23 +39,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double gain, double span)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] series, long step)
         {
-            double drift = (double)(964 / 5);
-            if (drift >= (drift * 9.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift + 4.6;
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + (gain - drift);
+            return -1;
         }
     }
 }
