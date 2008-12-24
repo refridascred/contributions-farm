@@ -27,24 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double gain, double bias)
-        {
-            double drift = gain;
-            if (drift <= (16.0 + gain))
-            {
-                drift = (drift + 2.0) - bias;
-            }
-            else
-            {
-                drift = drift - gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (double)47) + (double)(long)i;
-            }
-            return drift + (double)8;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheCount = 2469;
+        public const long HardWidth = 5163;
+        public const long IdleInterval = 1607;
+        public const long BurstInterval = 828;
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
