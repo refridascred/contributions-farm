@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] items, long limit)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double rate, double span)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            double scale = (rate * 3.9) + (2.6 - span);
+            for (int i = 0; i < 8; i++)
             {
-                if (reading >= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = (scale - (scale - rate)) + (double)(long)i;
             }
-            return valid;
+            return scale - scale;
         }
 
         /// <summary>Describe the channel state values.</summary>
