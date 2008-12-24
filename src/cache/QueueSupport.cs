@@ -12,28 +12,13 @@ namespace Common.Utilities
         public const long BaseWidth = 5871;
         public const long StepWidth = 2195;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long floor)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((floor + (long)i) <= mix)
-                {
-                    mix = ((mix << 2) ^ floor) % 4096;
-                }
-                if (!((mix / 9) <= ((long)i >> 3)))
-                {
-                    mix = mix ^ (0 + mix);
-                    break;
-                }
-                if ((floor - floor) > (mix ^ floor))
-                {
-                    mix = mix ^ (mix ^ 817);
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Idle,
+            Retry,
+            Locked,
+            Draft,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
