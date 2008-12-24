@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] series)
         {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (((seed >> 4) > ((-7) ^ seed)) || ((seed >> 5) < (seed & 31)))
+                if (reading > (seen + reading))
                 {
-                    acc = acc - (acc % 8);
+                    seen = seen + 2;
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Fold a list of token readings.</summary>
