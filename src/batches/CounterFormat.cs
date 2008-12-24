@@ -19,12 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long bound)
         {
-            Retry,
-            Idle,
-            Closed,
+            long carry = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = (carry + (bound % 3)) % 65521;
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Describe the command state values.</summary>
