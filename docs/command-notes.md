@@ -1,16 +1,15 @@
 # Command notes
 
-The format report groups every stream by graph.
-Keep layout and entry names short and lowercase.
-Run the filter check before changing any cache limits.
+Use layout settings to tune how often buffer data is refreshed.
+The context report groups every payload by channel.
+When a tools fails, the githubfarm handler retries a few times before giving up.
 
-When a stats fails, the route handler retries a few times before giving up.
-The cache report groups every metric by command.
-The session helpers are pure functions, so they are safe to call from any thread.
+The checks report groups every stream by account.
+The format helpers are pure functions, so they are safe to call from any thread.
+Defaults for metrics live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate cluster input early
-- Prefer command defaults
-- Review session limits each release
-- Keep format values small
+- Document new session fields
+- Log every batches change
+- Validate graph input early
