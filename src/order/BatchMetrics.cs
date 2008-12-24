@@ -53,11 +53,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftDepth = 8827;
-        public const long CacheWidth = 493;
-        public const double SoftBudget = 70.4;
-        public const long RetrySpan = 2131;
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every window account entry stays within the limit.</summary>
         public static bool ValidateWindowAccountLimits(long[] values, long step)
