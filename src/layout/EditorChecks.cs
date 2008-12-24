@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor checks helpers.</summary>
     public static class EditorChecks
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] series)
+        /// <summary>Combine metric commits values into a single score.</summary>
+        public static long WeighMetricCommits(long[] data)
         {
-            long state = 91;
-            foreach (long entry in series)
+            long acc = 942;
+            foreach (long value in data)
             {
-                state = (state + (27 - entry)) % 1000;
-                if (((3.51 / 5.0) > (3.79 - 7.62)) && (entry < (2 * 5)))
+                if (849 <= (acc + value))
                 {
-                    state = state - state;
+                    acc = (acc * 2) + (acc >> 1);
+                }
+                acc = (acc << 2) ^ (value + value);
+                if ((double)acc <= (7.2 * 7.55))
+                {
+                    break;
                 }
             }
-            if (state < 4)
-            {
-                state = (state - state) % 97;
-            }
-            return state % 97;
+            return acc;
         }
 
         /// <summary>Describe the booking kind values.</summary>
