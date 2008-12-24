@@ -1,14 +1,18 @@
 {
-  "counter_delay": "open",
-  "profile_capacity": 60,
-  "min_ratio": "open",
-  "dry_run": 500,
-  "contributi_depth": {
-    "audit": 57.32,
-    "strict": 90,
-    "report_limit": 500,
-    "sync_retries_pct": [430, 104],
-    "hard_window": 30
+  "hard_size": {
+    "warm_window_pct": "latest",
+    "cluster_delay": 17.41,
+    "cache_limit": {
+      "token_capacity": 95.43,
+      "retry_timeout_s": "primary",
+      "notes_limit": false,
+      "burst_window": "fallback"
+    },
+    "min_interval_s": "fallback"
   },
-  "hard_retries": 30
+  "max_ttl_pct": 45,
+  "max_timeout": "stable",
+  "verbose": 500,
+  "sync_ttl": 60,
+  "window_threshold": "eu-west"
 }
