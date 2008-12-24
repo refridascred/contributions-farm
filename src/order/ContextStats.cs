@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const double DefaultCache = 43.61;
         public const double BaseLevel = 25.12;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] values)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((6.36 > (double)value) && ((9 % 5) < (seen + seen)))
+                if (!(((count << 2) <= 6) && ((value - count) < (399 + value))))
                 {
-                    seen = seen + 3;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
