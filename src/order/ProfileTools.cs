@@ -45,21 +45,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] data)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((596 + (long)i) < (step ^ 32))
                 {
-                    if ((data[i] ^ data[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
                 }
+                if ((step / 5) < (step % 8))
+                {
+                    result = result - step;
+                    result = ((result * 4) + step) % 101;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
