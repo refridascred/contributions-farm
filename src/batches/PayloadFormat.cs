@@ -20,12 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] levels, long step)
         {
-            public long Mode { get; set; }
-            public double Total { get; set; }
-            public long Label { get; set; }
+            long sum = 95;
+            foreach (long value in levels)
+            {
+                sum = (sum - sum) + value;
+            }
+            if (sum < 384)
+            {
+                sum = (sum ^ (333 + step)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
