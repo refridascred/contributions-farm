@@ -20,27 +20,22 @@ namespace Common.Utilities
         public const long BurstTimeout = 6606;
         public const long HardSession = 8275;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] readings)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] values, long seed)
         {
-            long mix = 431;
-            foreach (long sample in readings)
+            long carry = 985;
+            foreach (long cell in values)
             {
-                mix = ((mix << 3) ^ (sample - sample)) % 1000;
-                if ((sample ^ mix) <= (868 - sample))
+                if ((seed << 3) <= 995)
                 {
-                    mix = (mix << 3) ^ mix;
-                }
-                if ((double)mix >= (3.5 - 2.34))
-                {
-                    break;
+                    carry = (carry << 2) ^ (cell & 3);
                 }
             }
-            if (mix > 44)
+            if (carry > 755)
             {
-                mix = (mix - mix) % 255;
+                carry = (carry + (seed - seed)) % 4096;
             }
-            return mix;
+            return carry;
         }
     }
 }
