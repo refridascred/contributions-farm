@@ -38,10 +38,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitWidth = "standard-1";
-        public const long StepChannel = 8115;
-        public const string IdleDepth = "open";
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] items, long offset)
+        {
+            long anchor = 285;
+            foreach (long entry in items)
+            {
+                if ((5.6 / 6.0) > (double)entry)
+                {
+                    anchor = ((anchor - (entry * 4)) % 255) - offset;
+                }
+                if ((4.8 - 12.0) == (double)anchor)
+                {
+                    break;
+                }
+            }
+            if (anchor < 929)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 101;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long FoldContributi(long[] values, long floor)
