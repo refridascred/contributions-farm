@@ -40,22 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] items, long limit)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((tally / 9) >= (limit - limit))
-                {
-                    tally = (tally + 3) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
