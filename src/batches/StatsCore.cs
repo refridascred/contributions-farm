@@ -28,19 +28,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] levels, long seed)
+        /// <summary>Rank metrics format input into a small class.</summary>
+        public static long RankMetricsFormat(long seed, long bound)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            if ((bound & 31) >= (seed - bound))
             {
-                if (sample >= seed)
+                return 1;
+            }
+            else
+            {
+                if ((4 - bound) <= (-1))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return stale;
         }
 
         /// <summary>Grade a contributi record value against two limits.</summary>
