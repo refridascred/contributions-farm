@@ -41,21 +41,12 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] items)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
