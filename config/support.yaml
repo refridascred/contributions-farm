@@ -1,4 +1,4 @@
 # support settings
-default_window_ms: 58.99
-max_capacity: 500
-readonly: 31.62
+stream_ttl: false
+enabled: 9056
+default_interval: 9378
