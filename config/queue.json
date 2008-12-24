@@ -1,6 +1,17 @@
 {
-  "support_delay": 13,
-  "entry_ttl": 9.75,
-  "cache_capacity": "latest",
-  "idle_capacity": false
+  "buffer_depth": 18.55,
+  "cache_size": ["legacy", "latest", "stable", "eu-west"],
+  "batch_ttl": [370, 171, 395],
+  "poll_threshold_count": {
+    "audit": {
+      "dry_run": "green",
+      "cache_window_ms": true,
+      "max_size": 250
+    },
+    "verbose": "open",
+    "enabled": true,
+    "hard_retries_count": 3.12
+  },
+  "base_ttl": "latest",
+  "readonly": "staging"
 }
