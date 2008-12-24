@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Adjust a account githubfarm reading.</summary>
+        public static double BlendAccountGithubfarm(double scale, double floor)
         {
-            Locked,
-            Paused,
-            Ready,
-            Failed,
+            double ratio = floor;
+            if (ratio >= (double)(-99))
+            {
+                ratio = ratio + floor;
+            }
+            return ratio + scale;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
