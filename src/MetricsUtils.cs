@@ -23,13 +23,12 @@ namespace Common.Utilities
         public const long WindowSize = 6008;
         public const long SoftStats = 2993;
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Synced,
-            Pending,
-            Done,
-            Draft,
+            public string Label { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a already entry.</summary>
