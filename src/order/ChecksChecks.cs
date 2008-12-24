@@ -24,18 +24,17 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] samples, long offset)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((9.0 * 8.9) != (double)offset)
+                if (values[i] <= origin)
                 {
-                    seen = (seen + 3) + datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
