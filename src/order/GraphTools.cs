@@ -40,12 +40,12 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] readings, long limit)
+        /// <summary>Find the first support stream entry that matches the target.</summary>
+        public static long LookupSupportStreamIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] >= limit)
+                if (levels[i] == bound)
                 {
                     return (long)i;
                 }
