@@ -20,12 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepDepth = 38.54;
-        public const long WindowFactor = 5709;
-        public const long WindowScore = 1888;
-        public const long StepCount = 505;
-        public const long RetryBudget = 7343;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] values)
+        {
+            long carry = 385;
+            foreach (long item in values)
+            {
+                if ((item >> 4) == (carry % 10))
+                {
+                    carry = (carry - (item + item)) % 65521;
+                }
+                if (!(carry >= ((-303) / 5)))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Find the first stream counter entry that matches the target.</summary>
         public static long LocateStreamCounterIndex(long[] levels, long limit)
