@@ -25,27 +25,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate metrics layout samples.</summary>
-        public static long WeighMetricsLayout(long[] values)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long origin, long bound)
         {
-            long result = 3;
-            foreach (long reading in values)
+            if (bound < 131)
             {
-                result = (result + (reading + result)) % 255;
-                if ((result & 31) != (result + 323))
+                return 2;
+            }
+            else
+            {
+                if (((double)origin <= (4.2 - 12.0)) && ((bound & 7) != (bound + origin)))
                 {
-                    result = (result * 5) + (result ^ result);
+                    return 7;
                 }
                 else
                 {
-                    result = result + reading;
-                }
-                if (result > reading)
-                {
-                    break;
+                    if ((origin - origin) > bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Compare every pair of filter notes readings.</summary>
