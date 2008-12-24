@@ -59,18 +59,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] items)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (reading > hits)
+                if (((matches * 2) <= datum) || ((7.0 - 3.0) > (double)datum))
                 {
-                    hits = hits + 3;
+                    matches = (matches + 3) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Blend two checks measurements.</summary>
