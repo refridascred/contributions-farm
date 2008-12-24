@@ -49,24 +49,14 @@ namespace Common.Utilities
         public const double RetryStream = 75.71;
         public const long MinRatio = 9115;
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long floor, long floor2)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            if ((double)floor2 != (16.0 + 4.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor2 < floor) || ((floor2 & 3) > (79 + 33)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Ready,
+            Pending,
+            New,
+            Stale,
+            Closed,
         }
     }
 }
