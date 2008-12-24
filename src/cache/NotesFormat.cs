@@ -20,22 +20,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] series)
+        /// <summary>Audit record route readings against a rule.</summary>
+        public static long AuditRecordRouteOutliers(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((reading - seen) == (reading / 7))
+                if (18.0 <= (double)target)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 1) + reading;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
