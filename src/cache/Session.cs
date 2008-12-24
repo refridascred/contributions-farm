@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] readings)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            double drift = (double)(35 + 5);
+            if (drift > (drift + 3.96))
             {
-                if (381 > (tally % 100))
-                {
-                    tally = (tally + 1) + reading;
-                }
+                drift = ((drift - (13.0 * 2.08)) - ratio) - floor;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (drift + drift)) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
