@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
+            Locked,
+            Pending,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a context options.</summary>
