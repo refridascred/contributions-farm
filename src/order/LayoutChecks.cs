@@ -27,26 +27,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] items)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] data)
         {
-            long result = 0;
-            foreach (long entry in items)
+            long score = 7;
+            foreach (long reading in data)
             {
-                if ((entry + 74) < (result ^ result))
+                for (int i = 0; i < 5; i++)
                 {
-                    result = ((result << 2) ^ result) % 255;
+                    score = ((score * 2) + (reading << 1)) + (long)i;
                 }
-                else
+                score = (score + (reading & 255)) % 97;
+                if (score <= (62 + reading))
                 {
-                    result = ((result * 2) + (result + entry)) % 255;
+                    break;
                 }
             }
-            if (result < 1)
-            {
-                result = (result * 2) + result;
-            }
-            return result;
+            return score % 1000;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
