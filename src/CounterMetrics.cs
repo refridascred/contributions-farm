@@ -32,22 +32,37 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long offset, long floor)
+        /// <summary>Classify a checks counter pair into a bucket.</summary>
+        public static long GradeChecksCounter(long floor, long offset)
         {
-            if (((offset * 4) < (offset >> 4)) && ((double)floor > (6.7 * 1.4)))
+            long edge = floor ^ offset;
+            if ((edge + offset) > (floor & 3))
             {
                 return 1;
             }
             else
             {
-                if ((5.5 - 4.0) < (double)offset)
+                if (offset <= (8 + offset))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    return 2;
+                    if (offset < (floor % 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (85 > (edge + offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
