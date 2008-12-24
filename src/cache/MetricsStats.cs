@@ -30,26 +30,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate counter command samples.</summary>
-        public static long TallyCounterCommand(long[] data)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] series)
         {
-            long result = 10;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((-5) <= result)
+                if ((((sample * 3) >= seen) || (sample <= seen)) && (((3.2 * 4.0) == (double)sample) && (sample <= seen)))
                 {
-                    result = (result - value) % 255;
-                }
-                else
-                {
-                    result = (result ^ (result << 1)) % 4096;
+                    seen = seen + 1;
                 }
             }
-            if (result < 69)
-            {
-                result = ((result * 4) + result) % 1000;
-            }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Combine session support values into a single score.</summary>
