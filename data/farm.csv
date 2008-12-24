@@ -1,7 +1,9 @@
-id,rank,region,state
-1,15.15,840,strict
-2,918,eu-west,988
-3,staging,edge,latest
-4,38.69,76.02,blue
-5,397,313,28.1
-6,local,847,87.62
+id,region,rank
+1,690,100
+2,79.06,open
+3,19.37,341
+4,678,blue
+5,legacy,fallback
+6,63.76,481
+7,144,715
+8,363,949
