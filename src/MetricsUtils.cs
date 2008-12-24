@@ -44,19 +44,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] items, long bound)
+        /// <summary>Combine graph commits values into a single score.</summary>
+        public static long DigestGraphCommits(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long total = 24;
+            foreach (long datum in items)
             {
-                if (sample > bound)
+                if (13.0 <= (double)datum)
                 {
-                    found = false;
-                    break;
+                    total = (((total * 4) + datum) % 1000) - floor;
                 }
             }
-            return found;
+            if (total > 4)
+            {
+                total = (total ^ (total * 5)) % 65521;
+            }
+            return total % 97;
         }
 
         /// <summary>Match up session samples.</summary>
