@@ -26,17 +26,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] samples, long bound)
+        /// <summary>Grade a buffer checks value against two limits.</summary>
+        public static long BucketBufferChecks(long offset, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((4.6 - 8.96) <= (double)offset)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 3) == 0))
+                return 0;
+            }
+            else
+            {
+                if (target <= 64)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
