@@ -70,19 +70,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchBounds(long[] series, long seed)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long sum = 12;
+            foreach (long cell in samples)
             {
-                if (reading > seed)
+                if (!((cell >> 4) <= (cell - sum)))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum ^ (sum % 7)) % 255;
                 }
             }
-            return flag;
+            return sum % 65521;
         }
 
         /// <summary>Describe the tools phase values.</summary>
