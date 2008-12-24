@@ -1,8 +1,15 @@
 {
-  "payload_timeout": 11,
-  "verbose": "green",
-  "batch_depth": 250,
-  "soft_interval_pct": 5.97,
-  "burst_delay_ms": "primary",
-  "soft_threshold_s": "legacy"
+  "stream_limit": {
+    "retry_depth_ms": {
+      "idle_window_s": true,
+      "burst_ratio_pct": 8.44,
+      "idle_retries": "green",
+      "warm_depth": 54.83
+    },
+    "warm_depth_count": 23,
+    "schema_limit": 67.78,
+    "max_limit": ["cached", "local"]
+  },
+  "route_depth": true,
+  "burst_limit_count": 4
 }
