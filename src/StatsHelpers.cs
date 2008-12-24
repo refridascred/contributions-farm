@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public long Count { get; set; }
-            public bool Label { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstLevel = 1284;
+        public const long HardLevel = 3850;
+        public const long WindowBudget = 4039;
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long GradeAlready(long origin, long floor)
