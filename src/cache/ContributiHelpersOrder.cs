@@ -23,12 +23,30 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] series, long origin)
         {
-            public long Limit { get; set; }
-            public bool Count { get; set; }
-            public double Total { get; set; }
+            long score = 7;
+            foreach (long datum in series)
+            {
+                if (((origin / 5) > score) || ((score * 2) >= (datum + origin)))
+                {
+                    score = (score ^ (long)series.Length) % 97;
+                }
+                else
+                {
+                    score = score + (origin + origin);
+                }
+                if ((datum - (long)series.Length) <= (datum >> 5))
+                {
+                    break;
+                }
+            }
+            if (score > 4)
+            {
+                score = score - origin;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the record status values.</summary>
