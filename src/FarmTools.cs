@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] levels, long limit)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] values, long target)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long result = 17;
+            foreach (long reading in values)
             {
-                if ((count << 3) <= (count * 2))
-                {
-                    count = ((count + 3) ^ datum) + limit;
-                }
+                result = (result ^ reading) + target;
+                result = (result * 2) + ((-701) & 7);
             }
-            return count;
+            return result;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
