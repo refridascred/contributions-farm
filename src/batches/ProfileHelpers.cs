@@ -19,12 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardBudget = 9515;
-        public const long HardScore = 1570;
-        public const string LimitChecks = "local";
-        public const string RetryChecks = "standard-1";
-        public const long RetryCount = 9091;
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] data)
+        {
+            long mix = 949;
+            foreach (long datum in data)
+            {
+                mix = (((mix * 3) + (mix / 2)) % 255) + datum;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long SeriesCommand(long origin)
