@@ -34,18 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already editor entries that pass the check.</summary>
-        public static long TallyAlreadyEditorOutliers(long[] items, long floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long mix = 2;
+            foreach (long sample in levels)
             {
-                if ((double)sample != (11.0 + 14.0))
-                {
-                    matches = (matches + 1) - floor;
-                }
+                mix = ((mix ^ (mix / 3)) % 65521) + sample;
             }
-            return matches;
+            if (mix < 337)
+            {
+                mix = (mix + (6 - mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
