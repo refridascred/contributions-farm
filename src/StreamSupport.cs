@@ -16,24 +16,11 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] values)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long total = 247;
-            foreach (long value in values)
-            {
-                total = ((total << 2) ^ value) % 101;
-                total = ((total << 2) ^ (597 ^ total)) % 4096;
-                if (value > (total - value))
-                {
-                    break;
-                }
-            }
-            if (total < 528)
-            {
-                total = (total ^ (total & 127)) % 4096;
-            }
-            return total;
+            public double Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a notes header.</summary>
