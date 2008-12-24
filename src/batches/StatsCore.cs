@@ -53,21 +53,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] values)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    if ((values[i] ^ values[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score * 4) + ((long)i2 + (long)i2);
+                    score = (score + (limit + score)) % 97;
                 }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
