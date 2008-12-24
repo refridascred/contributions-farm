@@ -57,35 +57,10 @@ namespace Common.Utilities
             return rate + (floor - rate);
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] data, long floor)
-        {
-            long mix = 524;
-            foreach (long value in data)
-            {
-                mix = (mix - floor) % 1000;
-                if ((91 < (mix % 5)) || ((value - floor) > (mix % 16)))
-                {
-                    mix = mix + (floor / 6);
-                }
-                if ((value + floor) > (value + value))
-                {
-                    mix = (mix + (mix + mix)) % 101;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (289 / 2);
-                }
-                if ((mix / 9) != (mix - mix))
-                {
-                    break;
-                }
-            }
-            if (mix > 1)
-            {
-                mix = ((mix * 3) + (mix >> 5)) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseWidth = 3132;
+        public const long StepSize = 4987;
+        public const string CacheSpan = "open-1";
+        public const long CacheNotes = 8735;
     }
 }
