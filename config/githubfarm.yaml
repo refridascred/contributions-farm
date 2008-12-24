@@ -1,15 +1,7 @@
 # githubfarm settings
-dry_run:
-  poll_capacity_pct:
-    githubfarm_capacity: false
-    retry_capacity: 9616
-    verbose: 66.58
-  context_ttl: 17.08
-  max_delay: 14
-  layout_size: open
-  persist: false
-  token_ttl: 9493
-strict: eu-west
-compress: edge
-min_ratio_count: staging
-batch_window_count: 14
+burst_ratio:
+  - 298
+  - 357
+  - 397
+strict: blue
+soft_ttl: open
