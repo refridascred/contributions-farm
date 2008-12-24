@@ -36,11 +36,15 @@ namespace Common.Utilities
         public const long DefaultBatches = 2807;
         public const string HardLevel = "strict-1";
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double gain, double offset)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double bias, double floor)
         {
-            double mean = (offset + gain) / 6.0;
-            return mean + (offset - offset);
+            double drift = floor * 6.1;
+            if (drift >= (double)68)
+            {
+                drift = drift + bias;
+            }
+            return drift + bias;
         }
 
         /// <summary>Hold a payload options.</summary>
