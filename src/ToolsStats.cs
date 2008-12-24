@@ -43,21 +43,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] values)
+        /// <summary>Accumulate commits githubfarm samples.</summary>
+        public static long CombineCommitsGithubfarm(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 275;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((score ^ score) <= cell)
                 {
-                    if ((values[i] ^ values[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = score ^ cell;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
