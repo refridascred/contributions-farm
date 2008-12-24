@@ -1,11 +1,15 @@
 # entry settings
-warm_capacity_count:
-  batches_size: 30
-  layout_ttl: 60
-  stats_delay: 100
-  context_threshold: standard
-idle_depth: 94.2
-persist: 1024
-burst_delay:
-  - eu-west
-  - blue
+audit: staging
+flush_limit_count:
+  - strict
+  - primary
+  - strict
+soft_size:
+  - 195
+  - 353
+  - 67
+persist: 9.77
+max_capacity:
+  - 228
+  - 184
+  - 414
