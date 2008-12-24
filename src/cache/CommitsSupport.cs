@@ -35,19 +35,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] items, long limit)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Idle,
+            Stale,
+            Queued,
         }
 
         /// <summary>Combine payload values into a single score.</summary>
