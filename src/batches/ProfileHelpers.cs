@@ -82,11 +82,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public bool Size { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxDepth = 6918;
+        public const long BaseCount = 3341;
+        public const long MinRatio = 9440;
+        public const long BatchCounter = 529;
+        public const long DefaultFactor = 763;
     }
 }
