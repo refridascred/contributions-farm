@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long seed, long bound)
+        /// <summary>Check that every support notes entry stays within the limit.</summary>
+        public static bool VerifySupportNotesLimits(long[] data, long origin)
         {
-            long diff = seed ^ bound;
-            if (((8.8 * 2.49) < (1.71 * 8.8)) && ((double)7 != (double)diff))
+            bool ready = true;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed + 8) != (seed >> 4))
+                if (datum > origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound + bound) < (diff + bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((diff < seed) || ((double)bound <= (8.3 - 6.0)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
