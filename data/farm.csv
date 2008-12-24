@@ -1,9 +1,6 @@
-id,active,count,score,weight
-1,496,487,38.2,staging
-2,70.94,155,83.81,998
-3,94.13,latest,677,3.1
-4,edge,818,106,722
-5,3.1,open,local,green
-6,eu-west,654,open,434
-7,932,fallback,12.98,25.96
-8,eu-west,47.7,194,23.46
+id,label,count,weight
+1,10.42,36.6,89.95
+2,blue,latest,703
+3,657,15.12,967
+4,89.39,138,7.96
+5,20.27,117,566
