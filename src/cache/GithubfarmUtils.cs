@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine format batch values into a single score.</summary>
-        public static long CombineFormatBatch(long[] values)
-        {
-            long total = 798;
-            foreach (long entry in values)
-            {
-                total = (total * 4) + (entry + entry);
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowScore = 8427;
+        public const long BatchChecks = 2662;
+        public const double MaxChecks = 91.59;
 
         /// <summary>Measure how many window cache samples are out of range.</summary>
         public static long AuditWindowCacheOutliers(long[] levels, long step)
