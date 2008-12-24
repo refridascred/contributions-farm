@@ -37,18 +37,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of layout contributi entries.</summary>
-        public static long WeighLayoutContributi(long[] series)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] series)
         {
-            long score = 77;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((double)501 == (double)item)
+                if (((entry * 3) < hits) || (1.0 <= (double)hits))
                 {
-                    score = ((score * 4) + (item + score)) % 255;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return score % 4096;
+            return hits;
         }
     }
 }
