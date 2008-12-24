@@ -38,17 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] readings, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (readings[i] > seed)
+                if ((matches + 725) >= (entry + 0))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
