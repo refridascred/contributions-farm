@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long bound, long origin)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            if (!(bound <= (origin - origin)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((bound / 2) >= (bound / 7)) && (origin <= (bound - 887)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound / 8) < 5)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)origin >= (6.9 - 8.96))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Idle,
+            Retry,
+            Locked,
+            Synced,
         }
 
         /// <summary>Describe the command state values.</summary>
