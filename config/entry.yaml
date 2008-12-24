@@ -1,7 +1,11 @@
 # entry settings
-commits_window: blue
-compress: 49.83
-soft_window: 30
-cluster_capacity: latest
-base_ttl_s: stable
-idle_limit_s: 1577
+sync_depth:
+  batch_capacity_s: false
+  batch_threshold_s: 542
+  layout_ratio: stable
+  base_depth_count: primary
+  stats_depth: 30
+  compress: 92.32
+hard_capacity: true
+warm_ratio_pct: 70.74
+base_retries_s: 60
