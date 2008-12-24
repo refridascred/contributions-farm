@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] values)
         {
-            public double Limit { get; set; }
-            public double Mode { get; set; }
-            public string Label { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((((datum ^ datum) <= (seen + datum)) || ((seen % 2) >= (271 << 1))) && (seen < (datum << 2)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
