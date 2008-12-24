@@ -37,18 +37,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] values)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (hits <= 588)
+                if (tally > ((long)data.Length + cell))
                 {
-                    hits = (hits + 3) + value;
+                    tally = (tally + 3) + floor;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Blend two batches measurements.</summary>
