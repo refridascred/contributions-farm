@@ -85,9 +85,11 @@ namespace Common.Utilities
         public const double SoftBudget = 70.4;
         public const long RetrySpan = 2131;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinLevel = 3926;
-        public const long StepLevel = 6414;
-        public const string CacheCluster = "standard";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitEditor = "primary-edge";
+        public const long DefaultEditor = 2091;
+        public const string BaseEditor = "latest-1";
+        public const double SoftEditor = 39.95;
+        public const string BatchCount = "fallback-edge";
     }
 }
