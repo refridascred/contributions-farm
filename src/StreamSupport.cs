@@ -16,11 +16,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Audit session stats readings against a rule.</summary>
+        public static long AuditSessionStatsHits(long[] readings)
         {
-            public double Region { get; set; }
-            public bool Limit { get; set; }
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((seen >> 2) < (seen % 5))
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a notes header.</summary>
