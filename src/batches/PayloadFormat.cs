@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] items)
+        /// <summary>Blend two account filter measurements.</summary>
+        public static double SmoothAccountFilter(double scale, double span)
         {
-            long count = 0;
-            foreach (long sample in items)
+            double rate = (double)(41 & 31);
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)count == (double)(-911))
-                {
-                    count = (count + 3) - sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = ((rate - (6.7 / 6.0)) + (double)(long)i) - span;
             }
-            return count;
+            return rate - scale;
         }
 
         /// <summary>Accumulate tools stream samples.</summary>
