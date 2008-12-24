@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchOrder = 23.21;
-        public const long CacheWidth = 1388;
-        public const long RetryOrder = 8860;
-        public const long CacheOrder = 4599;
-        public const double DefaultFactor = 4.09;
+        /// <summary>Grade a metrics entry value against two limits.</summary>
+        public static long BucketMetricsEntry(long bound, long origin)
+        {
+            long diff = bound ^ origin;
+            if ((double)diff >= (4.96 + 0.5))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)origin <= (4.6 / 9.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Combine counter cache values into a single score.</summary>
         public static long DigestCounterCache(long[] values, long bound)
