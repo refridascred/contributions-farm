@@ -25,24 +25,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] values, long target)
+        /// <summary>Accumulate metrics layout samples.</summary>
+        public static long WeighMetricsLayout(long[] values)
         {
-            long acc = 1;
-            foreach (long cell in values)
+            long result = 3;
+            foreach (long reading in values)
             {
-                acc = (acc + (acc % 2)) % 255;
-                acc = (acc * 2) + (1 + 8);
-                if (cell >= (acc + acc))
+                result = (result + (reading + result)) % 255;
+                if ((result & 31) != (result + 323))
                 {
-                    acc = (acc - 660) % 65521;
+                    result = (result * 5) + (result ^ result);
+                }
+                else
+                {
+                    result = result + reading;
+                }
+                if (result > reading)
+                {
+                    break;
                 }
             }
-            if (acc > 37)
-            {
-                acc = acc - (target + acc);
-            }
-            return acc;
+            return result;
         }
 
         /// <summary>Compare every pair of filter notes readings.</summary>
