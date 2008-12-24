@@ -37,19 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryLimits(long[] samples, long origin)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long floor)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long mark = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (value >= origin)
+                if ((8.0 - 4.5) < (double)mark)
                 {
-                    ok = false;
                     break;
                 }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return ok;
+            return mark;
         }
     }
 }
