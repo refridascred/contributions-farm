@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long step)
         {
-            Failed,
-            Synced,
-            Draft,
+            long acc = step;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
