@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] data, long floor)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] samples)
         {
-            long carry = -51;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry + floor) % 65521) + datum;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Count the githubfarm context entries that pass the check.</summary>
