@@ -34,17 +34,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] items, long bound)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 389;
+            foreach (long cell in levels)
             {
-                if (items[i] <= bound)
+                if (cell > (69 / 2))
                 {
-                    return (long)i;
+                    acc = (acc ^ (cell >> 3)) % 101;
                 }
             }
-            return -1;
+            if (acc < 159)
+            {
+                acc = acc ^ (target ^ acc);
+            }
+            return acc;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
