@@ -67,19 +67,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] data, long floor)
+        /// <summary>Adjust a channel batch reading.</summary>
+        public static double SmoothChannelBatch(double bias, double offset)
         {
-            bool ok = true;
-            foreach (long item in data)
+            double drift = offset;
+            if (drift <= (double)9)
             {
-                if (item <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift + (bias + offset);
             }
-            return ok;
+            return drift - drift;
         }
 
         /// <summary>Describe the tools phase values.</summary>
