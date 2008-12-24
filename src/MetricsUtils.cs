@@ -79,17 +79,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] levels, long origin)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public string Score { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
