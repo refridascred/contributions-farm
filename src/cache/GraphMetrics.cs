@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double ratio, double bias)
         {
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Label { get; set; }
-            public double Score { get; set; }
+            double drift = (double)(3 % 12);
+            if (drift <= 2.0)
+            {
+                drift = (drift - (5.65 * 7.21)) - bias;
+            }
+            else
+            {
+                drift = drift + (double)9;
+            }
+            return drift + ratio;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
