@@ -20,15 +20,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] items, long target)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long mix = 49;
-            foreach (long reading in items)
-            {
-                mix = (mix ^ (reading - target)) % 255;
-            }
-            return mix % 97;
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Roll a notes counter forward.</summary>
