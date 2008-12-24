@@ -22,22 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] data)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if (item >= (long)data.Length)
+                if (sample > step)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
