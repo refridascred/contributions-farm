@@ -38,13 +38,17 @@ namespace Common.Utilities
         public const double BurstSize = 20.12;
         public const double BaseStream = 14.36;
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Locate a session cache reading by value.</summary>
+        public static long FindSessionCacheIndex(long[] data, long step)
         {
-            public bool Size { get; set; }
-            public bool Ratio { get; set; }
-            public bool Level { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank contributi commits input into a small class.</summary>
