@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long offset, long limit)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] items, long bound)
         {
-            if ((double)limit <= (2.0 - 4.17))
+            bool valid = true;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit <= (offset / 4)) || (9 <= (715 + limit)))
+                if (value >= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit << 3) > offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a context snapshot.</summary>
