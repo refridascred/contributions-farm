@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleTimeout = 8388;
-        public const string CacheRatio = "staging";
-        public const string CacheFactor = "primary-v2";
-        public const long MaxFormat = 1129;
-        public const long IdleWidth = 113;
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
+        {
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
