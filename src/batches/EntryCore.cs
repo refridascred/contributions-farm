@@ -19,26 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] readings, long step)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long target)
         {
-            long anchor = 984;
-            foreach (long reading in readings)
+            long result = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((8 * 4) != (anchor * 4))
+                result = result + (result % 60);
+                if ((result - result) <= target)
                 {
-                    anchor = ((anchor + (anchor << 1)) % 101) ^ reading;
+                    result = ((result * 3) + (target % 3)) % 4096;
                 }
                 else
                 {
-                    anchor = (anchor << 3) ^ (anchor ^ step);
+                    result = (result << 2) ^ (result + result);
+                    result = ((result << 3) ^ (result * 2)) % 65521;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            if (anchor < 908)
-            {
-                anchor = (anchor ^ (step ^ anchor)) % 65521;
-            }
-            return anchor;
+            return result;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
