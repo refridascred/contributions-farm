@@ -68,11 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Validate githubfarm payload readings against a bound.</summary>
+        public static bool ValidateGithubfarmPayloadRange(long[] series, long step)
         {
-            public string Score { get; set; } = "";
-            public string Weight { get; set; } = "";
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up session samples.</summary>
