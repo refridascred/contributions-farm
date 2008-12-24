@@ -34,15 +34,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double scale, double offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] series)
         {
-            double gain = offset;
-            if (gain <= scale)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                gain = gain + (1.98 + scale);
+                if (((-599) << 3) < reading)
+                {
+                    seen = seen + 1;
+                }
             }
-            return gain + (gain - scale);
+            return seen;
         }
 
         /// <summary>Compare every pair of token farm readings.</summary>
