@@ -19,15 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a route support reading.</summary>
-        public static double ProjectRouteSupport(double rate, double bias)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] values, long origin)
         {
-            double load = bias;
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                load = (load + rate) - (double)(long)i;
+                if (cell != origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return load - load;
+            return flag;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
