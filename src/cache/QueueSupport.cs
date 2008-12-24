@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
+            public long Limit { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the editor state values.</summary>
