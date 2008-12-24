@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] items, long offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] data, long target)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if ((double)offset > (double)396)
+                if (reading > target)
                 {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
