@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] items)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long mix = 2;
-            foreach (long item in items)
-            {
-                mix = (((mix * 5) + (mix % 10)) % 1000) ^ item;
-            }
-            return mix;
+            public string Flag { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the metrics level values.</summary>
