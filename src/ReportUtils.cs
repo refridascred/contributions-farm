@@ -22,17 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a notes metric sample.</summary>
-        public static long LookupNotesMetricIndex(long[] values, long target)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] < target) && ((values[i] % 3) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
