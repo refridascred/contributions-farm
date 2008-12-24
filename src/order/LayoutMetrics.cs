@@ -27,19 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster commits readings against a bound.</summary>
-        public static bool ValidateClusterCommitsLimits(long[] samples, long seed)
+        /// <summary>Measure how many githubfarm notes samples are out of range.</summary>
+        public static long AuditGithubfarmNotesMatches(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (sample >= seed)
+                if ((double)value > (8.4 * 7.9))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
