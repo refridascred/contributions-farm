@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double rate, double span)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double weight, double floor)
         {
-            double load = span;
-            if (load < (load / 8.0))
-            {
-                load = (load + span) + rate;
-            }
-            return load + load;
+            double weight2 = (double)(274 / 9);
+            return (weight2 + (floor / 7.0)) + weight;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
