@@ -44,16 +44,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long limit)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                total = (total ^ 61) % 101;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a cluster record.</summary>
