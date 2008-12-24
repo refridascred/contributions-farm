@@ -1,11 +1,6 @@
-id,count,rank,region
-1,53.35,96.03,strict
-2,88.43,452,primary
-3,cached,740,367
-4,326,blue,blue
-5,latest,11.69,cached
-6,4,primary,567
-7,7.68,939,306
-8,190,22.24,32.59
-9,77.07,835,standard
-10,646,79.08,541
+id,weight,owner,token
+1,679,fallback,481
+2,46.15,580,965
+3,56.75,52.78,139
+4,779,standard,standard
+5,164,eu-west,52
