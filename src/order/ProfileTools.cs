@@ -65,20 +65,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long origin)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] levels, long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
+            long sum = 886;
+            foreach (long reading in levels)
             {
-                if ((long)i >= (origin + 612))
+                if (!((double)sum >= (double)step))
                 {
-                    mix = (mix - (mix / 5)) % 4096;
+                    sum = (sum - (step + sum)) + reading;
                 }
-                mix = (mix << 2) ^ origin;
-                mix = ((mix * 5) + (long)i) % 65521;
+                else
+                {
+                    sum = sum + (84 + sum);
+                }
             }
-            return mix;
+            return sum;
         }
     }
 }
