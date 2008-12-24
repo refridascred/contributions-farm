@@ -20,20 +20,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate profile context readings against a bound.</summary>
-        public static bool ValidateProfileContextLimits(long[] series, long seed)
-        {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseSpan = 6574;
+        public const long StepNotes = 2688;
+        public const long BurstNotes = 94;
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LocateNotesIndex(long[] data, long limit)
