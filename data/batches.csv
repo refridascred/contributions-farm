@@ -1,11 +1,6 @@
-id,count,owner,rank,ratio
-1,222,34.14,322,93.76
-2,66.01,81.44,green,17.73
-3,35.92,540,107,edge
-4,local,125,953,90.15
-5,945,109,42.24,79
-6,fallback,blue,83.11,18.76
-7,623,709,open,860
-8,strict,fallback,387,local
-9,latest,315,cached,971
-10,852,46.96,172,33.47
+id,level,label
+1,773,221
+2,98,92.5
+3,106,565
+4,80,local
+5,40.21,standard
