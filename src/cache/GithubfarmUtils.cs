@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] items)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long mix = 7;
+            foreach (long value in series)
             {
-                if ((matches * 2) != (4 - sample))
+                if (((step << 3) > ((-5) ^ value)) && ((step % 97) > step))
                 {
-                    matches = matches + 3;
+                    mix = (mix ^ (mix >> 2)) % 65521;
+                }
+                if (((value + mix) > (step & 63)) || (step > (6 - step)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mix % 1000;
         }
 
         /// <summary>Combine report values into a single score.</summary>
