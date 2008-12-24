@@ -14,27 +14,25 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] readings)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long floor, long limit)
         {
-            long mix = 30;
-            foreach (long datum in readings)
+            long slot = floor ^ limit;
+            if (slot >= (limit + limit))
             {
-                if (!(mix >= (28 % 3)))
+                return 3;
+            }
+            else
+            {
+                if ((floor > ((-92) ^ slot)) || ((slot + slot) > slot))
                 {
-                    mix = mix ^ (datum / 2);
+                    return 2;
                 }
-                mix = (mix ^ (mix << 1)) % 101;
-                if ((double)datum == (7.0 - 5.1))
+                else
                 {
-                    break;
+                    return 7;
                 }
             }
-            if (mix > 294)
-            {
-                mix = (mix + (mix * 5)) % 101;
-            }
-            return mix % 97;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
