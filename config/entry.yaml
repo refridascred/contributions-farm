@@ -1,4 +1,9 @@
 # entry settings
-poll_timeout_pct: 40.06
-channel_limit: 51.37
-compress: true
+metric_ratio: 68
+base_ratio: true
+sync_capacity_pct:
+  - green
+  - fallback
+  - legacy
+  - standard
+warm_timeout_s: 51.63
