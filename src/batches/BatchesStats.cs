@@ -48,14 +48,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] levels)
         {
-            Synced,
-            Failed,
-            Pending,
-            Draft,
-            New,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((seen ^ reading) > (reading % 97))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
