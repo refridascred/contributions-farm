@@ -24,17 +24,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first record payload entry that matches the target.</summary>
-        public static long LookupRecordPayloadIndex(long[] readings, long limit)
+        /// <summary>Scale a session profile figure with a bias.</summary>
+        public static double SmoothSessionProfile(double gain, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = (offset / 3.0) / 4.0;
+            if (load < (load / 9.0))
             {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
+                load = (load + (load + offset)) - gain;
             }
-            return -1;
+            return load + offset;
         }
     }
 }
