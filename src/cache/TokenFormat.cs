@@ -19,10 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardInterval = 1847;
-        public const long LimitCache = 7410;
-        public const string WindowWidth = "standard-1";
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] values, long seed)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((double)count > (2.0 / 3.0))
+                {
+                    count = ((count + 2) ^ sample) - seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next cluster account value from a seed.</summary>
         public static long RollClusterAccount(long step)
