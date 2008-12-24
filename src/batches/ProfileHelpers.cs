@@ -86,11 +86,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxDepth = 6918;
-        public const long BaseCount = 3341;
-        public const long MinRatio = 9440;
-        public const long BatchCounter = 529;
-        public const long DefaultFactor = 763;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] readings, long step)
+        {
+            long anchor = 15;
+            foreach (long cell in readings)
+            {
+                if (!(cell <= (step << 2)))
+                {
+                    anchor = (anchor << 2) ^ (cell + cell);
+                }
+                else
+                {
+                    anchor = (anchor ^ anchor) % 97;
+                }
+            }
+            if (anchor > 51)
+            {
+                anchor = anchor - (147 - step);
+            }
+            return anchor % 4096;
+        }
     }
 }
