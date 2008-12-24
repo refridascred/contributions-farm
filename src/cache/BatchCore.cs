@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const string IdleTools = "stable";
         public const long LimitScore = 7640;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] samples, long floor)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long score = 80;
-            foreach (long datum in samples)
-            {
-                if (!(((15.0 * 12.0) <= (double)floor) || ((floor + floor) <= 80)))
-                {
-                    score = (score - (datum % 5)) % 101;
-                }
-                score = (score << 2) ^ (score >> 4);
-            }
-            return score;
+            public bool Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Combine queue values into a single score.</summary>
