@@ -66,22 +66,19 @@ namespace Common.Utilities
         public const long StepChecks = 6895;
         public const long IdleChecks = 98;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] levels)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long acc = 7;
+            foreach (long cell in levels)
             {
-                if (datum >= (seen - datum))
+                acc = ((acc << 3) ^ 454) % 4096;
+                if ((cell - acc) <= acc)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    acc = (acc * 3) + (cell / 9);
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
