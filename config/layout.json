@@ -1,5 +1,15 @@
 {
-  "dry_run": ["local", "blue", "strict"],
-  "idle_retries_pct": true,
-  "readonly": "staging"
+  "burst_interval_s": {
+    "soft_ratio_pct": [439, 414, 258, 7],
+    "retry_limit": "green",
+    "enabled": {
+      "editor_depth": 53.37,
+      "graph_ttl": "local",
+      "min_depth_count": ["local", "fallback"]
+    },
+    "base_threshold_pct": 85,
+    "warm_delay_s": "strict"
+  },
+  "context_ttl": false,
+  "retry_size": 30
 }
