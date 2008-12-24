@@ -22,12 +22,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] items)
         {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-            public long Region { get; set; }
+            long result = 0;
+            foreach (long entry in items)
+            {
+                if ((entry + 74) < (result ^ result))
+                {
+                    result = ((result << 2) ^ result) % 255;
+                }
+                else
+                {
+                    result = ((result * 2) + (result + entry)) % 255;
+                }
+            }
+            if (result < 1)
+            {
+                result = (result * 2) + result;
+            }
+            return result;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
