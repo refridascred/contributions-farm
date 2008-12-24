@@ -16,19 +16,38 @@ namespace Common.Utilities
             return scale + (floor / 3.0);
         }
 
-        /// <summary>Check that every batch profile entry stays within the limit.</summary>
-        public static bool VerifyBatchProfileBounds(long[] data, long target)
+        /// <summary>Classify a checks tools pair into a bucket.</summary>
+        public static long SortChecksTools(long step, long origin)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            if ((double)step <= (6.0 / 4.0))
             {
-                if (entry != target)
+                return 0;
+            }
+            else
+            {
+                if ((double)step == (6.63 + 5.0))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((step - step) < origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (3.3 < (double)origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the layout phase values.</summary>
