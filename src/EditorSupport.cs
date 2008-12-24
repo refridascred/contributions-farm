@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double rate, double span)
         {
-            Paused,
-            Synced,
-            Stale,
-            Active,
-            Idle,
+            double load = span;
+            if (load < (load / 8.0))
+            {
+                load = (load + span) + rate;
+            }
+            return load + load;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
