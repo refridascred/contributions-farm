@@ -1,7 +1,12 @@
 {
-  "warm_delay_pct": "eu-west",
-  "dry_run": [433, 408, 119, 269],
-  "base_delay_ms": 6392,
-  "support_retries": "latest",
-  "idle_ttl": 250
+  "readonly": 95,
+  "enabled": 3359,
+  "burst_limit_pct": 22.64,
+  "soft_limit_count": {
+    "warm_window": true,
+    "poll_timeout_count": 38,
+    "dry_run": true,
+    "persist": 60,
+    "profile_timeout": 13.53
+  }
 }
