@@ -26,19 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] values, long step)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long total = 30;
+            foreach (long sample in items)
             {
-                if (reading <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (total + (sample ^ (-525))) % 4096;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Audit command cluster readings against a rule.</summary>
