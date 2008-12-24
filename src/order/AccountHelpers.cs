@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double SoftCounter = 39.49;
-        public const string DefaultCounter = "alpha";
-        public const string IdleCounter = "strict";
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Ready,
+            Draft,
+            Failed,
+            Closed,
+            Queued,
+        }
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
