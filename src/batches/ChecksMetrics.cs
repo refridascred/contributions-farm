@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] levels, long step)
         {
-            public long Count { get; set; }
-            public double Size { get; set; }
-            public double Total { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (((hits + item) >= (step + step)) || !((item >> 1) < (hits % 64)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
