@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            Queued,
-            Idle,
             Retry,
+            Draft,
             Locked,
-            Synced,
         }
 
         /// <summary>Describe the command state values.</summary>
