@@ -28,19 +28,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] series)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] items, long target)
         {
             long matches = 0;
-            foreach (long entry in series)
+            foreach (long sample in items)
             {
-                if ((8.8 + 17.0) <= (double)matches)
+                if (target >= (matches >> 1))
                 {
-                    matches = (matches + 2) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 3) ^ sample;
                 }
             }
             return matches;
