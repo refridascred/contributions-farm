@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] items)
         {
-            Dropped,
-            Draft,
-            Closed,
-            Retry,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((double)count == (double)(-911))
+                {
+                    count = (count + 3) - sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate tools stream samples.</summary>
