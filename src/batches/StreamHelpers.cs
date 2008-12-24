@@ -76,22 +76,38 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] data)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long target, long bound)
         {
-            long acc = 0;
-            foreach (long entry in data)
+            if ((double)bound >= (double)target)
             {
-                if (!((entry & 1) < (-97)))
+                return 0;
+            }
+            else
+            {
+                if (!((9.2 / 6.0) < (double)target))
                 {
-                    acc = ((acc << 2) ^ 840) % 101;
+                    return 5;
                 }
                 else
                 {
-                    acc = (acc ^ (573 * 3)) % 1000;
+                    if ((652 >> 5) != (bound << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound + bound) < (target / 8))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
