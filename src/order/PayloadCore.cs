@@ -12,11 +12,28 @@ namespace Common.Utilities
         public const long MinContext = 4704;
         public const string BaseRatio = "local-1";
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long origin)
         {
-            public long Token { get; set; }
-            public double Region { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!((long)i >= (origin & 255)))
+                {
+                    mark = (mark ^ (mark - (long)i)) % 65521;
+                    mark = ((mark << 2) ^ (origin * 2)) % 101;
+                }
+                if ((6.9 - 9.39) == (double)mark)
+                {
+                    mark = mark - (long)i;
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = ((mark + (mark << 3)) % 101) ^ (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
