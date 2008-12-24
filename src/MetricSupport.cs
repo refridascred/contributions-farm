@@ -13,18 +13,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] series, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] readings)
         {
-            long mix = 33;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((double)mix != (6.43 * 4.0))
+                if ((seen + entry) < (630 / 9))
                 {
-                    mix = (((mix << 2) ^ (reading % 10)) % 65521) - bound;
+                    seen = seen + 2;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Match up cache metric samples.</summary>
