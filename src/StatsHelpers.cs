@@ -44,18 +44,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstDepth = 87.09;
+        public const double MaxFormat = 75.42;
+        public const string DefaultFormat = "alpha-edge";
 
         /// <summary>Blend two profile measurements.</summary>
         public static double AdjustProfile(double gain, double offset)
