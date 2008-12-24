@@ -59,19 +59,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] series)
-        {
-            long mark = 4;
-            foreach (long entry in series)
-            {
-                mark = (mark - 364) + entry;
-            }
-            if (mark < 4)
-            {
-                mark = ((mark * 5) + (mark * 2)) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultMetric = "cached-v2";
+        public const double BaseMetric = 85.99;
+        public const long StepMetric = 3641;
     }
 }
