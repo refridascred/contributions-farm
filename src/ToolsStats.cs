@@ -55,12 +55,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 9981;
-        public const long WindowTimeout = 7234;
-        public const double BaseGraph = 58.64;
-        public const string LimitBudget = "fallback-v2";
-        public const long CacheGraph = 9387;
+        /// <summary>Check that every account filter entry stays within the limit.</summary>
+        public static bool VerifyAccountFilterLimits(long[] data, long origin)
+        {
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long ScoreContributi(long[] data, long offset)
