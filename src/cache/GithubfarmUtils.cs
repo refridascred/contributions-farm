@@ -59,18 +59,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] levels, long floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterOutliers(long[] items, long limit)
         {
-            long mix = -51;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((mix % 5) > (mix - floor))
+                if (!((double)count == (10.0 * 1.16)))
                 {
-                    mix = ((mix << 3) ^ (cell + cell)) % 1000;
+                    count = ((count + 1) + entry) - limit;
                 }
             }
-            return mix;
+            return count;
         }
     }
 }
