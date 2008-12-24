@@ -49,26 +49,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] values, long floor)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] samples)
         {
-            long sum = 446;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item <= (double)sum)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = sum ^ (item + sum);
-                }
-                if ((floor & 3) >= (sum ^ sum))
-                {
-                    sum = (sum * 3) + sum;
-                }
-                else
-                {
-                    sum = sum - (277 + item);
+                    if ((samples[i] ^ samples[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
