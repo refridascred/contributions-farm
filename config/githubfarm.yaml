@@ -1,5 +1,10 @@
 # githubfarm settings
-min_depth_count: latest
-metrics_timeout: edge
-githubfarm_capacity: standard
-burst_retries_count: 3831
+sync_window_ms: true
+warm_interval: stable
+strict:
+  - blue
+  - edge
+  - strict
+  - strict
+soft_window: standard
+metric_delay: local
