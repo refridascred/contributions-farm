@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many tools payload samples are out of range.</summary>
-        public static long CountToolsPayloadOutliers(long[] data)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((9.64 - 5.0) > (double)datum)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public double Size { get; set; }
+            public double Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
