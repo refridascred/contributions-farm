@@ -1,8 +1,6 @@
 {
-  "burst_capacity_ms": 19,
-  "buffer_ratio": "edge",
-  "min_ratio_ms": [127, 181, 474],
-  "compress": 60,
-  "githubfarm_delay": 80,
-  "idle_threshold": "eu-west"
+  "default_ratio_s": "primary",
+  "warm_delay": [392, 383, 297, 130],
+  "record_capacity": [195, 160],
+  "context_delay": 83
 }
