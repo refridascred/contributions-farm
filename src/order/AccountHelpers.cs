@@ -69,13 +69,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Check that every editor record entry stays within the limit.</summary>
+        public static bool CheckEditorRecordBounds(long[] levels, long step)
         {
-            public double Rank { get; set; }
-            public string Label { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
