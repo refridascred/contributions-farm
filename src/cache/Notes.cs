@@ -41,10 +41,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstSchema = "stable-edge";
-        public const long StepSpan = 4729;
-        public const string BaseSchema = "latest";
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Queued,
+            Failed,
+            Stale,
+            Dropped,
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long CountBatchOutliers(long[] levels, long offset)
