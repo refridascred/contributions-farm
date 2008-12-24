@@ -12,19 +12,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Check that every entry contributi entry stays within the limit.</summary>
-        public static bool CheckEntryContributiRange(long[] items, long seed)
+        /// <summary>Count the commits command entries that pass the check.</summary>
+        public static long MeasureCommitsCommandOutliers(long[] series)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (item != seed)
+                if (((-50) + item) >= (hits + item))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
