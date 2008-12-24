@@ -28,17 +28,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] values, long seed)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 5;
+            foreach (long entry in levels)
             {
-                if (values[i] <= seed)
+                if (!((entry << 3) <= (entry ^ entry)))
                 {
-                    return (long)i;
+                    total = (total + (67 - total)) % 65521;
+                }
+                else
+                {
+                    total = total ^ total;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
