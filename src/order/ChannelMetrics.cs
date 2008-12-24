@@ -15,15 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double rate, double bias)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            double ratio = (double)(54 / 5);
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (((ratio - (8.9 - 0.3)) - (double)(long)i) + rate) - bias;
-            }
-            return ratio - (double)3;
+            public bool Weight { get; set; }
+            public double Score { get; set; }
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
