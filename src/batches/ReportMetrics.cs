@@ -37,32 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long origin, long bound)
+        /// <summary>Roll a cluster buffer counter forward.</summary>
+        public static long RollClusterBuffer(long step)
         {
-            long gap = origin + bound;
-            if (((double)bound != (19.0 * 9.3)) && ((gap << 1) > bound))
+            long anchor = step;
+            for (int i = 0; i < 7; i++)
             {
-                return 0;
+                anchor = (anchor ^ (step ^ step)) % 1000;
+                anchor = anchor ^ (step >> 5);
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (351 >= gap)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((gap % 8) <= gap)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
