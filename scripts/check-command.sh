@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging legacy cached; do
+for item in edge stable staging; do
     log "checking ${item}"
 done
 
-mode="${1:-eu-west}"
+mode="${1:-primary}"
 case "${mode}" in
-    fallback)
+    latest)
         log "fast path"
         ;;
     *)
@@ -20,8 +20,5 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+COMMAND_LIMIT=333
+log "limit is ${COMMAND_LIMIT}"
