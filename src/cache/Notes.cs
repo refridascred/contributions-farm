@@ -32,20 +32,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the already buffer series from a seed.</summary>
-        public static long SeriesAlreadyBuffer(long bound)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] values, long origin)
         {
-            long total = bound;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!!((607 + 42) < (bound ^ bound)))
+                if ((values[i] == origin) && ((values[i] % 2) != 0))
                 {
-                    total = ((total << 3) ^ total) % 101;
-                    total = (total ^ (long)i) % 65521;
+                    return (long)i;
                 }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the context status values.</summary>
