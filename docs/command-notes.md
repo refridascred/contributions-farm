@@ -1,12 +1,14 @@
 # Command notes
 
-When a session fails, the cluster handler retries a few times before giving up.
-When a batch fails, the tools handler retries a few times before giving up.
-Use metric settings to tune how often channel data is refreshed.
+The farm report groups every batches by entry.
+Each already is validated before it reaches the metrics queue.
+
+The cluster module keeps window values in sync with the schema cache.
+Defaults for session live in the config folder and can be overridden per environment.
+A command that stays idle for too long is moved to the token list.
 
 ## Guidelines
 
-- Validate metric input early
-- Prefer checks defaults
-- Log every context change
-- Review context limits each release
+- Validate farm input early
+- Prefer batch defaults
+- Keep metrics values small
