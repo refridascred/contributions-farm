@@ -63,24 +63,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long floor, long limit)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] samples, long offset)
         {
-            if ((limit - floor) >= (limit & 7))
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((floor >> 3) > (limit * 4)) && (((-2) - floor) < 60))
+                if (entry > offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
