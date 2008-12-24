@@ -27,19 +27,17 @@ namespace Common.Utilities
         public const long MinFactor = 5518;
         public const string DefaultProfile = "alpha-v2";
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] data, long target)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value > target)
+                if ((levels[i] > step) && ((levels[i] % 5) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
