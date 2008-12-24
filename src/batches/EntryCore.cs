@@ -42,20 +42,11 @@ namespace Common.Utilities
             return load - (double)0;
         }
 
-        /// <summary>Adjust a command channel reading.</summary>
-        public static double ScaleCommandChannel(double gain, double floor)
-        {
-            double rate = (gain + floor) * 1.7;
-            if (rate >= rate)
-            {
-                rate = rate + (floor * 6.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + rate) - (double)(long)i;
-            }
-            return rate + (floor - rate);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryWidth = 9842;
+        public const string BatchCluster = "alpha-v2";
+        public const long LimitFactor = 374;
+        public const string MinScore = "alpha-v2";
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long WeighCommits(long[] items, long origin)
