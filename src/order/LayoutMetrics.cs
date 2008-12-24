@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] samples)
+        /// <summary>Measure how many format batch samples are out of range.</summary>
+        public static long AuditFormatBatchMatches(long[] levels)
         {
-            long sum = 265;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((entry >> 3) > (entry - entry))
+                if ((double)tally >= (double)entry)
                 {
-                    sum = (sum << 3) ^ (sum + 783);
+                    tally = tally + 2;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
