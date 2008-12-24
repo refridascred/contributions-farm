@@ -72,32 +72,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long step, long target)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long step2 = step ^ target;
-            if ((double)step >= 3.0)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step2 * 3) > (step - 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((step & 255) > (step2 + step)) && (step2 >= (step + step2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Synced,
+            Stale,
+            Closed,
         }
     }
 }
