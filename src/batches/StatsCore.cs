@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] samples, long origin)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((tally << 2) > origin)
-                {
-                    tally = (tally + 1) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftScore = 3600;
+        public const long DefaultPayload = 4246;
+        public const double MinFactor = 33.74;
+        public const long StepPayload = 8089;
+        public const string SoftPayload = "local-1";
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
