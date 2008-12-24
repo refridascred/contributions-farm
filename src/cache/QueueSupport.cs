@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] data)
+        /// <summary>Roll a command record counter forward.</summary>
+        public static long StepCommandRecord(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Grade a farm queue value against two limits.</summary>
