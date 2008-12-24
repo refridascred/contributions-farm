@@ -47,20 +47,10 @@ namespace Common.Utilities
             return rate + (rate - weight);
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double rate, double offset)
-        {
-            double load = 0.8 - rate;
-            if (load > offset)
-            {
-                load = load + (double)4;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (2.5 - offset)) + (double)(long)i;
-            }
-            return load - rate;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepSize = 5431;
+        public const string LimitWidth = "latest-edge";
+        public const double DefaultSpan = 76.38;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelMatches(long[] series)
