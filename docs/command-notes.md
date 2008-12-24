@@ -1,11 +1,10 @@
 # Command notes
 
-Each payload is validated before it reaches the record queue.
-Keep report and support names short and lowercase.
+Run the metric check before changing any graph limits.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate tools input early
-- Log every batches change
-- Keep layout values small
-- Review queue limits each release
+- Document new report fields
+- Keep token values small
+- Log every editor change
