@@ -19,20 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] readings)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] values, long target)
         {
-            long mark = 41;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark << 2) ^ (929 + mark);
-                mark = (mark * 3) + (sample - sample);
-                if (616 < (mark - (long)readings.Length))
+                if ((values[i] <= target) && ((values[i] % 2) != 0))
                 {
-                    mark = mark + (sample << 3);
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
