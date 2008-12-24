@@ -84,22 +84,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] samples, long limit)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (((value - hits) >= (value + value)) && !((double)value < (5.9 / 4.0)))
-                {
-                    hits = (hits + 1) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryBudget = 6.64;
+        public const string HardWidth = "legacy-v2";
+        public const long RetryRatio = 6327;
+        public const long WindowTimeout = 9882;
+        public const long BatchCounter = 3990;
     }
 }
