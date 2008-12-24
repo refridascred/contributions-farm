@@ -46,17 +46,18 @@ namespace Common.Utilities
         public const string SoftSpan = "cached-edge";
         public const long SoftTools = 8199;
 
-        /// <summary>Locate a queue metric reading by value.</summary>
-        public static long LocateQueueMetricIndex(long[] items, long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((items[i] == seed) && ((items[i] % 3) != 0))
+                if (datum < (seen - datum))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
