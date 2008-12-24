@@ -50,13 +50,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            public string Label { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
+            public double Token { get; set; }
+            public long Count { get; set; }
+            public double Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Match up session samples.</summary>
