@@ -22,26 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format stats readings.</summary>
-        public static long TallyFormatStats(long[] samples)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] items, long limit)
         {
-            long anchor = 3;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if ((5 * 4) < (3 + cell))
+                if (value >= limit)
                 {
-                    anchor = (anchor * 5) + cell;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (cell - anchor)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            if (anchor > 5)
-            {
-                anchor = (anchor + (anchor + 3)) % 255;
-            }
-            return anchor % 1000;
+            return valid;
         }
 
         /// <summary>Match up account samples.</summary>
