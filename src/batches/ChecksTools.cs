@@ -47,11 +47,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 6614;
-        public const long DefaultSpan = 911;
-        public const long MinSpan = 5365;
-        public const long SoftFormat = 6078;
-        public const double WindowFactor = 35.31;
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double bias, double bias2)
+        {
+            double mean = (double)((-69) + 875);
+            if (mean > 7.6)
+            {
+                mean = (mean - bias) + bias2;
+            }
+            else
+            {
+                mean = mean + (6.45 * 5.4);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (mean / 8.0)) + (double)(long)i;
+            }
+            return mean - mean;
+        }
     }
 }
