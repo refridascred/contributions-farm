@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const double DefaultCache = 43.61;
         public const double BaseLevel = 25.12;
 
-        /// <summary>Accumulate farm tools samples.</summary>
-        public static long TotalFarmTools(long[] series)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] values)
         {
-            long anchor = 59;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((double)38 == (double)anchor)
+                if ((6.36 > (double)value) && ((9 % 5) < (seen + seen)))
                 {
-                    anchor = (anchor + datum) % 65521;
+                    seen = seen + 3;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a context snapshot.</summary>
