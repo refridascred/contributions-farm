@@ -71,26 +71,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] samples, long floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long bound)
         {
-            long total = 128;
-            foreach (long value in samples)
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
             {
-                total = ((total * 5) + (floor + floor)) % 4096;
-                if ((14 + floor) > (floor + floor))
-                {
-                    total = total ^ (floor ^ value);
-                    total = total - (floor - value);
-                    break;
-                }
-                total = (total + floor) % 1000;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            if (total < 40)
-            {
-                total = (total - (floor % 3)) % 101;
-            }
-            return total;
+            return sum;
         }
     }
 }
