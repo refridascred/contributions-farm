@@ -1,9 +1,10 @@
 # support settings
-schema_size: 374
-batch_delay: stable
-githubfarm_threshold:
-  - blue
-  - open
-  - latest
-  - open
-sync_threshold_count: primary
+warm_threshold_count: legacy
+verbose:
+  idle_size_ms: 4023
+  max_interval_count: false
+  stream_timeout: edge
+  max_retries_ms: 330
+  idle_window: 4693
+batch_interval_s: local
+batch_timeout_ms: green
