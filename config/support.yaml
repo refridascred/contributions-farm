@@ -1,5 +1,5 @@
 # support settings
-cache_ratio_ms: 11
-already_timeout: cached
-persist: 87.18
-soft_interval: 60
+cache_timeout_count: cached
+flush_limit_pct: fallback
+soft_size_count: 84.32
+enabled: 74
