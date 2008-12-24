@@ -29,19 +29,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double ratio, double span)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            double load = (double)((-71) >> 3);
-            if (load < span)
-            {
-                load = (load - (double)452) - ratio;
-            }
-            else
-            {
-                load = load + (double)60;
-            }
-            return load - (double)0;
+            Dropped,
+            Queued,
+            Locked,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
