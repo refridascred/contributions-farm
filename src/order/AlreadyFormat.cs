@@ -38,24 +38,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] samples)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long sum = 85;
-            foreach (long cell in samples)
-            {
-                sum = sum - (sum / 2);
-                if ((sum > (cell ^ sum)) || (cell <= (sum % 8)))
-                {
-                    sum = ((sum * 4) + (sum * 5)) % 101;
-                }
-                sum = sum + (cell - sum);
-            }
-            if (sum > 6)
-            {
-                sum = (sum ^ (sum + sum)) % 101;
-            }
-            return sum % 1000;
+            Dropped,
+            Locked,
+            Draft,
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
