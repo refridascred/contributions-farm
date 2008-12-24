@@ -21,12 +21,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long seed)
         {
-            Failed,
-            Dropped,
-            Paused,
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    long step = (anchor + (long)i2) + seed;
+                    anchor = (anchor + ((long)i2 - step)) % 4096;
+                }
+                anchor = ((anchor * 4) + anchor) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
