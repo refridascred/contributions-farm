@@ -49,21 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of batches account readings.</summary>
-        public static long CompareBatchesAccountCount(long[] series)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Active,
+            Draft,
+            Paused,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
