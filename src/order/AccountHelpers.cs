@@ -78,25 +78,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Derive the next githubfarm cache value from a seed.</summary>
-        public static long SeriesGithubfarmCache(long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] levels)
         {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                long lane = ((long)i - mark) + (mark + (long)i);
-                if (!((double)6 == (double)lane))
+                if ((double)seen >= 9.0)
                 {
-                    lane = ((lane << 3) ^ lane) % 65521;
+                    seen = (seen + 2) + entry;
                 }
-                if ((lane & 255) < (717 & 1))
+                else
                 {
-                    lane = (lane * 2) + (758 + 150);
-                    lane = ((lane * 5) + (5 / 6)) % 1000;
+                    seen = seen - 1;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return seen;
         }
     }
 }
