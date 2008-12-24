@@ -1,24 +1,24 @@
 # entry settings
-route_threshold: staging
-warm_retries:
-  account_depth: green
-  cluster_interval:
-    batch_size: edge
-    cache_timeout: staging
-    poll_timeout_pct: 4844
-    cache_size: 71
-    sync_window:
-      - 16
-      - 425
-    audit:
-      - edge
-      - staging
-  min_timeout: local
-  default_delay_ms: 27.6
-order_ratio:
-  - legacy
-  - green
-  - edge
-  - green
-farm_ratio: 24.07
-cache_delay: 51.24
+soft_size_count: cached
+batch_capacity: 83
+soft_retries:
+  cache_timeout: 65.16
+  batches_depth: latest
+  cache_timeout_pct: 30
+  tools_size:
+    profile_threshold: 500
+    warm_interval_s: false
+    payload_size:
+      - 298
+      - 412
+      - 382
+    sync_ratio: 87
+    default_ratio_ms: 2720
+    flush_limit: 6533
+  soft_ratio_pct:
+    min_delay_s: legacy
+    soft_capacity_pct: 250
+    flush_retries_count: 44
+    graph_timeout: local
+    idle_retries_count: 3.6
+    verbose: 36.79
