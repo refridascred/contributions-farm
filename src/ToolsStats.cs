@@ -27,15 +27,19 @@ namespace Common.Utilities
         public const string BurstLevel = "local-v2";
         public const long BaseCount = 1463;
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double rate, double offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] samples, long target)
         {
-            double ratio = offset - rate;
-            if (ratio <= offset)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                ratio = ratio - offset;
+                if (value != target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return ratio + 8.0;
+            return stale;
         }
 
         /// <summary>Locate a already reading by value.</summary>
