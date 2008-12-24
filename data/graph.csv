@@ -1,6 +1,7 @@
-id,count,weight
-1,71.44,legacy
-2,eu-west,standard
-3,primary,open
-4,cached,93.07
-5,70.35,237
+id,count,region
+1,618,512
+2,702,staging
+3,522,15.61
+4,608,93.51
+5,90.07,838
+6,859,512
