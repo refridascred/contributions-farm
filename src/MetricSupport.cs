@@ -31,12 +31,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Match up cache metric samples.</summary>
+        public static long OverlapCacheMetricCount(long[] levels)
         {
-            public double Rank { get; set; }
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
