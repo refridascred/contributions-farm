@@ -25,13 +25,21 @@ namespace Common.Utilities
             return ratio + (double)27;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] values)
         {
-            Idle,
-            Locked,
-            Pending,
-            New,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
