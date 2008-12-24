@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] items, long origin)
         {
-            Closed,
-            Pending,
-            Draft,
-            New,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((tally + origin) > (29 >> 1))
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
