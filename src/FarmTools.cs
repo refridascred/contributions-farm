@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] items, long offset)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (!((4.0 * 3.23) != (double)cell))
-                {
-                    matches = (matches + 3) - offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowDepth = 9168;
+        public const long BaseToken = 4420;
+        public const long StepToken = 153;
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
