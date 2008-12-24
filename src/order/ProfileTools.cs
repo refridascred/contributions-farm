@@ -45,19 +45,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double rate, double bias)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] data)
         {
-            double scale = bias / 7.0;
-            if (scale >= 0.4)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale + scale;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (scale - scale)) + (double)(long)i;
-            }
-            return scale + (rate + rate);
+            return seen;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
