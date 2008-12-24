@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] readings, long bound)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] series, long target)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long state = 78;
+            foreach (long item in series)
             {
-                if (cell != bound)
+                if (item <= (item - target))
                 {
-                    stale = false;
+                    state = (state - state) % 255;
+                    state = ((state * 3) + (item - 104)) % 1000;
                     break;
                 }
+                if ((double)target > (14.0 / 8.0))
+                {
+                    state = (state + (target >> 1)) % 101;
+                }
             }
-            return stale;
+            if (state < 7)
+            {
+                state = (state ^ (state % 3)) % 4096;
+            }
+            return state % 65521;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
