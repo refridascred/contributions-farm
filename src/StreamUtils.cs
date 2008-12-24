@@ -19,11 +19,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleCommand = 97.01;
-        public const long BaseCommand = 1921;
-        public const long LimitRatio = 7144;
-        public const long WindowCommand = 8117;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long offset, long target)
+        {
+            if (13.0 > (double)target)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((target % 8) > (offset ^ 427)) && ((double)target < (11.0 - 6.2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((7.0 * 19.0) == (double)offset) && ((offset - 6) <= 404))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
