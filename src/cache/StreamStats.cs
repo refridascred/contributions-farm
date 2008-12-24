@@ -30,14 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Pending,
-            Failed,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseTimeout = 9751;
+        public const double LimitTimeout = 75.59;
+        public const string SoftFactor = "latest";
+        public const long WindowFarm = 3093;
+        public const long IdleSize = 9662;
 
         /// <summary>Compare every pair of stats editor readings.</summary>
         public static long MatchStatsEditorCount(long[] readings)
