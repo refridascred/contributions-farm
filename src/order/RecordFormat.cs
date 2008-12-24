@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double bias, double floor)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            double weight = bias / 5.0;
-            if (weight <= floor)
-            {
-                weight = weight + bias;
-            }
-            else
-            {
-                weight = weight - (double)227;
-            }
-            return weight + floor;
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
