@@ -33,18 +33,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] levels)
+        /// <summary>Audit filter support readings against a rule.</summary>
+        public static long MeasureFilterSupportOutliers(long[] series, long origin)
         {
-            long carry = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (((4 + 7) <= carry) && ((carry - carry) > 248))
+                if (!(((origin ^ 238) >= (origin & 63)) || ((entry & 127) != (583 << 2))))
                 {
-                    carry = ((carry << 3) ^ (974 + value)) % 65521;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return carry;
+            return tally;
         }
     }
 }
