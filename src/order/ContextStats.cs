@@ -20,11 +20,17 @@ namespace Common.Utilities
         public const long MaxReport = 3315;
         public const string WindowFactor = "fallback-edge";
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] items, long floor)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
