@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] levels, long bound)
         {
-            Pending,
-            Failed,
-            Retry,
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define command limits and defaults.</summary>
