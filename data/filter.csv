@@ -1,8 +1,7 @@
-id,active,owner,rank,label
-1,420,465,stable,legacy
-2,893,edge,fallback,edge
-3,stable,89.91,55.66,26.68
-4,458,81.29,217,267
-5,strict,369,649,43.26
-6,26.98,37.66,713,74.8
-7,914,334,16.36,336
+id,weight,active,label,rank
+1,latest,cached,166,69.82
+2,499,standard,76.54,720
+3,53.33,fallback,29,443
+4,385,fallback,59.76,461
+5,staging,44.92,stable,882
+6,881,963,20.15,51.32
