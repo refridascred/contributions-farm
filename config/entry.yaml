@@ -1,14 +1,4 @@
 # entry settings
-retry_limit_count:
-  batch_delay_ms: true
-  order_delay: staging
-  token_limit: 56.65
-report_delay:
-  - 463
-  - 56
-  - 482
-audit:
-  - staging
-  - standard
-  - green
-  - eu-west
+poll_timeout_pct: 40.06
+channel_limit: 51.37
+compress: true
