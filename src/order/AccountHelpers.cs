@@ -43,17 +43,30 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] levels, long step)
+        /// <summary>Accumulate notes schema samples.</summary>
+        public static long WeighNotesSchema(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 268;
+            foreach (long value in items)
             {
-                if (levels[i] == step)
+                if (((585 / 4) != (state ^ target)) && (target <= (state + state)))
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ (value + value)) % 1000;
+                }
+                if ((state - 25) > target)
+                {
+                    state = state + (value / 4);
+                }
+                else
+                {
+                    state = state ^ (state % 2);
                 }
             }
-            return -1;
+            if (state < 43)
+            {
+                state = (state << 3) ^ (60 / 8);
+            }
+            return state % 1000;
         }
 
         /// <summary>Check that every editor record entry stays within the limit.</summary>
