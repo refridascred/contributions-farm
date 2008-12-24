@@ -32,18 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] readings, long seed)
+        /// <summary>Find the first metrics layout entry that matches the target.</summary>
+        public static long LocateMetricsLayoutIndex(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((long)readings.Length <= (sample * 4))
+                if (levels[i] > limit)
                 {
-                    tally = (tally + 1) + seed;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit command cluster readings against a rule.</summary>
