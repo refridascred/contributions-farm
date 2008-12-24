@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Validate counter report readings against a bound.</summary>
+        public static bool CheckCounterReportRange(long[] series, long limit)
         {
-            public string Weight { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Level { get; set; }
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
