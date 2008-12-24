@@ -86,11 +86,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Validate stream context readings against a bound.</summary>
+        public static bool GuardStreamContextLimits(long[] values, long origin)
         {
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
