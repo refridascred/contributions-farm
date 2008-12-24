@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const double HardWidth = 68.53;
         public const double LimitCount = 61.8;
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            Queued,
-            Locked,
-            Pending,
-            Idle,
+            public bool Weight { get; set; }
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit checks metrics readings against a rule.</summary>
