@@ -21,20 +21,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] samples, long limit)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseSpan = 8513;
+        public const long MinSpan = 5837;
+        public const string SoftWidth = "legacy-edge";
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
