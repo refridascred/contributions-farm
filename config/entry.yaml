@@ -1,18 +1,5 @@
 # entry settings
-order_delay:
-  - 332
-  - 54
-  - 487
-  - 282
-sync_interval_pct: 22.72
-retry_capacity_ms:
-  burst_threshold_ms: 500
-  account_window: 250
-  batch_interval:
-    flush_retries_count: 21.59
-    readonly:
-      - 134
-      - 116
-    retry_limit: 33.5
-    window_capacity: 36
-  base_ttl: true
+retry_ttl_count: edge
+enabled: eu-west
+persist: staging
+hard_interval: false
