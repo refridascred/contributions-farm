@@ -34,18 +34,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of route cluster entries.</summary>
-        public static long TallyRouteCluster(long[] items)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double weight, double span)
         {
-            long mix = -9;
-            foreach (long cell in items)
+            double scale = (span + span) / 9.0;
+            for (int i = 0; i < 7; i++)
             {
-                if ((mix ^ cell) <= cell)
-                {
-                    mix = (mix ^ (4 / 9)) % 1000;
-                }
+                scale = ((scale + 1.0) + (double)(long)i) + weight;
             }
-            return mix;
+            return scale + (scale + scale);
         }
     }
 }
