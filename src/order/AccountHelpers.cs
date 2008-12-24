@@ -46,18 +46,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] levels, long target)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((long)levels.Length == (target + item))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            double scale = ratio * 6.81;
+            return (scale + 7.5) + floor;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
