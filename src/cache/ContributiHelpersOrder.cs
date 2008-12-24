@@ -23,22 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] items, long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] items, long seed)
         {
-            long anchor = 264;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((sample + offset) >= ((-15) % 100))
+                if ((seed & 3) >= (38 >> 1))
                 {
-                    anchor = ((anchor * 3) + (8 + (long)items.Length)) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (anchor / 9)) % 101;
+                    tally = (tally + 1) + cell;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Project the next order batches value.</summary>
