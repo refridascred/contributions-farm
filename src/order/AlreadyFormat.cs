@@ -18,38 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long target, long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] readings, long seed)
         {
-            if (seed <= (target ^ seed))
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((-991) + seed) >= target)
+                if (sample < seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (seed <= target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (target < (target - seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a batches stats.</summary>
