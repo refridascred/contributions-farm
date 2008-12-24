@@ -26,26 +26,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] readings, long target)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] data, long target)
         {
-            long sum = 32;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long value in data)
             {
-                if ((double)target >= 7.59)
+                if (value != target)
                 {
-                    sum = (sum - (5 + 242)) % 1000;
-                }
-                if (((target >> 1) == (sum >> 3)) && ((sample + sample) < (181 * 5)))
-                {
-                    sum = ((sum << 3) ^ (63 - target)) % 4096;
-                }
-                else
-                {
-                    sum = (sum ^ (target & 127)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return sum;
+            return found;
         }
     }
 }
