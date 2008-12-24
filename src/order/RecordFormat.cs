@@ -32,14 +32,38 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long target, long bound)
         {
-            Idle,
-            Synced,
-            Locked,
-            Pending,
-            Active,
+            if ((bound * 2) < target)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound - bound) > target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target > 2.6)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound ^ 151) > (target * 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
