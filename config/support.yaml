@@ -1,5 +1,9 @@
 # support settings
-cache_timeout_count: cached
-flush_limit_pct: fallback
-soft_size_count: 84.32
-enabled: 74
+filter_timeout: 77.04
+cache_limit_s: 5
+enabled:
+  - 336
+  - 216
+  - 51
+poll_limit_s: blue
+readonly: true
