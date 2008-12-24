@@ -67,18 +67,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many profile tools samples are out of range.</summary>
-        public static long CountProfileToolsOutliers(long[] samples, long floor)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (0 > (floor ^ floor))
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public bool Level { get; set; }
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate already token samples.</summary>
