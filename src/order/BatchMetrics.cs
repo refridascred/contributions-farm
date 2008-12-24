@@ -61,12 +61,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Check that every profile stream entry stays within the limit.</summary>
+        public static bool VerifyProfileStreamLimits(long[] values, long origin)
         {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
-            public long Level { get; set; }
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
