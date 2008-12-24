@@ -35,15 +35,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double weight, double floor)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            double weight2 = floor;
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 - weight2) + (double)(long)i;
-            }
-            return weight2 - weight;
+            Idle,
+            Queued,
+            Failed,
+            Ready,
+            Closed,
         }
     }
 }
