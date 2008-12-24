@@ -30,14 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            New,
-            Done,
-            Closed,
-            Retry,
-            Stale,
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
