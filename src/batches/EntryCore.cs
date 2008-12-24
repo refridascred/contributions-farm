@@ -37,21 +37,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] items)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((4.8 / 2.0) >= (double)cell)
                 {
-                    if ((items[i] + items[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Scale a batches contributi figure with a bias.</summary>
