@@ -1,7 +1,21 @@
 # githubfarm settings
-burst_ratio:
-  - 298
-  - 357
-  - 397
-strict: blue
-soft_ttl: open
+counter_limit: 28.96
+hard_timeout_s: 100
+soft_threshold_ms:
+  persist:
+    idle_depth_s: false
+    order_ratio: primary
+    route_ttl: 79.54
+    idle_ratio_ms: false
+    soft_delay_pct:
+      - local
+      - latest
+    enabled:
+      - edge
+      - eu-west
+      - primary
+      - cached
+  min_interval: false
+  sync_retries:
+    - 273
+    - 220
