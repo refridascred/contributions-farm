@@ -1,7 +1,8 @@
-id,state
-1,287
-2,eu-west
-3,283
-4,eu-west
-5,555
-6,811
+id,level,ratio,active
+1,96.11,39,50
+2,strict,444,80.51
+3,primary,233,356
+4,edge,95.72,green
+5,881,71,fallback
+6,97.53,79.02,250
+7,87.11,913,71.42
