@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitCount = 7684;
-        public const string SoftGraph = "staging-1";
-        public const string SoftDepth = "local-edge";
-        public const long BaseWidth = 5871;
-        public const long StepWidth = 2195;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
