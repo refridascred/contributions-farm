@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+RECORD_LIMIT=278
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-primary}"
 case "${mode}" in
-    edge)
+    primary)
         log "fast path"
         ;;
     *)
@@ -16,12 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-for item in green stable; do
+for item in latest staging; do
     log "checking ${item}"
 done
