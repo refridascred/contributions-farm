@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double scale, double span)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] values)
         {
-            double scale2 = 0.4;
-            if (scale2 > (scale * 8.7))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                scale2 = (scale2 + (double)22) - span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return scale2 - (double)4;
+            return matches;
         }
 
         /// <summary>Hold a layout record.</summary>
