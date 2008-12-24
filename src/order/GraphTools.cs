@@ -22,19 +22,19 @@ namespace Common.Utilities
             return drift + (double)51;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double weight, double offset)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] readings, long target)
         {
-            double bias = (7.5 + 2.7) / 7.0;
-            if (bias >= (bias + bias))
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                bias = bias + 5.33;
+                if (datum < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - (offset / 2.0);
-            }
-            return bias - weight;
+            return ready;
         }
 
         /// <summary>Describe the farm phase values.</summary>
