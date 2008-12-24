@@ -49,13 +49,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] levels, long bound)
         {
-            New,
-            Active,
-            Draft,
-            Paused,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < bound) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
