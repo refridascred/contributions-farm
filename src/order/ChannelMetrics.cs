@@ -14,17 +14,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] series, long step)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long step, long step2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (step <= step2)
             {
-                if (series[i] < step)
+                return 5;
+            }
+            else
+            {
+                if ((0 >> 3) <= step)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step != (10.0 + 2.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the entry phase values.</summary>
