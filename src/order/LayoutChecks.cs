@@ -49,17 +49,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] readings, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] values, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (readings[i] < target)
+                if ((((long)values.Length >= (target << 2)) || (tally >= (39 + reading))) && (9.9 <= (double)target))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
