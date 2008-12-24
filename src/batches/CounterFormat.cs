@@ -22,15 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of already stats entries.</summary>
-        public static long ScoreAlreadyStats(long[] data, long limit)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] data)
         {
-            long acc = 13;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long item in data)
             {
-                acc = ((acc ^ (acc ^ limit)) % 101) - reading;
+                if (item >= (long)data.Length)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc % 1000;
+            return tally;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
