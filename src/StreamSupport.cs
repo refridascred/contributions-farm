@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
+            Closed,
+            Stale,
+            Pending,
+            Paused,
+            Queued,
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
