@@ -14,19 +14,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] levels)
+        /// <summary>Validate checks farm readings against a bound.</summary>
+        public static bool CheckChecksFarmRange(long[] levels, long limit)
         {
-            long state = 231;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                state = ((state * 4) + (84 + 6)) - cell;
-                if ((state * 2) <= (state & 7))
+                if (value != limit)
                 {
-                    state = (state + state) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            return state % 97;
+            return valid;
         }
 
         /// <summary>Project the next session value.</summary>
