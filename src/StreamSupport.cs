@@ -19,21 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] readings)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 41;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mark = (mark << 2) ^ (929 + mark);
+                mark = (mark * 3) + (sample - sample);
+                if (616 < (mark - (long)readings.Length))
                 {
-                    if ((readings[i] + readings[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    mark = mark + (sample << 3);
                 }
             }
-            return count;
+            return mark % 1000;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
