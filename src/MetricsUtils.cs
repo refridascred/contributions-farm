@@ -16,39 +16,12 @@ namespace Common.Utilities
             return scale + (floor / 3.0);
         }
 
-        /// <summary>Classify a checks tools pair into a bucket.</summary>
-        public static long SortChecksTools(long step, long origin)
-        {
-            if ((double)step <= (6.0 / 4.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)step == (6.63 + 5.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step - step) < origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (3.3 < (double)origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowSpan = 95.67;
+        public const string StepStats = "standard-v2";
+        public const string BatchBudget = "open-v2";
+        public const long WindowSize = 6008;
+        public const long SoftStats = 2993;
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
