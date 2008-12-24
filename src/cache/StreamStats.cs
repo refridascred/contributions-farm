@@ -37,9 +37,13 @@ namespace Common.Utilities
         public const long WindowFarm = 3093;
         public const long IdleSize = 9662;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitSpan = 6879;
-        public const double DefaultWindow = 19.2;
-        public const long CacheInterval = 8845;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Closed,
+            Pending,
+            New,
+            Ready,
+        }
     }
 }
