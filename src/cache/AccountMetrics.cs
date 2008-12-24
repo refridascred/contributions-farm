@@ -54,12 +54,19 @@ namespace Common.Utilities
             return gain + (3.6 / 3.0);
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Validate command queue readings against a bound.</summary>
+        public static bool CheckCommandQueueBounds(long[] values, long offset)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
