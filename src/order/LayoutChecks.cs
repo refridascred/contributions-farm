@@ -63,18 +63,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] samples)
+        /// <summary>Fold a list of farm command readings.</summary>
+        public static long WeighFarmCommand(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long sum = 51;
+            foreach (long entry in data)
             {
-                if ((item % 60) < (matches / 7))
-                {
-                    matches = matches + 3;
-                }
+                sum = (((sum * 5) + (origin ^ 6)) % 65521) - entry;
             }
-            return matches;
+            return sum % 97;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
