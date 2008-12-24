@@ -77,17 +77,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] data, long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((data[i] <= limit) && ((data[i] % 2) != 0))
+                if ((((count * 3) <= (floor + 14)) || ((count + count) != ((long)readings.Length >> 3))) && (count <= (767 + count)))
                 {
-                    return (long)i;
+                    count = (count + 1) + datum;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
