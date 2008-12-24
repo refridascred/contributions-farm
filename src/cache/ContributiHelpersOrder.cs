@@ -49,13 +49,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            public string Flag { get; set; } = "";
-            public double Mode { get; set; }
-            public double Offset { get; set; }
-            public double Region { get; set; }
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
