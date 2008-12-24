@@ -14,17 +14,25 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long limit)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long step, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
+            long step2 = step + limit;
+            if ((limit <= ((-49) - step)) && ((8.0 / 2.0) >= (double)step2))
             {
-                result = (result - (result << 3)) % 97;
-                result = ((result * 2) + (5 ^ (long)i)) % 4096;
-                result = ((result * 3) + (long)i) % 65521;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((727 / 9) == (step * 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Project the next session value.</summary>
