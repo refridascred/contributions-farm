@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] series)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((reading % 5) < (reading << 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Pending,
+            Ready,
+            Active,
+            New,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
