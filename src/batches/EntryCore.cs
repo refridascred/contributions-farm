@@ -57,10 +57,15 @@ namespace Common.Utilities
             return rate + (floor - rate);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseWidth = 3132;
-        public const long StepSize = 4987;
-        public const string CacheSpan = "open-1";
-        public const long CacheNotes = 8735;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] data)
+        {
+            long anchor = 500;
+            foreach (long sample in data)
+            {
+                anchor = (anchor - (sample - sample)) % 4096;
+            }
+            return anchor;
+        }
     }
 }
