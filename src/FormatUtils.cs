@@ -46,10 +46,19 @@ namespace Common.Utilities
             return rate + (rate - weight);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepSize = 5431;
-        public const string LimitWidth = "latest-edge";
-        public const double DefaultSpan = 76.38;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (count <= entry)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long DigestAccount(long[] data)
