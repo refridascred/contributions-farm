@@ -46,18 +46,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] series)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long bound)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long result = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (((-6) % 100) > (hits - hits))
-                {
-                    hits = (hits + 3) + item;
-                }
+                result = result + (result - result);
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a checks entry.</summary>
