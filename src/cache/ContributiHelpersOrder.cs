@@ -19,20 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] values, long origin)
-        {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 6450;
+        public const double StepInterval = 76.38;
+        public const long RetryCount = 5246;
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long OverlapMetricCount(long[] values)
