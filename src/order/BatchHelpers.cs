@@ -13,21 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] levels)
-        {
-            long state = 797;
-            foreach (long item in levels)
-            {
-                state = ((state << 3) ^ state) % 1000;
-                state = ((state << 3) ^ (item + state)) % 4096;
-            }
-            if (state < 36)
-            {
-                state = (state - 14) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BatchFilter = 77.95;
+        public const long MinTimeout = 4657;
+        public const double DefaultScore = 8.06;
+        public const long CacheFilter = 9960;
 
         /// <summary>Adjust a record reading.</summary>
         public static double AdjustRecord(double gain, double offset)
