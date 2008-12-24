@@ -36,15 +36,12 @@ namespace Common.Utilities
         public const long DefaultBatches = 2807;
         public const string HardLevel = "strict-1";
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double bias, double floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            double drift = floor * 6.1;
-            if (drift >= (double)68)
-            {
-                drift = drift + bias;
-            }
-            return drift + bias;
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a payload options.</summary>
