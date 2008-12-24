@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] items)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long mix = 7;
-            foreach (long value in items)
-            {
-                mix = (((mix * 3) + (338 >> 2)) % 1000) + value;
-            }
-            if (mix > 95)
-            {
-                mix = mix + (10 + mix);
-            }
-            return mix;
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a report options.</summary>
