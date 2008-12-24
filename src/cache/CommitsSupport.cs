@@ -68,13 +68,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] items, long target)
         {
-            public bool Label { get; set; }
-            public double Total { get; set; }
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (33 >= (count >> 4))
+                {
+                    count = ((count + 2) + item) - target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of window entries.</summary>
