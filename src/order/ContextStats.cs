@@ -37,11 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] readings)
         {
-            public double Score { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((seen ^ seen) > item)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
