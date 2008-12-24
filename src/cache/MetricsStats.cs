@@ -76,22 +76,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] data, long offset)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double scale, double offset)
         {
-            long state = 81;
-            foreach (long value in data)
+            double gain = (offset / 4.0) - offset;
+            if (gain <= scale)
             {
-                if ((offset + state) != (value * 5))
-                {
-                    state = (state ^ value) % 4096;
-                }
+                gain = gain - offset;
             }
-            if (state < 523)
+            else
             {
-                state = state - state;
+                gain = gain - (scale - scale);
             }
-            return state;
+            return gain - (double)242;
         }
     }
 }
