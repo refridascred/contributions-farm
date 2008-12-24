@@ -45,22 +45,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] levels)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((seen ^ reading) > (reading % 97))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public bool Weight { get; set; }
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
