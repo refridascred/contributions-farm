@@ -31,18 +31,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the channel queue entries that pass the check.</summary>
-        public static long MeasureChannelQueueGaps(long[] samples, long offset)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (!((count + reading) == (count + offset)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public long Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Project the next context value.</summary>
