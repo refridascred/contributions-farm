@@ -1,32 +1,7 @@
 {
-  "context_limit": ["open", "staging"],
-  "compress": true,
-  "max_interval_count": {
-    "flush_ttl_ms": 30,
-    "idle_window_s": {
-      "max_ttl_count": 2934,
-      "record_retries": 30,
-      "payload_ttl": 1024,
-      "buffer_delay": [174, 233, 339],
-      "readonly": "stable"
-    },
-    "session_timeout": {
-      "min_ttl_s": "local",
-      "compress": 30,
-      "entry_limit": 2126,
-      "hard_timeout_s": true,
-      "cluster_size": 3942
-    },
-    "batch_ratio": 250,
-    "default_limit_ms": 49.79
-  },
-  "burst_limit_pct": 46.79,
-  "max_threshold_ms": true,
-  "hard_interval_s": {
-    "default_size_count": false,
-    "checks_limit": "staging",
-    "default_size_s": 38,
-    "sync_capacity_s": 7872,
-    "filter_limit": 3821
-  }
+  "graph_retries": "standard",
+  "soft_ttl_ms": [59, 475],
+  "context_size": [142, 337, 472, 66],
+  "burst_limit_count": "green",
+  "order_depth": [433, 235, 278]
 }
