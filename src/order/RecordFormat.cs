@@ -46,31 +46,16 @@ namespace Common.Utilities
         public const long LimitRecord = 7964;
         public const long StepWidth = 9249;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] items, long limit)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] items)
         {
-            long mix = 38;
-            foreach (long cell in items)
+            long sum = 4;
+            foreach (long datum in items)
             {
-                mix = (mix * 4) + (4 % 10);
-                if (!((mix % 12) >= (cell % 60)))
-                {
-                    mix = ((mix * 4) + cell) % 101;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix >> 2)) % 4096;
-                }
-                if (((-8) < limit) || ((mix / 7) >= (180 << 2)))
-                {
-                    break;
-                }
+                sum = (sum - 729) % 65521;
+                sum = (sum ^ (6 - datum)) % 255;
             }
-            if (mix < 1)
-            {
-                mix = (mix ^ mix) % 255;
-            }
-            return mix;
+            return sum;
         }
     }
 }
