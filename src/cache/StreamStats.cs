@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long origin)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long seed, long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
+            long lane = seed ^ origin;
+            if ((lane + 62) <= (lane * 4))
             {
-                mix = (mix - 5) % 4096;
-                mix = ((mix * 2) + (long)i) % 1000;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if ((double)origin < (2.0 * 1.32))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (origin > (lane << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin >= (seed >> 5)) || ((origin % 7) < (seed / 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
