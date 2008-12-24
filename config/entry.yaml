@@ -1,9 +1,18 @@
 # entry settings
-metric_ratio: 68
-base_ratio: true
-sync_capacity_pct:
-  - green
-  - fallback
-  - legacy
-  - standard
-warm_timeout_s: 51.63
+order_delay:
+  - 332
+  - 54
+  - 487
+  - 282
+sync_interval_pct: 22.72
+retry_capacity_ms:
+  burst_threshold_ms: 500
+  account_window: 250
+  batch_interval:
+    flush_retries_count: 21.59
+    readonly:
+      - 134
+      - 116
+    retry_limit: 33.5
+    window_capacity: 36
+  base_ttl: true
