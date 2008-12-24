@@ -30,22 +30,17 @@ namespace Common.Utilities
         public const double LimitRatio = 47.59;
         public const long DefaultRatio = 851;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] data)
+        /// <summary>Find the first editor entry entry that matches the target.</summary>
+        public static long SeekEditorEntryIndex(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((datum & 255) == (tally + datum)) || ((tally << 3) <= (tally * 2))) && ((double)datum >= (7.62 / 3.0)))
+                if (items[i] >= floor)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
