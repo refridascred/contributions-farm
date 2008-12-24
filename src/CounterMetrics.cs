@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] readings)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (((datum - datum) <= count) && ((count / 4) < datum))
+                if (!(matches >= (matches + sample)) || (((matches / 6) >= sample) || (sample > matches)))
                 {
-                    count = count + 3;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
