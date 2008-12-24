@@ -1,27 +1,7 @@
 # support settings
-audit:
-  filter_ratio: true
-  sync_window: strict
-  batch_interval_ms:
-    burst_delay_count:
-      - latest
-      - eu-west
-      - staging
-    soft_retries_pct: 16.19
-    min_capacity: 84
-    readonly: true
-  dry_run: false
-  readonly: 23
-base_window_s: 1024
-counter_limit:
-  max_delay: eu-west
-  retry_ratio: 8989
-  account_limit:
-    - 444
-    - 242
-    - 93
-    - 20
-  buffer_interval: 4276
-  token_limit: blue
-  dry_run: staging
-max_retries_count: green
+hard_timeout_s:
+  - 205
+  - 449
+  - 415
+soft_ratio_pct: 94
+cache_ratio: 250
