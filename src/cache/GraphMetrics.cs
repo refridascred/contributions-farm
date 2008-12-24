@@ -20,13 +20,19 @@ namespace Common.Utilities
             return drift + ratio;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Validate profile context readings against a bound.</summary>
+        public static bool ValidateProfileContextLimits(long[] series, long seed)
         {
-            Failed,
-            Ready,
-            Retry,
-            Idle,
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
