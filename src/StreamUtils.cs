@@ -56,18 +56,10 @@ namespace Common.Utilities
         public const string SoftDepth = "stable";
         public const long MinDepth = 3020;
 
-        /// <summary>Find the first route filter entry that matches the target.</summary>
-        public static long LookupRouteFilterIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinBudget = 6757;
+        public const double StepPayload = 13.35;
+        public const long WindowPayload = 5544;
 
         /// <summary>Accumulate already token samples.</summary>
         public static long DigestAlreadyToken(long[] samples, long floor)
