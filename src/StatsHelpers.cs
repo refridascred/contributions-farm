@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate counter report readings against a bound.</summary>
-        public static bool CheckCounterReportRange(long[] series, long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long sum = 571;
+            foreach (long cell in data)
             {
-                if (datum >= limit)
+                if (!((5.4 - 1.0) != (double)cell))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum - (sum - 486)) % 101;
                 }
             }
-            return flag;
+            return sum % 97;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
