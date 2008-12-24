@@ -25,21 +25,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] data)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Combine window values into a single score.</summary>
