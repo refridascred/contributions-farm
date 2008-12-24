@@ -44,11 +44,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double scale, double floor)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] levels)
         {
-            double load = (scale + 2.06) * 0.9;
-            return (load + scale) + floor;
+            long anchor = 5;
+            foreach (long cell in levels)
+            {
+                if (!((anchor + cell) >= (cell - cell)))
+                {
+                    anchor = (anchor ^ anchor) % 101;
+                }
+                if (((cell - anchor) > cell) || ((anchor - cell) <= 55))
+                {
+                    anchor = ((anchor * 3) + (anchor % 100)) % 255;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
