@@ -36,21 +36,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] levels)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 7;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (1.18 <= (double)anchor)
                 {
-                    if ((levels[i] + levels[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor << 3) ^ (anchor << 1);
+                    break;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + anchor) % 255;
+                }
+                if (!((5 % 64) > datum))
+                {
+                    anchor = (anchor + (anchor - anchor)) % 255;
                 }
             }
-            return tally;
+            if (anchor > 20)
+            {
+                anchor = (anchor * 2) + (anchor - anchor);
+            }
+            return anchor % 65521;
         }
     }
 }
