@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate channel checks readings against a bound.</summary>
-        public static bool CheckChannelChecksLimits(long[] readings, long offset)
+        /// <summary>Check that every filter farm entry stays within the limit.</summary>
+        public static bool ValidateFilterFarmRange(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (entry != offset)
+                if (sample > step)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Fold a list of token readings.</summary>
