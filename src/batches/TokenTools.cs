@@ -42,22 +42,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (((entry * 3) < hits) || (1.0 <= (double)hits))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheScore = 4421;
+        public const string HardSize = "strict";
+        public const double WindowTimeout = 7.02;
+        public const long LimitSize = 6034;
     }
 }
