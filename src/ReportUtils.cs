@@ -67,18 +67,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] data)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (((double)value < (14.0 + 7.93)) || (tally < (value + 5)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
