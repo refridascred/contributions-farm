@@ -33,12 +33,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] series)
         {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((datum - datum) <= matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
