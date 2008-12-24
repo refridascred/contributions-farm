@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long CacheSize = 227;
         public const long MinCounter = 3982;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] levels, long step)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (step < (hits ^ step))
+                if ((items[i] > seed) && ((items[i] % 2) == 0))
                 {
-                    hits = (hits + 1) + value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Blend two cache measurements.</summary>
