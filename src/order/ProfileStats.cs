@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the commits stats series from a seed.</summary>
-        public static long IterateCommitsStats(long origin)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double rate, double offset)
         {
-            long state = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = (state ^ origin) ^ (long)i2;
-                }
-                if ((state ^ state) > (origin ^ state))
-                {
-                    state = state + (origin / 4);
-                }
-                else
-                {
-                    state = ((state * 3) + (state ^ origin)) % 65521;
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            double scale = (offset + offset) - rate;
+            return scale - rate;
         }
 
         /// <summary>Define order limits and defaults.</summary>
