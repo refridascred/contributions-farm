@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] items)
         {
-            Closed,
-            Done,
-            Dropped,
-            Pending,
+            long carry = -96;
+            foreach (long item in items)
+            {
+                carry = (carry << 2) ^ (carry + item);
+                if (683 <= (14 ^ item))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Classify a order notes pair into a bucket.</summary>
