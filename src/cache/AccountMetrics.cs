@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 4630;
-        public const long MinBuffer = 9536;
-        public const long DefaultWidth = 5023;
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
+        {
+            Locked,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BurstCache = 1771;
