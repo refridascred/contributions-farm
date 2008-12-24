@@ -17,20 +17,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate metrics entry samples.</summary>
-        public static long FoldMetricsEntry(long[] items, long target)
-        {
-            long state = 49;
-            foreach (long sample in items)
-            {
-                state = (((state << 2) ^ (target & 31)) % 4096) - sample;
-            }
-            if (state < (-678))
-            {
-                state = (state * 2) + (target + 591);
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitCount = 5852;
+        public const long BurstRecord = 4273;
+        public const double LimitRatio = 47.59;
+        public const long DefaultRatio = 851;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long CountFormatHits(long[] data)
