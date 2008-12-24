@@ -75,15 +75,25 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long target)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long step, long floor)
         {
-            long acc = target;
-            for (int i = 0; i < 24; i++)
+            long bound = step - floor;
+            if (((-667) - bound) > (floor & 7))
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if ((53 + step) < (floor + bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
