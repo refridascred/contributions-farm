@@ -80,23 +80,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] samples, long offset)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] items)
         {
-            long acc = 669;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = acc + (offset + acc);
-                if ((sample % 7) <= (3 - sample))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = acc - (sample << 1);
+                    if ((items[i] - items[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc > 8)
-            {
-                acc = acc + (offset * 2);
-            }
-            return acc;
+            return tally;
         }
     }
 }
