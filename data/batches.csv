@@ -1,6 +1,10 @@
-id,ratio,state,level,count
-1,80.38,local,160,76.3
-2,92.6,609,587,45.82
-3,314,strict,50.62,strict
-4,84,498,edge,standard
-5,stable,standard,45.11,712
+id,state
+1,fallback
+2,761
+3,779
+4,blue
+5,eu-west
+6,46
+7,green
+8,705
+9,765
