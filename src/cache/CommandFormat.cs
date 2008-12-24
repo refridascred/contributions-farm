@@ -25,14 +25,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Closed,
-            Retry,
-            Stale,
-            Done,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 7732;
+        public const long WindowTimeout = 6904;
+        public const long CacheScore = 307;
+        public const long MaxCount = 2672;
+        public const long MaxTimeout = 4692;
 
         /// <summary>Blend two record measurements.</summary>
         public static double BlendRecord(double scale, double offset)
