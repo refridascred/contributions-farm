@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftRatio = 1317;
+        public const long BatchStats = 5864;
+        public const double LimitInterval = 70.01;
+        public const long CacheTimeout = 4863;
+        public const long IdleStats = 1759;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long GradeProfile(long limit, long origin)
