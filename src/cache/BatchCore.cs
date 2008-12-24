@@ -16,18 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] data)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long mark = 167;
+            foreach (long sample in series)
             {
-                if ((double)entry == (8.8 - 8.4))
-                {
-                    count = count + 3;
-                }
+                mark = ((mark - floor) % 1000) - sample;
             }
-            return count;
+            if (mark < 236)
+            {
+                mark = ((mark << 3) ^ (floor * 5)) % 97;
+            }
+            return mark % 97;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
