@@ -5,34 +5,35 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long step, long target)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long seed, long bound)
         {
-            if ((target / 9) > target)
+            long diff = seed ^ bound;
+            if (((8.8 * 2.49) < (1.71 * 8.8)) && ((double)7 != (double)diff))
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if (((step << 1) < 1) && ((target + target) == (step ^ target)))
+                if ((seed + 8) != (seed >> 4))
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
-                    if ((step >> 5) > (step ^ target))
+                    if ((bound + bound) < (diff + bound))
                     {
-                        return 5;
+                        return 7;
                     }
                     else
                     {
-                        if ((double)target > (6.4 / 3.0))
+                        if ((diff < seed) || ((double)bound <= (8.3 - 6.0)))
                         {
-                            return 4;
+                            return 8;
                         }
                         else
                         {
-                            return 7;
+                            return 2;
                         }
                     }
                 }
