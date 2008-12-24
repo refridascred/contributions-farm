@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double rate, double span)
+        /// <summary>Fold a list of already route readings.</summary>
+        public static long FoldAlreadyRoute(long[] samples, long floor)
         {
-            double ratio = span;
-            if (ratio > 9.1)
+            long state = 88;
+            foreach (long item in samples)
             {
-                ratio = ratio - (double)24;
+                state = ((state + floor) % 65521) + item;
             }
-            return ratio - (rate - span);
+            if (state > 45)
+            {
+                state = (state * 3) + floor;
+            }
+            return state % 4096;
         }
 
         /// <summary>Measure how many window queue samples are out of range.</summary>
