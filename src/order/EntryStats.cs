@@ -13,26 +13,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] items)
+        /// <summary>Grade a session support value against two limits.</summary>
+        public static long ClassifySessionSupport(long target, long offset)
         {
-            long total = 61;
-            foreach (long item in items)
+            long lane = target - offset;
+            if (target < (offset - 156))
             {
-                if (!((total / 9) != ((-78) % 3)))
+                return 5;
+            }
+            else
+            {
+                if ((20.0 >= (double)target) && ((target / 4) != (lane & 31)))
                 {
-                    break;
+                    return 3;
                 }
-                if ((5.5 + 4.7) != (double)total)
+                else
                 {
-                    total = total + item;
-                }
-                if ((total / 5) == (343 ^ 6))
-                {
-                    break;
+                    if (509 < offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return total % 4096;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
