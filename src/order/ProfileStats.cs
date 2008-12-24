@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] series, long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (entry <= limit)
+                if ((tally - item) >= 630)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) + offset;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a context entry.</summary>
