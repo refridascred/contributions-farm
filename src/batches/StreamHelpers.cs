@@ -14,19 +14,39 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every cluster profile entry stays within the limit.</summary>
-        public static bool CheckClusterProfileBounds(long[] values, long limit)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long limit, long offset)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long offset2 = limit ^ offset;
+            if ((offset % 64) <= (offset2 ^ offset))
             {
-                if (datum < limit)
+                return 8;
+            }
+            else
+            {
+                if ((624 & 1) > (offset >> 1))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((384 - limit) < (offset2 & 1)) || (offset2 < (offset2 / 9)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit + 196) >= (37 - offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
