@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] items)
         {
-            Active,
-            Draft,
-            Dropped,
-            Retry,
-            Failed,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (!((hits - cell) <= (cell - hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
