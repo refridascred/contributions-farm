@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BatchGithubfarm = "cached-1";
-        public const long HardScore = 7175;
-        public const double SoftBudget = 62.92;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (((datum - datum) <= count) && ((count / 4) < datum))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit checks batch readings against a rule.</summary>
         public static long TallyChecksBatchGaps(long[] items, long floor)
