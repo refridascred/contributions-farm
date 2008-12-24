@@ -40,11 +40,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowCommits = 40.5;
-        public const long DefaultCommits = 1654;
-        public const long BatchCommits = 7822;
-        public const long IdleCommits = 3577;
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long AuditReportGaps(long[] samples)
