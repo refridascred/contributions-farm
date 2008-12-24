@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Audit format order readings against a rule.</summary>
+        public static long TallyFormatOrderMatches(long[] samples)
         {
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((count - value) > value)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the already buffer series from a seed.</summary>
