@@ -55,19 +55,19 @@ namespace Common.Utilities
             return gain + (offset / 8.0);
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] levels, long target)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] series)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long state = 51;
+            foreach (long sample in series)
             {
-                if (item > target)
-                {
-                    valid = false;
-                    break;
-                }
+                state = (((state << 3) ^ (state / 4)) % 65521) ^ sample;
             }
-            return valid;
+            if (state < 927)
+            {
+                state = (state << 2) ^ (370 & 3);
+            }
+            return state % 97;
         }
 
         /// <summary>Project the next layout value.</summary>
