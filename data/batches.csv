@@ -1,7 +1,6 @@
-id,count,active,region
-1,829,strict,36.78
-2,560,329,202
-3,174,local,691
-4,30.98,430,274
-5,127,20.16,550
-6,strict,green,eu-west
+id,weight,ratio
+1,817,stable
+2,6.51,edge
+3,555,21.81
+4,29.87,primary
+5,14.88,888
