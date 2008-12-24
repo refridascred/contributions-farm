@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Closed,
-            New,
-            Locked,
+            Dropped,
+            Retry,
+            Stale,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
