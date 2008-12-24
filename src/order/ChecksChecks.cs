@@ -28,22 +28,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] readings)
+        /// <summary>Combine payload account values into a single score.</summary>
+        public static long TallyPayloadAccount(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long state = 8;
+            foreach (long entry in data)
             {
-                if ((entry + hits) > (261 << 3))
+                for (int i = 0; i < 8; i++)
                 {
-                    hits = hits + 1;
+                    state = ((state + (entry / 9)) ^ (long)i) - origin;
                 }
-                else
+                if ((entry & 15) <= (state - state))
                 {
-                    hits = hits - 1;
+                    state = (state - (state / 5)) % 255;
                 }
             }
-            return hits;
+            return state;
         }
     }
 }
