@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate window format readings against a bound.</summary>
-        public static bool GuardWindowFormatBounds(long[] values, long origin)
-        {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftCache = 59.14;
+        public const long DefaultCache = 7611;
+        public const long BaseLevel = 3387;
 
         /// <summary>Adjust a editor checks reading.</summary>
         public static double ProjectEditorChecks(double bias, double span)
