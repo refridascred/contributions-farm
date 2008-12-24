@@ -30,11 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] items, long bound)
         {
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (!((bound << 2) <= bound))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
         }
     }
 }
