@@ -14,26 +14,17 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long offset)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] items, long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (result << 3) ^ (offset & 7);
-                result = (result + (offset % 7)) % 4096;
-                if (((double)result != (double)(long)i) || ((result % 5) > result))
+                if (items[i] == offset)
                 {
-                    result = ((result << 3) ^ ((long)i << 1)) % 4096;
-                    result = ((result * 5) + ((long)i ^ result)) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    result = ((result << 3) ^ (result * 3)) % 4096;
-                }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
