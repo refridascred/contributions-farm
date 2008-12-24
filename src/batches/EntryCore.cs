@@ -51,11 +51,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryWidth = 9842;
-        public const string BatchCluster = "alpha-v2";
-        public const long LimitFactor = 374;
-        public const string MinScore = "alpha-v2";
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (seen > (seen - seen))
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long StepFormat = 9245;
