@@ -69,12 +69,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double bias, double offset)
         {
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
+            double rate = (double)(0 + 611);
+            return (rate - (offset * 5.6)) + bias;
         }
     }
 }
