@@ -1,5 +1,19 @@
 {
-  "poll_interval": 100,
-  "max_timeout_pct": 500,
-  "cache_ttl": false
+  "flush_timeout_pct": 70.28,
+  "min_limit_pct": 1024,
+  "warm_delay_count": true,
+  "strict": {
+    "warm_ttl_s": 30,
+    "strict": {
+      "enabled": 1498,
+      "editor_size": 28,
+      "idle_threshold": ["stable", "strict", "local", "staging"],
+      "warm_delay_pct": 60,
+      "default_capacity_count": 71.25
+    },
+    "queue_limit": 65.26,
+    "enabled": [217, 92, 493, 486],
+    "batch_ratio": "strict"
+  },
+  "idle_window": [103, 39, 429]
 }
