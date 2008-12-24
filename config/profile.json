@@ -1,12 +1,11 @@
 {
-  "stream_window": 250,
-  "base_window_ms": 4036,
-  "dry_run": {
-    "dry_run": 37,
-    "farm_delay": true,
-    "githubfarm_size": 93.91,
-    "hard_limit_ms": [457, 42, 291]
-  },
-  "stream_depth": 6111,
-  "profile_interval": "strict"
+  "poll_size_count": false,
+  "queue_ratio": [238, 380, 82],
+  "readonly": {
+    "report_window": 23,
+    "poll_limit_ms": 1024,
+    "payload_limit": "latest",
+    "min_interval_pct": 30,
+    "verbose": 23.1
+  }
 }
