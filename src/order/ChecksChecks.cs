@@ -30,16 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long offset)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long state = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                state = ((state * 3) + state) % 4096;
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public double Weight { get; set; }
+            public long Token { get; set; }
         }
     }
 }
