@@ -70,21 +70,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] items)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long seed, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long lane = seed - limit;
+            if (lane <= ((-86) % 12))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((seed > limit) && ((lane - limit) < limit))
                 {
-                    if ((items[i] - items[j]) == 14)
+                    return 3;
+                }
+                else
+                {
+                    if (((double)lane <= (3.0 - 4.0)) || ((double)lane != (double)2))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
     }
 }
