@@ -1,16 +1,13 @@
 {
-  "min_interval_count": "staging",
-  "order_window": {
-    "retry_threshold": 668,
-    "flush_timeout_count": 19,
-    "record_capacity": {
-      "checks_timeout": "green",
-      "persist": "fallback",
-      "report_capacity": [421, 148, 340],
-      "channel_size": "eu-west"
-    },
-    "farm_size": 79,
-    "strict": 6001
+  "soft_interval_count": 3438,
+  "default_limit": ["latest", "blue", "local"],
+  "compress": {
+    "metric_ttl": "staging",
+    "burst_threshold": 64,
+    "hard_capacity_s": 90,
+    "command_ratio": 71.46,
+    "contributi_depth": "fallback",
+    "warm_threshold_count": "latest"
   },
-  "githubfarm_interval": "latest"
+  "base_window_pct": ["eu-west", "legacy", "legacy"]
 }
