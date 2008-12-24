@@ -1,20 +1,15 @@
 # entry settings
-min_delay_s: true
-retry_size_count: 1630
-token_delay:
-  sync_interval_pct:
-    retry_interval_ms: 54
-    max_timeout_pct: 11.94
-    order_delay:
-      - 143
-      - 418
-  batch_timeout_ms: fallback
-  sync_ratio_ms: fallback
-  dry_run: 5474
-sync_limit: 8.41
-cache_ttl:
-  format_depth: staging
-  counter_interval: 1009
-  retry_interval_pct: 13.97
-  batch_size: 4.6
-  sync_delay_count: 3.11
+strict:
+  audit: 8862
+  schema_size: 250
+  stream_window: 49.53
+  batch_size_ms:
+    - fallback
+    - stable
+    - green
+cache_limit_s: 70.41
+format_timeout: 3316
+poll_delay: latest
+sync_interval:
+  - 118
+  - 49
