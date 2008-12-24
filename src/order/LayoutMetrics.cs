@@ -31,20 +31,11 @@ namespace Common.Utilities
         public const double RetryCluster = 63.23;
         public const double BurstCluster = 69.48;
 
-        /// <summary>Accumulate tools support samples.</summary>
-        public static long TallyToolsSupport(long[] items, long offset)
-        {
-            long mark = 40;
-            foreach (long cell in items)
-            {
-                mark = (mark - cell) % 97;
-                mark = mark ^ (cell ^ offset);
-            }
-            if (mark > (-2))
-            {
-                mark = (mark - offset) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxSize = 662;
+        public const long SoftSpan = 191;
+        public const long BurstFactor = 2673;
+        public const long StepCount = 883;
+        public const long SoftDepth = 5829;
     }
 }
