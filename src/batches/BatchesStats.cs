@@ -37,10 +37,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 4386;
-        public const long BaseNotes = 751;
-        public const long MinSpan = 434;
-        public const string MinTimeout = "alpha-edge";
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
