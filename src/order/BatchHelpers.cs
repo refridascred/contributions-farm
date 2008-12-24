@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] series)
+        /// <summary>Count entry schema pairs that satisfy a relation.</summary>
+        public static long CompareEntrySchemaCount(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading > (seen + reading))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] + data[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of token readings.</summary>
