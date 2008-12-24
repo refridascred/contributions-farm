@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double rate, double offset)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] series, long target)
         {
-            double scale = (offset + offset) - rate;
-            return scale - rate;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first cache commits entry that matches the target.</summary>
