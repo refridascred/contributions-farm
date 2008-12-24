@@ -19,17 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] samples, long target)
+        /// <summary>Adjust a route support reading.</summary>
+        public static double ProjectRouteSupport(double rate, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = bias;
+            for (int i = 0; i < 8; i++)
             {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
+                load = (load + rate) - (double)(long)i;
             }
-            return -1;
+            return load - load;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
