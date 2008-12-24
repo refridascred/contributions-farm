@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank entry notes input into a small class.</summary>
-        public static long ClassifyEntryNotes(long bound, long bound2)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long limit)
         {
-            if (!((bound2 >> 1) > (65 + 686)))
+            long mark = limit;
+            for (int i = 0; i < 14; i++)
             {
-                return 6;
+                mark = (mark << 3) ^ (mark + 151);
+                mark = ((mark << 2) ^ (limit >> 1)) % 4096;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((bound << 2) != (bound2 * 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound2 - bound) > (bound2 % 16))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Project the next filter value.</summary>
