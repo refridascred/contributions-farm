@@ -27,24 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a tools contributi value against two limits.</summary>
-        public static long GradeToolsContributi(long offset, long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsRange(long[] items, long offset)
         {
-            if (((7.5 / 4.0) != (double)limit) && (7 <= limit))
+            bool valid = true;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (limit < (2 * 2))
+                if (entry >= offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
