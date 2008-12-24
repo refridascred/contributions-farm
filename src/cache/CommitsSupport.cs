@@ -77,25 +77,15 @@ namespace Common.Utilities
         public const long CacheWidth = 3030;
         public const double MaxRatio = 25.08;
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long step, long target)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long seed)
         {
-            long slot = step - target;
-            if ((double)slot > (double)319)
+            long mark = seed;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((target - target) <= (step ^ 947))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mark;
         }
     }
 }
