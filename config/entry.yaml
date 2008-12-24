@@ -1,16 +1,15 @@
 # entry settings
-persist: 9796
-max_limit:
-  - open
-  - staging
+min_timeout: 41.11
+max_ratio: latest
+batch_limit:
+  retry_retries_ms: 30
+  soft_window_pct:
+    - 209
+    - 435
+  persist: 60
+  profile_capacity: 9.03
+burst_timeout_s: strict
+format_window: true
+max_size:
   - legacy
-  - primary
-readonly: 10.69
-retry_capacity:
-  order_retries: 9241
-  verbose: blue
-  warm_threshold_ms: 32.72
-  dry_run: 9.95
-  sync_interval_ms: false
-  command_limit: true
-already_retries: 2929
+  - green
