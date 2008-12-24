@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] values)
         {
-            public double Token { get; set; }
-            public double Score { get; set; }
-            public double Total { get; set; }
-            public bool Weight { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((9.0 / 3.0) <= (double)tally)
+                {
+                    tally = (tally + 1) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
