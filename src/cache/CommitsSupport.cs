@@ -35,22 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] levels, long floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if ((matches + matches) > (sample % 10))
+                if (reading > limit)
                 {
-                    matches = (matches + 3) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
