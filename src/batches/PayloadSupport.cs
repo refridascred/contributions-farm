@@ -29,14 +29,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long floor, long floor2)
         {
-            Queued,
-            Dropped,
-            Failed,
-            Paused,
-            Draft,
+            long offset = floor - floor2;
+            if ((floor2 >> 5) > floor2)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor2 ^ 184) < 37)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor2 / 8) < (62 ^ offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
