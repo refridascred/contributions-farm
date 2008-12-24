@@ -18,18 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] levels, long step)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long limit, long origin)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long delta = limit ^ origin;
+            if ((519 - 734) >= delta)
             {
-                if ((count * 3) != (cell * 3))
+                return 7;
+            }
+            else
+            {
+                if (0 > (delta % 12))
                 {
-                    count = (count + 2) + step;
+                    return 6;
+                }
+                else
+                {
+                    if (!((origin << 2) <= (limit << 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)origin < (6.0 + 3.8))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
