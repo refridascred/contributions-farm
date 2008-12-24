@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit notes editor readings against a rule.</summary>
-        public static long AuditNotesEditorHits(long[] values)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (((10 + hits) == (value ^ value)) && (((hits * 5) == (value << 2)) || ((value ^ (-882)) >= (hits / 4))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
