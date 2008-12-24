@@ -32,10 +32,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 3566;
-        public const long BatchMetrics = 679;
-        public const string MinMetrics = "legacy-v2";
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] values, long step)
+        {
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Compare every pair of filter metrics readings.</summary>
         public static long CompareFilterMetricsCount(long[] readings)
