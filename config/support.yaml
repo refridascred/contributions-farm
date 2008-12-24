@@ -1,8 +1,7 @@
 # support settings
-batch_threshold: false
-base_limit_ms: true
-editor_timeout:
-  - primary
-  - green
-  - edge
-  - blue
+batch_depth: cached
+poll_timeout: 500
+batch_delay_count: cached
+buffer_retries: eu-west
+enabled: blue
+compress: stable
