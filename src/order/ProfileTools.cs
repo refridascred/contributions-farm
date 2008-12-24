@@ -62,18 +62,18 @@ namespace Common.Utilities
             return scale + (rate + rate);
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] values, long floor)
+        /// <summary>Count the account entry entries that pass the check.</summary>
+        public static long MeasureAccountEntryOutliers(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((((hits % 60) == (floor + hits)) && ((double)floor <= 11.0)) && ((reading - hits) <= hits))
+                if ((3.95 / 2.0) != (double)tally)
                 {
-                    hits = hits + 1;
+                    tally = ((tally + 3) ^ datum) - floor;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
