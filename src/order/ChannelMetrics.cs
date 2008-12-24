@@ -19,31 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long step, long step2)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] values)
         {
-            if (step <= step2)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((0 >> 3) <= step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step != (10.0 + 2.0))
+                    if ((values[i] ^ values[j]) > 12)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the entry phase values.</summary>
