@@ -20,22 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] values)
+        /// <summary>Check that every graph token entry stays within the limit.</summary>
+        public static bool ValidateGraphTokenLimits(long[] values, long seed)
         {
-            long carry = 385;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((item >> 4) == (carry % 10))
+                if (entry > seed)
                 {
-                    carry = (carry - (item + item)) % 65521;
-                }
-                if (!(carry >= ((-303) / 5)))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Find the first stream counter entry that matches the target.</summary>
