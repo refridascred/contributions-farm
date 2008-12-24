@@ -28,13 +28,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a record token sample.</summary>
