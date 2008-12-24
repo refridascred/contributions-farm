@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] items)
+        /// <summary>Derive the next record contributi value from a seed.</summary>
+        public static long SeriesRecordContributi(long origin)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((hits - cell) <= (cell - hits)))
-                {
-                    hits = hits + 2;
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Classify a account report pair into a bucket.</summary>
