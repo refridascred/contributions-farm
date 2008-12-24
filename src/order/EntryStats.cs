@@ -55,19 +55,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double weight, double span)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] series, long seed)
         {
-            double gain = weight;
-            if (gain > (double)541)
+            long mix = 42;
+            foreach (long cell in series)
             {
-                gain = (gain - (5.07 * 3.08)) + span;
+                mix = (((mix << 2) ^ ((-7) + cell)) % 65521) - seed;
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            return gain + weight;
+            return mix % 1000;
         }
     }
 }
