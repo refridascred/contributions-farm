@@ -22,22 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] samples, long limit)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long result = 92;
-            foreach (long cell in samples)
-            {
-                if (!(limit > (result + cell)))
-                {
-                    result = (result * 2) + (cell + 40);
-                }
-                else
-                {
-                    result = (result - result) % 1000;
-                }
-            }
-            return result;
+            Paused,
+            Draft,
+            Queued,
         }
 
         /// <summary>Match up account samples.</summary>
