@@ -38,11 +38,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] samples)
         {
-            public bool Count { get; set; }
-            public double Owner { get; set; }
+            long sum = 85;
+            foreach (long cell in samples)
+            {
+                sum = sum - (sum / 2);
+                if ((sum > (cell ^ sum)) || (cell <= (sum % 8)))
+                {
+                    sum = ((sum * 4) + (sum * 5)) % 101;
+                }
+                sum = sum + (cell - sum);
+            }
+            if (sum > 6)
+            {
+                sum = (sum ^ (sum + sum)) % 101;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Fold a list of report readings.</summary>
