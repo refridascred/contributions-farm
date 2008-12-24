@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 4044;
-        public const long BurstTimeout = 8085;
-        public const long HardFactor = 6971;
-        public const long MinMetric = 274;
-        public const long BatchTimeout = 6648;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (!(50 < (datum ^ hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long DigestContributi(long[] samples, long limit)
