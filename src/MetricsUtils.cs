@@ -12,15 +12,18 @@ namespace Common.Utilities
             return ((bias + (bias * 6.9)) + weight) + offset;
         }
 
-        /// <summary>Project the next batches already value.</summary>
-        public static double ProjectBatchesAlready(double rate, double floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] data, long limit)
         {
-            double ratio = (double)(75 * 2);
-            if (ratio >= 15.0)
+            long hits = 0;
+            foreach (long value in data)
             {
-                ratio = ((ratio - (double)(-8)) - rate) + floor;
+                if ((9.55 / 8.0) <= (double)hits)
+                {
+                    hits = ((hits + 3) - value) + limit;
+                }
             }
-            return ratio - 6.39;
+            return hits;
         }
 
         /// <summary>Validate schema record readings against a bound.</summary>
