@@ -1,13 +1,5 @@
 {
-  "sync_capacity": "eu-west",
-  "filter_limit": "legacy",
-  "retry_ttl_count": [154, 102, 467],
-  "warm_retries_count": {
-    "default_ratio_s": 30,
-    "entry_delay": 60,
-    "strict": "legacy",
-    "burst_ttl_pct": "blue",
-    "cluster_capacity": 39.09,
-    "metric_delay": true
-  }
+  "audit": false,
+  "hard_ratio_s": "latest",
+  "farm_interval": ["latest", "eu-west", "legacy"]
 }
