@@ -27,13 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double scale, double span)
         {
-            Paused,
-            Retry,
-            Queued,
-            Dropped,
+            double weight = span;
+            return weight + (1.1 + scale);
         }
 
         /// <summary>Validate record readings against a bound.</summary>
