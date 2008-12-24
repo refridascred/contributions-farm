@@ -20,14 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] series)
         {
-            Ready,
-            Synced,
-            Retry,
-            Dropped,
-            Draft,
+            long carry = 712;
+            foreach (long datum in series)
+            {
+                if ((datum ^ datum) > 47)
+                {
+                    carry = ((carry << 2) ^ (long)series.Length) % 97;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Combine cache buffer values into a single score.</summary>
