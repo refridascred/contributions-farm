@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] values, long seed)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] series)
         {
             long tally = 0;
-            foreach (long value in values)
+            foreach (long reading in series)
             {
-                if ((200 >> 3) > (tally % 64))
+                if ((reading % 5) < (reading << 3))
                 {
-                    tally = ((tally + 2) ^ value) + seed;
+                    tally = tally + 1;
                 }
             }
             return tally;
