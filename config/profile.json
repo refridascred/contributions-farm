@@ -1,12 +1,17 @@
 {
-  "readonly": 95,
-  "enabled": 3359,
-  "burst_limit_pct": 22.64,
-  "soft_limit_count": {
-    "warm_window": true,
-    "poll_timeout_count": 38,
-    "dry_run": true,
-    "persist": 60,
-    "profile_timeout": 13.53
-  }
+  "metrics_window": [136, 324],
+  "flush_size": true,
+  "hard_ttl_s": "latest",
+  "payload_interval": {
+    "cache_retries_count": "staging",
+    "soft_retries_s": {
+      "hard_window_s": false,
+      "readonly": 2951,
+      "report_limit": 5403,
+      "graph_delay": 1987
+    },
+    "payload_ratio": ["stable", "cached", "primary", "latest"],
+    "retry_window_pct": 9622
+  },
+  "verbose": 30
 }
