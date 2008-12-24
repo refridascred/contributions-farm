@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Report support helpers.</summary>
     public static class ReportSupport
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] series)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long offset, long offset2)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long edge = offset ^ offset2;
+            if ((offset2 >> 2) <= (6 & 7))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((edge / 8) > (3 ^ offset2)) && ((offset2 >> 2) < (edge + offset2)))
                 {
-                    if ((series[i] + series[j]) == 5)
+                    return 2;
+                }
+                else
+                {
+                    if ((8 % 3) == (edge + offset))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
