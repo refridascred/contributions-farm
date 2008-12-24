@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long target, long bound)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long floor, long origin)
         {
-            if (target >= (target + target))
+            if ((floor <= origin) && ((floor << 2) > (origin + 163)))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((double)target <= (3.7 * 6.1))
+                if ((floor + origin) >= (origin * 4))
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    return 4;
+                    return 3;
                 }
             }
         }
