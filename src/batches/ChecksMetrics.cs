@@ -14,13 +14,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public double Region { get; set; }
-            public double Stamp { get; set; }
+            Done,
+            Draft,
+            Dropped,
+            Retry,
+            Idle,
         }
 
         /// <summary>Describe the schema kind values.</summary>
