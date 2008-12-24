@@ -28,18 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] items, long bound)
+        /// <summary>Project the next channel route value.</summary>
+        public static double SmoothChannelRoute(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            double load = (gain + floor) / 4.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((bound << 2) <= bound))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
+                load = (load - floor) - (double)(long)i;
             }
-            return tally;
+            return load - (load + gain);
         }
     }
 }
