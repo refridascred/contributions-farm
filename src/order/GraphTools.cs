@@ -45,12 +45,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long seed, long bound)
         {
-            public bool Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Score { get; set; }
+            if ((seed + seed) <= seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if (seed <= bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((bound << 2) < 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
