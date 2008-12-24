@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultFarm = 63.28;
-        public const string WindowDepth = "stable-1";
-        public const long MaxSize = 3253;
+        /// <summary>Look up the position of a payload channel sample.</summary>
+        public static long FindPayloadChannelIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const string RetrySession = "cached-v2";
