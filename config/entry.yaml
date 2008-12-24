@@ -1,9 +1,5 @@
 # entry settings
-route_limit: 7724
-already_depth:
-  - eu-west
-  - strict
-  - primary
-flush_threshold_pct: staging
-compress: 7303
-poll_retries_s: 32
+base_capacity_count: primary
+min_window: 68
+burst_depth_s: 91
+max_depth_pct: 8221
