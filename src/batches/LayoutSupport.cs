@@ -59,10 +59,18 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 1217;
-        public const long CacheLayout = 430;
-        public const string IdleDepth = "open-v2";
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > seed) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double MaxBudget = 69.93;
