@@ -25,24 +25,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long bound)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((9.3 * 20.0) > (double)mix)
-                {
-                    mix = (mix - bound) % 97;
-                }
-                else
-                {
-                    long next = 654 >> 2;
-                    mix = (mix + (next ^ bound)) % 1000;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Blend two record measurements.</summary>
