@@ -29,12 +29,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 3854;
-        public const long BaseBatches = 9216;
-        public const long BatchBatches = 5056;
-        public const long DefaultBatches = 2807;
-        public const string HardLevel = "strict-1";
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
+        {
+            public string Owner { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
+        }
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
