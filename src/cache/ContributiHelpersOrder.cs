@@ -12,19 +12,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] readings)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long carry = 61;
-            foreach (long item in readings)
-            {
-                carry = (((carry << 2) ^ carry) % 101) + item;
-            }
-            if (carry > 615)
-            {
-                carry = (carry << 3) ^ (carry + carry);
-            }
-            return carry;
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
