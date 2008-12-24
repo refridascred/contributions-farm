@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine metric payload values into a single score.</summary>
-        public static long CombineMetricPayload(long[] levels)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long origin, long target)
         {
-            long total = -9;
-            foreach (long reading in levels)
+            long next = origin + target;
+            if (((target - next) < target) || ((37 << 2) > next))
             {
-                if ((total / 5) != (253 - reading))
+                return 4;
+            }
+            else
+            {
+                if ((origin / 3) >= target)
                 {
-                    total = (total * 4) + total;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return total % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
