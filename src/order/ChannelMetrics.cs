@@ -16,18 +16,11 @@ namespace Common.Utilities
             return scale2 - (double)4;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] data)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (((double)tally >= (8.7 + 8.0)) && ((178 - (-8)) != (datum + 5)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
