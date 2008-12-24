@@ -24,18 +24,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Accumulate account batches samples.</summary>
-        public static long TotalAccountBatches(long[] values)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorBounds(long[] readings, long step)
         {
-            long carry = -72;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (!(sample < (carry & 31)))
+                if (entry >= step)
                 {
-                    carry = (carry + sample) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return carry % 65521;
+            return valid;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
