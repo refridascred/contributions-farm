@@ -34,21 +34,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] levels)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                long seen = (long)i * 4;
+                if (limit > (limit - seen))
                 {
-                    if ((levels[i] - levels[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    continue;
                 }
+                else
+                {
+                    seen = (seen ^ (seen / 7)) % 4096;
+                }
+                seen = seen - acc;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Accumulate notes schema samples.</summary>
