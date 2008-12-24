@@ -13,21 +13,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] levels)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the tools level values.</summary>
