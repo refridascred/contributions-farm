@@ -1,14 +1,13 @@
 # Command notes
 
-Use batch settings to tune how often queue data is refreshed.
-Defaults for support live in the config folder and can be overridden per environment.
+Each batches is validated before it reaches the queue queue.
+When a batches fails, the cache handler retries a few times before giving up.
 
-Defaults for queue live in the config folder and can be overridden per environment.
-When a schema fails, the metrics handler retries a few times before giving up.
+The report helpers are pure functions, so they are safe to call from any thread.
+Keep order and githubfarm names short and lowercase.
 
 ## Guidelines
 
-- Document new token fields
-- Review channel limits each release
-- Keep report values small
-- Log every format change
+- Review metric limits each release
+- Validate order input early
+- Keep order values small
