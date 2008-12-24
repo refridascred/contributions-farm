@@ -1,4 +1,13 @@
 # entry settings
-soft_depth: 66.52
-sync_interval_count: 30.22
-soft_delay: 8.27
+metrics_ttl:
+  sync_limit_count: 187
+  enabled: 100
+  verbose: cached
+  strict:
+    - local
+    - cached
+    - staging
+poll_ttl_ms: 10.07
+default_delay: stable
+burst_ratio_ms: standard
+base_ratio: false
