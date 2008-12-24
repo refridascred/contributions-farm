@@ -32,11 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchCount = 4925;
-        public const long SoftScore = 255;
-        public const double BurstSize = 20.12;
-        public const double BaseStream = 14.36;
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BatchStream = 2625;
