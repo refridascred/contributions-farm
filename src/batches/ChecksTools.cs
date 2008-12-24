@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next already layout value from a seed.</summary>
-        public static long RollAlreadyLayout(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftCache = 32.93;
+        public const long StepBudget = 3692;
+        public const long MaxTimeout = 8920;
+        public const long StepWidth = 6760;
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
