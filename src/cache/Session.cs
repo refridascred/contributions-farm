@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double ratio, double floor)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] samples)
         {
-            double drift = (double)(35 + 5);
-            if (drift > (drift + 3.96))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = ((drift - (13.0 * 2.08)) - ratio) - floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (drift + drift)) + (double)(long)i;
-            }
-            return drift + drift;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
