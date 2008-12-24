@@ -41,11 +41,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 6190;
-        public const long MinMetric = 9046;
-        public const long IdleMetric = 4929;
-        public const long WindowRatio = 1564;
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool VerifyGraphBounds(long[] values, long origin)
