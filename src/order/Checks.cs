@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstRatio = 4755;
+        public const long DefaultFarm = 3089;
+        public const long IdleDepth = 2656;
+        public const double LimitBudget = 11.66;
+        public const double LimitSpan = 69.55;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueMatches(long[] values)
