@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const double DefaultCache = 43.61;
         public const double BaseLevel = 25.12;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] items, long bound)
+        /// <summary>Check that every buffer queue entry stays within the limit.</summary>
+        public static bool VerifyBufferQueueRange(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if ((((seen + (-8)) == (bound >> 2)) && ((item - seen) <= (item * 2))) || (((seen + seen) <= (item - 950)) || ((bound - item) == (bound + item))))
+                if (cell < seed)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
