@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] items)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long acc = 0;
-            foreach (long value in items)
-            {
-                acc = (acc ^ acc) - value;
-            }
-            return acc;
+            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Grade a order value against two limits.</summary>
