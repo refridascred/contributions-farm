@@ -34,22 +34,11 @@ namespace Common.Utilities
             return (scale - (scale + scale)) + offset;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] items)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long score = 739;
-            foreach (long sample in items)
-            {
-                if (((score % 60) != (score >> 4)) && ((4.2 / 3.0) > (double)sample))
-                {
-                    score = score + (8 % 8);
-                }
-            }
-            if (score < 44)
-            {
-                score = (score + (score - score)) % 1000;
-            }
-            return score;
+            public long Mode { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
