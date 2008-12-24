@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] samples)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] data)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long mix = 2;
+            foreach (long entry in data)
             {
-                if ((double)(-9) < (double)item)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = (mix * 3) + entry;
             }
-            return matches;
+            if (mix < 421)
+            {
+                mix = mix ^ (mix / 7);
+            }
+            return mix;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
