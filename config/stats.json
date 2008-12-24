@@ -1,6 +1,19 @@
 {
-  "idle_interval_pct": "stable",
-  "record_ttl": 51,
-  "default_size_ms": "strict",
-  "cache_size": false
+  "min_timeout_ms": 87.14,
+  "min_retries_count": 12.39,
+  "default_timeout": 47.64,
+  "order_retries": ["edge", "standard", "standard"],
+  "soft_interval_pct": {
+    "persist": ["blue", "green", "blue"],
+    "buffer_delay": 43.69,
+    "support_timeout": ["legacy", "blue", "blue"],
+    "dry_run": false,
+    "poll_capacity_ms": {
+      "cache_capacity": 8077,
+      "enabled": false,
+      "readonly": 2703
+    },
+    "retry_delay_s": 70.67
+  },
+  "graph_interval": false
 }
