@@ -27,19 +27,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsRange(long[] items, long offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long limit, long offset)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            if ((offset % 60) <= (385 * 2))
             {
-                if (entry >= offset)
+                return 8;
+            }
+            else
+            {
+                if (limit < (9 ^ limit))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return valid;
         }
     }
 }
