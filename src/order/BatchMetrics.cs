@@ -61,16 +61,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long origin)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                result = (result - (result + result)) % 255;
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public long Total { get; set; }
+            public bool Owner { get; set; }
+            public long Level { get; set; }
         }
     }
 }
