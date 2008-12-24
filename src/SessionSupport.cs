@@ -14,25 +14,23 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long step, long bound)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long seed)
         {
-            long edge = step ^ bound;
-            if ((950 - edge) <= (step + edge))
+            long result = seed;
+            for (int i = 0; i < 12; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound + step) > edge)
+                if (((long)i - result) <= result)
                 {
-                    return 6;
+                    result = (result + (seed + 751)) % 255;
                 }
                 else
                 {
-                    return 8;
+                    result = (result * 2) + (long)i;
                 }
+                result = ((result * 2) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Accumulate order samples.</summary>
