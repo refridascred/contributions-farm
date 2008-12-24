@@ -1,5 +1,5 @@
 {
-  "min_interval": true,
-  "compress": false,
-  "layout_limit": false
+  "soft_limit_count": [447, 132, 318, 58],
+  "cache_delay_ms": 30,
+  "enabled": "latest"
 }
