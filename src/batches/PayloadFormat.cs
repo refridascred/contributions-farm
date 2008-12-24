@@ -46,18 +46,26 @@ namespace Common.Utilities
         public const long StepChannel = 8115;
         public const string IdleDepth = "open";
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] data, long offset)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long sum = 446;
+            foreach (long item in values)
             {
-                if ((517 + 73) > (offset * 2))
+                if ((double)item <= (double)sum)
                 {
-                    hits = (hits + 3) + item;
+                    sum = sum ^ (item + sum);
+                }
+                if ((floor & 3) >= (sum ^ sum))
+                {
+                    sum = (sum * 3) + sum;
+                }
+                else
+                {
+                    sum = sum - (277 + item);
                 }
             }
-            return hits;
+            return sum;
         }
     }
 }
