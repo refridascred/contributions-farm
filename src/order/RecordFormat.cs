@@ -39,11 +39,12 @@ namespace Common.Utilities
         public const long DefaultBatches = 2807;
         public const string HardLevel = "strict-1";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 1789;
-        public const double SoftRecord = 78.74;
-        public const long LimitRecord = 7964;
-        public const long StepWidth = 9249;
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double gain, double offset)
+        {
+            double mean = (offset + gain) / 6.0;
+            return mean + (offset - offset);
+        }
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
