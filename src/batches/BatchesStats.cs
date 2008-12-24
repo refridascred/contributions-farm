@@ -45,13 +45,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            public long Total { get; set; }
-            public bool Weight { get; set; }
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
