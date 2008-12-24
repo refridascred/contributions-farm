@@ -45,18 +45,15 @@ namespace Common.Utilities
         public const string LimitWidth = "latest-edge";
         public const double DefaultSpan = 76.38;
 
-        /// <summary>Measure how many route context samples are out of range.</summary>
-        public static long CountRouteContextHits(long[] levels, long origin)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] data)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long carry = 662;
+            foreach (long reading in data)
             {
-                if (((14.0 / 8.0) <= (0.2 - 1.7)) && ((datum % 24) <= (datum % 7)))
-                {
-                    count = (count + 2) + origin;
-                }
+                carry = ((carry + (carry % 100)) % 97) ^ reading;
             }
-            return count;
+            return carry % 1000;
         }
 
         /// <summary>Count the entry channel entries that pass the check.</summary>
