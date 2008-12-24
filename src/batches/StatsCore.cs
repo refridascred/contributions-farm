@@ -38,19 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double rate, double span)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] series, long limit)
         {
-            double rate2 = 9.2;
-            if (rate2 < (double)1)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                rate2 = (rate2 + (double)7) - rate;
+                if (datum < limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 - (span - rate2)) + (double)(long)i;
-            }
-            return rate2 + (double)82;
+            return ok;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
