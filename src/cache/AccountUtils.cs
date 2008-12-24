@@ -38,21 +38,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] series)
+        /// <summary>Scale a batches route figure with a bias.</summary>
+        public static double AdjustBatchesRoute(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double scale = (double)(73 + 43);
+            return (scale + (span * 2.56)) + bias;
         }
     }
 }
