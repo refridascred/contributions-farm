@@ -1,16 +1,5 @@
 {
-  "min_depth": 72.55,
-  "token_timeout": {
-    "min_depth": "edge",
-    "readonly": "edge",
-    "burst_threshold_s": 9780,
-    "idle_retries_pct": true,
-    "idle_capacity": {
-      "idle_size_ms": 8,
-      "farm_threshold": true,
-      "hard_retries_ms": true,
-      "verbose": 100
-    }
-  },
-  "sync_capacity_count": "legacy"
+  "schema_size": [451, 317],
+  "burst_window_count": "eu-west",
+  "hard_window": 3793
 }
