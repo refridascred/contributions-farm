@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Locked,
-            Pending,
-            New,
+            public long Rank { get; set; }
+            public double Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
