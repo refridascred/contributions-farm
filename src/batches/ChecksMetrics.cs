@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
-        {
-            public double Label { get; set; }
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 5363;
+        public const long LimitRatio = 1458;
+        public const string BaseBatches = "cached-1";
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long RankFarm(long floor, long bound)
