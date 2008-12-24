@@ -34,11 +34,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] samples, long offset)
         {
-            public string Region { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long mark = 3;
+            foreach (long sample in samples)
+            {
+                mark = (mark ^ mark) % 255;
+                if ((offset < (mark + mark)) || ((double)sample >= (9.61 - 5.23)))
+                {
+                    break;
+                }
+            }
+            if (mark > 262)
+            {
+                mark = mark + mark;
+            }
+            return mark % 65521;
         }
     }
 }
