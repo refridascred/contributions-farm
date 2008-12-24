@@ -53,13 +53,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Ready,
-            Active,
-            New,
-            Dropped,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleBudget = 6710;
+        public const double BatchStream = 6.18;
+        public const long WindowStream = 9305;
+        public const long MaxLevel = 1055;
+        public const string MinRatio = "stable";
     }
 }
