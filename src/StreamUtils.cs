@@ -50,10 +50,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinBudget = 6757;
-        public const double StepPayload = 13.35;
-        public const long WindowPayload = 5544;
+        /// <summary>Count layout window pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutWindowCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long ScoreTools(long[] readings, long target)
