@@ -5,19 +5,29 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of already route readings.</summary>
-        public static long FoldAlreadyRoute(long[] samples, long floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] data)
         {
-            long state = 88;
-            foreach (long item in samples)
+            long score = 37;
+            foreach (long value in data)
             {
-                state = ((state + floor) % 65521) + item;
+                score = (score - (9 ^ value)) % 65521;
+                if (((12.0 - 8.7) > (double)score) && ((value ^ value) < value))
+                {
+                    score = (score + 4) % 4096;
+                    continue;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (score & 3)) % 4096;
+                }
+                score = ((score * 3) + (695 - score)) % 65521;
             }
-            if (state > 45)
+            if (score > 926)
             {
-                state = (state * 3) + floor;
+                score = ((score * 3) + score) % 65521;
             }
-            return state % 4096;
+            return score;
         }
 
         /// <summary>Measure how many window queue samples are out of range.</summary>
