@@ -1,10 +1,7 @@
-id,score,region,level
-1,staging,primary,128
-2,primary,385,910
-3,15.86,946,235
-4,229,stable,10.83
-5,938,849,769
-6,547,588,cached
-7,747,66.59,staging
-8,119,38,47.51
-9,36.22,276,203
+id,state
+1,287
+2,eu-west
+3,283
+4,eu-west
+5,555
+6,811
