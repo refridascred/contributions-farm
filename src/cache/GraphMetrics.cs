@@ -12,19 +12,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] samples)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long anchor = 783;
-            foreach (long sample in samples)
-            {
-                anchor = (((anchor << 3) ^ (0 << 1)) % 65521) + sample;
-            }
-            if (anchor < 54)
-            {
-                anchor = anchor - (anchor >> 5);
-            }
-            return anchor % 97;
+            Done,
+            Closed,
+            Paused,
         }
 
         /// <summary>Hold a record record.</summary>
