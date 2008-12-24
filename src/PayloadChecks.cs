@@ -38,19 +38,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] samples, long target)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item > target)
+                if (data[i] == target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
