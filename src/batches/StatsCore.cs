@@ -75,14 +75,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Draft,
-            Queued,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstCount = 947;
+        public const string IdleSupport = "cached";
+        public const long MaxSupport = 8674;
+        public const string RetryWidth = "stable";
+        public const double StepInterval = 10.09;
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
