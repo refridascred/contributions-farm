@@ -38,21 +38,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count githubfarm commits pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCommitsCount(long[] readings)
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] readings)
         {
-            long hits = 0;
+            long count = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) == 13)
+                    if ((readings[i] ^ readings[j]) < 8)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
