@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const double HardTimeout = 64.38;
         public const long StepSpan = 4072;
 
-        /// <summary>Check that every route metrics entry stays within the limit.</summary>
-        public static bool VerifyRouteMetricsRange(long[] data, long step)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public double Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
