@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a batch counter counter forward.</summary>
-        public static long IterateBatchCounter(long limit)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long mark = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = mark + (long)i;
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            Closed,
+            Done,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Check that every schema buffer entry stays within the limit.</summary>
