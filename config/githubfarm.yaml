@@ -1,15 +1,7 @@
 # githubfarm settings
-idle_retries_pct:
-  - 500
-  - 443
-counter_retries:
-  dry_run: stable
-  sync_depth_count: staging
-  hard_timeout_s: cached
-already_ratio:
-  warm_capacity_ms: true
-  flush_depth_count: edge
-  githubfarm_threshold: false
-readonly: false
-retry_interval_pct: false
-cache_depth_count: 4853
+idle_threshold_count: 4480
+default_size_ms: latest
+batch_threshold_s: true
+min_delay_pct: 48
+strict: open
+support_capacity: local
