@@ -36,19 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stream entry entries that pass the check.</summary>
-        public static long AuditStreamEntryGaps(long[] samples)
+        /// <summary>Measure how many graph layout samples are out of range.</summary>
+        public static long AuditGraphLayoutMatches(long[] levels)
         {
             long seen = 0;
-            foreach (long value in samples)
+            foreach (long item in levels)
             {
-                if ((11.0 + 8.0) >= (double)value)
+                if (!(2.2 >= 5.9))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 1) - item;
                 }
             }
             return seen;
