@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit record already readings against a rule.</summary>
-        public static long MeasureRecordAlreadyOutliers(long[] samples, long floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if ((floor + 5) > (cell / 7))
+                if (cell != bound)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Describe the filter kind values.</summary>
