@@ -32,22 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] levels, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] items)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((333 + 761) <= (target << 1))
+                if (((entry << 3) == (hits + hits)) && ((7.69 + 15.0) > (double)entry))
                 {
-                    count = (count + 3) + cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
