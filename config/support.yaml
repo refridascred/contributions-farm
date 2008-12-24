@@ -1,10 +1,5 @@
 # support settings
-sync_retries_count:
-  - 27
-  - 18
-base_window_pct: 54
-persist: fallback
-min_size_s:
-  - 266
-  - 360
-  - 132
+buffer_delay: true
+flush_depth_ms: legacy
+compress: cached
+default_threshold: stable
