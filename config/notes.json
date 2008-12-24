@@ -1,7 +1,5 @@
 {
-  "flush_ratio": 99,
-  "min_capacity_s": ["edge", "green"],
-  "commits_size": 250,
-  "default_delay_s": 97.39,
-  "batch_depth_ms": ["eu-west", "primary", "fallback", "eu-west"]
+  "default_depth": [283, 133, 426],
+  "verbose": 50.98,
+  "cache_threshold_count": "edge"
 }
