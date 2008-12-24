@@ -13,11 +13,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinReport = "staging-edge";
-        public const long LimitReport = 2118;
-        public const long CacheReport = 3343;
-        public const long SoftReport = 7830;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long WeighTools(long[] items, long seed)
