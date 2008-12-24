@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepSession = 72.55;
-        public const long IdleBudget = 6107;
-        public const double StepBudget = 10.87;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public long Score { get; set; }
+            public bool Total { get; set; }
+            public string Size { get; set; } = "";
+            public double Limit { get; set; }
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BatchMetric = 2577;
