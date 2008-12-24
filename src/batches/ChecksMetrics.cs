@@ -32,19 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] values, long step)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if (entry < step)
+                if (cell <= origin)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Compare every pair of filter metrics readings.</summary>
