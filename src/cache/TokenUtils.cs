@@ -34,16 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long seed)
+        /// <summary>Digest a series of route cluster entries.</summary>
+        public static long TallyRouteCluster(long[] items)
         {
-            long mark = seed;
-            for (int i = 0; i < 9; i++)
+            long mix = -9;
+            foreach (long cell in items)
             {
-                mark = ((mark << 3) ^ 8) % 65521;
-                mark = ((mark * 2) + (long)i) % 101;
+                if ((mix ^ cell) <= cell)
+                {
+                    mix = (mix ^ (4 / 9)) % 1000;
+                }
             }
-            return mark;
+            return mix;
         }
     }
 }
