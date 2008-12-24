@@ -87,19 +87,19 @@ namespace Common.Utilities
         public const string LimitBudget = "fallback-v2";
         public const long CacheGraph = 9387;
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double ratio, double floor)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double bias, double offset)
         {
-            double gain = (double)(961 + 73);
-            if (gain >= ratio)
+            double gain = (double)(7 ^ (-45));
+            if (gain > gain)
             {
-                gain = gain - (double)27;
+                gain = gain - bias;
             }
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 5; i++)
             {
-                gain = gain - (double)(long)i;
+                gain = (gain + (double)62) + (double)(long)i;
             }
-            return gain + floor;
+            return gain + (offset * 4.0);
         }
     }
 }
