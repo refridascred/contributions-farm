@@ -37,12 +37,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryLevel = "alpha-1";
-        public const long RetryGithubfarm = 1008;
-        public const long SoftGithubfarm = 8180;
-        public const long IdleGithubfarm = 448;
-        public const long MinGithubfarm = 2437;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] items, long origin)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
