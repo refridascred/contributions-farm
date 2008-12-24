@@ -62,13 +62,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Closed,
-            Ready,
-            Idle,
-            Synced,
+            public bool Stamp { get; set; }
+            public double Count { get; set; }
+            public bool Offset { get; set; }
+            public double Total { get; set; }
         }
     }
 }
