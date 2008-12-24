@@ -43,13 +43,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Idle,
-            New,
-            Queued,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstSchema = "stable-edge";
+        public const long StepSpan = 4729;
+        public const string BaseSchema = "latest";
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long CountBatchOutliers(long[] levels, long offset)
