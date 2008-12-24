@@ -45,13 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public bool Level { get; set; }
-            public double Score { get; set; }
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
