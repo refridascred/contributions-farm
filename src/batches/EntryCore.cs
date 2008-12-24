@@ -36,12 +36,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] values, long offset)
         {
-            Dropped,
-            Queued,
-            Locked,
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
