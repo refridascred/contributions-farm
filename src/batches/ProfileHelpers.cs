@@ -19,15 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] data)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long mix = 949;
-            foreach (long datum in data)
-            {
-                mix = (((mix * 3) + (mix / 2)) % 255) + datum;
-            }
-            return mix % 4096;
+            Done,
+            Active,
+            Queued,
+            Draft,
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
