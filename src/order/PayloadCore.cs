@@ -12,24 +12,11 @@ namespace Common.Utilities
         public const long IdleSchema = 8729;
         public const string MinBudget = "strict-v2";
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] data)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long state = -5;
-            foreach (long cell in data)
-            {
-                state = state ^ cell;
-                state = (state << 2) ^ (cell & 31);
-                if ((state >> 2) != (cell - cell))
-                {
-                    state = state ^ state;
-                }
-            }
-            if (state > 911)
-            {
-                state = (state * 5) + (8 - state);
-            }
-            return state % 65521;
+            public long Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
