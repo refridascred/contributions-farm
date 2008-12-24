@@ -53,23 +53,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double gain, double offset)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long seed, long target)
         {
-            double ratio = (gain + offset) + (gain + gain);
-            if (ratio >= (double)(-615))
+            if ((double)target < (0.97 * 19.0))
             {
-                ratio = ratio - (double)770;
+                return 3;
             }
             else
             {
-                ratio = ratio - 14.0;
+                if (!((99 & 1) <= (seed + target)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (offset + ratio)) + (double)(long)i;
-            }
-            return ratio - (offset + ratio);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
