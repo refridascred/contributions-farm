@@ -67,18 +67,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] samples, long limit)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long score = 378;
-            foreach (long value in samples)
-            {
-                if (((619 / 2) < (score + value)) && ((value % 2) == (score & 31)))
-                {
-                    score = ((score * 5) + limit) % 1000;
-                }
-            }
-            return score % 1000;
+            Draft,
+            Closed,
+            Queued,
         }
     }
 }
