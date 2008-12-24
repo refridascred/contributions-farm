@@ -14,11 +14,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 2577;
-        public const long WindowLevel = 7781;
-        public const string LimitMetric = "primary-v2";
-        public const long IdleWidth = 6127;
+        /// <summary>Look up the position of a filter githubfarm sample.</summary>
+        public static long LocateFilterGithubfarmIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long RetryBudget = 2049;
