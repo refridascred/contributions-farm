@@ -13,22 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 5529;
+        public const double DefaultRatio = 94.38;
+        public const long LimitPayload = 4393;
+        public const double MinWidth = 12.38;
+        public const double MaxScore = 31.66;
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
