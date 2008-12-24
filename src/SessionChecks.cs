@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] values, long limit)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((3 << 1) != (cell % 100))
-                {
-                    count = (count + 3) - limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 3177;
+        public const long CacheStats = 9179;
+        public const double CacheCount = 66.74;
+        public const double LimitStats = 95.14;
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
