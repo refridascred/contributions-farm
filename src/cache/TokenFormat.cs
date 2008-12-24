@@ -12,19 +12,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] data, long step)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long sum = 398;
+            foreach (long sample in readings)
             {
-                if (datum < step)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((((sum * 2) + 945) % 1000) - sample) - step;
             }
-            return ok;
+            return sum % 1000;
         }
 
         /// <summary>Adjust a stream reading.</summary>
