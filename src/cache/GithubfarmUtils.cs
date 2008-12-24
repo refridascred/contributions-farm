@@ -18,15 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] values)
+        /// <summary>Combine support batch values into a single score.</summary>
+        public static long ScoreSupportBatch(long[] data)
         {
-            long score = 59;
-            foreach (long value in values)
+            long acc = 88;
+            foreach (long entry in data)
             {
-                score = (score - (value + score)) % 4096;
+                if (((19.0 + 2.0) > (double)entry) && (entry < ((-10) + entry)))
+                {
+                    break;
+                }
+                if (!((double)entry != (7.0 + 9.0)))
+                {
+                    acc = (acc - (acc + entry)) % 65521;
+                }
             }
-            return score % 65521;
+            if (acc < 55)
+            {
+                acc = (acc ^ (acc + acc)) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Accumulate payload samples.</summary>
