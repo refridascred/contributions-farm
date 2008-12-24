@@ -20,18 +20,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] series)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] levels)
         {
-            long carry = 712;
-            foreach (long datum in series)
+            long state = 66;
+            foreach (long reading in levels)
             {
-                if ((datum ^ datum) > 47)
+                if ((double)state > 9.4)
                 {
-                    carry = ((carry << 2) ^ (long)series.Length) % 97;
+                    state = (state + (state + state)) + reading;
                 }
             }
-            return carry % 97;
+            if (state > 270)
+            {
+                state = (state << 2) ^ (0 & 127);
+            }
+            return state;
         }
 
         /// <summary>Combine cache buffer values into a single score.</summary>
