@@ -30,13 +30,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Fold a list of booking readings.</summary>
+        public static long FoldBooking(long[] series, long seed)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
-            public bool Label { get; set; }
+            long mark = 22;
+            foreach (long sample in series)
+            {
+                mark = (mark << 3) ^ (sample + seed);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a buffer header.</summary>
