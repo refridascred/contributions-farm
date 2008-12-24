@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Count window entry pairs that satisfy a relation.</summary>
+        public static long CompareWindowEntryCount(long[] items)
         {
-            public bool Mode { get; set; }
-            public double Level { get; set; }
-            public double Size { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
