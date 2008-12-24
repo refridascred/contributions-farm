@@ -34,12 +34,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] samples)
         {
-            Failed,
-            Synced,
-            Queued,
+            long anchor = 214;
+            foreach (long datum in samples)
+            {
+                anchor = (anchor ^ (6 % 7)) % 97;
+                if (((5 - datum) >= (anchor & 1)) || ((726 + anchor) <= (0 / 7)))
+                {
+                    anchor = ((anchor * 2) + (2 << 1)) % 255;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a notes entry.</summary>
