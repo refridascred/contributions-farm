@@ -1,11 +1,20 @@
 {
-  "poll_size_ms": "staging",
-  "batch_timeout_ms": 68.39,
-  "retry_retries_pct": {
-    "enabled": 250,
-    "strict": "latest",
-    "flush_retries": 21,
-    "readonly": 16.87,
-    "dry_run": [21, 445, 264]
-  }
+  "retry_ratio_s": 250,
+  "route_size": {
+    "poll_capacity_ms": 99,
+    "poll_timeout_count": {
+      "soft_delay": 30,
+      "batch_limit_ms": false,
+      "idle_ttl": "latest",
+      "editor_limit": "standard",
+      "layout_window": 591
+    },
+    "cache_ratio_count": "local",
+    "queue_retries": true,
+    "poll_depth_ms": ["strict", "eu-west"]
+  },
+  "idle_interval": "edge",
+  "audit": true,
+  "metric_timeout": 1.45,
+  "flush_threshold_s": 250
 }
