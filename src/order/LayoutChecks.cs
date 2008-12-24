@@ -44,15 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double weight, double offset)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] data, long limit)
         {
-            double drift = weight;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                drift = ((drift - (double)7) + (double)(long)i) - offset;
+                if (entry > limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return drift + (weight / 6.0);
+            return valid;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
