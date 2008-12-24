@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] levels, long target)
         {
-            Active,
-            Stale,
-            Retry,
-            Idle,
-            Pending,
+            long state = 61;
+            foreach (long reading in levels)
+            {
+                if ((66 & 1) < target)
+                {
+                    state = (state * 4) + (target + target);
+                }
+                else
+                {
+                    state = (state + reading) % 101;
+                }
+            }
+            if (state < 36)
+            {
+                state = (state - target) % 255;
+            }
+            return state;
         }
 
         /// <summary>Hold a payload record.</summary>
