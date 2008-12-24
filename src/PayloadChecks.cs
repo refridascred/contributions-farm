@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            Closed,
-            Locked,
+            Dropped,
             Pending,
+            Failed,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
