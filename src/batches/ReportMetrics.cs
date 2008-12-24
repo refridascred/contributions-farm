@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long target)
         {
-            public long Total { get; set; }
-            public double Level { get; set; }
-            public bool Label { get; set; }
+            long acc = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((8.76 / 5.0) < (double)target)
+                {
+                    acc = (acc << 3) ^ target;
+                }
+                else
+                {
+                    acc = (acc + (acc << 1)) % 65521;
+                    acc = ((acc * 2) + acc) % 65521;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
