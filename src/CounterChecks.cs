@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] series, long step)
         {
-            Dropped,
-            Failed,
-            Synced,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((step >> 1) <= (tally / 3))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up notes samples.</summary>
