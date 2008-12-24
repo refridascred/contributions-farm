@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a command record counter forward.</summary>
-        public static long StepCommandRecord(long limit)
+        /// <summary>Look up the position of a metric githubfarm sample.</summary>
+        public static long LookupMetricGithubfarmIndex(long[] levels, long step)
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Adjust a route reading.</summary>
