@@ -31,22 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] levels, long seed)
+        /// <summary>Adjust a contributi cache reading.</summary>
+        public static double SmoothContributiCache(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            double load = (double)(5 + 422);
+            if (load <= (double)(-78))
             {
-                if (((long)levels.Length + seed) == (cell - tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = ((load - (double)26) - weight) - floor;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (load - 9.51)) + (double)(long)i;
+            }
+            return load - 2.49;
         }
     }
 }
