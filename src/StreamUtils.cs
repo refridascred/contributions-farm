@@ -39,14 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Idle,
-            Draft,
-            Paused,
-            Closed,
-            Locked,
+            public bool Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
