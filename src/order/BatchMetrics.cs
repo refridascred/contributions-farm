@@ -20,19 +20,15 @@ namespace Common.Utilities
             return scale + (scale / 9.0);
         }
 
-        /// <summary>Check that every graph profile entry stays within the limit.</summary>
-        public static bool CheckGraphProfileLimits(long[] items, long floor)
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double gain, double floor)
         {
-            bool valid = true;
-            foreach (long value in items)
+            double weight = (gain + floor) * 1.9;
+            for (int i = 0; i < 9; i++)
             {
-                if (value > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = (weight - (weight * 9.0)) + (double)(long)i;
             }
-            return valid;
+            return weight - (gain * 5.0);
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
