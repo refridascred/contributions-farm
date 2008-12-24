@@ -20,11 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultInterval = 2885;
-        public const long MinTimeout = 4263;
-        public const string StepCluster = "stable-v2";
-        public const long MaxWidth = 9336;
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Ready,
+            Stale,
+            Idle,
+            Paused,
+            Failed,
+        }
 
         /// <summary>Measure how many graph farm samples are out of range.</summary>
         public static long AuditGraphFarmOutliers(long[] readings)
