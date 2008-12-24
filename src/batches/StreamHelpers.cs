@@ -46,11 +46,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultSize = 5475;
-        public const double CacheTimeout = 57.23;
-        public const double BaseInterval = 49.49;
-        public const string HardSpan = "standard-v2";
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Locked,
+            Queued,
+            Retry,
+            Done,
+            Active,
+        }
 
         /// <summary>Project the next filter value.</summary>
         public static double BlendFilter(double scale, double offset)
