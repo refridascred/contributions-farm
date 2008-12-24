@@ -23,17 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] series, long target)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many route token samples are out of range.</summary>
