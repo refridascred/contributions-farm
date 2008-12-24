@@ -1,6 +1,27 @@
 # support settings
-enabled: 1
-report_interval: standard
-readonly: 49
-record_capacity: 3726
-batch_delay_s: true
+support_delay:
+  strict: cached
+  soft_limit_pct:
+    retry_interval_ms: edge
+    flush_interval_pct: primary
+    soft_window_pct: blue
+    flush_interval_count: false
+    min_retries_count:
+      - strict
+      - staging
+      - green
+    base_size_pct:
+      - staging
+      - strict
+      - fallback
+      - edge
+  persist: 3188
+  notes_ttl: 250
+  counter_limit: blue
+flush_depth: 250
+default_threshold:
+  - 490
+  - 179
+idle_depth: 6338
+flush_capacity: 1024
+batch_depth: cached
