@@ -18,10 +18,38 @@ namespace Common.Utilities
         public const long RetryInterval = 1404;
         public const string MinScore = "fallback-1";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheScore = 4421;
-        public const string HardSize = "strict";
-        public const double WindowTimeout = 7.02;
-        public const long LimitSize = 6034;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long target, long target2)
+        {
+            if (((1 + target) <= target2) || ((target2 % 24) >= (target >> 3)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)target2 <= 3.3) && ((target >> 1) > (target + target2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (554 >= (target + target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((8.0 + 5.9) > (double)target2)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
