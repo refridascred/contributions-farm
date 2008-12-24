@@ -74,10 +74,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 557;
-        public const double WindowCommand = 39.31;
-        public const long IdleCommand = 6249;
-        public const long MinSize = 2723;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] values, long limit)
+        {
+            long carry = 44;
+            foreach (long entry in values)
+            {
+                if ((double)carry > 7.5)
+                {
+                    carry = ((((carry * 3) + (carry % 16)) % 101) - entry) - limit;
+                }
+            }
+            return carry;
+        }
     }
 }
