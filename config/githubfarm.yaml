@@ -1,20 +1,19 @@
 # githubfarm settings
-graph_depth: 20
-batch_delay_pct: 58.73
-idle_retries: fallback
-burst_interval_s: cached
-retry_interval_count: edge
-base_window_pct:
-  record_limit:
-    persist: edge
-    idle_capacity_count: open
-    soft_size: 1024
-  format_delay:
-    - 306
-    - 242
-    - 229
-  strict: blue
-  cache_ttl_s:
-    - 424
-    - 217
-    - 498
+retry_limit_ms: 25.55
+context_window: cached
+cache_ratio:
+  soft_depth: 30
+  soft_interval:
+    payload_threshold: 5491
+    support_delay: false
+    hard_ratio_pct: 55.99
+    strict: 13.22
+    hard_size_s: 21.43
+    default_delay_count: open
+  poll_interval_pct: 7567
+  poll_size: 90.04
+  cache_interval_count: 9180
+  audit: true
+hard_timeout: edge
+hard_depth_pct: green
+soft_threshold_ms: fallback
