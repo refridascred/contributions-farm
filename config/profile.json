@@ -1,5 +1,8 @@
 {
-  "checks_ratio": "stable",
-  "base_depth": 3684,
-  "warm_timeout_pct": 6643
+  "default_threshold_count": "cached",
+  "sync_delay_ms": ["latest", "legacy", "blue", "fallback"],
+  "strict": 60,
+  "enabled": ["legacy", "strict", "stable"],
+  "dry_run": false,
+  "warm_size": false
 }
