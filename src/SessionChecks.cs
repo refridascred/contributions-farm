@@ -37,18 +37,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] samples, long target)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long origin, long origin2)
         {
-            long anchor = 9;
-            foreach (long entry in samples)
+            long diff = origin + origin2;
+            if (((diff + 5) > (origin + 34)) && ((origin >> 3) <= (938 & 1)))
             {
-                if (((-630) - anchor) <= ((-924) >> 4))
+                return 8;
+            }
+            else
+            {
+                if ((origin % 7) >= (diff ^ 9))
                 {
-                    anchor = (((anchor - (anchor + 5)) % 255) ^ entry) - target;
+                    return 1;
+                }
+                else
+                {
+                    if (((origin * 4) < (origin + origin2)) || ((origin & 15) >= (diff - 614)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
