@@ -25,13 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Grade a report cluster value against two limits.</summary>
+        public static long SortReportCluster(long target, long step)
         {
-            Idle,
-            Done,
-            Closed,
-            Failed,
+            if ((double)6 != (double)target)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((((-51) - target) > ((-978) + target)) || (step > (target - target)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
