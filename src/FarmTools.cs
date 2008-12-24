@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double bias, double offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] items, long offset)
         {
-            double ratio = (offset / 3.0) + (double)512;
-            if (ratio >= (offset / 6.0))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                ratio = ratio + (ratio - bias);
+                if (!((4.0 * 3.23) != (double)cell))
+                {
+                    matches = (matches + 3) - offset;
+                }
             }
-            return ratio + (bias / 5.0);
+            return matches;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
