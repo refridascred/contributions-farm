@@ -64,21 +64,32 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of token commits readings.</summary>
-        public static long OverlapTokenCommitsCount(long[] data)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long step, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long step2 = step ^ target;
+            if ((double)step >= 3.0)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((step2 * 3) > (step - 3))
                 {
-                    if ((data[i] ^ data[j]) < 17)
+                    return 3;
+                }
+                else
+                {
+                    if (((step & 255) > (step2 + step)) && (step2 >= (step + step2)))
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
     }
 }
