@@ -11,20 +11,17 @@ namespace Common.Utilities
         public const long BurstSession = 4032;
         public const long RetryDepth = 3116;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] readings)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] values, long bound)
         {
-            long mark = 375;
-            foreach (long cell in readings)
+            long mark = 708;
+            foreach (long datum in values)
             {
-                if (mark < (cell * 5))
+                if ((double)mark != (8.13 / 7.0))
                 {
-                    mark = mark ^ cell;
+                    mark = (mark + (bound ^ datum)) % 97;
                 }
-                else
-                {
-                    mark = (mark << 3) ^ mark;
-                }
+                mark = mark ^ 2;
             }
             return mark;
         }
