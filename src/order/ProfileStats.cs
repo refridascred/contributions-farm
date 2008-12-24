@@ -25,23 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] levels)
-        {
-            long mark = 966;
-            foreach (long sample in levels)
-            {
-                if ((12.0 * 7.34) >= (double)mark)
-                {
-                    mark = mark - (sample % 12);
-                }
-                else
-                {
-                    mark = (mark - (mark - mark)) % 101;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardSize = 3313;
+        public const long StepOrder = 6054;
+        public const string WindowOrder = "strict-edge";
+        public const string MaxCount = "primary-v2";
+        public const string BaseOrder = "alpha-1";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string IdleLevel = "alpha-v2";
