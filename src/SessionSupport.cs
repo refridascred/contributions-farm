@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] series)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (cell >= (count ^ count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Failed,
+            Dropped,
+            Idle,
+            Draft,
+            Queued,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
