@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitRatio = "latest-edge";
-        public const string DefaultSize = "local-1";
-        public const string SoftSize = "stable-1";
-        public const double BurstTools = 74.87;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public string Label { get; set; } = "";
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
