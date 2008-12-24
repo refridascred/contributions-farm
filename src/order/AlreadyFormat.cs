@@ -53,19 +53,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double gain, double floor)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            double load = (gain * 1.13) * 11.0;
-            if (load <= (double)96)
-            {
-                load = load - (load - floor);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - load;
+            Ready,
+            Active,
+            New,
+            Dropped,
         }
     }
 }
