@@ -13,13 +13,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Iterate the entry queue series from a seed.</summary>
+        public static long RollEntryQueue(long bound)
         {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public bool Level { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((bound >> 4) <= sum) && (sum >= bound))
+                {
+                    sum = ((sum * 5) + ((long)i * 3)) % 101;
+                    break;
+                }
+                sum = (sum + (sum + (-47))) % 97;
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the tools level values.</summary>
