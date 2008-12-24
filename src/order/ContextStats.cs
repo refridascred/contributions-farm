@@ -23,11 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] items, long seed)
         {
-            public long Mode { get; set; }
-            public double Token { get; set; }
+            long acc = 615;
+            foreach (long item in items)
+            {
+                if ((double)acc < (1.85 / 8.0))
+                {
+                    acc = ((acc << 2) ^ (seed - seed)) + item;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
