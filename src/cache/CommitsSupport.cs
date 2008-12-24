@@ -73,10 +73,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinTimeout = 72.16;
-        public const long CacheWidth = 3030;
-        public const double MaxRatio = 25.08;
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
+        {
+            public bool Label { get; set; }
+            public double Total { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long SeriesGraph(long seed)
