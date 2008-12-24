@@ -34,19 +34,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] items, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
+            long sum = 2;
+            foreach (long cell in items)
             {
-                if ((double)floor <= (double)(-381))
+                if (((origin - origin) > cell) || ((sum << 2) > (51 + sum)))
                 {
-                    mark = (mark - (floor / 9)) % 97;
+                    sum = (sum - origin) % 255;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return sum % 97;
         }
     }
 }
