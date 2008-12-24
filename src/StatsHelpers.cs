@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next token githubfarm value from a seed.</summary>
-        public static long IterateTokenGithubfarm(long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] levels)
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                if ((double)sample == (double)169)
+                {
+                    tally = tally + 3;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
