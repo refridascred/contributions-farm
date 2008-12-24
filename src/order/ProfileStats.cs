@@ -12,12 +12,18 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardSize = 3313;
-        public const long StepOrder = 6054;
-        public const string WindowOrder = "strict-edge";
-        public const string MaxCount = "primary-v2";
-        public const string BaseOrder = "alpha-1";
+        /// <summary>Find the first cache commits entry that matches the target.</summary>
+        public static long LookupCacheCommitsIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= origin) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandOutliers(long[] readings, long target)
