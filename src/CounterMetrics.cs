@@ -5,29 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long step, long target)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long seed, long offset)
         {
-            if (((target - target) <= target) || ((step ^ step) <= (target - step)))
+            long cur = seed ^ offset;
+            if ((3.3 - 9.0) <= (2.19 * 5.0))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((29 % 5) == (target ^ step))
+                if (seed < (cur >> 3))
                 {
                     return 6;
                 }
                 else
                 {
-                    if (((target & 1) <= (target + step)) && ((double)target >= (1.56 / 2.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 7;
                 }
             }
         }
