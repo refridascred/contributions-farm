@@ -12,19 +12,19 @@ namespace Common.Utilities
             return ((mean - (double)798) + weight) + floor;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double weight, double span)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] samples, long seed)
         {
-            double ratio = span + weight;
-            if (ratio <= (span - span))
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                ratio = ratio - (double)70;
+                if (entry >= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (double)773) + (double)(long)i;
-            }
-            return ratio + (double)325;
+            return valid;
         }
 
         /// <summary>Describe the cache level values.</summary>
