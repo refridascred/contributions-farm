@@ -30,39 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a profile buffer value against two limits.</summary>
-        public static long BucketProfileBuffer(long target, long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] values)
         {
-            long cur = target ^ limit;
-            if (96 < (target % 2))
+            long hits = 0;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (target >= (target + 34))
+                if (hits <= 588)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target - target) > (limit * 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)cur < 18.0)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = (hits + 3) + value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two batches measurements.</summary>
