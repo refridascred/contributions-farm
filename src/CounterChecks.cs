@@ -30,20 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] samples, long target)
-        {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheFormat = 95.2;
+        public const long MaxSize = 4246;
+        public const double BaseFormat = 98.4;
+        public const long MaxCount = 615;
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
