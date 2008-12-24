@@ -1,5 +1,11 @@
 # entry settings
-retry_ttl_count: edge
-enabled: eu-west
-persist: staging
-hard_interval: false
+warm_capacity_count:
+  batches_size: 30
+  layout_ttl: 60
+  stats_delay: 100
+  context_threshold: standard
+idle_depth: 94.2
+persist: 1024
+burst_delay:
+  - eu-west
+  - blue
