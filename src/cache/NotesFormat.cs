@@ -26,13 +26,18 @@ namespace Common.Utilities
         public const double MinQueue = 8.77;
         public const long StepQueue = 9953;
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Digest a series of support counter entries.</summary>
+        public static long TotalSupportCounter(long[] values, long seed)
         {
-            Closed,
-            New,
-            Pending,
-            Retry,
+            long score = 82;
+            foreach (long item in values)
+            {
+                if ((item + item) < (score * 3))
+                {
+                    score = score - (seed + item);
+                }
+            }
+            return score;
         }
     }
 }
