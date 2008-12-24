@@ -32,38 +32,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long target, long bound)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            if ((bound * 2) < target)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound - bound) > target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target > 2.6)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound ^ 151) > (target * 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
