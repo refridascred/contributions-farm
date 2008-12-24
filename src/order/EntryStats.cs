@@ -51,21 +51,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] series)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double weight, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = weight;
+            if (gain > (double)541)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = (gain - (5.07 * 3.08)) + span;
             }
-            return hits;
+            else
+            {
+                gain = gain + gain;
+            }
+            return gain + weight;
         }
     }
 }
