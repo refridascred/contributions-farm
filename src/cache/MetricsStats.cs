@@ -27,11 +27,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] series)
         {
-            public string Label { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate payload samples.</summary>
