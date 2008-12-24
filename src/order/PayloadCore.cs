@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxSchema = "fallback";
-        public const long RetrySchema = 2355;
-        public const long HardScore = 2331;
-        public const long IdleSchema = 8729;
-        public const string MinBudget = "strict-v2";
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxContext = "local-edge";
+        public const double WindowDepth = 47.94;
+        public const long BurstBudget = 5049;
+        public const long MinContext = 4704;
+        public const string BaseRatio = "local-1";
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
