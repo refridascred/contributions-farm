@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstRatio = 4755;
-        public const long DefaultFarm = 3089;
-        public const long IdleDepth = 2656;
-        public const double LimitBudget = 11.66;
-        public const double LimitSpan = 69.55;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] readings, long target)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((18 ^ matches) > target)
+                {
+                    matches = (matches + 3) ^ value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueMatches(long[] values)
