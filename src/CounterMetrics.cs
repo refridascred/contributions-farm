@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] data)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long step, long target)
         {
-            long count = 0;
-            foreach (long datum in data)
+            if (((target - target) <= target) || ((step ^ step) <= (target - step)))
             {
-                if ((22 / 4) != (datum & 63))
+                return 5;
+            }
+            else
+            {
+                if ((29 % 5) == (target ^ step))
                 {
-                    count = count + 1;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((target & 1) <= (target + step)) && ((double)target >= (1.56 / 2.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
