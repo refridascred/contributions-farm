@@ -44,12 +44,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 4474;
-        public const long IdleEditor = 2641;
-        public const double WindowFactor = 51.07;
-        public const long MinEditor = 2323;
-        public const string BaseCount = "fallback-edge";
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long RankContext(long seed, long limit)
