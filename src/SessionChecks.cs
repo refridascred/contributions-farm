@@ -32,18 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] readings, long floor)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long carry = 75;
+            foreach (long value in levels)
             {
-                if ((double)item <= 1.18)
+                if ((value * 4) > (carry ^ carry))
                 {
-                    matches = (matches + 2) - floor;
+                    carry = (carry - (value << 2)) % 97;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Hold a schema summary.</summary>
