@@ -19,22 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of tools githubfarm readings.</summary>
-        public static long CombineToolsGithubfarm(long[] readings, long origin)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] series)
         {
-            long state = 89;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((state / 5) > (state & 31))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (state ^ (origin + origin)) - datum;
+                    if ((series[i] - series[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state > 9)
-            {
-                state = (state ^ (state - origin)) % 255;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
