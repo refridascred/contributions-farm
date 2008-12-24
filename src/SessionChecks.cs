@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a payload counter sample.</summary>
-        public static long SeekPayloadCounterIndex(long[] values, long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] values, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((values[i] >= offset) && ((values[i] % 5) == 0))
+                if ((3 << 1) != (cell % 100))
                 {
-                    return (long)i;
+                    count = (count + 3) - limit;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a stats record.</summary>
