@@ -1,8 +1,6 @@
 {
-  "hard_ratio": "cached",
-  "warm_threshold_ms": 96.55,
-  "notes_retries": [119, 181],
-  "compress": "legacy",
-  "buffer_depth": 250,
-  "hard_threshold": 44.04
+  "default_ratio_count": 38.43,
+  "verbose": 96.24,
+  "route_limit": [308, 49, 252, 149],
+  "channel_delay": 1654
 }
