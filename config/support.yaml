@@ -1,20 +1,11 @@
 # support settings
-base_window_s: false
-persist:
-  - legacy
+graph_ttl: false
+base_timeout_s:
+  sync_interval_pct: false
+  poll_timeout_count: fallback
+  min_depth_s: 73.11
+verbose: standard
+flush_depth:
   - staging
-poll_window: 42.31
-min_window_s: 36.89
-commits_delay:
-  default_window_s: strict
-  batch_retries: 598
-  max_size:
-    session_size: latest
-    strict: 60
-    farm_size: edge
-    base_window: latest
-  idle_delay_s:
-    default_depth_count: 4.04
-    verbose: false
-    batch_limit_ms: 6781
-  burst_capacity_pct: 250
+  - stable
+enabled: edge
