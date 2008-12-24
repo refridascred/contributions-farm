@@ -69,25 +69,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long target, long floor)
-        {
-            long bound = target ^ floor;
-            if ((19 % 8) <= (target * 4))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((floor & 15) != (bound - bound)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinLevel = 3926;
+        public const long StepLevel = 6414;
+        public const string CacheCluster = "standard";
     }
 }
