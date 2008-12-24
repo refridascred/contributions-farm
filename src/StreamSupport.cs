@@ -19,36 +19,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a farm commits pair into a bucket.</summary>
-        public static long ClassifyFarmCommits(long seed, long origin)
+        /// <summary>Grade a entry window value against two limits.</summary>
+        public static long RankEntryWindow(long target, long origin)
         {
-            long diff = seed ^ origin;
-            if (seed > origin)
+            if ((9.9 + 12.0) == (double)origin)
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if ((diff + origin) > (seed * 3))
+                if ((target + origin) < target)
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if ((diff % 100) < (origin + seed))
+                    if (((target & 7) <= (origin * 3)) && (target <= (85 << 1)))
                     {
-                        return 7;
+                        return 5;
                     }
                     else
                     {
-                        if (seed <= (origin >> 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 0;
                     }
                 }
             }
