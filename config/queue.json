@@ -1,9 +1,12 @@
 {
-  "dry_run": "staging",
-  "readonly": {
-    "burst_threshold_s": "edge",
-    "burst_capacity_pct": "eu-west",
-    "cache_ttl_pct": 74.87
-  },
-  "batch_delay": "legacy"
+  "window_ratio": "local",
+  "persist": "blue",
+  "filter_delay": {
+    "verbose": [213, 431, 301, 320],
+    "burst_window_pct": "edge",
+    "route_capacity": "local",
+    "cache_timeout_s": 43.13,
+    "sync_timeout_ms": ["primary", "green", "strict", "staging"],
+    "batch_limit": 6.4
+  }
 }
