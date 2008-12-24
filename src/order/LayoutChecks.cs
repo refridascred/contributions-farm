@@ -60,13 +60,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Accumulate commits graph samples.</summary>
+        public static long ScoreCommitsGraph(long[] values)
         {
-            Locked,
-            Pending,
-            Stale,
-            Idle,
+            long acc = -3;
+            foreach (long item in values)
+            {
+                acc = (acc * 3) + (88 & 1);
+                if (item < acc)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
