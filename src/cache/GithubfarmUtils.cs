@@ -30,18 +30,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long origin)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] levels, long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                long next = origin & 7;
-                next = (next - sum) % 101;
-                sum = (sum << 3) ^ (next - sum);
-                sum = ((sum * 2) + (long)i) % 97;
+                if (cell < floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
     }
 }
