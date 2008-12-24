@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 2891;
-        public const long HardInterval = 7669;
-        public const double RetryGraph = 9.0;
-        public const double LimitSize = 96.84;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetrySize = 5846;
+        public const string WindowInterval = "cached-1";
+        public const long MinRatio = 5826;
+        public const double BaseWidth = 91.8;
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LocateMetricIndex(long[] values, long bound)
