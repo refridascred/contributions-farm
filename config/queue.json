@@ -1,15 +1,16 @@
 {
-  "flush_depth_pct": {
-    "context_interval": 60,
-    "retry_ratio_ms": ["strict", "open", "standard"],
-    "burst_delay_count": false,
-    "verbose": 7305,
-    "soft_limit_pct": "latest",
-    "base_depth": false
+  "min_interval_count": "staging",
+  "order_window": {
+    "retry_threshold": 668,
+    "flush_timeout_count": 19,
+    "record_capacity": {
+      "checks_timeout": "green",
+      "persist": "fallback",
+      "report_capacity": [421, 148, 340],
+      "channel_size": "eu-west"
+    },
+    "farm_size": 79,
+    "strict": 6001
   },
-  "context_delay": 30.09,
-  "warm_ratio": 15.67,
-  "warm_window_count": true,
-  "farm_window": 1754,
-  "strict": [129, 397]
+  "githubfarm_interval": "latest"
 }
