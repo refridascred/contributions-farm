@@ -44,11 +44,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double bias, double bias2)
+        /// <summary>Compare every pair of graph format readings.</summary>
+        public static long PairGraphFormatCount(long[] values)
         {
-            double mean = bias;
-            return (mean - 19.0) + bias2;
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
