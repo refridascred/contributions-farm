@@ -1,4 +1,20 @@
 # entry settings
-audit: false
-enabled: local
-format_capacity: edge
+min_delay_s: true
+retry_size_count: 1630
+token_delay:
+  sync_interval_pct:
+    retry_interval_ms: 54
+    max_timeout_pct: 11.94
+    order_delay:
+      - 143
+      - 418
+  batch_timeout_ms: fallback
+  sync_ratio_ms: fallback
+  dry_run: 5474
+sync_limit: 8.41
+cache_ttl:
+  format_depth: staging
+  counter_interval: 1009
+  retry_interval_pct: 13.97
+  batch_size: 4.6
+  sync_delay_count: 3.11
