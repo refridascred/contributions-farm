@@ -1,5 +1,5 @@
 {
-  "min_limit": 250,
-  "flush_interval_ms": 31,
-  "verbose": "staging"
+  "readonly": "latest",
+  "sync_delay_pct": "open",
+  "burst_ratio": "cached"
 }
