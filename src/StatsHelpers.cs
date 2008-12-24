@@ -47,11 +47,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Project the next window order value.</summary>
-        public static double ProjectWindowOrder(double rate, double bias)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] readings)
         {
-            double mean = 9.6;
-            return (mean - (bias - 13.0)) + rate;
+            long result = 492;
+            foreach (long reading in readings)
+            {
+                if (((result + reading) > result) || ((result - result) >= (reading + (long)readings.Length)))
+                {
+                    result = (result * 3) + result;
+                }
+            }
+            return result;
         }
     }
 }
