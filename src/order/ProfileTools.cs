@@ -20,24 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a order notes pair into a bucket.</summary>
-        public static long BucketOrderNotes(long origin, long limit)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            if ((double)limit == (6.7 - 9.1))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin % 8) > (limit % 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Score { get; set; }
+            public long Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
