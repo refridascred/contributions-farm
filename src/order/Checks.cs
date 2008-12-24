@@ -39,23 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] samples, long step)
-        {
-            long carry = 563;
-            foreach (long entry in samples)
-            {
-                if ((15.0 / 8.0) != (double)entry)
-                {
-                    carry = ((carry + (carry / 9)) % 97) - step;
-                }
-            }
-            if (carry > (-997))
-            {
-                carry = ((carry * 4) + carry) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitTools = "open-v2";
+        public const double IdleTools = 11.35;
+        public const long MaxTimeout = 7225;
+        public const string SoftSpan = "cached-edge";
+        public const long SoftTools = 8199;
 
         /// <summary>Locate a queue metric reading by value.</summary>
         public static long LocateQueueMetricIndex(long[] items, long seed)
