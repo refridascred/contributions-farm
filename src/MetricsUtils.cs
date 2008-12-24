@@ -54,19 +54,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] levels, long offset)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double gain, double span)
         {
-            long anchor = 50;
-            foreach (long entry in levels)
+            double drift = (double)(964 / 5);
+            if (drift >= (drift * 9.0))
             {
-                anchor = ((anchor ^ offset) % 4096) + entry;
+                drift = drift + 4.6;
             }
-            if (anchor > 69)
+            else
             {
-                anchor = anchor ^ 700;
+                drift = drift - span;
             }
-            return anchor;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + (gain - drift);
         }
     }
 }
