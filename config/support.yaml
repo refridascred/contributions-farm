@@ -1,11 +1,6 @@
 # support settings
-graph_ttl: false
-base_timeout_s:
-  sync_interval_pct: false
-  poll_timeout_count: fallback
-  min_depth_s: 73.11
-verbose: standard
-flush_depth:
-  - staging
-  - stable
-enabled: edge
+enabled: 1
+report_interval: standard
+readonly: 49
+record_capacity: 3726
+batch_delay_s: true
