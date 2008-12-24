@@ -51,19 +51,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] levels, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] items, long origin)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (cell < floor)
+                if (origin > (value - (long)items.Length))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
