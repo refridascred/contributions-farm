@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const double CacheRecord = 66.08;
         public const long WindowRecord = 9230;
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double gain, double bias)
+        /// <summary>Project the next farm channel value.</summary>
+        public static double AdjustFarmChannel(double ratio, double floor)
         {
-            double load = (double)((-8) * 5);
-            if (load <= (load + bias))
+            double ratio2 = (double)1 + ratio;
+            if (ratio2 >= ratio)
             {
-                load = load - load;
+                ratio2 = ratio2 - ratio;
             }
-            else
-            {
-                load = load + (double)(-964);
-            }
-            return load + (gain / 9.0);
+            return ratio2 + (floor * 7.5);
         }
 
         /// <summary>Accumulate report samples.</summary>
