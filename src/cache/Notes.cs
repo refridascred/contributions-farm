@@ -50,18 +50,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] levels, long offset)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(hits >= (97 >> 5)))
+                if (samples[i] < limit)
                 {
-                    hits = ((hits + 3) + sample) - offset;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
