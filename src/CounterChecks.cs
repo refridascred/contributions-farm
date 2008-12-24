@@ -23,18 +23,13 @@ namespace Common.Utilities
         public const long RetryFarm = 968;
         public const long BaseFarm = 4926;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] levels, long limit)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((878 + datum) <= count)
-                {
-                    count = (count + 2) - limit;
-                }
-            }
-            return count;
+            Draft,
+            Ready,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Hold a context record.</summary>
