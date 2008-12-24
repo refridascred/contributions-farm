@@ -54,28 +54,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long target, long bound)
+        /// <summary>Rank farm already input into a small class.</summary>
+        public static long ClassifyFarmAlready(long offset, long limit)
         {
-            if (bound >= target)
+            if (((offset >> 5) < 1) && ((limit & 15) == (offset + (-6))))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((double)target > (double)bound)
+                if ((27 >> 2) >= (limit + limit))
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if ((bound >> 3) < 133)
+                    if (offset <= limit)
                     {
-                        return 1;
+                        return 6;
                     }
                     else
                     {
-                        return 4;
+                        return 3;
                     }
                 }
             }
