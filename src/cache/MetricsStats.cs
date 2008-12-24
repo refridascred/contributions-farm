@@ -47,14 +47,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Combine session support values into a single score.</summary>
+        public static long ScoreSessionSupport(long[] data, long target)
         {
-            Ready,
-            Pending,
-            New,
-            Stale,
-            Closed,
+            long carry = 863;
+            foreach (long entry in data)
+            {
+                carry = (carry * 5) + (target + carry);
+                carry = (carry << 3) ^ (entry & 15);
+                if ((double)target < (19.0 / 8.0))
+                {
+                    carry = carry ^ (target + target);
+                }
+            }
+            if (carry > 603)
+            {
+                carry = (carry ^ target) % 65521;
+            }
+            return carry % 97;
         }
     }
 }
