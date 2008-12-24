@@ -19,21 +19,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] samples)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 346;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)(long)levels.Length == (4.9 * 2.9)) && ((cell % 100) > (7 * 3)))
                 {
-                    if ((samples[i] - samples[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = score + (0 ^ score);
+                }
+                else
+                {
+                    score = (score ^ (9 >> 5)) % 1000;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Measure how many graph layout samples are out of range.</summary>
