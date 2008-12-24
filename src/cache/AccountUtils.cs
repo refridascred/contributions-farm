@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFactor = 2460;
-        public const long DefaultFilter = 928;
-        public const string WindowCount = "primary-1";
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Ready,
+            Pending,
+            Paused,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
