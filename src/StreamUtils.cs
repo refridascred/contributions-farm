@@ -58,14 +58,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            New,
-            Stale,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardSpan = "primary-v2";
+        public const long BurstFactor = 8462;
+        public const string WindowSpan = "latest-edge";
+        public const string SoftDepth = "stable";
+        public const long MinDepth = 3020;
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
