@@ -34,14 +34,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Roll a contributi commits counter forward.</summary>
+        public static long StepContributiCommits(long origin)
         {
-            Synced,
-            Paused,
-            Dropped,
-            Retry,
-            Done,
+            long sum = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
