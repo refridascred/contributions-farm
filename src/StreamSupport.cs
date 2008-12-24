@@ -30,23 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] samples, long offset)
+        /// <summary>Match up schema githubfarm samples.</summary>
+        public static long MatchSchemaGithubfarmCount(long[] data)
         {
-            long mark = 3;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark ^ mark) % 255;
-                if ((offset < (mark + mark)) || ((double)sample >= (9.61 - 5.23)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] - data[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mark > 262)
-            {
-                mark = mark + mark;
-            }
-            return mark % 65521;
+            return matches;
         }
     }
 }
