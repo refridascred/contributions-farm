@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Order utils helpers.</summary>
     public static class OrderUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double StepRecord = 67.71;
-        public const double WindowFactor = 24.75;
-        public const long DefaultRecord = 5129;
-        public const double RetryCount = 65.83;
-        public const string WindowBudget = "fallback-1";
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] readings, long seed)
+        {
+            long mark = 2;
+            foreach (long entry in readings)
+            {
+                if ((entry + entry) >= (106 + mark))
+                {
+                    mark = ((mark * 4) + (entry + seed)) % 4096;
+                }
+            }
+            if (mark < 3)
+            {
+                mark = (mark ^ (seed + seed)) % 65521;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long CountQueueMatches(long[] samples)
