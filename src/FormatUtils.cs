@@ -22,12 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 7898;
-        public const long WindowTimeout = 1333;
-        public const double BatchOrder = 58.29;
-        public const long WindowRatio = 1049;
-        public const string IdleSpan = "legacy-v2";
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Draft,
+            Active,
+            Stale,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Check that every token githubfarm entry stays within the limit.</summary>
         public static bool CheckTokenGithubfarmBounds(long[] values, long floor)
