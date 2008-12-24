@@ -75,10 +75,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchInterval = "open-1";
-        public const long BurstFarm = 3844;
-        public const double HardRatio = 75.64;
-        public const long HardFarm = 7056;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
