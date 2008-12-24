@@ -20,12 +20,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            Pending,
-            Active,
-            Dropped,
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the session status values.</summary>
