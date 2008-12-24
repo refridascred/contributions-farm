@@ -74,38 +74,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long floor, long target)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] items)
         {
-            if (target <= (-872))
+            long score = 710;
+            foreach (long item in items)
             {
-                return 4;
+                score = (score - (score - score)) - item;
             }
-            else
-            {
-                if (floor >= 819)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)target <= (2.0 / 8.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((8 + floor) < (floor + target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return score;
         }
     }
 }
