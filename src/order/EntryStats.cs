@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] levels, long target)
         {
-            Pending,
-            Ready,
-            Draft,
-            Failed,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (((count > (201 % 24)) || (target > (count + count))) || ((9 - target) <= ((-658) - target)))
+                {
+                    count = (count + 2) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
