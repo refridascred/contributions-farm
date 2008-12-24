@@ -50,11 +50,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double gain, double span)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] values, long limit)
         {
-            double gain2 = (7.06 + span) - (span * 0.38);
-            return (gain2 - span) + gain;
+            long carry = 97;
+            foreach (long datum in values)
+            {
+                carry = ((carry ^ (426 ^ carry)) + datum) + limit;
+            }
+            return carry;
         }
     }
 }
