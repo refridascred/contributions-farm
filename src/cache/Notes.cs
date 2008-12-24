@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] samples)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] series)
         {
-            long state = 66;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long reading in series)
             {
-                state = ((state - (long)samples.Length) % 65521) - value;
-                if ((5.09 - 13.0) == (double)state)
+                if (0.1 <= (double)count)
                 {
-                    state = ((state << 2) ^ (96 + state)) % 1000;
-                }
-                else
-                {
-                    state = ((state * 3) + state) % 97;
+                    count = (count + 3) + reading;
                 }
             }
-            if (state > 667)
-            {
-                state = ((state * 2) + (state - 566)) % 255;
-            }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
