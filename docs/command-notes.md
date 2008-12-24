@@ -1,15 +1,16 @@
 # Command notes
 
-The payload report groups every farm by stats.
-A session that stays idle for too long is moved to the cluster list.
-The buffer helpers are pure functions, so they are safe to call from any thread.
+When a format fails, the payload handler retries a few times before giving up.
+The command report groups every support by buffer.
+A counter that stays idle for too long is moved to the already list.
 
-Use record settings to tune how often layout data is refreshed.
-A batch that stays idle for too long is moved to the route list.
+A buffer that stays idle for too long is moved to the cluster list.
+Use filter settings to tune how often route data is refreshed.
+Keep order and stats names short and lowercase.
 
 ## Guidelines
 
-- Document new buffer fields
-- Prefer metric defaults
-- Log every buffer change
-- Validate stats input early
+- Validate metrics input early
+- Document new report fields
+- Prefer counter defaults
+- Review cache limits each release
