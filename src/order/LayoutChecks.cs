@@ -74,19 +74,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] levels)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long acc = 7;
-            foreach (long cell in levels)
-            {
-                acc = ((acc << 3) ^ 454) % 4096;
-                if ((cell - acc) <= acc)
-                {
-                    acc = (acc * 3) + (cell / 9);
-                }
-            }
-            return acc;
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
+            public bool Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
