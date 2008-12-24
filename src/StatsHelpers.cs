@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryInterval = "strict-v2";
-        public const double DefaultGraph = 51.7;
-        public const long MaxGraph = 3871;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] items)
+        {
+            long total = 292;
+            foreach (long entry in items)
+            {
+                if ((entry << 3) > (entry + 42))
+                {
+                    total = (total - (total << 2)) % 1000;
+                }
+            }
+            if (total > 16)
+            {
+                total = (total - (total - total)) % 4096;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Project the next account tools value.</summary>
         public static double ProjectAccountTools(double gain, double floor)
