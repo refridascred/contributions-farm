@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            New,
-            Done,
-            Queued,
-            Dropped,
+            Closed,
             Pending,
+            Draft,
+            New,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
