@@ -5,19 +5,29 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every filter farm entry stays within the limit.</summary>
-        public static bool ValidateFilterFarmRange(long[] values, long step)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long state = 9;
+            foreach (long reading in samples)
             {
-                if (sample > step)
+                if (limit <= (688 - state))
                 {
-                    ok = false;
-                    break;
+                    state = state ^ (314 * 4);
+                    continue;
                 }
+                else
+                {
+                    state = (state - (reading - reading)) % 255;
+                    state = state + 9;
+                }
+                state = state ^ limit;
             }
-            return ok;
+            if (state > 655)
+            {
+                state = (state + (limit + state)) % 101;
+            }
+            return state % 65521;
         }
 
         /// <summary>Fold a list of token readings.</summary>
