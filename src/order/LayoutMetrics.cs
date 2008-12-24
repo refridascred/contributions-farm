@@ -39,10 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitWindow = 80.65;
-        public const long StepRatio = 3948;
-        public const long MaxWindow = 9058;
-        public const long StepWindow = 7838;
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double weight, double span)
+        {
+            double rate = span;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = ((rate - rate) + (double)(long)i) - weight;
+            }
+            return rate + (span + rate);
+        }
     }
 }
