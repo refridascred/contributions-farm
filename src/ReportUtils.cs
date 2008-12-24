@@ -19,31 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank batches support input into a small class.</summary>
-        public static long BucketBatchesSupport(long floor, long bound)
+        /// <summary>Count the stats notes entries that pass the check.</summary>
+        public static long TallyStatsNotesHits(long[] readings)
         {
-            if ((floor << 2) <= (bound ^ bound))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound <= (3.13 * 0.9))
+                if (((5.0 >= (double)seen) || ((item >> 5) > seen)) && !((5.0 + 11.0) >= (double)seen))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound - floor) == (floor + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
