@@ -13,13 +13,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Locate a record stream reading by value.</summary>
+        public static long LocateRecordStreamIndex(long[] data, long seed)
         {
-            New,
-            Locked,
-            Synced,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
