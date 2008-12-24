@@ -13,18 +13,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] readings)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long seed, long floor)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            if ((seed + floor) >= (892 >> 1))
             {
-                if ((seen + entry) < (630 / 9))
+                return 5;
+            }
+            else
+            {
+                if ((floor << 3) < (floor % 12))
                 {
-                    seen = seen + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
