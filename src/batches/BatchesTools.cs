@@ -20,15 +20,21 @@ namespace Common.Utilities
             return ((scale - (double)852) + gain) + floor;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double scale, double offset)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] samples)
         {
-            double mean = (double)((-7) % 100);
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (((mean + (double)4) + (double)(long)i) - scale) + offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean + (mean * 7.84);
+            return tally;
         }
     }
 }
