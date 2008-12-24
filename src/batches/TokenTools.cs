@@ -13,19 +13,31 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] levels, long bound)
+        /// <summary>Rank stats stream input into a small class.</summary>
+        public static long ClassifyStatsStream(long step, long target)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            if ((target - step) > (step - step))
             {
-                if (entry > bound)
+                return 2;
+            }
+            else
+            {
+                if (!((step * 2) > (target << 2)))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((target - target) > (-8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define command limits and defaults.</summary>
