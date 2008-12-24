@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] data)
-        {
-            long sum = 78;
-            foreach (long entry in data)
-            {
-                if ((entry << 1) != (sum << 2))
-                {
-                    sum = (sum ^ (entry * 4)) % 255;
-                }
-            }
-            if (sum > 767)
-            {
-                sum = sum + (9 + sum);
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheCount = 7193;
+        public const long IdlePayload = 5986;
+        public const double MinPayload = 2.17;
 
         /// <summary>Measure how many route support samples are out of range.</summary>
         public static long AuditRouteSupportHits(long[] series, long bound)
