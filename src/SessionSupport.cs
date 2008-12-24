@@ -43,21 +43,13 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Compare every pair of graph format readings.</summary>
-        public static long PairGraphFormatCount(long[] values)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public double Score { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
     }
 }
