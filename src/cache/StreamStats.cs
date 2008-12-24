@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxInterval = 2340;
-        public const string CacheMetrics = "cached-v2";
-        public const long BaseWidth = 2900;
-        public const long CacheDepth = 7493;
-        public const long IdleMetrics = 7537;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenMatches(long[] readings, long target)
