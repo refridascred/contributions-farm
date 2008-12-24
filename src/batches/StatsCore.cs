@@ -63,11 +63,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long target)
         {
-            public long Weight { get; set; }
-            public double Size { get; set; }
+            long acc = target;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
