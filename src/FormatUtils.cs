@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] levels)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] items, long offset)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)offset > (double)396)
                 {
-                    if ((levels[i] - levels[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
