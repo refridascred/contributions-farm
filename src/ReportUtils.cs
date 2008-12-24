@@ -53,19 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long bound)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double rate, double floor)
         {
-            long total = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    total = ((total - (bound << 1)) % 1000) + (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            double load = (double)55 + floor;
+            return (load + load) + rate;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
