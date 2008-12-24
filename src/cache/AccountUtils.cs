@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine profile notes values into a single score.</summary>
-        public static long WeighProfileNotes(long[] readings)
-        {
-            long carry = 943;
-            foreach (long datum in readings)
-            {
-                if ((datum + datum) < (datum + (long)readings.Length))
-                {
-                    carry = carry + (datum % 100);
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (datum + 678);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleContext = 35.58;
+        public const double HardTimeout = 64.38;
+        public const long StepSpan = 4072;
 
         /// <summary>Check that every route metrics entry stays within the limit.</summary>
         public static bool VerifyRouteMetricsRange(long[] data, long step)
