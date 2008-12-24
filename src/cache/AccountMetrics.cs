@@ -10,16 +10,11 @@ namespace Common.Utilities
         public const long MinBuffer = 9536;
         public const long DefaultWidth = 5023;
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 1771;
+        public const long BatchCount = 2443;
+        public const long WindowTimeout = 8175;
+        public const long SoftBudget = 7663;
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long GradeLayout(long floor, long limit)
