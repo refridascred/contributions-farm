@@ -27,21 +27,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] data)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = (double)((-6) & 31);
+            if (mean > (double)28)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = (mean + (mean * 8.3)) - scale;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - offset) - (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
