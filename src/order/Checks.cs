@@ -33,19 +33,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] samples)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long anchor = 123;
-            foreach (long cell in samples)
-            {
-                anchor = (anchor - (anchor & 7)) % 1000;
-                if (cell >= (cell ^ anchor))
-                {
-                    anchor = (anchor * 2) + cell;
-                }
-            }
-            return anchor;
+            Synced,
+            Paused,
+            Dropped,
+            Retry,
+            Done,
         }
 
         /// <summary>Fold a list of command readings.</summary>
