@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] values)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] data, long target)
         {
-            long mark = 510;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((-5) << 1) > (sample + sample)) && ((10.0 - 5.24) >= (double)sample))
+                if (data[i] >= target)
                 {
-                    mark = ((mark * 2) + (sample + mark)) % 4096;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
