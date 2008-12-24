@@ -10,16 +10,24 @@ namespace Common.Utilities
         public const double CacheRecord = 66.08;
         public const long WindowRecord = 9230;
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long bound)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long step, long offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 4; i++)
+            if ((offset & 31) < (offset - step))
             {
-                carry = (carry + (bound % 3)) % 65521;
-                carry = ((carry * 3) + (long)i) % 4093;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((offset % 16) >= offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a contributi summary.</summary>
