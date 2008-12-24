@@ -1,15 +1,7 @@
 # entry settings
-audit: staging
-flush_limit_count:
-  - strict
+soft_interval_pct: 250
+persist: false
+flush_delay:
+  - fallback
+  - standard
   - primary
-  - strict
-soft_size:
-  - 195
-  - 353
-  - 67
-persist: 9.77
-max_capacity:
-  - 228
-  - 184
-  - 414
