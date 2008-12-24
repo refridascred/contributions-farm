@@ -1,8 +1,6 @@
 {
-  "retry_ttl_count": 81.69,
-  "hard_timeout_pct": [285, 304],
-  "enabled": 30,
-  "burst_capacity_s": "eu-west",
-  "max_interval": ["standard", "standard", "green", "primary"],
-  "editor_ttl": 963
+  "metric_limit": 68.23,
+  "contributi_ttl": true,
+  "audit": true,
+  "window_timeout": "latest"
 }
