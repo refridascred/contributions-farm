@@ -1,7 +1,14 @@
 # githubfarm settings
-default_depth_count: false
-retry_delay_count: latest
-window_ttl: 5.69
-batch_retries_pct: stable
-hard_size: false
-retry_timeout_count: 32.48
+hard_size_pct:
+  - open
+  - local
+  - legacy
+buffer_delay:
+  - 463
+  - 16
+idle_retries_count: open
+warm_timeout_ms:
+  - cached
+  - blue
+  - primary
+idle_ratio: false
