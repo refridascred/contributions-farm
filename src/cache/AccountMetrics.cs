@@ -27,19 +27,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double scale, double offset)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] readings)
         {
-            double mean = (double)((-6) & 31);
-            if (mean > (double)28)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean + (mean * 8.3)) - scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - offset) - (double)(long)i;
-            }
-            return mean + mean;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
