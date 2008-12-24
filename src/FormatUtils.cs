@@ -52,22 +52,18 @@ namespace Common.Utilities
         public const string LimitWidth = "latest-edge";
         public const double DefaultSpan = 76.38;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] series)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (((tally & 31) < tally) && ((double)tally > 1.0))
+                if (51 < seed)
                 {
-                    tally = (tally + 3) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Fold a list of tools cache readings.</summary>
