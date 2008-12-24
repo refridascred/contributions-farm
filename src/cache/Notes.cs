@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
+            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Iterate the already buffer series from a seed.</summary>
