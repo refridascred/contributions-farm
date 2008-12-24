@@ -1,10 +1,6 @@
 {
-  "burst_window": 77,
-  "session_capacity": [271, 383],
-  "poll_window_count": {
-    "cache_depth_count": 41,
-    "hard_delay_ms": ["standard", "standard"],
-    "idle_timeout_ms": 76,
-    "filter_ratio": 8184
-  }
+  "min_window": ["stable", "legacy", "primary"],
+  "audit": 81.07,
+  "flush_ratio": 8276,
+  "burst_retries_s": 31.66
 }
