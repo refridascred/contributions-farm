@@ -32,22 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] readings, long limit)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] values, long floor)
         {
-            long mix = -385;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (entry < (limit / 3))
+                if (sample < floor)
                 {
-                    mix = (mix - (entry ^ mix)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            if (mix > 415)
-            {
-                mix = (mix * 5) + (5 / 2);
-            }
-            return mix % 1000;
+            return ok;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
