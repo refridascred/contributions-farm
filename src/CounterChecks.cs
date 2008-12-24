@@ -33,11 +33,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 8459;
-        public const double RetryRecord = 86.49;
-        public const long MaxWidth = 7239;
-        public const string BaseRecord = "staging-1";
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderLimits(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double ProjectTools(double gain, double span)
