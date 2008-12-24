@@ -1,4 +1,11 @@
 # support settings
-order_limit: false
-githubfarm_retries: standard
-warm_limit_ms: 250
+batch_interval: 3080
+max_depth_s: false
+payload_depth: 38.89
+retry_interval_s: 7440
+counter_depth: 829
+base_threshold_pct:
+  - eu-west
+  - primary
+  - fallback
+  - blue
