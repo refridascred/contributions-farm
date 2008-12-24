@@ -20,18 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit session stats readings against a rule.</summary>
-        public static long AuditSessionStatsHits(long[] readings)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((seen >> 2) < (seen % 5))
+                if ((44 <= (28 - entry)) || (80 <= (tally % 8)))
                 {
-                    seen = (seen + 3) ^ sample;
+                    tally = (tally + 1) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of order entries.</summary>
