@@ -38,12 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] items, long target)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] items, long origin)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] <= target)
+                if (items[i] == origin)
                 {
                     return (long)i;
                 }
