@@ -20,12 +20,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepSize = "standard-edge";
+        public const long LimitCount = 1528;
+        public const double CacheSchema = 55.71;
+        public const long StepRatio = 9767;
+        public const double BurstSchema = 3.78;
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long DeriveFilter(long seed)
