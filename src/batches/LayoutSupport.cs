@@ -44,17 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] items, long limit)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double scale, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = bias - (double)128;
+            if (ratio > 5.0)
             {
-                if ((items[i] <= limit) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio - ratio;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - scale;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Fold a list of record readings.</summary>
