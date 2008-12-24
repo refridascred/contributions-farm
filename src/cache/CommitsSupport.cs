@@ -26,18 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema report readings against a rule.</summary>
-        public static long CountSchemaReportMatches(long[] levels)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (((matches + matches) != (value + matches)) || (((double)matches <= (double)value) || ((value >> 3) > value)))
+                if (entry < step)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Blend two queue measurements.</summary>
