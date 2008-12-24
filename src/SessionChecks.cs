@@ -32,10 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxDepth = 2385;
-        public const string StepWidth = "latest-1";
-        public const string BaseLevel = "cached-1";
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((count + datum) == (datum / 8))
+                {
+                    count = (count + 2) + floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteHits(long[] data, long seed)
