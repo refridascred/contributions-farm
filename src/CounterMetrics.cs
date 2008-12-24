@@ -52,22 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command cluster readings against a rule.</summary>
-        public static long AuditCommandClusterMatches(long[] samples, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (((-6) & 255) >= floor)
+                if ((item & 3) >= (limit + limit))
                 {
-                    hits = (hits + 1) ^ datum;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Iterate the editor queue series from a seed.</summary>
