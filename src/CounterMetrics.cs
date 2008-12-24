@@ -23,22 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] values, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] readings, long seed)
         {
-            long total = 688;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((93 % 60) <= (datum ^ 834))
+                if ((long)readings.Length <= (sample * 4))
                 {
-                    total = ((total * 4) + (853 - datum)) % 97;
-                }
-                else
-                {
-                    total = total ^ (origin / 4);
+                    tally = (tally + 1) + seed;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Audit command cluster readings against a rule.</summary>
