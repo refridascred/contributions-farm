@@ -1,7 +1,8 @@
-id,active,weight,ratio,count
-1,954,78.02,117,85.65
-2,572,cached,511,40.18
-3,green,73,191,green
-4,206,498,6.22,71
-5,legacy,92.08,fallback,594
-6,833,84.43,78.35,stable
+id,state,rank,count,token
+1,eu-west,5.66,754,872
+2,32.68,876,58,blue
+3,469,standard,local,92.31
+4,legacy,24.95,270,36.57
+5,14.01,cached,513,81.36
+6,287,fallback,staging,93.78
+7,54,521,green,blue
