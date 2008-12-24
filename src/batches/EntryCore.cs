@@ -14,25 +14,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long step, long limit)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] levels)
         {
-            long step2 = step + limit;
-            if ((limit <= ((-49) - step)) && ((8.0 / 2.0) >= (double)step2))
+            long state = 231;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((727 / 9) == (step * 5))
+                state = ((state * 4) + (84 + 6)) - cell;
+                if ((state * 2) <= (state & 7))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    state = (state + state) % 101;
                 }
             }
+            return state % 97;
         }
 
         /// <summary>Project the next session value.</summary>
