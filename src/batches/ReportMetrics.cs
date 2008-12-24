@@ -27,19 +27,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate githubfarm commits readings against a bound.</summary>
-        public static bool GuardGithubfarmCommitsRange(long[] items, long offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double rate, double span)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            double bias = 4.0 - (double)9;
+            if (bias <= rate)
             {
-                if (datum != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = (bias + (rate + bias)) - span;
             }
-            return ready;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (bias * 9.0)) + (double)(long)i;
+            }
+            return bias - (bias / 9.0);
         }
     }
 }
