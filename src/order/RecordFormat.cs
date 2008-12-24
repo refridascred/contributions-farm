@@ -20,13 +20,15 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double gain, double bias)
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public double Weight { get; set; }
-            public string Rank { get; set; } = "";
+            double bias2 = (double)(352 - 934);
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = ((bias2 + (gain / 5.0)) + (double)(long)i) + bias;
+            }
+            return bias2 + (gain - gain);
         }
 
         /// <summary>Hold a already summary.</summary>
