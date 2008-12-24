@@ -16,19 +16,24 @@ namespace Common.Utilities
             return ratio + (bias / 5.0);
         }
 
-        /// <summary>Validate command stats readings against a bound.</summary>
-        public static bool GuardCommandStatsLimits(long[] levels, long seed)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long floor, long seed)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            if ((floor % 16) == (seed << 1))
             {
-                if (datum >= seed)
+                return 1;
+            }
+            else
+            {
+                if ((double)seed > (1.1 * 1.0))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return flag;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
