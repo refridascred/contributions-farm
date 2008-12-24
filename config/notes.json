@@ -1,5 +1,6 @@
 {
-  "poll_size_count": [106, 95, 244],
-  "enabled": true,
-  "strict": 4417
+  "default_depth_pct": "legacy",
+  "entry_interval": 60,
+  "burst_size": ["legacy", "green", "latest"],
+  "base_ratio_s": 46
 }
