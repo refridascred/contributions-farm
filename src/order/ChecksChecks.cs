@@ -24,15 +24,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a session profile figure with a bias.</summary>
-        public static double SmoothSessionProfile(double gain, double offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] items)
         {
-            double load = (offset / 3.0) / 4.0;
-            if (load < (load / 9.0))
+            long matches = 0;
+            foreach (long datum in items)
             {
-                load = (load + (load + offset)) - gain;
+                if (!!((matches & 31) > (8 + datum)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return load + offset;
+            return matches;
         }
     }
 }
