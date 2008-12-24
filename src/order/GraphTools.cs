@@ -22,11 +22,23 @@ namespace Common.Utilities
             return drift + (double)51;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double weight, double bias)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double gain, double bias)
         {
-            double bias2 = weight;
-            return (bias2 + (bias2 / 9.0)) + bias;
+            double weight = gain * 1.58;
+            if (weight > (double)(-455))
+            {
+                weight = weight + (weight - weight);
+            }
+            else
+            {
+                weight = weight + (gain / 6.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (gain + gain)) + (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
