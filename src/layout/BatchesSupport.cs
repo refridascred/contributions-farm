@@ -29,17 +29,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] readings, long floor)
+        /// <summary>Audit commits booking readings against a rule.</summary>
+        public static long TallyCommitsBookingMatches(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((readings[i] < floor) && ((readings[i] % 3) == 0))
+                if (!((683 << 2) >= (tally & 3)) || (((entry & 31) != (tally << 3)) && ((84 << 1) <= (entry + entry))))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
