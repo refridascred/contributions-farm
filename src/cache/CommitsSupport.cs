@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long target, long offset)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double ratio, double offset)
         {
-            long delta = target - offset;
-            if (((6.43 * 8.4) != (double)offset) || ((target * 2) < 348))
+            double drift = (double)(804 - 0);
+            if (drift <= (double)(-422))
             {
-                return 0;
+                drift = ((drift - (double)72) + ratio) + offset;
             }
             else
             {
-                if (8.69 > (double)delta)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
+                drift = drift - 4.05;
             }
+            return drift + drift;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
