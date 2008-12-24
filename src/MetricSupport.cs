@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            public bool Total { get; set; }
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
+            public double Token { get; set; }
+            public double Score { get; set; }
+            public double Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
