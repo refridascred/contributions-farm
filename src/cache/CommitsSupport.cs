@@ -50,24 +50,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long seed, long target)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] items)
         {
-            if ((double)target < (0.97 * 19.0))
+            long mix = 5;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((99 & 1) <= (seed + target)))
+                if ((double)mix > (1.7 - 3.0))
                 {
-                    return 0;
+                    mix = mix + (datum << 1);
                 }
                 else
                 {
-                    return 2;
+                    mix = mix - (datum + datum);
                 }
             }
+            return mix;
         }
 
         /// <summary>Hold a record entry.</summary>
