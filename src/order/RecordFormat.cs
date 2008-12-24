@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double gain, double span)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] levels)
         {
-            double ratio = gain;
-            return (ratio + (7.99 * 20.0)) + span;
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
