@@ -21,22 +21,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] series, long target)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double bias, double span)
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((matches * 5) != (matches + target))
-                {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double rate = span;
+            return rate + (span - bias);
         }
 
         /// <summary>Hold a profile summary.</summary>
