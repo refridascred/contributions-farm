@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] data, long step)
-        {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinTimeout = "fallback";
+        public const long BatchFactor = 2526;
+        public const long MinSize = 93;
+        public const string RetryDepth = "alpha";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string RetryQueue = "standard";
