@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] series, long target)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] readings, long floor)
         {
-            long state = 78;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (item <= (item - target))
+                if (!((floor >> 2) == (sample + sample)))
                 {
-                    state = (state - state) % 255;
-                    state = ((state * 3) + (item - 104)) % 1000;
-                    break;
-                }
-                if ((double)target > (14.0 / 8.0))
-                {
-                    state = (state + (target >> 1)) % 101;
+                    seen = seen + 3;
                 }
             }
-            if (state < 7)
-            {
-                state = (state ^ (state % 3)) % 4096;
-            }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
