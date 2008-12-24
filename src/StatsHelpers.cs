@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first queue route entry that matches the target.</summary>
-        public static long SeekQueueRouteIndex(long[] items, long step)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= step) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Project the next account tools value.</summary>
