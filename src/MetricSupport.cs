@@ -26,11 +26,19 @@ namespace Common.Utilities
         public const long IdleCount = 6417;
         public const long LimitRoute = 8750;
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Check that every report notes entry stays within the limit.</summary>
+        public static bool ValidateReportNotesRange(long[] readings, long step)
         {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
