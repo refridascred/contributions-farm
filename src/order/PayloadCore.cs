@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit buffer graph readings against a rule.</summary>
-        public static long AuditBufferGraphMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((count & 7) < (reading - reading))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWidth = 5242;
+        public const double DefaultSpan = 2.88;
+        public const string DefaultWindow = "standard-edge";
+        public const long BurstWindow = 7377;
+        public const long StepSize = 8822;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long TallySchema(long[] data)
