@@ -21,12 +21,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultLayout = 56.03;
-        public const double HardLayout = 33.53;
-        public const long BurstLayout = 1105;
-        public const string RetryLayout = "cached-1";
-        public const string BatchDepth = "open-1";
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] series, long origin)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (((double)seen >= 3.94) || ((origin / 2) > (origin - origin)))
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
