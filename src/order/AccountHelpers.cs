@@ -46,11 +46,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double ratio, double floor)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            double scale = ratio * 6.81;
-            return (scale + 7.5) + floor;
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
