@@ -1,19 +1,4 @@
 # githubfarm settings
-retry_limit_ms: 25.55
-context_window: cached
-cache_ratio:
-  soft_depth: 30
-  soft_interval:
-    payload_threshold: 5491
-    support_delay: false
-    hard_ratio_pct: 55.99
-    strict: 13.22
-    hard_size_s: 21.43
-    default_delay_count: open
-  poll_interval_pct: 7567
-  poll_size: 90.04
-  cache_interval_count: 9180
-  audit: true
-hard_timeout: edge
-hard_depth_pct: green
-soft_threshold_ms: fallback
+checks_timeout: 1024
+flush_retries_count: true
+warm_timeout_ms: 250
