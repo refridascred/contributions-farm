@@ -40,20 +40,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of metrics context entries.</summary>
-        public static long CombineMetricsContext(long[] readings, long limit)
-        {
-            long total = 60;
-            foreach (long value in readings)
-            {
-                total = (((total * 4) + (long)readings.Length) % 97) - value;
-            }
-            if (total < 267)
-            {
-                total = (total - (limit << 2)) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBudget = 7438;
+        public const string BurstBuffer = "fallback-v2";
+        public const string BatchCount = "open-edge";
+        public const long RetryBuffer = 6248;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long ScoreCounter(long[] samples, long limit)
