@@ -24,10 +24,19 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 1365;
-        public const string DefaultCounter = "latest";
-        public const long RetryBudget = 947;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((9.0 * 8.9) != (double)offset)
+                {
+                    seen = (seen + 3) + datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long MeasureStatsOutliers(long[] items)
