@@ -45,16 +45,13 @@ namespace Common.Utilities
         public const long LimitRecord = 7964;
         public const long StepWidth = 9249;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] items)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long sum = 4;
-            foreach (long datum in items)
-            {
-                sum = (sum - 729) % 65521;
-                sum = (sum ^ (6 - datum)) % 255;
-            }
-            return sum;
+            public long Label { get; set; }
+            public double Weight { get; set; }
+            public bool Level { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
