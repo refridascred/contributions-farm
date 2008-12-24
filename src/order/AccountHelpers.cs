@@ -54,13 +54,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Stale,
-            New,
-            Idle,
-            Locked,
+            public double Rank { get; set; }
+            public string Label { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Derive the next githubfarm cache value from a seed.</summary>
