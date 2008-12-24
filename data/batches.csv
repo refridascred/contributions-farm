@@ -1,8 +1,9 @@
-id,owner,weight
-1,141,55.35
-2,985,72.33
-3,650,311
-4,292,2.18
-5,95.19,189
-6,edge,449
-7,150,798
+id,score,label,token,count
+1,local,12,open,669
+2,34.52,292,37.06,edge
+3,stable,692,894,162
+4,76.88,strict,14.17,standard
+5,26.57,744,758,local
+6,standard,76.27,633,62.05
+7,stable,cached,cached,24.5
+8,629,34.19,41.29,17.36
