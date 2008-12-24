@@ -33,12 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] values, long seed)
         {
-            Stale,
-            Done,
-            Closed,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (!((8 - seen) <= (seen << 2)))
+                {
+                    seen = ((seen + 1) + item) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the schema level values.</summary>
