@@ -30,11 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheFormat = 95.2;
-        public const long MaxSize = 4246;
-        public const double BaseFormat = 98.4;
-        public const long MaxCount = 615;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((tally % 60) < (datum >> 2))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
