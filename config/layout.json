@@ -1,15 +1,13 @@
 {
-  "stats_ratio": "latest",
-  "cache_depth_pct": 500,
-  "cache_retries_ms": "edge",
-  "hard_capacity_pct": "staging",
-  "sync_depth_ms": {
-    "min_size_pct": "stable",
-    "sync_threshold": 93.41,
-    "persist": 91,
-    "soft_delay_ms": true,
-    "farm_size": [349, 270],
-    "command_capacity": "green"
+  "soft_depth_count": true,
+  "min_delay_s": {
+    "audit": [338, 271, 353, 310],
+    "verbose": false,
+    "retry_depth_ms": 68.51,
+    "hard_capacity_s": "local",
+    "max_window": 42
   },
-  "dry_run": "cached"
+  "readonly": 3447,
+  "burst_delay": "cached",
+  "hard_limit": "latest"
 }
