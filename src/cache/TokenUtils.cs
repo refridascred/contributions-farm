@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next already commits value from a seed.</summary>
-        public static long StepAlreadyCommits(long target)
+        /// <summary>Look up the position of a stats report sample.</summary>
+        public static long FindStatsReportIndex(long[] items, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (items[i] <= offset)
                 {
-                    result = (result << 2) ^ ((long)i2 << 2);
+                    return (long)i;
                 }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
