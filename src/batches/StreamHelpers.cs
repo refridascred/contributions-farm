@@ -14,15 +14,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long origin)
+        /// <summary>Check that every cluster profile entry stays within the limit.</summary>
+        public static bool CheckClusterProfileBounds(long[] values, long limit)
         {
-            long result = origin;
-            for (int i = 0; i < 15; i++)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if (datum < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
