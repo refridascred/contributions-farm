@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate notes order readings against a bound.</summary>
-        public static bool GuardNotesOrderLimits(long[] values, long origin)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double ratio, double span)
         {
-            bool ready = true;
-            foreach (long value in values)
+            double load = ratio * 6.89;
+            if (load <= 6.6)
             {
-                if (value < origin)
-                {
-                    ready = false;
-                    break;
-                }
+                load = (load - 6.0) - span;
             }
-            return ready;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (7.77 - load)) + (double)(long)i;
+            }
+            return load + (ratio / 7.0);
         }
 
         /// <summary>Roll a layout counter forward.</summary>
