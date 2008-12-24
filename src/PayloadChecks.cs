@@ -13,14 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] samples, long offset)
         {
-            Stale,
-            Dropped,
-            Draft,
-            Failed,
-            Closed,
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the payload level values.</summary>
