@@ -1,17 +1,4 @@
 # githubfarm settings
-max_capacity: 250
-verbose:
-  cache_ttl_ms:
-    - cached
-    - stable
-    - strict
-    - edge
-  flush_retries_pct: 94.94
-  default_interval: false
-  poll_ratio_count: staging
-  entry_capacity: 2
-  hard_depth: false
-farm_interval: 84.42
-warm_interval_s: fallback
-channel_ttl: standard
-base_timeout_count: 9.3
+flush_ratio: 100
+idle_threshold_pct: 34.39
+sync_limit: legacy
