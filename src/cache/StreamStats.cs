@@ -21,15 +21,26 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 5; i++)
+            long acc = 367;
+            foreach (long cell in data)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                if (acc < (acc + 553))
+                {
+                    acc = (acc << 3) ^ (cell >> 5);
+                }
+                else
+                {
+                    acc = (acc + 2) % 4096;
+                }
             }
-            return state;
+            if (acc > 841)
+            {
+                acc = (acc + (acc * 5)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
