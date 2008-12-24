@@ -44,18 +44,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] samples)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long limit, long step)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long cur = limit + step;
+            if ((limit ^ step) != (step + cur))
             {
-                if (count <= entry)
+                return 8;
+            }
+            else
+            {
+                if ((double)limit >= (3.1 + 9.3))
                 {
-                    count = count + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (((-37) / 8) != (cur << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (limit <= 948)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
