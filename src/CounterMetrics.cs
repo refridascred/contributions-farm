@@ -70,15 +70,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double weight, double span)
+        /// <summary>Iterate the editor queue series from a seed.</summary>
+        public static long SeriesEditorQueue(long seed)
         {
-            double load = weight * 11.0;
-            if (load <= (double)3)
+            long sum = seed;
+            for (int i = 0; i < 12; i++)
             {
-                load = load + (load - span);
+                if (seed < ((long)i >> 1))
+                {
+                    break;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return load + 9.02;
+            return sum;
         }
     }
 }
