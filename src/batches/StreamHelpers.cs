@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Find the first command window entry that matches the target.</summary>
+        public static long LookupCommandWindowIndex(long[] values, long bound)
         {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit notes editor readings against a rule.</summary>
