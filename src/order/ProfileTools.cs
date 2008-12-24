@@ -37,25 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long seed, long limit)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long prev = seed - limit;
-            if (!(13.0 > (double)prev))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit < (double)(-46))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Project the next batches value.</summary>
