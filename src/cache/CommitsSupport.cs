@@ -41,19 +41,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double bias, double offset)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] values)
         {
-            double gain = bias;
-            if (gain < 13.0)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain + (double)(-59);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (double)537) + (double)(long)i;
-            }
-            return gain + (offset / 8.0);
+            return seen;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
