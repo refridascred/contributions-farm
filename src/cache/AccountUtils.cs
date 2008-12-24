@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] levels, long floor)
-        {
-            long score = 1;
-            foreach (long value in levels)
-            {
-                if ((floor - floor) >= score)
-                {
-                    score = ((score << 3) ^ (score - floor)) + value;
-                }
-                else
-                {
-                    score = ((score << 2) ^ 59) % 97;
-                }
-            }
-            if (score < 1)
-            {
-                score = (score + 20) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFactor = 2460;
+        public const long DefaultFilter = 928;
+        public const string WindowCount = "primary-1";
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
