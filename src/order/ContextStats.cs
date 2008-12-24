@@ -20,15 +20,21 @@ namespace Common.Utilities
         public const long MaxReport = 3315;
         public const string WindowFactor = "fallback-edge";
 
-        /// <summary>Digest a series of buffer token entries.</summary>
-        public static long TallyBufferToken(long[] data)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] items)
         {
-            long acc = 0;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (((acc << 3) ^ 31) % 97) + value;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
