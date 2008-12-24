@@ -24,18 +24,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] series, long bound)
+        /// <summary>Accumulate account batches samples.</summary>
+        public static long TotalAccountBatches(long[] values)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long carry = -72;
+            foreach (long sample in values)
             {
-                if (seen >= (bound - bound))
+                if (!(sample < (carry & 31)))
                 {
-                    seen = (seen + 3) ^ value;
+                    carry = (carry + sample) % 97;
                 }
             }
-            return seen;
+            return carry % 65521;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
