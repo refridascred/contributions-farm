@@ -1,8 +1,20 @@
 {
-  "poll_limit_pct": "blue",
-  "command_ttl": "staging",
-  "sync_retries": "local",
-  "tools_ratio": 19.9,
-  "max_threshold_ms": "latest",
-  "schema_depth": ["strict", "primary", "open"]
+  "format_retries": 43.07,
+  "max_ratio_count": "strict",
+  "burst_size": 3144,
+  "sync_delay_s": {
+    "sync_interval_pct": false,
+    "sync_interval": 100,
+    "warm_ratio_s": "edge",
+    "cache_depth": true,
+    "stream_delay": {
+      "filter_retries": "blue",
+      "default_interval": "fallback",
+      "verbose": 60,
+      "idle_limit": false,
+      "min_ratio_pct": "latest",
+      "hard_timeout_ms": 85.87
+    }
+  },
+  "profile_threshold": true
 }
