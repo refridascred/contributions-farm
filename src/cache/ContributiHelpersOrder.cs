@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string LimitSpan = "standard-v2";
-        public const string MinDepth = "primary";
-        public const long WindowFactor = 7489;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleSize = 4321;
+        public const string DefaultPayload = "alpha-edge";
+        public const long LimitPayload = 3368;
+        public const double SoftPayload = 69.11;
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
