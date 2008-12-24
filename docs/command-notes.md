@@ -1,13 +1,11 @@
 # Command notes
 
-The queue module keeps entry values in sync with the metric cache.
-When a profile fails, the cache handler retries a few times before giving up.
-
-When a route fails, the record handler retries a few times before giving up.
-Run the notes check before changing any cluster limits.
+Each payload is validated before it reaches the record queue.
+Keep report and support names short and lowercase.
 
 ## Guidelines
 
-- Document new already fields
-- Keep entry values small
-- Validate editor input early
+- Validate tools input early
+- Log every batches change
+- Keep layout values small
+- Review queue limits each release
