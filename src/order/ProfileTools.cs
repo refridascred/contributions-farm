@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] data)
+        /// <summary>Roll a batch counter counter forward.</summary>
+        public static long IterateBatchCounter(long limit)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long mark = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((value / 2) == (value & 7))
-                {
-                    matches = matches + 3;
-                }
+                mark = mark + (long)i;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Check that every schema buffer entry stays within the limit.</summary>
