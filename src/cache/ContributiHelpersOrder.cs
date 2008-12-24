@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] items, long origin)
         {
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (1.35 < (double)origin)
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
