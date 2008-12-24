@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double bias, double span)
-        {
-            double rate = bias;
-            return (rate - (double)(-32)) + span;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchDepth = 64.98;
+        public const long SoftDepth = 5678;
+        public const string IdleCount = "alpha";
+        public const long BurstCommand = 8454;
 
         /// <summary>Roll a order counter forward.</summary>
         public static long StepOrder(long target)
