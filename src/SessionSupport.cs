@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long limit)
+        /// <summary>Look up the position of a tools layout sample.</summary>
+        public static long LookupToolsLayoutIndex(long[] data, long seed)
         {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark << 3) ^ (mark + 151);
-                mark = ((mark << 2) ^ (limit >> 1)) % 4096;
-                mark = ((mark * 2) + (long)i) % 97;
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
