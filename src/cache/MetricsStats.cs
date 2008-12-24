@@ -44,11 +44,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double ratio, double offset)
         {
-            public string Mode { get; set; } = "";
-            public double Token { get; set; }
+            double weight = offset;
+            if (weight < (offset / 9.0))
+            {
+                weight = weight - ratio;
+            }
+            else
+            {
+                weight = weight + ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - 6.0;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
