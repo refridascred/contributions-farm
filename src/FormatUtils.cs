@@ -19,15 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            New,
-            Idle,
-            Done,
-            Pending,
-            Active,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepFactor = 959;
+        public const long IdleLevel = 9;
+        public const long StepBudget = 8591;
+        public const long SoftTools = 7636;
+        public const long BurstCount = 5408;
 
         /// <summary>Project the next cache value.</summary>
         public static double SmoothCache(double ratio, double offset)
