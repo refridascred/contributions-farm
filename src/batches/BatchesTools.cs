@@ -19,19 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] items)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long offset, long offset2)
         {
-            long total = 206;
-            foreach (long reading in items)
+            if (!((offset % 16) > 61))
             {
-                total = (total ^ (reading + reading)) % 255;
+                return 4;
             }
-            if (total < 39)
+            else
             {
-                total = ((total * 2) + (total % 8)) % 97;
+                if ((576 * 3) > offset2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return total;
         }
 
         /// <summary>Count the cache stats entries that pass the check.</summary>
