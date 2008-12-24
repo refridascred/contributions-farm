@@ -1,7 +1,9 @@
 # support settings
-hard_timeout_s:
-  - 205
-  - 449
-  - 415
-soft_ratio_pct: 94
-cache_ratio: 250
+schema_size: 374
+batch_delay: stable
+githubfarm_threshold:
+  - blue
+  - open
+  - latest
+  - open
+sync_threshold_count: primary
