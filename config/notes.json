@@ -1,19 +1,8 @@
 {
-  "hard_limit_ms": {
-    "cache_depth_s": true,
-    "metrics_capacity": {
-      "persist": true,
-      "sync_capacity_s": "cached",
-      "batch_limit": 100
-    },
-    "sync_size_count": 61.76
-  },
-  "hard_delay_s": 53,
-  "burst_capacity": {
-    "sync_capacity_pct": "green",
-    "base_retries_count": 3006,
-    "dry_run": "edge",
-    "filter_limit": 49.61
-  },
-  "cluster_limit": "fallback"
+  "payload_timeout": 11,
+  "verbose": "green",
+  "batch_depth": 250,
+  "soft_interval_pct": 5.97,
+  "burst_delay_ms": "primary",
+  "soft_threshold_s": "legacy"
 }
