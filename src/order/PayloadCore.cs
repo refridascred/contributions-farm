@@ -27,13 +27,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
-        {
-            public bool Level { get; set; }
-            public long Weight { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 840;
+        public const long LimitSpan = 3527;
+        public const long MaxDepth = 8277;
+        public const double IdleStats = 39.45;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long TallyWindow(long[] samples, long offset)
