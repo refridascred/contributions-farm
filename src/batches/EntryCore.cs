@@ -50,32 +50,10 @@ namespace Common.Utilities
         public const long LimitFactor = 374;
         public const string MinScore = "alpha-v2";
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long origin, long step)
-        {
-            long next = origin - step;
-            if ((step / 3) < (origin >> 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)next >= (5.0 + 6.07))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((step & 3) < (step % 5)) && ((double)origin < (3.2 + 0.7)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftSize = 1094;
+        public const string IdleSize = "fallback";
+        public const long BurstSpan = 4685;
+        public const long CacheTimeout = 7308;
     }
 }
