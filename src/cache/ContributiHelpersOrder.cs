@@ -23,30 +23,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] series, long origin)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] items, long offset)
         {
-            long score = 7;
-            foreach (long datum in series)
+            long anchor = 264;
+            foreach (long sample in items)
             {
-                if (((origin / 5) > score) || ((score * 2) >= (datum + origin)))
+                if ((sample + offset) >= ((-15) % 100))
                 {
-                    score = (score ^ (long)series.Length) % 97;
+                    anchor = ((anchor * 3) + (8 + (long)items.Length)) % 1000;
                 }
                 else
                 {
-                    score = score + (origin + origin);
-                }
-                if ((datum - (long)series.Length) <= (datum >> 5))
-                {
-                    break;
+                    anchor = ((anchor * 3) + (anchor / 9)) % 101;
                 }
             }
-            if (score > 4)
-            {
-                score = score - origin;
-            }
-            return score % 97;
+            return anchor;
         }
 
         /// <summary>Hold a route summary.</summary>
