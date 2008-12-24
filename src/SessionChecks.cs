@@ -32,12 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] readings, long floor)
         {
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item <= 1.18)
+                {
+                    matches = (matches + 2) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a schema summary.</summary>
