@@ -34,17 +34,12 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Find the first support stream entry that matches the target.</summary>
-        public static long LookupSupportStreamIndex(long[] levels, long bound)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            New,
+            Stale,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
