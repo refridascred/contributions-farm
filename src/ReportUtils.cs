@@ -22,13 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] samples, long bound)
         {
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= bound) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a route metrics pair into a bucket.</summary>
