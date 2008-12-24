@@ -37,18 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel window samples are out of range.</summary>
-        public static long CountChannelWindowGaps(long[] samples, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] samples, long target)
         {
-            long seen = 0;
+            long anchor = 9;
             foreach (long entry in samples)
             {
-                if ((floor << 2) >= floor)
+                if (((-630) - anchor) <= ((-924) >> 4))
                 {
-                    seen = (seen + 2) - entry;
+                    anchor = (((anchor - (anchor + 5)) % 255) ^ entry) - target;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Define order limits and defaults.</summary>
