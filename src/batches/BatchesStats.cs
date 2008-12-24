@@ -26,12 +26,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] data, long bound)
         {
-            public bool Size { get; set; }
-            public long Region { get; set; }
-            public double Rank { get; set; }
+            long acc = 6;
+            foreach (long entry in data)
+            {
+                if ((7.0 - 8.93) > (double)(long)data.Length)
+                {
+                    acc = (acc + (acc & 127)) % 97;
+                }
+                else
+                {
+                    acc = (acc ^ (acc % 12)) % 97;
+                }
+                if (!((0.6 * 4.66) != (double)acc))
+                {
+                    acc = ((acc << 2) ^ (entry + bound)) % 1000;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the profile state values.</summary>
