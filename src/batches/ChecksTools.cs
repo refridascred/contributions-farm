@@ -47,15 +47,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] series)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] series, long target)
         {
             long tally = 0;
-            foreach (long cell in series)
+            foreach (long entry in series)
             {
-                if (!(((3.8 * 9.4) < (double)cell) && ((cell ^ tally) == (cell & 127))))
+                if (((tally ^ target) > (target ^ target)) && ((entry + target) <= (entry + tally)))
                 {
-                    tally = tally + 3;
+                    tally = tally + 2;
                 }
             }
             return tally;
