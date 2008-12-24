@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitTimeout = 52.35;
-        public const double CacheRecord = 66.08;
-        public const long WindowRecord = 9230;
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long PairFarmCount(long[] data)
