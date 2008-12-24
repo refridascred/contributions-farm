@@ -38,18 +38,11 @@ namespace Common.Utilities
         public const double BurstSize = 20.12;
         public const double BaseStream = 14.36;
 
-        /// <summary>Locate a session cache reading by value.</summary>
-        public static long FindSessionCacheIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 2625;
+        public const long LimitStream = 3671;
+        public const double HardStream = 28.7;
+        public const long CacheStream = 7592;
 
         /// <summary>Rank contributi commits input into a small class.</summary>
         public static long GradeContributiCommits(long origin, long step)
