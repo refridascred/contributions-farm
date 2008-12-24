@@ -35,11 +35,19 @@ namespace Common.Utilities
         public const string MaxCount = "primary-v2";
         public const string BaseOrder = "alpha-1";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleLevel = "alpha-v2";
-        public const string StepBatches = "legacy-edge";
-        public const double SoftBatches = 16.53;
-        public const string IdleBatches = "legacy";
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] readings, long target)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((double)target >= (10.0 * 0.4))
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long StepEntry = 5259;
