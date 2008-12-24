@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 710;
-        public const string IdleRatio = "local-edge";
-        public const long SoftEditor = 2935;
-        public const long BatchEditor = 6009;
-        public const string HardScore = "strict";
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long SortCache(long offset, long target)
