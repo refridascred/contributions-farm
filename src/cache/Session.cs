@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] readings)
         {
-            public long Score { get; set; }
-            public bool Total { get; set; }
-            public string Size { get; set; } = "";
-            public double Limit { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (381 > (tally % 100))
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
