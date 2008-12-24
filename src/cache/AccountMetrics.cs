@@ -24,23 +24,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit notes checks readings against a rule.</summary>
-        public static long MeasureNotesChecksOutliers(long[] items, long offset)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (reading <= offset)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 2753;
+        public const string LimitStats = "alpha";
+        public const long RetryBudget = 422;
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
