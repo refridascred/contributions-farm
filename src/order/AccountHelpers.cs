@@ -17,22 +17,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] readings, long floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] readings, long seed)
         {
-            long acc = 5;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((floor + entry) < floor)
+                if (!((seed >= datum) || ((double)hits != (10.0 - 5.83))))
                 {
-                    acc = (acc + entry) % 1000;
+                    hits = hits + 2;
                 }
             }
-            if (acc < (-91))
-            {
-                acc = acc - (acc >> 4);
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
