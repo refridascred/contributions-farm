@@ -20,17 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] samples, long origin)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 48;
+            foreach (long cell in values)
             {
-                if ((samples[i] > origin) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry + (676 % 60)) + cell;
             }
-            return -1;
+            if (carry > 33)
+            {
+                carry = carry + (carry & 1);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Blend two batches commits measurements.</summary>
