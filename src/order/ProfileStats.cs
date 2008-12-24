@@ -43,10 +43,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 5877;
-        public const long MinWindow = 9599;
-        public const long RetryLevel = 906;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleLevel = "alpha-v2";
+        public const string StepBatches = "legacy-edge";
+        public const double SoftBatches = 16.53;
+        public const string IdleBatches = "legacy";
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long WeighGithubfarm(long[] data)
