@@ -56,12 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] series)
         {
-            Queued,
-            Retry,
-            Idle,
+            long mark = 65;
+            foreach (long cell in series)
+            {
+                mark = (mark + mark) % 255;
+                if ((double)(-144) == (double)cell)
+                {
+                    mark = ((mark * 5) + (cell / 5)) % 101;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
