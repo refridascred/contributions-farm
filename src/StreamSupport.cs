@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] readings, long limit)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double drift = (double)83 / 7.0;
+            return (drift - (gain * 5.0)) + floor;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
