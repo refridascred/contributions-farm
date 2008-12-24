@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryProfile = 56.85;
-        public const string LimitProfile = "primary";
-        public const double RetryLevel = 84.34;
-        public const long StepProfile = 4695;
-        public const double MaxProfile = 54.95;
+        /// <summary>Combine metric payload values into a single score.</summary>
+        public static long CombineMetricPayload(long[] levels)
+        {
+            long total = -9;
+            foreach (long reading in levels)
+            {
+                if ((total / 5) != (253 - reading))
+                {
+                    total = (total * 4) + total;
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long DefaultCluster = 2933;
