@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] samples)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double ratio, double floor)
         {
-            long sum = 301;
-            foreach (long value in samples)
+            double bias = floor;
+            if (bias <= (ratio / 7.0))
             {
-                if (((sum >> 4) < (sum + value)) && (sum >= (sum / 9)))
-                {
-                    sum = (sum << 3) ^ (sum % 24);
-                }
-                sum = (sum << 3) ^ value;
-                sum = (sum - (value + sum)) % 65521;
+                bias = bias - ratio;
             }
-            return sum % 4096;
+            return bias + floor;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
