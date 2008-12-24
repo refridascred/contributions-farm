@@ -41,18 +41,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] data, long seed)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long score = 675;
+            foreach (long item in data)
             {
-                if (87 < ((long)data.Length / 5))
+                if (item <= score)
                 {
-                    hits = ((hits + 2) ^ sample) + seed;
+                    score = score ^ (score + offset);
                 }
             }
-            return hits;
+            if (score < 8)
+            {
+                score = (score ^ (323 * 3)) % 101;
+            }
+            return score % 1000;
         }
     }
 }
