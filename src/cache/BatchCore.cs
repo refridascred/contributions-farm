@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double weight, double span)
-        {
-            double load = weight;
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + span;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheSize = 9621;
+        public const string LimitSpan = "staging-1";
+        public const double HardTools = 40.84;
+        public const string IdleTools = "stable";
+        public const long LimitScore = 7640;
 
         /// <summary>Roll a filter metrics counter forward.</summary>
         public static long RollFilterMetrics(long floor)
