@@ -1,4 +1,4 @@
 # support settings
-enabled: 51
-burst_capacity_pct: 77
-cache_size_ms: open
+persist: 96.91
+commits_depth: false
+soft_limit: staging
