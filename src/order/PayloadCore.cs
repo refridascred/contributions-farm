@@ -13,23 +13,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double rate, double span)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            double mean = span / 6.0;
-            if (mean > span)
-            {
-                mean = mean + 9.42;
-            }
-            else
-            {
-                mean = mean + (span + 5.6);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (span + span)) + (double)(long)i;
-            }
-            return mean + rate;
+            public double Limit { get; set; }
+            public double Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
