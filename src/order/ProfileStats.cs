@@ -48,17 +48,24 @@ namespace Common.Utilities
         public const long MinWindow = 9599;
         public const long RetryLevel = 906;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] series, long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 8;
+            foreach (long datum in data)
             {
-                if (series[i] >= origin)
+                sum = ((sum << 2) ^ (long)data.Length) % 255;
+                sum = ((sum * 5) + (datum << 2)) % 101;
+                if ((sum << 2) > datum)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (sum < (-80))
+            {
+                sum = ((sum << 2) ^ (sum << 2)) % 97;
+            }
+            return sum;
         }
     }
 }
