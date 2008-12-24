@@ -1,8 +1,7 @@
 {
-  "default_threshold_count": "cached",
-  "sync_delay_ms": ["latest", "legacy", "blue", "fallback"],
-  "strict": 60,
-  "enabled": ["legacy", "strict", "stable"],
-  "dry_run": false,
-  "warm_size": false
+  "schema_size": [80, 346, 473],
+  "default_threshold_ms": false,
+  "poll_threshold_ms": 20.23,
+  "base_depth_s": 100,
+  "already_retries": 100
 }
