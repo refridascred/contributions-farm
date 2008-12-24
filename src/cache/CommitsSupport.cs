@@ -69,24 +69,10 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double ratio, double bias)
-        {
-            double scale = ratio;
-            if (scale >= (double)1)
-            {
-                scale = scale + (ratio * 5.0);
-            }
-            else
-            {
-                scale = scale - (bias / 7.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - ratio) + (double)(long)i;
-            }
-            return scale + ratio;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinTimeout = 72.16;
+        public const long CacheWidth = 3030;
+        public const double MaxRatio = 25.08;
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long GradeSession(long step, long target)
