@@ -20,24 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long offset, long origin)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            if (origin > (offset + 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((5.8 * 5.82) != (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
