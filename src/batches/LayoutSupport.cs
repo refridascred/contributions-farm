@@ -59,20 +59,10 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] samples, long limit)
-        {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 1217;
+        public const long CacheLayout = 430;
+        public const string IdleDepth = "open-v2";
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long TotalEditor(long[] values, long limit)
