@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] values)
+        /// <summary>Check that every checks record entry stays within the limit.</summary>
+        public static bool GuardChecksRecordBounds(long[] readings, long seed)
         {
-            long score = 486;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                score = (score * 5) + (datum + score);
-                if ((score + datum) > 42)
+                if (item <= seed)
                 {
-                    score = (score + score) % 101;
-                }
-                else
-                {
-                    score = (score << 3) ^ 6;
+                    valid = false;
+                    break;
                 }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
