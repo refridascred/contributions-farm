@@ -83,19 +83,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] data)
+        /// <summary>Locate a layout editor reading by value.</summary>
+        public static long LocateLayoutEditorIndex(long[] samples, long floor)
         {
-            long anchor = 5;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor ^ (datum << 2)) % 101;
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 68)
-            {
-                anchor = (anchor - ((long)data.Length - anchor)) % 97;
-            }
-            return anchor % 65521;
+            return -1;
         }
     }
 }
