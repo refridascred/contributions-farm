@@ -1,18 +1,5 @@
 {
-  "persist": 7282,
-  "strict": {
-    "persist": "latest",
-    "warm_threshold": 8808,
-    "channel_limit": "fallback",
-    "readonly": {
-      "idle_capacity_count": true,
-      "account_interval": 9510,
-      "support_ratio": "fallback"
-    },
-    "poll_delay_count": "stable"
-  },
-  "batch_timeout": false,
-  "report_capacity": "standard",
-  "base_size_s": 93,
-  "window_window": 6453
+  "idle_size": 68.95,
+  "dry_run": ["legacy", "blue"],
+  "warm_limit_ms": "edge"
 }
