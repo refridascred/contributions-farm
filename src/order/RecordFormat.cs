@@ -46,13 +46,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public long Label { get; set; }
-            public double Weight { get; set; }
-            public bool Level { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinCount = 60.68;
+        public const long RetryWidth = 8616;
+        public const long BatchEntry = 5751;
+        public const string BaseInterval = "strict";
+        public const string SoftBudget = "stable-edge";
     }
 }
