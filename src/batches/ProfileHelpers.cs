@@ -23,21 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] readings)
+        /// <summary>Count the schema profile entries that pass the check.</summary>
+        public static long AuditSchemaProfileHits(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((tally - origin) <= origin))
                 {
-                    if ((readings[i] - readings[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 2) - sample;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the queue state values.</summary>
