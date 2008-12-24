@@ -28,18 +28,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] items, long target)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (target >= (matches >> 1))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
