@@ -19,17 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] data, long floor)
+        /// <summary>Classify a farm commits pair into a bucket.</summary>
+        public static long ClassifyFarmCommits(long seed, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long diff = seed ^ origin;
+            if (seed > origin)
             {
-                if (data[i] < floor)
+                return 0;
+            }
+            else
+            {
+                if ((diff + origin) > (seed * 3))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((diff % 100) < (origin + seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (seed <= (origin >> 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
