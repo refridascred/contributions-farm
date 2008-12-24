@@ -22,29 +22,36 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a counter layout pair into a bucket.</summary>
-        public static long BucketCounterLayout(long origin, long target)
+        /// <summary>Grade a farm queue value against two limits.</summary>
+        public static long BucketFarmQueue(long target, long floor)
         {
-            long offset = origin + target;
-            if ((double)7 == (double)offset)
+            long edge = target ^ floor;
+            if (((floor * 4) != (edge - target)) || ((target + (-42)) < ((-67) - floor)))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((offset < origin) || ((9.36 * 2.66) == (double)origin))
+                if ((edge * 2) != (edge & 255))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if ((16 % 100) > (offset - 7))
+                    if (!((21 + floor) <= (edge + 957)))
                     {
-                        return 1;
+                        return 4;
                     }
                     else
                     {
-                        return 2;
+                        if (((double)edge > (2.41 + 1.7)) || ((67 - target) < (96 - edge)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
