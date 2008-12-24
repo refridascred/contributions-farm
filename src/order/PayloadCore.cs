@@ -21,19 +21,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] series, long offset)
+        /// <summary>Fold a list of command stats readings.</summary>
+        public static long WeighCommandStats(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long item in series)
+            long mark = -83;
+            foreach (long entry in data)
             {
-                if (item <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark ^ mark) + entry) - offset;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
