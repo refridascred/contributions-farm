@@ -1,11 +1,12 @@
 # Layout notes
 
-Use layout settings to tune how often checks data is refreshed.
-The queue report groups every support by metric.
+Use stats settings to tune how often window data is refreshed.
+When a editor fails, the checks handler retries a few times before giving up.
+Use metric settings to tune how often layout data is refreshed.
 
 ## Guidelines
 
-- Review profile limits each release
-- Log every editor change
-- Prefer stream defaults
-- Validate tools input early
+- Prefer booking defaults
+- Document new graph fields
+- Validate token input early
+- Keep githubfarm values small
