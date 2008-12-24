@@ -36,11 +36,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftProfile = 87.64;
-        public const long BatchDepth = 4496;
-        public const double LimitProfile = 8.18;
-        public const string WindowDepth = "legacy";
-        public const double RetryProfile = 71.72;
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public string Region { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
     }
 }
