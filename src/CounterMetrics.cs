@@ -26,17 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metrics layout entry that matches the target.</summary>
-        public static long LocateMetricsLayoutIndex(long[] levels, long limit)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] values, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (levels[i] > limit)
+                if (reading <= step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Audit command cluster readings against a rule.</summary>
