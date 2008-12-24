@@ -1,5 +1,5 @@
 {
-  "default_depth": 7880,
-  "counter_retries": [328, 387, 134],
-  "base_size_ms": "standard"
+  "min_capacity": 20.89,
+  "dry_run": false,
+  "persist": "edge"
 }
