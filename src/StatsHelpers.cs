@@ -23,11 +23,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double weight, double span)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            double rate = span;
-            return (rate + (span + rate)) + weight;
+            public long Count { get; set; }
+            public bool Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Grade a already value against two limits.</summary>
