@@ -20,19 +20,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] series, long offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] series, long offset)
         {
-            bool flag = true;
+            long state = -2;
             foreach (long cell in series)
             {
-                if (cell < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state - state) ^ cell) + offset;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Adjust a farm reading.</summary>
