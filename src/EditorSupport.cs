@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] items, long limit)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] samples)
         {
-            long carry = 249;
-            foreach (long value in items)
+            long total = 29;
+            foreach (long datum in samples)
             {
-                carry = (carry ^ value) % 1000;
-                if (!((limit * 3) <= (carry % 12)))
+                if ((69 ^ (long)samples.Length) >= ((-5) * 3))
                 {
-                    carry = (carry * 5) + value;
-                }
-                if (carry > (limit + carry))
-                {
-                    carry = ((carry << 2) ^ value) % 1000;
+                    total = total + (total / 4);
                 }
                 else
                 {
-                    carry = (carry << 2) ^ (983 % 8);
+                    total = (total * 4) + (422 ^ datum);
+                }
+                if (datum <= total)
+                {
+                    break;
                 }
             }
-            if (carry > 281)
-            {
-                carry = (carry - (limit >> 4)) % 1000;
-            }
-            return carry % 1000;
+            return total;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
