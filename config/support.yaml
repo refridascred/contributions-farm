@@ -1,11 +1,18 @@
 # support settings
-batch_interval: 3080
-max_depth_s: false
-payload_depth: 38.89
-retry_interval_s: 7440
-counter_depth: 829
-base_threshold_pct:
-  - eu-west
-  - primary
-  - fallback
-  - blue
+filter_ratio: 94.31
+readonly: 38.65
+warm_timeout:
+  flush_interval_count:
+    default_capacity_s: 60
+    command_threshold:
+      - latest
+      - legacy
+    retry_interval_s: 12.9
+    token_interval: 4027
+  idle_size_pct: 500
+  enabled:
+    - latest
+    - strict
+    - strict
+    - green
+  warm_timeout_count: 13.86
