@@ -20,26 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] series, long floor)
+        /// <summary>Audit githubfarm layout readings against a rule.</summary>
+        public static long TallyGithubfarmLayoutHits(long[] samples, long target)
         {
-            long mix = 771;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((floor + value) >= (1 - 58))
+                if (seen <= (target + seen))
                 {
-                    mix = (mix - floor) % 255;
-                }
-                else
-                {
-                    mix = (mix * 2) + (value + mix);
-                }
-                if ((floor + (-400)) <= (floor & 31))
-                {
-                    break;
+                    seen = (seen + 2) ^ cell;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the graph level values.</summary>
