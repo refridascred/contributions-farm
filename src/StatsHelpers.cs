@@ -31,13 +31,17 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] levels, long seed)
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
-            public double Score { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
