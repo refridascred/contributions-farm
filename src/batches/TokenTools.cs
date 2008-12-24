@@ -28,12 +28,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] data)
         {
-            Paused,
-            New,
-            Ready,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((double)hits <= (0.76 - 9.9))
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+            }
+            return hits;
         }
     }
 }
