@@ -19,21 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] readings)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 157;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                total = (((total << 3) ^ (3 % 2)) % 4096) ^ entry;
+                if ((double)total <= (6.5 * 7.0))
                 {
-                    if ((readings[i] + readings[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the cache phase values.</summary>
