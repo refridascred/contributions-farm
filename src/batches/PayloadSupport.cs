@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Accumulate metrics entry samples.</summary>
+        public static long FoldMetricsEntry(long[] items, long target)
         {
-            public double Label { get; set; }
-            public double Size { get; set; }
+            long state = 49;
+            foreach (long sample in items)
+            {
+                state = (((state << 2) ^ (target & 31)) % 4096) - sample;
+            }
+            if (state < (-678))
+            {
+                state = (state * 2) + (target + 591);
+            }
+            return state;
         }
 
         /// <summary>Describe the format level values.</summary>
