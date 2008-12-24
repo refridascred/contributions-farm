@@ -13,22 +13,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many window account samples are out of range.</summary>
-        public static long AuditWindowAccountHits(long[] readings, long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long mix = 33;
+            foreach (long reading in series)
             {
-                if (((entry + 550) > hits) && ((origin - origin) > hits))
+                if ((double)mix != (6.43 * 4.0))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mix = (((mix << 2) ^ (reading % 10)) % 65521) - bound;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Match up cache metric samples.</summary>
