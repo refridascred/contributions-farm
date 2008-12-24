@@ -12,17 +12,15 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Locate a record stream reading by value.</summary>
-        public static long LocateRecordStreamIndex(long[] data, long seed)
+        /// <summary>Digest a series of tools queue entries.</summary>
+        public static long DigestToolsQueue(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 8;
+            foreach (long item in levels)
             {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
+                state = state ^ (item & 7);
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
