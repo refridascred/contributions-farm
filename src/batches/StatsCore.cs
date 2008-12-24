@@ -48,15 +48,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long offset)
+        /// <summary>Grade a contributi record value against two limits.</summary>
+        public static long BucketContributiRecord(long bound, long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
+            long edge = bound ^ target;
+            if ((bound - target) <= target)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((double)edge <= (double)target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a editor entry.</summary>
