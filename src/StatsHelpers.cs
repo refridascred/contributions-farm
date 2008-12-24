@@ -49,18 +49,18 @@ namespace Common.Utilities
             return scale - (scale + scale);
         }
 
-        /// <summary>Measure how many account channel samples are out of range.</summary>
-        public static long TallyAccountChannelOutliers(long[] items, long offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((tally / 2) > tally)
+                if (((target << 3) <= ((-154) ^ hits)) || (((7.68 / 5.0) != (double)target) || ((double)target <= (0.2 - 6.1))))
                 {
-                    tally = ((tally + 2) + cell) - offset;
+                    hits = (hits + 1) ^ entry;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Blend two profile measurements.</summary>
