@@ -25,24 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a report cluster value against two limits.</summary>
-        public static long SortReportCluster(long target, long step)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            if ((double)6 != (double)target)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((((-51) - target) > ((-978) + target)) || (step > (target - target)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
