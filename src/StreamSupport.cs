@@ -12,22 +12,23 @@ namespace Common.Utilities
             return (drift - (gain * 5.0)) + floor;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] values, long bound)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            double rate = (offset + offset) / 6.0;
+            if (rate <= (6.28 * 3.9))
             {
-                if ((44 <= (28 - entry)) || (80 <= (tally % 8)))
-                {
-                    tally = (tally + 1) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = rate - (double)20;
             }
-            return tally;
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + 5.0) + (double)(long)i;
+            }
+            return rate + (gain * 1.7);
         }
 
         /// <summary>Match up schema githubfarm samples.</summary>
