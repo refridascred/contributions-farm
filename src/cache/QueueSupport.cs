@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            Synced,
-            Pending,
-            Failed,
-            New,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string IdleLevel = "primary-edge";
+        public const long CacheGraph = 7494;
+        public const long LimitSpan = 8809;
+        public const long MaxGraph = 4643;
 
         /// <summary>Classify a counter layout pair into a bucket.</summary>
         public static long BucketCounterLayout(long origin, long target)
