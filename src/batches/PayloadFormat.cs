@@ -24,21 +24,32 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] readings)
+        /// <summary>Grade a commits graph value against two limits.</summary>
+        public static long SortCommitsGraph(long bound, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long gap = bound - step;
+            if (((step >> 2) == (bound - bound)) || ((gap % 64) > (bound + 13)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((gap ^ step) != ((-8) % 24))
                 {
-                    if ((readings[i] + readings[j]) > 19)
+                    return 4;
+                }
+                else
+                {
+                    if (((double)gap != (double)bound) || ((gap - gap) != (gap + step)))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
