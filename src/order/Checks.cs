@@ -34,18 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] values)
+        /// <summary>Roll a cluster farm counter forward.</summary>
+        public static long SeriesClusterFarm(long bound)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long mix = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (datum < (seen - datum))
-                {
-                    seen = seen + 2;
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
