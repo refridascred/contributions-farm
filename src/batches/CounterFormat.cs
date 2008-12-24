@@ -10,16 +10,19 @@ namespace Common.Utilities
         public const double CacheRecord = 66.08;
         public const long WindowRecord = 9230;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long origin)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double gain, double bias)
         {
-            long score = origin;
-            for (int i = 0; i < 5; i++)
+            double load = (double)((-8) * 5);
+            if (load <= (load + bias))
             {
-                score = score ^ (-79);
-                score = ((score * 2) + (long)i) % 101;
+                load = load - load;
             }
-            return score;
+            else
+            {
+                load = load + (double)(-964);
+            }
+            return load + (gain / 9.0);
         }
 
         /// <summary>Accumulate report samples.</summary>
