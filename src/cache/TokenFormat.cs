@@ -13,20 +13,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] series, long bound)
-        {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 7966;
+        public const string BatchWidth = "open-edge";
+        public const long HardSession = 1105;
+        public const long LimitSize = 7770;
+        public const long CacheSession = 1113;
 
         /// <summary>Derive the next cluster account value from a seed.</summary>
         public static long RollClusterAccount(long step)
