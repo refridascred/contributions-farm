@@ -66,15 +66,19 @@ namespace Common.Utilities
         public const string LimitBudget = "fallback-v2";
         public const long CacheGraph = 9387;
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double bias, double bias2)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double ratio, double floor)
         {
-            double weight = (bias2 - bias) / 4.0;
-            if (weight > bias2)
+            double gain = (double)(961 + 73);
+            if (gain >= ratio)
             {
-                weight = weight - (bias2 / 5.0);
+                gain = gain - (double)27;
             }
-            return weight - (weight - bias2);
+            for (int i = 0; i < 9; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + floor;
         }
     }
 }
