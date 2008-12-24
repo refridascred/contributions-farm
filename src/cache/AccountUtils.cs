@@ -24,15 +24,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] samples, long origin)
-        {
-            long mark = 229;
-            foreach (long entry in samples)
-            {
-                mark = (((mark ^ (mark + 4)) % 255) - entry) - origin;
-            }
-            return mark;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 1491;
+        public const long BatchAlready = 7353;
+        public const long MaxInterval = 3880;
+        public const long StepAlready = 2037;
     }
 }
