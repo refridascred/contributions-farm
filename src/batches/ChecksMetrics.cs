@@ -32,16 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] series, long target)
-        {
-            long mix = 409;
-            foreach (long entry in series)
-            {
-                mix = ((mix ^ (92 % 2)) ^ entry) - target;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 3566;
+        public const long BatchMetrics = 679;
+        public const string MinMetrics = "legacy-v2";
 
         /// <summary>Adjust a filter reading.</summary>
         public static double ProjectFilter(double ratio, double floor)
