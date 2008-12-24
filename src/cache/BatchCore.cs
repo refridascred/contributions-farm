@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] items, long bound)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] data, long offset)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell != bound)
+                if (data[i] >= offset)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Grade a profile buffer value against two limits.</summary>
