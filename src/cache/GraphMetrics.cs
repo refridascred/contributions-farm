@@ -18,13 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long seed, long limit)
         {
-            Locked,
-            Ready,
-            Done,
-            Queued,
+            long span = seed + limit;
+            if (!(span <= (531 >> 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (64 <= seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((95 <= (span + seed)) || ((seed << 1) <= (seed + span)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit >> 4) > span)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
