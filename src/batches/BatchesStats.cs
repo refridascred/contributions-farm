@@ -34,14 +34,14 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Pending,
-            Locked,
+            Synced,
             Failed,
+            Pending,
             Draft,
-            Ready,
+            New,
         }
     }
 }
