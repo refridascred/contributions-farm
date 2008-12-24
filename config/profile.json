@@ -1,5 +1,15 @@
 {
-  "schema_size": [451, 317],
-  "burst_window_count": "eu-west",
-  "hard_window": 3793
+  "flush_window_ms": 48,
+  "profile_ratio": {
+    "profile_delay": 62.82,
+    "retry_delay_ms": "green",
+    "batch_retries_s": ["blue", "latest", "staging", "staging"],
+    "commits_interval": 500,
+    "flush_depth_count": 1892,
+    "compress": 30
+  },
+  "githubfarm_depth": true,
+  "stream_capacity": true,
+  "min_capacity": "open",
+  "max_window_ms": 5876
 }
