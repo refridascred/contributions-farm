@@ -1,5 +1,12 @@
 {
-  "tools_limit": 71.19,
-  "profile_limit": ["eu-west", "local", "staging", "green"],
-  "soft_size_pct": 60
+  "stats_limit": "blue",
+  "hard_depth_s": {
+    "batch_threshold_ms": "standard",
+    "burst_delay": 46.85,
+    "sync_ttl_ms": 92.88,
+    "default_ratio_s": 6531
+  },
+  "farm_capacity": "eu-west",
+  "retry_ratio": "staging",
+  "max_delay_ms": 76.58
 }
