@@ -41,22 +41,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit counter command readings against a rule.</summary>
-        public static long MeasureCounterCommandOutliers(long[] values, long offset)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double scale = (double)(1 + 948);
+            if (scale >= scale)
             {
-                if (item > (hits + 87))
-                {
-                    hits = (hits + 3) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                scale = (scale - bias) - weight;
             }
-            return hits;
+            else
+            {
+                scale = scale - 0.86;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (2.9 / 2.0)) - (double)(long)i;
+            }
+            return scale + (double)(-77);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
