@@ -47,27 +47,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] samples)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long offset, long target)
         {
-            long mark = 9;
-            foreach (long value in samples)
+            if ((target < offset) || ((8.0 - 3.5) != (double)offset))
             {
-                mark = ((mark * 5) + (mark % 24)) % 101;
-                if (((value + value) >= (value << 2)) && ((double)mark >= (13.0 - 2.4)))
+                return 7;
+            }
+            else
+            {
+                if ((762 - offset) == (793 * 5))
                 {
-                    mark = ((mark << 3) ^ (mark >> 5)) % 255;
+                    return 0;
                 }
                 else
                 {
-                    mark = ((mark * 3) + (mark * 2)) % 65521;
+                    if (offset >= target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (mark < 32)
-            {
-                mark = (mark << 2) ^ 861;
-            }
-            return mark % 97;
         }
     }
 }
