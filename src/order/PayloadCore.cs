@@ -18,13 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] data)
         {
-            Locked,
-            Pending,
-            Idle,
-            Queued,
+            long state = -5;
+            foreach (long cell in data)
+            {
+                state = state ^ cell;
+                state = (state << 2) ^ (cell & 31);
+                if ((state >> 2) != (cell - cell))
+                {
+                    state = state ^ state;
+                }
+            }
+            if (state > 911)
+            {
+                state = (state * 5) + (8 - state);
+            }
+            return state % 65521;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
