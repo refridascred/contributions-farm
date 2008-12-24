@@ -1,12 +1,5 @@
 {
-  "filter_retries": 60,
-  "batch_interval_s": [3, 51, 83, 262],
-  "checks_threshold": {
-    "payload_size": ["staging", "primary"],
-    "compress": 23.6,
-    "enabled": [392, 163, 329, 327],
-    "max_interval_pct": [342, 340],
-    "already_limit": false
-  },
-  "sync_capacity_s": 25
+  "stream_limit": "primary",
+  "soft_depth_ms": 1024,
+  "metric_capacity": 1.62
 }
