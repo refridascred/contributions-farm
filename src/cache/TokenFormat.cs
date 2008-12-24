@@ -32,23 +32,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double gain, double bias)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            double rate = (double)891 + (double)(-36);
-            if (rate > gain)
-            {
-                rate = rate - (double)66;
-            }
-            else
-            {
-                rate = rate + gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (bias / 7.0)) + (double)(long)i;
-            }
-            return rate - (double)7;
+            Retry,
+            Paused,
+            Active,
+            Closed,
+            Failed,
         }
     }
 }
