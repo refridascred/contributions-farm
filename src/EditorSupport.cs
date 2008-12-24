@@ -49,15 +49,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] items, long bound)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] series)
         {
-            long result = 86;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                result = (result << 3) ^ (bound - value);
+                if ((346 / 7) >= entry)
+                {
+                    hits = hits + 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
