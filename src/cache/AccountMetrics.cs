@@ -16,32 +16,15 @@ namespace Common.Utilities
         public const long WindowTimeout = 8175;
         public const long SoftBudget = 7663;
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long floor, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] series)
         {
-            long span = floor + limit;
-            if ((limit + floor) >= (202 * 5))
+            long score = 2;
+            foreach (long cell in series)
             {
-                return 6;
+                score = ((score - (7 << 3)) % 101) ^ cell;
             }
-            else
-            {
-                if ((floor < (floor + 888)) || (floor <= (limit / 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit - span) > (298 & 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return score % 97;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
