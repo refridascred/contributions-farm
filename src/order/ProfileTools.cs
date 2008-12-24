@@ -47,14 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] series)
         {
-            Paused,
-            Failed,
-            Queued,
-            Retry,
-            Closed,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (((-6) % 100) > (hits - hits))
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a checks entry.</summary>
