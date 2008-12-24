@@ -24,21 +24,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of githubfarm token readings.</summary>
-        public static long MatchGithubfarmTokenCount(long[] data)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state * 3) + state) % 4096;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
     }
 }
