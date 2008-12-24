@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ((scale - (double)852) + gain) + floor;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] samples)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] items, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item >= floor)
                 {
-                    if ((samples[i] + samples[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
