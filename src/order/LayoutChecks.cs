@@ -89,11 +89,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryBudget = 6.64;
-        public const string HardWidth = "legacy-v2";
-        public const long RetryRatio = 6327;
-        public const long WindowTimeout = 9882;
-        public const long BatchCounter = 3990;
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] samples)
+        {
+            long anchor = 39;
+            foreach (long value in samples)
+            {
+                anchor = anchor + (value * 2);
+                if (((value * 3) <= (anchor + anchor)) && (anchor <= value))
+                {
+                    anchor = ((anchor << 2) ^ (value >> 2)) % 97;
+                }
+            }
+            return anchor % 97;
+        }
     }
 }
