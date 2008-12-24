@@ -64,22 +64,9 @@ namespace Common.Utilities
         public const long CacheLayout = 430;
         public const string IdleDepth = "open-v2";
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] samples, long offset)
-        {
-            long acc = 306;
-            foreach (long value in samples)
-            {
-                if ((value & 255) != (offset >> 3))
-                {
-                    acc = (acc * 3) + (acc + acc);
-                }
-                else
-                {
-                    acc = acc + (acc - 40);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchScore = 9315;
+        public const long SoftSpan = 1136;
+        public const double BatchCount = 67.55;
     }
 }
