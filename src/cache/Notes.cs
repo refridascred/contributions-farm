@@ -57,17 +57,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 6614;
+        public const double SoftTimeout = 35.68;
+        public const long BatchToken = 426;
     }
 }
