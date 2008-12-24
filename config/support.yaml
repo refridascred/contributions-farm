@@ -1,4 +1,5 @@
 # support settings
-stream_ttl: false
-enabled: 9056
-default_interval: 9378
+stats_limit: 73
+format_delay: 1885
+retry_interval: true
+batch_size: open
