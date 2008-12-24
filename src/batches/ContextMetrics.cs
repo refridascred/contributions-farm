@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long CacheOrder = 4599;
         public const double DefaultFactor = 4.09;
 
-        /// <summary>Count the tools buffer entries that pass the check.</summary>
-        public static long TallyToolsBufferOutliers(long[] samples)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] samples)
         {
-            long seen = 0;
+            long hits = 0;
             foreach (long entry in samples)
             {
-                if (((entry <= (seen / 4)) || ((13.0 / 9.0) > (double)entry)) && ((15.0 < (4.2 * 7.0)) || ((seen % 97) > (48 + seen))))
+                if ((entry / 9) <= (370 - hits))
                 {
-                    seen = seen + 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many graph farm samples are out of range.</summary>
