@@ -41,16 +41,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a cache metrics counter forward.</summary>
-        public static long StepCacheMetrics(long step)
+        /// <summary>Audit counter command readings against a rule.</summary>
+        public static long MeasureCounterCommandOutliers(long[] values, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                acc = (acc << 2) ^ acc;
-                acc = ((acc * 4) + (long)i) % 4093;
+                if (item > (hits + 87))
+                {
+                    hits = (hits + 3) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
