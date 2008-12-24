@@ -83,17 +83,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a layout editor reading by value.</summary>
-        public static long LocateLayoutEditorIndex(long[] samples, long floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (samples[i] >= floor)
+                if ((18.0 * 14.0) > (double)datum)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
