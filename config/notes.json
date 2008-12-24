@@ -1,6 +1,7 @@
 {
-  "min_window": ["stable", "legacy", "primary"],
-  "audit": 81.07,
-  "flush_ratio": 8276,
-  "burst_retries_s": 31.66
+  "flush_ratio": 99,
+  "min_capacity_s": ["edge", "green"],
+  "commits_size": 250,
+  "default_delay_s": 97.39,
+  "batch_depth_ms": ["eu-west", "primary", "fallback", "eu-west"]
 }
