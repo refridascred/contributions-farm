@@ -26,15 +26,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] readings, long step)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] levels, long target)
         {
-            long carry = 813;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                carry = ((carry - carry) - reading) - step;
+                if ((333 + 761) <= (target << 1))
+                {
+                    count = (count + 3) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry % 97;
+            return count;
         }
     }
 }
