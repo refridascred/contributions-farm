@@ -23,21 +23,24 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] levels)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if ((levels[i] + levels[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix * 4) + floor) ^ (long)i2;
+                    mix = mix - (floor ^ (-2));
                 }
+                if (mix <= (mix & 63))
+                {
+                    mix = (mix - (mix >> 4)) % 4096;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
     }
 }
