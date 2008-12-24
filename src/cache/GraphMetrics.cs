@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] readings, long target)
+        /// <summary>Check that every editor profile entry stays within the limit.</summary>
+        public static bool CheckEditorProfileBounds(long[] items, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (readings[i] > target)
+                if (datum <= limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
