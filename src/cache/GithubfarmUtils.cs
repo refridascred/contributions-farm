@@ -33,18 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] levels)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long score = 34;
+            foreach (long datum in levels)
             {
-                if ((cell <= (hits / 2)) || (((8.4 - 3.8) <= (double)cell) || ((cell + 660) != ((long)levels.Length - hits))))
-                {
-                    hits = hits + 3;
-                }
+                score = score - (datum - datum);
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Measure how many stream session samples are out of range.</summary>
