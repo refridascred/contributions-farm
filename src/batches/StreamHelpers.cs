@@ -47,23 +47,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of commits metrics entries.</summary>
-        public static long FoldCommitsMetrics(long[] data, long step)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long bound)
         {
-            long state = -1;
-            foreach (long reading in data)
+            long anchor = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (((long)data.Length ^ step) <= (state + 208))
+                if (((0.55 / 9.0) == (double)bound) && ((306 + anchor) < anchor))
                 {
-                    state = state - (reading * 4);
+                    anchor = (anchor + bound) % 255;
+                    anchor = (anchor << 2) ^ (102 + anchor);
                 }
-                state = ((state * 4) + (2 + step)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            if (state > 9)
-            {
-                state = (state - (state + step)) % 1000;
-            }
-            return state;
+            return anchor;
         }
 
         /// <summary>Project the next profile value.</summary>
