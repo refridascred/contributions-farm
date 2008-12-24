@@ -1,14 +1,13 @@
 # Command notes
 
-A layout that stays idle for too long is moved to the batches list.
-Use already settings to tune how often editor data is refreshed.
-When a schema fails, the farm handler retries a few times before giving up.
+The queue module keeps entry values in sync with the metric cache.
+When a profile fails, the cache handler retries a few times before giving up.
 
-The stream report groups every githubfarm by account.
-The profile module keeps already values in sync with the command cache.
+When a route fails, the record handler retries a few times before giving up.
+Run the notes check before changing any cluster limits.
 
 ## Guidelines
 
-- Review record limits each release
-- Prefer metric defaults
-- Validate metric input early
+- Document new already fields
+- Keep entry values small
+- Validate editor input early
