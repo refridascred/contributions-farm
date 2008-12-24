@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Validate notes order readings against a bound.</summary>
+        public static bool GuardNotesOrderLimits(long[] values, long origin)
         {
-            Locked,
-            Synced,
-            Retry,
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
