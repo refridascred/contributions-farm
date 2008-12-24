@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitCount = 7684;
+        public const string SoftGraph = "staging-1";
+        public const string SoftDepth = "local-edge";
+        public const long BaseWidth = 5871;
+        public const long StepWidth = 2195;
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long IterateProfile(long floor)
