@@ -66,17 +66,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] data, long target)
+        /// <summary>Blend two batches format measurements.</summary>
+        public static double AdjustBatchesFormat(double gain, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = gain;
+            if (drift >= (double)26)
             {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
+                drift = (drift - 1.02) - offset;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + gain) + (double)(long)i;
+            }
+            return drift - (3.0 / 7.0);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
