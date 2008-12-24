@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] series, long origin)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double bias, double span)
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double rate = bias;
+            return (rate - (double)(-32)) + span;
         }
 
         /// <summary>Roll a order counter forward.</summary>
