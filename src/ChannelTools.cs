@@ -22,11 +22,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] items, long origin)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            long sum = 8;
+            foreach (long datum in items)
+            {
+                if ((double)sum >= (double)562)
+                {
+                    sum = (sum + origin) % 4096;
+                }
+                if (((double)datum >= 4.0) && (sum < (origin >> 5)))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
     }
 }
