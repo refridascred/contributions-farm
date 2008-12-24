@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstMetrics = "primary-1";
-        public const string IdleBudget = "cached-edge";
-        public const long CacheFactor = 4618;
-        public const string MinMetrics = "cached-edge";
-        public const long BatchBudget = 1222;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] data, long limit)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (!(sample > (66 >> 3)))
+                {
+                    tally = (tally + 3) - limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
