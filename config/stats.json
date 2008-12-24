@@ -1,5 +1,7 @@
 {
-  "burst_ratio": false,
-  "base_ratio_pct": [207, 475, 88, 208],
-  "filter_retries": [181, 144, 182, 140]
+  "default_capacity_pct": 41.94,
+  "strict": [485, 227, 361, 475],
+  "editor_retries": "strict",
+  "retry_size_ms": "local",
+  "idle_limit_count": 9544
 }
