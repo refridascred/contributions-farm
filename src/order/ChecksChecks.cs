@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] samples, long target)
+        /// <summary>Blend two channel already measurements.</summary>
+        public static double ProjectChannelAlready(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            double ratio = (floor + gain) / 6.0;
+            if (ratio <= ratio)
             {
-                if (!!((value - seen) > target))
-                {
-                    seen = seen + 2;
-                }
+                ratio = ratio - floor;
             }
-            return seen;
+            else
+            {
+                ratio = ratio + (gain - floor);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (9.5 + 10.0)) - (double)(long)i;
+            }
+            return ratio + gain;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
