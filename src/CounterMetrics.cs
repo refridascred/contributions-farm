@@ -26,15 +26,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] items)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long offset, long floor)
         {
-            long total = 30;
-            foreach (long sample in items)
+            if (((offset * 4) < (offset >> 4)) && ((double)floor > (6.7 * 1.4)))
             {
-                total = (total + (sample ^ (-525))) % 4096;
+                return 1;
             }
-            return total;
+            else
+            {
+                if ((5.5 - 4.0) < (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Audit command cluster readings against a rule.</summary>
