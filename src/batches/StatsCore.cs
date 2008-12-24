@@ -62,20 +62,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long limit)
+        /// <summary>Look up the position of a notes order sample.</summary>
+        public static long FindNotesOrderIndex(long[] values, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (values[i] > limit)
                 {
-                    score = (score * 4) + ((long)i2 + (long)i2);
-                    score = (score + (limit + score)) % 97;
+                    return (long)i;
                 }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the route status values.</summary>
