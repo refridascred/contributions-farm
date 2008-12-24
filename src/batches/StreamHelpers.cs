@@ -52,38 +52,20 @@ namespace Common.Utilities
         public const double BaseInterval = 49.49;
         public const string HardSpan = "standard-v2";
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long target, long bound)
+        /// <summary>Roll a record support counter forward.</summary>
+        public static long IterateRecordSupport(long limit)
         {
-            if ((double)bound >= (double)target)
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((9.2 / 6.0) < (double)target))
+                anchor = (anchor ^ (53 >> 4)) % 1000;
+                if (!(422 <= ((long)i + 55)))
                 {
-                    return 5;
+                    anchor = (anchor * 4) + ((long)i * 5);
                 }
-                else
-                {
-                    if ((652 >> 5) != (bound << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound + bound) < (target / 8))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
+            return anchor;
         }
 
         /// <summary>Validate stream context readings against a bound.</summary>
