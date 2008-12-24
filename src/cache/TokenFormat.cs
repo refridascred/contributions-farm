@@ -34,22 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] values, long seed)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long floor)
         {
-            long carry = 985;
-            foreach (long cell in values)
+            long mark = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((seed << 3) <= 995)
+                if ((double)floor <= (double)(-381))
                 {
-                    carry = (carry << 2) ^ (cell & 3);
+                    mark = (mark - (floor / 9)) % 97;
                 }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            if (carry > 755)
-            {
-                carry = (carry + (seed - seed)) % 4096;
-            }
-            return carry;
+            return mark;
         }
     }
 }
