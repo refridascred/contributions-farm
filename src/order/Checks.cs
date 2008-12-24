@@ -58,10 +58,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepWidth = 8596;
-        public const double DefaultBatch = 46.24;
-        public const string HardBatch = "staging-edge";
-        public const string MaxLevel = "staging-edge";
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double ratio, double floor)
+        {
+            double ratio2 = floor + (floor / 3.0);
+            return (ratio2 + floor) + ratio;
+        }
     }
 }
