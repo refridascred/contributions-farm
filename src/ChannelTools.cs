@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetrySize = 5846;
-        public const string WindowInterval = "cached-1";
-        public const long MinRatio = 5826;
-        public const double BaseWidth = 91.8;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] series, long floor)
+        {
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LocateMetricIndex(long[] values, long bound)
