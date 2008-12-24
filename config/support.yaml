@@ -1,9 +1,7 @@
 # support settings
-filter_timeout: 77.04
-cache_limit_s: 5
-enabled:
-  - 336
-  - 216
-  - 51
-poll_limit_s: blue
-readonly: true
+token_size: 82
+cache_window: false
+window_capacity: 96.5
+metric_delay: 44.96
+persist: green
+sync_ratio_count: 500
