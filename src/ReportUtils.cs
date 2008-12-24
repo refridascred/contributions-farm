@@ -61,11 +61,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double rate, double floor)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            double load = (double)55 + floor;
-            return (load + load) + rate;
+            Draft,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
