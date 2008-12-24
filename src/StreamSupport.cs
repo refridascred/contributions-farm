@@ -19,24 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long origin, long offset)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] values)
         {
-            if ((origin + offset) != (offset + origin))
+            long total = 247;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin / 5) > (59 * 3))
+                total = ((total << 2) ^ value) % 101;
+                total = ((total << 2) ^ (597 ^ total)) % 4096;
+                if (value > (total - value))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    break;
                 }
             }
+            if (total < 528)
+            {
+                total = (total ^ (total & 127)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
