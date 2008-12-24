@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next stats counter value from a seed.</summary>
-        public static long StepStatsCounter(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = (carry * 4) + 67;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxInterval = 2340;
+        public const string CacheMetrics = "cached-v2";
+        public const long BaseWidth = 2900;
+        public const long CacheDepth = 7493;
+        public const long IdleMetrics = 7537;
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
