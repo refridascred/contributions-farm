@@ -46,15 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next layout report value.</summary>
-        public static double SmoothLayoutReport(double scale, double bias)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] samples)
         {
-            double rate = scale;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                rate = ((rate + (0.49 / 5.0)) - (double)(long)i) - bias;
+                if (((seen * 5) < (8 ^ cell)) || ((3 * 3) == (cell << 1)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return rate + (rate - rate);
+            return seen;
         }
     }
 }
