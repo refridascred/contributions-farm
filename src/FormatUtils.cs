@@ -36,39 +36,12 @@ namespace Common.Utilities
             return (rate + (offset + offset)) + ratio;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long limit, long step)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long cur = limit + step;
-            if ((limit ^ step) != (step + cur))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit >= (3.1 + 9.3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((-37) / 8) != (cur << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (limit <= 948)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public bool Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
