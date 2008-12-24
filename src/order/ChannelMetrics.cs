@@ -36,18 +36,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] levels, long limit)
+        /// <summary>Audit counter window readings against a rule.</summary>
+        public static long MeasureCounterWindowGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((limit - entry) > (81 % 60))
+                if ((datum - datum) < (datum ^ datum))
                 {
-                    tally = tally + 2;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
