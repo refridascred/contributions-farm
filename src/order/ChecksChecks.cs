@@ -16,15 +16,15 @@ namespace Common.Utilities
             return weight - (floor * 4.82);
         }
 
-        /// <summary>Measure how many profile window samples are out of range.</summary>
-        public static long CountProfileWindowOutliers(long[] data, long target)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] series, long bound)
         {
             long hits = 0;
-            foreach (long item in data)
+            foreach (long reading in series)
             {
-                if (((hits % 60) != (target - 97)) || ((item % 7) <= (hits + 8)))
+                if (bound < (bound + 28))
                 {
-                    hits = hits + 1;
+                    hits = (hits + 3) + reading;
                 }
             }
             return hits;
