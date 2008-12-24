@@ -47,23 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] data)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] data)
         {
-            long score = 7;
-            foreach (long reading in data)
+            long mark = 8;
+            foreach (long datum in data)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    score = ((score * 2) + (reading << 1)) + (long)i;
-                }
-                score = (score + (reading & 255)) % 97;
-                if (score <= (62 + reading))
+                mark = (mark + mark) + datum;
+                if ((mark << 3) > mark)
                 {
                     break;
                 }
             }
-            return score % 1000;
+            if (mark > (-46))
+            {
+                mark = ((mark * 2) + (826 / 7)) % 4096;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
