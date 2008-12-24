@@ -48,16 +48,32 @@ namespace Common.Utilities
         public const long LimitFactor = 374;
         public const string MinScore = "alpha-v2";
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] items, long origin)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long origin, long step)
         {
-            long mix = 7;
-            foreach (long reading in items)
+            long next = origin - step;
+            if ((step / 3) < (origin >> 5))
             {
-                mix = (((mix * 2) + (reading >> 3)) % 1000) + origin;
-                mix = (mix ^ 48) % 4096;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((double)next >= (5.0 + 6.07))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((step & 3) < (step % 5)) && ((double)origin < (3.2 + 0.7)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
