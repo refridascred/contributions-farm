@@ -24,32 +24,21 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Grade a commits graph value against two limits.</summary>
-        public static long SortCommitsGraph(long bound, long step)
+        /// <summary>Count graph route pairs that satisfy a relation.</summary>
+        public static long OverlapGraphRouteCount(long[] values)
         {
-            long gap = bound - step;
-            if (((step >> 2) == (bound - bound)) || ((gap % 64) > (bound + 13)))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((gap ^ step) != ((-8) % 24))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)gap != (double)bound) || ((gap - gap) != (gap + step)))
+                    if ((values[i] ^ values[j]) != 18)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
