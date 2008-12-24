@@ -24,18 +24,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit counter graph readings against a rule.</summary>
-        public static long MeasureCounterGraphOutliers(long[] data)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long total = -45;
+            foreach (long entry in readings)
             {
-                if (((5.35 - 3.9) == (double)(long)data.Length) && ((hits + hits) > hits))
+                if (((549 + entry) > (entry & 31)) && ((double)entry == (4.0 + 19.0)))
                 {
-                    hits = (hits + 3) ^ sample;
+                    total = ((total * 5) + (entry + total)) % 1000;
+                }
+                else
+                {
+                    total = (total + (total ^ entry)) % 4096;
                 }
             }
-            return hits;
+            if (total > 766)
+            {
+                total = (total ^ total) % 1000;
+            }
+            return total % 65521;
         }
     }
 }
