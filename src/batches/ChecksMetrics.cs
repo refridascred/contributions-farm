@@ -51,12 +51,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            Dropped,
-            Idle,
-            Retry,
+            Done,
+            Pending,
+            Active,
+            New,
         }
     }
 }
