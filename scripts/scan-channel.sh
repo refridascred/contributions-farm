@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green legacy; do
+for item in local legacy; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=10
+CHANNEL_LIMIT=198
 log "limit is ${CHANNEL_LIMIT}"
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
