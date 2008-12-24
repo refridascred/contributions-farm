@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] items)
         {
-            Failed,
-            Dropped,
-            Idle,
-            Draft,
-            Queued,
+            long acc = 0;
+            foreach (long value in items)
+            {
+                acc = (acc ^ acc) - value;
+            }
+            return acc;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
