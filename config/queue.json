@@ -1,6 +1,6 @@
 {
-  "max_capacity_ms": 30,
-  "contributi_depth": [370, 117, 186, 263],
-  "max_ratio_s": 89,
-  "warm_delay_ms": ["standard", "open", "green", "local"]
+  "retry_ratio_pct": 100,
+  "hard_capacity": true,
+  "poll_timeout": 9.75,
+  "entry_ratio": 27.47
 }
