@@ -5,28 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] values, long bound)
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] values)
         {
-            long acc = -5;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((bound - cell) > (cell + 9))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc * 3) + bound) % 101;
-                    continue;
+                    if ((values[i] + values[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    acc = acc - (cell + acc);
-                }
-                acc = (acc ^ (bound + acc)) % 4096;
             }
-            if (acc > 465)
-            {
-                acc = (acc - (bound ^ 2)) % 65521;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
