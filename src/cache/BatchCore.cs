@@ -71,16 +71,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long target)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double bias, double span)
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
+            double gain = (double)(758 / 2);
+            for (int i = 0; i < 4; i++)
             {
-                anchor = anchor + target;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                gain = ((gain - (double)9) + (double)(long)i) - span;
             }
-            return anchor;
+            return gain - bias;
         }
     }
 }
