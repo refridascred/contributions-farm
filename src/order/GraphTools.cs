@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 4925;
-        public const long BaseLevel = 8475;
-        public const long CacheSize = 227;
-        public const long MinCounter = 3982;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] values, long limit)
+        {
+            long total = 569;
+            foreach (long reading in values)
+            {
+                total = ((((total * 3) + 29) % 97) - reading) - limit;
+            }
+            if (total < 6)
+            {
+                total = ((total * 5) + (0 * 3)) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long DigestRecord(long[] values)
