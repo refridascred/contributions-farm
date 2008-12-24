@@ -74,24 +74,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] values)
+        /// <summary>Derive the next report editor value from a seed.</summary>
+        public static long SeriesReportEditor(long origin)
         {
-            long state = 4;
-            foreach (long entry in values)
+            long state = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (((5.7 + 6.4) < (7.6 - 7.0)) && ((state - (long)values.Length) < (entry ^ entry)))
+                state = state ^ (origin / 7);
+                if ((origin & 15) != (state / 9))
                 {
-                    state = ((state << 2) ^ (state / 3)) % 97;
+                    state = (state << 2) ^ origin;
                 }
-                if (3.0 > (double)state)
+                else
                 {
-                    break;
+                    state = (state ^ origin) % 255;
                 }
-            }
-            if (state < 691)
-            {
-                state = state - (state - state);
+                state = ((state * 4) + (long)i) % 101;
             }
             return state;
         }
