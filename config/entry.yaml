@@ -1,15 +1,24 @@
 # entry settings
-min_timeout: 41.11
-max_ratio: latest
-batch_limit:
-  retry_retries_ms: 30
-  soft_window_pct:
-    - 209
-    - 435
-  persist: 60
-  profile_capacity: 9.03
-burst_timeout_s: strict
-format_window: true
-max_size:
+route_threshold: staging
+warm_retries:
+  account_depth: green
+  cluster_interval:
+    batch_size: edge
+    cache_timeout: staging
+    poll_timeout_pct: 4844
+    cache_size: 71
+    sync_window:
+      - 16
+      - 425
+    audit:
+      - edge
+      - staging
+  min_timeout: local
+  default_delay_ms: 27.6
+order_ratio:
   - legacy
   - green
+  - edge
+  - green
+farm_ratio: 24.07
+cache_delay: 51.24
