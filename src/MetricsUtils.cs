@@ -60,19 +60,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] values)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] readings)
         {
-            long total = 25;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total ^ (total + total)) - datum;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (total < (-119))
-            {
-                total = (total ^ (total + total)) % 65521;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Project the next notes value.</summary>
