@@ -69,10 +69,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxRatio = 9428;
-        public const long BurstFactor = 7817;
-        public const string MaxBudget = "open-edge";
-        public const long BurstDepth = 8528;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] items, long limit)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((double)hits < (3.0 * 1.27))
+                {
+                    hits = ((hits + 2) ^ cell) + limit;
+                }
+            }
+            return hits;
+        }
     }
 }
