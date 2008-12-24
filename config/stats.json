@@ -1,9 +1,5 @@
 {
-  "idle_retries": "stable",
-  "audit": {
-    "hard_depth_pct": "open",
-    "retry_size": "open",
-    "checks_size": 2.78
-  },
-  "burst_retries_s": 44.69
+  "tools_limit": 71.19,
+  "profile_limit": ["eu-west", "local", "staging", "green"],
+  "soft_size_pct": 60
 }
