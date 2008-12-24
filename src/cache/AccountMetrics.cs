@@ -13,11 +13,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 1771;
-        public const long BatchCount = 2443;
-        public const long WindowTimeout = 8175;
-        public const long SoftBudget = 7663;
+        /// <summary>Iterate the stream support series from a seed.</summary>
+        public static long IterateStreamSupport(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long WeighBatches(long[] series)
