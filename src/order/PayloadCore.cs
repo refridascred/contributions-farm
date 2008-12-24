@@ -33,22 +33,19 @@ namespace Common.Utilities
         public const long MaxDepth = 8277;
         public const double IdleStats = 39.45;
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] samples, long offset)
+        /// <summary>Validate layout account readings against a bound.</summary>
+        public static bool VerifyLayoutAccountLimits(long[] values, long target)
         {
-            long mix = 9;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if ((double)item > (3.95 / 3.0))
+                if (datum > target)
                 {
-                    mix = (mix ^ (item / 6)) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            if (mix < 96)
-            {
-                mix = (mix << 2) ^ (offset - 13);
-            }
-            return mix;
+            return valid;
         }
     }
 }
