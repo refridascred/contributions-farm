@@ -45,11 +45,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 1490;
+        public const long BurstCache = 4625;
+        public const long HardTimeout = 2060;
+        public const string IdleCache = "stable-edge";
     }
 }
