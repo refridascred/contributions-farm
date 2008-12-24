@@ -61,18 +61,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] items, long limit)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long origin)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long result = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)hits < (3.0 * 1.27))
-                {
-                    hits = ((hits + 2) ^ cell) + limit;
-                }
+                result = (result - (result + result)) % 255;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
     }
 }
