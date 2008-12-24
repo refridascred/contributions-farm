@@ -41,18 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] readings, long target)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((target << 3) <= ((-154) ^ hits)) || (((7.68 / 5.0) != (double)target) || ((double)target <= (0.2 - 6.1))))
+                if (items[i] <= target)
                 {
-                    hits = (hits + 1) ^ entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Blend two profile measurements.</summary>
