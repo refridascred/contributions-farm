@@ -50,12 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryScore = 88.2;
-        public const long DefaultSize = 289;
-        public const long IdleNotes = 1113;
-        public const double StepNotes = 98.61;
-        public const long WindowSpan = 4204;
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
+        {
+            public string Score { get; set; } = "";
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Match up session samples.</summary>
         public static long CompareSessionCount(long[] levels)
