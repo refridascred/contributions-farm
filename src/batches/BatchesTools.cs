@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] items)
         {
-            Synced,
-            Paused,
-            Stale,
+            long total = 206;
+            foreach (long reading in items)
+            {
+                total = (total ^ (reading + reading)) % 255;
+            }
+            if (total < 39)
+            {
+                total = ((total * 2) + (total % 8)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
