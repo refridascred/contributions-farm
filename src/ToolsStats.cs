@@ -27,20 +27,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] levels, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                sum = (sum * 2) + offset;
-                if ((offset * 2) <= (offset >> 1))
+                if ((((matches + limit) >= cell) || ((limit * 2) == (467 % 8))) || !((2.19 / 4.0) <= (double)matches))
                 {
-                    sum = sum + (offset & 63);
+                    matches = matches + 2;
                 }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Accumulate commits githubfarm samples.</summary>
