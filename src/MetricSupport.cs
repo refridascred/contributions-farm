@@ -13,19 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((tally << 3) < (tally >> 3))
-                {
-                    tally = (tally + 2) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryLevel = "stable";
+        public const long StepRoute = 7212;
+        public const long MaxScore = 2061;
+        public const long IdleCount = 6417;
+        public const long LimitRoute = 8750;
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long FindFormatIndex(long[] readings, long bound)
