@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long bound)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public string Flag { get; set; } = "";
+            public double Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
