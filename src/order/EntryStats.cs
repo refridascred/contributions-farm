@@ -36,11 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheCount = 2469;
-        public const long HardWidth = 5163;
-        public const long IdleInterval = 1607;
-        public const long BurstInterval = 828;
+        /// <summary>Measure how many route token samples are out of range.</summary>
+        public static long CountRouteTokenMatches(long[] values, long step)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (hits <= (item - step))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
