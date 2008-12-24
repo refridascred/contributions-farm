@@ -1,7 +1,16 @@
 # githubfarm settings
-idle_threshold_count: 4480
-default_size_ms: latest
-batch_threshold_s: true
-min_delay_pct: 48
-strict: open
-support_capacity: local
+sync_delay:
+  - stable
+  - fallback
+  - latest
+  - staging
+max_retries_ms: 2857
+verbose:
+  - staging
+  - open
+  - strict
+session_size:
+  - 480
+  - 61
+  - 164
+poll_depth_pct: false
