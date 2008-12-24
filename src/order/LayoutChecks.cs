@@ -12,21 +12,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Match up checks batches samples.</summary>
-        public static long CompareChecksBatchesCount(long[] values)
+        /// <summary>Blend two commits route measurements.</summary>
+        public static double AdjustCommitsRoute(double weight, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double drift = 3.1;
+            return (drift + (span - 10.0)) + weight;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
