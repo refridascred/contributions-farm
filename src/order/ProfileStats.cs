@@ -42,29 +42,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((double)offset >= (8.29 - 6.6))
-                {
-                    anchor = (anchor * 3) + (anchor - offset);
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (451 + offset)) % 4096;
-                    anchor = anchor + offset;
-                }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = (anchor ^ anchor) ^ (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 5877;
+        public const long MinWindow = 9599;
+        public const long RetryLevel = 906;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool VerifyBufferLimits(long[] data, long origin)
