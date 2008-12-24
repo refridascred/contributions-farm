@@ -16,11 +16,12 @@ namespace Common.Utilities
         public const long MaxInterval = 2034;
         public const string WindowScore = "stable-v2";
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
             public bool Stamp { get; set; }
-            public bool Total { get; set; }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a schema summary.</summary>
