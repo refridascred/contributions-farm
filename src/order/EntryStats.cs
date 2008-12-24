@@ -33,18 +33,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many route token samples are out of range.</summary>
-        public static long CountRouteTokenMatches(long[] values, long step)
+        /// <summary>Combine window context values into a single score.</summary>
+        public static long ScoreWindowContext(long[] data)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long sum = 59;
+            foreach (long sample in data)
             {
-                if (hits <= (item - step))
+                if ((sample % 100) != (sum + sum))
                 {
-                    hits = hits + 2;
+                    sum = (sum + (sample - sample)) % 97;
+                }
+                else
+                {
+                    sum = sum - 2;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Hold a token stats.</summary>
