@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 5363;
-        public const long LimitRatio = 1458;
-        public const string BaseBatches = "cached-1";
+        /// <summary>Audit session channel readings against a rule.</summary>
+        public static long MeasureSessionChannelHits(long[] values, long target)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((tally - target) == (reading >> 5))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long RankFarm(long floor, long bound)
