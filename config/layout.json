@@ -1,6 +1,18 @@
 {
-  "buffer_ttl": 250,
-  "enabled": [428, 154],
-  "batch_ratio_count": "staging",
-  "persist": 20.76
+  "compress": true,
+  "format_size": "stable",
+  "persist": 22,
+  "batch_ratio": {
+    "idle_limit": 31.76,
+    "batch_threshold_s": "edge",
+    "default_threshold_pct": false,
+    "buffer_timeout": {
+      "verbose": "open",
+      "compress": true,
+      "default_size": 54,
+      "flush_window": 1024,
+      "channel_threshold": ["blue", "fallback"],
+      "soft_ratio": "eu-west"
+    }
+  }
 }
