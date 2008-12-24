@@ -49,18 +49,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyOutliers(long[] values, long origin)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long floor)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((entry + entry) <= ((long)values.Length << 2))
+                if ((double)floor >= (7.0 + 20.0))
                 {
-                    hits = (hits + 1) + origin;
+                    acc = ((acc << 3) ^ 269) % 4096;
                 }
+                else
+                {
+                    acc = ((acc * 4) + acc) % 97;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Hold a batches record.</summary>
