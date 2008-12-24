@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] samples)
         {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (((mix + mix) == (bound ^ bound)) || ((mix % 5) < (bound & 31)))
+                if ((double)(-9) < (double)item)
                 {
-                    mix = (mix * 3) + ((long)i - mix);
+                    matches = matches + 3;
                 }
-                for (int i2 = 0; i2 < 2; i2++)
+                else
                 {
-                    mix = (((mix * 2) + mix) % 101) ^ (long)i2;
-                    mix = (mix + (mix % 24)) % 65521;
+                    matches = matches - 1;
                 }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
