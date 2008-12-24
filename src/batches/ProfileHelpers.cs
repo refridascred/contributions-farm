@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] values, long target)
         {
-            Done,
-            Active,
-            Queued,
-            Draft,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (entry < (entry * 2))
+                {
+                    matches = (matches + 2) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
