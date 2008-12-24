@@ -39,14 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Active,
             Closed,
-            Done,
-            Ready,
             Retry,
+            Stale,
+            Done,
         }
 
         /// <summary>Iterate the session checks series from a seed.</summary>
