@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinRatio = 7917;
-        public const long WindowInterval = 5662;
-        public const long BaseMetrics = 4504;
-        public const double HardWidth = 68.53;
-        public const double LimitCount = 61.8;
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= offset) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
