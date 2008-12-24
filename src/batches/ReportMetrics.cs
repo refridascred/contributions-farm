@@ -20,14 +20,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] readings, long bound)
         {
-            Paused,
-            Draft,
-            New,
-            Failed,
-            Ready,
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a cluster buffer counter forward.</summary>
