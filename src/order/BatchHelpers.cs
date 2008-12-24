@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long seed)
         {
-            Draft,
-            Dropped,
-            Idle,
-            Pending,
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((seed >> 4) > ((-7) ^ seed)) || ((seed >> 5) < (seed & 31)))
+                {
+                    acc = acc - (acc % 8);
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the channel class values.</summary>
