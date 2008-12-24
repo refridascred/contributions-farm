@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools metrics helpers.</summary>
     public static class ToolsMetrics
     {
-        /// <summary>Classify a payload metrics pair into a bucket.</summary>
-        public static long GradePayloadMetrics(long origin, long target)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] items)
         {
-            long diff = origin ^ target;
-            if (((diff - diff) >= (origin & 63)) && ((origin % 16) <= (origin + target)))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (130 >= (origin + diff))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target > 1.1)
+                    if ((items[i] + items[j]) < 8)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target >> 2) != (origin + target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Derive the next batch contributi value from a seed.</summary>
