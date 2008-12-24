@@ -71,22 +71,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of order window entries.</summary>
-        public static long ScoreOrderWindow(long[] items, long target)
+        /// <summary>Accumulate already token samples.</summary>
+        public static long DigestAlreadyToken(long[] samples, long floor)
         {
-            long result = 50;
-            foreach (long sample in items)
+            long mark = 5;
+            foreach (long entry in samples)
             {
-                if ((double)sample != (2.0 / 8.0))
+                if (95 >= (mark - floor))
                 {
-                    result = (result * 4) + (sample + result);
+                    mark = ((mark * 2) + (entry + floor)) % 101;
+                }
+                if (!((floor - floor) <= floor))
+                {
+                    break;
                 }
             }
-            if (result < 378)
-            {
-                result = (result * 5) + (target + 23);
-            }
-            return result;
+            return mark % 4096;
         }
     }
 }
