@@ -19,21 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] levels)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Ready,
+            Pending,
+            New,
         }
 
         /// <summary>Hold a stream stats.</summary>
