@@ -33,20 +33,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] readings, long bound)
-        {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleBudget = 9803;
+        public const double RetryEntry = 93.86;
+        public const string HardFactor = "primary";
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double ProjectTools(double gain, double span)
