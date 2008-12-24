@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRange(long[] items, long target)
-        {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepSize = 4371;
+        public const long BurstCount = 2996;
+        public const long CacheContributi = 6743;
+        public const double WindowContributi = 85.96;
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
