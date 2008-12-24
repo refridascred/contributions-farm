@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long target)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((8.76 / 5.0) < (double)target)
-                {
-                    acc = (acc << 3) ^ target;
-                }
-                else
-                {
-                    acc = (acc + (acc << 1)) % 65521;
-                    acc = ((acc * 2) + acc) % 65521;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            Ready,
+            Idle,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
