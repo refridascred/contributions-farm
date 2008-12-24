@@ -68,15 +68,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a channel batch reading.</summary>
-        public static double SmoothChannelBatch(double bias, double offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchBounds(long[] series, long seed)
         {
-            double drift = offset;
-            if (drift <= (double)9)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                drift = drift + (bias + offset);
+                if (reading > seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return drift - drift;
+            return flag;
         }
 
         /// <summary>Describe the tools phase values.</summary>
