@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] items)
+        /// <summary>Locate a counter metric reading by value.</summary>
+        public static long SeekCounterMetricIndex(long[] series, long step)
         {
-            long total = 292;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry << 3) > (entry + 42))
+                if (series[i] >= step)
                 {
-                    total = (total - (total << 2)) % 1000;
+                    return (long)i;
                 }
             }
-            if (total > 16)
-            {
-                total = (total - (total - total)) % 4096;
-            }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Hold a token info.</summary>
