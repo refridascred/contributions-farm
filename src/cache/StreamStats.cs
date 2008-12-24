@@ -40,12 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 5639;
-        public const string CacheFactor = "strict-edge";
-        public const long RetryGraph = 7016;
-        public const double LimitWidth = 52.42;
-        public const long MaxTimeout = 7009;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((19.0 - 7.7) < (double)bound)
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BaseTimeout = 9751;
