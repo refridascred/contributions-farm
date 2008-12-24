@@ -13,18 +13,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] levels, long offset)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((6.08 * 7.35) >= (double)offset)
-                {
-                    seen = (seen + 3) + item;
-                }
-            }
-            return seen;
+            Done,
+            Draft,
+            Queued,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Find the first stream counter entry that matches the target.</summary>
