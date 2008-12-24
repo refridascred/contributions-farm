@@ -27,17 +27,12 @@ namespace Common.Utilities
         public const long MinFactor = 5518;
         public const string DefaultProfile = "alpha-v2";
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] levels, long step)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > step) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a contributi summary.</summary>
