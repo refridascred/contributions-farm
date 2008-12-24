@@ -60,21 +60,20 @@ namespace Common.Utilities
             return scale + (rate + rate);
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] series)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((long)i >= (origin + 612))
                 {
-                    if ((series[i] + series[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix - (mix / 5)) % 4096;
                 }
+                mix = (mix << 2) ^ origin;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
     }
 }
