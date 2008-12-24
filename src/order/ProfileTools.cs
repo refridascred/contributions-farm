@@ -57,20 +57,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long step)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
-            {
-                long seen = (step / 7) % 12;
-                if ((result < (long)i) || (((long)i ^ 27) < seen))
-                {
-                    continue;
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
