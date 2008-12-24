@@ -43,27 +43,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] samples)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] values, long seed)
         {
-            long acc = 8;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((sample * 4) > (acc % 24))
+                if ((tally + seed) < entry)
                 {
-                    acc = ((acc * 4) + sample) % 1000;
-                }
-                if ((sample * 2) >= acc)
-                {
-                    acc = (acc - (360 - acc)) % 97;
-                    break;
-                }
-                if (acc <= sample)
-                {
-                    acc = (acc ^ ((-47) - sample)) % 101;
+                    tally = tally + 2;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Blend two batches format measurements.</summary>
