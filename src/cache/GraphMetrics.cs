@@ -14,39 +14,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long seed, long limit)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] values)
         {
-            long span = seed + limit;
-            if (!(span <= (531 >> 3)))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (64 <= seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((95 <= (span + seed)) || ((seed << 1) <= (seed + span)))
+                    if ((values[i] + values[j]) < 17)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit >> 4) > span)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
