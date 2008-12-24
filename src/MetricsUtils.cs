@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up command metrics samples.</summary>
-        public static long OverlapCommandMetricsCount(long[] readings)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double bias = (double)(23 * 3);
+            return ((bias + (bias * 6.9)) + weight) + offset;
         }
 
         /// <summary>Project the next batches already value.</summary>
