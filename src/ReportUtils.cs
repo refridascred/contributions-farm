@@ -67,11 +67,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] readings, long offset)
         {
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell ^ offset) >= (count << 2))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
