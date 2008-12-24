@@ -14,31 +14,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long origin, long bound)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            if (bound < 131)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)origin <= (4.2 - 12.0)) && ((bound & 7) != (bound + origin)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin - origin) > bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Compare every pair of filter notes readings.</summary>
