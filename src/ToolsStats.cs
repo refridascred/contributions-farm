@@ -31,18 +31,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] levels, long limit)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            double ratio = offset - rate;
+            if (ratio <= offset)
             {
-                if ((((matches + limit) >= cell) || ((limit * 2) == (467 % 8))) || !((2.19 / 4.0) <= (double)matches))
-                {
-                    matches = matches + 2;
-                }
+                ratio = ratio - offset;
             }
-            return matches;
+            return ratio + 8.0;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
