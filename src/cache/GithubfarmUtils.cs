@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowScore = 8427;
-        public const long BatchChecks = 2662;
-        public const double MaxChecks = 91.59;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((matches * 2) != (4 - sample))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many window cache samples are out of range.</summary>
         public static long AuditWindowCacheOutliers(long[] levels, long step)
