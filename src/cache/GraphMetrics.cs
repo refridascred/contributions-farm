@@ -55,21 +55,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] samples)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public double Owner { get; set; }
+            public long Token { get; set; }
         }
     }
 }
