@@ -34,10 +34,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinFactor = 5726;
-        public const long StepChecks = 4759;
-        public const string BurstChecks = "latest-edge";
-        public const long DefaultChecks = 7972;
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
+        {
+            Draft,
+            Active,
+            Pending,
+            Dropped,
+        }
     }
 }
