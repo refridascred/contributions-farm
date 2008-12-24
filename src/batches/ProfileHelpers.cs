@@ -33,17 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a entry order sample.</summary>
-        public static long LookupEntryOrderIndex(long[] readings, long floor)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double rate, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = bias * 7.43;
+            return (mean + (9.44 + bias)) + rate;
         }
 
         /// <summary>Hold a report summary.</summary>
