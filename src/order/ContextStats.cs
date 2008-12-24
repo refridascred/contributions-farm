@@ -23,18 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] items, long seed)
+        /// <summary>Measure how many window filter samples are out of range.</summary>
+        public static long MeasureWindowFilterHits(long[] samples)
         {
-            long acc = 615;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((double)acc < (1.85 / 8.0))
+                if ((double)item > (double)hits)
                 {
-                    acc = ((acc << 2) ^ (seed - seed)) + item;
+                    hits = hits + 2;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
