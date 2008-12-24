@@ -78,19 +78,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] series)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] series, long limit)
         {
-            long carry = 899;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                carry = (carry + carry) + cell;
+                if ((7 << 2) < limit)
+                {
+                    hits = (hits + 3) + datum;
+                }
             }
-            if (carry > 14)
-            {
-                carry = (carry ^ carry) % 101;
-            }
-            return carry;
+            return hits;
         }
     }
 }
