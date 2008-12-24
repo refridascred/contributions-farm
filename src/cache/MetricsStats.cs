@@ -44,19 +44,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] samples)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long anchor = 214;
-            foreach (long datum in samples)
-            {
-                anchor = (anchor ^ (6 % 7)) % 97;
-                if (((5 - datum) >= (anchor & 1)) || ((726 + anchor) <= (0 / 7)))
-                {
-                    anchor = ((anchor * 2) + (2 << 1)) % 255;
-                }
-            }
-            return anchor;
+            public string Mode { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Compare every pair of already readings.</summary>
