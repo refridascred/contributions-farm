@@ -14,12 +14,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
+            Ready,
+            Synced,
+            Retry,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Combine cache buffer values into a single score.</summary>
