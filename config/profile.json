@@ -1,14 +1,5 @@
 {
-  "checks_interval": 35,
-  "warm_retries_pct": false,
-  "commits_threshold": {
-    "strict": {
-      "soft_ratio_pct": "edge",
-      "warm_window": 61,
-      "max_capacity_count": "cached"
-    },
-    "max_ratio": 250,
-    "default_limit_pct": ["cached", "cached"]
-  },
-  "compress": 22.35
+  "poll_interval": 100,
+  "max_timeout_pct": 500,
+  "cache_ttl": false
 }
