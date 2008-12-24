@@ -20,12 +20,20 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepSize = "standard-edge";
-        public const long LimitCount = 1528;
-        public const double CacheSchema = 55.71;
-        public const long StepRatio = 9767;
-        public const double BurstSchema = 3.78;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchRange(long[] readings, long seed)
+        {
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long DeriveFilter(long seed)
