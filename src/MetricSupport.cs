@@ -27,21 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up cache metric samples.</summary>
-        public static long OverlapCacheMetricCount(long[] levels)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileGaps(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((seen << 1) >= (85 & 31)) || !(seen < (seen + seen)))
                 {
-                    if ((levels[i] ^ levels[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) + reading;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
