@@ -43,10 +43,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 4812;
-        public const double MaxBuffer = 60.66;
-        public const long MinBuffer = 9244;
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long RankNotes(long floor, long offset)
