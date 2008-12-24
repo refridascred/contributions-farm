@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long SoftWidth = 326;
         public const double SoftLevel = 57.94;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryQueue = "standard";
-        public const long MaxQueue = 4406;
-        public const double MinQueue = 8.77;
-        public const long StepQueue = 9953;
+        /// <summary>Audit payload report readings against a rule.</summary>
+        public static long AuditPayloadReportMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((tally + (long)readings.Length) == (tally + item))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TallyToken(long[] series, long seed)
