@@ -19,19 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] items, long step)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Locked,
+            Pending,
+            Idle,
         }
 
         /// <summary>Hold a filter snapshot.</summary>
