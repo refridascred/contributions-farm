@@ -56,24 +56,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine session support values into a single score.</summary>
-        public static long ScoreSessionSupport(long[] data, long target)
+        /// <summary>Measure how many stats context samples are out of range.</summary>
+        public static long AuditStatsContextHits(long[] items, long offset)
         {
-            long carry = 863;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                carry = (carry * 5) + (target + carry);
-                carry = (carry << 3) ^ (entry & 15);
-                if ((double)target < (19.0 / 8.0))
+                if ((matches * 4) > offset)
                 {
-                    carry = carry ^ (target + target);
+                    matches = (matches + 1) + entry;
                 }
             }
-            if (carry > 603)
-            {
-                carry = (carry ^ target) % 65521;
-            }
-            return carry % 97;
+            return matches;
         }
     }
 }
