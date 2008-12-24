@@ -35,38 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a route metrics pair into a bucket.</summary>
-        public static long GradeRouteMetrics(long step, long bound)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] data, long limit)
         {
-            if ((step / 6) != (bound + bound))
+            bool ready = true;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (step >= (710 + step))
+                if (value <= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(step > (step / 9)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((4.73 - 6.26) != (double)step) && ((11.0 + 0.4) > (double)bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
