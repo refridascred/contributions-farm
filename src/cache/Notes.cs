@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] levels, long offset)
+        /// <summary>Count payload command pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCommandCount(long[] data)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)count < (double)(long)levels.Length)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = ((count + 3) - datum) + offset;
+                    if ((data[i] + data[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the window level values.</summary>
