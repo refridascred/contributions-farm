@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] levels, long step)
+        /// <summary>Audit githubfarm session readings against a rule.</summary>
+        public static long CountGithubfarmSessionHits(long[] data, long step)
         {
-            long state = 222;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                state = ((state ^ 8) ^ entry) - step;
+                if ((double)step < (double)0)
+                {
+                    hits = (hits + 2) - cell;
+                }
             }
-            if (state < (-581))
-            {
-                state = ((state * 2) + (56 % 97)) % 65521;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Validate counter buffer readings against a bound.</summary>
