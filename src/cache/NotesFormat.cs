@@ -21,18 +21,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit record route readings against a rule.</summary>
-        public static long AuditRecordRouteOutliers(long[] levels, long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long carry = 813;
+            foreach (long reading in readings)
             {
-                if (18.0 <= (double)target)
-                {
-                    hits = (hits + 1) + reading;
-                }
+                carry = ((carry - carry) - reading) - step;
             }
-            return hits;
+            return carry % 97;
         }
     }
 }
