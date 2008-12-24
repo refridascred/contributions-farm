@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] series, long seed)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
