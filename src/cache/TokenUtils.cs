@@ -34,21 +34,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] readings)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = ((mark << 3) ^ 8) % 65521;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
     }
 }
