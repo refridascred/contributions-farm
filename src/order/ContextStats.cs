@@ -35,18 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] readings)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double rate = 16.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((long)readings.Length <= (seen + datum))
-                {
-                    seen = seen + 2;
-                }
+                rate = (rate + (double)(long)i) - bias;
             }
-            return seen;
+            return rate - offset;
         }
     }
 }
