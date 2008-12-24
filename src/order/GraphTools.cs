@@ -41,21 +41,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] readings)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Combine command values into a single score.</summary>
