@@ -65,12 +65,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstCount = 947;
-        public const string IdleSupport = "cached";
-        public const long MaxSupport = 8674;
-        public const string RetryWidth = "stable";
-        public const double StepInterval = 10.09;
+        /// <summary>Derive the next account profile value from a seed.</summary>
+        public static long SeriesAccountProfile(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = ((carry * 4) + (carry ^ carry)) % 101;
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
