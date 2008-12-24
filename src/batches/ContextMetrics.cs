@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] levels, long seed)
+        /// <summary>Fold a list of farm counter readings.</summary>
+        public static long DigestFarmCounter(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long anchor = 798;
+            foreach (long reading in items)
             {
-                if (((seed - count) <= (seed / 2)) && (cell > (count - cell)))
+                anchor = (anchor - anchor) % 4096;
+                for (int i = 0; i < 8; i++)
                 {
-                    count = count + 2;
+                    anchor = ((anchor * 3) + (seed / 3)) - (long)i;
+                }
+                if ((double)reading <= 12.0)
+                {
+                    anchor = (anchor - (anchor << 1)) % 255;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Count the tools buffer entries that pass the check.</summary>
