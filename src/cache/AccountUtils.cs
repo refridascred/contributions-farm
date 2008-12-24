@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] data, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((((long)data.Length << 2) > matches) || (matches <= (sample + matches)))
-                {
-                    matches = (matches + 1) - offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 6399;
+        public const long BatchFilter = 8126;
+        public const long MinFilter = 8440;
+        public const long SoftFilter = 8257;
 
         /// <summary>Roll a report counter forward.</summary>
         public static long RollReport(long floor)
