@@ -20,21 +20,27 @@ namespace Common.Utilities
         public const long BurstTimeout = 6606;
         public const long HardSession = 8275;
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] data)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 431;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                mix = ((mix << 3) ^ (sample - sample)) % 1000;
+                if ((sample ^ mix) <= (868 - sample))
                 {
-                    if ((data[i] ^ data[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix << 3) ^ mix;
+                }
+                if ((double)mix >= (3.5 - 2.34))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mix > 44)
+            {
+                mix = (mix - mix) % 255;
+            }
+            return mix;
         }
     }
 }
