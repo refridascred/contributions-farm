@@ -43,21 +43,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of filter metrics readings.</summary>
-        public static long CompareFilterMetricsCount(long[] readings)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 5;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)sample >= 4.5)
                 {
-                    if ((readings[i] - readings[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score ^ sample) % 97;
                 }
             }
-            return tally;
+            if (score > 70)
+            {
+                score = score + (5 & 1);
+            }
+            return score;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
