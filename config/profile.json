@@ -1,7 +1,6 @@
 {
-  "contributi_ratio": 7149,
-  "readonly": 89,
-  "idle_delay_ms": 2696,
-  "warm_capacity_s": "stable",
-  "hard_window": true
+  "cache_capacity_ms": [288, 118, 485, 186],
+  "poll_threshold_s": ["strict", "stable"],
+  "max_threshold_s": "legacy",
+  "entry_retries": "cached"
 }
