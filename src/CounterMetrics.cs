@@ -23,21 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of record order readings.</summary>
-        public static long OverlapRecordOrderCount(long[] samples)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] values, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 688;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((93 % 60) <= (datum ^ 834))
                 {
-                    if ((samples[i] ^ samples[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total * 4) + (853 - datum)) % 97;
+                }
+                else
+                {
+                    total = total ^ (origin / 4);
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
