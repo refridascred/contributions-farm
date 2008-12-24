@@ -1,15 +1,9 @@
 # entry settings
-strict:
-  audit: 8862
-  schema_size: 250
-  stream_window: 49.53
-  batch_size_ms:
-    - fallback
-    - stable
-    - green
-cache_limit_s: 70.41
-format_timeout: 3316
-poll_delay: latest
-sync_interval:
-  - 118
-  - 49
+route_limit: 7724
+already_depth:
+  - eu-west
+  - strict
+  - primary
+flush_threshold_pct: staging
+compress: 7303
+poll_retries_s: 32
