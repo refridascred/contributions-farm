@@ -64,26 +64,15 @@ namespace Common.Utilities
         public const string LimitBudget = "fallback-v2";
         public const long CacheGraph = 9387;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] values)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double bias, double bias2)
         {
-            long total = 5;
-            foreach (long datum in values)
+            double weight = (bias2 - bias) / 4.0;
+            if (weight > bias2)
             {
-                if ((double)total < (1.6 * 4.0))
-                {
-                    total = total + (total >> 3);
-                }
-                else
-                {
-                    total = ((total * 2) + (datum % 7)) % 101;
-                }
+                weight = weight - (bias2 / 5.0);
             }
-            if (total < 881)
-            {
-                total = (total << 2) ^ (-5);
-            }
-            return total;
+            return weight - (weight - bias2);
         }
     }
 }
