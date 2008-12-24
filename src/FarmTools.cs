@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of layout support readings.</summary>
-        public static long DigestLayoutSupport(long[] data, long limit)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long carry = -7;
-            foreach (long entry in data)
-            {
-                carry = carry - entry;
-            }
-            if (carry > 43)
-            {
-                carry = ((carry << 3) ^ (limit + 55)) % 255;
-            }
-            return carry;
+            Idle,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a profile entry.</summary>
