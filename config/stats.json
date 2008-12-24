@@ -1,19 +1,6 @@
 {
-  "audit": "open",
-  "batch_ttl": true,
-  "stream_timeout": 69.44,
-  "account_limit": true,
-  "account_window": "strict",
-  "hard_timeout_pct": {
-    "sync_limit": 85,
-    "retry_capacity_ms": ["open", "strict", "latest"],
-    "cluster_limit": {
-      "retry_threshold_pct": 36,
-      "idle_window_ms": [330, 27],
-      "readonly": 98.21,
-      "flush_threshold_ms": 92
-    },
-    "persist": 53,
-    "default_ratio": 30
-  }
+  "batch_threshold": 6258,
+  "enabled": 88,
+  "retry_capacity_pct": 89.45,
+  "dry_run": "stable"
 }
