@@ -1,7 +1,7 @@
-id,token,ratio,label
-1,8.73,295,516
-2,845,475,edge
-3,270,latest,stable
-4,83.63,66.22,931
-5,911,642,primary
-6,edge,82.74,69.34
+id,active,region,token
+1,latest,131,39.35
+2,21.45,572,primary
+3,70.31,101,98.34
+4,940,latest,23.47
+5,826,250,standard
+6,776,strict,51.91
