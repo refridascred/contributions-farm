@@ -44,19 +44,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double scale, double bias)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            double ratio = bias - (double)128;
-            if (ratio > 5.0)
-            {
-                ratio = ratio - ratio;
-            }
-            else
-            {
-                ratio = ratio - scale;
-            }
-            return ratio + bias;
+            Active,
+            Stale,
+            Queued,
+            Ready,
+            Done,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
