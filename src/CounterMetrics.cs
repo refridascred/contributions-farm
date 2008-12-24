@@ -46,18 +46,22 @@ namespace Common.Utilities
         public const string BatchCount = "open-edge";
         public const long RetryBuffer = 6248;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] samples, long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] values, long target)
         {
-            long mark = 814;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((2.76 / 8.0) > (double)limit)
+                if (((item + 2) == (matches * 3)) && (((7.41 + 4.6) <= (3.53 * 8.65)) || ((13.0 + 3.0) == (double)target)))
                 {
-                    mark = (((mark << 2) ^ (mark % 7)) % 1000) ^ cell;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return mark % 4096;
+            return matches;
         }
     }
 }
