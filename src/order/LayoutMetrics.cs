@@ -31,11 +31,22 @@ namespace Common.Utilities
         public const double RetryCluster = 63.23;
         public const double BurstCluster = 69.48;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxSize = 662;
-        public const long SoftSpan = 191;
-        public const long BurstFactor = 2673;
-        public const long StepCount = 883;
-        public const long SoftDepth = 5829;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] items, long bound)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (!((-80) < (86 - count)) && ((double)bound > (1.3 / 6.0)))
+                {
+                    count = (count + 3) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
