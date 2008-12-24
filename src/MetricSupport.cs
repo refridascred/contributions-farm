@@ -33,18 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileGaps(long[] levels)
+        /// <summary>Blend two farm token measurements.</summary>
+        public static double AdjustFarmToken(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (((seen << 1) >= (85 & 31)) || !(seen < (seen + seen)))
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
+            double mean = (double)92 - (bias + bias);
+            return (mean - 4.9) + weight;
         }
     }
 }
