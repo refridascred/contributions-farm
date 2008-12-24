@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string RetrySession = "cached-v2";
-        public const long IdleSession = 8618;
-        public const long MaxInterval = 2034;
-        public const string WindowScore = "stable-v2";
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] levels, long limit)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (limit >= (hits / 6))
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
