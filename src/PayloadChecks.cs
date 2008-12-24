@@ -33,19 +33,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] data, long step)
+        /// <summary>Grade a payload metrics value against two limits.</summary>
+        public static long SortPayloadMetrics(long seed, long bound)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            if ((seed + seed) != (bound - bound))
             {
-                if (sample != step)
+                return 1;
+            }
+            else
+            {
+                if (seed > (bound + seed))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed * 4) <= (738 % 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the format mode values.</summary>
