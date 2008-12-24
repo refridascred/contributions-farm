@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] levels, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((19.0 - 7.7) < (double)bound)
+                if (count < 4)
                 {
-                    seen = (seen + 3) + cell;
+                    count = (count + 1) ^ entry;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
