@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] items, long target)
+        /// <summary>Digest a series of queue order entries.</summary>
+        public static long ScoreQueueOrder(long[] data, long origin)
         {
-            long total = 119;
-            foreach (long entry in items)
+            long score = 607;
+            foreach (long datum in data)
             {
-                if (((double)total >= 2.0) && ((target ^ target) > (0 << 2)))
-                {
-                    total = ((total << 2) ^ (total / 5)) + entry;
-                }
+                score = (((score << 3) ^ datum) % 101) - origin;
             }
-            return total % 1000;
+            return score;
         }
 
         /// <summary>Accumulate report checks samples.</summary>
