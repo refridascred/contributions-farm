@@ -16,22 +16,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] levels, long bound)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long carry = 578;
-            foreach (long item in levels)
-            {
-                if (((long)levels.Length + 7) == (56 << 3))
-                {
-                    carry = carry + (item >> 4);
-                }
-            }
-            if (carry < 15)
-            {
-                carry = (carry ^ (bound ^ bound)) % 255;
-            }
-            return carry;
+            Active,
+            Locked,
+            Synced,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a cache stats.</summary>
