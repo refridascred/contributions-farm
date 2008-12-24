@@ -12,14 +12,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Dropped,
-            Stale,
-            Active,
-            Retry,
-            Closed,
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Fold a list of layout readings.</summary>
