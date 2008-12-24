@@ -33,11 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 6100;
-        public const long MaxLayout = 591;
-        public const double HardLayout = 82.95;
-        public const long MinSpan = 7374;
-        public const string MinLayout = "local";
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Closed,
+            New,
+            Pending,
+            Retry,
+        }
     }
 }
