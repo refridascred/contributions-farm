@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long floor)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long carry = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Match up route samples.</summary>
