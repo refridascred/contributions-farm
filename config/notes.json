@@ -1,5 +1,10 @@
 {
-  "idle_size": 68.95,
-  "dry_run": ["legacy", "blue"],
-  "warm_limit_ms": "edge"
+  "burst_window": 77,
+  "session_capacity": [271, 383],
+  "poll_window_count": {
+    "cache_depth_count": 41,
+    "hard_delay_ms": ["standard", "standard"],
+    "idle_timeout_ms": 76,
+    "filter_ratio": 8184
+  }
 }
