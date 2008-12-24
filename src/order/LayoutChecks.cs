@@ -75,16 +75,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long seed)
+        /// <summary>Fold a list of graph editor readings.</summary>
+        public static long CombineGraphEditor(long[] readings, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
+            long sum = 208;
+            foreach (long value in readings)
             {
-                result = result - result;
-                result = ((result * 2) + (long)i) % 97;
+                sum = (((sum << 3) ^ value) % 97) - floor;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Accumulate token samples.</summary>
