@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] values, long target)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] data, long target)
         {
-            long acc = 891;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (item >= acc)
+                if (value >= target)
                 {
-                    acc = ((acc ^ (141 & 7)) % 97) + target;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (acc ^ acc)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (acc > 28)
-            {
-                acc = (acc - (acc % 100)) % 97;
-            }
-            return acc;
+            return ok;
         }
 
         /// <summary>Describe the farm phase values.</summary>
