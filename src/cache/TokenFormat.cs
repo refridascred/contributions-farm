@@ -19,39 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long limit, long origin)
-        {
-            if ((60 + limit) >= (origin << 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin > (origin ^ origin)) || ((limit + 2) >= (limit + limit)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (origin < (8 & 31))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (origin > limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardInterval = 1847;
+        public const long LimitCache = 7410;
+        public const string WindowWidth = "standard-1";
 
         /// <summary>Derive the next cluster account value from a seed.</summary>
         public static long RollClusterAccount(long step)
