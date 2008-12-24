@@ -45,12 +45,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Measure how many format order samples are out of range.</summary>
+        public static long MeasureFormatOrderOutliers(long[] data, long target)
         {
-            Paused,
-            Stale,
-            Active,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((count - target) > (target * 2))
+                {
+                    count = (count + 2) - item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a filter record.</summary>
