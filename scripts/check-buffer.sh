@@ -12,16 +12,11 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-blue}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=437
+log "limit is ${BUFFER_LIMIT}"
 
-for item in strict standard stable open; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
