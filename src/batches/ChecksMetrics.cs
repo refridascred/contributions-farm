@@ -33,22 +33,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] values)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] data, long bound)
         {
-            long score = 5;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)sample >= 4.5)
+                if (data[i] > bound)
                 {
-                    score = (score ^ sample) % 97;
+                    return (long)i;
                 }
             }
-            if (score > 70)
-            {
-                score = score + (5 & 1);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
