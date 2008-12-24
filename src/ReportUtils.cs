@@ -83,19 +83,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metric command readings against a bound.</summary>
-        public static bool VerifyMetricCommandLimits(long[] values, long step)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (cell >= step)
+                if (datum > target)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
     }
 }
