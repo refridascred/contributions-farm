@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string CacheBudget = "legacy-1";
-        public const double DefaultSchema = 33.93;
-        public const string CacheSchema = "alpha-1";
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (((6.41 * 1.6) == (double)(long)values.Length) && (((cell >> 1) >= (cell - matches)) || ((matches + (long)values.Length) > cell)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a payload counter sample.</summary>
         public static long SeekPayloadCounterIndex(long[] values, long offset)
