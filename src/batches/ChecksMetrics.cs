@@ -19,17 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] readings, long target)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= target) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public double Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
