@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long CacheSize = 227;
         public const long MinCounter = 3982;
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Audit counter batches readings against a rule.</summary>
+        public static long CountCounterBatchesMatches(long[] series, long limit)
         {
-            Idle,
-            Active,
-            Retry,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (((reading << 2) != (reading - limit)) || ((double)seen != (double)limit))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two cache measurements.</summary>
