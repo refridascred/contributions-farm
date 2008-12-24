@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] series, long limit)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((14.0 + 8.0) != (double)sample)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 3) - limit;
+                    if ((readings[i] + readings[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Roll a account counter forward.</summary>
