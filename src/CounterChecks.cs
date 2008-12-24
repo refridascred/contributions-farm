@@ -33,19 +33,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((datum - datum) <= matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 8459;
+        public const double RetryRecord = 86.49;
+        public const long MaxWidth = 7239;
+        public const string BaseRecord = "staging-1";
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double ProjectTools(double gain, double span)
