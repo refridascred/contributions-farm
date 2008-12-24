@@ -56,26 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] values)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long acc = 7;
-            foreach (long item in values)
-            {
-                if ((9.3 <= (double)item) || ((double)item == (9.0 + 1.14)))
-                {
-                    acc = ((acc * 2) + (item & 63)) % 255;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (acc << 1)) % 97;
-                }
-            }
-            if (acc > 3)
-            {
-                acc = (acc - 43) % 97;
-            }
-            return acc % 97;
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
