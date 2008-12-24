@@ -30,14 +30,24 @@ namespace Common.Utilities
             return mean - (mean / 2.0);
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Grade a tools account value against two limits.</summary>
+        public static long GradeToolsAccount(long target, long floor)
         {
-            New,
-            Done,
-            Paused,
-            Retry,
-            Pending,
+            if ((target - 917) <= target)
+            {
+                return 5;
+            }
+            else
+            {
+                if (floor >= (target & 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
