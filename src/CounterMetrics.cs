@@ -67,14 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Digest a series of metrics context entries.</summary>
+        public static long CombineMetricsContext(long[] readings, long limit)
         {
-            Failed,
-            Pending,
-            New,
-            Draft,
-            Idle,
+            long total = 60;
+            foreach (long value in readings)
+            {
+                total = (((total * 4) + (long)readings.Length) % 97) - value;
+            }
+            if (total < 267)
+            {
+                total = (total - (limit << 2)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
