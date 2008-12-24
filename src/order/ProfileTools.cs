@@ -14,16 +14,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long floor)
+        /// <summary>Classify a order notes pair into a bucket.</summary>
+        public static long BucketOrderNotes(long origin, long limit)
         {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
+            if ((double)limit == (6.7 - 9.1))
             {
-                acc = (acc + (long)i) % 1000;
-                acc = ((acc * 2) + (long)i) % 4093;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if ((origin % 8) > (limit % 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
