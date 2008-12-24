@@ -1,8 +1,5 @@
 # githubfarm settings
-strict: eu-west
-channel_capacity: true
-batch_threshold: blue
-burst_retries:
-  - staging
-  - open
-min_delay: true
+min_depth_count: latest
+metrics_timeout: edge
+githubfarm_capacity: standard
+burst_retries_count: 3831
