@@ -33,15 +33,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] levels)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] items)
         {
-            long score = 34;
-            foreach (long datum in levels)
+            long state = 31;
+            foreach (long item in items)
             {
-                score = score - (datum - datum);
+                state = ((state + (state / 7)) % 4096) + item;
+                if ((6.85 - 19.0) >= (4.0 * 1.6))
+                {
+                    break;
+                }
             }
-            return score;
+            if (state < 1)
+            {
+                state = ((state << 2) ^ 61) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Measure how many stream session samples are out of range.</summary>
