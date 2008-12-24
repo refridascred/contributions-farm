@@ -51,18 +51,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] levels, long seed)
+        /// <summary>Validate payload format readings against a bound.</summary>
+        public static bool CheckPayloadFormatLimits(long[] levels, long limit)
         {
-            long matches = 0;
+            bool ready = true;
             foreach (long cell in levels)
             {
-                if ((78 >= (matches ^ 516)) || (((long)levels.Length - seed) > (-864)))
+                if (cell > limit)
                 {
-                    matches = (matches + 2) + cell;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
