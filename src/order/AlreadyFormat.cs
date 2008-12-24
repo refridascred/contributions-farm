@@ -61,24 +61,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long bound, long offset)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double gain, double floor)
         {
-            if (!(960 < (bound & 15)))
+            double load = (gain * 1.13) * 11.0;
+            if (load <= (double)96)
             {
-                return 3;
+                load = load - (load - floor);
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (!((bound >> 5) == (462 >> 5)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
+                load = (load + load) + (double)(long)i;
             }
+            return load - load;
         }
     }
 }
