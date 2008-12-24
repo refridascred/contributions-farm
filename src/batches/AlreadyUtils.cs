@@ -80,13 +80,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] series, long floor)
         {
-            public long Count { get; set; }
-            public double Label { get; set; }
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
