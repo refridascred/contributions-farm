@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a counter metric reading by value.</summary>
-        public static long SeekCounterMetricIndex(long[] series, long step)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
