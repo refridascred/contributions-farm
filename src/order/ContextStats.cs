@@ -24,21 +24,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] values)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] readings, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (readings[i] < floor)
                 {
-                    if ((values[i] - values[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a entry info.</summary>
