@@ -59,22 +59,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of tools cache readings.</summary>
-        public static long DigestToolsCache(long[] readings, long target)
+        /// <summary>Count the entry channel entries that pass the check.</summary>
+        public static long MeasureEntryChannelGaps(long[] series, long offset)
         {
-            long sum = 163;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((value + value) > (target & 255))
+                if ((tally - value) != (3 + value))
                 {
-                    sum = (sum - (target & 7)) % 65521;
+                    tally = (tally + 3) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (sum > 67)
-            {
-                sum = (sum + (18 - sum)) % 65521;
-            }
-            return sum;
+            return tally;
         }
     }
 }
