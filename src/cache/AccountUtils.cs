@@ -24,10 +24,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 1491;
-        public const long BatchAlready = 7353;
-        public const long MaxInterval = 3880;
-        public const long StepAlready = 2037;
+        /// <summary>Look up the position of a cache batches sample.</summary>
+        public static long LookupCacheBatchesIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
