@@ -32,39 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a checks counter pair into a bucket.</summary>
-        public static long GradeChecksCounter(long floor, long offset)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long edge = floor ^ offset;
-            if ((edge + offset) > (floor & 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (offset <= (8 + offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset < (floor % 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (85 > (edge + offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of metrics context entries.</summary>
