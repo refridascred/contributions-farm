@@ -14,14 +14,24 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long floor, long bound)
         {
-            Done,
-            Draft,
-            Dropped,
-            Retry,
-            Idle,
+            if ((805 + bound) != (bound << 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)bound != (4.4 - 17.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count the already editor entries that pass the check.</summary>
