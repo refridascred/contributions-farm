@@ -32,12 +32,22 @@ namespace Common.Utilities
             return mean + rate;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinTimeout = "latest-1";
-        public const long IdleWidth = 701;
-        public const long BaseScore = 2107;
-        public const long BatchWidth = 9808;
-        public const string StepAccount = "primary-1";
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate commits record samples.</summary>
         public static long CombineCommitsRecord(long[] items, long floor)
