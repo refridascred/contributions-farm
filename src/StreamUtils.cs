@@ -13,15 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long offset)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long carry = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            New,
+            Locked,
+            Synced,
         }
 
         /// <summary>Hold a batches info.</summary>
