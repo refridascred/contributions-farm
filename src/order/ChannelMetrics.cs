@@ -15,13 +15,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] series, long step)
         {
-            public bool Weight { get; set; }
-            public double Score { get; set; }
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
