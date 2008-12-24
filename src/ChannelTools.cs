@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const double RetryGraph = 9.0;
         public const double LimitSize = 96.84;
 
-        /// <summary>Digest a series of tools queue entries.</summary>
-        public static long DigestToolsQueue(long[] levels)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] values, long bound)
         {
-            long state = 8;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = state ^ (item & 7);
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Match up account samples.</summary>
