@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardCounter = "open-edge";
-        public const long MaxDepth = 779;
-        public const long BaseCounter = 9629;
-        public const long DefaultSpan = 7477;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] levels, long target)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long SeriesStats(long seed)
