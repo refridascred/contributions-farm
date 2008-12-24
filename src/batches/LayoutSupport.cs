@@ -58,15 +58,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 557;
+        public const double WindowCommand = 39.31;
+        public const long IdleCommand = 6249;
+        public const long MinSize = 2723;
     }
 }
