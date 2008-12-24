@@ -5,10 +5,29 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowTimeout = "local-edge";
-        public const string WindowPayload = "staging-1";
-        public const double BasePayload = 21.04;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] values, long bound)
+        {
+            long acc = -5;
+            foreach (long cell in values)
+            {
+                if ((bound - cell) > (cell + 9))
+                {
+                    acc = ((acc * 3) + bound) % 101;
+                    continue;
+                }
+                else
+                {
+                    acc = acc - (cell + acc);
+                }
+                acc = (acc ^ (bound + acc)) % 4096;
+            }
+            if (acc > 465)
+            {
+                acc = (acc - (bound ^ 2)) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
