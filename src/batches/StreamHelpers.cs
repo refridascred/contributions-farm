@@ -89,18 +89,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] series, long limit)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (((-957) >= (442 ^ datum)) || !((double)count >= (double)datum))
-                {
-                    count = (count + 1) + limit;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
