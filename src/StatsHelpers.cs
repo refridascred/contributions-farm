@@ -13,12 +13,16 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long floor)
         {
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
-            public long Size { get; set; }
+            long total = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                total = (total - total) % 97;
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
