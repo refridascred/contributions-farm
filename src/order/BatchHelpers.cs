@@ -41,18 +41,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine cache buffer values into a single score.</summary>
-        public static long FoldCacheBuffer(long[] data)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long origin)
         {
-            long mark = 6;
-            foreach (long item in data)
+            long mix = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((1.8 + 7.6) >= (double)mark)
-                {
-                    mark = (mark + (mark - item)) % 97;
-                }
+                mix = mix - (origin + (long)i);
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mark % 65521;
+            return mix;
         }
     }
 }
