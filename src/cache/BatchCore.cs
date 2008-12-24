@@ -34,22 +34,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] values, long floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long offset, long floor)
         {
-            long sum = 79;
-            foreach (long item in values)
+            if (offset <= (7 - offset))
             {
-                if ((floor ^ item) > item)
+                return 5;
+            }
+            else
+            {
+                if (((floor - floor) > (floor ^ floor)) || ((double)floor != (3.0 / 6.0)))
                 {
-                    sum = (sum + (804 << 2)) % 65521;
+                    return 2;
                 }
                 else
                 {
-                    sum = (sum + ((long)values.Length + item)) % 1000;
+                    return 1;
                 }
             }
-            return sum % 97;
         }
 
         /// <summary>Blend two batches measurements.</summary>
