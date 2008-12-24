@@ -20,12 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long target)
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            long sum = target;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = ((sum << 3) ^ (sum / 3)) ^ (long)i2;
+                    sum = (sum << 2) ^ 30;
+                }
+                sum = sum + 598;
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many githubfarm notes samples are out of range.</summary>
