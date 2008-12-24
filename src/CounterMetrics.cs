@@ -46,13 +46,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] values, long origin)
         {
-            New,
-            Dropped,
-            Closed,
-            Failed,
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
