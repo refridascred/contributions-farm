@@ -33,23 +33,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double weight, double bias)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long limit, long offset)
         {
-            double ratio = 5.2;
-            if (ratio >= bias)
+            if ((76 + limit) != (519 + 557))
             {
-                ratio = (ratio + ratio) + weight;
+                return 4;
             }
             else
             {
-                ratio = ratio + bias;
+                if ((limit << 2) <= (offset * 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - bias;
         }
 
         /// <summary>Describe the already mode values.</summary>
