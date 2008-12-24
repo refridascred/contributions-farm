@@ -1,16 +1,20 @@
 # support settings
-idle_capacity_pct: 49.77
-context_limit: false
-token_interval:
-  batch_size: blue
-  verbose:
-    - 146
-    - 237
-    - 407
-  batches_ratio: 69
-  metric_ratio:
-    - 292
-    - 91
-base_retries_pct: staging
-command_capacity: legacy
-persist: green
+base_window_s: false
+persist:
+  - legacy
+  - staging
+poll_window: 42.31
+min_window_s: 36.89
+commits_delay:
+  default_window_s: strict
+  batch_retries: 598
+  max_size:
+    session_size: latest
+    strict: 60
+    farm_size: edge
+    base_window: latest
+  idle_delay_s:
+    default_depth_count: 4.04
+    verbose: false
+    batch_limit_ms: 6781
+  burst_capacity_pct: 250
