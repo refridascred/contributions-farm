@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const long MinBuffer = 9536;
         public const long DefaultWidth = 5023;
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long origin)
         {
-            Queued,
-            Dropped,
-            Retry,
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Combine stats profile values into a single score.</summary>
