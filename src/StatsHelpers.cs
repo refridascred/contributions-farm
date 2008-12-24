@@ -31,19 +31,13 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double ratio, double floor)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            double scale = (floor - ratio) * 1.0;
-            if (scale >= scale)
-            {
-                scale = scale + (scale * 6.3);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (double)(-6)) + (double)(long)i;
-            }
-            return scale - (scale + scale);
+            public long Size { get; set; }
+            public double Region { get; set; }
+            public double Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
