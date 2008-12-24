@@ -61,19 +61,12 @@ namespace Common.Utilities
             return drift - gain;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] readings, long origin)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
