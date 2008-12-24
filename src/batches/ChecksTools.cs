@@ -33,23 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double ratio, double offset)
-        {
-            double gain = 16.0;
-            if (gain > (double)572)
-            {
-                gain = (gain + (ratio - gain)) + offset;
-            }
-            else
-            {
-                gain = gain - (double)9;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (3.76 / 4.0)) + (double)(long)i;
-            }
-            return gain - (ratio / 6.0);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 3172;
+        public const double BatchContext = 21.13;
+        public const string LimitTimeout = "cached-v2";
+        public const long StepContext = 6155;
+        public const double BurstContext = 17.32;
     }
 }
