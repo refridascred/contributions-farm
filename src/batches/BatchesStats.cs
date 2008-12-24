@@ -34,11 +34,14 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            Pending,
+            Locked,
+            Failed,
+            Draft,
+            Ready,
         }
     }
 }
