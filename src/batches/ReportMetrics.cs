@@ -27,13 +27,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Validate githubfarm commits readings against a bound.</summary>
+        public static bool GuardGithubfarmCommitsRange(long[] items, long offset)
         {
-            Idle,
-            Done,
-            Closed,
-            Paused,
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
