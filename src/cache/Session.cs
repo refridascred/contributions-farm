@@ -47,13 +47,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] series, long target)
         {
-            public string Score { get; set; } = "";
-            public double Weight { get; set; }
-            public double Limit { get; set; }
-            public long Label { get; set; }
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
