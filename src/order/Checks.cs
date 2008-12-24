@@ -59,19 +59,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] data, long floor)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long state = 16;
-            foreach (long sample in data)
-            {
-                state = ((state ^ ((-84) - floor)) % 97) + sample;
-                if (floor > (long)data.Length)
-                {
-                    break;
-                }
-            }
-            return state % 97;
+            public double Limit { get; set; }
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
