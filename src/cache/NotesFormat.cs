@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long RetrySize = 9593;
         public const double RetryInterval = 23.29;
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] items, long floor)
         {
-            Paused,
-            Active,
-            Stale,
-            Retry,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (!((long)items.Length <= (floor ^ 6)))
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate queue samples.</summary>
