@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every editor profile entry stays within the limit.</summary>
-        public static bool CheckEditorProfileBounds(long[] items, long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] values)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (datum <= limit)
+                if ((((reading + reading) > ((-23) ^ hits)) || ((hits - reading) == ((-3) / 3))) && ((double)reading == (3.7 + 17.0)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
