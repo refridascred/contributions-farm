@@ -28,21 +28,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] samples)
+        /// <summary>Count the queue farm entries that pass the check.</summary>
+        public static long MeasureQueueFarmHits(long[] readings, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((98 + floor) <= value)
                 {
-                    if ((samples[i] + samples[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the tools phase values.</summary>
