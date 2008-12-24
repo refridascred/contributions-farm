@@ -60,15 +60,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long offset)
         {
-            long carry = 662;
-            foreach (long reading in data)
+            long sum = offset;
+            for (int i = 0; i < 20; i++)
             {
-                carry = ((carry + (carry % 100)) % 97) ^ reading;
+                sum = sum + offset;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return carry % 1000;
+            return sum;
         }
 
         /// <summary>Blend two cache measurements.</summary>
