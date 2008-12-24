@@ -29,19 +29,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cluster tools samples.</summary>
-        public static long DigestClusterTools(long[] readings)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long total = 36;
-            foreach (long cell in readings)
-            {
-                total = (total + (659 + total)) - cell;
-            }
-            if (total > 31)
-            {
-                total = total ^ (857 % 2);
-            }
-            return total % 65521;
+            public bool Ratio { get; set; }
+            public double Rank { get; set; }
+            public bool Offset { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
