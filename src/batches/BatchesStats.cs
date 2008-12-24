@@ -45,22 +45,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] samples)
+        /// <summary>Project the next session format value.</summary>
+        public static double SmoothSessionFormat(double bias, double bias2)
         {
-            long result = 152;
-            foreach (long sample in samples)
+            double load = bias2 / 8.0;
+            if (load <= (double)87)
             {
-                if (sample >= (sample + result))
-                {
-                    result = ((result * 3) + 97) % 255;
-                }
-                else
-                {
-                    result = result ^ (result << 3);
-                }
+                load = (load - load) + bias;
             }
-            return result % 1000;
+            return load - load;
         }
     }
 }
