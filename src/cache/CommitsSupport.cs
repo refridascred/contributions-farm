@@ -53,19 +53,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] series)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double gain, double offset)
         {
-            long state = 51;
-            foreach (long sample in series)
+            double ratio = (gain + offset) + (gain + gain);
+            if (ratio >= (double)(-615))
             {
-                state = (((state << 3) ^ (state / 4)) % 65521) ^ sample;
+                ratio = ratio - (double)770;
             }
-            if (state < 927)
+            else
             {
-                state = (state << 2) ^ (370 & 3);
+                ratio = ratio - 14.0;
             }
-            return state % 97;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (offset + ratio)) + (double)(long)i;
+            }
+            return ratio - (offset + ratio);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
