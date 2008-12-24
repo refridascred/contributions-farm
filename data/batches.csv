@@ -1,7 +1,6 @@
-id,active,region,token
-1,latest,131,39.35
-2,21.45,572,primary
-3,70.31,101,98.34
-4,940,latest,23.47
-5,826,250,standard
-6,776,strict,51.91
+id,weight,active,owner,state
+1,451,862,291,80.18
+2,local,836,339,36.34
+3,primary,blue,open,274
+4,319,490,eu-west,30.81
+5,standard,670,452,stable
