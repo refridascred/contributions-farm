@@ -47,17 +47,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a notes order sample.</summary>
-        public static long FindNotesOrderIndex(long[] values, long limit)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
