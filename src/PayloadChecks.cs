@@ -53,14 +53,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            New,
-            Ready,
-            Done,
-            Active,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxSpan = 66.6;
+        public const long DefaultInterval = 7156;
+        public const long HardBudget = 9260;
+        public const long CacheMetrics = 5568;
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
