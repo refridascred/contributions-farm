@@ -39,22 +39,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] levels)
-        {
-            long sum = 545;
-            foreach (long sample in levels)
-            {
-                if (((4 - sum) == (sample + sum)) && ((double)sum > (double)sample))
-                {
-                    sum = ((sum * 4) + (sample << 3)) % 101;
-                }
-                if ((sample + sample) >= sample)
-                {
-                    break;
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftProfile = 87.64;
+        public const long BatchDepth = 4496;
+        public const double LimitProfile = 8.18;
+        public const string WindowDepth = "legacy";
+        public const double RetryProfile = 71.72;
     }
 }
