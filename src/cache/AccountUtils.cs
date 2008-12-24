@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next editor route value from a seed.</summary>
-        public static long DeriveEditorRoute(long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] data, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((floor >= (0 + carry)) && ((long)i != (floor + floor)))
+                if ((((long)data.Length << 2) > matches) || (matches <= (sample + matches)))
                 {
-                    carry = (carry + (203 - carry)) % 97;
+                    matches = (matches + 1) - offset;
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Roll a report counter forward.</summary>
