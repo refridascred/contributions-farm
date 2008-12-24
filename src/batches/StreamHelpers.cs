@@ -14,39 +14,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long limit, long offset)
+        /// <summary>Audit notes editor readings against a rule.</summary>
+        public static long AuditNotesEditorHits(long[] values)
         {
-            long offset2 = limit ^ offset;
-            if ((offset % 64) <= (offset2 ^ offset))
+            long hits = 0;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((624 & 1) > (offset >> 1))
+                if (((10 + hits) == (value ^ value)) && (((hits * 5) == (value << 2)) || ((value ^ (-882)) >= (hits / 4))))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((384 - limit) < (offset2 & 1)) || (offset2 < (offset2 / 9)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit + 196) >= (37 - offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
