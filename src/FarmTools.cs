@@ -17,22 +17,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of order checks readings.</summary>
-        public static long FoldOrderChecks(long[] samples, long seed)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] series, long seed)
         {
-            long acc = 683;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((5 << 1) < seed)
+                if ((series[i] > seed) && ((series[i] % 5) == 0))
                 {
-                    acc = ((acc - (seed + (long)samples.Length)) % 4096) - sample;
-                }
-                else
-                {
-                    acc = (acc ^ (seed - seed)) % 255;
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
     }
 }
