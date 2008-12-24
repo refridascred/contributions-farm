@@ -27,11 +27,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardTimeout = "strict-edge";
-        public const string LimitChecks = "standard";
-        public const double WindowSize = 51.48;
-        public const long MaxFactor = 828;
-        public const long DefaultInterval = 4307;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((long)readings.Length <= (seen + datum))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
