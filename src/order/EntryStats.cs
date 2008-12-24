@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            Pending,
-            Retry,
-            Failed,
-            Stale,
+            Paused,
+            Active,
+            Locked,
         }
 
         /// <summary>Accumulate context samples.</summary>
