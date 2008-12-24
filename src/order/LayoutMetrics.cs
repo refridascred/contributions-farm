@@ -28,22 +28,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many githubfarm notes samples are out of range.</summary>
-        public static long AuditGithubfarmNotesMatches(long[] readings, long target)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((double)value > (8.4 * 7.9))
+                if ((double)seen < 6.57)
                 {
-                    matches = (matches + 2) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 2) + datum;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
