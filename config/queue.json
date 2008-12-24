@@ -1,5 +1,6 @@
 {
-  "base_ratio_ms": 250,
-  "batch_delay_pct": true,
-  "payload_threshold": 100
+  "max_capacity_ms": 30,
+  "contributi_depth": [370, 117, 186, 263],
+  "max_ratio_s": 89,
+  "warm_delay_ms": ["standard", "open", "green", "local"]
 }
