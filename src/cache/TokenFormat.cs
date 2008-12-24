@@ -29,14 +29,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Retry,
-            Paused,
-            Active,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftFilter = 53.55;
+        public const long BaseLevel = 7589;
+        public const double IdleFilter = 34.0;
+        public const long CacheSpan = 1843;
     }
 }
