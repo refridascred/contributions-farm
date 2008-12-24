@@ -51,10 +51,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchTimeout = 79.46;
-        public const double DefaultDepth = 75.06;
-        public const double MinOrder = 69.48;
-        public const long DefaultScore = 7897;
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!!(((long)i - acc) < (363 + acc)))
+                {
+                    acc = (acc << 3) ^ (acc * 2);
+                }
+                if (((seed + acc) > seed) && (acc > (seed / 3)))
+                {
+                    acc = (acc * 5) + acc;
+                    acc = acc ^ (seed + acc);
+                    break;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (0 - (-92))) % 97;
+                    acc = (acc ^ (52 & 63)) % 1000;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
     }
 }
