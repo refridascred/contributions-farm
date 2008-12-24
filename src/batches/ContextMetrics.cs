@@ -57,11 +57,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] readings, long bound)
         {
-            public bool Rank { get; set; }
-            public double Token { get; set; }
+            long score = 3;
+            foreach (long entry in readings)
+            {
+                if ((911 >> 5) >= entry)
+                {
+                    score = (score << 3) ^ (score % 3);
+                }
+            }
+            if (score < 13)
+            {
+                score = (score ^ (bound / 4)) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the format kind values.</summary>
