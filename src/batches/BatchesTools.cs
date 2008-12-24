@@ -39,20 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] values, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((limit % 100) > (anchor + anchor))
+                if (((matches >= sample) || ((double)sample != (6.6 + 7.7))) || (((matches / 2) >= (29 / 3)) && ((double)matches <= 6.65)))
                 {
-                    anchor = (anchor ^ (limit - (long)i)) % 65521;
-                    anchor = (anchor - (limit % 2)) % 1000;
+                    matches = (matches + 1) - bound;
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return matches;
         }
     }
 }
