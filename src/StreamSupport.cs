@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the record filter entries that pass the check.</summary>
-        public static long AuditRecordFilterOutliers(long[] values, long limit)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            double rate = (bias + 5.0) / 2.0;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)datum == (5.2 - 4.4))
-                {
-                    seen = (seen + 2) - limit;
-                }
+                rate = ((rate - bias) + (double)(long)i) - offset;
             }
-            return seen;
+            return rate + rate;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
