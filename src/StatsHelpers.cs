@@ -60,18 +60,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] readings)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] items)
         {
-            long result = 492;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((result + reading) > result) || ((result - result) >= (reading + (long)readings.Length)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result * 3) + result;
+                    if ((items[i] + items[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
     }
 }
