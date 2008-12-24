@@ -1,6 +1,8 @@
 {
-  "command_size": "stable",
-  "retry_capacity_s": 0.83,
-  "flush_depth": 30,
-  "hard_interval_pct": ["staging", "strict", "strict"]
+  "poll_limit_pct": "blue",
+  "command_ttl": "staging",
+  "sync_retries": "local",
+  "tools_ratio": 19.9,
+  "max_threshold_ms": "latest",
+  "schema_depth": ["strict", "primary", "open"]
 }
