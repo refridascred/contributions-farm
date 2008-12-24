@@ -65,10 +65,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxBudget = 69.93;
-        public const long MinAccount = 5354;
-        public const long WindowBudget = 3324;
-        public const long HardSize = 5133;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public bool Rank { get; set; }
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
