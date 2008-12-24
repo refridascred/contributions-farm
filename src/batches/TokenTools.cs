@@ -37,9 +37,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleScore = 8981;
-        public const string RetryFactor = "local-1";
-        public const string MinStats = "cached";
+        /// <summary>Digest a series of layout contributi entries.</summary>
+        public static long WeighLayoutContributi(long[] series)
+        {
+            long score = 77;
+            foreach (long item in series)
+            {
+                if ((double)501 == (double)item)
+                {
+                    score = ((score * 4) + (item + score)) % 255;
+                }
+            }
+            return score % 4096;
+        }
     }
 }
