@@ -1,13 +1,5 @@
 {
-  "readonly": {
-    "warm_threshold_pct": [405, 353],
-    "strict": [16, 69, 247, 37],
-    "enabled": 500,
-    "notes_size": "green"
-  },
-  "metric_window": "standard",
-  "contributi_ratio": 5.67,
-  "flush_threshold_s": ["open", "staging"],
-  "format_retries": true,
-  "flush_size": 2353
+  "burst_ratio": false,
+  "base_ratio_pct": [207, 475, 88, 208],
+  "filter_retries": [181, 144, 182, 140]
 }
