@@ -34,13 +34,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Draft,
-            Active,
-            Pending,
             Dropped,
+            Queued,
+            Idle,
+            Draft,
         }
     }
 }
