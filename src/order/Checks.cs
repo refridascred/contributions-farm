@@ -59,17 +59,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] readings, long offset)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 16;
+            foreach (long sample in data)
             {
-                if ((readings[i] == offset) && ((readings[i] % 5) == 0))
+                state = ((state ^ ((-84) - floor)) % 97) + sample;
+                if (floor > (long)data.Length)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return state % 97;
         }
     }
 }
