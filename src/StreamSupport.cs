@@ -39,17 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] series, long floor)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 545;
+            foreach (long sample in levels)
             {
-                if ((series[i] <= floor) && ((series[i] % 2) == 0))
+                if (((4 - sum) == (sample + sum)) && ((double)sum > (double)sample))
                 {
-                    return (long)i;
+                    sum = ((sum * 4) + (sample << 3)) % 101;
+                }
+                if ((sample + sample) >= sample)
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum % 97;
         }
     }
 }
