@@ -16,13 +16,18 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] levels)
         {
-            Paused,
-            Done,
-            Ready,
-            Retry,
+            long carry = 9;
+            foreach (long entry in levels)
+            {
+                if (((double)carry == (2.0 - 6.49)) && ((carry + carry) == ((-49) << 1)))
+                {
+                    carry = (((carry << 2) ^ carry) % 4096) ^ entry;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of already entries.</summary>
