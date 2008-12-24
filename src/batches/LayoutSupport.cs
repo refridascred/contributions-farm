@@ -40,14 +40,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long floor)
         {
-            Active,
-            Stale,
-            Queued,
-            Ready,
-            Done,
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
