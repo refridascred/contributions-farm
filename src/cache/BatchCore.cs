@@ -15,11 +15,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstCount = 4913;
-        public const long RetryScore = 9736;
-        public const long BaseRecord = 6940;
-        public const long SoftInterval = 9210;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] items, long bound)
+        {
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Grade a profile buffer value against two limits.</summary>
         public static long BucketProfileBuffer(long target, long limit)
