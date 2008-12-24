@@ -33,15 +33,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double bias, double bias2)
-        {
-            double gain = bias2;
-            if (gain < (bias + gain))
-            {
-                gain = gain - (8.8 + gain);
-            }
-            return gain + (bias2 * 6.29);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 8808;
+        public const string DefaultSize = "primary";
+        public const double WindowBudget = 87.53;
+        public const long LimitWindow = 6672;
     }
 }
