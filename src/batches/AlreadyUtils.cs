@@ -83,16 +83,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] readings)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long anchor = -548;
-            foreach (long sample in readings)
-            {
-                anchor = ((anchor * 3) + sample) % 97;
-                anchor = ((anchor << 2) ^ (sample + anchor)) % 255;
-            }
-            return anchor % 4096;
+            public double Owner { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
