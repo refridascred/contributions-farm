@@ -45,15 +45,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] series)
+        /// <summary>Compare every pair of filter notes readings.</summary>
+        public static long MatchFilterNotesCount(long[] series)
         {
             long seen = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((-599) << 3) < reading)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((series[i] ^ series[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
