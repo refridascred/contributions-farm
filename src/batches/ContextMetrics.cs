@@ -57,22 +57,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] readings, long bound)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long score = 3;
-            foreach (long entry in readings)
-            {
-                if ((911 >> 5) >= entry)
-                {
-                    score = (score << 3) ^ (score % 3);
-                }
-            }
-            if (score < 13)
-            {
-                score = (score ^ (bound / 4)) % 4096;
-            }
-            return score % 1000;
+            Dropped,
+            Ready,
+            Closed,
+            Idle,
         }
 
         /// <summary>Describe the format kind values.</summary>
