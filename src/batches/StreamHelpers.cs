@@ -94,22 +94,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] values)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyOutliers(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((entry - (long)values.Length) < (entry << 1))
+                if (((-957) >= (442 ^ datum)) || !((double)count >= (double)datum))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 1) + limit;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
