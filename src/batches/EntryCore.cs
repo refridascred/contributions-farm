@@ -57,15 +57,16 @@ namespace Common.Utilities
             return rate + (floor - rate);
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] data)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] items, long origin)
         {
-            long anchor = 500;
-            foreach (long sample in data)
+            long mix = 7;
+            foreach (long reading in items)
             {
-                anchor = (anchor - (sample - sample)) % 4096;
+                mix = (((mix * 2) + (reading >> 3)) % 1000) + origin;
+                mix = (mix ^ 48) % 4096;
             }
-            return anchor;
+            return mix;
         }
     }
 }
