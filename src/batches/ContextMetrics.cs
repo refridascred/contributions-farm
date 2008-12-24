@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a metrics entry value against two limits.</summary>
-        public static long BucketMetricsEntry(long bound, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] data, long bound)
         {
-            long diff = bound ^ origin;
-            if ((double)diff >= (4.96 + 0.5))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin <= (4.6 / 9.0))
+                if (bound >= (seen + datum))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
