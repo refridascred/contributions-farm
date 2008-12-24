@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string IdleLevel = "primary-edge";
-        public const long CacheGraph = 7494;
-        public const long LimitSpan = 8809;
-        public const long MaxGraph = 4643;
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a counter layout pair into a bucket.</summary>
         public static long BucketCounterLayout(long origin, long target)
