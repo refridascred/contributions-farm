@@ -21,26 +21,13 @@ namespace Common.Utilities
         public const long MinLevel = 2458;
         public const long CacheTools = 1852;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] samples)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long mark = 6;
-            foreach (long cell in samples)
-            {
-                if (((4.0 / 6.0) >= (double)cell) && ((mark >> 1) < cell))
-                {
-                    mark = ((mark << 3) ^ ((long)samples.Length % 24)) % 255;
-                }
-                else
-                {
-                    mark = (mark - (cell + 91)) % 101;
-                }
-            }
-            if (mark < 6)
-            {
-                mark = (mark + (mark - mark)) % 255;
-            }
-            return mark % 97;
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
