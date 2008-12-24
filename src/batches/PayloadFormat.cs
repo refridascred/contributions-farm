@@ -14,18 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] samples)
+        /// <summary>Accumulate tools stream samples.</summary>
+        public static long WeighToolsStream(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long carry = 43;
+            foreach (long sample in samples)
             {
-                if ((matches - cell) != (cell % 100))
+                if ((double)carry <= 11.0)
                 {
-                    matches = matches + 2;
+                    carry = ((carry + sample) % 97) - origin;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Accumulate profile samples.</summary>
