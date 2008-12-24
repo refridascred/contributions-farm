@@ -1,6 +1,8 @@
-id,rank,active,weight,score
-1,79.46,198,32.97,68.34
-2,367,918,25.41,552
-3,29.22,21.04,95.37,238
-4,967,867,cached,green
-5,407,996,95.29,staging
+id,score,level,weight
+1,626,511,328
+2,12.01,814,262
+3,77.23,235,stable
+4,eu-west,96.08,257
+5,green,832,strict
+6,green,local,legacy
+7,9.5,19.0,434
