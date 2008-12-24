@@ -45,12 +45,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Ready,
-            Queued,
-            Synced,
+            Paused,
+            Stale,
+            Active,
         }
 
         /// <summary>Hold a filter record.</summary>
