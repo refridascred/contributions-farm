@@ -1,6 +1,15 @@
 {
-  "channel_limit": true,
-  "enabled": "open",
-  "token_window": "eu-west",
-  "verbose": [401, 468, 113, 15]
+  "flush_depth_pct": {
+    "context_interval": 60,
+    "retry_ratio_ms": ["strict", "open", "standard"],
+    "burst_delay_count": false,
+    "verbose": 7305,
+    "soft_limit_pct": "latest",
+    "base_depth": false
+  },
+  "context_delay": 30.09,
+  "warm_ratio": 15.67,
+  "warm_window_count": true,
+  "farm_window": 1754,
+  "strict": [129, 397]
 }
