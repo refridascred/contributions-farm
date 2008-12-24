@@ -86,15 +86,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Count cache editor pairs that satisfy a relation.</summary>
+        public static long MatchCacheEditorCount(long[] samples)
         {
-            long state = 921;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = state ^ (value % 24);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state % 4096;
+            return matches;
         }
     }
 }
