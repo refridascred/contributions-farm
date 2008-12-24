@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] series, long step)
+        /// <summary>Compare every pair of checks layout readings.</summary>
+        public static long OverlapChecksLayoutCount(long[] items)
         {
-            long mix = 7;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((step << 3) > ((-5) ^ value)) && ((step % 97) > step))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix ^ (mix >> 2)) % 65521;
-                }
-                if (((value + mix) > (step & 63)) || (step > (6 - step)))
-                {
-                    break;
+                    if ((items[i] - items[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Combine report values into a single score.</summary>
