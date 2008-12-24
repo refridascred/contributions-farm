@@ -1,10 +1,7 @@
-id,count,ratio
-1,54.67,edge
-2,47.18,275
-3,908,blue
-4,54.45,33.56
-5,legacy,1.11
-6,staging,23.7
-7,149,939
-8,74.26,cached
-9,29.88,stable
+id,active,weight,ratio,count
+1,954,78.02,117,85.65
+2,572,cached,511,40.18
+3,green,73,191,green
+4,206,498,6.22,71
+5,legacy,92.08,fallback,594
+6,833,84.43,78.35,stable
