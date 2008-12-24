@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate token cache readings against a bound.</summary>
-        public static bool GuardTokenCacheRange(long[] items, long target)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long carry = 61;
+            foreach (long datum in values)
             {
-                if (item <= target)
+                if (!((datum - datum) != (step - carry)))
                 {
-                    ready = false;
-                    break;
+                    carry = (carry + datum) % 65521;
+                    carry = carry - (datum >> 1);
+                }
+                if (((double)datum > (1.0 * 1.89)) && ((step % 2) >= 0))
+                {
+                    carry = carry + (carry - datum);
                 }
             }
-            return ready;
+            if (carry > 81)
+            {
+                carry = (carry + (carry - carry)) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
