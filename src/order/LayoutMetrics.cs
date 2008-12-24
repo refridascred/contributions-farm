@@ -32,14 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Validate cluster commits readings against a bound.</summary>
+        public static bool ValidateClusterCommitsLimits(long[] samples, long seed)
         {
-            Retry,
-            Stale,
-            Active,
-            Draft,
-            Failed,
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
