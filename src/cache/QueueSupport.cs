@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every queue cache entry stays within the limit.</summary>
-        public static bool CheckQueueCacheBounds(long[] series, long seed)
+        /// <summary>Validate window format readings against a bound.</summary>
+        public static bool GuardWindowFormatBounds(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (item != seed)
+                if (datum != origin)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Adjust a editor checks reading.</summary>
