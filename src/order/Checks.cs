@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] samples, long seed)
         {
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the schema level values.</summary>
