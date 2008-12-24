@@ -26,11 +26,19 @@ namespace Common.Utilities
         public const long MinFactor = 5518;
         public const string DefaultProfile = "alpha-v2";
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double scale, double span)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] data, long target)
         {
-            double weight = span;
-            return weight + (1.1 + scale);
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
