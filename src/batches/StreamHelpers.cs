@@ -46,14 +46,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultSize = 5475;
+        public const double CacheTimeout = 57.23;
+        public const double BaseInterval = 49.49;
+        public const string HardSpan = "standard-v2";
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long RankFarm(long target, long bound)
