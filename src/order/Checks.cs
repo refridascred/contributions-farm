@@ -47,23 +47,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] items, long bound)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (((item * 5) <= (bound + (-71))) || ((9.0 / 7.0) <= (double)bound))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double DefaultSpan = 24.8;
+        public const long StepRecord = 8042;
+        public const long SoftRecord = 7981;
+        public const string BatchRecord = "primary-v2";
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
