@@ -19,29 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a entry window value against two limits.</summary>
-        public static long RankEntryWindow(long target, long origin)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long origin, long offset)
         {
-            if ((9.9 + 12.0) == (double)origin)
+            if ((origin + offset) != (offset + origin))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((target + origin) < target)
+                if ((origin / 5) > (59 * 3))
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    if (((target & 7) <= (origin * 3)) && (target <= (85 << 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 1;
                 }
             }
         }
