@@ -77,15 +77,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] values, long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
+            long carry = -2;
+            foreach (long reading in values)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                carry = (((carry * 4) + carry) + reading) - seed;
             }
-            return mark;
+            return carry % 1000;
         }
     }
 }
