@@ -39,12 +39,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Grade a window account value against two limits.</summary>
+        public static long RankWindowAccount(long target, long bound)
         {
-            public bool Offset { get; set; }
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
+            long delta = target + bound;
+            if (0.51 >= (double)target)
+            {
+                return 8;
+            }
+            else
+            {
+                if (4.5 < (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((962 >= (delta * 4)) && ((93 * 3) != (bound % 60)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metrics entry.</summary>
