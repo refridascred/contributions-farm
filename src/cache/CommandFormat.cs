@@ -21,21 +21,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the session checks series from a seed.</summary>
-        public static long RollSessionChecks(long limit)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double scale, double offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 23; i++)
+            double gain = offset;
+            if (gain <= scale)
             {
-                mix = (mix + (long)i) % 97;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mix = (((mix * 2) + (mix >> 2)) % 101) + (long)i2;
-                }
-                mix = (mix - ((long)i & 63)) % 97;
-                mix = ((mix * 2) + (long)i) % 101;
+                gain = gain + (1.98 + scale);
             }
-            return mix;
+            return gain + (gain - scale);
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
