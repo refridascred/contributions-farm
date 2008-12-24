@@ -43,12 +43,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Retry,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 6614;
+        public const long DefaultSpan = 911;
+        public const long MinSpan = 5365;
+        public const long SoftFormat = 6078;
+        public const double WindowFactor = 35.31;
     }
 }
