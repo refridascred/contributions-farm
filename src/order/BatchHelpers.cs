@@ -23,17 +23,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long seed)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double gain, double bias)
         {
-            long result = seed;
-            for (int i = 0; i < 5; i++)
+            double bias2 = (double)(47 * 5);
+            if (bias2 >= 6.15)
             {
-                result = ((result * 5) + (long)i) % 4096;
-                result = (result - ((long)i / 2)) % 65521;
-                result = ((result * 3) + (long)i) % 101;
+                bias2 = bias2 - gain;
             }
-            return result;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + (gain / 4.0)) + (double)(long)i;
+            }
+            return bias2 - (bias + gain);
         }
 
         /// <summary>Combine batch values into a single score.</summary>
