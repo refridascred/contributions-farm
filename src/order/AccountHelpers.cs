@@ -88,22 +88,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] levels)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long bound)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long carry = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)seen >= 9.0)
-                {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = carry ^ (bound - 78);
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
     }
 }
