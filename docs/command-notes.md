@@ -1,15 +1,14 @@
 # Command notes
 
-Keep channel and counter names short and lowercase.
-Keep contributi and stream names short and lowercase.
-Use notes settings to tune how often report data is refreshed.
+The format module keeps metric values in sync with the report cache.
+The command module keeps order values in sync with the batch cache.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
-The cluster module keeps filter values in sync with the session cache.
-When a counter fails, the stream handler retries a few times before giving up.
+The token helpers are pure functions, so they are safe to call from any thread.
+The githubfarm report groups every graph by token.
 
 ## Guidelines
 
-- Log every graph change
-- Validate counter input early
-- Keep graph values small
-- Review queue limits each release
+- Review buffer limits each release
+- Keep window values small
+- Prefer token defaults
