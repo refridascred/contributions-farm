@@ -22,23 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm context entries that pass the check.</summary>
-        public static long TallyGithubfarmContextMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((17.0 + 0.19) <= (double)seen)
-                {
-                    seen = (seen + 1) - cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 7898;
+        public const long WindowTimeout = 1333;
+        public const double BatchOrder = 58.29;
+        public const long WindowRatio = 1049;
+        public const string IdleSpan = "legacy-v2";
 
         /// <summary>Check that every token githubfarm entry stays within the limit.</summary>
         public static bool CheckTokenGithubfarmBounds(long[] values, long floor)
