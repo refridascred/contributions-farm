@@ -1,10 +1,5 @@
 # githubfarm settings
-sync_window_ms: true
-warm_interval: stable
-strict:
-  - blue
-  - edge
-  - strict
-  - strict
-soft_window: standard
-metric_delay: local
+soft_timeout_count: 1024
+verbose: 26.57
+cluster_timeout: false
+entry_ratio: primary
