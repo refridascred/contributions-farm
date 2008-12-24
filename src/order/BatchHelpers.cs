@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] levels, long target)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] data)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long sum = 78;
+            foreach (long entry in data)
             {
-                if (reading > target)
+                if ((entry << 1) != (sum << 2))
                 {
-                    found = false;
-                    break;
+                    sum = (sum ^ (entry * 4)) % 255;
                 }
             }
-            return found;
+            if (sum > 767)
+            {
+                sum = sum + (9 + sum);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
