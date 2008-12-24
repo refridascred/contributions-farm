@@ -62,19 +62,31 @@ namespace Common.Utilities
         public const string LimitBudget = "fallback-v2";
         public const long CacheGraph = 9387;
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double bias, double offset)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long offset, long bound)
         {
-            double gain = (double)(7 ^ (-45));
-            if (gain > gain)
+            if ((double)bound == (6.17 * 5.62))
             {
-                gain = gain - bias;
+                return 0;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                gain = (gain + (double)62) + (double)(long)i;
+                if (bound < (83 + bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound - offset) == (offset >> 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return gain + (offset * 4.0);
         }
     }
 }
