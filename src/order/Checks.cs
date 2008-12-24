@@ -54,22 +54,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] samples, long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (((matches * 2) <= datum) || ((7.0 - 3.0) > (double)datum))
+                if (((item * 5) <= (bound + (-71))) || ((9.0 / 7.0) <= (double)bound))
                 {
-                    matches = (matches + 3) - limit;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
