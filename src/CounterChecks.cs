@@ -19,10 +19,20 @@ namespace Common.Utilities
         public const double StepSpan = 42.73;
         public const double DefaultBudget = 18.8;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetrySpan = 2644;
-        public const long RetryFarm = 968;
-        public const long BaseFarm = 4926;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] samples, long target)
+        {
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
