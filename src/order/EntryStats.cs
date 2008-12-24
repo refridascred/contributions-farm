@@ -50,13 +50,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public double Token { get; set; }
-            public long Count { get; set; }
-            public double Size { get; set; }
-            public double Label { get; set; }
+            Pending,
+            Queued,
+            New,
+            Idle,
         }
 
         /// <summary>Match up session samples.</summary>
