@@ -47,19 +47,11 @@ namespace Common.Utilities
         public const long MinWindow = 9599;
         public const long RetryLevel = 906;
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] data, long origin)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Offset { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
