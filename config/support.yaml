@@ -1,7 +1,11 @@
 # support settings
-batch_depth: cached
-poll_timeout: 500
-batch_delay_count: cached
-buffer_retries: eu-west
-enabled: blue
-compress: stable
+compress: fallback
+metrics_window: true
+dry_run: 5729
+retry_ratio_pct:
+  - stable
+  - local
+  - staging
+  - local
+route_timeout: green
+max_capacity_count: 62.76
