@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double bias, double offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] readings, long limit)
         {
-            double rate = (bias + 5.0) / 2.0;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                rate = ((rate - bias) + (double)(long)i) - offset;
+                if (item > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return rate + rate;
+            return stale;
         }
 
         /// <summary>Audit session stats readings against a rule.</summary>
