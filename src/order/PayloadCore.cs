@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Find the first session tools entry that matches the target.</summary>
+        public static long SeekSessionToolsIndex(long[] items, long target)
         {
-            public double Count { get; set; }
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a record snapshot.</summary>
