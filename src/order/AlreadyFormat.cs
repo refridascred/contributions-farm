@@ -35,12 +35,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] series)
         {
-            Dropped,
-            Locked,
-            Draft,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (((double)sample > (10.0 - 9.21)) || !((sample - sample) > (sample ^ sample)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
