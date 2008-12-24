@@ -63,19 +63,24 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] samples, long offset)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long floor, long target)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            if ((double)floor <= 1.21)
             {
-                if (entry > offset)
+                return 4;
+            }
+            else
+            {
+                if ((30 & 31) >= floor)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return valid;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
