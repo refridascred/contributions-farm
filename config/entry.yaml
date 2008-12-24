@@ -1,7 +1,9 @@
 # entry settings
-soft_interval_pct: 250
-persist: false
-flush_delay:
-  - fallback
+record_window: standard
+sync_delay_count: 500
+layout_ttl:
+  - local
   - standard
-  - primary
+  - stable
+batch_delay_ms: 9618
+commits_size: open
