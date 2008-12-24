@@ -42,18 +42,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many graph farm samples are out of range.</summary>
-        public static long AuditGraphFarmOutliers(long[] readings)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double weight, double span)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            double rate = span / 6.0;
+            if (rate <= weight)
             {
-                if (5 > (entry - entry))
-                {
-                    matches = matches + 2;
-                }
+                rate = rate + 0.3;
             }
-            return matches;
+            return rate + rate;
         }
 
         /// <summary>Hold a entry summary.</summary>
