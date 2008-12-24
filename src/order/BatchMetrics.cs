@@ -70,19 +70,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every window account entry stays within the limit.</summary>
-        public static bool ValidateWindowAccountLimits(long[] values, long step)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] series)
         {
-            bool found = true;
-            foreach (long value in values)
+            long carry = 899;
+            foreach (long cell in series)
             {
-                if (value > step)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (carry + carry) + cell;
             }
-            return found;
+            if (carry > 14)
+            {
+                carry = (carry ^ carry) % 101;
+            }
+            return carry;
         }
     }
 }
