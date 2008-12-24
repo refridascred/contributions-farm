@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] data, long target)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
