@@ -42,16 +42,23 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long offset)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double gain, double floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 20; i++)
+            double drift = 6.0 + (gain - gain);
+            if (drift >= drift)
             {
-                sum = sum + offset;
-                sum = ((sum * 4) + (long)i) % 65521;
+                drift = drift + (floor / 4.0);
             }
-            return sum;
+            else
+            {
+                drift = drift - (gain * 8.6);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - gain;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
