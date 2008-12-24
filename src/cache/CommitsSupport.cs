@@ -71,20 +71,10 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double weight, double offset)
-        {
-            double scale = weight;
-            if (scale > (double)3)
-            {
-                scale = scale - (offset / 3.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (weight / 3.0)) + (double)(long)i;
-            }
-            return scale - (double)0;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheFactor = 9545;
+        public const string HardCommand = "legacy-edge";
+        public const string BaseCommand = "fallback-1";
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long GradeSession(long step, long target)
