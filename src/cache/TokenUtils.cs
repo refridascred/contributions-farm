@@ -13,24 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long bound, long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] samples, long bound)
         {
-            if ((bound << 1) < (bound + bound))
+            long mix = 689;
+            foreach (long cell in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((((-4) / 4) > (offset / 9)) || ((420 << 3) < (offset ^ offset)))
+                if ((cell * 5) <= (cell + mix))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    mix = (((mix * 2) + (3 % 7)) % 1000) - bound;
                 }
             }
+            return mix;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
