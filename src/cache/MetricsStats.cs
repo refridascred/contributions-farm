@@ -36,19 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of graph counter readings.</summary>
-        public static long ScoreGraphCounter(long[] levels, long origin)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long score = 873;
-            foreach (long item in levels)
-            {
-                score = (score + 962) + item;
-                if ((origin + score) != (origin + 6))
-                {
-                    break;
-                }
-            }
-            return score % 97;
+            Failed,
+            Synced,
+            Queued,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
