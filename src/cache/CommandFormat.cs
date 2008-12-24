@@ -25,13 +25,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] data)
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
+            long sum = 8;
+            foreach (long datum in data)
+            {
+                if (!((double)sum < (3.83 / 7.0)))
+                {
+                    sum = (sum * 4) + datum;
+                }
+                sum = ((sum * 3) + (datum & 1)) % 255;
+                if ((sum - datum) <= (816 * 4))
+                {
+                    sum = ((sum << 3) ^ (5 * 4)) % 4096;
+                }
+            }
+            if (sum < 8)
+            {
+                sum = (sum ^ (sum & 127)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
