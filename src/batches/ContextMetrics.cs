@@ -47,18 +47,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextHits(long[] levels, long limit)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((50 + matches) >= (entry - limit))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Rank { get; set; } = "";
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
