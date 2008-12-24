@@ -1,12 +1,6 @@
 {
-  "window_ratio": "local",
-  "persist": "blue",
-  "filter_delay": {
-    "verbose": [213, 431, 301, 320],
-    "burst_window_pct": "edge",
-    "route_capacity": "local",
-    "cache_timeout_s": 43.13,
-    "sync_timeout_ms": ["primary", "green", "strict", "staging"],
-    "batch_limit": 6.4
-  }
+  "command_size": "stable",
+  "retry_capacity_s": 0.83,
+  "flush_depth": 30,
+  "hard_interval_pct": ["staging", "strict", "strict"]
 }
