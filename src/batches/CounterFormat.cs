@@ -37,31 +37,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long seed, long target)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double bias, double bias2)
         {
-            if (((target / 6) != ((-217) / 3)) || ((double)seed > 9.99))
+            double gain = bias2;
+            if (gain < (bias + gain))
             {
-                return 2;
+                gain = gain - (8.8 + gain);
             }
-            else
-            {
-                if (!(((-4) - seed) == ((-86) - seed)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target >= (target / 5)) || (32 < seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return gain + (bias2 * 6.29);
         }
     }
 }
