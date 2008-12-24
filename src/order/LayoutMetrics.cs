@@ -14,17 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] data, long limit)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many githubfarm notes samples are out of range.</summary>
