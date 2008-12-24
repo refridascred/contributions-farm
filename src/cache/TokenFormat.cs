@@ -14,11 +14,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 7966;
-        public const string BatchWidth = "open-edge";
-        public const long HardSession = 1105;
-        public const long LimitSize = 7770;
-        public const long CacheSession = 1113;
+        public const long HardFactor = 4867;
+        public const string CacheSession = "local-edge";
+        public const long HardWidth = 1537;
+        public const long BurstTimeout = 6606;
+        public const long HardSession = 8275;
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
