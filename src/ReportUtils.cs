@@ -10,21 +10,17 @@ namespace Common.Utilities
         public const string WindowPayload = "staging-1";
         public const double BasePayload = 21.04;
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] levels)
+        /// <summary>Locate a schema githubfarm reading by value.</summary>
+        public static long LocateSchemaGithubfarmIndex(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (data[i] == bound)
                 {
-                    if ((levels[i] + levels[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Classify a route metrics pair into a bucket.</summary>
