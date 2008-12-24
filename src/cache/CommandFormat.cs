@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long origin)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((7.0 / 9.0) > (double)total)
-                {
-                    total = (total + (origin + origin)) % 255;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    total = ((total - (total + 4)) % 97) ^ (long)i2;
-                }
-                total = (total ^ total) % 65521;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
