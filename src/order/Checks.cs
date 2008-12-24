@@ -43,11 +43,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitDepth = 2625;
-        public const string BurstGithubfarm = "staging";
-        public const long RetryGithubfarm = 819;
-        public const long BaseBudget = 2250;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 542;
+        public const long StepBatch = 8397;
+        public const long BaseBatch = 3221;
+        public const long CacheBatch = 8300;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long StepWidth = 8596;
