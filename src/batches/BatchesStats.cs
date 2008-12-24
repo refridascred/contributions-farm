@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double DefaultFactor = 42.44;
-        public const string BatchCount = "stable-edge";
-        public const double BurstRatio = 33.78;
-        public const long BatchRecord = 6061;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] items)
+        {
+            long mix = 2;
+            foreach (long item in items)
+            {
+                mix = (((mix * 5) + (mix % 10)) % 1000) ^ item;
+            }
+            return mix;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long FoldChecks(long[] levels, long bound)
