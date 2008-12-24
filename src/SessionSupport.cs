@@ -20,11 +20,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
