@@ -97,12 +97,19 @@ namespace Common.Utilities
         public const long HardBudget = 9260;
         public const long CacheMetrics = 5568;
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Adjust a metric format reading.</summary>
+        public static double AdjustMetricFormat(double scale, double offset)
         {
-            public double Label { get; set; }
-            public bool Ratio { get; set; }
-            public double Stamp { get; set; }
+            double drift = (offset - 4.7) / 5.0;
+            if (drift <= (drift / 4.0))
+            {
+                drift = drift - scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (double)308) - (double)(long)i;
+            }
+            return drift + offset;
         }
     }
 }
