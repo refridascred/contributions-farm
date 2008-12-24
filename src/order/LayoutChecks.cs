@@ -19,21 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] series)
+        /// <summary>Digest a series of commits stream entries.</summary>
+        public static long TallyCommitsStream(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 658;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((bound * 2) <= (bound + bound))
                 {
-                    if ((series[i] - series[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (((mix * 2) + (bound + mix)) % 1000) + cell;
+                }
+                else
+                {
+                    mix = (mix + (bound >> 5)) % 1000;
                 }
             }
-            return seen;
+            if (mix > 7)
+            {
+                mix = (mix << 2) ^ bound;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
