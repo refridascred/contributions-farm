@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public double Region { get; set; }
-            public long Size { get; set; }
-            public bool Token { get; set; }
-            public bool Label { get; set; }
+            Closed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
