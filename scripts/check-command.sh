@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-COMMAND_LIMIT=133
-log "limit is ${COMMAND_LIMIT}"
-
-for item in staging green; do
+for item in legacy eu-west stable blue; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=227
+log "limit is ${COMMAND_LIMIT}"
+
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
