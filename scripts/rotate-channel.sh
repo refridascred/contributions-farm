@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict local eu-west stable; do
-    log "checking ${item}"
-done
-
-mode="${1:-fallback}"
+mode="${1:-edge}"
 case "${mode}" in
-    stable)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in cached blue primary latest; do
+    log "checking ${item}"
+done
