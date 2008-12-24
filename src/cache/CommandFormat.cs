@@ -41,15 +41,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] items)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long total = 5;
-            foreach (long datum in items)
-            {
-                total = ((total * 3) + (total + datum)) % 4096;
-            }
-            return total;
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
     }
 }
