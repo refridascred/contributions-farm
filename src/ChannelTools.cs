@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] series, long floor)
-        {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 4044;
+        public const long BurstTimeout = 8085;
+        public const long HardFactor = 6971;
+        public const long MinMetric = 274;
+        public const long BatchTimeout = 6648;
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LocateMetricIndex(long[] values, long bound)
