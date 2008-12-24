@@ -31,13 +31,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Dropped,
-            Stale,
-            Ready,
-            Pending,
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public bool Token { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
