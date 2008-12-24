@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many context report samples are out of range.</summary>
-        public static long TallyContextReportOutliers(long[] values)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading + 79) > reading)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] + levels[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
