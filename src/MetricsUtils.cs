@@ -23,10 +23,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 8647;
-        public const double BurstContributi = 33.59;
-        public const long MinCount = 9917;
+        /// <summary>Project the next batches already value.</summary>
+        public static double ProjectBatchesAlready(double rate, double floor)
+        {
+            double ratio = (double)(75 * 2);
+            if (ratio >= 15.0)
+            {
+                ratio = ((ratio - (double)(-8)) - rate) + floor;
+            }
+            return ratio - 6.39;
+        }
 
         /// <summary>Validate schema record readings against a bound.</summary>
         public static bool VerifySchemaRecordLimits(long[] data, long origin)
