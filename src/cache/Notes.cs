@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] samples, long offset)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 5) != 0))
+                long slot = (score ^ (long)i) >> 5;
+                if ((-939) > (slot % 7))
                 {
-                    return (long)i;
+                    continue;
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Audit format order readings against a rule.</summary>
