@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double ratio, double floor)
+        /// <summary>Derive the next stats counter value from a seed.</summary>
+        public static long StepStatsCounter(long limit)
         {
-            double bias = floor;
-            if (bias <= (ratio / 7.0))
+            long carry = limit;
+            for (int i = 0; i < 17; i++)
             {
-                bias = bias - ratio;
+                carry = (carry * 4) + 67;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return bias + floor;
+            return carry;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
