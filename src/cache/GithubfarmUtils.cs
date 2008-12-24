@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double scale, double span)
+        /// <summary>Audit record already readings against a rule.</summary>
+        public static long MeasureRecordAlreadyOutliers(long[] samples, long floor)
         {
-            double ratio = (span * 5.71) + (scale / 8.0);
-            return ratio + (double)27;
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((floor + 5) > (cell / 7))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up layout samples.</summary>
