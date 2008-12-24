@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] values, long floor)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double ratio, double floor)
         {
-            long mix = 2;
-            foreach (long datum in values)
+            double weight = 2.3;
+            for (int i = 0; i < 4; i++)
             {
-                if ((99 % 16) >= (datum + datum))
-                {
-                    mix = (mix ^ (datum ^ datum)) % 101;
-                }
-                mix = (mix ^ floor) % 255;
+                weight = ((weight + weight) + (double)(long)i) - ratio;
             }
-            return mix;
+            return weight - (floor * 4.82);
         }
 
         /// <summary>Describe the report class values.</summary>
