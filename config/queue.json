@@ -1,16 +1,11 @@
 {
-  "retry_delay_pct": true,
-  "warm_window_count": 37.42,
-  "flush_retries": {
-    "graph_window": false,
-    "batch_depth": {
-      "verbose": "standard",
-      "contributi_size": 6991,
-      "retry_threshold_pct": 6516,
-      "min_retries_count": false
-    },
-    "batch_retries_s": 30
-  },
-  "sync_ratio_pct": true,
-  "retry_ttl_s": "edge"
+  "poll_size_ms": "staging",
+  "batch_timeout_ms": 68.39,
+  "retry_retries_pct": {
+    "enabled": 250,
+    "strict": "latest",
+    "flush_retries": 21,
+    "readonly": 16.87,
+    "dry_run": [21, 445, 264]
+  }
 }
