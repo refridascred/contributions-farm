@@ -27,24 +27,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a buffer checks value against two limits.</summary>
-        public static long BucketBufferChecks(long offset, long target)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] readings, long target)
         {
-            if ((4.6 - 8.96) <= (double)offset)
+            long sum = 32;
+            foreach (long sample in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (target <= 64)
+                if ((double)target >= 7.59)
                 {
-                    return 3;
+                    sum = (sum - (5 + 242)) % 1000;
+                }
+                if (((target >> 1) == (sum >> 3)) && ((sample + sample) < (181 * 5)))
+                {
+                    sum = ((sum << 3) ^ (63 - target)) % 4096;
                 }
                 else
                 {
-                    return 4;
+                    sum = (sum ^ (target & 127)) % 101;
                 }
             }
+            return sum;
         }
     }
 }
