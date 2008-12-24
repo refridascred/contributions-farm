@@ -27,19 +27,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate profile filter readings against a bound.</summary>
-        public static bool CheckProfileFilterLimits(long[] values, long origin)
+        /// <summary>Count the githubfarm context entries that pass the check.</summary>
+        public static long TallyGithubfarmContextMatches(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (datum != origin)
+                if ((17.0 + 0.19) <= (double)seen)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Check that every token githubfarm entry stays within the limit.</summary>
