@@ -12,18 +12,34 @@ namespace Common.Utilities
         public const long CacheOrder = 4599;
         public const double DefaultFactor = 4.09;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] samples)
+        /// <summary>Combine counter cache values into a single score.</summary>
+        public static long DigestCounterCache(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long carry = 5;
+            foreach (long reading in values)
             {
-                if ((entry / 9) <= (370 - hits))
+                if (!((double)carry != (double)reading))
                 {
-                    hits = hits + 2;
+                    carry = (carry - 9) % 1000;
+                }
+                if ((double)carry > (3.0 / 9.0))
+                {
+                    carry = (carry * 2) + bound;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry - 6)) % 1000;
+                }
+                if ((reading + bound) >= carry)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (carry < 4)
+            {
+                carry = ((carry * 5) + (bound - carry)) % 4096;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Measure how many graph farm samples are out of range.</summary>
