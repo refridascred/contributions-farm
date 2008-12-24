@@ -27,11 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryBudget = 2049;
-        public const double RetryCache = 35.34;
-        public const long WindowDepth = 9484;
-        public const long IdleScore = 3965;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Paused,
+            Retry,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool VerifyRecordBounds(long[] readings, long origin)
