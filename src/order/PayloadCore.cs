@@ -36,18 +36,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] levels)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (!((19.0 > (double)matches) || ((double)matches > (1.0 - 4.52))))
+                if ((6 / 9) < count)
                 {
-                    matches = (matches + 1) ^ reading;
+                    count = (count + 2) - value;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a report header.</summary>
