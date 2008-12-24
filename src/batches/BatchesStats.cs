@@ -41,24 +41,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long offset)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double gain, double floor)
         {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
+            double load = gain;
+            if (load < (double)63)
             {
-                if ((offset >> 4) != (offset + score))
-                {
-                    score = score - ((long)i ^ 642);
-                }
-                else
-                {
-                    score = (score - (offset >> 3)) % 97;
-                    score = ((score * 4) + (offset - (long)i)) % 65521;
-                }
-                score = ((score * 2) + (long)i) % 65521;
+                load = load + (double)61;
             }
-            return score;
+            return load + (floor - gain);
         }
     }
 }
