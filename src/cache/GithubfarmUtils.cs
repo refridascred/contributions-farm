@@ -16,10 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepRatio = 1135;
-        public const long MinLevel = 2458;
-        public const long CacheTools = 1852;
+        /// <summary>Measure how many window cache samples are out of range.</summary>
+        public static long AuditWindowCacheOutliers(long[] levels, long step)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum - 0) > step)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
