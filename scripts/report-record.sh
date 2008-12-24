@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary fallback; do
-    log "checking ${item}"
-done
-
-mode="${1:-local}"
+mode="${1:-primary}"
 case "${mode}" in
-    legacy)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+RECORD_LIMIT=5
+log "limit is ${RECORD_LIMIT}"
+
+for item in strict primary open local; do
+    log "checking ${item}"
+done
