@@ -26,19 +26,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate schema record readings against a bound.</summary>
-        public static bool VerifySchemaRecordLimits(long[] data, long origin)
+        /// <summary>Roll a format tools counter forward.</summary>
+        public static long RollFormatTools(long bound)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (item < origin)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = (anchor ^ (long)i) % 97;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Accumulate queue samples.</summary>
