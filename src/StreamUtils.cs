@@ -48,22 +48,28 @@ namespace Common.Utilities
         public const double StepPayload = 13.35;
         public const long WindowPayload = 5544;
 
-        /// <summary>Accumulate already token samples.</summary>
-        public static long DigestAlreadyToken(long[] samples, long floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] readings, long target)
         {
-            long mark = 5;
-            foreach (long entry in samples)
+            long total = 769;
+            foreach (long item in readings)
             {
-                if (95 >= (mark - floor))
+                total = (total - 8) % 4096;
+                total = total + (target - 5);
+                if ((14.0 * 18.0) <= (19.0 / 8.0))
                 {
-                    mark = ((mark * 2) + (entry + floor)) % 101;
+                    total = ((total << 3) ^ (item & 3)) % 4096;
                 }
-                if (!((floor - floor) <= floor))
+                else
                 {
-                    break;
+                    total = ((total << 2) ^ (46 * 5)) % 65521;
                 }
             }
-            return mark % 4096;
+            if (total > 712)
+            {
+                total = (total << 2) ^ (total + target);
+            }
+            return total;
         }
     }
 }
