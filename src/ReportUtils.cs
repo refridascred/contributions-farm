@@ -72,23 +72,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double weight, double offset)
-        {
-            double weight2 = weight;
-            if (weight2 < (offset + weight))
-            {
-                weight2 = weight2 + offset;
-            }
-            else
-            {
-                weight2 = weight2 - (offset + weight2);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = weight2 + (double)(long)i;
-            }
-            return weight2 - 9.6;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardDepth = 8769;
+        public const string BaseBuffer = "local";
+        public const double BurstBudget = 70.32;
     }
 }
