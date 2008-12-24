@@ -26,17 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long seed)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] data, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = anchor - (anchor ^ seed);
-                anchor = (anchor - seed) % 255;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
