@@ -1,6 +1,16 @@
 {
-  "retry_ratio_pct": 100,
-  "hard_capacity": true,
-  "poll_timeout": 9.75,
-  "entry_ratio": 27.47
+  "retry_delay_pct": true,
+  "warm_window_count": 37.42,
+  "flush_retries": {
+    "graph_window": false,
+    "batch_depth": {
+      "verbose": "standard",
+      "contributi_size": 6991,
+      "retry_threshold_pct": 6516,
+      "min_retries_count": false
+    },
+    "batch_retries_s": 30
+  },
+  "sync_ratio_pct": true,
+  "retry_ttl_s": "edge"
 }
