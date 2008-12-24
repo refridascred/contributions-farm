@@ -48,15 +48,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next token farm value from a seed.</summary>
-        public static long StepTokenFarm(long bound)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long state = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            New,
+            Ready,
+            Done,
+            Active,
         }
 
         /// <summary>Describe the cache phase values.</summary>
