@@ -1,21 +1,9 @@
 {
-  "burst_ratio_s": "latest",
-  "verbose": "blue",
-  "buffer_interval": 9.31,
-  "burst_delay": 9110,
-  "min_ttl_ms": {
-    "flush_delay": "fallback",
-    "channel_window": {
-      "batch_ratio_ms": false,
-      "persist": 34,
-      "batch_window_ms": false,
-      "hard_window": "primary",
-      "profile_retries": "local",
-      "batch_depth_ms": "green"
-    },
-    "graph_delay": false,
-    "stream_threshold": [349, 191, 84, 183],
-    "cluster_size": 94.45
-  },
-  "dry_run": 85.64
+  "entry_threshold": 250,
+  "counter_interval": "local",
+  "command_retries": {
+    "verbose": 68,
+    "batch_depth_count": 14,
+    "burst_capacity": true
+  }
 }
