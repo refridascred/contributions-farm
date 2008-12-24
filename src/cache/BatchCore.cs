@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Validate batches batch readings against a bound.</summary>
+        public static bool CheckBatchesBatchRange(long[] samples, long step)
         {
-            public double Total { get; set; }
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
-            public long Count { get; set; }
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of report commits readings.</summary>
