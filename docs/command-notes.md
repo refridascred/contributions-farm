@@ -1,14 +1,14 @@
 # Command notes
 
-The filter module keeps tools values in sync with the already cache.
-Run the stats check before changing any batches limits.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Use context settings to tune how often graph data is refreshed.
+The buffer report groups every batch by command.
 
-A editor that stays idle for too long is moved to the buffer list.
-Run the graph check before changing any record limits.
-Use layout settings to tune how often batch data is refreshed.
+The profile report groups every farm by commits.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Document new editor fields
-- Log every support change
+- Keep batches values small
+- Document new queue fields
+- Validate batch input early
