@@ -37,19 +37,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long floor)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long origin, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 10; i++)
+            long gap = origin + bound;
+            if (((double)bound != (19.0 * 9.3)) && ((gap << 1) > bound))
             {
-                if ((8.0 - 4.5) < (double)mark)
-                {
-                    break;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if (351 >= gap)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((gap % 8) <= gap)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
