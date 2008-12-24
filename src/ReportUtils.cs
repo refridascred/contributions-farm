@@ -19,19 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stats notes entries that pass the check.</summary>
-        public static long TallyStatsNotesHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (((5.0 >= (double)seen) || ((item >> 5) > seen)) && !((5.0 + 11.0) >= (double)seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleScore = 7019;
+        public const long IdleLevel = 1722;
+        public const string LimitCounter = "cached-edge";
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long MatchContributiCount(long[] samples)
