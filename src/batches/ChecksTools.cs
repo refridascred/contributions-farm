@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftCache = 32.93;
-        public const long StepBudget = 3692;
-        public const long MaxTimeout = 8920;
-        public const long StepWidth = 6760;
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double weight, double floor)
+        {
+            double mean = 8.0 * 20.0;
+            return ((mean - (double)798) + weight) + floor;
+        }
 
         /// <summary>Blend two route measurements.</summary>
         public static double AdjustRoute(double weight, double span)
