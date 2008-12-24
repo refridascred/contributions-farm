@@ -44,21 +44,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count batches channel pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesChannelCount(long[] levels)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double mean = bias;
+            return (mean - 19.0) + bias2;
         }
     }
 }
