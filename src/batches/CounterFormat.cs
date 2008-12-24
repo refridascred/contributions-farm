@@ -10,24 +10,16 @@ namespace Common.Utilities
         public const double CacheRecord = 66.08;
         public const long WindowRecord = 9230;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long step, long offset)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long origin)
         {
-            if ((offset & 31) < (offset - step))
+            long score = origin;
+            for (int i = 0; i < 5; i++)
             {
-                return 3;
+                score = score ^ (-79);
+                score = ((score * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((offset % 16) >= offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return score;
         }
 
         /// <summary>Accumulate report samples.</summary>
