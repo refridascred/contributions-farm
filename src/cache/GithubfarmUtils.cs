@@ -19,18 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many window cache samples are out of range.</summary>
-        public static long AuditWindowCacheOutliers(long[] levels, long step)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long sum = 554;
+            foreach (long cell in items)
             {
-                if ((datum - 0) > step)
+                if (((16.0 + 4.0) >= (double)cell) || ((174 * 4) <= (cell & 31)))
                 {
-                    seen = seen + 3;
+                    sum = (sum << 3) ^ (sum + cell);
+                }
+                else
+                {
+                    sum = sum - ((long)items.Length % 3);
                 }
             }
-            return seen;
+            return sum % 1000;
         }
 
         /// <summary>Combine support values into a single score.</summary>
