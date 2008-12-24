@@ -28,18 +28,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] readings)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (3 >= matches)
+                if ((readings[i] == step) && ((readings[i] % 3) != 0))
                 {
-                    matches = (matches + 2) + item;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
