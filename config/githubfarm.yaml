@@ -1,4 +1,7 @@
 # githubfarm settings
-flush_ratio: 100
-idle_threshold_pct: 34.39
-sync_limit: legacy
+max_threshold_s: stable
+readonly: false
+audit:
+  - edge
+  - cached
+schema_timeout: legacy
