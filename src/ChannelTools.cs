@@ -40,21 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] samples)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 176;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((result << 2) == (long)series.Length)
                 {
-                    if ((samples[i] ^ samples[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result - (result << 3)) % 101) - reading;
                 }
             }
-            return tally;
+            return result;
         }
     }
 }
