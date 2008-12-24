@@ -55,19 +55,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] data)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] series, long bound)
         {
-            long result = 318;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long value in series)
             {
-                result = ((result ^ (result >> 2)) % 101) + value;
+                if (value != bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (result < (-8))
-            {
-                result = result ^ (result >> 2);
-            }
-            return result;
+            return stale;
         }
 
         /// <summary>Measure how many profile tools samples are out of range.</summary>
