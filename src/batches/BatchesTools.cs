@@ -39,18 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache stats entries that pass the check.</summary>
-        public static long TallyCacheStatsGaps(long[] values, long limit)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long limit)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((value - hits) == (33 + hits)))
+                if ((limit % 100) > (anchor + anchor))
                 {
-                    hits = (hits + 2) - limit;
+                    anchor = (anchor ^ (limit - (long)i)) % 65521;
+                    anchor = (anchor - (limit % 2)) % 1000;
                 }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
     }
 }
