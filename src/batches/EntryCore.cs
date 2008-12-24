@@ -43,10 +43,11 @@ namespace Common.Utilities
         public const long LimitFactor = 374;
         public const string MinScore = "alpha-v2";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftSize = 1094;
-        public const string IdleSize = "fallback";
-        public const long BurstSpan = 4685;
-        public const long CacheTimeout = 7308;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 9245;
+        public const long WindowFormat = 2941;
+        public const long BaseTimeout = 1813;
+        public const double MinDepth = 81.61;
+        public const long DefaultFormat = 1130;
     }
 }
