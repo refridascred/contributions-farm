@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftScore = 3600;
-        public const long DefaultPayload = 4246;
-        public const double MinFactor = 33.74;
-        public const long StepPayload = 8089;
-        public const string SoftPayload = "local-1";
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double scale, double offset)
+        {
+            double load = offset;
+            if (load > offset)
+            {
+                load = load + scale;
+            }
+            else
+            {
+                load = load + offset;
+            }
+            return load - offset;
+        }
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
