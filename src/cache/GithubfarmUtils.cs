@@ -55,18 +55,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] items, long origin)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (origin > (value - (long)items.Length))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Queued,
+            Active,
         }
     }
 }
