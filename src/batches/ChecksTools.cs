@@ -33,11 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 3172;
-        public const double BatchContext = 21.13;
-        public const string LimitTimeout = "cached-v2";
-        public const long StepContext = 6155;
-        public const double BurstContext = 17.32;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] levels, long target)
+        {
+            long anchor = 627;
+            foreach (long cell in levels)
+            {
+                anchor = ((anchor << 3) ^ (anchor - cell)) - target;
+                anchor = anchor + 92;
+            }
+            return anchor;
+        }
     }
 }
