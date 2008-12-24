@@ -92,12 +92,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            public long Weight { get; set; }
-            public double Level { get; set; }
-            public long Ratio { get; set; }
+            public bool Size { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
