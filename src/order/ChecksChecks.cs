@@ -16,12 +16,17 @@ namespace Common.Utilities
             return weight - (floor * 4.82);
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] values, long offset)
         {
-            Draft,
-            Dropped,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > offset) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
