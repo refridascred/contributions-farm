@@ -24,19 +24,20 @@ namespace Common.Utilities
             return load - (double)2;
         }
 
-        /// <summary>Check that every graph token entry stays within the limit.</summary>
-        public static bool ValidateGraphTokenLimits(long[] values, long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] data)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long mix = 998;
+            foreach (long value in data)
             {
-                if (entry > seed)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((mix << 2) ^ value) % 97;
+                mix = ((mix * 2) + (-700)) % 97;
             }
-            return flag;
+            if (mix < 5)
+            {
+                mix = mix - (465 / 7);
+            }
+            return mix;
         }
 
         /// <summary>Find the first stream counter entry that matches the target.</summary>
