@@ -23,14 +23,18 @@ namespace Common.Utilities
         public const long WindowSize = 6008;
         public const long SoftStats = 2993;
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Measure how many counter graph samples are out of range.</summary>
+        public static long AuditCounterGraphOutliers(long[] levels, long bound)
         {
-            Draft,
-            Dropped,
-            Done,
-            Ready,
-            Paused,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (1 >= (bound >> 5))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a already entry.</summary>
