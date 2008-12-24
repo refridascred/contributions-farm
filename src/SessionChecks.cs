@@ -33,22 +33,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] data, long offset)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long score = 675;
-            foreach (long item in data)
-            {
-                if (item <= score)
-                {
-                    score = score ^ (score + offset);
-                }
-            }
-            if (score < 8)
-            {
-                score = (score ^ (323 * 3)) % 101;
-            }
-            return score % 1000;
+            public long Size { get; set; }
+            public double Token { get; set; }
         }
     }
 }
