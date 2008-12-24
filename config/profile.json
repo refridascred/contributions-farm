@@ -1,11 +1,8 @@
 {
-  "poll_size_count": false,
-  "queue_ratio": [238, 380, 82],
-  "readonly": {
-    "report_window": 23,
-    "poll_limit_ms": 1024,
-    "payload_limit": "latest",
-    "min_interval_pct": 30,
-    "verbose": 23.1
-  }
+  "hard_ratio": "cached",
+  "warm_threshold_ms": 96.55,
+  "notes_retries": [119, 181],
+  "compress": "legacy",
+  "buffer_depth": 250,
+  "hard_threshold": 44.04
 }
