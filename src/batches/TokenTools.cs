@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 3914;
+        public const string MaxTimeout = "legacy-edge";
+        public const long BurstToken = 4492;
+        public const long HardLevel = 8951;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double IdleLayout = 90.78;
