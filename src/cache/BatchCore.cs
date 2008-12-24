@@ -16,24 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a account report pair into a bucket.</summary>
-        public static long SortAccountReport(long origin, long origin2)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] data)
         {
-            if (origin2 > (origin - origin))
+            long count = 0;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin2 + origin) != (origin2 / 6))
+                if ((double)entry == (8.8 - 8.4))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Grade a profile buffer value against two limits.</summary>
