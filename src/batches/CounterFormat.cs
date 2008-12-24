@@ -33,21 +33,31 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count cache payload pairs that satisfy a relation.</summary>
-        public static long OverlapCachePayloadCount(long[] readings)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long seed, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((target / 6) != ((-217) / 3)) || ((double)seed > 9.99))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!(((-4) - seed) == ((-86) - seed)))
                 {
-                    if ((readings[i] + readings[j]) < 16)
+                    return 0;
+                }
+                else
+                {
+                    if ((target >= (target / 5)) || (32 < seed))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
     }
 }
