@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit githubfarm session readings against a rule.</summary>
-        public static long CountGithubfarmSessionHits(long[] data, long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long carry = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)step < (double)0)
-                {
-                    hits = (hits + 2) - cell;
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Validate counter buffer readings against a bound.</summary>
