@@ -52,13 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Paused,
-            Stale,
-            Idle,
-            Locked,
+            public bool Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Fold a list of report readings.</summary>
