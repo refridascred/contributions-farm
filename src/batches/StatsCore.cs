@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] samples, long origin)
         {
-            Closed,
-            Locked,
-            Pending,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally << 2) > origin)
+                {
+                    tally = (tally + 1) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
