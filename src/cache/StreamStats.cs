@@ -39,17 +39,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Compare every pair of stats editor readings.</summary>
+        public static long MatchStatsEditorCount(long[] readings)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark ^ 64) % 101;
-                mark = mark + (mark << 2);
-                mark = ((mark * 3) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
