@@ -19,14 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            Draft,
+            New,
+            Idle,
+            Done,
+            Pending,
             Active,
-            Stale,
-            Locked,
-            Queued,
         }
 
         /// <summary>Project the next cache value.</summary>
