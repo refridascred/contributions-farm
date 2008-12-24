@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double rate, double span)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] levels, long seed)
         {
-            double scale = (rate * 3.9) + (2.6 - span);
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                scale = (scale - (scale - rate)) + (double)(long)i;
+                if (((seed - count) <= (seed / 2)) && (cell > (count - cell)))
+                {
+                    count = count + 2;
+                }
             }
-            return scale - scale;
+            return count;
         }
 
         /// <summary>Describe the channel state values.</summary>
