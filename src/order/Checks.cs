@@ -39,19 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] samples, long seed)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long carry = 563;
+            foreach (long entry in samples)
             {
-                if (reading != seed)
+                if ((15.0 / 8.0) != (double)entry)
                 {
-                    flag = false;
-                    break;
+                    carry = ((carry + (carry / 9)) % 97) - step;
                 }
             }
-            return flag;
+            if (carry > (-997))
+            {
+                carry = ((carry * 4) + carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Roll a contributi commits counter forward.</summary>
