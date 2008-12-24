@@ -47,18 +47,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit stream token readings against a rule.</summary>
-        public static long AuditStreamTokenHits(long[] levels)
+        /// <summary>Digest a series of commits metrics entries.</summary>
+        public static long FoldCommitsMetrics(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long state = -1;
+            foreach (long reading in data)
             {
-                if (!(matches <= (307 >> 3)))
+                if (((long)data.Length ^ step) <= (state + 208))
                 {
-                    matches = (matches + 2) + item;
+                    state = state - (reading * 4);
                 }
+                state = ((state * 4) + (2 + step)) % 255;
             }
-            return matches;
+            if (state > 9)
+            {
+                state = (state - (state + step)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Project the next profile value.</summary>
