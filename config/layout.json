@@ -1,8 +1,7 @@
 {
-  "compress": true,
-  "warm_capacity_pct": 7497,
-  "hard_window_pct": false,
-  "max_ttl_ms": "local",
-  "hard_ttl": ["primary", "stable"],
-  "warm_size": "stable"
+  "cache_depth_pct": 94,
+  "warm_timeout": "open",
+  "dry_run": 91.29,
+  "idle_interval": 31,
+  "poll_depth": "strict"
 }
