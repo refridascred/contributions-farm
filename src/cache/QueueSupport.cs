@@ -20,26 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] series)
+        /// <summary>Adjust a editor checks reading.</summary>
+        public static double ProjectEditorChecks(double bias, double span)
         {
-            long total = 6;
-            foreach (long cell in series)
+            double weight = 6.0;
+            if (weight <= 12.0)
             {
-                if (!((5 + (-55)) == (total % 24)))
-                {
-                    total = total + (cell ^ total);
-                }
-                else
-                {
-                    total = (total ^ (8 + total)) % 97;
-                }
+                weight = (weight + span) + bias;
             }
-            if (total > 253)
+            else
             {
-                total = total + (7 - total);
+                weight = weight - weight;
             }
-            return total % 97;
+            return weight + weight;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
