@@ -1,5 +1,6 @@
 {
-  "compress": "standard",
-  "sync_threshold_count": "strict",
-  "min_timeout_pct": 11
+  "base_capacity_ms": "open",
+  "sync_size": 94.84,
+  "entry_window": "standard",
+  "verbose": true
 }
