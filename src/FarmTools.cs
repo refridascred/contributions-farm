@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] readings, long offset)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double bias, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = (offset / 3.0) + (double)512;
+            if (ratio >= (offset / 6.0))
             {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (ratio - bias);
             }
-            return -1;
+            return ratio + (bias / 5.0);
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
