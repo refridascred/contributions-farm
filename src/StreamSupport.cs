@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] data, long seed)
+        /// <summary>Count the metrics graph entries that pass the check.</summary>
+        public static long MeasureMetricsGraphMatches(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((2 > seen) || (item <= (item << 1)))
+                if ((count * 3) <= (seed - count))
                 {
-                    seen = (seen + 2) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 1) ^ reading;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Blend two report measurements.</summary>
