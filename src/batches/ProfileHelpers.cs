@@ -87,18 +87,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] series)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long carry = 1;
-            foreach (long cell in series)
-            {
-                if ((carry / 4) > (carry ^ carry))
-                {
-                    carry = ((carry + (carry % 60)) % 97) ^ cell;
-                }
-            }
-            return carry;
+            public long Weight { get; set; }
+            public double Level { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
