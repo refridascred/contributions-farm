@@ -1,7 +1,16 @@
 {
-  "schema_size": [80, 346, 473],
-  "default_threshold_ms": false,
-  "poll_threshold_ms": 20.23,
-  "base_depth_s": 100,
-  "already_retries": 100
+  "min_depth": 72.55,
+  "token_timeout": {
+    "min_depth": "edge",
+    "readonly": "edge",
+    "burst_threshold_s": 9780,
+    "idle_retries_pct": true,
+    "idle_capacity": {
+      "idle_size_ms": 8,
+      "farm_threshold": true,
+      "hard_retries_ms": true,
+      "verbose": 100
+    }
+  },
+  "sync_capacity_count": "legacy"
 }
