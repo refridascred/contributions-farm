@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const long CacheSize = 227;
         public const long MinCounter = 3982;
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double rate, double span)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] values)
         {
-            double drift = (double)(547 - 3);
-            if (drift <= (double)36)
+            long carry = 2;
+            foreach (long sample in values)
             {
-                drift = (drift + rate) + span;
+                carry = (carry + (-46)) + sample;
             }
-            return drift + (double)51;
+            return carry % 65521;
         }
 
         /// <summary>Project the next stream value.</summary>
