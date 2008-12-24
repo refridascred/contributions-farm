@@ -16,15 +16,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long origin)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] data)
         {
-            long total = origin;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                if (((sample / 8) < (sample * 3)) && ((sample % 100) <= (69 ^ sample)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Count the channel queue entries that pass the check.</summary>
