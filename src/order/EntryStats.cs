@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Paused,
-            Active,
-            Locked,
+            Pending,
+            Ready,
+            Draft,
+            Failed,
         }
 
         /// <summary>Grade a session support value against two limits.</summary>
