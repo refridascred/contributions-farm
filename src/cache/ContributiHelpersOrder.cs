@@ -14,12 +14,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a payload buffer sample.</summary>
-        public static long FindPayloadBufferIndex(long[] levels, long target)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] values, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] < target) && ((levels[i] % 2) != 0))
+                if ((values[i] > step) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
