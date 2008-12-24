@@ -1,13 +1,7 @@
 {
-  "base_depth_pct": "legacy",
-  "retry_limit": "cached",
-  "min_delay_s": 40,
-  "default_threshold": 66,
-  "cluster_size": 2816,
-  "flush_size": {
-    "format_interval": 61,
-    "poll_limit_s": true,
-    "soft_capacity": "edge",
-    "idle_ratio_count": 65.88
-  }
+  "persist": "blue",
+  "token_depth": true,
+  "batch_limit_count": "fallback",
+  "payload_size": 5757,
+  "flush_delay_s": ["fallback", "cached"]
 }
