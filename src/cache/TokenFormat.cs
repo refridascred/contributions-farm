@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a githubfarm buffer figure with a bias.</summary>
-        public static double AdjustGithubfarmBuffer(double weight, double span)
-        {
-            double ratio = weight;
-            if (ratio > ratio)
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - span) + (double)(long)i;
-            }
-            return ratio + (double)592;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowInterval = 7894;
+        public const long RetryInterval = 3125;
+        public const string IdleRatio = "strict-edge";
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
