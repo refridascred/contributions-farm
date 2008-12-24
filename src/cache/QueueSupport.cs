@@ -28,19 +28,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a editor checks reading.</summary>
-        public static double ProjectEditorChecks(double bias, double span)
+        /// <summary>Classify a counter layout pair into a bucket.</summary>
+        public static long BucketCounterLayout(long origin, long target)
         {
-            double weight = 6.0;
-            if (weight <= 12.0)
+            long offset = origin + target;
+            if ((double)7 == (double)offset)
             {
-                weight = (weight + span) + bias;
+                return 3;
             }
             else
             {
-                weight = weight - weight;
+                if ((offset < origin) || ((9.36 * 2.66) == (double)origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((16 % 100) > (offset - 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return weight + weight;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
