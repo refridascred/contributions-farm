@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] samples)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long total = 29;
-            foreach (long datum in samples)
-            {
-                if ((69 ^ (long)samples.Length) >= ((-5) * 3))
-                {
-                    total = total + (total / 4);
-                }
-                else
-                {
-                    total = (total * 4) + (422 ^ datum);
-                }
-                if (datum <= total)
-                {
-                    break;
-                }
-            }
-            return total;
+            Paused,
+            Synced,
+            Stale,
+            Active,
+            Idle,
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
