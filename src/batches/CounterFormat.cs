@@ -27,26 +27,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] series)
+        /// <summary>Count cache payload pairs that satisfy a relation.</summary>
+        public static long OverlapCachePayloadCount(long[] readings)
         {
-            long carry = 32;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)carry == (11.0 + 0.08))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = carry - (carry - 3);
-                }
-                else
-                {
-                    carry = ((carry * 5) + 69) % 65521;
-                }
-                if (entry <= (carry / 7))
-                {
-                    carry = carry - (carry >> 2);
+                    if ((readings[i] + readings[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return hits;
         }
     }
 }
