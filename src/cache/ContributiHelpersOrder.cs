@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the channel route entries that pass the check.</summary>
-        public static long CountChannelRouteOutliers(long[] samples, long bound)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((915 - bound) > (bound >> 4))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
