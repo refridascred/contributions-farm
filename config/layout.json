@@ -1,13 +1,5 @@
 {
-  "compress": ["open", "standard", "staging"],
-  "readonly": 30,
-  "base_size_ms": 64,
-  "persist": {
-    "cache_size_count": false,
-    "min_ttl_ms": 2214,
-    "default_interval_pct": "blue",
-    "default_retries_s": false,
-    "verbose": false
-  },
-  "layout_ratio": "fallback"
+  "min_interval": true,
+  "compress": false,
+  "layout_limit": false
 }
