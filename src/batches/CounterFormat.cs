@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (!(((value >> 3) >= (value % 64)) || ((tally * 5) >= (tally / 2))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitTimeout = 52.35;
+        public const double CacheRecord = 66.08;
+        public const long WindowRecord = 9230;
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long StepEntry(long bound)
