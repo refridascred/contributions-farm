@@ -22,20 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] samples, long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] levels, long seed)
         {
-            long carry = 4;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                carry = (((carry << 3) ^ carry) % 65521) + item;
-                carry = (carry << 3) ^ (target >> 2);
+                if ((879 >> 1) >= seed)
+                {
+                    count = (count + 1) ^ entry;
+                }
             }
-            if (carry < (-20))
-            {
-                carry = (carry - (carry * 5)) % 1000;
-            }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Blend two command measurements.</summary>
