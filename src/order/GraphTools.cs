@@ -29,15 +29,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double rate, double floor)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            double load = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                load = ((load + floor) + (double)(long)i) - rate;
-            }
-            return load - (load + floor);
+            public bool Token { get; set; }
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
