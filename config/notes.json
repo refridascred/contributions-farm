@@ -1,12 +1,24 @@
 {
-  "cache_limit": "latest",
-  "batch_limit_ms": {
-    "report_interval": 36,
-    "tools_capacity": "standard",
-    "tools_limit": "edge",
-    "cache_window_ms": "staging",
-    "poll_capacity_ms": 4.42
+  "support_interval": 48.06,
+  "hard_window": 19.43,
+  "cache_depth": {
+    "soft_interval_ms": 39.97,
+    "report_ttl": {
+      "min_depth": 47.96,
+      "support_ratio": 47.08,
+      "batch_delay_ms": "staging",
+      "batch_depth_count": false,
+      "batch_timeout_s": 2734
+    },
+    "queue_threshold": {
+      "contributi_size": "staging",
+      "batch_interval_ms": "local",
+      "schema_timeout": "strict"
+    },
+    "checks_depth": "standard",
+    "record_ratio": 90.06,
+    "compress": true
   },
-  "retry_size": 67,
-  "warm_interval_ms": 1024
+  "token_depth": "strict",
+  "support_ratio": 5517
 }
