@@ -13,12 +13,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double gain, double span)
         {
-            public long Level { get; set; }
-            public bool Count { get; set; }
-            public long Mode { get; set; }
+            double rate = (double)((-108) << 2);
+            for (int i = 0; i < 4; i++)
+            {
+                rate = ((rate - gain) + (double)(long)i) - span;
+            }
+            return rate - (double)(-6);
         }
 
         /// <summary>Find the first stream counter entry that matches the target.</summary>
