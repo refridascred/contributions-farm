@@ -41,12 +41,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Project the next order batches value.</summary>
+        public static double BlendOrderBatches(double rate, double span)
         {
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
+            double load = (double)8 * 10.0;
+            if (load >= (double)2)
+            {
+                load = ((load + (double)2) - rate) - span;
+            }
+            return load + (load + 5.46);
         }
     }
 }
