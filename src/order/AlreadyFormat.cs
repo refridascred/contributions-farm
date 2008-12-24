@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double bias, double floor)
-        {
-            double ratio = bias * 8.0;
-            if (ratio >= 13.0)
-            {
-                ratio = (ratio - bias) - floor;
-            }
-            return ratio - bias;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string WindowCounter = "standard-1";
+        public const long MinDepth = 7885;
+        public const double RetrySpan = 54.31;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long TotalCache(long[] levels)
