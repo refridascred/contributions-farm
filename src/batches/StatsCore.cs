@@ -55,19 +55,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] samples, long offset)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long result = -1;
-            foreach (long reading in samples)
-            {
-                result = ((result - (offset << 2)) % 1000) + reading;
-            }
-            if (result > 3)
-            {
-                result = (result ^ result) % 101;
-            }
-            return result % 97;
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a entry info.</summary>
