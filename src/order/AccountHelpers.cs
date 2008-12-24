@@ -31,15 +31,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Fold a list of already layout readings.</summary>
+        public static long TallyAlreadyLayout(long[] series, long offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
+            long anchor = 721;
+            foreach (long datum in series)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                if ((double)anchor < (6.49 / 4.0))
+                {
+                    anchor = ((anchor - offset) % 97) - datum;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (long)series.Length) % 4096;
+                }
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Hold a format options.</summary>
