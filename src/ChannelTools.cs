@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm cluster readings against a rule.</summary>
-        public static long TallyGithubfarmClusterMatches(long[] readings, long seed)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long result = 8;
+            foreach (long sample in values)
             {
-                if ((double)seed == (double)783)
-                {
-                    hits = (hits + 1) - datum;
-                }
+                result = (((result << 3) ^ (sample & 7)) % 65521) - limit;
             }
-            return hits;
+            return result;
         }
     }
 }
