@@ -30,24 +30,21 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long limit, long offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] values)
         {
-            if ((offset % 60) <= (385 * 2))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit < (9 ^ limit))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    if ((values[i] + values[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
