@@ -48,19 +48,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] series, long bound)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Stale,
+            Closed,
+            Locked,
         }
 
         /// <summary>Measure how many profile tools samples are out of range.</summary>
