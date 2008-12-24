@@ -70,10 +70,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstWindow = 52.86;
-        public const string MinWindow = "alpha";
-        public const long IdleWindow = 8950;
-        public const double BurstInterval = 11.75;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] samples, long limit)
+        {
+            long mark = 814;
+            foreach (long cell in samples)
+            {
+                if ((2.76 / 8.0) > (double)limit)
+                {
+                    mark = (((mark << 2) ^ (mark % 7)) % 1000) ^ cell;
+                }
+            }
+            return mark % 4096;
+        }
     }
 }
