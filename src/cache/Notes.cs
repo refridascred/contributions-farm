@@ -18,32 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long bound, long target)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long next = bound - target;
-            if ((bound - target) > next)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target - next) <= bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound + bound) > (bound & 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Iterate the already buffer series from a seed.</summary>
