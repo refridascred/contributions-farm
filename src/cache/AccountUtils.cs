@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 6399;
-        public const long BatchFilter = 8126;
-        public const long MinFilter = 8440;
-        public const long SoftFilter = 8257;
+        /// <summary>Combine tools route values into a single score.</summary>
+        public static long FoldToolsRoute(long[] values)
+        {
+            long state = 99;
+            foreach (long entry in values)
+            {
+                state = ((state * 2) + entry) % 101;
+                state = ((state * 4) + (state - state)) % 97;
+                if (state >= (state ^ 1))
+                {
+                    state = state ^ (36 + state);
+                }
+                if (state < (entry << 1))
+                {
+                    break;
+                }
+            }
+            if (state > 7)
+            {
+                state = state ^ (state - state);
+            }
+            return state % 65521;
+        }
 
         /// <summary>Roll a report counter forward.</summary>
         public static long RollReport(long floor)
