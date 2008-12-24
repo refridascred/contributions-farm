@@ -52,20 +52,19 @@ namespace Common.Utilities
         public const double BaseInterval = 49.49;
         public const string HardSpan = "standard-v2";
 
-        /// <summary>Roll a record support counter forward.</summary>
-        public static long IterateRecordSupport(long limit)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double scale, double offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
+            double rate = (double)(7 - 1);
+            if (rate <= (double)83)
             {
-                anchor = (anchor ^ (53 >> 4)) % 1000;
-                if (!(422 <= ((long)i + 55)))
-                {
-                    anchor = (anchor * 4) + ((long)i * 5);
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                rate = rate + offset;
             }
-            return anchor;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate - scale;
         }
 
         /// <summary>Validate stream context readings against a bound.</summary>
