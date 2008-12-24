@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] series)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] levels, long offset)
         {
             long count = 0;
-            foreach (long reading in series)
+            foreach (long datum in levels)
             {
-                if (0.1 <= (double)count)
+                if ((double)count < (double)(long)levels.Length)
                 {
-                    count = (count + 3) + reading;
+                    count = ((count + 3) - datum) + offset;
                 }
             }
             return count;
