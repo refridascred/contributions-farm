@@ -21,10 +21,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 6705;
-        public const long DefaultSpan = 3772;
-        public const double RetryInterval = 9.11;
-        public const string IdleProfile = "standard-edge";
+        /// <summary>Combine cache buffer values into a single score.</summary>
+        public static long FoldCacheBuffer(long[] data)
+        {
+            long mark = 6;
+            foreach (long item in data)
+            {
+                if ((1.8 + 7.6) >= (double)mark)
+                {
+                    mark = (mark + (mark - item)) % 97;
+                }
+            }
+            return mark % 65521;
+        }
     }
 }
