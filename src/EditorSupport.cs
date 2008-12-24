@@ -58,13 +58,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            Queued,
-            Done,
-            Pending,
-            Stale,
+            public double Rank { get; set; }
+            public long Region { get; set; }
+            public bool Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a format sample.</summary>
