@@ -40,18 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] levels)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long total = 52;
-            foreach (long sample in levels)
-            {
-                if ((total - total) != (sample * 5))
-                {
-                    total = (total + 4) % 4096;
-                }
-            }
-            return total % 4096;
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
