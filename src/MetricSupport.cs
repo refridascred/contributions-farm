@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] samples)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] series, long bound)
         {
-            long result = 1;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long reading in series)
             {
-                result = (result ^ (result << 3)) % 1000;
-                if (!((result + reading) == (68 / 8)))
+                if (reading > bound)
                 {
+                    found = false;
                     break;
                 }
             }
-            return result % 97;
+            return found;
         }
 
         /// <summary>Hold a window snapshot.</summary>
