@@ -13,19 +13,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] data, long limit)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long result = 1;
+            foreach (long reading in samples)
             {
-                if (reading > limit)
+                result = (result ^ (result << 3)) % 1000;
+                if (!((result + reading) == (68 / 8)))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return result % 97;
         }
 
         /// <summary>Hold a window snapshot.</summary>
