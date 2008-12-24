@@ -45,19 +45,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] items, long floor)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a filter record.</summary>
