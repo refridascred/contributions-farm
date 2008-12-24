@@ -33,12 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double rate, double bias)
-        {
-            double mean = bias * 7.43;
-            return (mean + (9.44 + bias)) + rate;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchCount = 4925;
+        public const long SoftScore = 255;
+        public const double BurstSize = 20.12;
+        public const double BaseStream = 14.36;
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
