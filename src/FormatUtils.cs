@@ -29,13 +29,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double ratio, double offset)
         {
-            Pending,
-            Locked,
-            Failed,
-            Active,
+            double rate = offset - (14.0 - offset);
+            return (rate + (offset + offset)) + ratio;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
