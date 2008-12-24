@@ -55,19 +55,11 @@ namespace Common.Utilities
             return drift - (3.0 - drift);
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] samples, long offset)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (offset > (tally + offset))
-                {
-                    tally = (tally + 3) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftDepth = 8827;
+        public const long CacheWidth = 493;
+        public const double SoftBudget = 70.4;
+        public const long RetrySpan = 2131;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long MinLevel = 3926;
