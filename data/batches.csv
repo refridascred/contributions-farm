@@ -1,6 +1,11 @@
-id,weight,state
-1,614,52.01
-2,cached,92.96
-3,22,eu-west
-4,standard,primary
-5,eu-west,483
+id,count,owner,rank,ratio
+1,222,34.14,322,93.76
+2,66.01,81.44,green,17.73
+3,35.92,540,107,edge
+4,local,125,953,90.15
+5,945,109,42.24,79
+6,fallback,blue,83.11,18.76
+7,623,709,open,860
+8,strict,fallback,387,local
+9,latest,315,cached,971
+10,852,46.96,172,33.47
