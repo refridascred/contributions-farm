@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                if (seed >= ((long)i * 5))
-                {
-                    result = result + (seed >> 1);
-                }
-                else
-                {
-                    result = result - (result % 10);
-                    result = result + (seed ^ result);
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepCache = "standard-edge";
+        public const double DefaultCache = 43.61;
+        public const double BaseLevel = 25.12;
 
         /// <summary>Measure how many window filter samples are out of range.</summary>
         public static long MeasureWindowFilterHits(long[] samples)
