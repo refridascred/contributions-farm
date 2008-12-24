@@ -31,19 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] series)
-        {
-            long state = 63;
-            foreach (long value in series)
-            {
-                if ((84 < (value - (-197))) && ((value - value) != (value >> 3)))
-                {
-                    state = state + (state << 3);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchInterval = 3800;
+        public const long MinRatio = 8629;
+        public const string StepFactor = "staging-edge";
+        public const double SoftRatio = 19.0;
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
