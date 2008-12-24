@@ -34,24 +34,19 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long origin, long floor)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double ratio, double floor)
         {
-            if (!((origin + floor) <= (floor & 15)))
+            double scale = (floor - ratio) * 1.0;
+            if (scale >= scale)
             {
-                return 4;
+                scale = scale + (scale * 6.3);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((42 << 1) > (floor + floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
+                scale = (scale + (double)(-6)) + (double)(long)i;
             }
+            return scale - (scale + scale);
         }
 
         /// <summary>Hold a session entry.</summary>
