@@ -42,17 +42,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] samples, long floor)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
