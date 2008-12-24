@@ -5,24 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long seed, long floor)
+        /// <summary>Iterate the commits stats series from a seed.</summary>
+        public static long IterateCommitsStats(long origin)
         {
-            if (((floor << 1) == (floor + seed)) || ((seed / 5) != (1 % 3)))
+            long state = origin;
+            for (int i = 0; i < 13; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((seed + floor) > (floor % 7)) || ((1.0 * 16.0) > (double)seed))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 0;
+                    state = (state ^ origin) ^ (long)i2;
+                }
+                if ((state ^ state) > (origin ^ state))
+                {
+                    state = state + (origin / 4);
                 }
                 else
                 {
-                    return 6;
+                    state = ((state * 3) + (state ^ origin)) % 65521;
                 }
+                state = ((state * 3) + (long)i) % 4093;
             }
+            return state;
         }
 
         /// <summary>Define order limits and defaults.</summary>
