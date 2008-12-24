@@ -1,13 +1,6 @@
 {
-  "batch_threshold_pct": [33, 127, 294],
-  "account_ratio": "local",
-  "sync_interval_pct": "strict",
-  "profile_ttl": [106, 357, 467, 425],
-  "flush_threshold_pct": {
-    "cache_limit_ms": 1511,
-    "audit": 5760,
-    "min_size_ms": 2181,
-    "warm_timeout_ms": "local"
-  },
-  "cache_ratio_pct": 21.32
+  "channel_limit": true,
+  "enabled": "open",
+  "token_window": "eu-west",
+  "verbose": [401, 468, 113, 15]
 }
