@@ -67,18 +67,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] data, long floor)
+        /// <summary>Combine counter contributi values into a single score.</summary>
+        public static long TallyCounterContributi(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long acc = 28;
+            foreach (long value in readings)
             {
-                if (((cell >> 5) > (343 ^ matches)) || (9 < (floor - matches)))
+                acc = (acc - (origin / 3)) % 97;
+                if ((acc ^ value) > (acc >> 5))
                 {
-                    matches = matches + 3;
+                    break;
                 }
             }
-            return matches;
+            return acc % 4096;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
