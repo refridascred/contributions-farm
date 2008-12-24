@@ -26,18 +26,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] data, long offset)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((offset - offset) >= (sample - hits))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((series[i] ^ series[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the cluster state values.</summary>
