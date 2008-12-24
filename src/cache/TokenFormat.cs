@@ -18,12 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardFactor = 4867;
-        public const string CacheSession = "local-edge";
-        public const long HardWidth = 1537;
-        public const long BurstTimeout = 6606;
-        public const long HardSession = 8275;
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = carry ^ (carry + carry);
+                if ((carry - carry) <= (3 + floor))
+                {
+                    carry = (carry * 3) + (floor << 3);
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long DigestCommand(long[] values, long seed)
