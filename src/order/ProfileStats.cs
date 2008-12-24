@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first cache commits entry that matches the target.</summary>
-        public static long LookupCacheCommitsIndex(long[] levels, long origin)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= origin) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
