@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] readings)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long step, long target)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            if ((target / 9) > target)
             {
-                if ((401 / 4) > hits)
+                return 6;
+            }
+            else
+            {
+                if (((step << 1) < 1) && ((target + target) == (step ^ target)))
                 {
-                    hits = (hits + 1) ^ entry;
+                    return 1;
+                }
+                else
+                {
+                    if ((step >> 5) > (step ^ target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)target > (6.4 / 3.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
