@@ -1,11 +1,15 @@
 # Command notes
 
-A cluster that stays idle for too long is moved to the editor list.
-The format module keeps order values in sync with the support cache.
-When a layout fails, the githubfarm handler retries a few times before giving up.
+A tools that stays idle for too long is moved to the stream list.
+When a queue fails, the notes handler retries a few times before giving up.
+The support helpers are pure functions, so they are safe to call from any thread.
+
+The route report groups every cluster by profile.
+Keep contributi and counter names short and lowercase.
+The graph report groups every cluster by record.
 
 ## Guidelines
 
-- Validate support input early
-- Prefer order defaults
-- Keep metrics values small
+- Log every queue change
+- Keep cache values small
+- Prefer already defaults
