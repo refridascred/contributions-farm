@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge primary latest; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-blue}"
+mode="${1:-latest}"
 case "${mode}" in
-    legacy)
+    eu-west)
         log "fast path"
         ;;
     *)
