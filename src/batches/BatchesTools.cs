@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the commits counter entries that pass the check.</summary>
-        public static long TallyCommitsCounterHits(long[] data, long bound)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (bound > (entry >> 5))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
