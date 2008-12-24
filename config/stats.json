@@ -1,13 +1,6 @@
 {
-  "soft_delay": 91,
-  "default_delay_s": "stable",
-  "session_ratio": "strict",
-  "warm_window_s": 60.6,
-  "strict": {
-    "schema_size": 6951,
-    "soft_interval_ms": [233, 333, 318, 361],
-    "hard_window": 100,
-    "tools_ttl": "staging",
-    "idle_capacity": 6196
-  }
+  "min_delay_s": 32.47,
+  "idle_window_s": ["staging", "strict"],
+  "warm_interval_s": 8279,
+  "cluster_ratio": "fallback"
 }
