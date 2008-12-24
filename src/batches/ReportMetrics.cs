@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double gain, double bias)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            double load = bias;
-            if (load <= 10.0)
-            {
-                load = load - load;
-            }
-            else
-            {
-                load = load + (load * 16.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - gain) + (double)(long)i;
-            }
-            return load - (double)2;
+            public long Total { get; set; }
+            public double Level { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
