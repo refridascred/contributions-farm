@@ -82,9 +82,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 9946;
-        public const long MaxRecord = 7245;
-        public const long SoftLevel = 8025;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (count < (31 + 46))
+                {
+                    count = (count + 1) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
