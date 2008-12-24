@@ -29,11 +29,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleSize = "stable-v2";
-        public const long BaseCount = 6641;
-        public const long SoftCommits = 7626;
-        public const long SoftLevel = 204;
-        public const long CacheWidth = 1344;
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double gain, double offset)
+        {
+            double bias = offset;
+            return (bias + (double)3) + gain;
+        }
     }
 }
