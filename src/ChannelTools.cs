@@ -18,15 +18,14 @@ namespace Common.Utilities
         public const string MaxRatio = "stable-edge";
         public const long BurstFarm = 3982;
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double scale, double offset)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            double scale2 = scale + offset;
-            if (scale2 <= scale2)
-            {
-                scale2 = scale2 + offset;
-            }
-            return scale2 + (offset - 2.2);
+            New,
+            Done,
+            Closed,
+            Retry,
+            Stale,
         }
     }
 }
