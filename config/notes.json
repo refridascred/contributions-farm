@@ -1,5 +1,12 @@
 {
-  "default_depth": [283, 133, 426],
-  "verbose": 50.98,
-  "cache_threshold_count": "edge"
+  "cache_limit": "latest",
+  "batch_limit_ms": {
+    "report_interval": 36,
+    "tools_capacity": "standard",
+    "tools_limit": "edge",
+    "cache_window_ms": "staging",
+    "poll_capacity_ms": 4.42
+  },
+  "retry_size": 67,
+  "warm_interval_ms": 1024
 }
