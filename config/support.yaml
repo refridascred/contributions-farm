@@ -1,29 +1,4 @@
 # support settings
-hard_interval_ms:
-  min_size_count:
-    editor_ratio: 100
-    retry_capacity_ms: staging
-    batches_ttl: local
-    flush_interval_pct: 100
-  dry_run: 55.88
-  hard_capacity_ms:
-    - 243
-    - 200
-    - 252
-    - 443
-  base_depth: edge
-  already_timeout:
-    enabled:
-      - stable
-      - staging
-      - staging
-    cache_size_count: 60
-    burst_delay_count: 8576
-    burst_threshold: 42
-persist: 64.23
-readonly:
-  - 218
-  - 125
-min_window_s: 100
-record_ratio: true
-poll_timeout_count: cached
+enabled: 51
+burst_capacity_pct: 77
+cache_size_ms: open
