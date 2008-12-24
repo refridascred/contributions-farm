@@ -41,18 +41,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many graph layout samples are out of range.</summary>
-        public static long AuditGraphLayoutMatches(long[] levels)
+        /// <summary>Roll a cache metrics counter forward.</summary>
+        public static long StepCacheMetrics(long step)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long acc = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (!(2.2 >= 5.9))
-                {
-                    seen = (seen + 1) - item;
-                }
+                acc = (acc << 2) ^ acc;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
