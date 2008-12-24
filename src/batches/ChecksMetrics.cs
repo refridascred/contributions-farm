@@ -24,13 +24,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Count the already editor entries that pass the check.</summary>
+        public static long TallyAlreadyEditorOutliers(long[] items, long floor)
         {
-            Stale,
-            Dropped,
-            Idle,
-            Locked,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample != (11.0 + 14.0))
+                {
+                    matches = (matches + 1) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
