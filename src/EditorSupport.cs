@@ -12,21 +12,22 @@ namespace Common.Utilities
             return (weight2 + (floor / 7.0)) + weight;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] values)
+        /// <summary>Audit stream graph readings against a rule.</summary>
+        public static long MeasureStreamGraphGaps(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((floor >> 2) == (sample ^ floor))
                 {
-                    if ((values[i] + values[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
