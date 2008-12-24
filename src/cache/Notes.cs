@@ -21,21 +21,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] items)
+        /// <summary>Audit checks metrics readings against a rule.</summary>
+        public static long AuditChecksMetricsOutliers(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((item * 3) > (item * 4)) || ((2.77 >= (double)item) && ((84 + item) == (count * 4))))
                 {
-                    if ((items[i] ^ items[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the cluster state values.</summary>
