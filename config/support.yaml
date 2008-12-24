@@ -1,10 +1,10 @@
 # support settings
-max_interval_ms:
-  - legacy
-  - eu-west
-sync_window_count:
-  - strict
-  - green
-  - open
-  - edge
-idle_depth_count: blue
+sync_retries_count:
+  - 27
+  - 18
+base_window_pct: 54
+persist: fallback
+min_size_s:
+  - 266
+  - 360
+  - 132
