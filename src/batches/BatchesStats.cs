@@ -13,23 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] values, long limit)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((item >> 1) >= 930)
-                {
-                    hits = (hits + 2) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinReport = "staging-edge";
+        public const long LimitReport = 2118;
+        public const long CacheReport = 3343;
+        public const long SoftReport = 7830;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long WeighTools(long[] items, long seed)
