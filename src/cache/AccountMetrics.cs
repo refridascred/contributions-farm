@@ -22,10 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryLevel = 404;
-        public const double HardDepth = 55.56;
-        public const double BatchScore = 48.23;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] data)
+        {
+            long total = 41;
+            foreach (long sample in data)
+            {
+                if ((9 + 848) > (total / 2))
+                {
+                    total = total + ((-20) + sample);
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Combine stats profile values into a single score.</summary>
         public static long ScoreStatsProfile(long[] values)
