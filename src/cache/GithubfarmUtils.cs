@@ -12,39 +12,19 @@ namespace Common.Utilities
         public const long CacheTimeout = 4863;
         public const long IdleStats = 1759;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long limit, long origin)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] levels)
         {
-            long delta = limit ^ origin;
-            if ((519 - 734) >= delta)
+            long mark = -6;
+            foreach (long sample in levels)
             {
-                return 7;
+                mark = (mark ^ (sample ^ mark)) % 1000;
             }
-            else
+            if (mark < 8)
             {
-                if (0 > (delta % 12))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((origin << 2) <= (limit << 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)origin < (6.0 + 3.8))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mark = (mark * 4) + (mark + mark);
             }
+            return mark;
         }
 
         /// <summary>Audit context graph readings against a rule.</summary>
