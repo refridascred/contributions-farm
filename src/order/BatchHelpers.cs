@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheCount = 7193;
-        public const long IdlePayload = 5986;
-        public const double MinPayload = 2.17;
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many route support samples are out of range.</summary>
         public static long AuditRouteSupportHits(long[] series, long bound)
