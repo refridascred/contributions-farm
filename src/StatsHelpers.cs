@@ -22,16 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long floor)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long step)
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
+            long mix = step;
+            for (int i = 0; i < 16; i++)
             {
-                total = (total - total) % 97;
-                total = ((total * 3) + (long)i) % 101;
+                mix = ((mix << 2) ^ (mix >> 4)) % 255;
+                mix = (mix << 3) ^ 6;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
