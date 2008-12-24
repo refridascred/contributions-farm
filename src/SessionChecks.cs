@@ -24,18 +24,16 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] levels, long limit)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long step)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long total = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (limit >= (hits / 6))
-                {
-                    hits = (hits + 3) + value;
-                }
+                total = (total << 3) ^ (step - (long)i);
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Measure how many channel window samples are out of range.</summary>
