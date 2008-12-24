@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long bound, long offset)
+        /// <summary>Audit githubfarm editor readings against a rule.</summary>
+        public static long AuditGithubfarmEditorGaps(long[] data, long seed)
         {
-            if (offset <= (2 << 1))
+            long seen = 0;
+            foreach (long reading in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound * 3) < bound)
+                if ((seen - 956) == (reading - reading))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    seen = (seen + 2) - seed;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a contributi record.</summary>
