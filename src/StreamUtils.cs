@@ -13,31 +13,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long offset, long target)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long offset)
         {
-            if (13.0 > (double)target)
+            long carry = offset;
+            for (int i = 0; i < 12; i++)
             {
-                return 0;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (((target % 8) > (offset ^ 427)) && ((double)target < (11.0 - 6.2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((7.0 * 19.0) == (double)offset) && ((offset - 6) <= 404))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a batches info.</summary>
