@@ -20,22 +20,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] readings)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] samples, long origin)
         {
-            long sum = 878;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sum << 1) > (value / 2))
+                if ((samples[i] > origin) && ((samples[i] % 2) != 0))
                 {
-                    sum = ((sum * 3) + 626) % 65521;
-                }
-                if ((double)sum != (double)value)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
