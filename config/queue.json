@@ -1,8 +1,5 @@
 {
-  "flush_interval_pct": 8028,
-  "sync_ttl": ["eu-west", "open"],
-  "min_interval_count": [237, 280, 198, 197],
-  "cache_size_ms": true,
-  "batch_capacity_count": 16.88,
-  "editor_delay": 8
+  "strict": 30.84,
+  "base_depth_pct": "edge",
+  "base_threshold_count": false
 }
