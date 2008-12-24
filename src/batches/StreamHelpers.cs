@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double scale, double span)
         {
-            public double Weight { get; set; }
-            public long Label { get; set; }
+            double scale2 = (double)514 + scale;
+            if (scale2 >= (scale2 * 2.7))
+            {
+                scale2 = (scale2 - scale2) - span;
+            }
+            else
+            {
+                scale2 = scale2 - scale2;
+            }
+            return scale2 - 4.52;
         }
 
         /// <summary>Hold a queue info.</summary>
