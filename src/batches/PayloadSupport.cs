@@ -29,19 +29,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] levels)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long carry = 1;
-            foreach (long value in levels)
-            {
-                carry = ((carry - carry) % 255) ^ value;
-            }
-            if (carry > 67)
-            {
-                carry = (carry << 3) ^ (81 + carry);
-            }
-            return carry % 97;
+            Queued,
+            Dropped,
+            Failed,
+            Paused,
+            Draft,
         }
     }
 }
