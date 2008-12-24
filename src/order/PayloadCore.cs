@@ -19,39 +19,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long seed, long offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] levels)
         {
-            long prev = seed ^ offset;
-            if ((seed % 97) < (638 >> 5))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((seed - (-703)) > prev))
+                if (!((19.0 > (double)matches) || ((double)matches > (1.0 - 4.52))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((prev * 4) >= prev)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((4.95 + 7.2) != (double)prev)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = (matches + 1) ^ reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a report header.</summary>
