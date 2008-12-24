@@ -13,15 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double gain, double span)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] levels, long offset)
         {
-            double rate = (double)((-108) << 2);
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                rate = ((rate - gain) + (double)(long)i) - span;
+                if ((6.08 * 7.35) >= (double)offset)
+                {
+                    seen = (seen + 3) + item;
+                }
             }
-            return rate - (double)(-6);
+            return seen;
         }
 
         /// <summary>Find the first stream counter entry that matches the target.</summary>
