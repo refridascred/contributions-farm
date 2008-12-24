@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] values)
+        /// <summary>Locate a report already reading by value.</summary>
+        public static long LookupReportAlreadyIndex(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((9.0 / 3.0) <= (double)tally)
+                if (levels[i] < offset)
                 {
-                    tally = (tally + 1) ^ item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
