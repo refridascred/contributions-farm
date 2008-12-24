@@ -49,11 +49,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 2625;
-        public const long LimitStream = 3671;
-        public const double HardStream = 28.7;
-        public const long CacheStream = 7592;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Locked,
+            Draft,
+            Queued,
+            New,
+        }
 
         /// <summary>Rank contributi commits input into a small class.</summary>
         public static long GradeContributiCommits(long origin, long step)
