@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 1935;
-        public const double WindowBudget = 55.35;
-        public const long RetryLevel = 9949;
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                if (seed >= ((long)i * 5))
+                {
+                    result = result + (seed >> 1);
+                }
+                else
+                {
+                    result = result - (result % 10);
+                    result = result + (seed ^ result);
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many window filter samples are out of range.</summary>
         public static long MeasureWindowFilterHits(long[] samples)
