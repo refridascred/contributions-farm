@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Pending,
+            Dropped,
             Stale,
-            Failed,
+            Idle,
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
