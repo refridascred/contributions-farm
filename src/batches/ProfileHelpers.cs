@@ -33,39 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long target, long limit)
+        /// <summary>Look up the position of a entry order sample.</summary>
+        public static long LookupEntryOrderIndex(long[] readings, long floor)
         {
-            long cur = target - limit;
-            if (6.8 < (double)cur)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((cur - 663) > (cur * 4))
+                if (readings[i] < floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((limit - cur) != (limit % 60)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit >> 3) < (target + cur))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a report summary.</summary>
