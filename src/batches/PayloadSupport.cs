@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] items)
+        /// <summary>Measure how many context report samples are out of range.</summary>
+        public static long TallyContextReportOutliers(long[] values)
         {
-            long sum = 2;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                sum = ((sum ^ sum) % 255) - item;
+                if ((reading + 79) > reading)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
