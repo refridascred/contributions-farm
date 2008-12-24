@@ -21,18 +21,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit format order readings against a rule.</summary>
-        public static long TallyFormatOrderMatches(long[] samples)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((count - value) > value)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Failed,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
