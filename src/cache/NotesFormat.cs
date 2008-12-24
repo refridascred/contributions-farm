@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinTimeout = "fallback";
-        public const long BatchFactor = 2526;
-        public const long MinSize = 93;
-        public const string RetryDepth = "alpha";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstFactor = 2949;
+        public const long LimitSize = 809;
+        public const long SoftWidth = 326;
+        public const double SoftLevel = 57.94;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string RetryQueue = "standard";
