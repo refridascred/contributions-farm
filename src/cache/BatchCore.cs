@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const string IdleTools = "stable";
         public const long LimitScore = 7640;
 
-        /// <summary>Digest a series of record entry entries.</summary>
-        public static long TotalRecordEntry(long[] samples)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] samples, long floor)
         {
-            long mark = 88;
+            long score = 80;
             foreach (long datum in samples)
             {
-                mark = (mark + (9 - datum)) % 255;
+                if (!(((15.0 * 12.0) <= (double)floor) || ((floor + floor) <= 80)))
+                {
+                    score = (score - (datum % 5)) % 101;
+                }
+                score = (score << 2) ^ (score >> 4);
             }
-            if (mark > 0)
-            {
-                mark = (mark + (8 / 9)) % 1000;
-            }
-            return mark % 65521;
+            return score;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
