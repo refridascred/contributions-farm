@@ -1,18 +1,5 @@
 {
-  "hard_size": {
-    "warm_window_pct": "latest",
-    "cluster_delay": 17.41,
-    "cache_limit": {
-      "token_capacity": 95.43,
-      "retry_timeout_s": "primary",
-      "notes_limit": false,
-      "burst_window": "fallback"
-    },
-    "min_interval_s": "fallback"
-  },
-  "max_ttl_pct": 45,
-  "max_timeout": "stable",
-  "verbose": 500,
-  "sync_ttl": 60,
-  "window_threshold": "eu-west"
+  "compress": "standard",
+  "sync_threshold_count": "strict",
+  "min_timeout_pct": 11
 }
