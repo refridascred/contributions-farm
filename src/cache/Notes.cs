@@ -58,12 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] levels, long offset)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (!(hits >= (97 >> 5)))
+                {
+                    hits = ((hits + 3) + sample) - offset;
+                }
+            }
+            return hits;
         }
     }
 }
