@@ -36,18 +36,12 @@ namespace Common.Utilities
             return weight - (gain * 5.0);
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] series, long seed)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long carry = 186;
-            foreach (long entry in series)
-            {
-                if (((carry - entry) >= (seed / 9)) && ((entry - seed) <= entry))
-                {
-                    carry = ((carry * 3) + (203 % 5)) % 255;
-                }
-            }
-            return carry % 1000;
+            Failed,
+            Synced,
+            Active,
         }
 
         /// <summary>Blend two counter measurements.</summary>
