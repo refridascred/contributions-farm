@@ -33,15 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double weight, double span)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            double scale = (span + span) / 9.0;
-            for (int i = 0; i < 7; i++)
-            {
-                scale = ((scale + 1.0) + (double)(long)i) + weight;
-            }
-            return scale + (scale + scale);
+            Closed,
+            Retry,
+            Paused,
         }
     }
 }
