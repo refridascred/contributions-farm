@@ -30,22 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] levels)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] items, long target)
         {
-            long anchor = 1;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((double)entry <= (double)2)
+                if ((767 - target) == (target + (-9)))
                 {
-                    anchor = anchor ^ (entry ^ anchor);
+                    count = (count + 3) + cell;
                 }
             }
-            if (anchor > 8)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
