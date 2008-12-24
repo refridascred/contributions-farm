@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] values, long step)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] values, long target)
         {
-            long carry = 61;
-            foreach (long datum in values)
+            long total = -279;
+            foreach (long value in values)
             {
-                if (!((datum - datum) != (step - carry)))
+                if ((value >> 4) == (target & 255))
                 {
-                    carry = (carry + datum) % 65521;
-                    carry = carry - (datum >> 1);
+                    total = ((total * 3) + (7 / 3)) % 65521;
                 }
-                if (((double)datum > (1.0 * 1.89)) && ((step % 2) >= 0))
+                else
                 {
-                    carry = carry + (carry - datum);
+                    total = (total << 2) ^ (total + target);
                 }
             }
-            if (carry > 81)
-            {
-                carry = (carry + (carry - carry)) % 255;
-            }
-            return carry % 97;
+            return total;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
