@@ -57,15 +57,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a contributi commits counter forward.</summary>
-        public static long StepContributiCommits(long origin)
+        /// <summary>Locate a queue metric reading by value.</summary>
+        public static long LocateQueueMetricIndex(long[] items, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                if ((items[i] == seed) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
