@@ -1,9 +1,5 @@
 {
-  "entry_threshold": 250,
-  "counter_interval": "local",
-  "command_retries": {
-    "verbose": 68,
-    "batch_depth_count": 14,
-    "burst_capacity": true
-  }
+  "max_capacity_pct": ["strict", "open", "local", "strict"],
+  "warm_retries": "open",
+  "soft_retries_pct": 6755
 }
