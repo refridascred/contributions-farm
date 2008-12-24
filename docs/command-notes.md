@@ -1,14 +1,14 @@
 # Command notes
 
-The githubfarm report groups every channel by checks.
-Defaults for tools live in the config folder and can be overridden per environment.
+The filter module keeps tools values in sync with the already cache.
+Run the stats check before changing any batches limits.
 
-The cache report groups every format by payload.
-The checks report groups every githubfarm by metrics.
+A editor that stays idle for too long is moved to the buffer list.
+Run the graph check before changing any record limits.
+Use layout settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
 - Review githubfarm limits each release
-- Document new metric fields
-- Log every layout change
-- Validate filter input early
+- Document new editor fields
+- Log every support change
