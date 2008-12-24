@@ -1,7 +1,16 @@
 # support settings
-token_size: 82
-cache_window: false
-window_capacity: 96.5
-metric_delay: 44.96
+idle_capacity_pct: 49.77
+context_limit: false
+token_interval:
+  batch_size: blue
+  verbose:
+    - 146
+    - 237
+    - 407
+  batches_ratio: 69
+  metric_ratio:
+    - 292
+    - 91
+base_retries_pct: staging
+command_capacity: legacy
 persist: green
-sync_ratio_count: 500
