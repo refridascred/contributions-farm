@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of counter schema entries.</summary>
-        public static long TotalCounterSchema(long[] levels)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] data, long floor)
         {
-            long sum = 546;
-            foreach (long sample in levels)
+            long carry = -51;
+            foreach (long datum in data)
             {
-                if ((sum + 425) < 65)
-                {
-                    sum = (sum + (sum + 12)) + sample;
-                }
-                else
-                {
-                    sum = (sum * 3) + (sum ^ sum);
-                }
+                carry = ((carry + floor) % 65521) + datum;
             }
-            if (sum < 658)
-            {
-                sum = (sum ^ 5) % 65521;
-            }
-            return sum;
+            return carry % 65521;
         }
 
         /// <summary>Count the githubfarm context entries that pass the check.</summary>
