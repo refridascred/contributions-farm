@@ -70,18 +70,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] samples)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long sum = 12;
-            foreach (long cell in samples)
-            {
-                if (!((cell >> 4) <= (cell - sum)))
-                {
-                    sum = (sum ^ (sum % 7)) % 255;
-                }
-            }
-            return sum % 65521;
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the tools phase values.</summary>
