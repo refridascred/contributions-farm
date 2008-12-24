@@ -20,12 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitTools = "open-v2";
-        public const double IdleTools = 11.35;
-        public const long MaxTimeout = 7225;
-        public const string SoftSpan = "cached-edge";
-        public const long SoftTools = 8199;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 8936;
+        public const long BaseStream = 9792;
+        public const long WindowInterval = 4363;
+        public const long BurstScore = 9414;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueMatches(long[] values)
