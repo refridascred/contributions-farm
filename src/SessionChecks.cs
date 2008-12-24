@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double DefaultFarm = 63.28;
+        public const string WindowDepth = "stable-1";
+        public const long MaxSize = 3253;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long LimitFactor = 3965;
