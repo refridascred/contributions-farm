@@ -1,6 +1,7 @@
 {
-  "verbose": false,
-  "poll_depth_ms": ["open", "stable"],
-  "cluster_timeout": 71,
-  "support_window": ["fallback", "stable", "open"]
+  "warm_delay_pct": "eu-west",
+  "dry_run": [433, 408, 119, 269],
+  "base_delay_ms": 6392,
+  "support_retries": "latest",
+  "idle_ttl": 250
 }
