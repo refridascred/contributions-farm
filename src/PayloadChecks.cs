@@ -28,14 +28,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] samples)
         {
-            Stale,
-            Locked,
-            Draft,
-            Queued,
-            Idle,
+            long acc = 8;
+            foreach (long sample in samples)
+            {
+                if ((sample * 4) > (acc % 24))
+                {
+                    acc = ((acc * 4) + sample) % 1000;
+                }
+                if ((sample * 2) >= acc)
+                {
+                    acc = (acc - (360 - acc)) % 97;
+                    break;
+                }
+                if (acc <= sample)
+                {
+                    acc = (acc ^ ((-47) - sample)) % 101;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Locate a token reading by value.</summary>
