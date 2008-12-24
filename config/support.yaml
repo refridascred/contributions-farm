@@ -1,10 +1,11 @@
 # support settings
-warm_threshold_count: legacy
-verbose:
-  idle_size_ms: 4023
-  max_interval_count: false
-  stream_timeout: edge
-  max_retries_ms: 330
-  idle_window: 4693
-batch_interval_s: local
-batch_timeout_ms: green
+cache_limit_ms:
+  - legacy
+  - blue
+  - standard
+  - latest
+sync_timeout: latest
+strict: latest
+retry_interval_count: 250
+enabled: true
+burst_ratio_count: fallback
