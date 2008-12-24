@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] readings)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell != bound)
                 {
-                    if ((readings[i] - readings[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
