@@ -44,11 +44,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowMetric = 68.93;
-        public const long BurstMetric = 9131;
-        public const string WindowScore = "stable";
-        public const long CacheMetric = 6603;
-        public const double StepMetric = 78.15;
+        /// <summary>Count batches channel pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesChannelCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
