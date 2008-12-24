@@ -1,17 +1,6 @@
 # entry settings
-profile_limit: staging
-max_window_ms:
-  - edge
-  - primary
-  - legacy
-  - legacy
-soft_limit:
-  cache_limit_pct: 67.64
-  burst_ttl_s: 6349
-  sync_timeout: strict
-  retry_depth: 35.59
-  route_size: 75
-  min_retries_ms: 52
-cache_depth_count: 1024
-idle_timeout: 37.93
-audit: open
+hard_timeout: 59
+audit: 60
+metric_size: 65.0
+poll_delay: 2252
+flush_depth_pct: legacy
