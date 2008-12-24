@@ -27,13 +27,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            Closed,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 9256;
+        public const long MaxTimeout = 6542;
+        public const string StepGithubfarm = "standard-edge";
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double ScaleEntry(double weight, double span)
